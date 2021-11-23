@@ -22,7 +22,7 @@
 #import "KDKongKaViewController.h"
 #import "KDHomeXinYongKaViewController.h"
 #import "KDRenZhengView.h"
-
+#import "KDHomeBillManageViewController.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -114,8 +114,10 @@
                     break;
                 case 101:
                 {
-                    
-                    [self showRenzhengView];
+                    KDHomeBillManageViewController * vc = [[KDHomeBillManageViewController alloc]init];
+                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+
+//                    [self showRenzhengView];
                
                 }
                     break;

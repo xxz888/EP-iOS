@@ -159,25 +159,16 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-GS-BQH">
                             <rect key="frame" x="195" y="165" width="187" height="80"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="组 2" translatesAutoresizingMaskIntoConstraints="NO" id="azF-tl-hVf">
-                            <rect key="frame" x="0.0" y="250" width="382" height="80"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="Bu2-y0-BRA"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="NJr-rh-seA" firstAttribute="top" secondItem="Wem-cK-bkb" secondAttribute="top" constant="13" id="37X-CJ-jkv"/>
-                        <constraint firstAttribute="trailing" secondItem="azF-tl-hVf" secondAttribute="trailing" id="3Gl-cZ-Ebd"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" constant="35" id="9oG-7h-Hxb"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="leading" secondItem="aPS-wx-cbb" secondAttribute="leading" id="E2l-tf-lfW"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="width" secondItem="Wem-cK-bkb" secondAttribute="width" multiplier="0.5" constant="-2" id="G47-HA-vdo"/>
                         <constraint firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="GZM-Fl-b3g"/>
                         <constraint firstItem="OEf-GS-BQH" firstAttribute="top" secondItem="31Z-k5-SJS" secondAttribute="top" id="Ilb-aX-CDR"/>
                         <constraint firstItem="OEf-GS-BQH" firstAttribute="bottom" secondItem="31Z-k5-SJS" secondAttribute="bottom" id="MMd-a1-bgv"/>
-                        <constraint firstItem="azF-tl-hVf" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="NzH-w1-H7S"/>
-                        <constraint firstItem="azF-tl-hVf" firstAttribute="top" secondItem="31Z-k5-SJS" secondAttribute="bottom" constant="5" id="UW4-WV-lJ5"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="top" secondItem="aPS-wx-cbb" secondAttribute="bottom" constant="20" id="XOm-th-jCg"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="ZHZ-ob-Z6k"/>
                         <constraint firstItem="OEf-GS-BQH" firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="width" constant="-2" id="iOz-Eg-gOC"/>
@@ -214,7 +205,6 @@
         <image name="kd_home_top_bg" width="540" height="325"/>
         <image name="我的账单" width="39" height="39"/>
         <image name="收款" width="39" height="39"/>
-        <image name="组 2" width="328" height="77"/>
         <image name="绑定信用卡" width="163.5" height="75"/>
         <image name="花呗" width="163.5" height="75"/>
         <image name="钱包" width="40" height="33"/>

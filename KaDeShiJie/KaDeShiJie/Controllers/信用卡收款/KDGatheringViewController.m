@@ -72,7 +72,7 @@
     self.topView.layer.shadowOpacity = 1;
     self.topView.layer.shadowRadius = 10;
     
-    [self setNavigationBarTitle:@"信用卡收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"快速收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor qmui_colorWithHexString:@"#FF9F58"]]];
 
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
@@ -80,7 +80,7 @@
     [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
 
     [self requestDefaultChuXuCards];
 
