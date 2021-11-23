@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043189F0274BDD9500D9D959 /* KDRenZhengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043189EF274BDD9500D9D959 /* KDRenZhengView.m */; };
+		043189F2274BDDA900D9D959 /* KDRenZhengView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043189F1274BDDA900D9D959 /* KDRenZhengView.xib */; };
+		043189F5274BE6B100D9D959 /* KDWenZinTiShi.m in Sources */ = {isa = PBXBuildFile; fileRef = 043189F4274BE6B100D9D959 /* KDWenZinTiShi.m */; };
+		043189F7274BE6BA00D9D959 /* KDWenZinTiShi.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043189F6274BE6BA00D9D959 /* KDWenZinTiShi.xib */; };
 		04AE083226FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE083026FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m */; };
 		04AE083326FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */; };
 		180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */; };
@@ -272,6 +276,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043189EE274BDD9500D9D959 /* KDRenZhengView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDRenZhengView.h; sourceTree = "<group>"; };
+		043189EF274BDD9500D9D959 /* KDRenZhengView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDRenZhengView.m; sourceTree = "<group>"; };
+		043189F1274BDDA900D9D959 /* KDRenZhengView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDRenZhengView.xib; sourceTree = "<group>"; };
+		043189F3274BE6B100D9D959 /* KDWenZinTiShi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWenZinTiShi.h; sourceTree = "<group>"; };
+		043189F4274BE6B100D9D959 /* KDWenZinTiShi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWenZinTiShi.m; sourceTree = "<group>"; };
+		043189F6274BE6BA00D9D959 /* KDWenZinTiShi.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDWenZinTiShi.xib; sourceTree = "<group>"; };
 		04AE082F26FEF029006E3700 /* KDHomeXinYongKaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeXinYongKaTableViewCell.h; sourceTree = "<group>"; };
 		04AE083026FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeXinYongKaTableViewCell.m; sourceTree = "<group>"; };
 		04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeXinYongKaTableViewCell.xib; sourceTree = "<group>"; };
@@ -1305,6 +1315,12 @@
 				EEB6B4372514CD1400F592F4 /* KDWelcomeAlertView.h */,
 				EEB6B4382514CD1400F592F4 /* KDWelcomeAlertView.m */,
 				EEB6B43A2514CD1F00F592F4 /* KDWelcomeAlertView.xib */,
+				043189EE274BDD9500D9D959 /* KDRenZhengView.h */,
+				043189EF274BDD9500D9D959 /* KDRenZhengView.m */,
+				043189F1274BDDA900D9D959 /* KDRenZhengView.xib */,
+				043189F3274BE6B100D9D959 /* KDWenZinTiShi.h */,
+				043189F4274BE6B100D9D959 /* KDWenZinTiShi.m */,
+				043189F6274BE6BA00D9D959 /* KDWenZinTiShi.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1731,7 +1747,9 @@
 				1B937087251CC89600E51EC9 /* KDEmptyCardRefundViewCell.xib in Resources */,
 				187D8B1D2565FC900097A650 /* KDTrandingRecordViewCell.xib in Resources */,
 				1B9C9B1925075D2F00EE0819 /* KDMsgViewCell.xib in Resources */,
+				043189F2274BDDA900D9D959 /* KDRenZhengView.xib in Resources */,
 				1B86CF9A2509B83600AD09F7 /* KDConfirmCreditHeaderView.xib in Resources */,
+				043189F7274BE6BA00D9D959 /* KDWenZinTiShi.xib in Resources */,
 				1848CE55266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.xib in Resources */,
 				1B543D2F250F4A5600076628 /* KDWXViewCell.xib in Resources */,
 				187F62C926726C61003F48CD /* KDJFOrderDetailHeaderView.xib in Resources */,
@@ -1859,6 +1877,7 @@
 				187D8B132565FC900097A650 /* KDTrandingRecordViewController.m in Sources */,
 				1B937052251C74A700E51EC9 /* KDPlanHeaderView.m in Sources */,
 				1B93704F251C707900E51EC9 /* KDPlanViewController.m in Sources */,
+				043189F5274BE6B100D9D959 /* KDWenZinTiShi.m in Sources */,
 				1BC5E3D525036EDE0064CA30 /* KDLoginHeaderView.m in Sources */,
 				187D8B202565FC900097A650 /* KDTrandingRecordHeaderView.m in Sources */,
 				187D8B192565FC900097A650 /* KDSlotCardHistoryModel.m in Sources */,
@@ -1890,6 +1909,7 @@
 				180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */,
 				EEF1AD2E251CE69C001DD2AB /* KDCalendarCell.m in Sources */,
 				1B7E4688251CD07300FA5D1E /* KDPlanPreviewView.m in Sources */,
+				043189F0274BDD9500D9D959 /* KDRenZhengView.m in Sources */,
 				1BD3DC1C250B178C00A5D148 /* KDAchieveAwardHeaderView.m in Sources */,
 				1BD2F21A250A30D00061580C /* KDProfitViewController.m in Sources */,
 				1848CE68266F68F900D6E148 /* KDConfirmViewController.m in Sources */,

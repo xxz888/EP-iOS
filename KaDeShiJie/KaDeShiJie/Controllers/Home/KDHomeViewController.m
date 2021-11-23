@@ -12,11 +12,14 @@
 #import "MQServiceToViewInterface.h"
 #import <MeiQiaSDK/MQDefinition.h>
 #import "KDGuidePageManager.h"
+#import "KDRenZhengView.h"
+#import "KDWenZinTiShi.h"
 
 @interface KDHomeViewController ()
 @property(nonatomic, strong) QMUIModalPresentationViewController *withdrawTypeModal;
 @property (nonatomic, strong) KDHomeHeaderView *headerView;
 @property (nonatomic, strong) UILabel *redMessageLbl;//未读消息小红点
+@property (nonatomic, strong) KDWenZinTiShi *wenZinTiShi;
 
 
 @property(nonatomic, assign) BOOL updateViewIsShow;
@@ -52,6 +55,21 @@
     [self openEveryAlert1];
    
     
+}
+
+-(void)popFirstLogin{
+    QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
+    KDWenZinTiShi * renzhengView = [KDWenZinTiShi renZhengView];
+    renzhengView.frame = CGRectMake(0, 0, 316, 350);
+    alert.contentView = renzhengView;
+    alert.dimmingView.userInteractionEnabled = NO;
+    [alert showWithAnimated:YES completion:nil];
+    
+    
+    renzhengView.closeActionBlock = ^{
+        [alert hideWithAnimated:YES completion:nil];
+
+    };
 }
 //开始弹出各种弹框  1、版本升级 2、实名认证 3、银行卡认证 4、消息公告
 -(void)openEveryAlert1{
@@ -153,7 +171,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self popFirstLogin];
     if (@available(iOS 11.0, *)) {
         self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {

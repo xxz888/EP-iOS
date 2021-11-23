@@ -21,6 +21,8 @@
 #import "KDCreditModel.h"
 #import "KDKongKaViewController.h"
 #import "KDHomeXinYongKaViewController.h"
+#import "KDRenZhengView.h"
+
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -31,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet MCBannerView *bannerView;
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (nonatomic, strong) KDHomeHeaderView *headerView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) SDCycleScrollView *cyView;
@@ -111,12 +114,9 @@
                     break;
                 case 101:
                 {
-                    //------原生信用卡还款界面
-                    KDKongKaViewController * vc = [[KDKongKaViewController alloc]init];
-                    vc.navTitle = @"空卡还款";
-                    //订单类型（2为还款记录、3为空卡记录）
-                    vc.orderType = @"3";
-                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+                    
+                    [self showRenzhengView];
+               
                 }
                     break;
                 case 102:
@@ -165,7 +165,30 @@
 
    
 }
+-(void)showRenzhengView{
+    QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
+    KDRenZhengView * renzhengView = [KDRenZhengView renZhengView];
+    renzhengView.frame = CGRectMake(0, 0, 316, 282);
+    alert.contentView = renzhengView;
+    alert.dimmingView.userInteractionEnabled = NO;
+    [alert showWithAnimated:YES completion:nil];
+    
+    
+    renzhengView.quedingBtnActionBlock = ^{
+        [alert hideWithAnimated:YES completion:nil];
 
+    };
+    
+    renzhengView.closeActionBlock = ^{
+        [alert hideWithAnimated:YES completion:nil];
+    };
+    
+    renzhengView.closeActionBlock1 = ^{
+        [alert hideWithAnimated:YES completion:nil];
+    };
+    
+    
+}
 #pragma mark - SDCycleScrollViewDelegate
 - (UINib *)customCollectionViewCellNibForCycleScrollView:(SDCycleScrollView *)view
 {

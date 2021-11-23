@@ -5,11 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "会员选中@2x.png",
+      "filename" : "错@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "错@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
