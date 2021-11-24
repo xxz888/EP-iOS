@@ -253,7 +253,7 @@ QMUISynthesizeIdStrongProperty(qmui_specifiedTextColor, setQmui_specifiedTextCol
     }
     [customBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
     
-    [customBar setShadowImage:originBar.shadowImage];
+//    [customBar setShadowImage:originBar.shadowImage];
     
     self.transitionNavigationBar = customBar;
     [self resizeTransitionNavigationBarFrame];

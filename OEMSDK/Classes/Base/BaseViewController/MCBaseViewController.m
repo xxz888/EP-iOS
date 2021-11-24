@@ -121,7 +121,8 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 - (void)setNavigationBarTitle:(NSString *)title backgroundImage:(UIImage *)image {
-    
+    //去黑线
+
     self.mc_nav_img = image;
     if (title && title.length > 0) {
         self.mc_titleview.title = title;

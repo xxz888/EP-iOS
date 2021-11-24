@@ -7,6 +7,7 @@
 //
 
 #import "KDTiXianViewController.h"
+#import "KDTixianjiluViewController.h"
 
 @interface KDTiXianViewController ()
 
@@ -16,9 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor=[UIColor qmui_colorWithHexString:@"#F6F6F6"];
+    
+    [self setNavigationBarTitle:@"提现" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self.navigationController.navigationBar setShadowImage:nil];
+    
+    
+    QMUIButton *kfBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
+    [kfBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [kfBtn setTitle:@"提现记录" forState:UIControlStateNormal];
+    [kfBtn addTarget:self action:@selector(clicktixianjiluAction) forControlEvents:UIControlEventTouchUpInside];
+    kfBtn.spacingBetweenImageAndTitle = 5;
+    kfBtn.titleLabel.font = LYFont(13);
+    kfBtn.frame = CGRectMake(SCREEN_WIDTH - 84, StatusBarHeight, 64, 44);
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:kfBtn];
 }
-
+-(void)clicktixianjiluAction{
+    [self.navigationController pushViewController:[KDTixianjiluViewController new] animated:YES];
+}
 /*
 #pragma mark - Navigation
 

@@ -48,7 +48,6 @@
     
     
     [self setNavigationBarTitle:@"我的钱包" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
-    [self.navigationController.navigationBar setShadowImage:nil];
 
 }
 

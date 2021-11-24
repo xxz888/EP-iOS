@@ -7,6 +7,8 @@
 //
 
 #import "KDMyWallView.h"
+#import "KDTiXianViewController.h"
+#import "KDTixianjiluViewController.h"
 
 @implementation KDMyWallView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -19,6 +21,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    self.backgroundColor = [UIColor qmui_colorWithHexString:@"#FC9B33"];
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTixiantView:)];
     [self.tixianView addGestureRecognizer:tap];
     
@@ -34,6 +37,8 @@
 }
 
 -(void)clickTixiantView:(id)tap{
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDTiXianViewController new] animated:YES];
+
     
 }
 -(void)clickzhifushouyiView:(id)tap{

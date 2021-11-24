@@ -13,7 +13,7 @@
 
 + (UIColor *)mainColor
 {
-    return [UIColor qmui_colorWithHexString:@"#F07E1B"];
+    return [UIColor qmui_colorWithHexString:@"#FC9B33"];
 }
 
 @end

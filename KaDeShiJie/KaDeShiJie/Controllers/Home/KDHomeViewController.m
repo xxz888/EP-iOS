@@ -165,9 +165,6 @@
         
     }];
 }
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -192,8 +189,7 @@
         [weakSelf requestGetUnreadMessages];
         [weakSelf.mc_tableview.mj_header endRefreshing];
     }];
-    [self setNavigationBarTitle:@"首页" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
-    [self.navigationController.navigationBar setShadowImage:nil];
+    [self setNavigationBarTitle:@"首页" backgroundImage:[UIImage qmui_imageWithColor:[UIColor colorWithHexString:@"#F07E1B"]]];
 
     QMUIButton *kfBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
     [kfBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
@@ -204,8 +200,10 @@
     [kfBtn setImage:[UIImage imageNamed:@"kd_home_kf"] forState:UIControlStateNormal];
     kfBtn.frame = CGRectMake(SCREEN_WIDTH - 84, StatusBarHeight, 64, 44);
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:kfBtn];
-    
-    
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [UITabBar appearance].layer.borderWidth = 0.0f;
+    [UITabBar appearance].clipsToBounds = YES;
+
     
     [kfBtn addSubview:self.redMessageLbl];
     
@@ -223,6 +221,22 @@
    
     //新手指引遮罩
 //    [self showGuidePage];
+    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+    navBarHairlineImageView.hidden = YES;
+
+}
+// 寻找导航栏下的黑线
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
 }
 -(UILabel *)redMessageLbl{
     if (!_redMessageLbl) {
