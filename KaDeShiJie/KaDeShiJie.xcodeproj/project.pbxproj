@@ -261,7 +261,12 @@
 		1BD3DC43250B60A600A5D148 /* KDGatheringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC41250B60A600A5D148 /* KDGatheringViewController.xib */; };
 		6F5C0283271EAE220059A557 /* KDGuanFangSheQun.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */; };
 		6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */; };
+		6FA44E93274E3BFF00DA1C59 /* KDMyWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */; };
+		6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */; };
+		6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */; };
+		6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */; };
 		6FAC122926FC86FB00E3560F /* KDHomeXinYongKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */; };
+		6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */; };
 		CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFABD6DDE24EBE293888388 /* libPods-KaDeShiJie.a */; };
 		EE1BA9AD251C277E00941631 /* KDWebContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1BA9AC251C277E00941631 /* KDWebContainer.m */; };
 		EE8D733F2509CFD4007AF076 /* KDShareSingleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8D733E2509CFD4007AF076 /* KDShareSingleVC.m */; };
@@ -695,8 +700,16 @@
 		6F5C0281271EAE220059A557 /* KDGuanFangSheQun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGuanFangSheQun.h; sourceTree = "<group>"; };
 		6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGuanFangSheQun.m; sourceTree = "<group>"; };
 		6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDGuanFangSheQun.xib; sourceTree = "<group>"; };
+		6FA44E91274E3BFF00DA1C59 /* KDMyWallView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMyWallView.h; sourceTree = "<group>"; };
+		6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMyWallView.m; sourceTree = "<group>"; };
+		6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMyWallView.xib; sourceTree = "<group>"; };
+		6FA44E9B274E43AD00DA1C59 /* KDTiXianViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTiXianViewController.h; sourceTree = "<group>"; };
+		6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTiXianViewController.m; sourceTree = "<group>"; };
+		6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTiXianViewController.xib; sourceTree = "<group>"; };
 		6FAC122726FC86FB00E3560F /* KDHomeXinYongKaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeXinYongKaViewController.h; sourceTree = "<group>"; };
 		6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeXinYongKaViewController.m; sourceTree = "<group>"; };
+		6FFE7E09274E3A9400F801A1 /* jintMyWallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jintMyWallViewController.h; sourceTree = "<group>"; };
+		6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jintMyWallViewController.m; sourceTree = "<group>"; };
 		9128FD3AF01474CF6106FD30 /* Pods-KaDeShiJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaDeShiJie.debug.xcconfig"; path = "Target Support Files/Pods-KaDeShiJie/Pods-KaDeShiJie.debug.xcconfig"; sourceTree = "<group>"; };
 		9FFABD6DDE24EBE293888388 /* libPods-KaDeShiJie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KaDeShiJie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE1BA9AB251C277E00941631 /* KDWebContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWebContainer.h; sourceTree = "<group>"; };
@@ -1323,6 +1336,7 @@
 		1BC5E3BB250343B20064CA30 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6FFE7E08274E3A5400F801A1 /* 我的钱包 */,
 				043189FA274D2FCA00D9D959 /* 账单管理 */,
 				6FAC122626FC86E300E3560F /* 信用卡办卡 */,
 				EE1BA9AA251C275E00941631 /* KDWebContainer */,
@@ -1465,6 +1479,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6FA44E96274E438100DA1C59 /* 1提现 */ = {
+			isa = PBXGroup;
+			children = (
+				6FA44E9B274E43AD00DA1C59 /* KDTiXianViewController.h */,
+				6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */,
+				6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */,
+			);
+			path = "1提现";
+			sourceTree = "<group>";
+		};
+		6FA44E97274E438100DA1C59 /* 2支付收益 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "2支付收益";
+			sourceTree = "<group>";
+		};
+		6FA44E98274E438100DA1C59 /* 3奖励收益 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "3奖励收益";
+			sourceTree = "<group>";
+		};
+		6FA44E99274E438100DA1C59 /* 5提现记录 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "5提现记录";
+			sourceTree = "<group>";
+		};
+		6FA44E9A274E438100DA1C59 /* 4钱包明细 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "4钱包明细";
+			sourceTree = "<group>";
+		};
 		6FAC122626FC86E300E3560F /* 信用卡办卡 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1475,6 +1527,23 @@
 				04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */,
 			);
 			path = "信用卡办卡";
+			sourceTree = "<group>";
+		};
+		6FFE7E08274E3A5400F801A1 /* 我的钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				6FA44E96274E438100DA1C59 /* 1提现 */,
+				6FA44E97274E438100DA1C59 /* 2支付收益 */,
+				6FA44E98274E438100DA1C59 /* 3奖励收益 */,
+				6FA44E9A274E438100DA1C59 /* 4钱包明细 */,
+				6FA44E99274E438100DA1C59 /* 5提现记录 */,
+				6FFE7E09274E3A9400F801A1 /* jintMyWallViewController.h */,
+				6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */,
+				6FA44E91274E3BFF00DA1C59 /* KDMyWallView.h */,
+				6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */,
+				6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */,
+			);
+			path = "我的钱包";
 			sourceTree = "<group>";
 		};
 		C2DDAFE5357358F7266E1C44 /* Pods */ = {
@@ -1734,6 +1803,7 @@
 				1B730CE7251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib in Resources */,
 				180B17A32575EBD9006D3D13 /* KDKongKaViewController.xib in Resources */,
 				1BD3DC1E250B179B00A5D148 /* KDAchieveAwardHeaderView.xib in Resources */,
+				6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */,
 				1823438E26466172003BABEE /* KDTiXianDengPaoViewController.xib in Resources */,
 				1B1C0EA92508A9260009CDC6 /* KDOutProvisionsViewController.xib in Resources */,
 				187F62C1267268AB003F48CD /* KDJFOrderTableViewCellTableViewCell.xib in Resources */,
@@ -1779,6 +1849,7 @@
 				1848CE55266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.xib in Resources */,
 				1B543D2F250F4A5600076628 /* KDWXViewCell.xib in Resources */,
 				187F62C926726C61003F48CD /* KDJFOrderDetailHeaderView.xib in Resources */,
+				6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */,
 				1B6667EF2508D47B00AA55DA /* KDNoCreditViewCell.xib in Resources */,
 				1BAE2A7E251E168C00E7E0DF /* KDEditDirectCardViewController.xib in Resources */,
 				180B17962575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib in Resources */,
@@ -1865,12 +1936,14 @@
 				1848CE4F266F120F00D6E148 /* KDJFShopCollectionViewCell.m in Sources */,
 				1B1C0EAD2508B12A0009CDC6 /* KDTopDelegateViewController.m in Sources */,
 				1BCF5E1C2514B4770095328E /* KDPushModel.m in Sources */,
+				6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */,
 				187D8B212565FC900097A650 /* KDTrandingRecordViewCell.m in Sources */,
 				187D8B1A2565FC900097A650 /* KDTotalAmountModel.m in Sources */,
 				1BD2F227250A3E820061580C /* KDProfitCellHeaderView.m in Sources */,
 				1BCF5E1F2514CD410095328E /* KDProfitDirectPushModel.m in Sources */,
 				1BD3DC42250B60A600A5D148 /* KDGatheringViewController.m in Sources */,
 				1B1C0E942508753B0009CDC6 /* KDShiftToProvisionsViewController.m in Sources */,
+				6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */,
 				187CE1E5266CEC6100CDB9DB /* KDJFShopViewController.m in Sources */,
 				1BD3DC31250B4CB000A5D148 /* KDWithDrawHistoryheaderView.m in Sources */,
 				1BC4AE9725106452003B092E /* KDChosePayTypeModel.m in Sources */,
@@ -1907,6 +1980,7 @@
 				043189F5274BE6B100D9D959 /* KDWenZinTiShi.m in Sources */,
 				1BC5E3D525036EDE0064CA30 /* KDLoginHeaderView.m in Sources */,
 				187D8B202565FC900097A650 /* KDTrandingRecordHeaderView.m in Sources */,
+				6FA44E93274E3BFF00DA1C59 /* KDMyWallView.m in Sources */,
 				187D8B192565FC900097A650 /* KDSlotCardHistoryModel.m in Sources */,
 				1BCF5E252514DE200095328E /* KDCancelCreditHeaderView.m in Sources */,
 				1BAE2A7D251E168C00E7E0DF /* KDEditDirectCardViewController.m in Sources */,

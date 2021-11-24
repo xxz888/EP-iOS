@@ -171,7 +171,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self popFirstLogin];
     if (@available(iOS 11.0, *)) {
         self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {

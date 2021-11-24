@@ -23,6 +23,8 @@
 #import "KDHomeXinYongKaViewController.h"
 #import "KDRenZhengView.h"
 #import "KDHomeBillManageViewController.h"
+#import "jintMyWallViewController.h"
+
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -103,13 +105,14 @@
                 case 100:
                 {
                     
-                    
+                    [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+
 //                    原生信用卡还款界面
-                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
-                    vc.navTitle = @"信用卡还款";
-                    //订单类型（2为还款记录、3为空卡记录）
-                    vc.orderType = @"2";
-                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+//                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
+//                    vc.navTitle = @"信用卡还款";
+//                    //订单类型（2为还款记录、3为空卡记录）
+//                    vc.orderType = @"2";
+//                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 case 101:
@@ -122,6 +125,8 @@
                 }
                     break;
                 case 102:
+                    
+                    
                     [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
                     break;
                 default:
