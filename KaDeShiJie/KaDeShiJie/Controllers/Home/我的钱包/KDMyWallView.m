@@ -9,6 +9,9 @@
 #import "KDMyWallView.h"
 #import "KDTiXianViewController.h"
 #import "KDTixianjiluViewController.h"
+#import "KDZhiFuShouYiViewController.h"
+#import "KDJiangLiShouYiViewController.h"
+#import "KDWallDetailViewController.h"
 
 @implementation KDMyWallView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -43,11 +46,18 @@
 }
 -(void)clickzhifushouyiView:(id)tap{
     
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDZhiFuShouYiViewController new] animated:YES];
+
+    
 }
 -(void)clickjianglishouyiView:(id)tap{
     
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDJiangLiShouYiViewController new] animated:YES];
+
+    
 }
 -(void)clickqianbaomingxiView:(id)tap{
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDWallDetailViewController new] animated:YES];
     
 }
 @end
