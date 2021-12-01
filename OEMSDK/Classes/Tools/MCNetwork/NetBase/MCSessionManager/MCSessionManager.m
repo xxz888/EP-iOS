@@ -80,7 +80,6 @@ static MCSessionManager *_singleManager = nil;
     }
     [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
     [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-    [self setDnsConfig];
 
     //MCLog(@"%@", TOKEN);
     NSString *full = [self getFullUrlWithShort:shortURLString];
@@ -188,18 +187,15 @@ static MCSessionManager *_singleManager = nil;
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
     }
-    if (SharedDefaults.deviceid.length != 0) {
-        [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
-    }
-    [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
-    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-    [self setDnsConfig];
+//    if (SharedDefaults.deviceid.length != 0) {
+//        [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
+//    }
+//    [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
+//    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
 
     //如果url不包含1.0再拼接请求字符串,这个是区别通道用的，因为后台返回就返回的完整url
-    NSString *full = shortURLString;
-    if (![shortURLString containsString:@"1.0"]) {
-        full = [self getFullUrlWithShort:shortURLString];
-    }
+    NSString * full = [self getFullUrlWithShort:shortURLString];
+    
    
     if (!self.isReloaded) {
         MCSessionManagerMessageModel *msgModel = [[MCSessionManagerMessageModel alloc] initWithTarget:self sel:_cmd shortURLString:shortURLString parameters:parameters okResp:okResp otherResp:otherResp failure:failure];
@@ -212,14 +208,6 @@ static MCSessionManager *_singleManager = nil;
         [MCLoading show];
     }
 
-    //如果是测试环境，就不解析dns
-    if ([SharedDefaults.host containsString:@"test1012"] || [SharedDefaults.host containsString:@"32"] || [SharedDefaults.host containsString:@"29"]) {
-        
-    }else{
-        if ([full containsString:@"https://api.flyaworld.com"]) {
-            full = [full replaceAll:@"https://api.flyaworld.com" target:SharedDefaults.host];
-        }
-    }
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
     NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
@@ -295,7 +283,6 @@ static MCSessionManager *_singleManager = nil;
     [request setValue:@"ios" forHTTPHeaderField:@"platform"];
     [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [self setDnsConfig];
     
     
     
@@ -303,15 +290,7 @@ static MCSessionManager *_singleManager = nil;
     
     NSString * full= [self getFullUrlWithShort:shortURLString];
     
-    //如果是测试环境，就不解析dns
-    if ([SharedDefaults.host containsString:@"test1012"] || [SharedDefaults.host containsString:@"32"] || [SharedDefaults.host containsString:@"29"]) {
-        
-    }else{
-        if ([full containsString:@"https://api.flyaworld.com"]) {
-            full = [full replaceAll:@"https://api.flyaworld.com" target:SharedDefaults.host];
-        }
-    }
-    
+
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
 
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
@@ -363,7 +342,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }
     [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
     [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-    [self setDnsConfig];
 
     BOOL isSharedSession = (self == [MCSessionManager shareManager]);
     if (isSharedSession) {
@@ -371,15 +349,7 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }
     NSString *full = [self getFullUrlWithShort:shortURLString];
         
-    //如果是测试环境，就不解析dns
-    if ([SharedDefaults.host containsString:@"test1012"] || [SharedDefaults.host containsString:@"32"] || [SharedDefaults.host containsString:@"29"]) {
-        
-    }else{
-        if ([full containsString:@"https://api.flyaworld.com"]) {
-            full = [full replaceAll:@"https://api.flyaworld.com" target:SharedDefaults.host];
-        }
-    }
-    
+
     
     NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
@@ -443,7 +413,7 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 }
 
 - (NSString *)getFullUrlWithShort:(NSString *)url {
-    NSString *full = [NSString stringWithFormat:@"%@/%@/%@",api_host,MCModelStore.shared.brandConfiguration.api_version,url];
+    NSString *full = [NSString stringWithFormat:@"%@%@",api_host,url];
     return [self removeExtraSlashOfUrl:full];
 }
 - (NSString *)getZhengShiFullUrlWithShort:(NSString *)url {

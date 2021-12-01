@@ -130,17 +130,19 @@
         [MCToast showMessage:@"请输入6位数字验证码"];
         return;
     }
-    if (self.tuijianTf.text.length != 11) {
-        [MCToast showMessage:@"请输入推荐人手机号"];
+    if (self.tuijianTf.text.length == 0) {
+        [MCToast showMessage:@"请输入密码"];
         return;
     }
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:phone forKey:@"phone"];
-    [params setValue:code forKey:@"vericode"];
-    [params setValue:BCFI.brand_id forKey:@"brandId"];
-    [params setValue:self.tuijianTf.text forKey:@"preUserPhone"];
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/smslogin" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [params setValue:@"1" forKey:@"agentId"];
+    [params setValue:self.tuijianTf.text forKey:@"password"];
+    [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
+
+    
+    [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:resp.messege];
         });

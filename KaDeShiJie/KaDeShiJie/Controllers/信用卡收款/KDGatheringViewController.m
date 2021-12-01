@@ -26,6 +26,7 @@
 @property(nonatomic, strong) MCBankCardModel *chuxuInfo;
 @property(nonatomic, strong) KDCommonAlert * commonAlert;
 
+@property (weak, nonatomic) IBOutlet QMUIButton *selectAdress;
 
 @end
 
@@ -64,7 +65,8 @@
     self.addCreditBtn.imagePosition = QMUIButtonImagePositionRight;
     self.addDepositBtn.imagePosition = QMUIButtonImagePositionRight;
     self.gatherBtn.titleLabel.numberOfLines = 0;
-    
+    self.selectAdress.imagePosition = QMUIButtonImagePositionRight;
+
     // 设置topView
     self.topView.layer.cornerRadius = 17;
     self.topView.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.09].CGColor;
@@ -344,6 +346,9 @@
 /** 添加储蓄卡 */
 - (IBAction)clickAddDepositCardBtn:(QMUIButton *)sender {
     [[KDGuidePageManager shareManager] requestShiMing:^{ [self pushCardVCWithType:MCBankCardTypeChuxuka]; }];
+    
+}
+- (IBAction)chooseAddressAction:(id)sender {
     
 }
 #pragma mark - 数据请求

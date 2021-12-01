@@ -196,20 +196,27 @@
             [MCToast showMessage:@"请输入密码"];
             return;
         }
+//        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//        [params setValue:phone forKey:@"phone"];
+//        [params setValue:code forKey:@"password"];
+//        [params setValue:BCFI.brand_id forKey:@"brandId"];
+//        //后缀
+//        NSString * houzhui = [NSString stringWithFormat:@"&key=cader#%%world"];
+//        //前缀
+//        NSString * qianzhui = [NSString stringWithFormat:@"brandId=%@&password=%@&phone=%@",BCFI.brand_id,code,phone];
+//        //合并的签名
+//        NSString * sign = [NSString stringWithFormat:@"%@%@",qianzhui,houzhui];
+//        sign = [self MD5ForUpper32Bate:sign];
+//        [params setValue:sign forKey:@"sign"];
+    
+        
+        
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:phone forKey:@"phone"];
         [params setValue:code forKey:@"password"];
-        [params setValue:BCFI.brand_id forKey:@"brandId"];
-        //后缀
-        NSString * houzhui = [NSString stringWithFormat:@"&key=cader#%%world"];
-        //前缀
-        NSString * qianzhui = [NSString stringWithFormat:@"brandId=%@&password=%@&phone=%@",BCFI.brand_id,code,phone];
-        //合并的签名
-        NSString * sign = [NSString stringWithFormat:@"%@%@",qianzhui,houzhui];
-        sign = [self MD5ForUpper32Bate:sign];
-        [params setValue:sign forKey:@"sign"];
-    
-        [[MCSessionManager shareManager] mc_POST:@"/user/app/exe/login" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
+        
+        [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user/login" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
             [weakSelf loginSucess:resp];
         }];
     //验证码登录
