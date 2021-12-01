@@ -53,8 +53,8 @@
  
 - (void)setupApp {
     MCLog(@"配置app基本信息");
-    SharedDefaults.host = @"https://api.flyaworld.com";
-//      SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
+//    SharedDefaults.host = @"https://api.flyaworld.com";
+      SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
 
     //正式环境域名
 //    SharedDefaults.host = @"https://api.flyaworld.com";

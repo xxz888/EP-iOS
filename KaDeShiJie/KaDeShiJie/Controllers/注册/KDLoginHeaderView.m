@@ -216,8 +216,13 @@
         [params setValue:code forKey:@"password"];
         [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
         
-        [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user/login" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-            [weakSelf loginSucess:resp];
+        [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+                [weakSelf loginSucess:resp];
+
+        } other:^(MCNetResponse * _Nonnull resp) {
+            
+        } failure:^(NSError * _Nonnull error) {
+            
         }];
     //验证码登录
     }else{
@@ -241,51 +246,44 @@
 -(void)loginSucess:(MCNetResponse * _Nonnull) resp{
 
     // 2.保存登录信息
-    NSDictionary *result = resp.result;
-    TOKEN = result[@"userToken"];
-    MCModelStore.shared.preUserPhone = result[@"preUserPhone"];
+    NSDictionary *result = (NSDictionary *)resp;
+    TOKEN = result[@"token"];
+    MCModelStore.shared.preUserPhone = result[@"phone"];
 
-    SharedDefaults.phone = self.phoneView.text;
-    NSLog(@"%@", MCModelStore.shared.preUserPhone);
+    SharedDefaults.phone = result[@"phone"];
+    SharedDefaults.nickname = result[@"nickname"];
+    SharedDefaults.certification = [NSString stringWithFormat:@"%@",result[@"certification"]];
+    SharedDefaults.level = [NSString stringWithFormat:@"%@",result[@"level"]];
+    SharedDefaults.receivePaymentRate =[NSString stringWithFormat:@"%@",result[@"receivePaymentRate"]];
+    SharedDefaults.agentId = [NSString stringWithFormat:@"%@",result[@"agentId"]];
+    SharedDefaults.repaymentRate = [NSString stringWithFormat:@"%@",result[@"repaymentRate"]];
+    SharedDefaults.token = [NSString stringWithFormat:@"%@",result[@"token"]];
+    [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
     // 4.获取贴牌信息
 //        [LoginAndRegistHTTPTools getBrandInfo];
 
 
-    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        if ([userInfo.realnameStatus integerValue] == 1 && [userInfo.verificationStatus integerValue] == 0) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
-        }
-        if ([userInfo.realnameStatus integerValue] != 1) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTWEISHIMING"];
-        }
-        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-     
-        // 5.绑定推送别名
-        NSString *userid = [NSString stringWithFormat:@"%@",userInfo.userid];
-        [MCApp setJPushAlias:userid];
-        [MCApp setJAnalyticsIdentifyAccount:userInfo];
-        
-        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-    }];
+//    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+//        if ([userInfo.realnameStatus integerValue] == 1 && [userInfo.verificationStatus integerValue] == 0) {
+//            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
+//        }
+//        if ([userInfo.realnameStatus integerValue] != 1) {
+//            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTWEISHIMING"];
+//        }
+//        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+//
+//        // 5.绑定推送别名
+//        NSString *userid = [NSString stringWithFormat:@"%@",userInfo.userid];
+//        [MCApp setJPushAlias:userid];
+//        [MCApp setJAnalyticsIdentifyAccount:userInfo];
+//
+//        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+//    }];
 //    [KDWebContainer.shared setupContainer];
     
 
 //    [[KDLoginTool shareInstance] getChuXuCardData:YES];
     //获取贴牌信息
-    
-    [MCModelStore.shared reloadBrandInfo:^(MCBrandInfo * _Nonnull brandInfo) {
-//        if ([result[@"realnameStatus"] intValue] != 1) {
-//            NSLog(@"MCLATESTCONTROLLER-------%@", MCLATESTCONTROLLER);
-//            //这个是身份验证的上海明澈界面
-//            //[MCLATESTCONTROLLER.navigationController pushViewController:[MGJRouter objectForURL:rt_user_realname] animated:YES];
-//            //改成自己写的验证界面
-//            [MCLATESTCONTROLLER.navigationController pushViewController:[MGJRouter objectForURL:rt_card_vc1] animated:YES];
-//
-//        } else {
-//            // 获取默认卡
-//            [[KDLoginTool shareInstance] getChuXuCardData:YES];
-//        }
-    }];
 }
 #pragma mark - MD5加密 32位 大写
 - (NSString *)MD5ForUpper32Bate:(NSString *)str{

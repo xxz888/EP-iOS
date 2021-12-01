@@ -142,12 +142,24 @@
     [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
 
     
-    [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:@"注册成功,请登录"];
         });
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+
+    } other:^(MCNetResponse * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
+    
+//    [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [MCToast showMessage:resp.messege];
+//        });
+//        [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+//    }];
 
 }
 //------ 验证码发送按钮动态改变文字 ------//

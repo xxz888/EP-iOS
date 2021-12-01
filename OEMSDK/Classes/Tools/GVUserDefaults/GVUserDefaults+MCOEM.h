@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GVUserDefaults (MCOEM)
 @property(nonatomic, copy) NSString *phone;
+@property(nonatomic, copy) NSString *nickname;
+@property(nonatomic, copy) NSString *certification;
+@property(nonatomic, copy) NSString *level;
+@property(nonatomic, copy) NSString *receivePaymentRate;
+@property(nonatomic, copy) NSString *agentId;
+@property(nonatomic, copy) NSString *repaymentRate;
+
+
 @property(nonatomic, copy) NSString *pwd;
 @property(nonatomic, copy) NSString *token;
 @property(nonatomic, copy)  NSString *startHost;

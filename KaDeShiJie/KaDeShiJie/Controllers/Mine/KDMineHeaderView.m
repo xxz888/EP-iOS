@@ -77,11 +77,12 @@
 
             [MCPagingStore pagingURL:rt_share_single];
             break;
-        case 101:            
-            [[KDGuidePageManager shareManager] requestShiMing:^{
-                [MCPagingStore pagingURL:rt_card_list];
-            }];
+        case 101:
+            
+            [MCPagingStore pagingURL:rt_card_list];
 
+            
+         
             break;
         case 102: // 交易记录
             //原生界面
@@ -121,12 +122,6 @@
 }
 - (void)getUserGradeName
 {
-    NSDictionary *params = @{@"userId":SharedUserInfo.userid};
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/KdGrade/display" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSString *result = resp.result;
-        if (result.length != 0) {
-            self.gradeLabel.text = resp.result;
-        }
-    }];
+  
 }
 @end

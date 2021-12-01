@@ -130,7 +130,7 @@
 //新增储蓄卡
 - (void)bindChuxu {
     
-    
+    return;
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
 
@@ -162,6 +162,7 @@
 
 //修改储蓄卡
 - (void)modifyChuxu {
+    return;
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
 
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];

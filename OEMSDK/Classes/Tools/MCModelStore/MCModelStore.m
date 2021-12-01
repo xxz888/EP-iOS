@@ -57,6 +57,7 @@ static MCModelStore *_singleStore = nil;
 }
 
 - (void)reloadUserInfo:(void (^)(MCUserInfo *))handle {
+    return;
     if (TOKEN) {
         [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"%@/%@",api_userinfo,TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull okResponse) {
             self.userInfo = [MCUserInfo mj_objectWithKeyValues:okResponse.result];

@@ -75,7 +75,7 @@
     [self.view addSubview:self.walletView];
     [self.view addSubview:self.addButton];
     
-    [self requestCards];
+//    [self requestCards];
 }
 
 
@@ -114,7 +114,7 @@
     
     [self.addButton setTitle:[NSString stringWithFormat:@"添加%@",title] forState:UIControlStateNormal];
     self.currentIndex= index;
-    [self requestCards];
+//    [self requestCards];
 }
 #pragma mark - MCWalletViewDelegate
 

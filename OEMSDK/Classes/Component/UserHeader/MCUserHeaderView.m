@@ -39,7 +39,7 @@ static NSString * api_uploadhead = @"/user/app/headportrait/updateby/phone";
     self.clipsToBounds = YES;
     self.layer.cornerRadius = self.bounds.size.width / 2;
     [self addSubview:self.headerButton];
-    [self fetchHeaderPath];
+//    [self fetchHeaderPath];
 }
 
 - (UIButton *)headerButton {

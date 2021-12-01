@@ -88,7 +88,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self requestCards];
+//    [self requestCards];
 }
 - (BOOL)shouldPopViewControllerByBackButtonOrPopGesture:(BOOL)byPopGesture{
     MCBankCardModel *model;

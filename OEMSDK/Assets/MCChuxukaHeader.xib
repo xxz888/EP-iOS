@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,33 +71,11 @@
                             <color key="textColor" red="0.94117647058823528" green="0.51372549019607838" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="X0k-W5-MsP">
-                            <rect key="frame" x="102.5" y="77" width="191" height="150"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiA-mf-z55">
-                                    <rect key="frame" x="0.0" y="0.0" width="191" height="120"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="191" id="BfW-i0-Yjt"/>
-                                        <constraint firstAttribute="width" secondItem="NiA-mf-z55" secondAttribute="height" multiplier="191:120" id="qoJ-6h-ggu"/>
-                                    </constraints>
-                                    <state key="normal" image="card_add_zheng"/>
-                                    <connections>
-                                        <action selector="scanTouched:" destination="saT-h3-riU" eventType="touchUpInside" id="XP7-hG-b9m"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请点击拍摄储蓄卡正面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-a9-BnE">
-                                    <rect key="frame" x="29" y="134" width="133" height="16"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                        </stackView>
                         <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRW-Em-YJJ">
-                            <rect key="frame" x="0.0" y="267" width="396" height="53"/>
+                            <rect key="frame" x="0.0" y="51" width="396" height="53"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eV-LL-DCE">
-                                    <rect key="frame" x="20" y="0.0" width="46" height="52"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eV-LL-DCE">
+                                    <rect key="frame" x="20" y="0.0" width="61.5" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -140,7 +118,7 @@
                             </constraints>
                         </view>
                         <view tag="2001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNl-uE-Dg9">
-                            <rect key="frame" x="0.0" y="320" width="396" height="82"/>
+                            <rect key="frame" x="0.0" y="104" width="396" height="82"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi2-sP-chP">
                                     <rect key="frame" x="20" y="0.0" width="61.5" height="52"/>
@@ -189,15 +167,15 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sY6-9S-r3l">
-                            <rect key="frame" x="0.0" y="340" width="20" height="20.5"/>
+                            <rect key="frame" x="0.0" y="124" width="20" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" systemColor="systemRedColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view tag="2003" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKL-gn-Vo0">
-                            <rect key="frame" x="0.0" y="402" width="396" height="53"/>
+                            <rect key="frame" x="0.0" y="186" width="396" height="53"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡开户地" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-wA-L7U">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-wA-L7U">
                                     <rect key="frame" x="20" y="0.0" width="61.5" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -251,7 +229,7 @@
                             </constraints>
                         </view>
                         <view tag="2002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJ4-8I-vgy">
-                            <rect key="frame" x="0.0" y="455" width="396" height="53"/>
+                            <rect key="frame" x="0.0" y="239" width="396" height="53"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMZ-iJ-WVI">
                                     <rect key="frame" x="20" y="0.0" width="80" height="52"/>
@@ -330,14 +308,12 @@
                         <constraint firstAttribute="trailing" secondItem="xB9-sT-T7l" secondAttribute="trailing" constant="26" id="UiG-9z-O0V"/>
                         <constraint firstItem="YrT-GR-KbS" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" constant="19" id="W8T-2t-TAj"/>
                         <constraint firstItem="sY6-9S-r3l" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" id="Zmo-9f-V1c"/>
-                        <constraint firstItem="YrT-GR-KbS" firstAttribute="top" secondItem="wJ4-8I-vgy" secondAttribute="bottom" constant="44" id="cGH-W3-L0l"/>
                         <constraint firstAttribute="trailing" secondItem="iNl-uE-Dg9" secondAttribute="trailing" id="cKx-lw-XdF"/>
-                        <constraint firstItem="X0k-W5-MsP" firstAttribute="top" secondItem="xB9-sT-T7l" secondAttribute="bottom" constant="36" id="cX7-bW-q5m"/>
                         <constraint firstItem="iNl-uE-Dg9" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" id="eid-CK-KIR"/>
                         <constraint firstAttribute="trailing" secondItem="aKL-gn-Vo0" secondAttribute="trailing" id="gsk-dj-Dq5"/>
+                        <constraint firstItem="zRW-Em-YJJ" firstAttribute="top" secondItem="xB9-sT-T7l" secondAttribute="bottom" constant="10" id="kCv-RB-Hrz"/>
                         <constraint firstItem="wJ4-8I-vgy" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" id="ofn-0E-JYn"/>
                         <constraint firstAttribute="bottom" secondItem="YrT-GR-KbS" secondAttribute="bottom" constant="26" id="pp2-fB-itO"/>
-                        <constraint firstItem="X0k-W5-MsP" firstAttribute="centerX" secondItem="U9L-cs-SYq" secondAttribute="centerX" id="xtw-JY-D79"/>
                         <constraint firstAttribute="trailing" secondItem="zRW-Em-YJJ" secondAttribute="trailing" id="z2g-s8-m9z"/>
                     </constraints>
                 </view>
@@ -354,9 +330,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bgview" destination="U9L-cs-SYq" id="Jpd-Zi-MQl"/>
-                <outlet property="imgStack" destination="X0k-W5-MsP" id="PPj-uW-W8m"/>
-                <outlet property="scanBtn" destination="NiA-mf-z55" id="vXD-Sv-3Ie"/>
-                <outlet property="scanBtnBottomLabel" destination="eHE-a9-BnE" id="rlG-Id-Jid"/>
                 <outlet property="sureButton" destination="YrT-GR-KbS" id="Rrs-jX-1Tn"/>
                 <outlet property="textField1" destination="Jna-1z-FgP" id="hco-ld-zRp"/>
                 <outlet property="textField2" destination="x9N-np-ZGu" id="r8D-3b-Irx"/>
@@ -371,7 +344,6 @@
     <resources>
         <image name="card_add_jiantou" width="7" height="12.5"/>
         <image name="card_add_wenti" width="18" height="18"/>
-        <image name="card_add_zheng" width="191" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

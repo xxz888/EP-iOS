@@ -32,13 +32,10 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.tabBarController.tabBar setHidden:NO];
-    [self reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reloadBannerImage" object:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +47,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self reloadData];
+//        [self reloadData];
     }];
     
     [self setNavigationBarTitle:@"我的" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];

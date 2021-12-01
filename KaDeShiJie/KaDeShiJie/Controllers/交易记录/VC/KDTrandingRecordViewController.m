@@ -76,7 +76,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self setNavigationBarTitle:@"交易记录" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
 
-    [self getHistory];
+//    [self getHistory];
 }
 #pragma mark - KDTrandingRecordHeaderViewDelegate
 - (void)headerViewDelegateWithTime:(NSString *)time

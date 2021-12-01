@@ -88,7 +88,7 @@
     cyView.scrollDirection = UICollectionViewScrollDirectionVertical;
     [self.msgView addSubview:cyView];
     self.cyView = cyView;
-    [self getMessage];
+//    [self getMessage];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame

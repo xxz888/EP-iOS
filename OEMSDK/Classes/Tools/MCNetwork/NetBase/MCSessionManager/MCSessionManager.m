@@ -33,7 +33,12 @@ static MCSessionManager *_singleManager = nil;
     //自定义配置
     m.requestSerializer.timeoutInterval = 30.f;
     m.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/htLY", @"text/json", @"text/plain", @"text/javascript", @"text/xLY", @"image/*" ,nil];
-    
+    [m.requestSerializer setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    // 设置HTTPBody
+//    [m.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error){
+//         return soapStr;
+//     }];
+
     return m;
 }
 
@@ -72,6 +77,7 @@ static MCSessionManager *_singleManager = nil;
 
 
 - (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp other:(MCSMNormalHandler)otherResp failure:(MCSMErrorHandler)failure {
+    return  nil;
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
     }
@@ -183,7 +189,8 @@ static MCSessionManager *_singleManager = nil;
                                         ok:(nullable MCSMNormalHandler)okResp
                                      other:(nullable MCSMNormalHandler)otherResp
                                    failure:(nullable MCSMErrorHandler)failure{
-    
+    return  nil;
+
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
     }
@@ -211,6 +218,8 @@ static MCSessionManager *_singleManager = nil;
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
     NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
+
+        
         //如果是收款轮询的查询，查询不成功就不要隐藏菊花
         //返回数据不一样的数据，需要在这里重新拼接数组,计算手续费
         if ([shortURLString containsString:@"/creditcardmanager/app/empty/card/calculate/reservedamount"]) {
@@ -287,7 +296,7 @@ static MCSessionManager *_singleManager = nil;
     
     
  
-    
+    [MCLoading show];
     NSString * full= [self getFullUrlWithShort:shortURLString];
     
 
@@ -301,18 +310,27 @@ static MCSessionManager *_singleManager = nil;
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
         [MCLoading hidden];
         if (!error) {
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
-                if ([resp.code isEqualToString:@"000000"]) {
-                   if (okResp) {
-                       okResp(resp);
-                   }
-                }else{
-                    [MCToast showMessage:resp.messege];
-                }
-            } else {
-                
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            NSInteger code = [httpResponse statusCode];
+            
+            if (code == 200) {
+                okResp(responseObject);
+            }else{
+                [MCToast showMessage:responseObject[@"messege"]];
             }
+            okResp(responseObject);
+//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
+//                if ([resp.code isEqualToString:@"000000"]) {
+//                   if (okResp) {
+//                       okResp(resp);
+//                   }
+//                }else{
+//                    [MCToast showMessage:resp.messege];
+//                }
+//            } else {
+//
+//            }
         } else {
             [MCLoading hidden];
             NSLog(@"请求失败error=%@", error);
@@ -333,7 +351,8 @@ remoteFields:(nullable NSArray<NSString *>*)fields
           ok:(nullable MCSMNormalHandler)okResp
        other:(nullable MCSMNormalHandler)otherResp
      failure:(nullable MCSMErrorHandler)failure {
-    
+    return  nil;
+
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
     }
