@@ -16,7 +16,8 @@
 
 #import "KDWebContainer.h"
 #import "KDJFShopViewController.h"
-
+#import "UIView+Extension.h"
+#import "jintMyWallViewController.h"
 @interface KDMineHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
@@ -56,6 +57,42 @@
     self.bannerView.resetHeightBlock = ^(CGFloat h) {
         self.bannerHigCons.constant = h;
     };
+    
+    self.phoneLabel.text = SharedDefaults.phone;
+    self.nameLabel.text = SharedDefaults.nickname;
+    //推广二维码
+    [self.erweimaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+    }];
+    //我的卡包
+    [self.kabaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_card_list];
+    }];
+    //我的钱包
+    [self.qianbaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+
+    }];
+    //我的客服
+    [self.kefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+            
+    }];
+    //关于我们
+    [self.guanyuwomenView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCLATESTCONTROLLER.navigationController pushViewController:[KDAboutMineViewController new] animated:YES];
+
+    }];
+    //联系我们
+    [self.lianxiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+            
+    }];
+    //我的客户
+    [self.wodekefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+            
+    }];
+    //设置
+    [self.shezhiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+            
+    }];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame

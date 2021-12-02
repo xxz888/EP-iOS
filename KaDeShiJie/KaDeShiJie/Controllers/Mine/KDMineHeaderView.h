@@ -16,6 +16,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *idLabel;
 - (void)getUserGradeName;
+@property (weak, nonatomic) IBOutlet UIView *wodekefuView;
+
+@property (weak, nonatomic) IBOutlet UIView *erweimaView;
+@property (weak, nonatomic) IBOutlet UIView *kabaoView;
+@property (weak, nonatomic) IBOutlet UIView *qianbaoView;
+@property (weak, nonatomic) IBOutlet UIView *kefuView;
+@property (weak, nonatomic) IBOutlet UIView *guanyuwomenView;
+@property (weak, nonatomic) IBOutlet UIView *lianxiView;
+@property (weak, nonatomic) IBOutlet UIView *shezhiView;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

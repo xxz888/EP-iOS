@@ -109,12 +109,6 @@
 #define MCLATESTCONTROLLER MCModelStore.shared.appInfo.latestController
 
 #define TOKEN MCModelStore.shared.userDefaults.token
-#define TOKEN MCModelStore.shared.userDefaults.phone
-#define TOKEN MCModelStore.shared.userDefaults.nickname
-#define TOKEN MCModelStore.shared.userDefaults.certification
-#define TOKEN MCModelStore.shared.userDefaults.receivePaymentRate
-#define TOKEN MCModelStore.shared.userDefaults.agentId
-#define TOKEN MCModelStore.shared.userDefaults.repaymentRate
 
 
 #endif /* MCBase_h */

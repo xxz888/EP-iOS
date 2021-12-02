@@ -18,7 +18,7 @@
 - (KDMineHeaderView *)header
 {
     if (!_header) {
-        _header = [[KDMineHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TabBarHeight)];
+        _header = [[KDMineHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 470)];
     }
     return _header;
 }
@@ -40,23 +40,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     self.mc_tableview.tableHeaderView = self.header;
+
+    self.mc_tableview.backgroundColor = [UIColor clearColor];
     if (@available(iOS 11.0, *)) {
         self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        [self reloadData];
-    }];
     
-    [self setNavigationBarTitle:@"我的" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+//    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];
+//    [backBtn addTarget:self action:@selector(leftItemClick) forControlEvents:UIControlEventTouchUpInside];
+//    backBtn.frame = CGRectMake(0, StatusBarHeightConstant, 44, 44);
+//    [self.view addSubview:backBtn];
+    
+    [self setNavigationBarHidden];
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, StatusBarHeightConstant, 150, 44)];
+    titleLabel.text = @"我的";
+    titleLabel.textColor = UIColor.whiteColor;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:titleLabel];
 }
 
-- (void)layoutTableView
-{
-    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop - TabBarHeight);
-}
+
 - (void)reloadData {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
     // 头部数据

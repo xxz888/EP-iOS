@@ -83,8 +83,8 @@
     QMUIButton *button = [QMUIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:UIColorBlack forState:UIControlStateNormal];
-    [button setTitleColor: UIColor.mainColor forState:UIControlStateSelected];
-    [button setTitleColor: UIColor.mainColor forState:UIControlStateHighlighted];
+    [button setTitleColor: UIColorBlack forState:UIControlStateSelected];
+    [button setTitleColor: UIColorBlack forState:UIControlStateHighlighted];
     button.titleLabel.font = UIFontMake(16);
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     return button;

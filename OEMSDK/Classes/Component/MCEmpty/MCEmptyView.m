@@ -14,7 +14,10 @@
     MCEmptyView *empty = [MCEmptyView emptyViewWithImage:[UIImage mc_imageNamed:@"list_empty"] titleStr:@"暂无数据，下拉刷新试试" detailStr:@""];
     return empty;
 }
-
++ (instancetype)emptyViewText:(NSString *)text{
+    MCEmptyView *empty = [MCEmptyView emptyViewWithImage:[UIImage mc_imageNamed:@"暂无银行卡"] titleStr:text detailStr:@""];
+    return empty;
+}
 + (instancetype)emptyViewWithKDTitle:(NSString *)title
 {
     NSString *msg = [NSString stringWithFormat:@"还没有获得%@", title];

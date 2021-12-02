@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)emptyViewWithKDTitle:(NSString *)title;
 
 + (instancetype)emptyViewWithKDDelegateTitle:(NSString *)title;
+
++ (instancetype)emptyViewText:(NSString *)text;
 @end
 
 NS_ASSUME_NONNULL_END

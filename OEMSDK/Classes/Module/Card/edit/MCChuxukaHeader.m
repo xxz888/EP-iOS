@@ -55,7 +55,7 @@
    
     self.bgview.layer.cornerRadius = 12;
     
-    [self.sureButton setBackgroundColor:[UIColor mainColor]];
+    [self.sureButton setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F7874E"]];
     self.sureButton.layer.cornerRadius = self.sureButton.height/2;
     kWeakSelf(self);
     [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
@@ -129,35 +129,66 @@
 
 //新增储蓄卡
 - (void)bindChuxu {
-    
-    return;
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
-
-    NSDictionary *param = @{@"realname":self.textField1.text,
-                            @"idcard":self.idCard,
-                            @"bankcard":cardNo,
-                            @"mobile":self.textField3.text,
-                            @"type":self.buttons[0].isSelected?@"2":@"0",
-                            @"province":addr[0],
-                            @"city":addr[1]};
+    /*
+     address*    string
+     bank*    string
+     Enum:
+     [ ICBC ]
+     bankCardNo*    string
+     billingDate    integer($int32)
+     cardType*    string
+     Enum:
+     [ CreditCard, DebitCard ]
+     cvc    string
+     name*    string
+     phone*    string
+     repaymentDate    integer($int32)
+     validPeriod    string
+     
+     **/
+//    NSDictionary *param = @{@"realname":self.textField1.text,
+//                            @"idcard":self.idCard,
+//                            @"bankcard":cardNo,
+//                            @"mobile":self.textField3.text,
+//                            @"type":self.buttons[0].isSelected?@"2":@"0",
+//                            @"province":addr[0],
+//                            @"city":addr[1]};
+    NSDictionary *param = @{
+                            @"address":[self.textField4.text replaceAll:@"-" target:@""],
+                            @"bank":@"ICBC",
+                            @"bankCardNo":cardNo,
+                            @"cardType":@"0",
+                            @"name":self.textField1.text,
+                            @"phone":self.textField3.text,
+                            };
     kWeakSelf(self);
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
-        [MCLATESTCONTROLLER.navigationController qmui_popViewControllerAnimated:YES completion:^{
-            if ([weakself.whereCome isEqualToString:@"1"]) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
-            }else{
-                if (weakself.loginVC) {
-                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-                        });
-                }
-            }
-   
-        }];
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+        [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+    } other:^(MCNetResponse * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
+    
+    
+//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+//        [MCToast showMessage:resp.messege];
+//        [MCLATESTCONTROLLER.navigationController qmui_popViewControllerAnimated:YES completion:^{
+//            if ([weakself.whereCome isEqualToString:@"1"]) {
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
+//            }else{
+//                if (weakself.loginVC) {
+//                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
+//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                            [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+//                        });
+//                }
+//            }
+//
+//        }];
+//    }];
 }
 
 //修改储蓄卡

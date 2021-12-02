@@ -85,10 +85,10 @@
     
     self.desc2.textColor =  UIColor.mainColor;
     
-    [self.sureButton setBackgroundColor:[UIColor mainColor]];
+    [self.sureButton setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F7874E"]];
     self.sureButton.layer.cornerRadius = self.sureButton.height/2;
     
-    self.textField1.text = SharedUserInfo.realname;
+//    self.textField1.text = SharedUserInfo.realname;
     self.textField2.delegate = self;
     
     [self.textField3 addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -165,28 +165,67 @@
 }
 //新增信用卡
 - (void)bindXinyong {
-
+    NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
-    NSDictionary *param = @{@"realname":self.textField1.text,
-                            @"idcard":SharedUserInfo.idcard,
-                            @"bankcard":cardNo,
-                            @"mobile":self.textField3.text,
-                            @"securitycode":self.textField4.text,
-                            @"expiretime":self.textField5.text,
-                            @"repaymentDay":[self.textField7.text substringToIndex:self.textField7.text.length-1],
-                            @"billDay":[self.textField6.text substringToIndex:self.textField6.text.length-1]
+    /*
+     address*    string
+     bank*    string
+     Enum:
+     [ ICBC ]
+     bankCardNo*    string
+     billingDate    integer($int32)
+     cardType*    string
+     Enum:
+     [ CreditCard, DebitCard ]
+     cvc    string
+     name*    string
+     phone*    string
+     repaymentDate    integer($int32)
+     validPeriod    string
+     
+     **/
+
+    NSDictionary *param = @{
+                            @"address":[self.textField4.text replaceAll:@"-" target:@""],
+                            @"bank":@"ICBC",
+                            @"bankCardNo":cardNo,
+                            @"cardType":@"1",
+                            @"name":self.textField1.text,
+                            @"phone":self.textField3.text,
+                            @"billingDate":[self.textField6.text substringToIndex:self.textField6.text.length-1],
+                            @"repaymentDate":[self.textField7.text substringToIndex:self.textField7.text.length-1],
+                            @"validPeriod":self.textField5.text,
+                            @"cvc":self.textField4.text
                             };
-    //MCLog(@"%@",param);
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
-        
-        //新增成功之后发送一个通知让 KDWebContainer 重新加载
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
-        });
-        
+    kWeakSelf(self);
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+    } other:^(MCNetResponse * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
+//    NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
+//    NSDictionary *param = @{@"realname":self.textField1.text,
+//                            @"idcard":SharedUserInfo.idcard,
+//                            @"bankcard":cardNo,
+//                            @"mobile":self.textField3.text,
+//                            @"securitycode":self.textField4.text,
+//                            @"expiretime":self.textField5.text,
+//                            @"repaymentDay":[self.textField7.text substringToIndex:self.textField7.text.length-1],
+//                            @"billDay":[self.textField6.text substringToIndex:self.textField6.text.length-1]
+//                            };
+//    //MCLog(@"%@",param);
+//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+//        [MCToast showMessage:resp.messege];
+//
+//        //新增成功之后发送一个通知让 KDWebContainer 重新加载
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
+//        });
+//
+//        [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+//    }];
 }
 //修改信用卡
 - (void)modifyXinyong {

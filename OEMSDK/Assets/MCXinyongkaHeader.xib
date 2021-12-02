@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,8 +26,8 @@
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KJu-xi-4Qv">
-                                    <rect key="frame" x="78" y="0.0" width="7" height="52"/>
+                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="王沛2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KJu-xi-4Qv">
+                                    <rect key="frame" x="78" y="0.0" width="40" height="52"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -78,7 +78,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的信用卡号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9s0-Xa-Tdp" customClass="BankCardTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6228480000000000" placeholder="请输入您的信用卡号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9s0-Xa-Tdp" customClass="BankCardTextField">
                                     <rect key="frame" x="78" y="0.0" width="258" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -90,7 +90,7 @@
                                         <constraint firstAttribute="height" constant="1" id="5Tm-Ep-vpq"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxa-lE-MRM" customClass="QMUIButton">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxa-lE-MRM" customClass="QMUIButton">
                                     <rect key="frame" x="336" y="0.0" width="60" height="52"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="dYB-Qg-UZz"/>
@@ -141,7 +141,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="信用卡银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8oI-sL-bed">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="13393883800" placeholder="信用卡银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8oI-sL-bed">
                                     <rect key="frame" x="78" y="0.0" width="261" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -202,7 +202,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyi-b8-HZv">
-                    <rect key="frame" x="44" y="443" width="267" height="93"/>
+                    <rect key="frame" x="44" y="451" width="267" height="26.5"/>
                     <string key="text">1.同一张卡每天只能绑定五次，如有失败请第二天尝试
 2.暂不支持借贷合一卡制定还款计划</string>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -210,7 +210,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP1-EV-t2M" customClass="KDFillButton">
-                    <rect key="frame" x="28" y="564" width="358" height="50"/>
+                    <rect key="frame" x="28" y="507.5" width="358" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="spN-TV-gRf"/>
                     </constraints>
@@ -488,19 +488,18 @@
                 <constraint firstAttribute="trailing" secondItem="yAj-Yd-U0y" secondAttribute="trailing" constant="9" id="BJ2-r5-Pv0"/>
                 <constraint firstItem="IP1-EV-t2M" firstAttribute="leading" secondItem="KCI-HO-cjC" secondAttribute="leading" constant="28" id="F8b-3X-Wu9"/>
                 <constraint firstItem="zhS-9u-3mx" firstAttribute="top" secondItem="k0j-Fc-Efw" secondAttribute="bottom" constant="15" id="GZe-YB-BEy"/>
-                <constraint firstItem="IP1-EV-t2M" firstAttribute="top" secondItem="Xyi-b8-HZv" secondAttribute="bottom" constant="28" id="IDl-13-J6x"/>
+                <constraint firstItem="IP1-EV-t2M" firstAttribute="top" secondItem="Xyi-b8-HZv" secondAttribute="bottom" constant="30" id="IDl-13-J6x"/>
                 <constraint firstAttribute="trailing" secondItem="IP1-EV-t2M" secondAttribute="trailing" constant="28" id="KS9-vC-zRx"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xyi-b8-HZv" secondAttribute="trailing" constant="15" id="O51-0b-B4f"/>
                 <constraint firstItem="Xyi-b8-HZv" firstAttribute="leading" secondItem="zhS-9u-3mx" secondAttribute="trailing" id="azk-fa-Rj8"/>
                 <constraint firstItem="MPr-yG-ZV6" firstAttribute="leading" secondItem="KCI-HO-cjC" secondAttribute="leading" id="eUY-8D-rOK"/>
                 <constraint firstItem="zhS-9u-3mx" firstAttribute="leading" secondItem="KCI-HO-cjC" secondAttribute="leading" constant="15" id="gQu-ZN-y84"/>
-                <constraint firstAttribute="bottom" secondItem="IP1-EV-t2M" secondAttribute="bottom" constant="46" id="ht3-jt-fxd"/>
                 <constraint firstItem="yAj-Yd-U0y" firstAttribute="top" secondItem="KCI-HO-cjC" secondAttribute="top" constant="50" id="kLB-bT-vdm"/>
                 <constraint firstItem="k0j-Fc-Efw" firstAttribute="top" secondItem="yAj-Yd-U0y" secondAttribute="bottom" constant="10" id="pni-5T-Y55"/>
                 <constraint firstAttribute="trailing" secondItem="MPr-yG-ZV6" secondAttribute="trailing" id="uQT-oS-llp"/>
                 <constraint firstItem="k0j-Fc-Efw" firstAttribute="leading" secondItem="KCI-HO-cjC" secondAttribute="leading" constant="9" id="ugm-7a-tiY"/>
                 <constraint firstItem="MPr-yG-ZV6" firstAttribute="top" secondItem="KCI-HO-cjC" secondAttribute="top" id="vez-oq-BUw"/>
-                <constraint firstItem="Xyi-b8-HZv" firstAttribute="top" secondItem="k0j-Fc-Efw" secondAttribute="bottom" constant="12" id="ymU-89-c2C"/>
+                <constraint firstItem="Xyi-b8-HZv" firstAttribute="top" secondItem="k0j-Fc-Efw" secondAttribute="bottom" constant="20" id="ymU-89-c2C"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -517,7 +516,7 @@
                 <outlet property="textField6" destination="Kt4-7s-OpD" id="jTE-49-EBC"/>
                 <outlet property="textField7" destination="DOL-ch-1Zn" id="X8e-Lj-cNu"/>
             </connections>
-            <point key="canvasLocation" x="-113.04347826086958" y="-76.339285714285708"/>
+            <point key="canvasLocation" x="-543" y="-49"/>
         </view>
     </objects>
     <resources>

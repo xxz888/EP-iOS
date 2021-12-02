@@ -40,52 +40,47 @@
 
 - (void)setModel:(MCBankCardModel *)model {
     _model = model;
-    self.bankName.text = model.bankName;
-    NSString *firstName = [model.userName substringWithRange:NSMakeRange(0, 1)];
-    if (model.userName.length == 2) {
+    self.bankName.text = model.bank;
+    NSString *firstName = [model.name substringWithRange:NSMakeRange(0, 1)];
+    if (model.name.length == 2) {
         self.username.text = [NSString stringWithFormat:@"（%@*）", firstName];
     } else {
-        NSString *last = [model.userName substringFromIndex:model.userName.length-1];
+        NSString *last = [model.name substringFromIndex:model.name.length-1];
         self.username.text = [NSString stringWithFormat:@"（%@*%@）", firstName, last];
     }
     
     
-    if([model.nature containsString:@"借"]){
-        self.defBtn.hidden = NO;
-        if([model.type isEqualToString:@"0"]){
-            self.cardType.text = @"充值卡";
-        } else if([model.type isEqualToString:@"2"]){
-            self.cardType.text = @"提现卡";
-        }
+    if([model.cardType containsString:@"CreditCard"]){
+//        self.defBtn.hidden = NO;
+        self.cardType.text = @"提现卡";
         
-        
-    } else if([model.nature containsString:@"贷"]) {
-        self.defBtn.hidden = YES;
+    } else if([model.cardType containsString:@"DebitCard"]) {
+//        self.defBtn.hidden = YES;
         self.cardType.text = @"充值卡";
                 
     } else {
         [MCToast showMessage:@"发现未识别的卡"];
     }
     
-    NSString *subCardString = [model.cardNo substringWithRange:NSMakeRange(4, model.cardNo.length - 3 - 4)];
-    self.cardNo.text = [model.cardNo stringByReplacingOccurrencesOfString:subCardString withString:@" **** **** **** "];
+    NSString *subCardString = [model.bankCardNo substringWithRange:NSMakeRange(4, model.bankCardNo.length - 3 - 4)];
+    self.cardNo.text = [model.bankCardNo stringByReplacingOccurrencesOfString:subCardString withString:@" **** **** **** "];
     
     self.cardDetail.text = model.cardType;
     
-    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:model.bankName];
-    self.logo.image = info.logo;
-    self.bgImage.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
-    if(model.idDef){
-        [self.defBtn setTitle:@"默认卡" forState:UIControlStateNormal];
-        self.defBtn.userInteractionEnabled = NO;
-        self.defBtn.layer.borderWidth = 0;
-    } else {
-        [self.defBtn setTitle:@"设为默认卡" forState:UIControlStateNormal];
-        self.defBtn.userInteractionEnabled = YES;
-        self.defBtn.layer.borderWidth = 1;
-        self.defBtn.layer.borderColor = UIColorWhite.CGColor;
-        self.defBtn.layer.cornerRadius = self.defBtn.height/2;
-    }
+//    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:model.bankName];
+//    self.logo.image = info.logo;
+//    self.bgImage.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
+//    if(model.idDef){
+//        [self.defBtn setTitle:@"默认卡" forState:UIControlStateNormal];
+//        self.defBtn.userInteractionEnabled = NO;
+//        self.defBtn.layer.borderWidth = 0;
+//    } else {
+//        [self.defBtn setTitle:@"设为默认卡" forState:UIControlStateNormal];
+//        self.defBtn.userInteractionEnabled = YES;
+//        self.defBtn.layer.borderWidth = 1;
+//        self.defBtn.layer.borderColor = UIColorWhite.CGColor;
+//        self.defBtn.layer.cornerRadius = self.defBtn.height/2;
+//    }
 }
 - (IBAction)defBtnTouched:(id)sender {  //设为默认
     [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo} ok:^(MCNetResponse * _Nonnull resp) {

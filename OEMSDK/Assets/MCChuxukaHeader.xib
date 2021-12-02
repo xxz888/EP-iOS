@@ -18,20 +18,27 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O78-3B-rYQ">
-                            <rect key="frame" x="14" y="9" width="386" height="32"/>
+                            <rect key="frame" x="14" y="10.5" width="386" height="29.5"/>
                             <attributedString key="attributedText">
+                                <fragment content="请添加本人储蓄卡作为结算卡，该卡作为后续刷卡、提现资金的结算">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
+                                    </attributes>
+                                </fragment>
                                 <fragment>
-                                    <string key="content">请添加本人储蓄卡作为结算卡，该卡作为后续刷卡、提现资金的结算
+                                    <string key="content" base64-UTF8="YES">
+Cg
 </string>
                                     <attributes>
-                                        <color key="NSColor" red="0.96470588235294119" green="0.2196078431372549" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="NSColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" metaFont="controlContent"/>
                                     </attributes>
                                 </fragment>
                                 <fragment content="账号，户名必须与实名认证姓名一致">
                                     <attributes>
-                                        <color key="NSColor" red="0.96470588235294119" green="0.2196078431372549" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" metaFont="controlContent"/>
+                                        <color key="NSColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
@@ -39,7 +46,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.95294117647058818" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="O78-3B-rYQ" firstAttribute="centerY" secondItem="VXp-rY-iit" secondAttribute="centerY" id="ILi-Np-Huz"/>
                         <constraint firstItem="O78-3B-rYQ" firstAttribute="leading" secondItem="VXp-rY-iit" secondAttribute="leading" constant="14" id="Xa2-th-urh"/>
@@ -51,7 +58,7 @@
                     <rect key="frame" x="9" y="60" width="396" height="623"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrT-GR-KbS" customClass="KDFillButton">
-                            <rect key="frame" x="19" y="552" width="358" height="45"/>
+                            <rect key="frame" x="19" y="392" width="358" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="SoB-Je-pGd"/>
                             </constraints>
@@ -68,7 +75,7 @@
                             <string key="text">*建议：工商、农业、交通、招商、民生、华夏、平安等一类卡
 （不支持二类卡及邮政、建设、地方性银行）</string>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.94117647058823528" green="0.51372549019607838" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRW-Em-YJJ">
@@ -86,8 +93,8 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-1z-FgP">
-                                    <rect key="frame" x="104" y="0.0" width="7" height="52"/>
+                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="王沛" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-1z-FgP">
+                                    <rect key="frame" x="104" y="0.0" width="31" height="52"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -129,7 +136,7 @@
                                     <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请扫描银行卡或输入卡号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-np-ZGu" customClass="BankCardTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="62228481234567890" placeholder="请扫描银行卡或输入卡号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-np-ZGu" customClass="BankCardTextField">
                                     <rect key="frame" x="104" y="0.0" width="262" height="52"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="52" id="GQz-Il-ICi"/>
@@ -246,7 +253,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-5f-zAe">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="13383773800" placeholder="请输入银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-5f-zAe">
                                     <rect key="frame" x="104" y="0.0" width="239" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -301,6 +308,7 @@
                         <constraint firstItem="wJ4-8I-vgy" firstAttribute="top" secondItem="aKL-gn-Vo0" secondAttribute="bottom" id="F9W-4R-K2X"/>
                         <constraint firstItem="xB9-sT-T7l" firstAttribute="top" secondItem="U9L-cs-SYq" secondAttribute="top" constant="12" id="Htl-VZ-dT3"/>
                         <constraint firstItem="xB9-sT-T7l" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" constant="15" id="Lme-NR-xlD"/>
+                        <constraint firstItem="YrT-GR-KbS" firstAttribute="top" secondItem="wJ4-8I-vgy" secondAttribute="bottom" constant="100" id="On9-7P-4Id"/>
                         <constraint firstItem="sY6-9S-r3l" firstAttribute="centerY" secondItem="vi2-sP-chP" secondAttribute="centerY" constant="4" id="P2I-hh-r3q"/>
                         <constraint firstAttribute="trailing" secondItem="YrT-GR-KbS" secondAttribute="trailing" constant="19" id="QO7-O7-Zg8"/>
                         <constraint firstAttribute="height" constant="623" id="RiV-bZ-ARw"/>
@@ -313,7 +321,6 @@
                         <constraint firstAttribute="trailing" secondItem="aKL-gn-Vo0" secondAttribute="trailing" id="gsk-dj-Dq5"/>
                         <constraint firstItem="zRW-Em-YJJ" firstAttribute="top" secondItem="xB9-sT-T7l" secondAttribute="bottom" constant="10" id="kCv-RB-Hrz"/>
                         <constraint firstItem="wJ4-8I-vgy" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" id="ofn-0E-JYn"/>
-                        <constraint firstAttribute="bottom" secondItem="YrT-GR-KbS" secondAttribute="bottom" constant="26" id="pp2-fB-itO"/>
                         <constraint firstAttribute="trailing" secondItem="zRW-Em-YJJ" secondAttribute="trailing" id="z2g-s8-m9z"/>
                     </constraints>
                 </view>
@@ -338,7 +345,7 @@
                 <outlet property="topCons" destination="RiV-bZ-ARw" id="NFT-dV-tgd"/>
                 <outlet property="wenhaoBtn" destination="EqX-d0-cFC" id="Fnn-4W-hP2"/>
             </connections>
-            <point key="canvasLocation" x="-113.04347826086958" y="-129.24107142857142"/>
+            <point key="canvasLocation" x="-655.07246376811599" y="-137.27678571428569"/>
         </view>
     </objects>
     <resources>

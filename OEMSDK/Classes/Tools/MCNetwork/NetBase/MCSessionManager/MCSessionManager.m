@@ -28,238 +28,34 @@ static MCSessionManager *_singleManager = nil;
 
 @implementation MCSessionManager
 
-+ (instancetype)manager {
-    MCSessionManager *m = [super manager];
-    //自定义配置
-    m.requestSerializer.timeoutInterval = 30.f;
-    m.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/htLY", @"text/json", @"text/plain", @"text/javascript", @"text/xLY", @"image/*" ,nil];
-    [m.requestSerializer setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    // 设置HTTPBody
-//    [m.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error){
-//         return soapStr;
-//     }];
-
-    return m;
-}
-
-+ (instancetype)shareManager {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken,^{
-        _singleManager = [MCSessionManager manager];
-    });
-    return _singleManager;
-}
-
-
-- (NSMutableArray<MCSessionManagerMessageModel *> *)tempActions {
-    if (!_tempActions) {
-        _tempActions = [NSMutableArray new];
-    }
-    return _tempActions;
-}
-
-- (void)mc_reloadTasks {
-    self.isReloaded = YES;
-    for (MCSessionManagerMessageModel *model in self.tempActions) {
-        [model msgSend];
-    }
-}
-
-
-#pragma mark - /*********************GET请求*******************/
-
-- (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp {
-    return [self mc_GET:shortURLString parameters:parameters ok:okResp other:nil];
-}
-- (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp other:(MCSMNormalHandler)otherResp {
-    return [self mc_GET:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
-}
-
-
 - (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp other:(MCSMNormalHandler)otherResp failure:(MCSMErrorHandler)failure {
-    return  nil;
     if (TOKEN) {    //每次都添加为了及时变化
-        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
+        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     }
-    if (SharedDefaults.deviceid.length != 0) {
-        [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
-    }
-    [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
-    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-
-    //MCLog(@"%@", TOKEN);
+    __weak typeof(self) weakSelf = self;
+    [MCLoading show];
     NSString *full = [self getFullUrlWithShort:shortURLString];
-    
- 
-    if (!self.isReloaded) {
-        
-        MCSessionManagerMessageModel *msgModel = [[MCSessionManagerMessageModel alloc] initWithTarget:self sel:_cmd shortURLString:shortURLString parameters:parameters okResp:okResp otherResp:otherResp failure:failure];
-        
-        [self.tempActions addObject:msgModel];
-    }
-    //如果是shareManager添加loading，因为controller的session已经有mj_header的loading了
-    BOOL isSharedSession = (self == [MCSessionManager shareManager]);
-    if (isSharedSession) {
-        [MCLoading show];
-    }
-    //如果是测试环境，就不解析dns
-    if ([SharedDefaults.host containsString:@"test1012"] || [SharedDefaults.host containsString:@"32"] || [SharedDefaults.host containsString:@"29"]) {
-        
-    }else{
-        if ([full containsString:@"https://api.flyaworld.com"]) {
-            NSLog(@"xxxxxx:%@",SharedDefaults.host);
-            full = [full replaceAll:@"https://api.flyaworld.com" target:SharedDefaults.host];
-        }
-    }
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------请求参数-------------\n%@\n-------------请求Token-------------\n%@\n-------------请求DeviceId-------------\n%@\n",full, parameters,TOKEN, SharedDefaults.deviceid);
     NSURLSessionDataTask *task = [self GET:full parameters:parameters headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
-        if (isSharedSession) {
-            [MCLoading hidden];
-        }
-        MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
-        if ([resp.code isEqualToString:@"000000"]) {  // ok
-            if (okResp) {
-                okResp(resp);
-            }
-        } else {    // other
-            
-            if ([resp.code isEqualToString:@"401"] || [resp.code isEqualToString:@"000005"]) {
-                [self popLoginIfNeeded:resp];
-            } else {
-                if (otherResp) {
-                    otherResp(resp);
-                } else {
-                    [self handleOther:resp];
-                }
-            }
-        }
-        if (self.delegate) {
-            [self.delegate mc_session:self.session task:task didReceiveResponse:resp];
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        //MCLog(@"%@",error);
-        if (isSharedSession) {
-            [MCLoading hidden];
-        }
-        [self handleHTTPError:error failureHandler:failure];
-        if (self.delegate) {
-            [self.delegate mc_session:self.session task:task didReceiveResponse:error];
-        }
-    }];
-    
-    return task;
-}
-
-
-#pragma mark - /*********************POST请求*******************/
-/// POST请求
-/// @param shortURLString shortURLString
-/// @param parameters 参数
-/// @param okResp "000000"结果
-- (nullable NSURLSessionDataTask *)mc_POST:(NSString *)shortURLString
-                                parameters:(nullable id)parameters
-                                        ok:(nullable MCSMNormalHandler)okResp{
-    return [self mc_POST:shortURLString parameters:parameters ok:okResp other:nil];
-}
-
-/// POST请求
-/// @param shortURLString shortURLString
-/// @param parameters 参数
-/// @param okResp "000000"结果
-/// @param otherResp 其他结果
-- (nullable NSURLSessionDataTask *)mc_POST:(NSString *)shortURLString
-                                parameters:(nullable id)parameters
-                                        ok:(nullable MCSMNormalHandler)okResp
-                                     other:(nullable MCSMNormalHandler)otherResp{
-    return [self mc_POST:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
-}
-
-/// POST请求
-/// @param shortURLString shortURLString
-/// @param parameters 参数
-/// @param okResp "000000"结果
-/// @param otherResp 其他结果
-/// @param failure 请求失败
-- (nullable NSURLSessionDataTask *)mc_POST:(NSString *)shortURLString
-                                parameters:(nullable id)parameters
-                                        ok:(nullable MCSMNormalHandler)okResp
-                                     other:(nullable MCSMNormalHandler)otherResp
-                                   failure:(nullable MCSMErrorHandler)failure{
-    return  nil;
-
-    if (TOKEN) {    //每次都添加为了及时变化
-        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
-    }
-//    if (SharedDefaults.deviceid.length != 0) {
-//        [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
-//    }
-//    [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
-//    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-
-    //如果url不包含1.0再拼接请求字符串,这个是区别通道用的，因为后台返回就返回的完整url
-    NSString * full = [self getFullUrlWithShort:shortURLString];
-    
-   
-    if (!self.isReloaded) {
-        MCSessionManagerMessageModel *msgModel = [[MCSessionManagerMessageModel alloc] initWithTarget:self sel:_cmd shortURLString:shortURLString parameters:parameters okResp:okResp otherResp:otherResp failure:failure];
-        
-        [self.tempActions addObject:msgModel];
-    }
-    
-    BOOL isSharedSession = (self == [MCSessionManager shareManager]);
-    if (isSharedSession) {
-        [MCLoading show];
-    }
-
-    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
-    NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
-
-        
-        //如果是收款轮询的查询，查询不成功就不要隐藏菊花
-        //返回数据不一样的数据，需要在这里重新拼接数组,计算手续费
-        if ([shortURLString containsString:@"/creditcardmanager/app/empty/card/calculate/reservedamount"]) {
-                responseObject = @{@"resp_code":responseObject[@"resp_code"],
-                                   @"result":responseObject,
-                                   @"resp_message":responseObject[@"resp_message"]
-                };
-        }
-        
         [MCLoading hidden];
-        
-        MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
-        if (responseObject[@"verify"]) {
-            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"verify"] forKey:@"verify"];
-        }
-        if ([resp.code isEqualToString:@"000000"]) {  // ok            
-            if (okResp) {
-                okResp(resp);
+
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            if (responseObject[@"message"]) {
+                [MCToast showMessage:responseObject[@"messege"]];
+            }else{
+                okResp(responseObject);
             }
+        }else{
+            okResp(responseObject);
+        }
+    
         
-        }else {    // other
-            if ([resp.code isEqualToString:@"401"] || [resp.code isEqualToString:@"000005"]) {
-                [self popLoginIfNeeded:resp];
-                //需要鉴权绑卡
-            }else {
-                if (otherResp) {
-                    otherResp(resp);
-                } else {
-                    [self handleOther:resp];
-                }
-            }
-        }
-        if (self.delegate) {
-            [self.delegate mc_session:self.session task:task didReceiveResponse:resp];
-        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //MCLog(@"%@",error);
-        if (isSharedSession) {
-            [MCLoading hidden];
-        }
+        [MCLoading hidden];
         [self handleHTTPError:error failureHandler:failure];
         if (self.delegate) {
             [self.delegate mc_session:self.session task:task didReceiveResponse:error];
@@ -267,14 +63,6 @@ static MCSessionManager *_singleManager = nil;
     }];
     
     return task;
-}
--(void)setDnsConfig{
-    //如果是测试环境，就不解析dns
-    if ([SharedDefaults.host containsString:@"test1012"] || [SharedDefaults.host containsString:@"32"] || [SharedDefaults.host containsString:@"29"]) {
-        
-    }else{
-        [self.requestSerializer setValue:@"api.flyaworld.com" forHTTPHeaderField:@"host"];
-    }
 }
 - (nullable NSURLSessionDataTask *)mc_Post_QingQiuTi:(NSString *)shortURLString
   parameters:(nullable id)parameters
@@ -287,14 +75,14 @@ static MCSessionManager *_singleManager = nil;
     NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[self getFullUrlWithShort:shortURLString] parameters:parameters error:nil];
     request.timeoutInterval = 10.f;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:TOKEN forHTTPHeaderField:@"authToken"];
+    [request setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     [request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
     [request setValue:@"ios" forHTTPHeaderField:@"platform"];
     [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     
-    
+    NSLog(@"%@",TOKEN);
  
     [MCLoading show];
     NSString * full= [self getFullUrlWithShort:shortURLString];
@@ -312,25 +100,18 @@ static MCSessionManager *_singleManager = nil;
         if (!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             NSInteger code = [httpResponse statusCode];
-            
             if (code == 200) {
-                okResp(responseObject);
+                if (responseObject[@"message"]) {
+                    [MCToast showMessage:responseObject[@"messege"]];
+                }else{
+                    okResp(responseObject);
+                }
+            }else if (code == 204){
+                [MCToast showMessage:@"操作成功"];
+                okResp(@{});
             }else{
                 [MCToast showMessage:responseObject[@"messege"]];
             }
-            okResp(responseObject);
-//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//                MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
-//                if ([resp.code isEqualToString:@"000000"]) {
-//                   if (okResp) {
-//                       okResp(resp);
-//                   }
-//                }else{
-//                    [MCToast showMessage:resp.messege];
-//                }
-//            } else {
-//
-//            }
         } else {
             [MCLoading hidden];
             NSLog(@"请求失败error=%@", error);
@@ -340,6 +121,7 @@ static MCSessionManager *_singleManager = nil;
 
     return task;
 }
+
 
 - (nullable NSURLSessionDataTask *)mc_UPLOAD:(NSString *)shortURLString
   parameters:(nullable id)parameters
@@ -516,6 +298,166 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }else{
         return nil;
     }
+}
+#pragma mark - /*********************POST请求*******************/
+/// POST请求
+/// @param shortURLString shortURLString
+/// @param parameters 参数
+/// @param okResp "000000"结果
+- (nullable NSURLSessionDataTask *)mc_POST:(NSString *)shortURLString
+                                parameters:(nullable id)parameters
+                                        ok:(nullable MCSMNormalHandler)okResp{
+    return [self mc_POST:shortURLString parameters:parameters ok:okResp other:nil];
+}
+
+/// POST请求
+/// @param shortURLString shortURLString
+/// @param parameters 参数
+/// @param okResp "000000"结果
+/// @param otherResp 其他结果
+- (nullable NSURLSessionDataTask *)mc_POST:(NSString *)shortURLString
+                                parameters:(nullable id)parameters
+                                        ok:(nullable MCSMNormalHandler)okResp
+                                     other:(nullable MCSMNormalHandler)otherResp{
+    return [self mc_POST:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
+}
+
+/// POST请求
+/// @param shortURLString shortURLString
+/// @param parameters 参数
+/// @param okResp "000000"结果
+/// @param otherResp 其他结果
+/// @param failure 请求失败
+- (nullable NSURLSessionDataTask *)mc_POST:(NSString *)shortURLString
+                                parameters:(nullable id)parameters
+                                        ok:(nullable MCSMNormalHandler)okResp
+                                     other:(nullable MCSMNormalHandler)otherResp
+                                   failure:(nullable MCSMErrorHandler)failure{
+    return  nil;
+
+    if (TOKEN) {    //每次都添加为了及时变化
+        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
+    }
+//    if (SharedDefaults.deviceid.length != 0) {
+//        [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
+//    }
+//    [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
+//    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
+
+    //如果url不包含1.0再拼接请求字符串,这个是区别通道用的，因为后台返回就返回的完整url
+    NSString * full = [self getFullUrlWithShort:shortURLString];
+    
+   
+    if (!self.isReloaded) {
+        MCSessionManagerMessageModel *msgModel = [[MCSessionManagerMessageModel alloc] initWithTarget:self sel:_cmd shortURLString:shortURLString parameters:parameters okResp:okResp otherResp:otherResp failure:failure];
+        
+        [self.tempActions addObject:msgModel];
+    }
+    
+    BOOL isSharedSession = (self == [MCSessionManager shareManager]);
+    if (isSharedSession) {
+        [MCLoading show];
+    }
+
+    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
+    NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
+
+        
+        //如果是收款轮询的查询，查询不成功就不要隐藏菊花
+        //返回数据不一样的数据，需要在这里重新拼接数组,计算手续费
+        if ([shortURLString containsString:@"/creditcardmanager/app/empty/card/calculate/reservedamount"]) {
+                responseObject = @{@"resp_code":responseObject[@"resp_code"],
+                                   @"result":responseObject,
+                                   @"resp_message":responseObject[@"resp_message"]
+                };
+        }
+        
+        [MCLoading hidden];
+        
+        MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
+        if (responseObject[@"verify"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"verify"] forKey:@"verify"];
+        }
+        if ([resp.code isEqualToString:@"000000"]) {  // ok
+            if (okResp) {
+                okResp(resp);
+            }
+        
+        }else {    // other
+            if ([resp.code isEqualToString:@"401"] || [resp.code isEqualToString:@"000005"]) {
+                [self popLoginIfNeeded:resp];
+                //需要鉴权绑卡
+            }else {
+                if (otherResp) {
+                    otherResp(resp);
+                } else {
+                    [self handleOther:resp];
+                }
+            }
+        }
+        if (self.delegate) {
+            [self.delegate mc_session:self.session task:task didReceiveResponse:resp];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //MCLog(@"%@",error);
+        if (isSharedSession) {
+            [MCLoading hidden];
+        }
+        [self handleHTTPError:error failureHandler:failure];
+        if (self.delegate) {
+            [self.delegate mc_session:self.session task:task didReceiveResponse:error];
+        }
+    }];
+    
+    return task;
+}
+
++ (instancetype)manager {
+    MCSessionManager *m = [super manager];
+    //自定义配置
+    m.requestSerializer.timeoutInterval = 30.f;
+    m.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/htLY", @"text/json", @"text/plain", @"text/javascript", @"text/xLY", @"image/*" ,nil];
+    [m.requestSerializer setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    // 设置HTTPBody
+//    [m.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error){
+//         return soapStr;
+//     }];
+
+    return m;
+}
+
++ (instancetype)shareManager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken,^{
+        _singleManager = [MCSessionManager manager];
+    });
+    return _singleManager;
+}
+
+
+- (NSMutableArray<MCSessionManagerMessageModel *> *)tempActions {
+    if (!_tempActions) {
+        _tempActions = [NSMutableArray new];
+    }
+    return _tempActions;
+}
+
+- (void)mc_reloadTasks {
+    self.isReloaded = YES;
+    for (MCSessionManagerMessageModel *model in self.tempActions) {
+        [model msgSend];
+    }
+}
+
+
+#pragma mark - /*********************GET请求*******************/
+
+- (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp {
+    return [self mc_GET:shortURLString parameters:parameters ok:okResp other:nil];
+}
+- (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp other:(MCSMNormalHandler)otherResp {
+    return [self mc_GET:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
 }
 
 @end

@@ -279,6 +279,7 @@
 		6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */; };
 		6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */; };
 		6FAC122926FC86FB00E3560F /* KDHomeXinYongKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */; };
+		6FBBFBA6275897540096D282 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBFBA5275897540096D282 /* UIView+Extension.m */; };
 		6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */; };
 		CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFABD6DDE24EBE293888388 /* libPods-KaDeShiJie.a */; };
 		EE1BA9AD251C277E00941631 /* KDWebContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1BA9AC251C277E00941631 /* KDWebContainer.m */; };
@@ -742,6 +743,8 @@
 		6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTiXianViewController.xib; sourceTree = "<group>"; };
 		6FAC122726FC86FB00E3560F /* KDHomeXinYongKaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeXinYongKaViewController.h; sourceTree = "<group>"; };
 		6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeXinYongKaViewController.m; sourceTree = "<group>"; };
+		6FBBFBA4275897540096D282 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		6FBBFBA5275897540096D282 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		6FFE7E09274E3A9400F801A1 /* jintMyWallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jintMyWallViewController.h; sourceTree = "<group>"; };
 		6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jintMyWallViewController.m; sourceTree = "<group>"; };
 		9128FD3AF01474CF6106FD30 /* Pods-KaDeShiJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaDeShiJie.debug.xcconfig"; path = "Target Support Files/Pods-KaDeShiJie/Pods-KaDeShiJie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1400,6 +1403,7 @@
 		1BC5E3BA250343AA0064CA30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6FBBFBA3275897450096D282 /* Tools */,
 				1BD3DC3E250B606B00A5D148 /* 信用卡收款 */,
 				180B17982575E9ED006D3D13 /* 空卡还款 */,
 				1B97239C251C3A2800F4120C /* 信用卡还款 */,
@@ -1582,6 +1586,15 @@
 				04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */,
 			);
 			path = "信用卡办卡";
+			sourceTree = "<group>";
+		};
+		6FBBFBA3275897450096D282 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				6FBBFBA4275897540096D282 /* UIView+Extension.h */,
+				6FBBFBA5275897540096D282 /* UIView+Extension.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		6FFE7E08274E3A5400F801A1 /* 我的钱包 */ = {
@@ -2043,6 +2056,7 @@
 				043189F5274BE6B100D9D959 /* KDWenZinTiShi.m in Sources */,
 				1BC5E3D525036EDE0064CA30 /* KDLoginHeaderView.m in Sources */,
 				187D8B202565FC900097A650 /* KDTrandingRecordHeaderView.m in Sources */,
+				6FBBFBA6275897540096D282 /* UIView+Extension.m in Sources */,
 				6FA44E93274E3BFF00DA1C59 /* KDMyWallView.m in Sources */,
 				187D8B192565FC900097A650 /* KDSlotCardHistoryModel.m in Sources */,
 				1BCF5E252514DE200095328E /* KDCancelCreditHeaderView.m in Sources */,

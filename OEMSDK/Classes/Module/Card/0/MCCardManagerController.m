@@ -40,7 +40,8 @@
 - (KDFillButton *)addButton {
     if (!_addButton) {
         CGFloat height = 55*MCSCALE;
-        _addButton = [[KDFillButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
+        _addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
+        [_addButton setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F7874E"]];
         [_addButton setTitle:@"添加信用卡" forState:UIControlStateNormal];
         [_addButton setImage:[UIImage mc_imageNamed:@"one_bankcard_add"] forState:UIControlStateNormal];
         [_addButton setTitleColor:UIColorWhite forState:UIControlStateNormal];
@@ -83,12 +84,14 @@
     self.mc_tableview.delegate = self;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.mc_tableview.ly_emptyView = [MCEmptyView emptyView];
+    self.mc_tableview.ly_emptyView = [MCEmptyView emptyViewText:self.currentIndex == 0 ? @"暂无可用储蓄卡" : @"暂无可用信用卡"];
     
 }
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [self requestCards];
+    [self requestCards];
 }
 - (BOOL)shouldPopViewControllerByBackButtonOrPopGesture:(BOOL)byPopGesture{
     MCBankCardModel *model;
@@ -116,15 +119,16 @@
 #pragma mark - Actions
 - (void)requestCards {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    NSString * url = self.currentIndex == 0 ? @"/api/v1/player/bank/credit":@"/api/v1/player/bank/debit";
+    [self.sessionManager mc_GET:url parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
         [weakSelf.daijikas removeAllObjects];
         [weakSelf.jiejikas removeAllObjects];
         for (MCBankCardModel *model in temArr) {
-            if ([model.nature containsString:@"借"]) {
+            if (self.currentIndex == 1) {
                 [weakSelf.jiejikas addObject:model];
             }
-            if ([model.nature containsString:@"贷"]) {
+            if (self.currentIndex == 0) {
                 [weakSelf.daijikas addObject:model];
             }
         }
@@ -174,7 +178,7 @@
             }
             [MCPagingStore pagingURL:rt_card_edit withUerinfo:info];
         } else {
-            [weakSelf requestCards];
+//            [weakSelf requestCards];
         }
     };
     return cell;
