@@ -21,6 +21,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *supportBankName;
 @property (nonatomic, copy) NSString *supportBankType;
 @property (nonatomic, copy) NSString *ID;
+
+@property (nonatomic, copy) NSString *bank;
+
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *channelType;
+@property (nonatomic, copy) NSString *channelId;
+@property (nonatomic, copy) NSString *dailyMaxAmount;
+@property (nonatomic, copy) NSString *singeMaxAmount;
+@property (nonatomic, copy) NSString *singeMinAmount;
+@property (nonatomic, copy) NSString *createdTime;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

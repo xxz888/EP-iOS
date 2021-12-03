@@ -37,18 +37,18 @@
 {
     _model = model;
     
-    self.leftLabel.text = model.supportBankName;
-    NSString * str1 = [NSString stringWithFormat:@"%.0f", model.singleMinLimit];
-    str1 = [self getDealNumwithstring:str1];
+    self.leftLabel.text = model.bank;
+    NSString * str1 = [NSString stringWithFormat:@"%@", model.singeMinAmount];
+//    str1 = [self getDealNumwithstring:str1];
     
-    NSString * str2 = [NSString stringWithFormat:@"%.0f", model.singleMaxLimit];
-    str2 = [self getDealNumwithstring:str2];
+    NSString * str2 = [NSString stringWithFormat:@"%@", model.singeMaxAmount];
+//    str2 = [self getDealNumwithstring:str2];
     
 //    NSString * str3 = [NSString stringWithFormat:@"%.0f", model.everyDayMaxLimit];
 //    str3 = [self getDealNumwithstring:str3];
 
     self.centerLabel.text = [NSString stringWithFormat:@"%@-%@", str1, str2];
-    self.rightLabel.text = [NSString stringWithFormat:@"%.0f", model.everyDayMaxLimit];
+    self.rightLabel.text = [NSString stringWithFormat:@"%@", model.dailyMaxAmount];
 }
 -(NSString *)getDealNumwithstring:(NSString *)string{
     NSDecimalNumber *numberA = [NSDecimalNumber decimalNumberWithString:string];

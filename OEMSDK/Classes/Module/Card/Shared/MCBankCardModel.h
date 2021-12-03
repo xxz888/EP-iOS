@@ -60,6 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * extraFee;
 @property (nonatomic, strong) NSString * api;
 @property (nonatomic, strong) NSString * bank;
+@property (nonatomic, copy) NSString * id;
 
 @property (nonatomic, strong) NSString * dbankbankCard;
 @property (nonatomic, strong) NSString * dbankName;

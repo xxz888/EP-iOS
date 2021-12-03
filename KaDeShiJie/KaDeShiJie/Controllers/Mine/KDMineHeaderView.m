@@ -74,7 +74,8 @@
     }];
     //我的客服
     [self.kefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-            
+        [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+
     }];
     //关于我们
     [self.guanyuwomenView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
@@ -87,7 +88,7 @@
     }];
     //我的客户
     [self.wodekefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-            
+
     }];
     //设置
     [self.shezhiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {

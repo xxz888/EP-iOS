@@ -60,7 +60,7 @@
     item.leadingBarButtonGroups = @[];
     item.trailingBarButtonGroups = @[];
     
-    self.moneyView.delegate = self;
+//    self.moneyView.delegate = self;
     // 设置按钮显示
     self.addCreditBtn.imagePosition = QMUIButtonImagePositionRight;
     self.addDepositBtn.imagePosition = QMUIButtonImagePositionRight;
@@ -92,96 +92,92 @@
 #pragma mark - 获取默认卡
 - (void)requestDefaultChuXuCards {
     
+    
     __weak __typeof(self)weakSelf = self;
-    //默认储蓄卡
-    NSDictionary *p2 = @{@"userId":SharedUserInfo.userid,
-                         @"type":@"2",
-                         @"nature":@"2",
-                         @"isDefault":@"1"};
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
-        for (MCBankCardModel *model in temp) {
+    NSString * url1 = @"/api/v1/player/bank/credit";
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
+        if ([temArr count] != 0) {
+            MCBankCardModel * model = temArr[0];
             weakSelf.chuxuInfo = model;
-            break;
-        }
-        [weakSelf setChuxuInfo:weakSelf.chuxuInfo];
-        //绑定过储蓄卡的话，就看是否绑定过信用卡
-        [weakSelf requestDefaultXinYongCards];
-    } other:^(MCNetResponse * _Nonnull resp) {
-        [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            [weakSelf nocardAlertShowWithMessage:@"你还未添加到账提现卡(储蓄卡)，是否前往添加？" type:MCBankCardTypeChuxuka cardModel:nil];
-            [weakSelf showChuXuGuidePage];
-        } else {
-            [MCToast showMessage:resp.messege];
+        }else{
+            
         }
     }];
-
-}
-- (void)requestDefaultXinYongCards {
-    __weak __typeof(self)weakSelf = self;
-    //默认信用卡
-    NSDictionary *p1 = @{@"userId":SharedUserInfo.userid,
-                         @"type":@"0",
-                         @"nature":@"0",
-                         @"isDefault":@"1"};
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
-        
-        for (MCBankCardModel *model in temp) {
-            if (!model.billDay || !model.repaymentDay) {
-                [weakSelf nocardAlertShowWithMessage:@"您的信用卡信息填写不完整，请补充完整" type:MCBankCardTypeXinyongka cardModel:model];
-            } else {
-                [weakSelf showGuidePage2];
-
-            }
+    
+    NSString * url2 = @"/api/v1/player/bank/debit";
+    [self.sessionManager mc_GET:url2 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
+        if ([temArr count] != 0) {
+            MCBankCardModel * model = temArr[0];
             weakSelf.xinyongInfo = model;
-
-            break;
-        }
-        [weakSelf setXinyongInfo:weakSelf.xinyongInfo];
-
-    } other:^(MCNetResponse * _Nonnull resp) {
-        [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            [weakSelf nocardAlertShowWithMessage:@"你还未添加收款充值卡(信用卡)，是否前往添加？" type:MCBankCardTypeXinyongka cardModel:nil];
-            weakSelf.xinyongInfo = nil;
-            [weakSelf showXinYongGuidePage];
-        } else {
-            [MCToast showMessage:resp.messege];
+        }else{
+            
         }
     }];
+    
+    
+    
+//    __weak __typeof(self)weakSelf = self;
+//    //默认储蓄卡
+//    NSDictionary *p2 = @{@"userId":SharedUserInfo.userid,
+//                         @"type":@"2",
+//                         @"nature":@"2",
+//                         @"isDefault":@"1"};
+//    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(MCNetResponse * _Nonnull resp) {
+//        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+//        for (MCBankCardModel *model in temp) {
+//            weakSelf.chuxuInfo = model;
+//            break;
+//        }
+//        [weakSelf setChuxuInfo:weakSelf.chuxuInfo];
+//        //绑定过储蓄卡的话，就看是否绑定过信用卡
+//        [weakSelf requestDefaultXinYongCards];
+//    } other:^(MCNetResponse * _Nonnull resp) {
+//        [MCLoading hidden];
+//        if ([resp.code isEqualToString:@"666666"]) {
+//            [weakSelf nocardAlertShowWithMessage:@"你还未添加到账提现卡(储蓄卡)，是否前往添加？" type:MCBankCardTypeChuxuka cardModel:nil];
+//            [weakSelf showChuXuGuidePage];
+//        } else {
+//            [MCToast showMessage:resp.messege];
+//        }
+//    }];
+
 }
--(void)showChuXuGuidePage{
-    CGPoint point = [self.commonAlert.rightBtn convertPoint:CGPointMake(0,0) toView:[UIApplication sharedApplication].windows.lastObject];
-    //空白的frame
-    CGRect emptyRect = CGRectMake(point.x, point.y,self.commonAlert.rightBtn.width_sd, self.commonAlert.rightBtn.height_sd);
-    //图片的frame
-    CGRect imgRect = CGRectMake(point.x-self.commonAlert.rightBtn.width_sd, point.y+self.commonAlert.rightBtn.height_sd, kRealWidthValue(200), kRealWidthValue(200)*1417/1890);
-    kWeakSelf(self);
-    [[KDGuidePageManager shareManager] showGuidePageWithType:KDGuidePageTypeXinYongKaShouKuan emptyRect:emptyRect imgRect:imgRect imgStr:@"guide10" completion:^{
-        [weakself.commonAlert.qmuiAlter hideWithAnimated:YES completion:^(BOOL finished) {
-            [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(MCBankCardTypeChuxuka), @"isLogin":@(NO),@"whereCome":@"1"}];
-        }];
-
-
-    }];
-}
--(void)showXinYongGuidePage{
-    CGPoint point = [self.commonAlert.rightBtn convertPoint:CGPointMake(0,0) toView:[UIApplication sharedApplication].windows.lastObject];
-    //空白的frame
-    CGRect emptyRect = CGRectMake(point.x, point.y,self.commonAlert.rightBtn.width_sd, self.commonAlert.rightBtn.height_sd);
-    //图片的frame
-    CGRect imgRect = CGRectMake(point.x-self.commonAlert.rightBtn.width_sd, point.y+self.commonAlert.rightBtn.height_sd, kRealWidthValue(200), kRealWidthValue(200)*1417/1890);
-    kWeakSelf(self);
-    [[KDGuidePageManager shareManager] showGuidePageWithType:KDGuidePageTypeXinYongKaShouKuan emptyRect:emptyRect imgRect:imgRect imgStr:@"guide2" completion:^{
-        [weakself.commonAlert.qmuiAlter hideWithAnimated:YES completion:^(BOOL finished) {
-            [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(MCBankCardTypeXinyongka), @"isLogin":@(NO),@"whereCome":@"1"}];
-        }];
-
-
-    }];
-}
+//- (void)requestDefaultXinYongCards {
+//    __weak __typeof(self)weakSelf = self;
+//    //默认信用卡
+//    NSDictionary *p1 = @{@"userId":SharedUserInfo.userid,
+//                         @"type":@"0",
+//                         @"nature":@"0",
+//                         @"isDefault":@"1"};
+//    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
+//        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+//
+//        for (MCBankCardModel *model in temp) {
+//            if (!model.billDay || !model.repaymentDay) {
+//                [weakSelf nocardAlertShowWithMessage:@"您的信用卡信息填写不完整，请补充完整" type:MCBankCardTypeXinyongka cardModel:model];
+//            } else {
+//                [weakSelf showGuidePage2];
+//
+//            }
+//            weakSelf.xinyongInfo = model;
+//
+//            break;
+//        }
+//        [weakSelf setXinyongInfo:weakSelf.xinyongInfo];
+//
+//    } other:^(MCNetResponse * _Nonnull resp) {
+//        [MCLoading hidden];
+//        if ([resp.code isEqualToString:@"666666"]) {
+//            [weakSelf nocardAlertShowWithMessage:@"你还未添加收款充值卡(信用卡)，是否前往添加？" type:MCBankCardTypeXinyongka cardModel:nil];
+//            weakSelf.xinyongInfo = nil;
+//            [weakSelf showXinYongGuidePage];
+//        } else {
+//            [MCToast showMessage:resp.messege];
+//        }
+//    }];
+//}
 - (void)clickRightBtnAction
 {
     [MCPagingStore pushWebWithTitle:@"使用说明" classification:@"功能跳转"];
@@ -271,7 +267,7 @@
 // 立即收款
 - (IBAction)clickGatherBtnAction:(QMUIButton *)sender {
     
-    [[KDGuidePageManager shareManager] requestShiMing:^{
+//    [[KDGuidePageManager shareManager] requestShiMing:^{
         if (self.moneyView.text.floatValue <= 0 || [[self firstCharactorWithString:self.moneyView.text] isEqualToString:@"."]) {
             [MCToast showMessage:@"请输入正确的金额" position:MCToastPositionCenter];
             return;
@@ -293,6 +289,13 @@
             [MCToast showMessage:@"请选择到账的储蓄卡" position:MCToastPositionCenter];
             return;
         }
+    
+    KDSlotCardAisleViewController *vc = [[KDSlotCardAisleViewController alloc] init];
+    vc.money = self.moneyView.text;
+    vc.xinyongInfo = self.xinyongInfo;
+    vc.chuxuInfo = self.chuxuInfo;
+    [self.navigationController pushViewController:vc animated:YES];
+    return;
         
         //先把储蓄卡设为默认
         __weak __typeof(self)weakSelf = self;
@@ -303,7 +306,7 @@
             vc.chuxuInfo = self.chuxuInfo;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }];
-    }];
+//    }];
     
     
 
@@ -391,13 +394,13 @@
         self.depositLabel.hidden = YES;
         return;
     }
-    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:chuxuInfo.bankName];
+    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:chuxuInfo.bank];
     self.depositImg.image = ii.logo;
     self.depositImg.hidden = NO;
-    NSString *cardNo = chuxuInfo.cardNo;
+    NSString *cardNo = chuxuInfo.bankCardNo;
     if (cardNo && cardNo.length > 4) {
-        NSString *bankName = [NSString stringWithFormat:@"%@ (%@)",chuxuInfo.bankName,[cardNo substringFromIndex:cardNo.length-4]];
-        self.depositLabel.text = bankName;
+        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",chuxuInfo.bank,[cardNo substringFromIndex:cardNo.length-4]];
+        self.depositLabel.text = bank;
     }
     self.depositLabel.hidden = NO;
     [self.addDepositBtn setTitle:@"更换" forState:UIControlStateNormal];
@@ -411,13 +414,13 @@
         self.creditLabel.hidden = YES;
         return;
     }
-    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:xinyongInfo.bankName];
+    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:xinyongInfo.bank];
     self.creditImg.image = ii.logo;
     self.creditImg.hidden = NO;
-    NSString *cardNo = xinyongInfo.cardNo;
+    NSString *cardNo = xinyongInfo.bankCardNo;
     if (cardNo && cardNo.length > 4) {
-        NSString *bankName = [NSString stringWithFormat:@"%@ (%@)",xinyongInfo.bankName,[cardNo substringFromIndex:cardNo.length-4]];
-        self.creditLabel.text = bankName;
+        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",xinyongInfo.bank,[cardNo substringFromIndex:cardNo.length-4]];
+        self.creditLabel.text = bank;
     }
     self.creditLabel.hidden = NO;
     [self.addCreditBtn setTitle:@"更换" forState:UIControlStateNormal];

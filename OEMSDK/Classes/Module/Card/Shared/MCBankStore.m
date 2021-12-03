@@ -17,13 +17,19 @@
     UIColor * backGround = MAINCOLOR; //  默认主题色
     for (NSDictionary *bankDic in localA) {// 添加本地logo
         
-        NSString *ss = bankDic[@"bank_name"];
+        NSString *ss = bankDic[@"bank"];
 //        BANK_HXBANK
         if ([ss containsString:name]) {
             localName = [NSString stringWithFormat:@"BANK_%@", bankDic[@"bank_acronym"]];
             logo = [UIImage mc_imageNamed:localName];
             backGround = [MCBankStore getBankThemeColorWithLogo:logo];
             break;
+        }else{
+            localName = [NSString stringWithFormat:@"BANK_%@", @"ABC"];
+            logo = [UIImage mc_imageNamed:localName];
+            backGround = [MCBankStore getBankThemeColorWithLogo:logo];
+            break;
+
         }
     }
     return [[MCBankCardInfo alloc] initWithLogo:logo cardCellBackgroundColor:backGround];

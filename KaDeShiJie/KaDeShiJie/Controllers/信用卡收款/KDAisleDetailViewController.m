@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:self.model.name tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:self.model.channelType tintColor:[UIColor mainColor]];
     self.mc_tableview.tableHeaderView = [[KDAisleDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;
@@ -50,9 +50,19 @@
 }
 
 - (void)getData {
-    [self.sessionManager mc_POST:@"/paymentchannel/app/supportbankbytag/query" parameters:@{@"channelTag":self.model.channelTag} ok:^(MCNetResponse * _Nonnull resp) {
-        self.dataArray = [KDAisleDetailModel mj_objectArrayWithKeyValuesArray:resp.result];
+    
+    
+    
+    
+    NSString * url2 = @"/api/v1/player/credit/support";
+    [self.sessionManager mc_GET:url2 parameters:@{@"channel":self.model.channelType} ok:^(MCNetResponse * _Nonnull resp) {
+        self.dataArray = [KDAisleDetailModel mj_objectArrayWithKeyValuesArray:resp];
         [self.mc_tableview reloadData];
     }];
+    
+//    [self.sessionManager mc_POST:@"/paymentchannel/app/supportbankbytag/query" parameters:@{@"channelTag":self.model.channelTag} ok:^(MCNetResponse * _Nonnull resp) {
+//        self.dataArray = [KDAisleDetailModel mj_objectArrayWithKeyValuesArray:resp.result];
+//        [self.mc_tableview reloadData];
+//    }];
 }
 @end

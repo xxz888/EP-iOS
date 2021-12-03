@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
-    KDSlotCardAisleHeaderView *header = [[KDSlotCardAisleHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
+    KDSlotCardAisleHeaderView *header = [[KDSlotCardAisleHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
     header.moneyView.text = [NSString stringWithFormat:@"%@元", self.money];
     self.mc_tableview.tableHeaderView = header;
     self.mc_tableview.backgroundColor = [UIColor clearColor];
@@ -53,14 +53,36 @@
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self setNavigationBarTitle:@"选择刷卡通道" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+//    [self setNavigationBarTitle:@"选择刷卡通道" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
     
-    [self showGuidePage];
-}
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(leftItemClick) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(0, StatusBarHeightConstant, 44, 44);
+    [self.view addSubview:backBtn];
+    
+    
+    
+    
+//    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];
+//    [backBtn addTarget:self action:@selector(leftItemClick) forControlEvents:UIControlEventTouchUpInside];
+//    backBtn.frame = CGRectMake(0, StatusBarHeightConstant, 44, 44);
+//    [self.view addSubview:backBtn];
+    
 
-- (void)layoutTableView
-{
-    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
+    [self setNavigationBarHidden];
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, StatusBarHeightConstant, 150, 44)];
+    titleLabel.text = @"选择刷卡通道";
+    titleLabel.textColor = UIColor.whiteColor;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:titleLabel];
+
+    
+}
+-(void)leftItemClick{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -80,63 +102,90 @@
 
 - (void)payAction:(MCChannelModel *)channelModel cardModel:(MCBankCardModel *)cardModel
 {
-    NSString *phone = SharedUserInfo.phone;
-    NSString *order_desc = [NSString stringWithFormat:@"%@%@", channelModel.name,channelModel.channelParams];
-    NSString *channe_tag = [NSString stringWithFormat:@"%@", channelModel.channelTag];
+//
+//    NSString *phone = SharedUserInfo.phone;
+//    NSString *order_desc = [NSString stringWithFormat:@"%@%@", channelModel.name,channelModel.channelParams];
+//    NSString *channe_tag = [NSString stringWithFormat:@"%@", channelModel.channelTag];
+//
+//    NSDictionary *param = @{
+//                            @"amount":self.money,
+//                            @"orderDesc":order_desc,
+//                            @"phone":phone,
+//                            @"channeTag":channe_tag,
+//                            @"brandId":SharedConfig.brand_id,
+//                            @"userId":SharedUserInfo.userid,
+//                            @"bankCard":cardModel.cardNo,
+//                            @"creditBankName":cardModel.bankName};
     
-    NSDictionary *param = @{
-                            @"amount":self.money,
-                            @"orderDesc":order_desc,
-                            @"phone":phone,
-                            @"channeTag":channe_tag,
-                            @"brandId":SharedConfig.brand_id,
-                            @"userId":SharedUserInfo.userid,
-                            @"bankCard":cardModel.cardNo,
-                            @"creditBankName":cardModel.bankName};
-    kWeakSelf(self);
-    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        NSString * result = resp.result;
-        [weakself.xinyongInfo setMoney:weakself.money];
-        //电银的通道
-        if ([channe_tag containsString:DYPay_QUICK]) {
-            NSString * orderCode = [result componentsSeparatedByString:@"orderCode="][1];
-            if ([[orderCode componentsSeparatedByString:@"&"] count] > 0) {
-                orderCode = [orderCode componentsSeparatedByString:@"&"][0];
-                [weakself.xinyongInfo setOrderCode:orderCode];
-                [weakself.xinyongInfo setJumpWhereVC:[resp.messege containsString:@"跳转交易页面"] ? @"2" : @"1"];
-                [MCPagingStore pagingURL:rt_card_add withUerinfo:@{@"param":weakself.xinyongInfo}];
-            }
-        //其它通道
-        }else{
-            //拼凑的model
-            MCCustomModel * customModel = [[MCCustomModel alloc]init];
-            [customModel setValue:result forKey:@"api"];    //短信的api
-            [customModel setValue:shoukuan_jianquan forKey:@"whereCome"];//收款界面
-            [customModel setValue:channe_tag forKey:@"bindChannelName"];//通道
-            //在判断是鉴权还是交易
-            [MCPagingStore pagingURL:[resp.messege containsString:@"跳转交易页面"] ? rt_card_jiaoyi : rt_card_jianquan  withUerinfo:@{@"param":weakself.xinyongInfo,@"extend":customModel}];
+//
+  
+    __weak typeof(self) weakSelf = self;
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/receivePayment" parameters:@{
+        @"amount":@"",
+        @"channelPlatform":@"1",
+        @"creditCardId":self.xinyongInfo.id,
+        @"debitCardId":self.chuxuInfo.id,
+        @"deviceId":SharedDefaults.deviceid,
+        @"merchantId":@""
+        
+        
+    } ok:^(MCNetResponse * _Nonnull resp) {
+        NSDictionary * dic  =(NSDictionary *)resp;
+        if ([dic[@"successful"] integerValue] == 1) {
+                        [MCToast showMessage:@"操作成功"];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
     } other:^(MCNetResponse * _Nonnull resp) {
-        [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {  //花呗身份校验
-                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
-            } else {
-                [MCToast showMessage:resp.result];
-            }
-        } else {
-            [MCToast showMessage:resp.messege];
-        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
+    
+    
+//    kWeakSelf(self);
+//    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+//        NSString * result = resp.result;
+//        [weakself.xinyongInfo setMoney:weakself.money];
+//        //电银的通道
+//        if ([channe_tag containsString:DYPay_QUICK]) {
+//            NSString * orderCode = [result componentsSeparatedByString:@"orderCode="][1];
+//            if ([[orderCode componentsSeparatedByString:@"&"] count] > 0) {
+//                orderCode = [orderCode componentsSeparatedByString:@"&"][0];
+//                [weakself.xinyongInfo setOrderCode:orderCode];
+//                [weakself.xinyongInfo setJumpWhereVC:[resp.messege containsString:@"跳转交易页面"] ? @"2" : @"1"];
+//                [MCPagingStore pagingURL:rt_card_add withUerinfo:@{@"param":weakself.xinyongInfo}];
+//            }
+//        //其它通道
+//        }else{
+//            //拼凑的model
+//            MCCustomModel * customModel = [[MCCustomModel alloc]init];
+//            [customModel setValue:result forKey:@"api"];    //短信的api
+//            [customModel setValue:shoukuan_jianquan forKey:@"whereCome"];//收款界面
+//            [customModel setValue:channe_tag forKey:@"bindChannelName"];//通道
+//            //在判断是鉴权还是交易
+//            [MCPagingStore pagingURL:[resp.messege containsString:@"跳转交易页面"] ? rt_card_jiaoyi : rt_card_jianquan  withUerinfo:@{@"param":weakself.xinyongInfo,@"extend":customModel}];
+//        }
+//    } other:^(MCNetResponse * _Nonnull resp) {
+//        [MCLoading hidden];
+//        if ([resp.code isEqualToString:@"666666"]) {
+//            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {  //花呗身份校验
+//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+//            } else {
+//                [MCToast showMessage:resp.result];
+//            }
+//        } else {
+//            [MCToast showMessage:resp.messege];
+//        }
+//    }];
 }
 - (void)getData {
-    NSDictionary *param = @{@"userId":SharedUserInfo.userid,
-                            @"bankCard":self.xinyongInfo.cardNo,
-                            @"amount":self.money,
-                            @"brandId":BCFI.brand_id,
-                            @"recommend":@(2),
-                            @"status":@"1"
-                            };
+//    NSDictionary *param = @{@"userId":SharedUserInfo.userid,
+//                            @"bankCard":self.xinyongInfo.cardNo,
+//                            @"amount":self.money,
+//                            @"brandId":BCFI.brand_id,
+//                            @"recommend":@(2),
+//                            @"status":@"1"
+//                            };
     /*
      long userId,
      Integer brandId,
@@ -147,10 +196,20 @@
      String status //状态1：启用，0：未启用
      
      **/
-    [self.sessionManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp.result];
+    
+    NSString * url2 = @"/api/v1/player/credit/channel";
+    [self.sessionManager mc_GET:url2 parameters:@{@"amount":self.money} ok:^(MCNetResponse * _Nonnull resp) {
+        self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp];
         [self.mc_tableview reloadData];
+        [self.mc_tableview.mj_header endRefreshing];
     }];
+    
+    
+    
+//    [self.sessionManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+//        self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp.result];
+//        [self.mc_tableview reloadData];
+//    }];
 }
 #pragma mark - WBQRCodeVCDelegate
 - (void)scancodeViewControllerComplete:(NSString *)str {
@@ -192,12 +251,5 @@
 //    }]];
 //    [alert showWithAnimated:YES];
 }
--(void)showGuidePage{
-    //空白的frame
-    CGRect emptyRect = CGRectMake(0, 160+kTopHeight,KScreenWidth, 115*2);
-    //图片的frame
-    CGRect imgRect = CGRectMake(100,160+kTopHeight+230, kRealWidthValue(200), kRealWidthValue(200)*1417/1890);
-    kWeakSelf(self);
-    [[KDGuidePageManager shareManager] showGuidePageWithType:KDGuidePageTypeXinYongKaShouKuan emptyRect:emptyRect imgRect:imgRect imgStr:@"guide5" completion:^{}];
-}
+
 @end

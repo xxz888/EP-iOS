@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,12 +14,33 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kd_gather_top" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-pd-nCM">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55l-IQ-ZZ6">
+                    <rect key="frame" x="0.0" y="120" width="414" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择刷卡通道" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYV-nD-evT">
+                            <rect key="frame" x="25" y="11" width="92" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <color key="textColor" red="0.21176470589999999" green="0.2274509804" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEP-gG-xgY">
+                            <rect key="frame" x="12" y="14" width="2" height="12"/>
+                            <color key="backgroundColor" red="1" green="0.62352941179999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="Fkr-mk-6yZ"/>
+                                <constraint firstAttribute="width" constant="2" id="ami-47-sLc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="160" id="Vgl-gI-cQj"/>
+                        <constraint firstItem="uYV-nD-evT" firstAttribute="centerY" secondItem="55l-IQ-ZZ6" secondAttribute="centerY" id="KZT-g2-doe"/>
+                        <constraint firstItem="eEP-gG-xgY" firstAttribute="centerY" secondItem="55l-IQ-ZZ6" secondAttribute="centerY" id="Z2U-si-CdD"/>
+                        <constraint firstItem="eEP-gG-xgY" firstAttribute="leading" secondItem="55l-IQ-ZZ6" secondAttribute="leading" constant="12" id="cMX-vy-FpP"/>
+                        <constraint firstItem="uYV-nD-evT" firstAttribute="leading" secondItem="55l-IQ-ZZ6" secondAttribute="leading" constant="25" id="hWR-WS-4gr"/>
+                        <constraint firstAttribute="height" constant="40" id="sOC-kx-4Tn"/>
                     </constraints>
-                </imageView>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信用卡刷卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfP-IU-1dS">
                     <rect key="frame" x="35" y="69" width="92" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -32,34 +53,23 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择刷卡通道" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYV-nD-evT">
-                    <rect key="frame" x="26" y="135.5" width="74" height="14.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="1" green="0.62352941176470589" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="yeX-pd-nCM" firstAttribute="bottom" secondItem="uYV-nD-evT" secondAttribute="bottom" constant="10" id="19L-ru-8WM"/>
-                <constraint firstItem="yeX-pd-nCM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5eN-0n-Fy2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="55l-IQ-ZZ6" secondAttribute="bottom" id="DzI-aH-xC8"/>
+                <constraint firstItem="55l-IQ-ZZ6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Jeo-RY-n2v"/>
                 <constraint firstItem="UfP-IU-1dS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TS7-Ib-fI8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="55l-IQ-ZZ6" secondAttribute="trailing" id="e1p-g0-3FD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uUf-z3-WtR" secondAttribute="trailing" constant="35" id="lNl-ti-484"/>
-                <constraint firstItem="uYV-nD-evT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="o62-0x-Kb8"/>
-                <constraint firstItem="yeX-pd-nCM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="puQ-wO-efo"/>
                 <constraint firstItem="UfP-IU-1dS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="35" id="syX-0X-EVc"/>
                 <constraint firstItem="uUf-z3-WtR" firstAttribute="centerY" secondItem="UfP-IU-1dS" secondAttribute="centerY" id="v70-GU-7MN"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yeX-pd-nCM" secondAttribute="trailing" id="zhh-Wd-mNf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="moneyView" destination="uUf-z3-WtR" id="Did-PX-fxJ"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="-103.125"/>
         </view>
     </objects>
-    <resources>
-        <image name="kd_gather_top" width="375" height="201.5"/>
-    </resources>
 </document>

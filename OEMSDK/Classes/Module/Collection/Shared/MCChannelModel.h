@@ -37,6 +37,24 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *autoclearing;
 @property (nonatomic, copy) NSString *amount;
 
+@property (nonatomic, copy) NSString *tradeRate;
+@property (nonatomic, copy) NSString *channelId;
+@property (nonatomic, copy) NSString *tradeStartTime;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *dailyMaxAmount;
+@property (nonatomic, copy) NSString *tradeEndTime;
+@property (nonatomic, copy) NSString *extraRate;
+
+
+
+//tradeRate = 76.26000000000001,
+//channelType = OLT,
+//channelId = 1,
+//tradeStartTime = 06:00,
+//title = 开连通好棒棒,
+//dailyMaxAmount = 200000,
+//tradeEndTime = 22:00,
+//extraRate = 1
 @end
 
 NS_ASSUME_NONNULL_END

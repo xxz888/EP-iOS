@@ -274,6 +274,7 @@
 		1BD3DC43250B60A600A5D148 /* KDGatheringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC41250B60A600A5D148 /* KDGatheringViewController.xib */; };
 		6F5C0283271EAE220059A557 /* KDGuanFangSheQun.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */; };
 		6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */; };
+		6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */; };
 		6FA44E93274E3BFF00DA1C59 /* KDMyWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */; };
 		6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */; };
 		6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */; };
@@ -735,6 +736,7 @@
 		6F5C0281271EAE220059A557 /* KDGuanFangSheQun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGuanFangSheQun.h; sourceTree = "<group>"; };
 		6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGuanFangSheQun.m; sourceTree = "<group>"; };
 		6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDGuanFangSheQun.xib; sourceTree = "<group>"; };
+		6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6FA44E91274E3BFF00DA1C59 /* KDMyWallView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMyWallView.h; sourceTree = "<group>"; };
 		6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMyWallView.m; sourceTree = "<group>"; };
 		6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMyWallView.xib; sourceTree = "<group>"; };
@@ -1391,6 +1393,7 @@
 				1BC5E3B2250341180064CA30 /* AppDelegate.h */,
 				1BC5E3B3250341180064CA30 /* AppDelegate.m */,
 				1B9C9B4925075D6700EE0819 /* Assets.xcassets */,
+				6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */,
 				1BC5E3B1250341180064CA30 /* Info.plist */,
 				1BC5E3B5250341180064CA30 /* main.m */,
 				1BC5E3B0250341180064CA30 /* PrefixHeader.pch */,
@@ -1873,6 +1876,7 @@
 				1B730CE7251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib in Resources */,
 				180B17A32575EBD9006D3D13 /* KDKongKaViewController.xib in Resources */,
 				1BD3DC1E250B179B00A5D148 /* KDAchieveAwardHeaderView.xib in Resources */,
+				6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */,
 				6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */,
 				1823438E26466172003BABEE /* KDTiXianDengPaoViewController.xib in Resources */,
 				1B1C0EA92508A9260009CDC6 /* KDOutProvisionsViewController.xib in Resources */,

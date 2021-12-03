@@ -16,13 +16,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewMQMessages:) name:MQ_RECEIVED_NEW_MESSAGES_NOTIFICATION object:nil];
-    //请求未读消息
-    [self requestGetUnreadMessages];
-    
-    [self requestGuanFangLiuYan];
-    
-    [self requestQueryFangLiuYan];
+
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -32,7 +26,7 @@
     [super viewDidLoad];
 
     [self setUI];
-    [self setData];
+//    [self setData];
 }
 -(void)setData{
     

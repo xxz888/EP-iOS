@@ -23,7 +23,7 @@
 {
     [super layoutSubviews];
     
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 160);
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 180);
 }
 
 @end

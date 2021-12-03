@@ -322,13 +322,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您好！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-Wg-59A">
-                    <rect key="frame" x="32" y="44" width="85.5" height="33.5"/>
+                    <rect key="frame" x="32" y="24" width="85.5" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎来到無卡生活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anP-xr-XQj">
-                    <rect key="frame" x="32" y="93.5" width="171" height="25.5"/>
+                    <rect key="frame" x="32" y="73.5" width="171" height="25.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -353,7 +353,7 @@
                 <constraint firstItem="Mqv-UU-4D7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="Y9r-eH-Zls"/>
                 <constraint firstItem="anP-xr-XQj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="d1I-Gu-vBg"/>
                 <constraint firstItem="0Qg-Gz-QHV" firstAttribute="height" secondItem="LvK-4L-ycv" secondAttribute="height" id="gMA-YE-lQr"/>
-                <constraint firstItem="zrR-Wg-59A" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="gke-ZY-ih7"/>
+                <constraint firstItem="zrR-Wg-59A" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="gke-ZY-ih7"/>
                 <constraint firstItem="fgy-jm-h92" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kI2-6U-rzQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kWe-zZ-Hjf" secondAttribute="trailing" constant="30" id="kIf-Bo-2Vn"/>
                 <constraint firstItem="fgy-jm-h92" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="kJ6-cG-Wqv"/>
