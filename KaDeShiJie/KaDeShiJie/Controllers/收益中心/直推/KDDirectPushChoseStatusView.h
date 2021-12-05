@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDDirectPushChoseStatusView : UIView
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pushHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btn4Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btn3Height;
 
 @property (nonatomic, copy) void (^choseStatus)(NSString *status);
 

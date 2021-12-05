@@ -48,12 +48,19 @@
     
     [self.btn1 setTitle:titleArray[0] forState:UIControlStateNormal];
     [self.btn2 setTitle:titleArray[1] forState:UIControlStateNormal];
-    [self.btn3 setTitle:titleArray[2] forState:UIControlStateNormal];
+    if ([titleArray count] >= 3) {
+        [self.btn3 setTitle:titleArray[2] forState:UIControlStateNormal];
+    }
     if (titleArray.count == 4) {
         [self.btn4 setTitle:titleArray[3] forState:UIControlStateNormal];
         self.pushHeight.constant = 228;
         self.btn4Height.constant = 57;
         self.btn4.hidden = NO;
+    }else if ([titleArray count] == 2){
+        self.pushHeight.constant = 228-57-57;
+        self.btn3Height.constant = self.btn4Height.constant = 0;
+
+        self.btn3.hidden = self.btn4.hidden = YES;
     }else{
         self.pushHeight.constant = 228-57;
         self.btn4Height.constant = 0;

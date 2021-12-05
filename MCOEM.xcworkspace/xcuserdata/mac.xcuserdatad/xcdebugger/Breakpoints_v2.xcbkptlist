@@ -5,18 +5,46 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "E18B99CE-8F5D-4091-A364-A54179F57BCA"
+            uuid = "D7471886-12E9-4372-B362-3733DC632EE7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OEMSDK/Classes/Tools/MCNetwork/NetBase/MCSessionManager/MCSessionManager.m"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BAC69FD6-19B8-4ACE-86CC-A5D7A3A14922"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x8ba1;&#x5212;&#x9884;&#x89c8;/KDPlanPreviewViewCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "-mc_POST:parameters:ok:other:failure:"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-setOrderModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2331238E-E1AC-4801-9E22-F120219D742E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x8ba1;&#x5212;&#x9884;&#x89c8;/KDPlanPreviewViewCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-setOrderModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

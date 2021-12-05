@@ -159,14 +159,14 @@
     
     kWeakSelf(self);
     //1.查询当天是否可以开始执行
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/plan/today/run" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-    
-        weakself.selectCurrent = [resp.messege integerValue];
-        [weakself requestDataSource:weakself.month];
-    }];
+//    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/plan/today/run" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+//
+//        weakself.selectCurrent = [resp.messege integerValue];
+//        [weakself requestDataSource:weakself.month];
+//    }];
   
     
-    
+    [self requestDataSource:weakself.month];
 }
 
 - (IBAction)cancelTouched:(UIButton *)sender {
@@ -223,13 +223,13 @@
     NSString * clickString = [NSString stringWithFormat:@"%ld-%ld-%ld",calendarItem.year,calendarItem.month,calendarItem.day];
 
     //结果说明：resp_message为0代表当天不执行计划，为1代表当天开始执行计划
-    if (calendarItem.day == [MCDateStore getCurrentDay] && self.selectCurrent == 0) {
-        return;
-    }
+//    if (calendarItem.day == [MCDateStore getCurrentDay] && self.selectCurrent == 0) {
+//        return;
+//    }
     
-    if (![MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
-        return;
-    }
+//    if (![MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
+//        return;
+//    }
 
     
     if (calendarItem.labType == MSSCircleLabelTypeSelected) {

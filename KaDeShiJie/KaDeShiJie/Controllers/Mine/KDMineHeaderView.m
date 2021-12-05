@@ -13,6 +13,7 @@
 #import "KDWXViewController.h"
 #import "KDTrandingRecordViewController.h"
 #import "KDJFShopManagerViewController.h"
+#import "KDMineKehuViewController.h"
 
 #import "KDWebContainer.h"
 #import "KDJFShopViewController.h"
@@ -84,11 +85,13 @@
     }];
     //联系我们
     [self.lianxiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-            
+        [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+
     }];
     //我的客户
     [self.wodekefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-
+        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineKehuViewController alloc] init] animated:YES];
+        
     }];
     //设置
     [self.shezhiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {

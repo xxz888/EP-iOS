@@ -101,6 +101,16 @@ NS_ASSUME_NONNULL_BEGIN
 /** eg. 2252009 */
 @property (nonatomic, assign) NSInteger itemId;
 
+@property (nonatomic, strong) NSString * bank;
+
+@property (nonatomic, strong) NSString * validPeriod;
+@property (nonatomic, strong) NSString * repaymentDate;
+@property (nonatomic, strong) NSString * memberId;
+@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) NSString * billingDate;
+@property (nonatomic, strong) NSString * modifyTime;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * bankCardNo;
 @end
 
 NS_ASSUME_NONNULL_END

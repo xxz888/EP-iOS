@@ -36,6 +36,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (nonatomic, strong) KDHomeHeaderView *headerView;
+@property (weak, nonatomic) IBOutlet UIStackView *cententBottomView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) SDCycleScrollView *cyView;
@@ -66,6 +67,24 @@
         [btn setTitle:titleArray[i] forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom_%d", i]] forState:UIControlStateNormal];
     }
+    
+    NSArray *titleArray1 = @[@"小额闪付", @"刷脸付", @"花呗", @"手机POS"];
+    for (int i = 0; i < 4; i++) {
+        QMUIButton *btn = [self.cententBottomView viewWithTag: 300 + i];
+        btn.imagePosition = QMUIButtonImagePositionTop;
+        [btn setTitle:titleArray1[i] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom1_%d", i]] forState:UIControlStateNormal];
+    }
+    
+    
+//    UIView *view = [[UIView alloc] init];
+//    view.frame = CGRectMake(16,195.7,328,150);
+//    view.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
+//    self.cententBottomView.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.03].CGColor;
+//    self.cententBottomView.layer.shadowOffset = CGSizeMake(0,3);
+//    self.cententBottomView.layer.shadowOpacity = 1;
+//    self.cententBottomView.layer.shadowRadius = 5;
+//    self.cententBottomView.layer.cornerRadius = 6.7;
     
     self.contentView.layer.cornerRadius = 7;
     self.msgContentView.layer.cornerRadius = 10;
@@ -117,8 +136,14 @@
                     break;
                 case 101:
                 {
-                    KDHomeBillManageViewController * vc = [[KDHomeBillManageViewController alloc]init];
+                    //                    原生信用卡还款界面
+                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
+                    vc.navTitle = @"信用卡还款";
+                    //订单类型（2为还款记录、3为空卡记录）
+                    vc.orderType = @"2";
                     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+//                    KDHomeBillManageViewController * vc = [[KDHomeBillManageViewController alloc]init];
+//                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 
 //                    [self showRenzhengView];
                

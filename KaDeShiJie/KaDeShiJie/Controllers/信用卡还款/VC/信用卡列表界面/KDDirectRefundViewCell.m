@@ -59,62 +59,69 @@
     _refundModel = refundModel;
     
     self.nameLabel.text = refundModel.bankName;
-    self.billdayLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", refundModel.billDay, refundModel.repaymentDay];
+    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", refundModel.billDay, refundModel.repaymentDay];
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:refundModel.bankName];
     self.iconView.image = info.logo;
     self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [refundModel.cardNo substringFromIndex:refundModel.cardNo.length - 4]];
+    
+//    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)",refundModel.bankCardNo];
 
+    self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
+    self.progressContentView.userInteractionEnabled = NO;
+    self.planBtn.hidden = NO;
+    self.planBtn.userInteractionEnabled = YES;
+    self.desLabel.text = @"请及时设置本月还款计划";
         //planType 新的余额还款,如果要显示制定计划按钮，暂时planType就不等于1，走老的逻辑 2 4 5 7             136去掉
-        if ([refundModel.planType integerValue] == 1) {
-            NSArray  * keyStatus = @[@"",@"",@"执行中", @"", @"失败", @"取消中",@"",@"失败"];
-            NSString * status = keyStatus[[refundModel.balancePlanStatus integerValue]];
-            //运行中状态 app显示还款中
-            if ([refundModel.balancePlanStatus integerValue] == 2 || [refundModel.balancePlanStatus integerValue] == 4 ||
-                [refundModel.balancePlanStatus integerValue] == 5 || [refundModel.balancePlanStatus integerValue] == 7
-                ) {
-                NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.2f元", status, refundModel.balanceSuccessAmount];
-                NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
-                NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@", status]];
-                [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F08300"] range:range];
-                self.desLabel.attributedText = attsDes;
-                self.planBtn.hidden = YES;
-                self.progressView.progress = refundModel.balanceSuccessAmount / refundModel.balanceAllAmount;
-                self.progressView.hidden = self.jihuajinduBtn.hidden = NO;
-                self.progressContentView.userInteractionEnabled = YES;
-            }else{
-                self.progressContentView.userInteractionEnabled = NO;
-                self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
-                self.planBtn.hidden = YES;
-                self.desLabel.text = status;
-            }
-        }
-        //planType 老的余额还款
-        if ([refundModel.planType integerValue] == 3) {
-            if (refundModel.allAmount == 0) {
-                self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
-                self.progressContentView.userInteractionEnabled = NO;
-                self.planBtn.hidden = NO;
-                self.planBtn.userInteractionEnabled = YES;
-                self.desLabel.text = @"请及时设置本月还款计划";
-            }else{
-                [self xinYongKaHuanKuanAction:refundModel];
-                if ([refundModel.repaymentModel integerValue] == 0) {
-                    self.planBtn.hidden = YES;
-                    self.progressView.progress = refundModel.successAmount / refundModel.allAmount;
-                    self.progressView.hidden = self.jihuajinduBtn.hidden = NO;
-                    self.progressContentView.userInteractionEnabled = YES;
-                }else{
-                    self.desLabel.text = @"已制定本月还款计划";
-                    self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
-                    self.progressContentView.userInteractionEnabled = NO;
-
-                    self.planBtn.hidden = NO;
-                    [self.planBtn setBackgroundImage:nil forState:UIControlStateNormal];
-                    [self.planBtn setBackgroundColor:KGrayColor];
-                    self.planBtn.userInteractionEnabled = NO;
-                }
-            }
-        }
+//        if ([refundModel.planType integerValue] == 1) {
+//            NSArray  * keyStatus = @[@"",@"",@"执行中", @"", @"失败", @"取消中",@"",@"失败"];
+//            NSString * status = keyStatus[[refundModel.balancePlanStatus integerValue]];
+//            //运行中状态 app显示还款中
+//            if ([refundModel.balancePlanStatus integerValue] == 2 || [refundModel.balancePlanStatus integerValue] == 4 ||
+//                [refundModel.balancePlanStatus integerValue] == 5 || [refundModel.balancePlanStatus integerValue] == 7
+//                ) {
+//                NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.2f元", status, refundModel.balanceSuccessAmount];
+//                NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
+//                NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@", status]];
+//                [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F08300"] range:range];
+//                self.desLabel.attributedText = attsDes;
+//                self.planBtn.hidden = YES;
+//                self.progressView.progress = refundModel.balanceSuccessAmount / refundModel.balanceAllAmount;
+//                self.progressView.hidden = self.jihuajinduBtn.hidden = NO;
+//                self.progressContentView.userInteractionEnabled = YES;
+//            }else{
+//                self.progressContentView.userInteractionEnabled = NO;
+//                self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
+//                self.planBtn.hidden = YES;
+//                self.desLabel.text = status;
+//            }
+//        }
+//        //planType 老的余额还款
+//        if ([refundModel.planType integerValue] == 3) {
+//            if (refundModel.allAmount == 0) {
+//                self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
+//                self.progressContentView.userInteractionEnabled = NO;
+//                self.planBtn.hidden = NO;
+//                self.planBtn.userInteractionEnabled = YES;
+//                self.desLabel.text = @"请及时设置本月还款计划";
+//            }else{
+//                [self xinYongKaHuanKuanAction:refundModel];
+//                if ([refundModel.repaymentModel integerValue] == 0) {
+//                    self.planBtn.hidden = YES;
+//                    self.progressView.progress = refundModel.successAmount / refundModel.allAmount;
+//                    self.progressView.hidden = self.jihuajinduBtn.hidden = NO;
+//                    self.progressContentView.userInteractionEnabled = YES;
+//                }else{
+//                    self.desLabel.text = @"已制定本月还款计划";
+//                    self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
+//                    self.progressContentView.userInteractionEnabled = NO;
+//
+//                    self.planBtn.hidden = NO;
+//                    [self.planBtn setBackgroundImage:nil forState:UIControlStateNormal];
+//                    [self.planBtn setBackgroundColor:KGrayColor];
+//                    self.planBtn.userInteractionEnabled = NO;
+//                }
+//            }
+//        }
 }
 #pragma mark --------------------信用卡还款和空卡还款公用的状态，封装起来---------------------
 -(void)xinYongKaHuanKuanAction:(KDDirectRefundModel *)refundModel{

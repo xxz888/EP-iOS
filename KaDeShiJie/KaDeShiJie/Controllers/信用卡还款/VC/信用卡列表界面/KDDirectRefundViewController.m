@@ -87,7 +87,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 150;
     self.feilvtitleLbl.text = [self.orderType isEqualToString:@"2"] ?
-    @"费率：0.85%（每1万元85元手续费）+1元/次":
+    @"费率：0.79%（每1万元79元手续费）+2元/次":
     @"费率：1.25%（每1万元125元手续费）+1元/次";
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(mc_tableviewRefresh)];
@@ -170,23 +170,42 @@
 
 - (void)getDirectCardData
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    kWeakSelf(self);
-    [MCLoading show];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        [MCLoading hidden];
-        [weakself.tableView.mj_header endRefreshing];
-        [weakself.dataArray removeAllObjects];
-        weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
-        if (weakself.dataArray == 0) {
-            weakself.tableView.hidden = YES;
-            weakself.etyView.hidden = NO;
-        } else {
-            weakself.tableView.hidden = NO;
-            weakself.etyView.hidden = YES;
-            [weakself.tableView reloadData];
-        }
+    
+    
+    __weak __typeof(self)weakself = self;
+    NSString * url1 = @"/api/v1/player/bank/credit";
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+            [weakself.tableView.mj_header endRefreshing];
+            [weakself.dataArray removeAllObjects];
+            weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp];
+            if (weakself.dataArray == 0) {
+                weakself.tableView.hidden = YES;
+                weakself.etyView.hidden = NO;
+            } else {
+                weakself.tableView.hidden = NO;
+                weakself.etyView.hidden = YES;
+                [weakself.tableView reloadData];
+            }
     }];
+    
+    
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    [params setValue:SharedUserInfo.userid forKey:@"userId"];
+//    kWeakSelf(self);
+//    [MCLoading show];
+//    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+//        [MCLoading hidden];
+//        [weakself.tableView.mj_header endRefreshing];
+//        [weakself.dataArray removeAllObjects];
+//        weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+//        if (weakself.dataArray == 0) {
+//            weakself.tableView.hidden = YES;
+//            weakself.etyView.hidden = NO;
+//        } else {
+//            weakself.tableView.hidden = NO;
+//            weakself.etyView.hidden = YES;
+//            [weakself.tableView reloadData];
+//        }
+//    }];
 }
 @end

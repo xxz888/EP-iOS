@@ -89,13 +89,13 @@
     return 30;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.detailModel.totalOrder.count;
+    return [self.startDic[@"tasks"] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KDPlanPreviewViewCell *cell = [KDPlanPreviewViewCell cellWithTableView:tableView];
     cell.whereCome = self.whereCome;
     cell.balancePlanId = self.balancePlanId;
-    cell.orderModel = self.detailModel.totalOrder[indexPath.row];
+    cell.orderModel = self.startDic[@"tasks"][indexPath.row];
     
     return cell;
 }

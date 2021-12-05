@@ -40,7 +40,7 @@
                         <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qg-az-GsO" customClass="QMUIButton">
                             <rect key="frame" x="138" y="0.0" width="138" height="90"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="账单管理" image="我的账单"/>
+                            <state key="normal" title="智能还款" image="信用卡还款"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
                                     <real key="value" value="6"/>
@@ -53,7 +53,7 @@
                         <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-nj-Wie" customClass="QMUIButton">
                             <rect key="frame" x="276" y="0.0" width="138" height="90"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="我的钱包" image="钱包"/>
+                            <state key="normal" title="空卡还款" image="信用卡 (4)"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
                                     <real key="value" value="10"/>
@@ -144,35 +144,111 @@
                                 <constraint firstAttribute="height" constant="80" id="dmu-dD-2N1"/>
                             </constraints>
                         </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wjI-4V-d9G">
+                            <rect key="frame" x="0.0" y="93" width="382" height="80"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uOe-Bf-dQq">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q5-hW-oU2" customClass="QMUIButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="80"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="顶级代理" image="kd_home_bottom_0">
+                                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
+                                                    <real key="value" value="7.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="UUT-B8-SsG"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGY-uw-Wai" customClass="QMUIButton">
+                                            <rect key="frame" x="95.5" y="0.0" width="95.5" height="80"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="顶级代理" image="kd_home_bottom_0">
+                                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
+                                                    <real key="value" value="7.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="S2p-di-zph"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="302" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOS-BK-Uv7" customClass="QMUIButton">
+                                            <rect key="frame" x="191" y="0.0" width="95.5" height="80"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="顶级代理" image="kd_home_bottom_0">
+                                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
+                                                    <real key="value" value="7.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="VmS-NQ-4co"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="303" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fF2-Ec-9x4" customClass="QMUIButton">
+                                            <rect key="frame" x="286.5" y="0.0" width="95.5" height="80"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="顶级代理" image="kd_home_bottom_0">
+                                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
+                                                    <real key="value" value="7.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="QA0-FQ-Ked"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="weA-vl-e2R"/>
+                            </constraints>
+                        </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPS-wx-cbb">
-                            <rect key="frame" x="0.0" y="128" width="57.5" height="17"/>
+                            <rect key="frame" x="0.0" y="208" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="绑定信用卡" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-k5-SJS">
-                            <rect key="frame" x="0.0" y="165" width="189" height="80"/>
+                            <rect key="frame" x="0.0" y="245" width="189" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="cKA-3c-VRj"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-GS-BQH">
-                            <rect key="frame" x="195" y="165" width="187" height="80"/>
+                            <rect key="frame" x="195" y="245" width="187" height="80"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="NJr-rh-seA" firstAttribute="top" secondItem="Wem-cK-bkb" secondAttribute="top" constant="13" id="37X-CJ-jkv"/>
-                        <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" constant="35" id="9oG-7h-Hxb"/>
+                        <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" constant="115" id="9oG-7h-Hxb"/>
+                        <constraint firstItem="wjI-4V-d9G" firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="Blh-gJ-2gV"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="leading" secondItem="aPS-wx-cbb" secondAttribute="leading" id="E2l-tf-lfW"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="width" secondItem="Wem-cK-bkb" secondAttribute="width" multiplier="0.5" constant="-2" id="G47-HA-vdo"/>
                         <constraint firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="GZM-Fl-b3g"/>
                         <constraint firstItem="OEf-GS-BQH" firstAttribute="top" secondItem="31Z-k5-SJS" secondAttribute="top" id="Ilb-aX-CDR"/>
                         <constraint firstItem="OEf-GS-BQH" firstAttribute="bottom" secondItem="31Z-k5-SJS" secondAttribute="bottom" id="MMd-a1-bgv"/>
+                        <constraint firstItem="wjI-4V-d9G" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" id="ThE-TT-xJq"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="top" secondItem="aPS-wx-cbb" secondAttribute="bottom" constant="20" id="XOm-th-jCg"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="ZHZ-ob-Z6k"/>
                         <constraint firstItem="OEf-GS-BQH" firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="width" constant="-2" id="iOz-Eg-gOC"/>
                         <constraint firstAttribute="trailing" secondItem="OEf-GS-BQH" secondAttribute="trailing" id="qo0-is-F1f"/>
+                        <constraint firstItem="wjI-4V-d9G" firstAttribute="leading" secondItem="NJr-rh-seA" secondAttribute="leading" id="s9S-Nz-Fin"/>
                         <constraint firstItem="NJr-rh-seA" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="yRX-06-doQ"/>
                     </constraints>
                 </view>
@@ -193,6 +269,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="cententBottomView" destination="wjI-4V-d9G" id="qmo-aq-DZo"/>
                 <outlet property="centerView" destination="NJr-rh-seA" id="8N9-fQ-5b3"/>
                 <outlet property="contentView" destination="Wem-cK-bkb" id="Zsr-Qn-Wbp"/>
                 <outlet property="topView" destination="3fR-TA-5bX" id="3d3-4t-sfD"/>
@@ -203,11 +280,11 @@
     <resources>
         <image name="kd_home_bottom_0" width="45.5" height="45.5"/>
         <image name="kd_home_top_bg" width="540" height="325"/>
-        <image name="我的账单" width="39" height="39"/>
+        <image name="信用卡 (4)" width="39" height="31"/>
+        <image name="信用卡还款" width="39" height="32"/>
         <image name="收款" width="39" height="39"/>
         <image name="绑定信用卡" width="163.5" height="75"/>
         <image name="花呗" width="163.5" height="75"/>
-        <image name="钱包" width="40" height="33"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

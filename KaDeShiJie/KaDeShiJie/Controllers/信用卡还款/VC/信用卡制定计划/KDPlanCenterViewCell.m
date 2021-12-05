@@ -231,12 +231,14 @@
 }
 #pragma mark -------------------点击定制日期还款--------------------------
 - (IBAction)clickSelectRefundTypeBtn:(QMUIButton *)sender {
-    [self.addressBtn setTitle:@"请选择消费地区" forState:0];
-    //检查界面参数
-    if (![self checkParameters]) { return;}
+//    [self.addressBtn setTitle:@"请选择消费地区" forState:0];
+//    //检查界面参数
+//    if (![self checkParameters]) { return;}
     self.selectRefundTypeBtn.selected = YES;
     self.normalRefundTypeBtn.selected = NO;
-    [self needDayAction1];
+    [self.modalVC showWithAnimated:YES completion:nil];
+
+//    [self needDayAction1];
 }
 #pragma mark ------------------弹出日历------------------------
 - (void)showCalendarDateWithChose:(NSArray *)timeArray {
@@ -385,7 +387,7 @@
 #pragma mark ------------------根据各种参数,计算至少需要的天数------------------------
 -(void)needDayAction1{
     [self.cardBalanceView endEditing:NO];
-    if (![self checkParameters]) {return;}
+//    if (![self checkParameters]) {return;}
     //先请求通道
     kWeakSelf(self);
     static NSTimeInterval time = 0;
@@ -538,7 +540,66 @@
 }
 #pragma mark ------------------第三步制定计划,按钮点击方法------------------------
 - (IBAction)clickPlanBtn:(KDFillButton *)sender {
-    [self requestZhiDingJiHua];
+    [self requestCreatePlan];
+}
+
+/*
+ "cardBalance": 0,
+ "consumptionArea": "string",
+ "creditCardId": 0,
+ "period": "First",
+ "planStartDate": "2021-12-05",
+ "repaymentAmount": 0
+ **/
+-(void)requestCreatePlan{
+    NSDictionary * dic = @{
+        @"cardBalance":self.cardBalanceView.text,
+        @"consumptionArea":@"string",
+        @"creditCardId":[NSString stringWithFormat:@"%ld",(long)self.directModel.itemId],
+        @"period":@"First",
+        @"planStartDate":@"2021-12-05",
+        @"repaymentAmount":[NSString stringWithFormat:@"%.0f",[self inRefundMoneyToNewMoney]]
+    };
+    /**
+     
+     bind = 0,
+     plan = {
+     id = 57,
+     creditCardId = 16,
+     channelId = 1,
+     period = First,
+     channelType = OLT,
+     planStartDate = 2021-12-05,
+     cardBalance = 333,
+     tasks = [
+ {
+     id = 0,
+     planTaskType = Consumption,
+     channelId = 1,
+     surplusFee = 0.74,
+     channelType = OLT,
+     planId = 57,
+     amount = 159,
+     cardBalance = 174,
+     fee = 2,
+     executeFailCount = 0,
+     consumptionArea = string,
+     memberId = 19,
+     planTaskId = 2021120516392568286487,
+     executeTime = 2021-12-05T17:40:00,
+     status = Padding,
+     actualFee = 1.26
+ },
+,*/
+    __weak typeof(self) weakSelf = self;
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/plan" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+        [weakSelf respCode000000:resp];
+
+    } other:^(MCNetResponse * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 //① 第三步制定计划
 - (void)requestZhiDingJiHua{
@@ -583,7 +644,7 @@
     }];
 }
 //③ 第三步制定计划
--(void)respCode000000:(MCNetResponse *_Nonnull)resp{
+-(void)respCode000000:(NSDictionary *_Nonnull)resp{
     //拼凑
     KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
     repaymentModel.bankName = self.directModel.bankName;
@@ -594,31 +655,16 @@
     NSMutableArray * consumeTaskVOsArray = [[NSMutableArray alloc]init];
     KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
     //如果为字典，就是新的余额还款
-    if ([resp.result isKindOfClass:[NSDictionary class]]) {
         [consumeTaskVOsArray removeAllObjects];
-        [consumeTaskVOsArray addObjectsFromArray:resp.result[@"balancePlanItemList"]];
-        amountModel.taskCount = [resp.result[@"taskCount"] integerValue];          //还款总次数
+        [consumeTaskVOsArray addObjectsFromArray:resp[@"tasks"]];
+        amountModel.taskCount = 11;       //还款总次数
         amountModel.repaymentedSuccessCount = 0;                                        //已还次数
-        amountModel.consumedAmount = [resp.result[@"taskAmount"] floatValue];         //还款总金额
+        amountModel.consumedAmount = 22;         //还款总金额
         amountModel.repaymentedAmount = 0;                                              //yi huan jin e
-        amountModel.totalServiceCharge = [resp.result[@"totalServiceCharge"] floatValue]; //yu ji shou xu fei
+        amountModel.totalServiceCharge = 110; //yu ji shou xu fei
         amountModel.usedCharge = 0;
         vc.balancePlanId = @"99999";//这个是拼凑的参数
-    }else{
-        //如果为数组，就为老的余额还款
-        for (NSDictionary * dic in resp.result) {
-            for (NSDictionary * dicVos in dic[@"consumeTaskVOs"]) {
-                [consumeTaskVOsArray addObject:dicVos];
-            }
-            [consumeTaskVOsArray addObject:dic];
-        }
-        amountModel.taskCount = [resp.repaymentCount integerValue];          //huan kuan zong ci shu
-        amountModel.repaymentedSuccessCount = 0;                                        //yi huan ci shu
-        amountModel.consumedAmount = [resp.amount floatValue];         //huan kuan zong jin e
-        amountModel.repaymentedAmount = 0;                                              //yi huan jin e
-        amountModel.totalServiceCharge = [resp.allServiceCharge floatValue]; //yu ji shou xu fei
-        amountModel.usedCharge = 0;
-    }
+
     NSDictionary * dic = @{@"totalOrder":consumeTaskVOsArray,@"totalAmount":@[amountModel]};
     KDRepaymentDetailModel * detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:dic];
     vc.detailModel = detailModel;//拼凑的model
@@ -627,24 +673,20 @@
     vc.isCanDelete = YES;
     
     //下边是启动计划需要的带过去的参数
-    vc.taskJSON = [NSString toJSONData:resp.result];
+    vc.taskJSON = [NSString toJSONData:resp[@"tasks"]];
     vc.version  = self.version;
     vc.reservedAmount = [self getParameters][@"reservedAmount"];
-    vc.city = [NSString stringWithFormat:@"%@-%@-%@-%@",
-                 self.provinceModel.value,
-                 self.cityModel.value,
-                 self.provinceModel.key,
-                 self.cityModel.key
-                 ];
+    vc.city = @"";
     vc.amount = [NSString stringWithFormat:@"%.2f",[self inRefundMoneyToNewMoney]];
     vc.extra = self.extra;
     
-    NSDictionary * extraDic = @{@"provinceId":[NSString stringWithFormat:@"%@,%@",self.provinceModel.key,self.provinceModel.value],
-                                @"cityCode":  [NSString stringWithFormat:@"%@,%@",self.cityModel.key,self.cityModel.value],
-                                @"merprovince":self.provinceModel.value,
-                                @"mercity":self.cityModel.value,
-                                @"merarea":self.cityModel.key};
+    NSDictionary * extraDic = @{@"provinceId":[NSString stringWithFormat:@"%@,%@",@"",@""],
+                                @"cityCode":  [NSString stringWithFormat:@"%@,%@",@"",@""],
+                                @"merprovince":@"",
+                                @"mercity":@"",
+                                @"merarea":@""};
     vc.extra = [NSString toJSONData:extraDic];
+    vc.startDic = resp;
     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }
 //获取总金额
@@ -716,8 +758,8 @@
 - (KDCalendarView *)calendar {
     if (!_calendar) {
         _calendar = [[[NSBundle mainBundle] loadNibNamed:@"KDCalendarView" owner:nil options:nil] lastObject];
-        _calendar.billDay =      self.directModel.billDay;         //账单日
-        _calendar.repaymentDay = self.directModel.repaymentDay;    //还款日
+        _calendar.billDay =      1;//self.directModel.billDay;         //账单日
+        _calendar.repaymentDay = 10;//self.directModel.repaymentDay;    //还款日
         _calendar.billMonth = self.billMonth;//账单月
         _calendar.repaymentMonth = self.repaymentMonth;//还款月
         
@@ -737,9 +779,9 @@
             [weakSelf showCalendarDateWithChose:dateArray];
         };
     }
-    _calendar.needDayCount = [self needDay];    //
+//    _calendar.needDayCount = [self needDay];    //
     
-    _calendar.needDayLbl.text = [NSString stringWithFormat:@"(至少选择 %ld 天)", [self needDay]];
+//    _calendar.needDayLbl.text = [NSString stringWithFormat:@"(至少选择 %ld 天)", [self needDay]];
     
     return _calendar;
 }

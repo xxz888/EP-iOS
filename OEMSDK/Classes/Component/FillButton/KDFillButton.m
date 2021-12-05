@@ -47,10 +47,11 @@
     // gradient
     CAGradientLayer *gl = [CAGradientLayer layer];
     gl.frame = self.bounds;
-    gl.startPoint = CGPointMake(0.53, 0);
-    gl.endPoint = CGPointMake(0.53, 1);
-    gl.colors = @[(__bridge id)[UIColor colorWithRed:204/255.0 green:162/255.0 blue:100/255.0 alpha:1.0].CGColor, (__bridge id)[UIColor colorWithRed:170/255.0 green:115/255.0 blue:34/255.0 alpha:1.0].CGColor];
-    gl.locations = @[@(0), @(1.0f)];
+    gl.startPoint = CGPointMake(0, 0);
+    gl.endPoint = CGPointMake(1, 1);
+    gl.colors = @[(__bridge id)[UIColor colorWithRed:255/255.0 green:166/255.0 blue:88/255.0 alpha:1.0].CGColor,(__bridge id)[UIColor colorWithRed:255/255.0 green:173/255.0 blue:102/255.0 alpha:1.0].CGColor];
+    gl.locations = @[@(0.0),@(1.0)];
+
     [bgView.layer insertSublayer:gl atIndex:0];
     
     [self setBackgroundImage:[UIImage qmui_imageWithView:bgView] forState:UIControlStateNormal];

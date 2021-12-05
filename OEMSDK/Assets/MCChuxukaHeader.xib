@@ -18,27 +18,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O78-3B-rYQ">
-                            <rect key="frame" x="14" y="10.5" width="386" height="29.5"/>
+                            <rect key="frame" x="14" y="9" width="386" height="32"/>
                             <attributedString key="attributedText">
-                                <fragment content="请添加本人储蓄卡作为结算卡，该卡作为后续刷卡、提现资金的结算">
-                                    <attributes>
-                                        <color key="NSColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
-                                    </attributes>
-                                </fragment>
                                 <fragment>
-                                    <string key="content" base64-UTF8="YES">
-Cg
+                                    <string key="content">请添加本人储蓄卡作为结算卡，该卡作为后续刷卡、提现资金的结算
 </string>
                                     <attributes>
                                         <color key="NSColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" metaFont="controlContent"/>
+                                        <font key="NSFont" metaFont="cellTitle"/>
                                     </attributes>
                                 </fragment>
                                 <fragment content="账号，户名必须与实名认证姓名一致">
                                     <attributes>
                                         <color key="NSColor" red="1" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
+                                        <font key="NSFont" metaFont="cellTitle"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>

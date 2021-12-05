@@ -28,6 +28,8 @@
 		047522A2274FC78D00268D58 /* KDJiangLiShouYiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047522A1274FC78D00268D58 /* KDJiangLiShouYiViewController.m */; };
 		04AE083226FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE083026FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m */; };
 		04AE083326FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */; };
+		04B70018275C5A5500A755B8 /* KDMineKehuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B70016275C5A5500A755B8 /* KDMineKehuViewController.m */; };
+		04B70019275C5A5500A755B8 /* KDMineKehuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B70017275C5A5500A755B8 /* KDMineKehuViewController.xib */; };
 		04CDE20E274E7D580038A649 /* KDTixianjiluTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDE20C274E7D580038A649 /* KDTixianjiluTableViewCell.m */; };
 		04CDE20F274E7D580038A649 /* KDTixianjiluTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDE20D274E7D580038A649 /* KDTixianjiluTableViewCell.xib */; };
 		180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */; };
@@ -333,6 +335,9 @@
 		04AE082F26FEF029006E3700 /* KDHomeXinYongKaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeXinYongKaTableViewCell.h; sourceTree = "<group>"; };
 		04AE083026FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeXinYongKaTableViewCell.m; sourceTree = "<group>"; };
 		04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeXinYongKaTableViewCell.xib; sourceTree = "<group>"; };
+		04B70015275C5A5500A755B8 /* KDMineKehuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMineKehuViewController.h; sourceTree = "<group>"; };
+		04B70016275C5A5500A755B8 /* KDMineKehuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMineKehuViewController.m; sourceTree = "<group>"; };
+		04B70017275C5A5500A755B8 /* KDMineKehuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMineKehuViewController.xib; sourceTree = "<group>"; };
 		04CDE20B274E7D580038A649 /* KDTixianjiluTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTixianjiluTableViewCell.h; sourceTree = "<group>"; };
 		04CDE20C274E7D580038A649 /* KDTixianjiluTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTixianjiluTableViewCell.m; sourceTree = "<group>"; };
 		04CDE20D274E7D580038A649 /* KDTixianjiluTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTixianjiluTableViewCell.xib; sourceTree = "<group>"; };
@@ -850,6 +855,16 @@
 				0453729B274FD3CE003FCA1A /* KDJiangliView.xib */,
 			);
 			path = "4奖励收益";
+			sourceTree = "<group>";
+		};
+		04B70014275C59EE00A755B8 /* 我的客户 */ = {
+			isa = PBXGroup;
+			children = (
+				04B70015275C5A5500A755B8 /* KDMineKehuViewController.h */,
+				04B70016275C5A5500A755B8 /* KDMineKehuViewController.m */,
+				04B70017275C5A5500A755B8 /* KDMineKehuViewController.xib */,
+			);
+			path = "我的客户";
 			sourceTree = "<group>";
 		};
 		180B17982575E9ED006D3D13 /* 空卡还款 */ = {
@@ -1493,6 +1508,7 @@
 		1BC5E3BE250343D60064CA30 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				04B70014275C59EE00A755B8 /* 我的客户 */,
 				187CE1DF266CEC0E00CDB9DB /* 积分商城 */,
 				1BC5E3CA250344540064CA30 /* KDMineViewController.h */,
 				1BC5E3CB250344540064CA30 /* KDMineViewController.m */,
@@ -1951,6 +1967,7 @@
 				1B7E468A251CD08100FA5D1E /* KDPlanPreviewView.xib in Resources */,
 				18C4FE9C256B6A9A00C27A7D /* KDPlanCenterKongKaCell.xib in Resources */,
 				1B9C9B4A25075D6700EE0819 /* Assets.xcassets in Resources */,
+				04B70019275C5A5500A755B8 /* KDMineKehuViewController.xib in Resources */,
 				1BC5E3E4250392DF0064CA30 /* KDHomeHeaderView.xib in Resources */,
 				187D8B1E2565FC900097A650 /* KDSlotCardHistoryViewCell.xib in Resources */,
 				EEF1AD2B251CE69C001DD2AB /* KDCalendarView.xib in Resources */,
@@ -2091,6 +2108,7 @@
 				1B86CFAC2509FC3500AD09F7 /* KDExtendPerformanceViewController.m in Sources */,
 				04752298274FC4CD00268D58 /* KDZhiFuShouYiViewController.m in Sources */,
 				1B1C0EB42508BEB80009CDC6 /* KDDelegateViewCell.m in Sources */,
+				04B70018275C5A5500A755B8 /* KDMineKehuViewController.m in Sources */,
 				180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */,
 				EEF1AD2E251CE69C001DD2AB /* KDCalendarCell.m in Sources */,
 				1B7E4688251CD07300FA5D1E /* KDPlanPreviewView.m in Sources */,

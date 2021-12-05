@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -151,6 +151,7 @@
                 <outlet property="btn1" destination="8Dn-ea-f6Z" id="8jb-N3-XyG"/>
                 <outlet property="btn2" destination="qnq-Ec-TjK" id="nDg-J6-o29"/>
                 <outlet property="btn3" destination="TLm-2W-dtv" id="gPQ-7Q-m1i"/>
+                <outlet property="btn3Height" destination="uae-Xt-6AB" id="rsM-xx-OY1"/>
                 <outlet property="btn4" destination="flW-Id-Fea" id="Psw-Yq-3mS"/>
                 <outlet property="btn4Height" destination="frG-pe-NWl" id="MrO-jZ-NYF"/>
                 <outlet property="pushHeight" destination="Hrp-PY-AZY" id="GAS-nG-4ub"/>
