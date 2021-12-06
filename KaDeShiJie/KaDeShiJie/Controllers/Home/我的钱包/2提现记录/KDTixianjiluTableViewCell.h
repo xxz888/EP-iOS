@@ -11,6 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDTixianjiluTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *eventTag;
+@property (weak, nonatomic) IBOutlet UILabel *eventPrice;
+@property (weak, nonatomic) IBOutlet UILabel *eventTime;
+@property (weak, nonatomic) IBOutlet UILabel *eventStatus;
 
 @end
 

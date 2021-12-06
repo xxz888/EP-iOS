@@ -122,6 +122,62 @@ static MCSessionManager *_singleManager = nil;
     return task;
 }
 
+- (nullable NSURLSessionDataTask *)mc_put:(NSString *)shortURLString
+  parameters:(nullable id)parameters
+          ok:(nullable MCSMNormalHandler)okResp
+       other:(nullable MCSMNormalHandler)otherResp
+     failure:(nullable MCSMErrorHandler)failure {
+
+    if (TOKEN) {    //每次都添加为了及时变化
+        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"Authorization"];
+    }
+    __weak typeof(self) weakSelf = self;
+    [MCLoading show];
+    NSString *full = [self getFullUrlWithShort:shortURLString];
+    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------请求参数-------------\n%@\n-------------请求Token-------------\n%@\n-------------请求DeviceId-------------\n%@\n",full, parameters,TOKEN, SharedDefaults.deviceid);
+    
+    NSURLSessionDataTask *task = [self PUT:full parameters:parameters headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
+        [MCLoading hidden];
+        okResp(@{});
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    return task;
+    
+    
+//    NSURLSessionDataTask *task = [self GET:full parameters:parameters headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+//
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
+//        [MCLoading hidden];
+//
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//            if (responseObject[@"message"]) {
+//                [MCToast showMessage:responseObject[@"messege"]];
+//            }else{
+//                okResp(responseObject);
+//            }
+//        }else{
+//            okResp(responseObject);
+//        }
+//
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        //MCLog(@"%@",error);
+//        [MCLoading hidden];
+//        [self handleHTTPError:error failureHandler:failure];
+//        if (self.delegate) {
+//            [self.delegate mc_session:self.session task:task didReceiveResponse:error];
+//        }
+//    }];
+//
+//    return task;
+}
+
+
+
 
 - (nullable NSURLSessionDataTask *)mc_UPLOAD:(NSString *)shortURLString
   parameters:(nullable id)parameters

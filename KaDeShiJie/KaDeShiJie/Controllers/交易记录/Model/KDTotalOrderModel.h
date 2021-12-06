@@ -68,6 +68,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * city;
 @property (nonatomic, copy) NSString *message;
 
+
+
+@property (nonatomic, strong) NSString * planTaskType;
+
 @end
 
 NS_ASSUME_NONNULL_END

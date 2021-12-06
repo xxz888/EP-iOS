@@ -295,7 +295,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="dangqianshouru" destination="kSZ-Np-fSV" id="ZHT-6e-fmm"/>
                 <outlet property="jianglishouyiView" destination="Ixh-Ci-PPf" id="Luy-m7-VEM"/>
+                <outlet property="ketixian" destination="Jxx-Pj-FhF" id="RUB-bi-awR"/>
+                <outlet property="lishitixian" destination="hOq-lT-MCh" id="51f-hI-yA0"/>
                 <outlet property="qianbaomingxiView" destination="d5m-bX-ubk" id="flk-mK-RqJ"/>
                 <outlet property="tixianView" destination="6Xv-jl-aoi" id="9sp-00-sKA"/>
                 <outlet property="zhifushouyiView" destination="Kma-dt-Rrr" id="9SY-4U-ehC"/>

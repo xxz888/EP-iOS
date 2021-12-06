@@ -16,7 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *zhifushouyiView;
 @property (weak, nonatomic) IBOutlet UIView *jianglishouyiView;
 @property (weak, nonatomic) IBOutlet UIView *qianbaomingxiView;
+@property (weak, nonatomic) IBOutlet UILabel *dangqianshouru;
+@property (weak, nonatomic) IBOutlet UILabel *lishitixian;
+@property (weak, nonatomic) IBOutlet UILabel *ketixian;
 
+-(void)setDataDic:(NSDictionary *)dic;
 @end
 
 NS_ASSUME_NONNULL_END

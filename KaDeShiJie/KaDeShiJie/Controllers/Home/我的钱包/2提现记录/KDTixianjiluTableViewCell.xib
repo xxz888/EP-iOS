@@ -144,6 +144,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="eventPrice" destination="0uL-Ks-omL" id="ZXF-M3-zKu"/>
+                <outlet property="eventStatus" destination="q6N-kM-dLb" id="5gx-y8-zrr"/>
+                <outlet property="eventTag" destination="gvJ-fg-IwX" id="V7n-g7-fIn"/>
+                <outlet property="eventTime" destination="XAB-bO-SsX" id="NGM-5n-dHH"/>
+            </connections>
             <point key="canvasLocation" x="-259.4202898550725" y="-157.70089285714286"/>
         </tableViewCell>
     </objects>

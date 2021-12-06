@@ -136,7 +136,11 @@ typedef void (^MCSMErrorHandler) (NSError *error);
 
 
 
-
+- (nullable NSURLSessionDataTask *)mc_put:(NSString *)shortURLString
+  parameters:(nullable id)parameters
+          ok:(nullable MCSMNormalHandler)okResp
+       other:(nullable MCSMNormalHandler)otherResp
+                                  failure:(nullable MCSMErrorHandler)failure;
 
 
 

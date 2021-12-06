@@ -32,70 +32,42 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //whereCome1 下单 2 历史记录 3 信用卡还款进来
-    //balancePlanId 有值代表新的余额还款
+    [self requestPlanDetail];
+}
+#pragma mark -------------------------计划详情-------------------------
+-(void)requestPlanDetail{
+    kWeakSelf(self);
     
-    //如果是下单界面进来，上个界面直接带的参数，直接赋值还款次数金额等之类的信息
-    if (self.whereCome == 1) {
-        [self setDataWhere1];
-    }else{
-        //如果是交易记录进来界面进来，需要先请求次数金额之类的信息
-        //新的余额还款请求新的，老的余额还款请求老的
-        self.balancePlanId ? [self setDataWhere2or3NewRequest] : [self setDataWhere2or3OldRequest];
-        //请求接口，是否有多通道设置, 获取信用卡和储蓄卡列表
-        [self getAllXinYongKaList];
-    }
-
-}
-#pragma mark -------------------------新的余额还款请求-------------------------
--(void)setDataWhere2or3NewRequest{
-    kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/balance/plan/get" parameters:@{@"planId":self.balancePlanId} ok:^(MCNetResponse * _Nonnull resp) {
-        
+    NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/",self.startDic[@"plan"][@"id"]];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        NSDictionary * respDic = (NSDictionary *)resp;
         KDTotalAmountModel * amountModel = [[KDTotalAmountModel alloc]init];
-        amountModel.taskCount = [resp.result[@"taskCount"] integerValue];          //还款总次数
-        amountModel.repaymentedSuccessCount = [resp.result[@"completedCount"] integerValue]; //已还次数
-        amountModel.consumedAmount = [resp.result[@"taskAmount"] floatValue];      //还款总金额
-        amountModel.taskAmount = [resp.result[@"taskAmount"] floatValue];         //还款总金额
-        amountModel.repaymentedAmount = [resp.result[@"repaymentedAmount"] floatValue];//已还金额
-        amountModel.totalServiceCharge = [resp.result[@"totalServiceCharge"] floatValue]; //预计手续费
-        amountModel.usedCharge = [resp.result[@"usedCharge"] floatValue];//已扣手续费
-        weakself.detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:@{@"totalAmount":@[amountModel],@"totalOrder":resp.result[@"balancePlanItemList"]} ];
-        weakself.repaymentModel.status = [resp.result[@"status"] integerValue];
-        if ([resp.result[@"status"] integerValue] == 4) {
-            weakself.message = resp.result[@"message"];
-        }
-        //请求完数据，调用赋值的方法
-        [weakself setDataWhere1];
-    }];
-}
-#pragma mark -------------------------老的余额还款请求-------------------------
-- (void)setDataWhere2or3OldRequest{
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [params setValue:BCFI.brand_id forKey:@"brandId"];
-    [params setValue:@(self.orderType) forKey:@"orderType"];
-    [params setValue:self.repaymentModel.creditCardNumber forKey:@"bankCard"];
-    [params setValue:self.repaymentModel.createTime forKey:@"startTime"];
-    kWeakSelf(self);
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/add/queryeorderss/make/information" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:resp.result[@"content"]];
-        //请求完数据，调用赋值的方法
-        [weakself setDataWhere1];
-    }];
-}
+        amountModel.taskCount = [respDic[@"totalRepaymentCount"] integerValue];          //还款总次数
+        amountModel.repaymentedSuccessCount = [respDic[@"alreadyRepaymentCount"] integerValue]; //已还次数
+//        amountModel.consumedAmount = [respDic[@"totalRepaymentAmount"] floatValue];      //还款总金额
+        amountModel.taskAmount =  [respDic[@"totalRepaymentAmount"] floatValue];     //还款总金额
+        amountModel.repaymentedAmount = [respDic[@"alreadyRepaymentAmount"] floatValue];//已还金额
+        amountModel.totalServiceCharge = [respDic[@"totalFee"] floatValue]; //预计手续费
+        amountModel.usedCharge = [respDic[@"alreadyFee"] floatValue];//已扣手续费
+        
+        weakself.detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:@{@"totalAmount":@[amountModel],@"totalOrder":respDic[@"tasks"]} ];
+    
 
+        //请求完数据，调用赋值的方法
+        [weakself setDataWhere1];
+    }];
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 30;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.startDic[@"tasks"] count];
+    return [self.detailModel.totalOrder count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KDPlanPreviewViewCell *cell = [KDPlanPreviewViewCell cellWithTableView:tableView];
     cell.whereCome = self.whereCome;
     cell.balancePlanId = self.balancePlanId;
-    cell.orderModel = self.startDic[@"tasks"][indexPath.row];
+    cell.orderModel = self.detailModel.totalOrder[indexPath.row];
     
     return cell;
 }
@@ -112,20 +84,47 @@
 }
 -(void)creditcardSaveTask{
     [MCLoading show];
-    kWeakSelf(self);
+    __weak typeof(self) weakSelf = self;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/start/",self.startDic[@"plan"][@"id"]];
+    [self.sessionManager mc_put:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"计划执行成功"];
+        });
+        [
+         weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        
+
+    } other:^(MCNetResponse * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
+    return;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     if (self.balancePlanId) {
         [params setValue:SharedUserInfo.userid forKey:@"userId"];
         [params setValue:self.repaymentModel.creditCardNumber forKey:@"creditCardNumber"];
         [params setValue:self.city forKey:@"city"];
-
+//        /api/v1/player/plan/start/{planId}
         //如果是新的余额还款，需要先查询是否鉴权
         [self.sessionManager mc_POST:@"/creditcardmanager/app/balance/verify/band/card" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
             //然后再保存计划
-            [weakself.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/save" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+            [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/save" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
                 [MCLoading hidden];
                 //查询多通道
-                [weakself getAllXinYongKaList];
+                [weakSelf getAllXinYongKaList];
             } other:^(MCNetResponse * _Nonnull resp) {
                 [MCLoading hidden];
             } failure:^(NSError * _Nonnull error) {
@@ -184,7 +183,7 @@
         [self.sessionManager mc_POST:@"/creditcardmanager/app/save/all/task" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
             [MCLoading hidden];
             //查询多通道
-            [weakself getAllXinYongKaList];
+            [weakSelf getAllXinYongKaList];
         } other:^(MCNetResponse * _Nonnull resp) {
             [MCLoading hidden];
             //需要鉴权

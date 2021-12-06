@@ -68,6 +68,7 @@
 
 - (void)getUserInfo
 {
+    return;
     // 查询用户信息
     [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/query" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
         NSDictionary *dict = resp.result;

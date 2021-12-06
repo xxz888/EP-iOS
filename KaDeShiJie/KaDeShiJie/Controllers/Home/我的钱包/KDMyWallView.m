@@ -22,6 +22,11 @@
     }
     return self;
 }
+-(void)setDataDic:(NSDictionary *)dic{
+    self.dangqianshouru.text = [NSString stringWithFormat:@"%.2f",[dic[@"balance"] doubleValue]];
+    self.lishitixian.text = [NSString stringWithFormat:@"%.2f",[dic[@"historyWithdrawAmount"] doubleValue]];
+    self.ketixian.text = [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
+}
 
 - (void)drawRect:(CGRect)rect {
     self.backgroundColor = [UIColor qmui_colorWithHexString:@"#FC9B33"];
@@ -40,9 +45,11 @@
 }
 
 -(void)clickTixiantView:(id)tap{
-    [MCLATESTCONTROLLER.navigationController pushViewController:[KDTiXianViewController new] animated:YES];
+    KDTiXianViewController * vc = [[KDTiXianViewController alloc]init];
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+//    [MCLATESTCONTROLLER.navigationController pushViewController:[KDTiXianViewController new] animated:YES];
 
-    
+//    [MCLATESTCONTROLLER.navigationController pushViewController:[MCWithdrawController new] animated:YES];
 }
 -(void)clickzhifushouyiView:(id)tap{
     

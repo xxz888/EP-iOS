@@ -650,42 +650,10 @@
     repaymentModel.bankName = self.directModel.bankName;
     repaymentModel.creditCardNumber = self.directModel.cardNo;
     repaymentModel.statusName = @"";
-    KDTotalAmountModel * amountModel = [[KDTotalAmountModel alloc]init];
-    //去除result里面的consumeTaskVOs
-    NSMutableArray * consumeTaskVOsArray = [[NSMutableArray alloc]init];
-    KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-    //如果为字典，就是新的余额还款
-        [consumeTaskVOsArray removeAllObjects];
-        [consumeTaskVOsArray addObjectsFromArray:resp[@"tasks"]];
-        amountModel.taskCount = 11;       //还款总次数
-        amountModel.repaymentedSuccessCount = 0;                                        //已还次数
-        amountModel.consumedAmount = 22;         //还款总金额
-        amountModel.repaymentedAmount = 0;                                              //yi huan jin e
-        amountModel.totalServiceCharge = 110; //yu ji shou xu fei
-        amountModel.usedCharge = 0;
-        vc.balancePlanId = @"99999";//这个是拼凑的参数
 
-    NSDictionary * dic = @{@"totalOrder":consumeTaskVOsArray,@"totalAmount":@[amountModel]};
-    KDRepaymentDetailModel * detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:dic];
-    vc.detailModel = detailModel;//拼凑的model
-    vc.repaymentModel = repaymentModel;//拼凑的model
-    vc.whereCome = 1;// 1 下单 2 历史记录 3 信用卡还款进来
-    vc.isCanDelete = YES;
-    
-    //下边是启动计划需要的带过去的参数
-    vc.taskJSON = [NSString toJSONData:resp[@"tasks"]];
-    vc.version  = self.version;
-    vc.reservedAmount = [self getParameters][@"reservedAmount"];
-    vc.city = @"";
-    vc.amount = [NSString stringWithFormat:@"%.2f",[self inRefundMoneyToNewMoney]];
-    vc.extra = self.extra;
-    
-    NSDictionary * extraDic = @{@"provinceId":[NSString stringWithFormat:@"%@,%@",@"",@""],
-                                @"cityCode":  [NSString stringWithFormat:@"%@,%@",@"",@""],
-                                @"merprovince":@"",
-                                @"mercity":@"",
-                                @"merarea":@""};
-    vc.extra = [NSString toJSONData:extraDic];
+    KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
+
+    vc.whereCome = 1;// 1 下单 2 历史记录 3 信用卡还款进来  
     vc.startDic = resp;
     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }

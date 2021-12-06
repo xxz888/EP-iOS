@@ -205,6 +205,7 @@
         if (self.selectCard) {
             self.selectCard(model, self.currentIndex);
         }
+        
     }];
 }
 @end

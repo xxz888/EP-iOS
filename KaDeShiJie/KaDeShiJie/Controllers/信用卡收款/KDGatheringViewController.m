@@ -316,24 +316,25 @@
 /** 添加信用卡 */
 - (IBAction)clickAddCreditCardBtn:(QMUIButton *)sender {
     __weak __typeof(self)weakSelf = self;
+    [weakSelf pushCardVCWithType:MCBankCardTypeXinyongka];
 
-    [[KDGuidePageManager shareManager] requestShiMing:^{
-        //默认信用卡
-        NSDictionary *p1 = @{@"userId":SharedUserInfo.userid,
-                             @"type":@"0",
-                             @"nature":@"0",
-                             @"isDefault":@"1"};
-        [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
-            [weakSelf pushCardVCWithType:MCBankCardTypeXinyongka];
-        } other:^(MCNetResponse * _Nonnull resp) {
-            [MCLoading hidden];
-            if ([resp.code isEqualToString:@"666666"]) {
-                [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(MCBankCardTypeXinyongka), @"isLogin":@(NO),@"whereCome":@"1"}];
-            } else {
-                [MCToast showMessage:resp.messege];
-            }
-        }];
-    }];
+//    [[KDGuidePageManager shareManager] requestShiMing:^{
+//        //默认信用卡
+//        NSDictionary *p1 = @{@"userId":SharedUserInfo.userid,
+//                             @"type":@"0",
+//                             @"nature":@"0",
+//                             @"isDefault":@"1"};
+//        [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
+//            [weakSelf pushCardVCWithType:MCBankCardTypeXinyongka];
+//        } other:^(MCNetResponse * _Nonnull resp) {
+//            [MCLoading hidden];
+//            if ([resp.code isEqualToString:@"666666"]) {
+//                [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(MCBankCardTypeXinyongka), @"isLogin":@(NO),@"whereCome":@"1"}];
+//            } else {
+//                [MCToast showMessage:resp.messege];
+//            }
+//        }];
+//    }];
 
 
     
@@ -348,7 +349,7 @@
 }
 /** 添加储蓄卡 */
 - (IBAction)clickAddDepositCardBtn:(QMUIButton *)sender {
-    [[KDGuidePageManager shareManager] requestShiMing:^{ [self pushCardVCWithType:MCBankCardTypeChuxuka]; }];
+    [self pushCardVCWithType:MCBankCardTypeChuxuka];
     
 }
 - (IBAction)chooseAddressAction:(id)sender {

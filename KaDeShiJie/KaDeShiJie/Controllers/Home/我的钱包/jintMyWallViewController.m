@@ -8,7 +8,7 @@
 
 #import "jintMyWallViewController.h"
 #import "KDMyWallView.h"
-
+#import "KDTiXianViewController.h"
 @interface jintMyWallViewController ()
 @property (nonatomic, strong) KDMyWallView *headerView;
 
@@ -37,6 +37,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
+    
+    
     if (@available(iOS 11.0, *)) {
         self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
@@ -59,6 +63,17 @@
     titleLabel.textColor = UIColor.whiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
+
+    [self requestData];
+}
+-(void)requestData{
+    __weak __typeof(self)weakSelf = self;
+    NSString * url1 = @"/api/v1/player/wallet";
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+        [weakSelf.headerView setDataDic:[NSDictionary dictionaryWithDictionary:resp]];
+    }];
+    
+    
 }
 -(void)leftItemClick{
     [self.navigationController popViewControllerAnimated:YES];
