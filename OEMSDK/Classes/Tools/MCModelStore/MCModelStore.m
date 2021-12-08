@@ -57,12 +57,10 @@ static MCModelStore *_singleStore = nil;
 }
 
 - (void)reloadUserInfo:(void (^)(MCUserInfo *))handle {
-    return;
     if (TOKEN) {
-        [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"%@/%@",api_userinfo,TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull okResponse) {
-            self.userInfo = [MCUserInfo mj_objectWithKeyValues:okResponse.result];
-            self.userInfo.whether = okResponse.whether;
-            MCModelStore.shared.preUserPhone = self.userInfo.preUserPhone;
+        [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/info" parameters:nil ok:^(MCNetResponse * _Nonnull okResponse) {
+            self.userInfo = [MCUserInfo mj_objectWithKeyValues:okResponse];
+            MCModelStore.shared.preUserPhone = self.userInfo.phone;
             if (handle) {
                 handle(self.userInfo);
             }

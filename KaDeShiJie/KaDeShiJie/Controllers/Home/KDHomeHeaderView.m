@@ -24,7 +24,8 @@
 #import "KDRenZhengView.h"
 #import "KDHomeBillManageViewController.h"
 #import "jintMyWallViewController.h"
-
+#import "KDTrandingRecordViewController.h"
+#import "MCManualRealNameController.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -60,7 +61,7 @@
         btn.imagePosition = QMUIButtonImagePositionTop;
     }
     
-    NSArray *titleArray = @[@"顶级代理", @"申请办卡", @"实名认证", @"信誉检测"];
+    NSArray *titleArray = @[@"账单管理", @"申请办卡", @"实名认证", @"信誉检测"];
     for (int i = 0; i < 4; i++) {
         QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
         btn.imagePosition = QMUIButtonImagePositionTop;
@@ -162,13 +163,22 @@
     }else{
         switch (sender.tag) {
             case 200: // 顶级代理
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDTopDelegateViewController new] animated:YES];
+                [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
+//                [MCLATESTCONTROLLER.navigationController pushViewController:[KDTopDelegateViewController new] animated:YES];
                 break;
             case 201: // 信用管理
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDCreditManagerViewController new] animated:YES];
                 break;
-            case 202: // 收益中心
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDEarnCenterViewController new] animated:YES];
+            case 202: // 实名认证
+                [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                    if (userInfo.certification) {
+                        [MCToast showMessage:@"您已实名认证"];
+
+                    }else{
+                        [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+                    }
+                }];
+               
                 break;
             case 203:
 //                [MCToast showMessage:@"网申渠道更新"];

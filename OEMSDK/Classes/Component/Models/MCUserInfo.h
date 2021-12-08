@@ -56,6 +56,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) NSString * headImvUrl;
 @property(nonatomic, copy) NSString * verificationStatus;
 
+@property(nonatomic, strong) NSString * agentId;
+@property(nonatomic, strong) NSString * certification;
+@property(nonatomic, strong) NSString * certificationTime;
+@property(nonatomic, strong) NSString * createdTime;
+@property(nonatomic, strong) NSString * headImg;
+@property(nonatomic, strong) NSString * idCardNo;
+@property(nonatomic, strong) NSString * level;
+@property(nonatomic, strong) NSString * name;
+
 
 @end
 

@@ -69,12 +69,14 @@
     self.mc_tableview.ly_emptyView = [MCEmptyView emptyView];
 
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getHistory];
+//        [self getHistory];
     }];
     self.type = 1;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [self setNavigationBarTitle:@"交易记录" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [super viewWillAppear:animated];
+    [self setNavigationBarTitle:@"账单管理" tintColor:UIColor.whiteColor];
+
 
 //    [self getHistory];
 }
@@ -84,7 +86,7 @@
     self.year = [time substringWithRange:NSMakeRange(0, 4)];
     self.month = [time substringWithRange:NSMakeRange(4, 2)];
     
-    [self getHistory];
+//    [self getHistory];
 }
 - (void)headerViewDelegateWithType:(NSInteger)type
 {
@@ -209,31 +211,43 @@
         [kongkaParams setValue:minDateTime forKey:@"minDateTime"];
         [kongkaParams setValue:[self getMaxDateTime] forKey:@"maxDateTime"];
         //余额还款和刷卡
-        NSString * url = self.type == 2 ? @"/creditcardmanager/app/balance/plan/list" : @"/creditcardmanager/app/empty/card/plan/list";
-        [self.sessionManager mc_Post_QingQiuTi:url parameters:kongkaParams ok:^(MCNetResponse * _Nonnull resp) {
-            NSMutableArray * newArray = [[NSMutableArray alloc]initWithArray:resp.result[@"content"]];
-            //如果是type=2是余额还款，要兼容老的，所以要再请求一下老的,拼接在一起
-            if (weakself.type == 2) {
-                [params setValue:@(self.type) forKey:@"orderType"];
-                [weakself.sessionManager mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-                    
-                    if ([resp.result[@"content"] count] > 0) {
-                        [newArray addObjectsFromArray:resp.result[@"content"]];
-                    }
-                    weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:newArray];
-                    [weakself.mc_tableview reloadData];
-                }];
-
-            }else{
-                weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
-                [weakself.mc_tableview reloadData];
-            }
+        
+        
+        
+        __weak __typeof(self)weakself = self;
+        NSString * url1 = @"/api/v1/player/plan";
+        [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
            
-        } other:^(MCNetResponse * _Nonnull resp) {
-            [MCLoading hidden];
-        } failure:^(NSError * _Nonnull error) {
-            [MCLoading hidden];
         }];
+        
+        
+        
+        
+//        NSString * url = self.type == 2 ? @"/creditcardmanager/app/balance/plan/list" : @"/creditcardmanager/app/empty/card/plan/list";
+//        [self.sessionManager mc_Post_QingQiuTi:url parameters:kongkaParams ok:^(MCNetResponse * _Nonnull resp) {
+//            NSMutableArray * newArray = [[NSMutableArray alloc]initWithArray:resp.result[@"content"]];
+//            //如果是type=2是余额还款，要兼容老的，所以要再请求一下老的,拼接在一起
+//            if (weakself.type == 2) {
+//                [params setValue:@(self.type) forKey:@"orderType"];
+//                [weakself.sessionManager mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+//
+//                    if ([resp.result[@"content"] count] > 0) {
+//                        [newArray addObjectsFromArray:resp.result[@"content"]];
+//                    }
+//                    weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:newArray];
+//                    [weakself.mc_tableview reloadData];
+//                }];
+//
+//            }else{
+//                weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+//                [weakself.mc_tableview reloadData];
+//            }
+//
+//        } other:^(MCNetResponse * _Nonnull resp) {
+//            [MCLoading hidden];
+//        } failure:^(NSError * _Nonnull error) {
+//            [MCLoading hidden];
+//        }];
     }
     
     [self.mc_tableview.mj_header endRefreshing];

@@ -189,7 +189,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
           ok:(nullable MCSMNormalHandler)okResp
        other:(nullable MCSMNormalHandler)otherResp
      failure:(nullable MCSMErrorHandler)failure {
-    return  nil;
 
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
@@ -206,6 +205,7 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }
     NSString *full = [self getFullUrlWithShort:shortURLString];
         
+    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
 
     
     NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -219,36 +219,18 @@ remoteFields:(nullable NSArray<NSString *>*)fields
             formatter.dateFormat = @"yyyyMMddHHmmss";
             NSString *str = [formatter stringFromDate:[NSDate date]];
             NSString *defaultImgName = [NSString stringWithFormat:@"%@%d.%@",str,i,type?:@"jpg"];
-            NSString *fielName = names ? [NSString stringWithFormat:@"%@.%@",names[i],type?:@"jpg"] : defaultImgName;
+            NSString *fielName =  defaultImgName;
             
             [formData appendPartWithFileData:imageData
-                                    name:field
+                                    name:@"file"
                                 fileName:fielName
-                                mimeType:[NSString stringWithFormat:@"image/%@",type ?: @"jpg"]];
+                                mimeType:@"image/png"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        if (isSharedSession) {
             [MCLoading hidden];
-//        }
-        MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:responseObject];
-        if ([resp.code isEqualToString:@"000000"]) {  // ok
-            if (okResp) {
-                okResp(resp);
-            }
-        } else {    // other
-            if ([resp.code isEqualToString:@"401"] || [resp.code isEqualToString:@"000005"]) {
-                TOKEN = nil;
-                [self popLoginIfNeeded:resp];
-            } else {
-                if (otherResp) {
-                    otherResp(resp);
-                } else {
-                    [self handleOther:resp];
-                }
-            }
-        }
+        okResp(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (isSharedSession) {
             [MCLoading hidden];
