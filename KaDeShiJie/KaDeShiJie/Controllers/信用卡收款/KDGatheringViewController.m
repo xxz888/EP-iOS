@@ -9,7 +9,7 @@
 #import "KDGatheringViewController.h"
 #import "KDSlotCardAisleViewController.h"
 #import "KDCommonAlert.h"
-
+#import "BRAddressPickerView.h"
 @interface KDGatheringViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet QMUIButton *addCreditBtn;
@@ -25,6 +25,9 @@
 @property(nonatomic, strong) MCBankCardModel *xinyongInfo;
 @property(nonatomic, strong) MCBankCardModel *chuxuInfo;
 @property(nonatomic, strong) KDCommonAlert * commonAlert;
+@property(nonatomic, strong) NSString * provinceId;
+    @property(nonatomic, strong) NSString * cityId;
+@property(nonatomic, strong) BRAddressPickerView *addressPicker;
 
 @property (weak, nonatomic) IBOutlet QMUIButton *selectAdress;
 
@@ -294,6 +297,8 @@
     vc.money = self.moneyView.text;
     vc.xinyongInfo = self.xinyongInfo;
     vc.chuxuInfo = self.chuxuInfo;
+    vc.provinceId = self.provinceId;
+    vc.cityId = self.cityId;
     [self.navigationController pushViewController:vc animated:YES];
     return;
         
@@ -353,7 +358,32 @@
     
 }
 - (IBAction)chooseAddressAction:(id)sender {
-    
+    [self.addressPicker show];
+}
+- (BRAddressPickerView *)addressPicker {
+    if (!_addressPicker) {
+        _addressPicker = [[BRAddressPickerView alloc] initWithPickerMode:BRAddressPickerModeCity];
+        _addressPicker.title = @"请选择开户省市";
+        _addressPicker.selectValues = @[@"上海市", @"上海市"];
+        __weak __typeof(self)weakSelf = self;
+        _addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {
+            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+                NSArray * respArry = [NSArray arrayWithArray:resp];
+                for (NSDictionary * dic1 in respArry) {
+                    if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
+                        for (NSDictionary * dic2 in dic1[@"cities"]) {
+                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic1[@"city"]]) {
+                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
+                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
+                                [weakSelf.selectAdress setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]] forState:0];
+                            }
+                        }
+                    }
+                }
+            }];
+        };
+    }
+    return _addressPicker;
 }
 #pragma mark - 数据请求
 

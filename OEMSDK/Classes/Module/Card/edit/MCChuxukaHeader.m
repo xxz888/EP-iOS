@@ -37,6 +37,11 @@
 @property(nonatomic, strong) NSString * idCard;
 @property (weak, nonatomic) IBOutlet UITextField *kaihuyinhangTf;
 @property (nonatomic ,strong)NSString * selectBankId;
+@property (weak, nonatomic) IBOutlet UITextField *kaihuzhihangTf;
+
+@property(nonatomic, strong) NSString * provinceId;
+@property(nonatomic, strong) NSString * cityId;
+
 @end
 
 @implementation MCChuxukaHeader
@@ -47,7 +52,20 @@
         _addressPicker.selectValues = @[@"上海市", @"上海市"];
         __weak __typeof(self)weakSelf = self;
         _addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {
-            weakSelf.textField4.text = [NSString stringWithFormat:@"%@-%@",province.name,city.name];
+            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+                NSArray * respArry = [NSArray arrayWithArray:resp];
+                for (NSDictionary * dic1 in respArry) {
+                    if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
+                        for (NSDictionary * dic2 in dic1[@"cities"]) {
+                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic1[@"city"]]) {
+                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
+                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
+                                weakSelf.textField4.text = [NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]];
+                            }
+                        }
+                    }
+                }
+            }];
         };
     }
     return _addressPicker;
@@ -79,6 +97,7 @@
     
     self.textField2.delegate = self;
     self.textField4.delegate = self;
+    self.kaihuzhihangTf.delegate = self;
     self.kaihuyinhangTf.delegate = self;
     [self.textField3 addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     
@@ -286,12 +305,29 @@
     }
     if (textField == self.kaihuyinhangTf) {
         [self endEditing:YES];
-        [self selctSheng];
+        [self selctBank];
+        return NO;
+    }
+    if (textField == self.kaihuzhihangTf) {
+        [self endEditing:YES];
+        [self selectKaihuzhihang];
         return NO;
     }
     return YES;
 }
--(void)selctSheng{
+-(void)selectProvince{
+    NSString * proviceUrl = @"";
+    __weak typeof(self) weakSelf = self;
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray * respArry = [NSArray arrayWithArray:resp];
+        
+    }];
+}
+-(void)selctBank{
+    if (self.provinceId.length == 0 || self.cityId.length == 0) {
+        [MCToast showMessage:@"请先选择地区"];
+        return;
+    }
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
     [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
@@ -310,6 +346,38 @@
         pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
             weakSelf.selectBankId = [NSString stringWithFormat:@"%@",resultModel.key];
             weakSelf.kaihuyinhangTf.text = resultModel.name;
+        };
+        pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
+    }];
+}
+-(void)selectKaihuzhihang{
+    if (self.provinceId.length == 0 || self.cityId.length == 0) {
+        [MCToast showMessage:@"请先选择地区"];
+        return;
+    }
+    if (self.selectBankId.length == 0 ) {
+        [MCToast showMessage:@"请先选择开户银行"];
+        return;
+    }
+    NSString * proviceUrl = @"";
+    __weak typeof(self) weakSelf = self;
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/bank/branch?provinceId=%@&cityId=%@&bankId=%@",self.provinceId,self.cityId,self.selectBankId];
+    [MCLATESTCONTROLLER.sessionManager mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray * result = resp;
+        NSMutableArray * modelArray = [[NSMutableArray alloc]init];
+        for (NSDictionary * dic in result) {
+            BRResultModel * model = [[BRResultModel alloc]init];
+            model.key = dic[@"subBankCode"];
+            model.value = dic[@"bankAddress"];
+            [modelArray addObject:model];
+        }
+        BRStringPickerView *pickView = [[BRStringPickerView alloc] initWithPickerMode:BRStringPickerComponentSingle];
+        pickView.title = @"请选择支行";
+        pickView.dataSourceArr = modelArray;
+        [pickView show];
+        pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
+//            weakSelf.selectBankId = [NSString stringWithFormat:@"%@",resultModel.key];
+            weakSelf.kaihuzhihangTf.text = resultModel.value;
         };
         pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
     }];
@@ -394,5 +462,41 @@
     diaV.contentView = content;
     [diaV showWithAnimated:YES completion:nil];
 }
+-(NSString *)convertToJsonData:(NSDictionary *)dict
 
+{
+
+    NSError *error;
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+
+    NSString *jsonString;
+
+    if (!jsonData) {
+
+        NSLog(@"%@",error);
+
+    }else{
+
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    }
+
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+
+    NSRange range = {0,jsonString.length};
+
+    //去掉字符串中的空格
+
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+
+    NSRange range2 = {0,mutStr.length};
+
+    //去掉字符串中的换行符
+
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+
+    return mutStr;
+
+}
 @end

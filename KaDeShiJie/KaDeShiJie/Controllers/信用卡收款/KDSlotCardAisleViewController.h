@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDSlotCardAisleViewController : MCBaseViewController
-
+@property(nonatomic, strong) NSString * provinceId;
+    @property(nonatomic, strong) NSString * cityId;
 @property (nonatomic, strong) NSString *money;
 @property(nonatomic, strong) MCBankCardModel *xinyongInfo;
 @property(nonatomic, strong) MCBankCardModel *chuxuInfo;

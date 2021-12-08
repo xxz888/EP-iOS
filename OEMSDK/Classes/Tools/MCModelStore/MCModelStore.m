@@ -54,6 +54,7 @@ static MCModelStore *_singleStore = nil;
 - (void)getInfos {
     [self reloadUserInfo:nil];
     [self reloadBrandInfo:nil];
+
 }
 
 - (void)reloadUserInfo:(void (^)(MCUserInfo *))handle {

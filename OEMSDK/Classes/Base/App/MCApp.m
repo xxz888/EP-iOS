@@ -228,8 +228,8 @@
     if (!SharedDefaults.not_rember_pwd) {
         SharedDefaults.pwd = @"";
     }
-    [self deleteJPushAlias];
-    [self detachJAnalyticsAccount];
+//    [self deleteJPushAlias];
+//    [self detachJAnalyticsAccount];
     
     MCLog(@"logIn: %@",[MGJRouter objectForURL:rt_user_signupin]);
     
