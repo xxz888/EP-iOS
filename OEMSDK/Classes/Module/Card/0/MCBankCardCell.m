@@ -65,11 +65,11 @@
     NSString *subCardString = [model.bankCardNo substringWithRange:NSMakeRange(4, model.bankCardNo.length - 3 - 4)];
     self.cardNo.text = [model.bankCardNo stringByReplacingOccurrencesOfString:subCardString withString:@" **** **** **** "];
     
-    self.cardDetail.text = model.cardType;
+//    self.cardDetail.text = model.cardType;
     
-//    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:model.bankName];
-//    self.logo.image = info.logo;
-//    self.bgImage.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
+    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:model.bankName];
+    self.logo.image = info.logo;
+    self.bgImage.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
 //    if(model.idDef){
 //        [self.defBtn setTitle:@"默认卡" forState:UIControlStateNormal];
 //        self.defBtn.userInteractionEnabled = NO;

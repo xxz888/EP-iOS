@@ -95,7 +95,7 @@
     }];
     //设置
     [self.shezhiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-            
+        [MCLATESTCONTROLLER.navigationController pushViewController:[MCSettingViewController new] animated:YES];
     }];
 }
 

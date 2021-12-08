@@ -400,7 +400,7 @@
     self.depositImg.hidden = NO;
     NSString *cardNo = chuxuInfo.bankCardNo;
     if (cardNo && cardNo.length > 4) {
-        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",chuxuInfo.bank,[cardNo substringFromIndex:cardNo.length-4]];
+        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",@"",[cardNo substringFromIndex:cardNo.length-4]];
         self.depositLabel.text = bank;
     }
     self.depositLabel.hidden = NO;
@@ -420,7 +420,7 @@
     self.creditImg.hidden = NO;
     NSString *cardNo = xinyongInfo.bankCardNo;
     if (cardNo && cardNo.length > 4) {
-        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",xinyongInfo.bank,[cardNo substringFromIndex:cardNo.length-4]];
+        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",@"",[cardNo substringFromIndex:cardNo.length-4]];
         self.creditLabel.text = bank;
     }
     self.creditLabel.hidden = NO;

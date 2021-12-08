@@ -122,9 +122,9 @@
         return cell;
     } else {
         KDTrandingRecordViewCell *cell = [KDTrandingRecordViewCell cellWithTableView:tableView];
-        KDRepaymentModel *model = self.repaymentArray[indexPath.row];
-        model.orderType = self.type;
-        cell.repaymentModel = model;
+        NSDictionary * dic = self.repaymentArray[indexPath.row];
+//        model.orderType = self.type;
+        cell.startDic = dic;;
         return cell;
     }
 }
@@ -217,7 +217,8 @@
         __weak __typeof(self)weakself = self;
         NSString * url1 = @"/api/v1/player/plan";
         [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-           
+            self.repaymentArray = [NSArray arrayWithArray:resp];
+            [self.mc_tableview reloadData];
         }];
         
         

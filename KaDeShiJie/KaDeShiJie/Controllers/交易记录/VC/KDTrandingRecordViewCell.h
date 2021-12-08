@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (nonatomic, strong) KDRepaymentModel *repaymentModel;
+@property (nonatomic, strong) NSDictionary * startDic;
 @end
 
 NS_ASSUME_NONNULL_END

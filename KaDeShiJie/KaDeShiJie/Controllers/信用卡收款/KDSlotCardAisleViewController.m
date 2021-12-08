@@ -198,7 +198,7 @@
      **/
     
     NSString * url2 = @"/api/v1/player/credit/channel";
-    [self.sessionManager mc_GET:url2 parameters:@{@"amount":self.money} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url2 parameters:@{@"amount":self.money,@"creditCardId":self.xinyongInfo.id} ok:^(MCNetResponse * _Nonnull resp) {
         self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp];
         [self.mc_tableview reloadData];
         [self.mc_tableview.mj_header endRefreshing];

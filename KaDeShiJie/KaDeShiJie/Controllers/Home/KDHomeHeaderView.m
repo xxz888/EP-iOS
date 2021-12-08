@@ -122,49 +122,28 @@
 - (IBAction)btnAction:(QMUIButton *)sender {
     if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
             switch (sender.tag) {
-                case 100:
-                {
-                    
+                case 100:{
                     [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
-
-//                    原生信用卡还款界面
-//                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
-//                    vc.navTitle = @"信用卡还款";
-//                    //订单类型（2为还款记录、3为空卡记录）
-//                    vc.orderType = @"2";
-//                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
                 }
                     break;
-                case 101:
-                {
-                    //                    原生信用卡还款界面
+                case 101:{
                     KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
                     vc.navTitle = @"信用卡还款";
                     //订单类型（2为还款记录、3为空卡记录）
                     vc.orderType = @"2";
                     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-//                    KDHomeBillManageViewController * vc = [[KDHomeBillManageViewController alloc]init];
-//                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-
-//                    [self showRenzhengView];
-               
                 }
                     break;
                 case 102:
-                    
-                    
                     [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
                     break;
                 default:
                     break;
         }
-      
-  
     }else{
         switch (sender.tag) {
-            case 200: // 顶级代理
+            case 200: // 账单管理
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
-//                [MCLATESTCONTROLLER.navigationController pushViewController:[KDTopDelegateViewController new] animated:YES];
                 break;
             case 201: // 信用管理
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDCreditManagerViewController new] animated:YES];
@@ -173,7 +152,6 @@
                 [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
                     if (userInfo.certification) {
                         [MCToast showMessage:@"您已实名认证"];
-
                     }else{
                         [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
                     }
@@ -181,25 +159,17 @@
                
                 break;
             case 203:
-//                [MCToast showMessage:@"网申渠道更新"];
-//                [MCPagingStore pushWebWithTitle:@"信用卡办卡" classification:@"功能跳转"];
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDHomeXinYongKaViewController new] animated:YES];
-
-                
                 break;
             case 204:
-                
                 break;
             case 205:
-                
                 break;
             case 206: // 备付金
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDProvisionsViewController new] animated:YES];
                 break;
             case 207:
-                
                 break;
-                
             default:
                 break;
         }

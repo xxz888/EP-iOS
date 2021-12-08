@@ -37,7 +37,8 @@
 @property(nonatomic, strong) BRStringPickerView *hkDayPicker;   //还款日
 
 @property (weak, nonatomic) IBOutlet QMUIButton *scanBtn;
-
+@property (weak, nonatomic) IBOutlet UITextField *kaihuyinhangTf;
+@property (nonatomic ,strong)NSString * selectBankId;
 @end
 
 
@@ -97,7 +98,7 @@
     
     self.textField6.delegate = self;
     self.textField7.delegate = self;
-    
+    self.kaihuyinhangTf.delegate = self;
     self.scanBtn.imagePosition = QMUIButtonImagePositionTop;
     self.scanBtn.spacingBetweenImageAndTitle = 2;
     
@@ -153,7 +154,8 @@
         [self verifyFailedTextField:self.textField4] ||
         [self verifyFailedTextField:self.textField5] ||
         [self verifyFailedTextField:self.textField6] ||
-        [self verifyFailedTextField:self.textField7] ) {
+        [self verifyFailedTextField:self.textField7] ||
+        [self verifyFailedTextField:self.kaihuyinhangTf]) {
         return;
     }
     if (self.model) {   //修改
@@ -187,7 +189,7 @@
 
     NSDictionary *param = @{
                             @"address":[self.textField4.text replaceAll:@"-" target:@""],
-                            @"bank":@"ICBC",
+                            @"bankId":self.selectBankId,
                             @"bankCardNo":cardNo,
                             @"cardType":@"1",
                             @"name":self.textField1.text,
@@ -327,9 +329,36 @@
         [self.hkDayPicker show];
         return NO;
     }
+    if (textField == self.kaihuyinhangTf) {
+        [self endEditing:YES];
+        [self selctSheng];
+        return NO;
+    }
     return YES;
 }
-
+-(void)selctSheng{
+    NSString * proviceUrl = @"";
+    __weak typeof(self) weakSelf = self;
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray * result = resp;
+        NSMutableArray * modelArray = [[NSMutableArray alloc]init];
+        for (NSDictionary * dic in result) {
+            BRResultModel * model = [[BRResultModel alloc]init];
+            model.key = dic[@"id"];
+            model.value = dic[@"name"];
+            [modelArray addObject:model];
+        }
+        BRStringPickerView *pickView = [[BRStringPickerView alloc] initWithPickerMode:BRStringPickerComponentSingle];
+        pickView.title = @"请选择银行";
+        pickView.dataSourceArr = modelArray;
+        [pickView show];
+        pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
+            weakSelf.selectBankId = [NSString stringWithFormat:@"%@",resultModel.key];
+            weakSelf.kaihuyinhangTf.text = resultModel.name;
+        };
+        pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
+    }];
+}
 - (IBAction)scanTouched:(QMUIButton *)sender {
     __weak __typeof(self)weakSelf = self;
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];

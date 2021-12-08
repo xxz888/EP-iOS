@@ -31,9 +31,12 @@
 @property (weak, nonatomic) IBOutlet UIView *bgview;
 
 @property(nonatomic, strong) BRAddressPickerView *addressPicker;
+@property(nonatomic, strong) BRAddressPickerView *bankNameAddressPicker;
+
 @property (weak, nonatomic) IBOutlet UIStackView *imgStack;
 @property(nonatomic, strong) NSString * idCard;
-
+@property (weak, nonatomic) IBOutlet UITextField *kaihuyinhangTf;
+@property (nonatomic ,strong)NSString * selectBankId;
 @end
 
 @implementation MCChuxukaHeader
@@ -58,10 +61,10 @@
     [self.sureButton setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F7874E"]];
     self.sureButton.layer.cornerRadius = self.sureButton.height/2;
     kWeakSelf(self);
-    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        weakself.textField1.text = userInfo.realname;
-        weakself.idCard = userInfo.idcard;
-    }];
+//    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+//        weakself.textField1.text = userInfo.realname;
+//        weakself.idCard = userInfo.idcard;
+//    }];
 
 
     UIView *vv = [self viewWithTag:2004];
@@ -76,6 +79,7 @@
     
     self.textField2.delegate = self;
     self.textField4.delegate = self;
+    self.kaihuyinhangTf.delegate = self;
     [self.textField3 addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     
     
@@ -157,9 +161,9 @@
 //                            @"city":addr[1]};
     NSDictionary *param = @{
                             @"address":[self.textField4.text replaceAll:@"-" target:@""],
-                            @"bank":@"ICBC",
                             @"bankCardNo":cardNo,
-                            @"cardType":@"0",
+                            @"bankId":self.selectBankId,
+                            @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
                             };
@@ -248,11 +252,11 @@
     self.wenhaoBtn.hidden = YES;
     
     kWeakSelf(self);
-    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        weakself.textField1.text = userInfo.realname;
-        weakself.idCard = userInfo.idcard;
-    }];
-    
+//    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+//        weakself.textField1.text = userInfo.realname;
+//        weakself.idCard = userInfo.idcard;
+//    }];
+//
     NSMutableString *string = [NSMutableString string];
     for (int i = 0; i < model.cardNo.length; i++) {
         [string appendString:[model.cardNo substringWithRange:NSMakeRange(i, 1)]];
@@ -280,9 +284,36 @@
         [self.addressPicker show];
         return NO;
     }
+    if (textField == self.kaihuyinhangTf) {
+        [self endEditing:YES];
+        [self selctSheng];
+        return NO;
+    }
     return YES;
 }
-
+-(void)selctSheng{
+    NSString * proviceUrl = @"";
+    __weak typeof(self) weakSelf = self;
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        NSArray * result = resp;
+        NSMutableArray * modelArray = [[NSMutableArray alloc]init];
+        for (NSDictionary * dic in result) {
+            BRResultModel * model = [[BRResultModel alloc]init];
+            model.key = dic[@"id"];
+            model.value = dic[@"name"];
+            [modelArray addObject:model];
+        }
+        BRStringPickerView *pickView = [[BRStringPickerView alloc] initWithPickerMode:BRStringPickerComponentSingle];
+        pickView.title = @"请选择银行";
+        pickView.dataSourceArr = modelArray;
+        [pickView show];
+        pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
+            weakSelf.selectBankId = [NSString stringWithFormat:@"%@",resultModel.key];
+            weakSelf.kaihuyinhangTf.text = resultModel.name;
+        };
+        pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
+    }];
+}
 - (IBAction)scanTouched:(UIButton *)sender {
     __weak __typeof(self)weakSelf = self;
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];

@@ -102,6 +102,27 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * balance;
 
 
+
+
+
+
+//planId = 67,
+//planStatus = Running,
+//creditCard = {
+//id = 17,
+//validPeriod = ,
+//repaymentDate = 0,
+//phone = 13383773800,
+//createdTime = 2021-12-02T14:45:36,
+//memberId = 19,
+//cardType = CreditCard,
+//address = 上海市上海市,
+//billingDate = 0,
+//modifyTime = 2021-12-02T14:45:36,
+//bankId = 1,
+//name = 王沛,
+//bankCardNo = 622284812345678901
+
 @end
 
 NS_ASSUME_NONNULL_END

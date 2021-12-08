@@ -60,7 +60,7 @@
 //    int maxLimit = model.everyDayMaxLimit.intValue;
     self.lab2.text = [NSString stringWithFormat:@"单日限额：¥%d", model.dailyMaxAmount.intValue];
     
-    self.lab4.text = [NSString stringWithFormat:@"交易费率：%.2f%%+%@元/笔", model.tradeRate.floatValue * 100, @"2"];
+    self.lab4.text = [NSString stringWithFormat:@"交易费率：%.2f%%+%@元/笔", model.tradeRate.floatValue / 100, @"2"];
 }
 
 - (void)layoutSubviews

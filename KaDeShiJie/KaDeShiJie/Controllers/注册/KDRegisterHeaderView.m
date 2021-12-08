@@ -101,7 +101,7 @@
         return;
     }
     kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/phone/select" parameters:@{@"phone":self.phoneView.text} ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/sms" parameters:@{@"phone":self.phoneView.text,@"smsType":@"Register"} ok:^(MCNetResponse * _Nonnull resp) {
         //已注册
         if ([resp.messege containsString:@"已注册"]) {
             [MCToast showMessage:@"您已注册,请直接登录"];
@@ -139,7 +139,7 @@
     [params setValue:phone forKey:@"phone"];
     [params setValue:@"1" forKey:@"agentId"];
     [params setValue:self.tuijianTf.text forKey:@"password"];
-    [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
+    [params setValue:code forKey:@"code"];
 
     
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
