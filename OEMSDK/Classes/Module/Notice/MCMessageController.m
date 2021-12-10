@@ -78,19 +78,19 @@
 - (void)requestPerson {
     NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
         if (weakSelf.page == 0) {
             [weakSelf.dataSource removeAllObjects];
         }
-        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.dataSource addObjectsFromArray:tempA];
         [weakSelf.tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
@@ -100,21 +100,21 @@
 - (void)requestPlatform {
     NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
         if (weakSelf.page == 0) {
             [weakSelf.dataSource removeAllObjects];
         }
-        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.dataSource addObjectsFromArray:tempA];
         [weakSelf.tableview reloadData];
         
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];

@@ -129,15 +129,15 @@
     [params setValue:pwd forKey:@"payPassword"];
     [params setValue:self.creditExtensionModel.lostSuperiorQuota forKey:@"amount"];
     [params setValue:self.creditExtensionModel.firstUserId forKey:@"userId"];
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/excluding/debt" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/excluding/debt" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
     }];
 }
 
 - (void)getUserQuota
 {
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/query/user/quota/info" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        self.quotaModel = [KDRemedyModel mj_objectWithKeyValues:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/query/user/quota/info" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        self.quotaModel = [KDRemedyModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 - (void)setQuotaModel:(KDRemedyModel *)quotaModel

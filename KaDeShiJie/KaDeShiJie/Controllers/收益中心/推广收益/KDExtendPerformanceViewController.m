@@ -105,8 +105,8 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:@"9" forKey:@"queryType"];
     [params setValue:time forKey:@"queryDate"];
-    [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/sum" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        self.performanceModel = [KDExtendPerformanceModel mj_objectWithKeyValues:resp.result];
+    [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/sum" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        self.performanceModel = [KDExtendPerformanceModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 - (void)setPerformanceModel:(KDExtendPerformanceModel *)performanceModel

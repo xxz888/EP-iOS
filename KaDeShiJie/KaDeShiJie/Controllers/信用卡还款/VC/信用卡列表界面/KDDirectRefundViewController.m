@@ -148,8 +148,8 @@
 //    [params setValue:self.repaymentModel.creditCardNumber forKey:@"bankCard"];
 //    [params setValue:self.repaymentModel.createTime forKey:@"startTime"];
 //    kWeakSelf(self);
-//    [self.sessionManager mc_POST:@"/creditcardmanager/app/add/queryeorderss/make/information" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-//        weakself.detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:resp.result[@"content"]];
+//    [self.sessionManager mc_POST:@"/creditcardmanager/app/add/queryeorderss/make/information" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//        weakself.detailModel = [KDRepaymentDetailModel mj_objectWithKeyValues:resp[@"result"][@"content"]];
 //        [weakself setDetailValue];
 //    }];
 //}
@@ -174,7 +174,7 @@
     
     __weak __typeof(self)weakself = self;
     NSString * url1 = @"/api/v1/player/bank/credit";
-    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
             [weakself.tableView.mj_header endRefreshing];
             [weakself.dataArray removeAllObjects];
             weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp];
@@ -193,11 +193,11 @@
 //    [params setValue:SharedUserInfo.userid forKey:@"userId"];
 //    kWeakSelf(self);
 //    [MCLoading show];
-//    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+//    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(NSDictionary * _Nonnull resp) {
 //        [MCLoading hidden];
 //        [weakself.tableView.mj_header endRefreshing];
 //        [weakself.dataArray removeAllObjects];
-//        weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+//        weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
 //        if (weakself.dataArray == 0) {
 //            weakself.tableView.hidden = YES;
 //            weakself.etyView.hidden = NO;

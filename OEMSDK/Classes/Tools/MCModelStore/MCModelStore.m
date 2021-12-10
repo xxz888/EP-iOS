@@ -59,14 +59,14 @@ static MCModelStore *_singleStore = nil;
 
 - (void)reloadUserInfo:(void (^)(MCUserInfo *))handle {
     if (TOKEN) {
-        [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/info" parameters:nil ok:^(MCNetResponse * _Nonnull okResponse) {
+        [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/info" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
             self.userInfo = [MCUserInfo mj_objectWithKeyValues:okResponse];
             MCModelStore.shared.preUserPhone = self.userInfo.phone;
             if (handle) {
                 handle(self.userInfo);
             }
 //            MCLog(@"获取个人信息成功");
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             
         }];
     }
@@ -76,8 +76,8 @@ static MCModelStore *_singleStore = nil;
 /// 异步获取获取收益
 /// @param handle handle
 - (void)getSumRebate:(void (^_Nullable) (MCSumRebateModel *sumRebateModel))handle{
-    [[MCSessionManager shareManager] mc_POST:api_fenruninfo parameters:@{@"user_id":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull okResponse) {
-        MCSumRebateModel* model = [MCSumRebateModel mj_objectWithKeyValues:okResponse.result];
+    [[MCSessionManager shareManager] mc_POST:api_fenruninfo parameters:@{@"user_id":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull okResponse) {
+        MCSumRebateModel* model = [MCSumRebateModel mj_objectWithKeyValues:okResponse[@"result"]];
         if (handle) {
             handle(model);
         }
@@ -85,8 +85,8 @@ static MCModelStore *_singleStore = nil;
     }];
 }
 - (void)getMyTeamInformation:(void (^)(MCTeamModel * teamModel))block {
-    [[MCSessionManager shareManager] mc_POST:api_teamInfo parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull okResponse) {
-        MCTeamModel *model = [MCTeamModel mj_objectWithKeyValues:okResponse.result];
+    [[MCSessionManager shareManager] mc_POST:api_teamInfo parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull okResponse) {
+        MCTeamModel *model = [MCTeamModel mj_objectWithKeyValues:okResponse[@"result"]];
         block(model);
     }];
 }
@@ -95,8 +95,8 @@ static MCModelStore *_singleStore = nil;
 - (void)getUserAccount:(void (^_Nullable) (MCAccountModel *accountModel))handle{
     
     NSString* url = [NSString stringWithFormat:@"%@%@",api_accountinfo,TOKEN];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull okResponse) {
-        MCAccountModel* model = [MCAccountModel mj_objectWithKeyValues:okResponse.result];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull okResponse) {
+        MCAccountModel* model = [MCAccountModel mj_objectWithKeyValues:okResponse[@"result"]];
         if (handle) {
             handle(model);
         }
@@ -105,8 +105,8 @@ static MCModelStore *_singleStore = nil;
 }
 
 - (void)reloadBrandInfo:(void (^)(MCBrandInfo *))handle {
-    [[MCSessionManager shareManager] mc_GET:api_brandinfo parameters:@{@"brand_id":self.brandConfiguration.brand_id} ok:^(MCNetResponse * _Nonnull okResponse) {
-        self.brandInfo = [MCBrandInfo mj_objectWithKeyValues:okResponse.result];
+    [[MCSessionManager shareManager] mc_GET:api_brandinfo parameters:@{@"brand_id":self.brandConfiguration.brand_id} ok:^(NSDictionary * _Nonnull okResponse) {
+        self.brandInfo = [MCBrandInfo mj_objectWithKeyValues:okResponse[@"result"]];
         if (handle) {
             handle(self.brandInfo);
         }

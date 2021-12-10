@@ -50,8 +50,8 @@
     self.creditBalance = 0.00;
     [self setCreditView:self.creditBalance];
     
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/get/quota" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        self.creditModel = [KDCreditModel mj_objectWithKeyValues:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/get/quota" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        self.creditModel = [KDCreditModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 
@@ -161,8 +161,8 @@
     [params setValue:code forKey:@"smsCode"];
     [params setValue:self.model.firstUserId forKey:@"sonUserId"];
     [params setValue:money forKey:@"authQuota"];
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/authorization/quota" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.code isEqualToString:@"000000"]) {
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/authorization/quota" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"code"] isEqualToString:@"000000"]) {
             [MCLATESTCONTROLLER.navigationController qmui_popViewControllerAnimated:YES completion:^{
                 [MCToast showMessage:@"授信成功"];
             }];

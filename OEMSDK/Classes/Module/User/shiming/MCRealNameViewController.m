@@ -46,9 +46,9 @@ static NSString *KRealNameConfig = @"/user/app/get/brand/config";
 - (void)getData {
     NSDictionary *params = @{@"brandId":SharedConfig.brand_id};
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:KRealNameConfig parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSString *artificialRecognition = resp.result[@"artificialRecognition"];
-        NSString *faceRecognition = resp.result[@"faceRecognition"];
+    [self.sessionManager mc_POST:KRealNameConfig parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSString *artificialRecognition = resp[@"result"][@"artificialRecognition"];
+        NSString *faceRecognition = resp[@"result"][@"faceRecognition"];
         if (faceRecognition.intValue == 1) {
             [weakSelf.dataArray addObject:@{@"type":@"0", @"img":@"mc_realname_1"}];
         }

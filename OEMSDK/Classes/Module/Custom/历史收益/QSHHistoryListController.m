@@ -62,8 +62,8 @@ static NSString * api_get_history_profit = @"/transactionclear/app/profit/sumofm
 - (void)fetchDatas {
     
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:api_get_history_profit parameters:@{@"userId":SharedUserInfo.userid,@"type":@"2"} ok:^(MCNetResponse * _Nonnull resp) {
-        weakSelf.model = [MCHistoryProfitModel mj_objectWithKeyValues:resp.result];
+    [self.sessionManager mc_POST:api_get_history_profit parameters:@{@"userId":SharedUserInfo.userid,@"type":@"2"} ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.model = [MCHistoryProfitModel mj_objectWithKeyValues:resp[@"result"]];
         weakSelf.header.totalProfit.text = [NSString stringWithFormat:@"%.2f", weakSelf.model.totalProfit.floatValue];
         [weakSelf.mc_tableview reloadData];
     }];

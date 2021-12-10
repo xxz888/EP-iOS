@@ -117,9 +117,9 @@
     [params setValue:self.queryType forKey:@"queryType"];
     [params setValue:time forKey:@"queryDate"];
     MCLog(@"param:%@", params);
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/query/profit/sum" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        //MCLog(@"%@",resp.result);
-        self.profitModel = [KDProfitModel mj_objectWithKeyValues:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/query/profit/sum" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        //MCLog(@"%@",resp[@"result"]);
+        self.profitModel = [KDProfitModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 

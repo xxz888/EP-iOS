@@ -39,7 +39,7 @@
     kWeakSelf(self);
     
     NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/",self.startDic[@"plan"][@"id"]];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * respDic = (NSDictionary *)resp;
         KDTotalAmountModel * amountModel = [[KDTotalAmountModel alloc]init];
         amountModel.taskCount = [respDic[@"totalRepaymentCount"] integerValue];          //还款总次数
@@ -88,7 +88,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
     NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/start/",self.startDic[@"plan"][@"id"]];
-    [self.sessionManager mc_put:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_put:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"计划执行成功"];
         });
@@ -96,7 +96,7 @@
          weakSelf.navigationController popToRootViewControllerAnimated:YES];
         
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -119,48 +119,48 @@
         [params setValue:self.city forKey:@"city"];
 //        /api/v1/player/plan/start/{planId}
         //如果是新的余额还款，需要先查询是否鉴权
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/balance/verify/band/card" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [self.sessionManager mc_POST:@"/creditcardmanager/app/balance/verify/band/card" parameters:params ok:^(NSDictionary * _Nonnull resp) {
             //然后再保存计划
-            [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/save" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+            [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/save" parameters:params ok:^(NSDictionary * _Nonnull resp) {
                 [MCLoading hidden];
                 //查询多通道
                 [weakSelf getAllXinYongKaList];
-            } other:^(MCNetResponse * _Nonnull resp) {
+            } other:^(NSDictionary * _Nonnull resp) {
                 [MCLoading hidden];
             } failure:^(NSError * _Nonnull error) {
                 [MCLoading hidden];
             }];
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             [MCLoading hidden];
             //如果需要鉴权
-            if ([resp.code isEqualToString:@"999992"]) {
+            if ([resp[@"code"] isEqualToString:@"999992"]) {
                 MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
-                cardModel.cardNo = resp.result[@"bankCard"];
-                cardModel.bankName = resp.result[@"bankName"];
-                cardModel.channelTag = resp.result[@"channelTag"];
-                cardModel.expiredTime = resp.result[@"expiredTime"];
-                cardModel.idcard = resp.result[@"idCard"];
+                cardModel.cardNo = resp[@"result"][@"bankCard"];
+                cardModel.bankName = resp[@"result"][@"bankName"];
+                cardModel.channelTag = resp[@"result"][@"channelTag"];
+                cardModel.expiredTime = resp[@"result"][@"expiredTime"];
+                cardModel.idcard = resp[@"result"][@"idCard"];
                 
-                cardModel.phone = resp.result[@"phone"];
-                cardModel.securityCode = resp.result[@"securityCode"];
-                cardModel.userName = resp.result[@"userName"];
-                cardModel.rate = resp.result[@"rate"];
-                cardModel.extraFee = resp.result[@"extraFee"];
+                cardModel.phone = resp[@"result"][@"phone"];
+                cardModel.securityCode = resp[@"result"][@"securityCode"];
+                cardModel.userName = resp[@"result"][@"userName"];
+                cardModel.rate = resp[@"result"][@"rate"];
+                cardModel.extraFee = resp[@"result"][@"extraFee"];
 
-                cardModel.dbankCard = resp.result[@"dbankCard"];
-                cardModel.dbankName = resp.result[@"dbankName"];
-                cardModel.dphone    = resp.result[@"dphone"];
+                cardModel.dbankCard = resp[@"result"][@"dbankCard"];
+                cardModel.dbankName = resp[@"result"][@"dbankName"];
+                cardModel.dphone    = resp[@"result"][@"dphone"];
 
                 //拼凑的model
                 MCCustomModel * customModel = [[MCCustomModel alloc]init];
-                customModel.bindChannelName = resp.result[@"channelTag"];
+                customModel.bindChannelName = resp[@"result"][@"channelTag"];
                 customModel.whereCome = yuehuankuan_jianquan;
-                customModel.smsApi = [resp.result[@"ipAddress"] append:resp.result[@"getSmsUrlNew"]];
-                customModel.api    = [resp.result[@"ipAddress"] append:resp.result[@"confirmSmsUrl"]];
+                customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
+                customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
                 customModel.             xinYongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:params];
                 [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
             }else{
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }
         } failure:^(NSError * _Nonnull error) {
             
@@ -180,41 +180,41 @@
         [params setValue:@"" forKey:@"couponId"];       // 优惠券ID
         
        
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/save/all/task" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [self.sessionManager mc_POST:@"/creditcardmanager/app/save/all/task" parameters:params ok:^(NSDictionary * _Nonnull resp) {
             [MCLoading hidden];
             //查询多通道
             [weakSelf getAllXinYongKaList];
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             [MCLoading hidden];
             //需要鉴权
-            if ([resp.code isEqualToString:@"999992"]) {
+            if ([resp[@"code"] isEqualToString:@"999992"]) {
                 MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
-                cardModel.cardNo = resp.result[@"bankCard"];
-                cardModel.bankName = resp.result[@"bankName"];
-                cardModel.channelTag = resp.result[@"channelTag"];
-                cardModel.expiredTime = resp.result[@"expiredTime"];
-                cardModel.idcard = resp.result[@"idCard"];
+                cardModel.cardNo = resp[@"result"][@"bankCard"];
+                cardModel.bankName = resp[@"result"][@"bankName"];
+                cardModel.channelTag = resp[@"result"][@"channelTag"];
+                cardModel.expiredTime = resp[@"result"][@"expiredTime"];
+                cardModel.idcard = resp[@"result"][@"idCard"];
                 
-                cardModel.phone = resp.result[@"phone"];
-                cardModel.securityCode = resp.result[@"securityCode"];
-                cardModel.userName = resp.result[@"userName"];
-                cardModel.rate = resp.result[@"rate"];
-                cardModel.extraFee = resp.result[@"extraFee"];
+                cardModel.phone = resp[@"result"][@"phone"];
+                cardModel.securityCode = resp[@"result"][@"securityCode"];
+                cardModel.userName = resp[@"result"][@"userName"];
+                cardModel.rate = resp[@"result"][@"rate"];
+                cardModel.extraFee = resp[@"result"][@"extraFee"];
 
-                cardModel.dbankCard = resp.result[@"dbankCard"];
-                cardModel.dbankName = resp.result[@"dbankName"];
-                cardModel.dphone    = resp.result[@"dphone"];
+                cardModel.dbankCard = resp[@"result"][@"dbankCard"];
+                cardModel.dbankName = resp[@"result"][@"dbankName"];
+                cardModel.dphone    = resp[@"result"][@"dphone"];
 
                 //拼凑的model
                 MCCustomModel * customModel = [[MCCustomModel alloc]init];
-                customModel.bindChannelName = resp.result[@"channelTag"];
+                customModel.bindChannelName = resp[@"result"][@"channelTag"];
                 customModel.whereCome = yuehuankuan_jianquan;
-                customModel.smsApi = [resp.result[@"ipAddress"] append:resp.result[@"getSmsUrlNew"]];
-                customModel.api    = [resp.result[@"ipAddress"] append:resp.result[@"confirmSmsUrl"]];
+                customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
+                customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
                 customModel.xinYongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:params];
                 [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
             }else{
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }
         } failure:^(NSError * _Nonnull error) {
             [MCLoading hidden];
@@ -235,9 +235,9 @@
         commonAlert.rightActionBlock = ^{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (weakSelf.balancePlanId) {
-                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/stop" parameters:@{@"planId":self.balancePlanId} ok:^(MCNetResponse * _Nonnull resp) {
+                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/stop" parameters:@{@"planId":self.balancePlanId} ok:^(NSDictionary * _Nonnull resp) {
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            [MCToast showMessage:resp.messege];
+                            [MCToast showMessage:resp[@"messege"]];
                         });
                         [weakSelf.navigationController popViewControllerAnimated:YES];
                     }];
@@ -253,9 +253,9 @@
                     NSMutableDictionary *params = [NSMutableDictionary dictionary];
                     [params setValue:repaymentTaskId forKey:@"repaymentTaskId"];
                     [params setValue:@"1" forKey:@"isCloseAutoConsume"];
-                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/delete/repaymenttask/by/repaymenttaskid" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/delete/repaymenttask/by/repaymenttaskid" parameters:params ok:^(NSDictionary * _Nonnull resp) {
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            [MCToast showMessage:resp.messege];
+                            [MCToast showMessage:resp[@"messege"]];
                         });
                         [weakSelf.navigationController popViewControllerAnimated:YES];
                     }];
@@ -321,9 +321,9 @@
     kWeakSelf(self);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [[MCSessionManager manager] mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager manager] mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-            NSArray * directModelArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+            NSArray * directModelArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
             for (KDDirectRefundModel * model in directModelArray) {
                 if ([model.cardNo isEqualToString:weakself.repaymentModel.creditCardNumber]) {
                     weakself.directRefundModel = model;
@@ -336,8 +336,8 @@
 #pragma mark -----------------------多通道设置，获取所有储蓄卡信息---------------------
 - (void)requestAllChuXuKaList {
     kWeakSelf(self);
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCBankCardModel *model in temArr) {
             if ([model.nature containsString:@"借"]) {
                 if (model.idDef) {
@@ -369,12 +369,12 @@
                                @"loginPhone":SharedUserInfo.phone
                             };
         kWeakSelf(self);
-        [self.sessionManager mc_POST:@"/paymentgateway/isChannelBind" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+        [self.sessionManager mc_POST:@"/paymentgateway/isChannelBind" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
             //查询是否有多通道
-            if (resp.result && [resp.result allKeys] != 0) {
-                weakself.getSmsUrl = resp.result[@"getSmsUrl"];
-                weakself.confirmSmsUrl = resp.result[@"confirmSmsUrl"];
-                weakself.channelTag = resp.result[@"channelTag"];
+            if (resp[@"result"] && [resp[@"result"] allKeys] != 0) {
+                weakself.getSmsUrl = resp[@"result"][@"getSmsUrl"];
+                weakself.confirmSmsUrl = resp[@"result"][@"confirmSmsUrl"];
+                weakself.channelTag = resp[@"result"][@"channelTag"];
                 //如果下单进来，就直接弹出
                 if (weakself.whereCome == 1) {
                     [weakself channelAction:nil];
@@ -392,7 +392,7 @@
                 }
       
             }
-        }other:^(MCNetResponse * _Nonnull resp) {
+        }other:^(NSDictionary * _Nonnull resp) {
          
         } failure:^(NSError * _Nonnull error) {
             
@@ -426,8 +426,8 @@
         });
         return;;
     }
-    [self.sessionManager mc_POST:self.getSmsUrl parameters:[self getSameParamers] ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.messege isEqualToString:@"绑卡成功"]) {
+    [self.sessionManager mc_POST:self.getSmsUrl parameters:[self getSameParamers] ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"messege"] isEqualToString:@"绑卡成功"]) {
             [MCToast showMessage:@"此卡已绑定该通道"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (weakself.whereCome == 1) {
@@ -456,7 +456,7 @@
     NSMutableDictionary * dic = [self getSameParamers];
     [dic setValue:self.commonAlert.codeTf.text forKey:@"smsCode"];
     NSString * confirmUrl = [self.confirmSmsUrl replaceAll:@"/v1.0" target:@""];
-    [self.sessionManager mc_POST:confirmUrl parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:confirmUrl parameters:dic ok:^(NSDictionary * _Nonnull resp) {
         if (weakself.whereCome == 1) {
             //如果绑定完所有卡，就跳转列表界面
             [weakself jumpXinYongKaList:nil];
@@ -501,7 +501,7 @@
         [self.presentAlert hideWithAnimated:YES completion:nil];
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [MCToast showMessage:resp ? resp.messege : @"计划设置成功"];
+//        [MCToast showMessage:resp ? resp[@"messege"] : @"计划设置成功"];
     });
     KDDirectRefundViewController * directRefundVC = nil;
     for (UIViewController * vc in self.navigationController.childViewControllers) {
@@ -521,8 +521,8 @@
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (KDDirectRefundModel *model in dataArray) {
             if ([model.cardNo isEqualToString:self.repaymentModel.creditCardNumber]) {
                 self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", model.billDay, model.repaymentDay];

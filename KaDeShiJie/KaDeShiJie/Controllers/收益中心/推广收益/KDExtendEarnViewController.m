@@ -92,8 +92,8 @@
 }
 - (void)getExtensionEarnData {
     kWeakSelf(self);
-    [self.sessionManager mc_POST:@"/user/app/query/direct/user/award/history/sum" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.earnModel = [KDExtensionEarnModel mj_objectWithKeyValues:resp.result];
+    [self.sessionManager mc_POST:@"/user/app/query/direct/user/award/history/sum" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        weakself.earnModel = [KDExtensionEarnModel mj_objectWithKeyValues:resp[@"result"]];
         
         [weakself getconfigjihuo];
 
@@ -112,13 +112,13 @@
                            @"status":@""
     };
     
-    [weakself.sessionManager mc_POST:@"/user/app/query/activate/award/config" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+    [weakself.sessionManager mc_POST:@"/user/app/query/activate/award/config" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
         /*
          直推：1-14人 60元 15-34人 65元 35-9999人 70元
          间推：1-299人 12元 300-999909人15元
          二级间推：1-2999人 6元 3000-999999人10元
          **/
-        for (NSDictionary * dic in resp.result) {
+        for (NSDictionary * dic in resp[@"result"]) {
             if (weakself.earnModel.direct1ActiveCount <= 14 && [dic[@"maxNum"] integerValue] == 14 && [dic[@"level"] integerValue] == 1) {
                 weakself.lab2.text = [NSString stringWithFormat:@"%@元/人",dic[@"amount"]];
             }

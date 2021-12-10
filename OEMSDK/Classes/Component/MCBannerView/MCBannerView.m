@@ -125,8 +125,8 @@
     if (city && city.length > 0) {
         [param setObject:city forKey:@"city"];
     }
-    [MCSessionManager.shareManager mc_POST:@"/user/app/slideshow/query/brandid" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        self.infos = resp.result;
+    [MCSessionManager.shareManager mc_POST:@"/user/app/slideshow/query/brandid" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        self.infos = resp[@"result"];
         NSMutableArray *imgUrls = [NSMutableArray new];
         for (NSDictionary *item in self.infos) {
             [imgUrls addObject:item[@"imgurl"]];

@@ -185,8 +185,8 @@
                          @"nature":@"2",
                          @"isDefault":@"1"};
     __weak __typeof(self)weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCChooseCardModel *model in temp) {
             weakSelf.bankCardModel = model;
             break;
@@ -207,8 +207,8 @@
                                    @"creditBankName":self.xykModel.bankName
                                    };
     
-    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:gatheringDic ok:^(MCNetResponse * _Nonnull resp) {
-        [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result, @"title":@"快捷支付"}];
+    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:gatheringDic ok:^(NSDictionary * _Nonnull resp) {
+        [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"], @"title":@"快捷支付"}];
     }];
 }
 

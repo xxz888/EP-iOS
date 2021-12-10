@@ -73,13 +73,13 @@ static MCTXManager *_singleManager = nil;
 //
 //#pragma mark - 从接口请求腾讯的配置参数
 //- (void)mc_getTXParametersCompletion:(void(^)(NSDictionary *reponse))completion {
-//    [MCSessionManager.shareManager mc_POST:@"/user/app/get/udun/realname/detectAuth" parameters:nil ok:^(MCNetResponse * _Nonnull okResponse) {
-//        completion(okResponse.result);
-//    } other:^(MCNetResponse * _Nonnull resp) {
+//    [MCSessionManager.shareManager mc_POST:@"/user/app/get/udun/realname/detectAuth" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
+//        completion(okResponse[@"result"]);
+//    } other:^(NSDictionary * _Nonnull resp) {
 //        [MCLoading hidden];
-//        [MCToast showMessage:resp.messege];
+//        [MCToast showMessage:resp[@"messege"]];
 //        MCTXResult *rr = [[MCTXResult alloc] init];
-//        rr.error = [NSError errorWithDomain:resp.messege code:resp.code.intValue userInfo:nil];
+//        rr.error = [NSError errorWithDomain:resp[@"messege"] code:resp[@"code"].intValue userInfo:nil];
 //        self.callBack(rr);
 //    } failure:^(NSError * _Nonnull error) {
 //        [MCLoading hidden];
@@ -92,17 +92,17 @@ static MCTXManager *_singleManager = nil;
 //#pragma mark - 上传银行卡图片
 //- (void)uploadBankImage:(UIImage *)image {
 //
-//    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.0001 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-//        //MCLog(@"%@",resp.result);
+//    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+//        //MCLog(@"%@",resp[@"result"]);
 //        MCTXResult *result = [MCTXResult new];
-//        result.brankCardNo = [NSString stringWithFormat:@"%@",resp.result[@"cardNum"]];
+//        result.brankCardNo = [NSString stringWithFormat:@"%@",resp[@"result"][@"cardNum"]];
 //        result.cardImg = image;
 //        self.callBack(result);
-//    } other:^(MCNetResponse * _Nonnull resp) {
+//    } other:^(NSDictionary * _Nonnull resp) {
 //        [MCLoading hidden];
-//        [MCToast showMessage:resp.messege];
+//        [MCToast showMessage:resp[@"messege"]];
 //        MCTXResult *rr = [[MCTXResult alloc] init];
-//        rr.error = [NSError errorWithDomain:resp.messege code:resp.code.intValue userInfo:nil];
+//        rr.error = [NSError errorWithDomain:resp[@"messege"] code:resp[@"code"].intValue userInfo:nil];
 //        self.callBack(rr);
 //    } failure:^(NSError * _Nonnull error) {
 //        [MCLoading hidden];
@@ -125,15 +125,15 @@ static MCTXManager *_singleManager = nil;
 //          }
 //        /**/
 //
-//        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/get/udun/realname/getDetectInfo/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+//        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/get/udun/realname/getDetectInfo/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
 //            //成功
 //            [MCModelStore.shared reloadUserInfo:nil];
 //            self.callBack([MCTXResult new]);
-//        } other:^(MCNetResponse * _Nonnull resp) {
+//        } other:^(NSDictionary * _Nonnull resp) {
 //            [MCLoading hidden];
-//            [MCToast showMessage:resp.messege];
+//            [MCToast showMessage:resp[@"messege"]];
 //            MCTXResult *rr = [[MCTXResult alloc] init];
-//            rr.error = [NSError errorWithDomain:resp.messege code:resp.code.intValue userInfo:nil];
+//            rr.error = [NSError errorWithDomain:resp[@"messege"] code:resp[@"code"].intValue userInfo:nil];
 //            self.callBack(rr);
 //        } failure:^(NSError * _Nonnull error) {
 //            [MCLoading hidden];

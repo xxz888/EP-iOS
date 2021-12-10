@@ -156,7 +156,7 @@
         
         __weak __typeof(self)weakSelf = self;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":weakSelf.refundModel.cardNo,@"type":@"0"} ok:^(MCNetResponse * _Nonnull resp) {
+            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":weakSelf.refundModel.cardNo,@"type":@"0"} ok:^(NSDictionary * _Nonnull resp) {
                 if (weakSelf.refreshUIBlock) {
                     weakSelf.refreshUIBlock();
                 }
@@ -179,7 +179,7 @@
     }else{
         NSInteger emptyCardPlanStatus = [self.refundModel.emptyCardPlanStatus integerValue];
         if (!emptyCardPlanStatus || emptyCardPlanStatus == 0) {
-    //        [MCSessionManager.shareManager mc_POST:@"creditcardmanager/app/empty/card/get/channel/all" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    //        [MCSessionManager.shareManager mc_POST:@"creditcardmanager/app/empty/card/get/channel/all" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
                 KDKongKaPlanViewController * vc = [[KDKongKaPlanViewController alloc]init];
                 vc.directModel = self.refundModel;
                 vc.navTitle = @"空卡计划制定";

@@ -75,8 +75,8 @@
     
     NSDictionary *params = @{@"payUrl":self.codeStr};
     NSString *url = @"/facade/app/get/gathering/qrcode";
-    [self.sessionManager mc_POST:url parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        self.codeInfoModel = [QRCodeInfoModel mj_objectWithKeyValues:resp.result];
+    [self.sessionManager mc_POST:url parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        self.codeInfoModel = [QRCodeInfoModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 

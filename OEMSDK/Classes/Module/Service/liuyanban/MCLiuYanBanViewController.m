@@ -25,27 +25,27 @@
 -(void)requestGuanFangLiuYan{
     __weak typeof(self) weakSelf = self;
     [self.dataArray removeAllObjects];
-    [MCSessionManager.shareManager mc_POST:@"/user/app/jpush/MessagePush/Query" parameters:@{@"userid":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/user/app/jpush/MessagePush/Query" parameters:@{@"userid":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
         
 
         
-        if ([resp.code isEqualToString:@"000000"]) {
-            [weakSelf.dataArray addObjectsFromArray:resp.result];
+        if ([resp[@"code"] isEqualToString:@"000000"]) {
+            [weakSelf.dataArray addObjectsFromArray:resp[@"result"]];
             
             //这里判断未读数组，把未读变成已读
-            for (NSDictionary * typeDic in resp.result) {
+            for (NSDictionary * typeDic in resp[@"result"]) {
                 if ([typeDic[@"type"] integerValue] == 0) {
-                    [MCSessionManager.shareManager mc_POST:@"/user/app/jpush/MessagePush/update/App" parameters:@{@"id":typeDic[@"id"]} ok:^(MCNetResponse * _Nonnull resp) {}];
+                    [MCSessionManager.shareManager mc_POST:@"/user/app/jpush/MessagePush/update/App" parameters:@{@"id":typeDic[@"id"]} ok:^(NSDictionary * _Nonnull resp) {}];
                 }
             }
        
         }else{
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
         [weakSelf.liuyanbanTableView reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     }];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

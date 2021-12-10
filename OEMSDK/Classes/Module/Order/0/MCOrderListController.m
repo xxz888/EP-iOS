@@ -279,19 +279,19 @@
         [param setObject:self.endTime forKey:@"end_time"];
     }
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_POST:[NSString stringWithFormat:@"/transactionclear/app/payment/query/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:[NSString stringWithFormat:@"/transactionclear/app/payment/query/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
-        NSArray *tempA = [MCOrderModel mj_objectArrayWithKeyValuesArray:[resp.result objectForKey:@"content"]];
-        weakSelf.moneyLab.text = [NSString stringWithFormat:@"累计金额:%.2f", resp.sumAmount.floatValue];
+        NSArray *tempA = [MCOrderModel mj_objectArrayWithKeyValuesArray:[resp[@"result"] objectForKey:@"content"]];
+//        weakSelf.moneyLab.text = [NSString stringWithFormat:@"累计金额:%.2f", resp.sumAmount.floatValue];
         [weakSelf.dataSource removeAllObjects];
         [weakSelf.dataSource addObjectsFromArray:[weakSelf groupWithDataArr:tempA]];
         [weakSelf.tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];
         [weakSelf.tableview.mj_header endRefreshing];

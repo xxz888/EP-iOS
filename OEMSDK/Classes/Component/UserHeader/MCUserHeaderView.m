@@ -56,9 +56,9 @@ static NSString * api_uploadhead = @"/user/app/headportrait/updateby/phone";
 
 - (void)fetchHeaderPath {
     
-    [MCSessionManager.shareManager mc_POST:api_getheadpath parameters:@{@"phone":SharedUserInfo.phone, @"brandId":SharedConfig.brand_id} ok:^(MCNetResponse * _Nonnull resp) {
-        SharedUserInfo.headImvUrl = resp.result;
-        [self.headerButton sd_setImageWithURL:[NSURL URLWithString:resp.result] forState:UIControlStateNormal];
+    [MCSessionManager.shareManager mc_POST:api_getheadpath parameters:@{@"phone":SharedUserInfo.phone, @"brandId":SharedConfig.brand_id} ok:^(NSDictionary * _Nonnull resp) {
+        SharedUserInfo.headImvUrl = resp[@"result"];
+        [self.headerButton sd_setImageWithURL:[NSURL URLWithString:resp[@"result"]] forState:UIControlStateNormal];
     }];
 }
 
@@ -102,10 +102,10 @@ static NSString * api_uploadhead = @"/user/app/headportrait/updateby/phone";
                             @"brandId":SharedConfig.brand_id
                             };
     
-    [MCSessionManager.shareManager mc_UPLOAD:api_uploadhead parameters:param images:@[image] remoteFields:@[@"image"] imageNames:nil imageScale:1 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_UPLOAD:api_uploadhead parameters:param images:@[image] remoteFields:@[@"image"] imageNames:nil imageScale:1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
         
         [self.headerButton setImage:image forState:UIControlStateNormal];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
         [picker dismissViewControllerAnimated:YES completion:nil];
     } other:nil failure:nil];
 }

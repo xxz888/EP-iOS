@@ -65,9 +65,9 @@
 
     // 发送验证码
     NSDictionary *params = @{@"phone":phone, @"brand_id":MCModelStore.shared.brandConfiguration.brand_id};
-    [[MCSessionManager shareManager] mc_GET:@"/notice/app/sms/send" parameters:params ok:^(MCNetResponse * _Nonnull okResponse) {
-        [self changeSendBtnText];
-    }];
+//    [[MCSessionManager shareManager] mc_GET:@"/notice/app/sms/send" parameters:params ok:^(NSDictionary * _Nonnull okResponse) {
+//        [self changeSendBtnText];
+//    }];
 }
 
 
@@ -143,11 +143,11 @@
         [params setValue:SharedConfig.brand_id forKey:@"brandId"];
 
         __weak typeof(self) weakSelf = self;
-        [[MCSessionManager shareManager] mc_POST:@"/user/app/password/update" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-            if ([resp.code isEqualToString:@"000000"]) {
-                [MCToast showMessage:@"修改成功"];
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-            }
+        [[MCSessionManager shareManager] mc_POST:@"/user/app/password/update" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//            if ([resp[@"code"] isEqualToString:@"000000"]) {
+//                [MCToast showMessage:@"修改成功"];
+//                [weakSelf.navigationController popViewControllerAnimated:YES];
+//            }
         }];
     }else{
         [MCToast showMessage:@"两次密码不一致"];

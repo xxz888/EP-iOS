@@ -383,7 +383,7 @@ static const CGFloat margin = 10;
 
     };
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/certification" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/certification" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
         if ([dic[@"certification"] integerValue] == 1) {
             [MCToast showMessage:@"实名认证成功"];
@@ -393,7 +393,7 @@ static const CGFloat margin = 10;
         }
     
         
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -406,7 +406,7 @@ static const CGFloat margin = 10;
     NSDictionary *uploadDic = @{};
     NSArray *imagesArr = @[selectImg];
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/IdCard" parameters:uploadDic images:imagesArr remoteFields:nil imageNames:@[name] imageScale:0.0001 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/IdCard" parameters:uploadDic images:imagesArr remoteFields:nil imageNames:@[name] imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
         // 设置图片
         if (self.index == 0) {
@@ -435,11 +435,11 @@ static const CGFloat margin = 10;
 - (void)baiduFace {
     NSArray *images = @[self.imageOne,self.imageTwo,self.imageThree];
     NSArray *imageNames = @[@"idCardTop",@"idCardBack",@"imageFace"];
-    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentgateway/baidu/idcard/getScore" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:0.0001 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-        MCLog(@"成功，%@",resp.result);
+    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentgateway/baidu/idcard/getScore" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        MCLog(@"成功，%@",resp[@"result"]);
         [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_user_realname];
-    } other:^(MCNetResponse * _Nonnull resp) {
-        //MCLog(@"%@",resp.result);
+    } other:^(NSDictionary * _Nonnull resp) {
+        //MCLog(@"%@",resp[@"result"]);
     } failure:^(NSError * _Nonnull error) {
         //MCLog(@"%@",error);
     }];

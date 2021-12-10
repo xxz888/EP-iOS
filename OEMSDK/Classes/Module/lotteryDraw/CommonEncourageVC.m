@@ -106,15 +106,15 @@ static const CGFloat roundW = 300;
 /// 1. 请求抽奖数据
 #pragma mark --- 请求数据 ------------------
 - (void)requestDataForMessage {
-    __weak typeof(self) weakSelf = self;
-    NSString *url = [NSString stringWithFormat:@"/facade/app/red/payment/%@", TOKEN];
-    [[MCSessionManager shareManager] mc_GET:url parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.code isEqualToString:@"000000"]) {
-            [weakSelf showAlertWithMessage:[NSString stringWithFormat:@"获得%@", resp.result]];
-        }else {
-            [weakSelf showAlertWithMessage:[NSString stringWithFormat:@"%@", resp.messege]];
-        }
-    }];
+//    __weak typeof(self) weakSelf = self;
+//    NSString *url = [NSString stringWithFormat:@"/facade/app/red/payment/%@", TOKEN];
+//    [[MCSessionManager shareManager] mc_GET:url parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+//        if ([resp[@"code"] isEqualToString:@"000000"]) {
+//            [weakSelf showAlertWithMessage:[NSString stringWithFormat:@"获得%@", resp[@"result"]]];
+//        }else {
+//            [weakSelf showAlertWithMessage:[NSString stringWithFormat:@"%@", resp[@"messege"]]];
+//        }
+//    }];
 }
 
 @end

@@ -94,8 +94,8 @@
     
     __weak __typeof(self)weakSelf = self;
     
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/select/topup/home/Selectagreement/" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        [self p_parseDataSource:resp.result[@"content"]];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/select/topup/home/Selectagreement/" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        [self p_parseDataSource:resp[@"result"][@"content"]];
     }];
 }
 

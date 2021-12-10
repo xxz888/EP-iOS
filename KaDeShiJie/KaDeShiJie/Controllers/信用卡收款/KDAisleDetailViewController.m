@@ -55,13 +55,13 @@
     
     
     NSString * url2 = @"/api/v1/player/credit/support";
-    [self.sessionManager mc_GET:url2 parameters:@{@"channel":self.model.channelType} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url2 parameters:@{@"channel":self.model.channelType} ok:^(NSDictionary * _Nonnull resp) {
         self.dataArray = [KDAisleDetailModel mj_objectArrayWithKeyValuesArray:resp];
         [self.mc_tableview reloadData];
     }];
     
-//    [self.sessionManager mc_POST:@"/paymentchannel/app/supportbankbytag/query" parameters:@{@"channelTag":self.model.channelTag} ok:^(MCNetResponse * _Nonnull resp) {
-//        self.dataArray = [KDAisleDetailModel mj_objectArrayWithKeyValuesArray:resp.result];
+//    [self.sessionManager mc_POST:@"/paymentchannel/app/supportbankbytag/query" parameters:@{@"channelTag":self.model.channelTag} ok:^(NSDictionary * _Nonnull resp) {
+//        self.dataArray = [KDAisleDetailModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
 //        [self.mc_tableview reloadData];
 //    }];
 }

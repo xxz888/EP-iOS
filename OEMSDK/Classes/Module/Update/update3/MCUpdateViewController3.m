@@ -114,11 +114,11 @@
 }
 - (void)requestProducts {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedBrandInfo.ID] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedBrandInfo.ID] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         
         [weakSelf.backScroll.mj_header endRefreshing];
         
-        NSArray *tempA = [[[MCProductModel mj_objectArrayWithKeyValuesArray:resp.result] reverseObjectEnumerator] allObjects];
+        NSArray *tempA = [[[MCProductModel mj_objectArrayWithKeyValuesArray:resp[@"result"]] reverseObjectEnumerator] allObjects];
         
         if (SharedUserInfo.brandStatus.boolValue) { //贴牌商
             weakSelf.dataSource = [NSMutableArray arrayWithArray:tempA];
@@ -136,9 +136,9 @@
         }
         
         [weakSelf.productPage reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.backScroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.backScroll.mj_header endRefreshing];
         [MCToast showMessage:error.localizedFailureReason];

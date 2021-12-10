@@ -150,11 +150,11 @@
     kWeakSelf(self);
     [MCLoading show];
 
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
         [weakself.tableView.mj_header endRefreshing];
         [weakself.dataArray removeAllObjects];
-        weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+        weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         if (weakself.dataArray == 0) {
             weakself.tableView.hidden = YES;
             weakself.etyView.hidden = NO;

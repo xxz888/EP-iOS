@@ -85,7 +85,7 @@
 {
     NSDictionary *sendDic = @{@"phone":self.phoneView.text, @"brand_id":SharedConfig.brand_id};
     
-    [MCSessionManager.shareManager mc_GET:@"/notice/app/sms/send" parameters:sendDic ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_GET:@"/notice/app/sms/send" parameters:sendDic ok:^(NSDictionary * _Nonnull resp) {
         
     }];
 }
@@ -100,7 +100,7 @@
     NSDictionary *sendDic = @{@"phone":self.phoneView.text, @"smsCode":self.codeView.text};
     
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/notice/app/sms/verifysmscode" parameters:sendDic ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/notice/app/sms/verifysmscode" parameters:sendDic ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf bindAli];
     }];
 }
@@ -121,7 +121,7 @@
     };
     
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:bankDic ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:bankDic ok:^(NSDictionary * _Nonnull resp) {
         QMUIAlertController *alert = [[QMUIAlertController alloc] initWithTitle:nil message:@"绑定成功！" preferredStyle:QMUIAlertControllerStyleAlert];
         [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleCancel handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
                 [weakSelf.navigationController popViewControllerAnimated:YES];

@@ -58,8 +58,8 @@
     
     NSDictionary *param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":@"资讯"};
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        weakSelf.dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.mc_tableview reloadData];
     }];
 }

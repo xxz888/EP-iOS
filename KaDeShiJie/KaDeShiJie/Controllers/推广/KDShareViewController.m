@@ -136,9 +136,9 @@
 
 - (void)getPlatformData
 {
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/PlatformData/user/query" parameters:@{@"brandId":SharedConfig.brand_id} ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/PlatformData/user/query" parameters:@{@"brandId":SharedConfig.brand_id} ok:^(NSDictionary * _Nonnull resp) {
         [self.mc_tableview.mj_header endRefreshing];
-        NSDictionary *content = [resp.result[@"content"] firstObject];
+        NSDictionary *content = [resp[@"result"][@"content"] firstObject];
         self.header.content = content;
     }];
 }

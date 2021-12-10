@@ -69,7 +69,7 @@
 -(void)requestData{
     __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/wallet";
-    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.headerView setDataDic:[NSDictionary dictionaryWithDictionary:resp]];
     }];
     

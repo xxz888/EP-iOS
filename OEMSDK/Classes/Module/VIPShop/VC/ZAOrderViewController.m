@@ -40,8 +40,8 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:MCModelStore.shared.brandConfiguration.brand_id forKey:@"brandId"];
     [params setValue:@"产品收货" forKey:@"classifiCation"];
-    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        self.goodsArray = [ZAShopsModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        self.goodsArray = [ZAShopsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [self.mc_tableview reloadData];
     }];
 }

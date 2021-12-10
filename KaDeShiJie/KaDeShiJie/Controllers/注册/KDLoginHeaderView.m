@@ -163,7 +163,7 @@
         return;
     }
     NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=Login&phone=%@",self.phoneView.text];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         [MCToast showMessage:@"验证码已发送"];
         [weakSelf changeSendBtnText];
     }];
@@ -191,9 +191,9 @@
         [params setValue:code forKey:@"password"];
         [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
         
-        [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login" parameters:params ok:^(NSDictionary * _Nonnull resp) {
             [weakSelf loginSucess:resp];
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             
         } failure:^(NSError * _Nonnull error) {
             
@@ -207,9 +207,9 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:phone forKey:@"phone"];
         [params setValue:code forKey:@"code"];
-        [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login/code" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login/code" parameters:params ok:^(NSDictionary * _Nonnull resp) {
             [weakSelf loginSucess:resp];
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             
         } failure:^(NSError * _Nonnull error) {
             

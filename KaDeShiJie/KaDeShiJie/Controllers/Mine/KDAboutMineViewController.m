@@ -30,8 +30,8 @@
 }
 
 - (void)getData {
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/add/querycirclefriendslibrary/make/information" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *result = resp.result[@"content"];
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/add/querycirclefriendslibrary/make/information" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *result = resp[@"result"][@"content"];
         if (result.count != 0) {
 //            NSDictionary *dict = [result firstObject];
 //            self.contentLabel.text = dict[@"pictureContent"];

@@ -51,24 +51,24 @@
 
 - (void)requestData {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scrollView.mj_header endRefreshing];
-        NSString *balanceString = [NSString stringWithFormat:@"%.2f", [resp.result[@"balance"] floatValue]];
+        NSString *balanceString = [NSString stringWithFormat:@"%.2f", [resp[@"result"][@"balance"] floatValue]];
         weakSelf.avalibleLab.text = balanceString;
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scrollView.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scrollView.mj_header endRefreshing];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];
     }];
-    [self.sessionManager mc_POST:@"/user/app/rebate/query/sumrebate" parameters:@{@"user_id":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/user/app/rebate/query/sumrebate" parameters:@{@"user_id":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scrollView.mj_header endRefreshing];
-        NSString *amountStr = [NSString stringWithFormat:@"%.2f", [resp.result[@"allRebate"] floatValue]];
+        NSString *amountStr = [NSString stringWithFormat:@"%.2f", [resp[@"result"][@"allRebate"] floatValue]];
         weakSelf.totalLab.text = amountStr;
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scrollView.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scrollView.mj_header endRefreshing];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];

@@ -154,9 +154,9 @@ static MCChoosePayment *_singlePayment = nil;
 
 - (void)fetchPaymentTypes{
     
-    [MCSessionManager.shareManager mc_POST:@"/user/app/channel/query/all/brandid" parameters:@{@"user_id":SharedUserInfo.userid,@"isPurchaseUpgrade":@"1"} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/user/app/channel/query/all/brandid" parameters:@{@"user_id":SharedUserInfo.userid,@"isPurchaseUpgrade":@"1"} ok:^(NSDictionary * _Nonnull resp) {
         
-        NSArray *typeObjs = [MCPaymentModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *typeObjs = [MCPaymentModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         if (typeObjs.count == 0) {
             [MCToast showMessage:@"未配置支付方式"];
             return;
@@ -377,7 +377,7 @@ static CGFloat viewScale = 0.5;
 //#pragma mark - MCPayPWDInputViewDelegate
 //- (void)payPWDInputViewDidCommited:(NSString *)pwd {
 //    __weak __typeof(self)weakSelf = self;
-//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/paypass/auth/%@",TOKEN] parameters:@{@"paypass":pwd} ok:^(MCNetResponse * _Nonnull resp) {
+//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/paypass/auth/%@",TOKEN] parameters:@{@"paypass":pwd} ok:^(NSDictionary * _Nonnull resp) {
 //        [weakSelf handleAccountPay];
 //    }];
 //}

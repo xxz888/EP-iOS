@@ -54,8 +54,8 @@ static NSString *api_getnews = @"/user/app/news/getnewsby/brandidandclassificati
     [param setObject:@"0" forKey:@"page"];
     
     __weak __typeof(self)weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:api_getnews parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        self.datasource = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:api_getnews parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        self.datasource = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self updataHeight];
             [self.za_tableview reloadData];

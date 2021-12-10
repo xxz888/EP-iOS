@@ -1,5 +1,5 @@
 //
-//  KDBingCardNewViewController.h
+//  KDPayNewViewController.h
 //  KaDeShiJie
 //
 //  Created by SS001 on 2020/9/12.
@@ -10,12 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KDBingCardNewViewController : MCBaseViewController
+@interface KDPayNewViewController : MCBaseViewController
 //@property (nonatomic, strong) MCChannelModel *channelModel;
 @property (nonatomic, strong) MCBankCardModel *cardModel;
+@property (nonatomic, strong) MCBankCardModel *cardchuxuModel;
+@property (nonatomic ,strong)NSString * amount;
 @property (nonatomic, strong) NSString *money;
 - (instancetype)initWithClassification:(MCBankCardModel *)cardModel;
-
+@property (nonatomic ,strong)NSString * channelId;
 
 @property (weak, nonatomic) IBOutlet UILabel *change2Lbl;
 

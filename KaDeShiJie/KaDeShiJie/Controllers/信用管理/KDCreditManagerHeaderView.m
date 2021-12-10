@@ -74,8 +74,8 @@
 // 获取我的授信额度
 - (void)getMyCredit {
     
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/get/quota" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        self.model = [KDCreditModel mj_objectWithKeyValues:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/get/quota" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        self.model = [KDCreditModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 

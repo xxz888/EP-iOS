@@ -46,11 +46,11 @@
     [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/order/list" parameters:@{@"status":@"1",
                                                                                       @"count":@"1",
                                                                                       @"startTime":@"2021-06-1 00:00:00",
-                                                                                      @"endTime":@"2021-12-31 00:00:00"} ok:^(MCNetResponse * _Nonnull resp) {
+                                                                                      @"endTime":@"2021-12-31 00:00:00"} ok:^(NSDictionary * _Nonnull resp) {
         [weakself.dataArray removeAllObjects];
-        [weakself.dataArray addObjectsFromArray:resp.result[@"content"]];
+        [weakself.dataArray addObjectsFromArray:resp[@"result"][@"content"]];
         [weakself.mc_tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

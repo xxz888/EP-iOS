@@ -102,18 +102,18 @@
     }
     kWeakSelf(self);
     NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=Register&phone=%@",self.phoneView.text];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         [MCToast showMessage:@"验证码已发送"];
         [weakself changeSendBtnText];
     }];
-//    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/sms" parameters:@{@"phone":self.phoneView.text,@"smsType":@"Register"} ok:^(MCNetResponse * _Nonnull resp) {
+//    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/sms" parameters:@{@"phone":self.phoneView.text,@"smsType":@"Register"} ok:^(NSDictionary * _Nonnull resp) {
 //        //已注册
-//        if ([resp.messege containsString:@"已注册"]) {
+//        if ([resp[@"messege"] containsString:@"已注册"]) {
 //            [MCToast showMessage:@"您已注册,请直接登录"];
 //            [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
 //        }
 //        //未注册
-//        if ([resp.messege containsString:@"未注册"]) {
+//        if ([resp[@"messege"] containsString:@"未注册"]) {
 //            [weakself showTuiJianView:YES];
 //            [weakself changeSendBtnText];
 //            // 发送验证码
@@ -147,19 +147,19 @@
     [params setValue:code forKey:@"code"];
 
     
-    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user" parameters:params ok:^(NSDictionary * _Nonnull resp) {
  
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
     }];
     
-//    [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+//    [[MCSessionManager shareManager] mc_POST:@"/api/v1/player/user" parameters:params ok:^(NSDictionary * _Nonnull resp) {
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [MCToast showMessage:resp.messege];
+//            [MCToast showMessage:resp[@"messege"]];
 //        });
 //        [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
 //    }];

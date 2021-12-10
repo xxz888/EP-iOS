@@ -78,7 +78,7 @@
     [self setNavigationBarTitle:@"账单管理" tintColor:UIColor.whiteColor];
 
 
-//    [self getHistory];
+    [self getHistory];
 }
 #pragma mark - KDTrandingRecordHeaderViewDelegate
 - (void)headerViewDelegateWithTime:(NSString *)time
@@ -158,10 +158,10 @@
         [MCLoading show];
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:SharedUserInfo.userid forKey:@"userId"];
-        [[MCSessionManager manager] mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [[MCSessionManager manager] mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(NSDictionary * _Nonnull resp) {
             [MCLoading hidden];
             KDDirectRefundModel * directRefundModel = nil;
-            NSArray * directModelArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+            NSArray * directModelArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
             for (KDDirectRefundModel * model in directModelArray) {
                 if ([model.cardNo isEqualToString:repaymentModel.creditCardNumber]) {
                     directRefundModel = model;
@@ -175,7 +175,7 @@
             KDTrandingRecordViewCell *cell = [self.mc_tableview cellForRowAtIndexPath:indexPath];
             vc.stateString = cell.statusLabel.text;
             [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             [MCLoading hidden];
         } failure:^(NSError * _Nonnull error) {
             [MCLoading hidden];
@@ -189,69 +189,75 @@
 - (void)getHistory
 {
     kWeakSelf(self);
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [params setValue:BCFI.brand_id forKey:@"brandId"];
-    [params setValue:self.year forKey:@"year"];
-    [params setValue:self.month forKey:@"month"];
+    NSString * orderType = self.type == 1 ? @"Consumption" : self.type == 2 ? @"ReceivePayment" : @"Repayment";
     //刷卡
-    if (self.type == 1) {
-        [self.sessionManager mc_POST:@"/transactionclear/app/add/querypaybycard/make/information" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-            self.dataArray = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
-            [self.mc_tableview reloadData];
-        }];
-    }else{
-
-        NSMutableDictionary * kongkaParams = [NSMutableDictionary dictionary];
-        [kongkaParams setValue:@"0" forKey:@"page"];
-        [kongkaParams setValue:@"100" forKey:@"size"];
-        [kongkaParams setValue:SharedUserInfo.userid forKey:@"userId"];
-        NSString * minDateTime = [NSString stringWithFormat:@"%@-%@-01 00:00:00",self.year,self.month];
-        [kongkaParams setValue:minDateTime forKey:@"minDateTime"];
-        [kongkaParams setValue:[self getMaxDateTime] forKey:@"maxDateTime"];
-        //余额还款和刷卡
-        
-        
-        
-        __weak __typeof(self)weakself = self;
-        NSString * url1 = @"/api/v1/player/plan";
-        [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-            self.repaymentArray = [NSArray arrayWithArray:resp];
-            [self.mc_tableview reloadData];
-        }];
-        
-        
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=%@&current=%@&size=%@",orderType,@"1",@"20"];
+    [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        if ([respDic[@"data"] count] == 0) {
+            
+        }else{
+            self.dataArray = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]];
+           [self.mc_tableview reloadData];
+        }
+    }] ;
+    
+//
+//    if (self.type == 1) {
+//        [self.sessionManager mc_POST:@"/api/v1/player/order" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//            self.dataArray = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+//            [self.mc_tableview reloadData];
+//        }];
+//    }else{
+//
+//        NSMutableDictionary * kongkaParams = [NSMutableDictionary dictionary];
+//        [kongkaParams setValue:@"0" forKey:@"page"];
+//        [kongkaParams setValue:@"100" forKey:@"size"];
+//        [kongkaParams setValue:SharedUserInfo.userid forKey:@"userId"];
+//        NSString * minDateTime = [NSString stringWithFormat:@"%@-%@-01 00:00:00",self.year,self.month];
+//        [kongkaParams setValue:minDateTime forKey:@"minDateTime"];
+//        [kongkaParams setValue:[self getMaxDateTime] forKey:@"maxDateTime"];
+//        //余额还款和刷卡
+//
+//
+//
+//        __weak __typeof(self)weakself = self;
+//        NSString * url1 = @"/api/v1/player/plan";
+//        [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+//            self.repaymentArray = [NSArray arrayWithArray:resp];
+//            [self.mc_tableview reloadData];
+//        }];
+//
+//
         
         
 //        NSString * url = self.type == 2 ? @"/creditcardmanager/app/balance/plan/list" : @"/creditcardmanager/app/empty/card/plan/list";
-//        [self.sessionManager mc_Post_QingQiuTi:url parameters:kongkaParams ok:^(MCNetResponse * _Nonnull resp) {
-//            NSMutableArray * newArray = [[NSMutableArray alloc]initWithArray:resp.result[@"content"]];
+//        [self.sessionManager mc_Post_QingQiuTi:url parameters:kongkaParams ok:^(NSDictionary * _Nonnull resp) {
+//            NSMutableArray * newArray = [[NSMutableArray alloc]initWithArray:resp[@"result"][@"content"]];
 //            //如果是type=2是余额还款，要兼容老的，所以要再请求一下老的,拼接在一起
 //            if (weakself.type == 2) {
 //                [params setValue:@(self.type) forKey:@"orderType"];
-//                [weakself.sessionManager mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+//                [weakself.sessionManager mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(NSDictionary * _Nonnull resp) {
 //
-//                    if ([resp.result[@"content"] count] > 0) {
-//                        [newArray addObjectsFromArray:resp.result[@"content"]];
+//                    if ([resp[@"result"][@"content"] count] > 0) {
+//                        [newArray addObjectsFromArray:resp[@"result"][@"content"]];
 //                    }
 //                    weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:newArray];
 //                    [weakself.mc_tableview reloadData];
 //                }];
 //
 //            }else{
-//                weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+//                weakself.repaymentArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
 //                [weakself.mc_tableview reloadData];
 //            }
 //
-//        } other:^(MCNetResponse * _Nonnull resp) {
+//        } other:^(NSDictionary * _Nonnull resp) {
 //            [MCLoading hidden];
 //        } failure:^(NSError * _Nonnull error) {
 //            [MCLoading hidden];
 //        }];
-    }
+//    }
     
-    [self.mc_tableview.mj_header endRefreshing];
+//    [self.mc_tableview.mj_header endRefreshing];
 }
 
 -(NSString *)getMaxDateTime{

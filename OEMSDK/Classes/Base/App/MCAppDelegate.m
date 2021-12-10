@@ -47,8 +47,8 @@
     [self.window addSubview:backToH5];
     backToH5.clickDragViewBlock = ^(WMDragView *dragView) {
         //点击返回H5
-        [MCSessionManager.shareManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:@{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":@"功能跳转"} ok:^(MCNetResponse * _Nonnull resp) {
-                NSArray *array = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+        [MCSessionManager.shareManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:@{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":@"功能跳转"} ok:^(NSDictionary * _Nonnull resp) {
+                NSArray *array = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
                 for (MCNewsModel *model in array) {
                     if ([model.title isEqualToString:@"商城"] || [model.title isEqualToString:@"自营商城"]) {
                         NSMutableString *ms = [NSMutableString stringWithFormat:@"%@",model.content];

@@ -94,6 +94,52 @@ NS_ASSUME_NONNULL_BEGIN
 /** eg. 0 */
 @property (nonatomic, copy) NSString *subChannelType;
 @property (nonatomic, assign) NSInteger orderType;
+
+
+//"agentCommission": 0,
+//  "amount": 0,
+//  "channelCommission": 0,
+//  "channelId": 0,
+//  "channelOrderParam": {},
+//  "channelPlatform": "Alipay",
+//  "channelType": "JiaFuTong",
+//  "couponCommission": 0,
+//  "createdTime": "2021-12-10T09:31:07.857Z",
+//  "creditCardId": 0,
+//  "debitCardId": 0,
+//  "id": 0,
+//  "memberId": 0,
+//  "modifyTime": "2021-12-10T09:31:07.857Z",
+//  "orderId": "string",
+//  "orderType": "Consumption",
+//  "ownCommission": 0,
+//  "planId": 0,
+//  "planTaskId": "string",
+//  "state": "Close",
+//  "thirdOrderId": "string",
+//  "totalCommission": 0
+
+@property (nonatomic, copy) NSString *agentCommission;
+@property (nonatomic, copy) NSString *channelCommission;
+@property (nonatomic, copy) NSString *channelId;
+@property (nonatomic, copy) NSDictionary *channelOrderParam;
+@property (nonatomic, copy) NSString *channelPlatform;
+@property (nonatomic, copy) NSString *couponCommission;
+@property (nonatomic, copy) NSString *createdTime;
+@property (nonatomic, copy) NSString *creditCardId;
+@property (nonatomic, copy) NSString *debitCardId;
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *memberId;
+@property (nonatomic, copy) NSString *modifyTime;
+@property (nonatomic, copy) NSString *orderId;
+@property (nonatomic, copy) NSString *ownCommission;
+@property (nonatomic, copy) NSString *planId;
+@property (nonatomic, copy) NSString *planTaskId;
+@property (nonatomic, copy) NSString *state;
+@property (nonatomic, copy) NSString *thirdOrderId;
+@property (nonatomic, copy) NSString *totalCommission;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

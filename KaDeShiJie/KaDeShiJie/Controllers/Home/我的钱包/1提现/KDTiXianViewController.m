@@ -39,7 +39,7 @@
 -(void)requestData{
     __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/wallet";
-    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
         weakSelf.zhanghuyue.text = [NSString stringWithFormat:@"%.2f",[dic[@"balance"] doubleValue]];
         weakSelf.ketixianjine.text = [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];

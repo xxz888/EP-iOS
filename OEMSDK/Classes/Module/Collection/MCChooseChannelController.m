@@ -48,8 +48,8 @@
                                 @"brandId":SharedConfig.brand_id,
                                 @"recommend":@"2"};
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        weakSelf.dataSource = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.dataSource = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         [weakSelf.mc_tableview reloadData];
     }];
     

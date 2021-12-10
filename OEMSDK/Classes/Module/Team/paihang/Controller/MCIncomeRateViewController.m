@@ -66,8 +66,8 @@ static NSString *rankingList = @"/user/app/rebate/query/ranking/list";
                              @"userId":MCModelStore.shared.userInfo.userid,
                              @"startDate":@"2018-09-01"};
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/rebate/query/ranking/list" parameters:params ok:^(MCNetResponse * _Nonnull okResponse) {
-        NSArray *arr = [MCIncomeRateModel mj_objectArrayWithKeyValuesArray:okResponse.result];
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/rebate/query/ranking/list" parameters:params ok:^(NSDictionary * _Nonnull okResponse) {
+        NSArray *arr = [MCIncomeRateModel mj_objectArrayWithKeyValuesArray:okResponse[@"result"]];
         NSArray *array = [arr sortedArrayUsingComparator:^NSComparisonResult(MCIncomeRateModel *obj1, MCIncomeRateModel *obj2) {
             return obj1.ranking.intValue > obj2.ranking.intValue;
         }];

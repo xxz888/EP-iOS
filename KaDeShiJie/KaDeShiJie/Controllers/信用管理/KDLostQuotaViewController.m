@@ -64,8 +64,8 @@
     
 //    [params setValue:@"0" forKey:@"isAccredit"];
     [params setValue:@"1" forKey:@"isLost"];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/user/son" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        self.dataArray = [KDCreditExtensionModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/user/son" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        self.dataArray = [KDCreditExtensionModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         [self.mc_tableview reloadData];
     }];
 }

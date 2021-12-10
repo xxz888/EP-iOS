@@ -61,8 +61,8 @@
     [params setValue:MCModelStore.shared.brandConfiguration.brand_id forKey:@"brandId"];
     [params setValue:SharedDefaults.phone forKey:@"userPhone"];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/getbyuserid/andstatus" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *array = [ZAGoodsStatusModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/getbyuserid/andstatus" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *array = [ZAGoodsStatusModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         if (array.count != 0) {
             self.goodsModel = array.firstObject;
         } else {
@@ -77,8 +77,8 @@
     [params setValue:MCModelStore.shared.brandConfiguration.brand_id forKey:@"brandId"];
     [params setValue:SharedDefaults.phone forKey:@"userPhone"];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/create" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.code isEqualToString:@"000000"]) {
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/create" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"code"] isEqualToString:@"000000"]) {
             [MCToast showMessage:@"收获成功"];
             [self getGoodsType];
         }

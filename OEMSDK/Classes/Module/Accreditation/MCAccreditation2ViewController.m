@@ -134,10 +134,10 @@
     //身份证上传
     NSArray *images = @[img];
     NSArray *imageNames = @[@"bankFile"];
-    NSURLSessionDataTask * _Nullable extractedExpr = [MCSessionManager.shareManager mc_UPLOAD:@"/notice/app/tysj/IDOCR/distinguish" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:1.0f imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-        MCLog(@"成功，%@",resp.result);
-        if ([resp.code isEqualToString:@"000000"] && [resp.result[@"data"][@"side"] isEqualToString:@"front"]) {
-            NSDictionary * dic = resp.result[@"data"];
+    NSURLSessionDataTask * _Nullable extractedExpr = [MCSessionManager.shareManager mc_UPLOAD:@"/notice/app/tysj/IDOCR/distinguish" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:1.0f imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        MCLog(@"成功，%@",resp[@"result"]);
+        if ([resp[@"code"] isEqualToString:@"000000"] && [resp[@"result"][@"data"][@"side"] isEqualToString:@"front"]) {
+            NSDictionary * dic = resp[@"result"][@"data"];
             weakSelf.nameTf.text = dic[@"info"][@"name"];
             weakSelf.idTf.text = dic[@"info"][@"number"];
             weakSelf.zhengImv.image = img;
@@ -146,8 +146,8 @@
             [MCToast showMessage:ZhengMian_FailString];
             weakSelf.zhengImv.image = [UIImage mc_imageNamed:@"KD_Accreditation1"];
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    } other:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
 
     } failure:^(NSError * _Nonnull error) {
         //MCLog(@"%@",error);
@@ -165,16 +165,16 @@
     //身份证上传
     NSArray *images = @[img];
     NSArray *imageNames = @[@"bankFile"];
-    [MCSessionManager.shareManager mc_UPLOAD:@"/notice/app/tysj/IDOCR/distinguish" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:1.0f imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.code isEqualToString:@"000000"] && [resp.result[@"data"][@"side"] isEqualToString:@"back"]) {
-            NSDictionary * dic = resp.result[@"data"];
+    [MCSessionManager.shareManager mc_UPLOAD:@"/notice/app/tysj/IDOCR/distinguish" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:1.0f imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"code"] isEqualToString:@"000000"] && [resp[@"result"][@"data"][@"side"] isEqualToString:@"back"]) {
+            NSDictionary * dic = resp[@"result"][@"data"];
             weakSelf.fanImv.image = img;
         }else{
             [MCToast showMessage:FanMian_FailString];
             weakSelf.fanImv.image = [UIImage mc_imageNamed:@"KD_Accreditation2"];
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    } other:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [MCToast showMessage:FanMian_FailString];
     }];
@@ -259,14 +259,14 @@
         NSArray *images     = @[decodedImage,self.zhengImv.image,self.fanImv.image];
         NSArray *imageNames = @[@"faceFile",@"backFile",@"headFile"];
         
-        [MCSessionManager.shareManager mc_UPLOAD:@"/user/app/oss/picture" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:1.f imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-            if ([resp.code isEqualToString:@"000000"]) {
+        [MCSessionManager.shareManager mc_UPLOAD:@"/user/app/oss/picture" parameters:nil images:images remoteFields:imageNames imageNames:imageNames imageScale:1.f imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+            if ([resp[@"code"] isEqualToString:@"000000"]) {
                 [weakSelf requestIDCardContrast:base64String];
             }else{
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }
-        } other:^(MCNetResponse * _Nonnull resp) {
-            //MCLog(@"%@",resp.result);
+        } other:^(NSDictionary * _Nonnull resp) {
+            //MCLog(@"%@",resp[@"result"]);
         } failure:^(NSError * _Nonnull error) {
             //MCLog(@"%@",error);
         }];
@@ -283,24 +283,24 @@
     
     base64String = [NSString stringWithFormat:@"data:image/jpg;base64,%@",base64String];
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/user/app/tysj/IDCard/contrast" parameters:@{@"idcard":self.idTf.text,@"name":self.nameTf.text,@"image":base64String,@"address":self.address} ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.code isEqualToString:@"000000"]) {
+    [MCSessionManager.shareManager mc_POST:@"/user/app/tysj/IDCard/contrast" parameters:@{@"idcard":self.idTf.text,@"name":self.nameTf.text,@"image":base64String,@"address":self.address} ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"code"] isEqualToString:@"000000"]) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
             [[KDLoginTool shareInstance] getChuXuCardData:NO];
             
         }else{
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     }];
     
     
 //
-//    [MCSessionManager.shareManager mc_UPLOAD:@"/notice/app/tysj/IDCard/contrast" parameters:@{@"idcard":self.idTf.text,@"name":self.nameTf.text} images:images remoteFields:imageNames imageNames:imageNames imageScale:0.0001 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-//        if ([resp.code isEqualToString:@"000000"]) {
+//    [MCSessionManager.shareManager mc_UPLOAD:@"/notice/app/tysj/IDCard/contrast" parameters:@{@"idcard":self.idTf.text,@"name":self.nameTf.text} images:images remoteFields:imageNames imageNames:imageNames imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+//        if ([resp[@"code"] isEqualToString:@"000000"]) {
 //            QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
 //            KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
 //            [commonAlert initKDCommonAlertTitle:@"" content:@"实名成功！" leftBtnTitle:@"" rightBtnTitle:@"确定" ];
@@ -311,10 +311,10 @@
 //            [alert showWithAnimated:YES completion:nil];
 //            [[KDLoginTool shareInstance] getChuXuCardData:NO];
 //        }else{
-//            [MCToast showMessage:resp.messege];
+//            [MCToast showMessage:resp[@"messege"]];
 //        }
-//    } other:^(MCNetResponse * _Nonnull resp) {
-//        //MCLog(@"%@",resp.result);
+//    } other:^(NSDictionary * _Nonnull resp) {
+//        //MCLog(@"%@",resp[@"result"]);
 //    } failure:^(NSError * _Nonnull error) {
 //        //MCLog(@"%@",error);
 //    }];

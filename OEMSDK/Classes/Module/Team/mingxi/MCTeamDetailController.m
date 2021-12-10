@@ -62,19 +62,19 @@
                             @"page":@(self.page),
                             @"size":@"20"};
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/info/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/info/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.mc_tableview.mj_header endRefreshing];
         [weakSelf.mc_tableview.mj_footer endRefreshing];
         if (weakSelf.page == 0) {
             [weakSelf.dataSource removeAllObjects];
         }
-        NSArray *tempA = [MCMemberModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+        NSArray *tempA = [MCMemberModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.dataSource addObjectsFromArray:tempA];
         [weakSelf.mc_tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.mc_tableview.mj_header endRefreshing];
         [weakSelf.mc_tableview.mj_footer endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.mc_tableview.mj_header endRefreshing];
         [weakSelf.mc_tableview.mj_footer endRefreshing];

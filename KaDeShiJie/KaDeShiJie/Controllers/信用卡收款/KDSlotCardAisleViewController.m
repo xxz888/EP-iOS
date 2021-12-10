@@ -13,6 +13,7 @@
 #import "KDCommonAlert.h"
 #import "MCCustomModel.h"
 #import "KDBingCardNewViewController.h"
+#import "KDPayNewViewController.h"
 
 @interface KDSlotCardAisleViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, WBQRCodeVCDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -110,9 +111,21 @@
     [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
 
         if ([resp[@"bind"] integerValue] == 0) {
-            [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+            });
             KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:YES]
+            vc.cardModel = cardModel;
+            vc.channelId = channelModel.channelId;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            
+            KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+            vc.cardModel = cardModel;
+            vc.cardchuxuModel = self.chuxuInfo;
+            vc.channelId = channelModel.channelId;
+            vc.amount = weakSelf.money;
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }];
 
@@ -146,13 +159,13 @@
         @"merchantId":@""
         
         
-    } ok:^(MCNetResponse * _Nonnull resp) {
+    } ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * dic  =(NSDictionary *)resp;
         if ([dic[@"successful"] integerValue] == 1) {
                         [MCToast showMessage:@"操作成功"];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -160,8 +173,8 @@
     
     
 //    kWeakSelf(self);
-//    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-//        NSString * result = resp.result;
+//    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+//        NSString * result = resp[@"result"];
 //        [weakself.xinyongInfo setMoney:weakself.money];
 //        //电银的通道
 //        if ([channe_tag containsString:DYPay_QUICK]) {
@@ -169,7 +182,7 @@
 //            if ([[orderCode componentsSeparatedByString:@"&"] count] > 0) {
 //                orderCode = [orderCode componentsSeparatedByString:@"&"][0];
 //                [weakself.xinyongInfo setOrderCode:orderCode];
-//                [weakself.xinyongInfo setJumpWhereVC:[resp.messege containsString:@"跳转交易页面"] ? @"2" : @"1"];
+//                [weakself.xinyongInfo setJumpWhereVC:[resp[@"messege"] containsString:@"跳转交易页面"] ? @"2" : @"1"];
 //                [MCPagingStore pagingURL:rt_card_add withUerinfo:@{@"param":weakself.xinyongInfo}];
 //            }
 //        //其它通道
@@ -180,18 +193,18 @@
 //            [customModel setValue:shoukuan_jianquan forKey:@"whereCome"];//收款界面
 //            [customModel setValue:channe_tag forKey:@"bindChannelName"];//通道
 //            //在判断是鉴权还是交易
-//            [MCPagingStore pagingURL:[resp.messege containsString:@"跳转交易页面"] ? rt_card_jiaoyi : rt_card_jianquan  withUerinfo:@{@"param":weakself.xinyongInfo,@"extend":customModel}];
+//            [MCPagingStore pagingURL:[resp[@"messege"] containsString:@"跳转交易页面"] ? rt_card_jiaoyi : rt_card_jianquan  withUerinfo:@{@"param":weakself.xinyongInfo,@"extend":customModel}];
 //        }
-//    } other:^(MCNetResponse * _Nonnull resp) {
+//    } other:^(NSDictionary * _Nonnull resp) {
 //        [MCLoading hidden];
-//        if ([resp.code isEqualToString:@"666666"]) {
-//            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {  //花呗身份校验
-//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+//        if ([resp[@"code"] isEqualToString:@"666666"]) {
+//            if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {  //花呗身份校验
+//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
 //            } else {
-//                [MCToast showMessage:resp.result];
+//                [MCToast showMessage:resp[@"result"]];
 //            }
 //        } else {
-//            [MCToast showMessage:resp.messege];
+//            [MCToast showMessage:resp[@"messege"]];
 //        }
 //    }];
 }
@@ -220,7 +233,7 @@
         @"creditCardId":self.xinyongInfo.id,
         @"province":self.provinceId,
         @"city":self.cityId
-    } ok:^(MCNetResponse * _Nonnull resp) {
+    } ok:^(NSDictionary * _Nonnull resp) {
         self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp];
         [self.mc_tableview reloadData];
         [self.mc_tableview.mj_header endRefreshing];
@@ -228,8 +241,8 @@
     
     
     
-//    [self.sessionManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-//        self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp.result];
+//    [self.sessionManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
 //        [self.mc_tableview reloadData];
 //    }];
 }
@@ -249,9 +262,9 @@
 //    };
 //    commonAlert.rightActionBlock = ^{
 //        NSDictionary *param = @{@"authCode":str,@"orderCode":self.orderCode};
-//        [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-//            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {
-//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+//        [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//            if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {
+//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
 //            }
 //        }];
 //    };
@@ -264,9 +277,9 @@
 //    [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
 //
 //        NSDictionary *param = @{@"authCode":str,@"orderCode":self.orderCode};
-//        [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-//            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {
-//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+//        [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//            if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {
+//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
 //            }
 //        }];
 //

@@ -238,7 +238,7 @@
     
     // 发送验证码
     NSDictionary *params = @{@"phone":phone, @"brand_id":MCModelStore.shared.brandConfiguration.brand_id};
-    [[MCSessionManager shareManager] mc_GET:@"/notice/app/sms/send" parameters:params ok:^(MCNetResponse * _Nonnull okResponse) {
+    [[MCSessionManager shareManager] mc_GET:@"/notice/app/sms/send" parameters:params ok:^(NSDictionary * _Nonnull okResponse) {
         // 启动倒计时
         [self changeSendBtnText];
     }];

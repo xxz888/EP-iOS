@@ -82,10 +82,10 @@
     //限制用户点击按钮的时间间隔大于1秒钟
         if (currentTime - time > 1) {
         //处理逻辑
-            [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/getProvince" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-                NSArray * resultArray = resp.result;
+            [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/getProvince" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+                NSArray * resultArray = resp[@"result"];
                 NSMutableArray * resultShengArray = [[NSMutableArray alloc]init];
-                for (NSDictionary * dic in resp.result) {
+                for (NSDictionary * dic in resp[@"result"]) {
                     [resultShengArray addObject:dic[@"cityName"]];
                 }
                 if (resultShengArray.count == 0) {
@@ -103,16 +103,16 @@
                     weakself.phoneLabel.textColor = [UIColor blackColor];
                     weakself.change2Lbl.textColor = [UIColor qmui_colorWithHexString:@"#B4B4B4"];
                     weakself.change2Lbl.text = @"请选择城市";
-                    for (NSDictionary * dic in resp.result) {
+                    for (NSDictionary * dic in resp[@"result"]) {
                         if ([resultModel.value isEqualToString:dic[@"cityName"]]) {
                             weakself.inprovincecode = dic[@"cityCode"];
                         };
                     }
                 };
                 [weakself.pickView2 show];
-            } other:^(MCNetResponse * _Nonnull resp) {
+            } other:^(NSDictionary * _Nonnull resp) {
                 [MCLoading hidden];
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }];
         }
     time = currentTime;
@@ -130,10 +130,10 @@
     //限制用户点击按钮的时间间隔大于1秒钟
         if (currentTime - time > 1) {
         //处理逻辑
-            [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/getCity" parameters:@{@"provinceId":self.inprovincecode} ok:^(MCNetResponse * _Nonnull resp) {
-                NSArray * resultArray = resp.result;
+            [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/getCity" parameters:@{@"provinceId":self.inprovincecode} ok:^(NSDictionary * _Nonnull resp) {
+                NSArray * resultArray = resp[@"result"];
                 NSMutableArray * resultShengArray = [[NSMutableArray alloc]init];
-                for (NSDictionary * dic in resp.result) {
+                for (NSDictionary * dic in resp[@"result"]) {
                     [resultShengArray addObject:dic[@"cityName"]];
                 }
                 if (resultShengArray.count == 0) {
@@ -148,16 +148,16 @@
                 weakself.pickView1.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
                     weakself.change2Lbl.text = resultModel.value;
                     weakself.change2Lbl.textColor = [UIColor blackColor];
-                    for (NSDictionary * dic in resp.result) {
+                    for (NSDictionary * dic in resp[@"result"]) {
                         if ([resultModel.value isEqualToString:dic[@"cityName"]]) {
                             weakself.incitycode = dic[@"cityCode"];
                         };
                     }
                 };
                 [weakself.pickView1 show];
-            } other:^(MCNetResponse * _Nonnull resp) {
+            } other:^(NSDictionary * _Nonnull resp) {
                 [MCLoading hidden];
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }];
         }
     time = currentTime;
@@ -193,12 +193,12 @@
         @"bindcardmessageid":self.bindcardmessageid
      };
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/bindCard" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/bindCard" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.cardModel setJumpWhereVC:@"2"];
         [MCPagingStore pagingURL:rt_card_add withUerinfo:@{@"param":self.cardModel}];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     }];
 }
 #pragma mark ---------------收款确认请求方法-------------------
@@ -219,10 +219,10 @@
         @"money":self.cardModel.money
      };
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/Pay" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/paymentgateway/topup/dy/Pay" parameters:params ok:^(NSDictionary * _Nonnull resp) {
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         });
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:SharedUserInfo.userid forKey:@"userId"];
@@ -230,8 +230,8 @@
         [params setValue:[MCDateStore getYear] forKey:@"year"];
         [params setValue:[MCDateStore getMonth] forKey:@"month"];
 
-        [self.sessionManager mc_POST:@"/transactionclear/app/add/querypaybycard/make/information" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-            if ([resp.result[@"content"][0] count] == 0) {
+        [self.sessionManager mc_POST:@"/transactionclear/app/add/querypaybycard/make/information" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+            if ([resp[@"result"][@"content"][0] count] == 0) {
                 //这里是确认收款后，跳转收款界面，多做了一个判断防止闪退
                 if ([[weakSelf.navigationController viewControllers] count] > 1) {
                     [weakSelf.navigationController popToViewController:[weakSelf.navigationController viewControllers][1] animated:YES];
@@ -239,15 +239,15 @@
                     [weakSelf.navigationController popToRootViewControllerAnimated:YES];
                 }
             }else{
-                    [MCPagingStore pagingURL:rt_card_shoukuanxiangqing withUerinfo:@{@"param":resp.result[@"content"][0]}];
+                    [MCPagingStore pagingURL:rt_card_shoukuanxiangqing withUerinfo:@{@"param":resp[@"result"][@"content"][0]}];
             }
         }];
 
 
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     }];
 }
 #pragma mark ---------------底部按钮的公共方法-------------------

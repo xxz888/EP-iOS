@@ -46,15 +46,15 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"facade/app/coin/address/get"] parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-        if (resp.result) {
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"facade/app/coin/address/get"] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"result"]) {
             weakself.noAddressView.hidden = YES;
             weakself.haveAddressView.hidden = NO;
             
-            weakself.cPhone.text = resp.result[@"phone"];
-            weakself.cAdress.text = [NSString stringWithFormat:@"%@ %@ %@",resp.result[@"province"],resp.result[@"district"],resp.result[@"city"]];
-            weakself.cName.text = resp.result[@"username"];
-            weakself.cDetailAdress.text = resp.result[@"detail"];
+            weakself.cPhone.text = resp[@"result"][@"phone"];
+            weakself.cAdress.text = [NSString stringWithFormat:@"%@ %@ %@",resp[@"result"][@"province"],resp[@"result"][@"district"],resp[@"result"][@"city"]];
+            weakself.cName.text = resp[@"result"][@"username"];
+            weakself.cDetailAdress.text = resp[@"result"][@"detail"];
 
         }else{
             weakself.noAddressView.hidden = NO;

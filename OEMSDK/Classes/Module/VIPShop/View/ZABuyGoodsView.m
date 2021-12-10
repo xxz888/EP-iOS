@@ -113,8 +113,8 @@
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/getbyuserid/andstatus" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *addressArray = [ZAReceviceAddressModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/getbyuserid/andstatus" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *addressArray = [ZAReceviceAddressModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         if (addressArray.count != 0) {
             self.addressModel = addressArray.firstObject;
         }
@@ -146,8 +146,8 @@
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"user_id"];
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/channel/query/all/brandid" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *array = [ZAChannelModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/channel/query/all/brandid" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *array = [ZAChannelModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (ZAChannelModel *model in array) {
             if ([model.channelNo isEqualToString:@"6"]) {
                 model.remarks = @"高效、安全、专用（消费）的支付方式";
@@ -205,8 +205,8 @@
         type = @"1";
     }
     [params setValue:type forKey:@"isExpress"];
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/create" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.code isEqualToString:@"000000"]) {
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/receiveaddress/create" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"code"] isEqualToString:@"000000"]) {
             [self payOrder];
         }
     }];

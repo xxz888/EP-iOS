@@ -71,7 +71,7 @@
 
 - (void)handleDefault:(MCBankCardModel *)model indexPath:(NSIndexPath *)indexPath{
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":model.cardNo} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":model.cardNo} ok:^(NSDictionary * _Nonnull resp) {
         
         NSInteger deIndex = 0;
         for (int i=0; i<self.dataSource.count; i++) {

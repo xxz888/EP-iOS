@@ -120,8 +120,8 @@
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcard/by/userid/new" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (KDDirectRefundModel *model in dataArray) {
             if ([model.cardNo isEqualToString:self.directModel.cardNo]) {
                 self.directModel = model;

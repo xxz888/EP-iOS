@@ -55,9 +55,9 @@
 
 - (void)requestData {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedBrandInfo.ID] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedBrandInfo.ID] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.dataSource removeAllObjects]; 
-        NSArray *tempA = [[[MCProductModel mj_objectArrayWithKeyValuesArray:resp.result] reverseObjectEnumerator] allObjects];
+        NSArray *tempA = [[[MCProductModel mj_objectArrayWithKeyValuesArray:resp[@"result"]] reverseObjectEnumerator] allObjects];
         
         if (SharedUserInfo.brandStatus.boolValue) { //贴牌商
             weakSelf.dataSource = [NSMutableArray arrayWithArray:tempA];

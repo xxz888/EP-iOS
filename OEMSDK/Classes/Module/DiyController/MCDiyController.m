@@ -118,10 +118,10 @@
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     [params setObject:BCFI.brand_id forKey:@"brandId"];
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/select/topup/home/BrandMiddle/" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/user/app/select/topup/home/BrandMiddle/" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         NSArray* tempArray = @[weakSelf.mc_adview,weakSelf.mc_mainview,weakSelf.mc_runlighview,weakSelf.mc_viceview,weakSelf.mc_newsview,weakSelf.mc_safeview];
         
-        NSArray* result = resp.result;
+        NSArray* result = resp[@"result"];
         for (NSInteger i = 0; i < result.count; i++) {
             NSDictionary* innerDict = result[i];
             NSString* status = [NSString stringWithFormat:@"%@",innerDict[@"status"]];

@@ -113,8 +113,8 @@
     kWeakSelf(self);
     //请求省市
     //https://api.flyaworld.com/v1.0/paymentgateway/topup/ttf/province
-    [MCLATESTCONTROLLER.sessionManager mc_POST:proviceUrl parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray * result = resp.result;
+    [MCLATESTCONTROLLER.sessionManager mc_POST:proviceUrl parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        NSArray * result = resp[@"result"];
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
             BRResultModel * model = [[BRResultModel alloc]init];
@@ -139,8 +139,8 @@
     //请求市
     NSString * cityUrl = @"";
     //https://api.flyaworld.com/v1.0/paymentgateway/topup/ttf/city
-    [MCLATESTCONTROLLER.sessionManager mc_POST:cityUrl parameters:@{@"parentId":cityKey} ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray * result = resp.result;
+    [MCLATESTCONTROLLER.sessionManager mc_POST:cityUrl parameters:@{@"parentId":cityKey} ok:^(NSDictionary * _Nonnull resp) {
+        NSArray * result = resp[@"result"];
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
             BRResultModel * model = [[BRResultModel alloc]init];
@@ -207,11 +207,11 @@
                                };
     [params setValue:[NSString toJSONData:cityDic] forKey:@"city"];//城市
     kWeakSelf(self);
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/apply" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/apply" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         //一切
-        if ([resp.code isEqualToString:@"000000"]) {
-            [MCToast showMessage:resp.messege];
-            [weakself respCode000000:resp.result];
+        if ([resp[@"code"] isEqualToString:@"000000"]) {
+            [MCToast showMessage:resp[@"messege"]];
+            [weakself respCode000000:resp[@"result"]];
         }
     }];
 }

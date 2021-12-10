@@ -36,15 +36,15 @@
 
 - (IBAction)zhifuAction:(id)sender {
     kWeakSelf(self);
-    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/order/add" parameters:@{@"gid":self.goodDic[@"id"],@"count":@"1",@"payType":self.wxBtn.selected ? @"1002" : @"2002"} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/order/add" parameters:@{@"gid":self.goodDic[@"id"],@"count":@"1",@"payType":self.wxBtn.selected ? @"1002" : @"2002"} ok:^(NSDictionary * _Nonnull resp) {
         MCWebViewController *web = [[MCWebViewController alloc] init];
         web.title = self.wxBtn.selected ? @"微信支付" : @"支付宝支付";
-        web.urlString = resp.result[@"payUrl"];
+        web.urlString = resp[@"result"][@"payUrl"];
         [MCLATESTCONTROLLER.navigationController qmui_pushViewController:web animated:YES completion:^{
 //            KDJFOrderDetailViewController * vc = [[KDJFOrderDetailViewController alloc]init];
 //            [weakself.navigationController pushViewController:vc animated:YES];
         }];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

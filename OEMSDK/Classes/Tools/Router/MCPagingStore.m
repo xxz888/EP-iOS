@@ -65,12 +65,12 @@
     if (classification) {
         param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":classification};
     }
-    [MCSessionManager.shareManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         NSMutableString *urlString = nil;
         NSInteger rGrade = 0;
         BOOL isParams = NO;
         BOOL isBrand = SharedUserInfo.brandStatus.boolValue;
-        for (NSDictionary *dic in resp.result[@"content"]) {
+        for (NSDictionary *dic in resp[@"result"][@"content"]) {
             NSString *rTitle = [dic objectForKey:@"title"];
             if ([title containsString:rTitle]) {
                 urlString = [NSMutableString stringWithString:[dic objectForKey:@"content"]];
@@ -85,8 +85,8 @@
         }
         if (!isBrand && SharedUserInfo.grade.integerValue < rGrade) {
             //升级弹窗
-            [MCSessionManager.shareManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedConfig.brand_id] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-                NSArray *models = [MCProductModel mj_objectArrayWithKeyValuesArray:resp.result];
+            [MCSessionManager.shareManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedConfig.brand_id] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+                NSArray *models = [MCProductModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
                 NSString *gradeName = nil;
                 for (MCProductModel *model in models) {
                     if (model.grade.integerValue == rGrade) {

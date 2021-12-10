@@ -166,7 +166,7 @@
                                 @"vericode":self.textField.text,
                                 @"password":@"",
                                 @"brandId":SharedBrandInfo.ID};
-        [MCSessionManager.shareManager mc_POST:@"/user/app/password/update" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+        [MCSessionManager.shareManager mc_POST:@"/user/app/password/update" parameters:param ok:^(NSDictionary * _Nonnull resp) {
             QMUIAlertController *alert = [[QMUIAlertController alloc] initWithTitle:nil message:@"登录密码修改成功，请重新登录" preferredStyle:QMUIAlertControllerStyleAlert];
             [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
                 UIApplication.sharedApplication.keyWindow.rootViewController = [MGJRouter objectForURL:rt_user_signupin];
@@ -177,7 +177,7 @@
         NSDictionary *param = @{@"paypass":self.pwd,
                                 @"vericode":self.textField.text,
                                 @"brandId":BCFI.brand_id};
-        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/paypass/update/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/paypass/update/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
             [MCToast showMessage:@"修改成功" position:MCToastPositionCenter];
 //            [self.navigationController popToRootViewControllerAnimated:YES];
             

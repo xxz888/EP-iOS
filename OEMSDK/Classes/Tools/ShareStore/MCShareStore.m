@@ -92,8 +92,8 @@
 +(void)requetEarnCoin{
     
     NSDictionary *param = @{@"share_type":@"1",@"userId":SharedUserInfo.userid};
-    [MCSessionManager.shareManager mc_POST:@"/user/app/coinreward/share" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:[NSString stringWithFormat:@"分享成功，获得%@积分已到账",resp.result[@"coin"]]];
+    [MCSessionManager.shareManager mc_POST:@"/user/app/coinreward/share" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:[NSString stringWithFormat:@"分享成功，获得%@积分已到账",resp[@"result"][@"coin"]]];
     }];
 }
 

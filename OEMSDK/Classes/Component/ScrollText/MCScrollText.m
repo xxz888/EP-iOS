@@ -51,8 +51,8 @@
 }
 - (void)fetchMessage {
     
-    [MCLATESTCONTROLLER.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        for (NSDictionary *dic in resp.result[@"content"]) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        for (NSDictionary *dic in resp[@"result"][@"content"]) {
             if (![dic[@"btype"] isEqualToString:@"androidVersion"]) { // 过滤安卓消息
                 NSString * content = dic[@"content"];
                 content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@" "];

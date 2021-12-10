@@ -132,14 +132,14 @@
     kWeakSelf(self);
     
     
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/all/query" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/all/query" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         if ([weakself.mc_tableview.mj_header isRefreshing]) {
             [weakself.mc_tableview.mj_header endRefreshing];
         }
         if ([weakself.mc_tableview.mj_footer isRefreshing]) {
             [weakself.mc_tableview.mj_footer endRefreshing];
         }
-        NSArray *arr = [KDTopDelegateNewModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *arr = [KDTopDelegateNewModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         [weakself.dataArray addObjectsFromArray:arr];
         //如果是下拉刷新，数组清空，page=0
         if (cleanData) {

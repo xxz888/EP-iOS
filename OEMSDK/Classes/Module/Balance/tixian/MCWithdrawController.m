@@ -123,9 +123,9 @@
                          @"nature":@"2",
                          @"isDefault":@"1"};
     __weak __typeof(self)weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCChooseCardModel *model in temp) {
             MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:model.bankName];
             weakSelf.bankLogoImgView.image = ii.logo;
@@ -134,9 +134,9 @@
             weakSelf.withDrawType = @"card";
             break;
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
         
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scroll.mj_header endRefreshing];
@@ -149,8 +149,8 @@
 //    NSString *userId = SharedUserInfo.userid;
 //    NSDictionary *defaultCardDic = @{@"userId":userId, @"type":@"3", @"nature":@"0", @"isDefault":@"1"};
 //    __weak __typeof(self)weakSelf = self;
-//    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:defaultCardDic ok:^(MCNetResponse * _Nonnull resp) {
-//        NSArray *result = resp.result;
+//    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:defaultCardDic ok:^(NSDictionary * _Nonnull resp) {
+//        NSArray *result = resp[@"result"];
 //        NSDictionary *dict = result.firstObject;
 //        NSString *cardNo = [NSString stringWithFormat:@"%@", dict[@"cardNo"]];
 //        if (!cardNo || cardNo.length != 11) {
@@ -163,8 +163,8 @@
 //        weakSelf.bankNameLab.text = @"支付宝";
 //        weakSelf.bankNoLab.text = [NSString stringWithFormat:@"%@ **** %@",first,last];
 //
-//    } other:^(MCNetResponse * _Nonnull resp) {
-//        QMUIAlertController *alert = [[QMUIAlertController alloc] initWithTitle:nil message:resp.messege preferredStyle:QMUIAlertControllerStyleAlert];
+//    } other:^(NSDictionary * _Nonnull resp) {
+//        QMUIAlertController *alert = [[QMUIAlertController alloc] initWithTitle:nil message:resp[@"messege"] preferredStyle:QMUIAlertControllerStyleAlert];
 //        [alert addAction:[QMUIAlertAction actionWithTitle:@"下次再说" style:QMUIAlertActionStyleCancel handler:nil]];
 //        [alert addAction: [QMUIAlertAction actionWithTitle:@"立即添加" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
 //            [aAlertController hideWithAnimated:YES];
@@ -178,9 +178,9 @@
 /// 请求余额账户信息
 - (void)requstAccount {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        weakSelf.availableBalance = [NSString stringWithFormat:@"%.2f", [resp.result[@"balance"] floatValue]];
+        weakSelf.availableBalance = [NSString stringWithFormat:@"%.2f", [resp[@"result"][@"balance"] floatValue]];
         self.textField.text = weakSelf.availableBalance;
         
  
@@ -213,9 +213,9 @@
         
         
     
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scroll.mj_header endRefreshing];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];
@@ -292,7 +292,7 @@
                             @"order_desc":@"余额提现",
                             @"channe_tag":@"YILIAN"};
     kWeakSelf(self);
-    [MCSessionManager.shareManager mc_POST:@"/facade/app/withdraw/" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/facade/app/withdraw/" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         
         QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
         MCTiXianAlertView * commonAlert = [MCTiXianAlertView newFromNib];
@@ -322,7 +322,7 @@
 //- (void)withDrawToAli {
 //    NSString *phone = SharedUserInfo.phone;
 //    NSDictionary *withdrawDic = @{@"amount":self.textField.text, @"order_desc":@"支付宝提现"};
-//    [MCSessionManager.shareManager mc_POST:@"/facade/app/ali/withdraw" parameters:withdrawDic ok:^(MCNetResponse * _Nonnull resp) {
+//    [MCSessionManager.shareManager mc_POST:@"/facade/app/ali/withdraw" parameters:withdrawDic ok:^(NSDictionary * _Nonnull resp) {
 //        QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"提示" message:@"提现成功" preferredStyle:QMUIAlertControllerStyleAlert];
 //        [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleCancel handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
 //            [self.navigationController popViewControllerAnimated:YES];
@@ -334,9 +334,9 @@
 /// 提现限额
 - (void)requestWithdrawLimit {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"facade/app/withdraw/brand/limit/query" parameters:@{@"brandId":SharedConfig.brand_id} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"facade/app/withdraw/brand/limit/query" parameters:@{@"brandId":SharedConfig.brand_id} ok:^(NSDictionary * _Nonnull resp) {
         
-        weakSelf.minWithDraw = [NSString stringWithFormat:@"%@",resp.result[@"singleMinLimit"]];
+        weakSelf.minWithDraw = [NSString stringWithFormat:@"%@",resp[@"result"][@"singleMinLimit"]];
         
         weakSelf.textField.enabled=NO;
         weakSelf.textField.placeholder = [NSString stringWithFormat:@"提现金额，最低%@元", weakSelf.minWithDraw];
@@ -347,7 +347,7 @@
 - (void)payPWDInputViewDidCommited:(NSString *)pwd {
     //MCLog(@"%@",pwd);
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/paypass/auth/%@",TOKEN] parameters:@{@"paypass":pwd} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/paypass/auth/%@",TOKEN] parameters:@{@"paypass":pwd} ok:^(NSDictionary * _Nonnull resp) {
 //        if ([weakSelf.withDrawType isEqualToString:@"ali"]) {
 //            [weakSelf withDrawToAli];
 //        } else if ([weakSelf.withDrawType isEqualToString:@"card"]) {

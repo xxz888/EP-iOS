@@ -77,15 +77,15 @@
 - (void)requestPerson {
     NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         if (weakSelf.page == 0) {
             [weakSelf.dataSource removeAllObjects];
         }
-        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.dataSource addObjectsFromArray:tempA];
         [weakSelf.tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    } other:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [MCToast showMessage:error.localizedFailureReason];
     }];
@@ -93,17 +93,17 @@
 - (void)requestPlatform {
     NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         if (weakSelf.page == 0) {
             [weakSelf.dataSource removeAllObjects];
         }
-        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.dataSource addObjectsFromArray:tempA];
         [weakSelf.tableview reloadData];
         
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];
         [MCToast showMessage:error.localizedFailureReason];

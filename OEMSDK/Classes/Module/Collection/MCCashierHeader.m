@@ -176,8 +176,8 @@
                          @"type":@"0",
                          @"nature":@"0",
                          @"isDefault":@"1"};
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         
         for (MCChooseCardModel *model in temp) {
             if (!model.billDay || !model.repaymentDay) {
@@ -188,12 +188,12 @@
             }
             break;
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            [weakSelf nocardAlertShowWithMessage:resp.messege type:MCBankCardTypeXinyongka cardModel:nil];
+        if ([resp[@"code"] isEqualToString:@"666666"]) {
+            [weakSelf nocardAlertShowWithMessage:resp[@"messege"] type:MCBankCardTypeXinyongka cardModel:nil];
         } else {
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
     }];
     
@@ -202,18 +202,18 @@
                          @"type":@"2",
                          @"nature":@"2",
                          @"isDefault":@"1"};
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCChooseCardModel *model in temp) {
             weakSelf.chuxuInfo = model;
             break;
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            [weakSelf nocardAlertShowWithMessage:resp.messege type:MCBankCardTypeChuxuka cardModel:nil];
+        if ([resp[@"code"] isEqualToString:@"666666"]) {
+            [weakSelf nocardAlertShowWithMessage:resp[@"messege"] type:MCBankCardTypeChuxuka cardModel:nil];
         } else {
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
     }];
 }
@@ -224,8 +224,8 @@
                             @"bankCard":self.xinyongInfo.cardNo,
                             @"amount":@(self.amountTF.text.floatValue),
                             @"recommend":@"1"};
-    [MCSessionManager.shareManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [MCSessionManager.shareManager mc_POST:@"/user/app/channel/getchannel/bybankcard/andamount" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCChannelModel *channelInfo in temp) {
             self.channelInfo = channelInfo;
             self.alert = [[MCDefaultChannelAlert alloc] init];
@@ -276,13 +276,13 @@
                             @"bankCard":self.xinyongInfo.cardNo,
                             @"creditBankName":self.xinyongInfo.bankName};
     
-    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {
-            [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {
+            [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
         } else {
             //扫码
-            if ([resp.result isKindOfClass:[NSString class]]) {
-                self.orderCode = resp.result;
+            if ([resp[@"result"] isKindOfClass:[NSString class]]) {
+                self.orderCode = resp[@"result"];
                 WBQRCodeVC *qrVC = [[WBQRCodeVC alloc] init];
                 qrVC.delegate = self;
                 [MCLATESTCONTROLLER.navigationController pushViewController:qrVC animated:YES];
@@ -291,16 +291,16 @@
             }
         }
         
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {  //花呗身份校验
-                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+        if ([resp[@"code"] isEqualToString:@"666666"]) {
+            if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {  //花呗身份校验
+                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
             } else {
-                [MCToast showMessage:resp.result];
+                [MCToast showMessage:resp[@"result"]];
             }
         } else {
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
     }];
 }
@@ -392,9 +392,9 @@
 //    [commonAlert initKDCommonAlertTitle:@"温馨提示" content:msg leftBtnTitle:@"取消" rightBtnTitle:@"确定" ];
     commonAlert.rightActionBlock = ^{
        NSDictionary *param = @{@"authCode":str,@"orderCode":self.orderCode};
-       [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-           if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {
-               [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+       [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+           if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {
+               [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
            }
        }];
     };
@@ -405,9 +405,9 @@
 //    [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
 //
 //        NSDictionary *param = @{@"authCode":str,@"orderCode":self.orderCode};
-//        [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-//            if (resp.result && [resp.result isKindOfClass:[NSString class]] && [resp.result containsString:@"http"]) {
-//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+//        [MCSessionManager.shareManager mc_POST:@"/facade/topup/yxhb/trade" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//            if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]] && [resp[@"result"] containsString:@"http"]) {
+//                [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
 //            }
 //        }];
 //

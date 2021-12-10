@@ -83,7 +83,7 @@
 //    }
 }
 - (IBAction)defBtnTouched:(id)sender {  //设为默认
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo} ok:^(NSDictionary * _Nonnull resp) {
         [MCToast showMessage:@"设置成功"];
         self.block(MCBankCardCellActionDefault, self.model);
     }];
@@ -96,7 +96,7 @@
 
     commonAlert.rightActionBlock = ^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo,@"type":self.model.type} ok:^(MCNetResponse * _Nonnull resp) {
+            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo,@"type":self.model.type} ok:^(NSDictionary * _Nonnull resp) {
                   //删除成功发送一个通知让 KDWebContainer 重新设置
                   [MCToast showMessage:@"删除成功"];
                 
@@ -110,7 +110,7 @@
 //    QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定要解绑此银行卡吗？" preferredStyle:QMUIAlertControllerStyleAlert];
 //    [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
 //    [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDestructive handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
-//        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo,@"type":self.model.type} ok:^(MCNetResponse * _Nonnull resp) {
+//        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo,@"type":self.model.type} ok:^(NSDictionary * _Nonnull resp) {
 //            //删除成功发送一个通知让 KDWebContainer 重新设置
 //            [MCToast showMessage:@"删除成功"];
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];

@@ -44,14 +44,14 @@
 -(void)requestData{
     kWeakSelf(self);
 
-    [self.sessionManager mc_Post_QingQiuTi:@"user/app/coin/list" parameters:@{@"page":@"1",@"size":@"10"} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_Post_QingQiuTi:@"user/app/coin/list" parameters:@{@"page":@"1",@"size":@"10"} ok:^(NSDictionary * _Nonnull resp) {
         if (resp) {
             [weakself.dataArray removeAllObjects];
-            [weakself.dataArray addObjectsFromArray:resp.result];
+            [weakself.dataArray addObjectsFromArray:resp[@"result"]];
             [weakself.mc_tableview reloadData];
         }
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

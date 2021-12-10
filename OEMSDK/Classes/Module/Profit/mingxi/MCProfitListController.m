@@ -168,18 +168,18 @@
                             @"end_time":self.endTime ?: @""
     };
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"transactionclear/app/profit/query/all" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"transactionclear/app/profit/query/all" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
         if (weakSelf.page == 0) {
             [weakSelf.fenrunSource removeAllObjects];
         }
-        [weakSelf.fenrunSource addObjectsFromArray:[MCFenrunModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]]];
+        [weakSelf.fenrunSource addObjectsFromArray:[MCFenrunModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]]];
         [weakSelf.tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
@@ -194,18 +194,18 @@
                             @"endTime":self.endTime ?: @""
     };
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"transactionclear/app/query/all/profit" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"transactionclear/app/query/all/profit" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
         if (weakSelf.page == 0) {
             [weakSelf.fanyongSource removeAllObjects];
         }
-        [weakSelf.fanyongSource addObjectsFromArray:[MCFanyongModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]]];
+        [weakSelf.fanyongSource addObjectsFromArray:[MCFanyongModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]]];
         [weakSelf.tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];

@@ -83,9 +83,9 @@
 #pragma mark - Actions
 - (void)requestCards {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        //MCLog(@"%@",resp.result);
-        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        //MCLog(@"%@",resp[@"result"]);
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         [weakSelf.daijikas removeAllObjects];
         [weakSelf.jiejikas removeAllObjects];
         for (MCBankCardModel *model in temArr) {
@@ -133,7 +133,7 @@
             __weak __typeof(self)weakSelf = self;
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":model.cardNo,@"type":model.type} ok:^(MCNetResponse * _Nonnull resp) {
+                [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":model.cardNo,@"type":model.type} ok:^(NSDictionary * _Nonnull resp) {
                     [weakSelf requestCards];
                 }];
                  });
@@ -145,7 +145,7 @@
 //        [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
 //        [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDestructive handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
 //            __weak __typeof(self)weakSelf = self;
-//            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":model.cardNo,@"type":model.type} ok:^(MCNetResponse * _Nonnull resp) {
+//            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":model.cardNo,@"type":model.type} ok:^(NSDictionary * _Nonnull resp) {
 //                [weakSelf requestCards];
 //            }];
 //        }]];

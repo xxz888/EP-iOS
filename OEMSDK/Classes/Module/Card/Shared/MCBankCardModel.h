@@ -68,19 +68,24 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * dbankCard;
 
 
-//id = 16,
-//validPeriod = ,
-//repaymentDate = 0,
-//phone = 13383773800,
-//createdTime = 2021-12-02T14:45:05,
-//memberId = 19,
+//id = 15,
+//cityId = 6040,
+//validPeriod = 09/22,
+//phone = 13383773802,
+//repaymentDate = 2,
+//bankName = 中国建设银行,
+//createdTime = 2021-12-10T13:26:37,
+//province = 广东省,
+//cvc = 333,
+//memberId = 24,
 //cardType = CreditCard,
-//bank = ICBC,
-//address = 上海市上海市,
-//billingDate = 0,
-//modifyTime = 2021-12-02T14:45:05,
-//name = 王沛,
-//bankCardNo = 62228481234567890
+//city = 潮州市,
+//billingDate = 2,
+//modifyTime = 2021-12-10T13:26:37,
+//provinceId = 5800,
+//bankId = 3,
+//name = Wangpei1,
+//bankCardNo = 222222222222222
 
 @property (nonatomic, strong) NSString * validPeriod;
 @property (nonatomic, strong) NSString * repaymentDate;
@@ -90,6 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * modifyTime;
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * bankCardNo;
+@property (nonatomic, strong) NSString * cvc;
 
 
 @end

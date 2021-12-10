@@ -172,10 +172,10 @@
 - (void)requestDataForProduct {
     
     __weak typeof(self) weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedBrandInfo.ID] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@",SharedBrandInfo.ID] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
 
         [weakSelf.allProArr removeAllObjects];
-        NSArray *tempA = [MCProductModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *tempA = [MCProductModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCProductModel *model in tempA) {
             if (model.trueFalseBuy.intValue != 4) {
                 [weakSelf.allProArr addObject:model];

@@ -183,7 +183,7 @@
         /* phone:手机号 vericode:验证码  password:新密码 */
         NSDictionary *changepassDic = @{@"phone":self.phone, @"vericode":self.inputTF.text, @"password":self.nowDataString, @"brandId":MCModelStore.shared.brandConfiguration.brand_id};
         __weak typeof(self) weakSelf = self;
-        [[MCSessionManager shareManager] mc_POST:@"/user/app/password/update" parameters:changepassDic ok:^(MCNetResponse * _Nonnull resp) {
+        [[MCSessionManager shareManager] mc_POST:@"/user/app/password/update" parameters:changepassDic ok:^(NSDictionary * _Nonnull resp) {
             
             kWeakSelf(self);
             KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
@@ -205,7 +205,7 @@
         NSDictionary *dic = @{@"paypass":self.nowDataString, @"vericode":self.inputTF.text, @"brandId":MCModelStore.shared.brandConfiguration.brand_id};
         __weak typeof(self) weakSelf = self;
         NSString *url = [NSString stringWithFormat:@"/user/app/paypass/update/%@", TOKEN];
-        [[MCSessionManager shareManager] mc_POST:url parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+        [[MCSessionManager shareManager] mc_POST:url parameters:dic ok:^(NSDictionary * _Nonnull resp) {
             
             kWeakSelf(self);
             KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];

@@ -137,13 +137,13 @@
                             @"nature":nature,
                             @"isDefault":@"0"
                             };
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [self.tableview.mj_header endRefreshing];
-        self.dataSource = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+        self.dataSource = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         [self.tableview reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
         [self.tableview.mj_header endRefreshing];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

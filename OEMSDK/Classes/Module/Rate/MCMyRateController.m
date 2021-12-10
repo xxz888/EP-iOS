@@ -111,11 +111,11 @@
     
     __weak __typeof(self)weakSelf = self;
     [self requestFeilvWithUserID:SharedUserInfo.userid];
-    [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/usersys/query/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/usersys/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         
         [weakSelf.backScroll.mj_header endRefreshing];
         
-        NSArray *tempA = [MCProductModel mj_objectArrayWithKeyValuesArray:[resp.result objectForKey:@"thirdLevelDistribution"]];
+        NSArray *tempA = [MCProductModel mj_objectArrayWithKeyValuesArray:[resp[@"result"] objectForKey:@"thirdLevelDistribution"]];
         
         for (MCProductModel *model in tempA) {
             if (model.grade.intValue == SharedUserInfo.grade.intValue) {
@@ -125,9 +125,9 @@
             }
         }
         [weakSelf.productPage reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.backScroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.backScroll.mj_header endRefreshing];
         [MCToast showMessage:error.localizedFailureReason];
@@ -139,10 +139,10 @@
     [MBProgressHUD showHUDAddedTo:self.listView animated:YES];
     NSDictionary *param = @{@"user_id":userId};
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/channel/query/all/brandid" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/user/app/channel/query/all/brandid" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [MBProgressHUD hideHUDForView:weakSelf.listView animated:YES];
         weakSelf.productNameLab.text = @"当前费率";
-        NSArray *tempArr = [MCFeilvModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *tempArr = [MCFeilvModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         NSMutableArray *tempHuankuan = [NSMutableArray new];
         NSMutableArray *tempShoukuan = [NSMutableArray new];
         for (MCFeilvModel *model in tempArr) {
@@ -157,9 +157,9 @@
         }
         NSMutableArray *tempMut = [[NSMutableArray alloc] initWithArray:@[tempHuankuan, tempShoukuan]];
         weakSelf.listView.feilvDataSource = tempMut;
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MBProgressHUD hideHUDForView:weakSelf.listView animated:YES];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [MBProgressHUD hideHUDForView:weakSelf.listView animated:YES];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",(long)error.code,error.localizedFailureReason]];

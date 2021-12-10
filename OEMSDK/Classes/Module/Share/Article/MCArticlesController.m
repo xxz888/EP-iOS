@@ -84,7 +84,7 @@
     __weak __typeof(self)weakSelf = self;
     [self.sessionManager mc_POST:@"/user/app/imagetext/query/brandid" parameters:@{@"brand_id":SharedConfig.brand_id,@"page":@(self.page),@"size":@(20)
                                                                             
-    } ok:^(MCNetResponse * _Nonnull resp) {
+    } ok:^(NSDictionary * _Nonnull resp) {
         
         if ([weakSelf.mc_tableview.mj_header isRefreshing]) {
             [weakSelf.mc_tableview.mj_header endRefreshing];
@@ -95,8 +95,8 @@
         if (cleanData) {
             [weakSelf.dataSource removeAllObjects];
         }
-        //MCLog(@"%@",resp.result);
-        NSArray *arr = [MCArticleModel mj_objectArrayWithKeyValuesArray:resp.result];
+        //MCLog(@"%@",resp[@"result"]);
+        NSArray *arr = [MCArticleModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         
 //        NSString * url =  @"http://192.168.10.32/v1.0/user/app/getQRcode?imageId=112";
 //

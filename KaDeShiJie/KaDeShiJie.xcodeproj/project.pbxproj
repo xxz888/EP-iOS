@@ -276,6 +276,8 @@
 		1BD3DC43250B60A600A5D148 /* KDGatheringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC41250B60A600A5D148 /* KDGatheringViewController.xib */; };
 		6F5C0283271EAE220059A557 /* KDGuanFangSheQun.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */; };
 		6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */; };
+		6F7628B427634BFF00E03BFA /* KDPayNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F7628B127634BFE00E03BFA /* KDPayNewViewController.xib */; };
+		6F7628B527634BFF00E03BFA /* KDPayNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F7628B327634BFF00E03BFA /* KDPayNewViewController.m */; };
 		6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */; };
 		6FA44E93274E3BFF00DA1C59 /* KDMyWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */; };
 		6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */; };
@@ -743,6 +745,9 @@
 		6F5C0281271EAE220059A557 /* KDGuanFangSheQun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGuanFangSheQun.h; sourceTree = "<group>"; };
 		6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGuanFangSheQun.m; sourceTree = "<group>"; };
 		6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDGuanFangSheQun.xib; sourceTree = "<group>"; };
+		6F7628B127634BFE00E03BFA /* KDPayNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDPayNewViewController.xib; sourceTree = "<group>"; };
+		6F7628B227634BFE00E03BFA /* KDPayNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPayNewViewController.h; sourceTree = "<group>"; };
+		6F7628B327634BFF00E03BFA /* KDPayNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPayNewViewController.m; sourceTree = "<group>"; };
 		6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6FA44E91274E3BFF00DA1C59 /* KDMyWallView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMyWallView.h; sourceTree = "<group>"; };
 		6FA44E92274E3BFF00DA1C59 /* KDMyWallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMyWallView.m; sourceTree = "<group>"; };
@@ -1426,7 +1431,7 @@
 		1BC5E3BA250343AA0064CA30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6FC59E0927622766005DD4DD /* 绑卡 */,
+				6FC59E0927622766005DD4DD /* 绑卡和收款 */,
 				6FBBFBA3275897450096D282 /* Tools */,
 				1BD3DC3E250B606B00A5D148 /* 信用卡收款 */,
 				180B17982575E9ED006D3D13 /* 空卡还款 */,
@@ -1622,14 +1627,17 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		6FC59E0927622766005DD4DD /* 绑卡 */ = {
+		6FC59E0927622766005DD4DD /* 绑卡和收款 */ = {
 			isa = PBXGroup;
 			children = (
 				6FC59E0B27622803005DD4DD /* KDBingCardNewViewController.h */,
 				6FC59E0A27622803005DD4DD /* KDBingCardNewViewController.m */,
 				6FC59E0C27622803005DD4DD /* KDBingCardNewViewController.xib */,
+				6F7628B227634BFE00E03BFA /* KDPayNewViewController.h */,
+				6F7628B327634BFF00E03BFA /* KDPayNewViewController.m */,
+				6F7628B127634BFE00E03BFA /* KDPayNewViewController.xib */,
 			);
-			path = "绑卡";
+			path = "绑卡和收款";
 			sourceTree = "<group>";
 		};
 		6FFE7E08274E3A5400F801A1 /* 我的钱包 */ = {
@@ -1962,6 +1970,7 @@
 				1BAE2A7E251E168C00E7E0DF /* KDEditDirectCardViewController.xib in Resources */,
 				180B17962575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib in Resources */,
 				180B990E2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib in Resources */,
+				6F7628B427634BFF00E03BFA /* KDPayNewViewController.xib in Resources */,
 				1B86CFA82509D60000AD09F7 /* KDExtendEarnViewController.xib in Resources */,
 				1B9723A9251C41ED00F4120C /* KDDirectRefundViewCell.xib in Resources */,
 				1BC5E3D725036EF30064CA30 /* KDLoginHeaderView.xib in Resources */,
@@ -2149,6 +2158,7 @@
 				1B808D512512F1E30095926E /* KDEarnCenterModel.m in Sources */,
 				1B1C0EC12508CEED0009CDC6 /* KDCreditExtensionViewController.m in Sources */,
 				1BD3DC21250B1C1100A5D148 /* KDReturnMoneyViewController.m in Sources */,
+				6F7628B527634BFF00E03BFA /* KDPayNewViewController.m in Sources */,
 				1BAB9074250C63D800FE9404 /* KDAisleDetailHeaderView.m in Sources */,
 				1B808D5B251375750095926E /* KDExtensionEarnModel.m in Sources */,
 				1848CE5C266F433F00D6E148 /* KDJFShopDetailHeaderView.m in Sources */,

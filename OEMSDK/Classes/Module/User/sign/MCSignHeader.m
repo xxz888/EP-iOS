@@ -56,8 +56,8 @@
 }
 //累计签的天数
 - (void)requestSignDays:(NSDictionary *)signInfo {
-    [MCSessionManager.shareManager mc_POST:@"/user/app/signin/getsign" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        NSInteger leiji = ((NSArray*)resp.result).count;
+    [MCSessionManager.shareManager mc_POST:@"/user/app/signin/getsign" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        NSInteger leiji = ((NSArray*)resp[@"result"]).count;
         self.lab2.text = [NSString stringWithFormat:@"累计签到%lu天",(unsigned long)leiji];
         if (!signInfo) {
             return;
@@ -70,29 +70,29 @@
 }
 //今日是否签到
 - (void)requestTodaySign {
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/signin/isdosign" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        BOOL sign = [resp.result boolValue];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/signin/isdosign" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        BOOL sign = [resp[@"result"] boolValue];
         self.signBtn.enabled = !sign;
     }];
 }
 
 - (void)requestSignInfo {
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/signin/getsigncoin/andbonusdays" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        self.lab1.text = [NSString stringWithFormat:@"今日+%@积分，距离额外奖励还有%@天",resp.result[@"bonuscoin"],resp.result[@"days"]];
-        self.lab3.text = [NSString stringWithFormat:@"+%@",resp.result[@"bonuscoin"]];
-        [self requestSignDays:resp.result];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/signin/getsigncoin/andbonusdays" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        self.lab1.text = [NSString stringWithFormat:@"今日+%@积分，距离额外奖励还有%@天",resp[@"result"][@"bonuscoin"],resp[@"result"][@"days"]];
+        self.lab3.text = [NSString stringWithFormat:@"+%@",resp[@"result"][@"bonuscoin"]];
+        [self requestSignDays:resp[@"result"]];
     }];
 }
 
 - (void)requestCoin {
     __weak __typeof(self)weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"user/app/signin/getsigncoin/" parameters:@{@"brandId":SharedConfig.brand_id,@"grade":SharedUserInfo.grade} ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *arr = resp.result;
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"user/app/signin/getsigncoin/" parameters:@{@"brandId":SharedConfig.brand_id,@"grade":SharedUserInfo.grade} ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *arr = resp[@"result"];
         if (!arr || arr.count == 0) {
             return;
         }
-        weakSelf.lab4.text = [NSString stringWithFormat:@"+%@分",resp.result[0][@"bonusCoin"]];
-        weakSelf.lab5.text = [NSString stringWithFormat:@"累计%@天",resp.result[0][@"continueDays"]];
+        weakSelf.lab4.text = [NSString stringWithFormat:@"+%@分",resp[@"result"][0][@"bonusCoin"]];
+        weakSelf.lab5.text = [NSString stringWithFormat:@"累计%@天",resp[@"result"][0][@"continueDays"]];
         
         [MCModelStore.shared getUserAccount:^(MCAccountModel * _Nonnull accountModel) {
             weakSelf.allLab.text = accountModel.coin;
@@ -107,7 +107,7 @@
     [MCPagingStore pushWebWithTitle:@"商城" classification:@"功能跳转"];
 }
 - (IBAction)signTouched:(id)sender {
-    [MCSessionManager.shareManager mc_POST:@"/user/app/signin/dosign" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/user/app/signin/dosign" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
         [MCLATESTCONTROLLER.mc_tableview.mj_header beginRefreshing];
     }];
 }

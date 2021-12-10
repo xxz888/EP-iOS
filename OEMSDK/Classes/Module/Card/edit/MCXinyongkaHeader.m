@@ -206,9 +206,9 @@
 
                             };
     kWeakSelf(self);
-    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -224,8 +224,8 @@
 //                            @"billDay":[self.textField6.text substringToIndex:self.textField6.text.length-1]
 //                            };
 //    //MCLog(@"%@",param);
-//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-//        [MCToast showMessage:resp.messege];
+//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        [MCToast showMessage:resp[@"messege"]];
 //
 //        //新增成功之后发送一个通知让 KDWebContainer 重新加载
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -246,8 +246,8 @@
                             @"repaymentDay":[self.textField7.text substringToIndex:self.textField7.text.length-1]
                             };
     //MCLog(@"%@",param);
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
     }];
 }
@@ -345,7 +345,7 @@
 -(void)selctSheng{
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSArray * result = resp;
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
@@ -399,10 +399,10 @@
 //#pragma mark - 上传银行卡图片
 - (void)uploadBankImage:(UIImage *)image {
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-        //MCLog(@"%@",resp.result);
-        if (resp.result[@"cardNum"] && [resp.result[@"cardNum"] length] > 10) {
-        NSString * no = [NSString stringWithFormat:@"%@",resp.result[@"cardNum"]];
+    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        //MCLog(@"%@",resp[@"result"]);
+        if (resp[@"result"][@"cardNum"] && [resp[@"result"][@"cardNum"] length] > 10) {
+        NSString * no = [NSString stringWithFormat:@"%@",resp[@"result"][@"cardNum"]];
         NSMutableString *string = [NSMutableString string];
         for (int i = 0; i < no.length; i++) {
             [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
@@ -415,11 +415,11 @@
             [MCToast showMessage:@"卡号识别失败，请手动填写卡号"];
         }
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
         MCTXResult *rr = [[MCTXResult alloc] init];
-        rr.error = [NSError errorWithDomain:resp.messege code:resp.code.intValue userInfo:nil];
+//        rr.error = [NSError errorWithDomain:resp[@"messege"] code:resp[@"code"].intValue userInfo:nil];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@", (long)error.code, error.localizedFailureReason]];

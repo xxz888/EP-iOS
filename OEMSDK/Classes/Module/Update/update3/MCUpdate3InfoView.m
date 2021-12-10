@@ -78,9 +78,9 @@
     
     NSDictionary *param = @{@"thirdLevelId":productId};
     __weak __typeof(self)weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/thirdlevel/rate/query/thirdlevelid/" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/thirdlevel/rate/query/thirdlevelid/" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.dataSource removeAllObjects];
-        NSArray *tempArr = [MCFeilvModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *tempArr = [MCFeilvModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         NSMutableArray *tempHuankuan = [NSMutableArray new];
         NSMutableArray *tempShoukuan = [NSMutableArray new];
         for (MCFeilvModel *model in tempArr) {

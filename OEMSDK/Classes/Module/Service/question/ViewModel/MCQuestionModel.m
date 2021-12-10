@@ -19,8 +19,8 @@ static NSString *api_getnews = @"/user/app/news/getnewsby/brandidandclassificati
                              @"classifiCation":@"常见问题",
                              @"size":@"100",
                              @"page":@"0"};
-    [[MCSessionManager shareManager] mc_POST:api_getnews parameters:params ok:^(MCNetResponse * _Nonnull okResponse) {
-        NSArray *arr = okResponse.result[@"content"];
+    [[MCSessionManager shareManager] mc_POST:api_getnews parameters:params ok:^(NSDictionary * _Nonnull okResponse) {
+        NSArray *arr = okResponse[@"result"][@"content"];
         NSMutableArray *dataArray = [NSMutableArray array];
         if (arr.count != 0) {
             dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:arr];

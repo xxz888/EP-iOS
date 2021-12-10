@@ -60,7 +60,7 @@
         _addressPicker.selectValues = @[@"上海市", @"上海市"];
         __weak __typeof(self)weakSelf = self;
         _addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {
-            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
                 NSArray * respArry = [NSArray arrayWithArray:resp];
                 for (NSDictionary * dic1 in respArry) {
                     if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
@@ -210,17 +210,17 @@
                             @"phone":self.textField3.text,
                             };
     kWeakSelf(self);
-    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
     }];
     
     
-//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-//        [MCToast showMessage:resp.messege];
+//    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/add/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        [MCToast showMessage:resp[@"messege"]];
 //        [MCLATESTCONTROLLER.navigationController qmui_popViewControllerAnimated:YES completion:^{
 //            if ([weakself.whereCome isEqualToString:@"1"]) {
 //                [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
@@ -247,8 +247,8 @@
                             @"bankCardNumber":cardNo,
                             @"province":addr[0],
                             @"city":addr[1]};
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo/province/city" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo/province/city" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
     }];
 }
@@ -341,7 +341,7 @@
 -(void)selectProvince{
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSArray * respArry = [NSArray arrayWithArray:resp];
         
     }];
@@ -353,7 +353,7 @@
     }
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/bank" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSArray * result = resp;
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
@@ -385,7 +385,7 @@
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
     NSString * url = [NSString stringWithFormat:@"/api/v1/player/bank/branch?provinceId=%@&cityId=%@&bankId=%@",self.provinceId,self.cityId,self.bankId];
-    [MCLATESTCONTROLLER.sessionManager mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSArray * result = resp;
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
@@ -446,10 +446,10 @@
 //#pragma mark - 上传银行卡图片
 - (void)uploadBankImage:(UIImage *)image {
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(MCNetResponse * _Nonnull resp) {
-        //MCLog(@"%@",resp.result);
-        if (resp.result[@"cardNum"] && [resp.result[@"cardNum"] length] > 10) {
-            NSString * no = [NSString stringWithFormat:@"%@",resp.result[@"cardNum"]];
+    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        //MCLog(@"%@",resp[@"result"]);
+        if (resp[@"result"][@"cardNum"] && [resp[@"result"][@"cardNum"] length] > 10) {
+            NSString * no = [NSString stringWithFormat:@"%@",resp[@"result"][@"cardNum"]];
             NSMutableString *string = [NSMutableString string];
             for (int i = 0; i < no.length; i++) {
                 [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
@@ -463,11 +463,11 @@
         }
 
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
         MCTXResult *rr = [[MCTXResult alloc] init];
-        rr.error = [NSError errorWithDomain:resp.messege code:resp.code.intValue userInfo:nil];
+//        rr.error = [NSError errorWithDomain:resp[@"messege"] code:resp[@"code"].intValue userInfo:nil];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@", (long)error.code, error.localizedFailureReason]];

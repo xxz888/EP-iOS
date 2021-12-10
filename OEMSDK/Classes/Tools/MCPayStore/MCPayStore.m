@@ -28,9 +28,9 @@
         [md setObject:@"2" forKey:@"difference"];
     }
     
-    [MCSessionManager.shareManager mc_POST:@"" parameters:md ok:^(MCNetResponse * _Nonnull resp) {
-        if (resp.result && [resp.result isKindOfClass:[NSString class]]) {
-            [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp.result}];
+    [MCSessionManager.shareManager mc_POST:@"" parameters:md ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"result"] && [resp[@"result"] isKindOfClass:[NSString class]]) {
+            [MCPagingStore pagingURL:rt_web_controller withUerinfo:@{@"url":resp[@"result"]}];
         } else {
             [MCToast showMessage:@"支付出错，请稍后再试"];
         }
@@ -57,8 +57,8 @@
             [md setObject:@"2" forKey:@"difference"];
         }
         
-        [MCSessionManager.shareManager mc_POST:@"/facade/app//purchase/" parameters:md ok:^(MCNetResponse * _Nonnull resp) {
-            [MCToast showMessage:resp.messege];
+        [MCSessionManager.shareManager mc_POST:@"/facade/app//purchase/" parameters:md ok:^(NSDictionary * _Nonnull resp) {
+            [MCToast showMessage:resp[@"messege"]];
         }];
         
     }]];

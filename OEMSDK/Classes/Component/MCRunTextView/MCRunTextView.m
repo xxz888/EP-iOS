@@ -160,9 +160,9 @@
 - (void)fetchMesage{
     __weak __typeof(self)weakSelf = self;
     NSString *url = [NSString stringWithFormat:@"/user/app/jpush/history/brand/%@", TOKEN];
-    [[MCSessionManager shareManager] mc_GET:url parameters:nil ok:^(MCNetResponse * _Nonnull okResponse) {
+    [[MCSessionManager shareManager] mc_GET:url parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
         
-        NSArray <MCMessageModel *> *array = [MCMessageModel mj_objectArrayWithKeyValuesArray:okResponse.result[@"content"]];
+        NSArray <MCMessageModel *> *array = [MCMessageModel mj_objectArrayWithKeyValuesArray:okResponse[@"result"][@"content"]];
         NSMutableString *content = [NSMutableString string];
         for (MCMessageModel *model in array) {
             if (![model.btype containsString:@"androidVersion"]) {

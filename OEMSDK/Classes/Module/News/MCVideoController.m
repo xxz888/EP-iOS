@@ -45,8 +45,8 @@
 
 - (void)requestData {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:@{@"brandId":BCFI.brand_id,@"classifiCation":@"视频教程",@"size":@"100"} ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:@{@"brandId":BCFI.brand_id,@"classifiCation":@"视频教程",@"size":@"100"} ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [weakSelf.dataSource removeAllObjects];
         for (MCNewsModel *model in temp) {
             if (SharedUserInfo.brandStatus.intValue !=0 || SharedUserInfo.grade.intValue >= model.onOff.intValue) {

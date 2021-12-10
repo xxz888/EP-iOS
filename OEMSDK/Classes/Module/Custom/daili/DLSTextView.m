@@ -174,11 +174,11 @@
       barginDic[@"startDay"] = startDay;
       barginDic[@"endDay"] = endDay;
     
-    [MCLATESTCONTROLLER.sessionManager mc_POST:urlStr parameters:barginDic ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:urlStr parameters:barginDic ok:^(NSDictionary * _Nonnull resp) {
         
         MCLog(@"查询 本月 直推间推/总");
         
-        NSDictionary *response = resp.result;
+        NSDictionary *response = resp[@"result"];
         NSString *zhiStr3 = [NSString stringWithFormat:@"%.4f",[response[@"directRepayment"] doubleValue]/10000];
         NSString *jianStr3 = [NSString stringWithFormat:@"%.4f",[response[@"indirectRepayment"] doubleValue]/10000];
         NSString *zhiStr4 = [NSString stringWithFormat:@"%.4f",[response[@"directRecharge"] doubleValue]/10000];
@@ -227,11 +227,11 @@
       barginDic[@"startDay"] = startDay;
       barginDic[@"endDay"] = endDay;
     
-    [MCLATESTCONTROLLER.sessionManager mc_POST:urlStr parameters:barginDic ok:^(MCNetResponse * _Nonnull okResponse) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:urlStr parameters:barginDic ok:^(NSDictionary * _Nonnull okResponse) {
         
         MCLog(@"查下总交易量成功!!!!")
         
-        NSDictionary *response = okResponse.result;
+        NSDictionary *response = okResponse[@"result"];
 //        NSString *zhiStr3 = [NSString stringWithFormat:@"%.4f",[response[@"directRepayment"] doubleValue]/10000];
 //        NSString *jianStr3 = [NSString stringWithFormat:@"%.4f",[response[@"indirectRepayment"] doubleValue]/10000];
 //        NSString *zhiStr4 = [NSString stringWithFormat:@"%.4f",[response[@"directRecharge"] doubleValue]/10000];
@@ -262,9 +262,9 @@
         barginDic[@"startDay"] = startDay;
         barginDic[@"endDay"] = endDay;
     
-    [MCLATESTCONTROLLER.sessionManager mc_POST:urlStr parameters:barginDic ok:^(MCNetResponse * _Nonnull okResponse) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:urlStr parameters:barginDic ok:^(NSDictionary * _Nonnull okResponse) {
         MCLog(@"查询 当天直推间推!!!!!!");
-        NSDictionary *response = okResponse.result;
+        NSDictionary *response = okResponse[@"result"];
         NSString *zhiStr1 = [NSString stringWithFormat:@"%.4f",[response[@"directRepayment"] doubleValue]/10000];
          NSString *jianStr1 = [NSString stringWithFormat:@"%.4f",[response[@"indirectRepayment"] doubleValue]/10000];
          NSString *zhiStr2 = [NSString stringWithFormat:@"%.4f",[response[@"directRecharge"] doubleValue]/10000];

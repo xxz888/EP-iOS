@@ -41,9 +41,9 @@
                                                                                        @"detail":@"发展大厦12楼",
                                                                                        @"zipcode":@""
                                                                                        
-    } ok:^(MCNetResponse * _Nonnull resp) {
+    } ok:^(NSDictionary * _Nonnull resp) {
         [weakself.navigationController popViewControllerAnimated:YES];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

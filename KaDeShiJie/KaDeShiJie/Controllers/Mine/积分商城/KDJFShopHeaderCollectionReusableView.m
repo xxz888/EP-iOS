@@ -45,9 +45,9 @@
 -(void)requestJiFenData{
     kWeakSelf(self);
     
-    [MCLATESTCONTROLLER.sessionManager mc_Post_QingQiuTi:@"user/app/coin/get" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.jifenLbl.text = [NSString stringWithFormat:@"%@",resp.result];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_Post_QingQiuTi:@"user/app/coin/get" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        weakself.jifenLbl.text = [NSString stringWithFormat:@"%@",resp[@"result"]];
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

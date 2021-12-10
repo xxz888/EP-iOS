@@ -159,9 +159,9 @@
     
     kWeakSelf(self);
     //1.查询当天是否可以开始执行
-//    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/plan/today/run" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+//    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/plan/today/run" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
 //
-//        weakself.selectCurrent = [resp.messege integerValue];
+//        weakself.selectCurrent = [resp[@"messege"] integerValue];
 //        [weakself requestDataSource:weakself.month];
 //    }];
   

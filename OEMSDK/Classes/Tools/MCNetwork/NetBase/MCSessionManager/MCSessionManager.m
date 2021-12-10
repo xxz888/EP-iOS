@@ -272,13 +272,13 @@ remoteFields:(nullable NSArray<NSString *>*)fields
         
 //        kWeakSelf(self);
 //        KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-//        [commonAlert initKDCommonAlertContent:resp.messege  isShowClose:YES];
+//        [commonAlert initKDCommonAlertContent:resp[@"messege"]  isShowClose:YES];
 //        commonAlert.middleActionBlock = ^{
 //            [MCApp userLogout];
 //        };
         
         
-//        [MCAlertStore showWithTittle:@"提示" message:resp.messege buttonTitles:@[@"立即重登"] sureBlock:^{
+//        [MCAlertStore showWithTittle:@"提示" message:resp[@"messege"] buttonTitles:@[@"立即重登"] sureBlock:^{
 //            [MCApp userLogout];
 //        }];
     }
@@ -286,39 +286,41 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 }
 
 - (void)handleHTTPError:(NSError *)error failureHandler:(MCSMErrorHandler)failure {
+    if (error.userInfo) {
+        NSDictionary *UserInfo = error.userInfo;
 
-    NSDictionary *UserInfo = error.userInfo;
+        NSHTTPURLResponse * responses = UserInfo[@"com.alamofire.serialization.response.error.response"];
 
-    NSHTTPURLResponse * responses = UserInfo[@"com.alamofire.serialization.response.error.response"];
+        NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
 
-    NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
+        NSString *errorStr = errorDict[@"message"];
+        [MCToast showMessage:errorStr];
 
-    NSString *errorStr = errorDict[@"message"];
-    [MCToast showMessage:errorStr];
-
-    
-    return;
-    if (error.code == -1001) { //请求超时
         
-        [MCToast showMessage:@"请求超时，请重试"];
-    } else {
-        if (failure) {
-            failure(error);
+        return;
+        if (error.code == -1001) { //请求超时
+            
+            [MCToast showMessage:@"请求超时，请重试"];
         } else {
-            NSString *msg = [NSString stringWithFormat:@"%@",error.localizedDescription];
-            if ([msg containsString:@"该数据的格式不正确"]) {
-                [MCToast showMessage:@"登录信息已过期，请重新登录"];
-                [self popLoginIfNeeded:nil];
-                return;
+            if (failure) {
+                failure(error);
+            } else {
+                NSString *msg = [NSString stringWithFormat:@"%@",error.localizedDescription];
+                if ([msg containsString:@"该数据的格式不正确"]) {
+                    [MCToast showMessage:@"登录信息已过期，请重新登录"];
+                    [self popLoginIfNeeded:nil];
+                    return;
+                }
+                [MCToast showMessage:msg];
+                NSLog(@"%@",msg);
             }
-            [MCToast showMessage:msg];
-            NSLog(@"%@",msg);
         }
+        
     }
-    
+
 }
 - (void)handleOther:(MCNetResponse *)resp {
-    [MCToast showMessage:resp.messege ];
+//    [MCToast showMessage:resp[@"messege"] ];
 }
 
 
@@ -431,23 +433,23 @@ remoteFields:(nullable NSArray<NSString *>*)fields
         if (responseObject[@"verify"]) {
             [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"verify"] forKey:@"verify"];
         }
-        if ([resp.code isEqualToString:@"000000"]) {  // ok
-            if (okResp) {
-                okResp(resp);
-            }
-        
-        }else {    // other
-            if ([resp.code isEqualToString:@"401"] || [resp.code isEqualToString:@"000005"]) {
-                [self popLoginIfNeeded:resp];
-                //需要鉴权绑卡
-            }else {
-                if (otherResp) {
-                    otherResp(resp);
-                } else {
-                    [self handleOther:resp];
-                }
-            }
-        }
+//        if ([resp[@"code"] isEqualToString:@"000000"]) {  // ok
+//            if (okResp) {
+//                okResp(resp);
+//            }
+//
+//        }else {    // other
+//            if ([resp[@"code"] isEqualToString:@"401"] || [resp[@"code"] isEqualToString:@"000005"]) {
+//                [self popLoginIfNeeded:resp];
+//                //需要鉴权绑卡
+//            }else {
+//                if (otherResp) {
+//                    otherResp(resp);
+//                } else {
+//                    [self handleOther:resp];
+//                }
+//            }
+//        }
         if (self.delegate) {
             [self.delegate mc_session:self.session task:task didReceiveResponse:resp];
         }

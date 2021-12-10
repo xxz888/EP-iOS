@@ -112,27 +112,27 @@
 
 - (IBAction)createCodeView:(UIButton *)sender {
     
-    NSString *money = self.moneyView.text;
-    if (money.floatValue <= 0) {
-        [MCToast showMessage:@"请输入的金额不得小于0元"];
-        return;
-    }
-    NSDictionary *params = @{@"amount" : money};
-    
-    __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/facade/app/create/gathering/qrcode" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        [weakSelf.view endEditing:YES];
-        // 显示二维码
-        NSString *str = resp.result;
-        QRCodeView *codeView = [QRCodeView newFromNib];
-        codeView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        UIImage *img = [MCImageStore creatQrcodeImageWithUrlString:str width:100];
-        codeView.codeView.image = [MCImageStore addImage:[MCImageStore getAppIcon] on:img frame:CGRectMake((img.size.width - 20) * 0.5, (img.size.width - 20) * 0.5, 20, 20)];
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [window addSubview:codeView];
-        });
-    }];
+//    NSString *money = self.moneyView.text;
+//    if (money.floatValue <= 0) {
+//        [MCToast showMessage:@"请输入的金额不得小于0元"];
+//        return;
+//    }
+//    NSDictionary *params = @{@"amount" : money};
+//    
+//    __weak __typeof(self)weakSelf = self;
+//    [MCSessionManager.shareManager mc_POST:@"/facade/app/create/gathering/qrcode" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//        [weakSelf.view endEditing:YES];
+//        // 显示二维码
+//        NSString *str = resp[@"result"];
+//        QRCodeView *codeView = [QRCodeView newFromNib];
+//        codeView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+//        UIImage *img = [MCImageStore creatQrcodeImageWithUrlString:str width:100];
+//        codeView.codeView.image = [MCImageStore addImage:[MCImageStore getAppIcon] on:img frame:CGRectMake((img.size.width - 20) * 0.5, (img.size.width - 20) * 0.5, 20, 20)];
+//        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [window addSubview:codeView];
+//        });
+//    }];
 }
 
 @end

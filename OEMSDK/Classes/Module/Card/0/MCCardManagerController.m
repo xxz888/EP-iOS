@@ -120,7 +120,7 @@
 - (void)requestCards {
     __weak __typeof(self)weakSelf = self;
     NSString * url = self.currentIndex == 0 ? @"/api/v1/player/bank/credit":@"/api/v1/player/bank/debit";
-    [self.sessionManager mc_GET:url parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
         [weakSelf.daijikas removeAllObjects];
         [weakSelf.jiejikas removeAllObjects];

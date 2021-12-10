@@ -20,9 +20,9 @@
     NSString *token = TOKEN;
     
     NSDictionary *shopDic = @{};
-    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/usersys/query/%@",token] parameters:shopDic ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/usersys/query/%@",token] parameters:shopDic ok:^(NSDictionary * _Nonnull resp) {
         NSMutableArray *array = [NSMutableArray array];
-        for (NSDictionary *dic in resp.result[@"thirdLevelDistribution"]) {
+        for (NSDictionary *dic in resp[@"result"][@"thirdLevelDistribution"]) {
             [array addObject:dic];
         }
         NSString *gradeName = @"普通用户";

@@ -123,7 +123,7 @@
 //        [self.mc_tableview.mj_footer resetNoMoreData];
 //    }
     MCLog(@"param:%@",params);
-    [self.sessionManager mc_POST:@"/user/app/query/direct/user/info" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/user/app/query/direct/user/info" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         if ([self.mc_tableview.mj_header isRefreshing]) {
             [self.mc_tableview.mj_header endRefreshing];
         }
@@ -133,8 +133,8 @@
         if (cleanData) {
             [self.dataArray removeAllObjects];
         }
-        //MCLog(@"%@",resp.result);
-        NSArray *arr = [KDPushModel mj_objectArrayWithKeyValuesArray:resp.result];
+        //MCLog(@"%@",resp[@"result"]);
+        NSArray *arr = [KDPushModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         
         [self.dataArray addObjectsFromArray:arr];
         if (self.dataArray.count == 0) {

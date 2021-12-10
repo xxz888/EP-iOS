@@ -42,8 +42,8 @@
 
 - (void)getWXInfo
 {
-    [self.sessionManager mc_POST:@"/user/app/WeChatGroup/user/query" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        self.dataArray = [KDWXModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [self.sessionManager mc_POST:@"/user/app/WeChatGroup/user/query" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        self.dataArray = [KDWXModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [self.mc_tableview reloadData];
     }];
 }

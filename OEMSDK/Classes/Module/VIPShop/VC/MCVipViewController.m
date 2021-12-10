@@ -129,8 +129,8 @@
     [params setValue:@"100" forKey:@"size"];
     [params setValue:@"会员商城" forKey:@"classifiCation"];
     [params setValue:MCModelStore.shared.brandConfiguration.brand_id forKey:@"brandId"];
-    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        self.dataArray = [ZAShopsModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        self.dataArray = [ZAShopsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         [self.mc_tableview reloadData];
     }];
     
@@ -138,9 +138,9 @@
 - (void)initGoodsData
 {
     NSString *url = [NSString stringWithFormat:@"/user/app/thirdlevel/prod/brand/%@", MCModelStore.shared.brandConfiguration.brand_id];
-    [self.sessionManager mc_GET:url parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        self.goodsArray = [ZAGoodsModel mj_objectArrayWithKeyValuesArray:resp.result];
-        NSLog(@"%@",  resp.result);
+    [self.sessionManager mc_GET:url parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        self.goodsArray = [ZAGoodsModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
+        NSLog(@"%@",  resp[@"result"]);
     }];
     
 }

@@ -133,13 +133,13 @@
         [params setValue:self.searchText forKey:@"userSonPhone"];
     }
     [params setValue:self.type forKey:@"isAccredit"];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/user/son" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/get/user/son" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         if (self.type.intValue == 2) {
             [self.dataArray removeAllObjects];
-            self.dataArray = [KDCreditExtensionModel mj_objectArrayWithKeyValuesArray:resp.result];
+            self.dataArray = [KDCreditExtensionModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         } else {
             [self.creditArray removeAllObjects];
-            self.creditArray = [KDCreditExtensionModel mj_objectArrayWithKeyValuesArray:resp.result];
+            self.creditArray = [KDCreditExtensionModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         }
         [self.mc_tableview reloadData];
     }];

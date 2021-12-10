@@ -204,7 +204,7 @@
                             @"year":[self yearTranfors:date],
                             @"month":[self monthTranfors:date]};
     
-    [MCSessionManager.shareManager mc_POST:@"/user/app/signin/getsignby/yearandmonth" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/user/app/signin/getsignby/yearandmonth" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         switch (idx) {
         case 0:
             //left
@@ -213,10 +213,10 @@
                     [obj removeFromSuperview];
                 }];
                 [self.leftCalenderAR removeAllObjects];
-                for (NSString* str in resp.result) {
-                    NSString* resstr=[str substringFromIndex:str.length-2];
-                    [self.leftCalenderAR addObject:[NSString stringWithFormat:@"%ld",[resstr integerValue]]];
-                }
+//                for (NSString* str in resp[@"result"]) {
+//                    NSString* resstr=[str substringFromIndex:str.length-2];
+//                    [self.leftCalenderAR addObject:[NSString stringWithFormat:@"%ld",[resstr integerValue]]];
+//                }
                 [self.leftCalender initSign:[self.leftCalenderAR copy] Touch:^(NSString *date) {
                     
                 } withWantMonth:[self dateTranfor:date]];
@@ -230,7 +230,7 @@
                 }];
 
                 [self.centerCalenderAR removeAllObjects];
-                for (NSString* str in resp.result) {
+                for (NSString* str in resp[@"result"]) {
                     NSString* resstr=[str substringFromIndex:str.length-2];
                     [self.centerCalenderAR addObject:[NSString stringWithFormat:@"%ld",[resstr integerValue]]];
                 }
@@ -246,7 +246,7 @@
                     [obj removeFromSuperview];
                 }];
                 [self.rightCalenderAR removeAllObjects];
-                for (NSString* str in resp.result) {
+                for (NSString* str in resp[@"result"]) {
                     NSString* resstr=[str substringFromIndex:str.length-2];
                     [self.rightCalenderAR addObject:[NSString stringWithFormat:@"%ld",[resstr integerValue]]];
                 }

@@ -70,8 +70,8 @@
 {
     return;
     // 查询用户信息
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/query" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        NSDictionary *dict = resp.result;
+    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/query" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        NSDictionary *dict = resp[@"result"];
         if (dict) {
             NSInteger grade = [dict[@"promotionLevelId"] intValue];
             if (grade <= 3) {
@@ -88,23 +88,23 @@
 }
 - (void)getGradeNameWithGrade:(NSInteger)grade
 {
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/agent/name" parameters:@{@"promotionLevelId":@(grade)} ok:^(MCNetResponse * _Nonnull resp) {
-        NSDictionary *dict = resp.result;
+    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/agent/name" parameters:@{@"promotionLevelId":@(grade)} ok:^(NSDictionary * _Nonnull resp) {
+        NSDictionary *dict = resp[@"result"];
         self.nameLabel.text = dict[@"gradeName"];
     }];
 }
 - (void)getWagesWithGrade:(NSInteger)grade
 {
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/wages/query" parameters:@{@"promotionLevelId":@(grade), @"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        self.moneyLabel.text = [NSString stringWithFormat:@"%.2f元", [resp.result floatValue]];
+    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/wages/query" parameters:@{@"promotionLevelId":@(grade), @"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        self.moneyLabel.text = [NSString stringWithFormat:@"%.2f元", [resp[@"result"] floatValue]];
     }];
 }
 - (void)getActivePerson:(NSInteger)type
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/record/all/query" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSDictionary *result = resp.result;
+    [[MCSessionManager shareManager] mc_POST:@"/transactionclear/app/standard/extension/user/record/all/query" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSDictionary *result = resp[@"result"];
         self.lab1.text = result[@"activationByTime"];
         self.lab2.text = result[@"extensionByTime"];
         self.lab3.text = result[@"activationAll"];

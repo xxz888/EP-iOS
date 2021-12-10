@@ -99,8 +99,8 @@
                             @"billDay":self.billdayLabel.text,
                             @"repaymentDay":self.repaymentdayLabel.text
                             };
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
     }];
 }

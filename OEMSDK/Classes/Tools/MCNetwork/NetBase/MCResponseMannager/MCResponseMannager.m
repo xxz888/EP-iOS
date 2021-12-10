@@ -50,7 +50,7 @@
 //        response = [self mc_handleSafeData:response];
 //    }
 //    MCNetResponse *resp = [MCNetResponse mj_objectWithKeyValues:response];
-//    if ([resp.code isEqualToString:@"000000"]) {  // ok
+//    if ([resp[@"code"] isEqualToString:@"000000"]) {  // ok
 //        if (okResp) {
 //            okResp(resp);
 //        }

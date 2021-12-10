@@ -87,8 +87,8 @@
 }
 -(void)getDetailData{
     kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"facade/app/coin/goods/detail"] parameters:@{@"gid":self.goodDic[@"id"]} ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp.result];
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"facade/app/coin/goods/detail"] parameters:@{@"gid":self.goodDic[@"id"]} ok:^(NSDictionary * _Nonnull resp) {
+        weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp[@"result"]];
         [weakself.mc_tableview reloadData];
         
         weakself.mc_tableview.tableHeaderView = weakself.headerView;

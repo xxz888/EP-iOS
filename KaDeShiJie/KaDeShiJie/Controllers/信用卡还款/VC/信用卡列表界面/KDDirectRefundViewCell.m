@@ -174,7 +174,7 @@
     __weak __typeof(self)weakSelf = self;
     commonAlert.rightActionBlock = ^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":weakSelf.refundModel.cardNo,@"type":@"0"} ok:^(MCNetResponse * _Nonnull resp) {
+            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":weakSelf.refundModel.cardNo,@"type":@"0"} ok:^(NSDictionary * _Nonnull resp) {
                 if (weakSelf.refreshUIBlock) {
                     weakSelf.refreshUIBlock();
                 }
@@ -264,8 +264,8 @@
     [params setValue:month forKey:@"month"];
     [params setValue:@"2" forKey:@"orderType"];
     kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        NSMutableArray * repaymentModelArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        NSMutableArray * repaymentModelArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
         KDRepaymentModel * selectRepaymentModel = nil;
         for (KDRepaymentModel * repaymentModel in repaymentModelArray) {
             NSString * time1 = [repaymentModel.createTime substringWithRange:NSMakeRange(8, 2)];

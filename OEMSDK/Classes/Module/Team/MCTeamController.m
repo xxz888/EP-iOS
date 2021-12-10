@@ -106,14 +106,14 @@
 
 - (void)requestData {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/query/userteam" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        weakSelf.lab1.text = [NSString stringWithFormat:@"%d",[resp.result[@"all"][@"betweenPush"] intValue]+[resp.result[@"all"][@"directPush"] intValue]];
-        weakSelf.lab2.text = [NSString stringWithFormat:@"%@",resp.result[@"all"][@"realName"]];
-        weakSelf.lab3.text = [NSString stringWithFormat:@"%@",resp.result[@"all"][@"vip"]];
+    [self.sessionManager mc_POST:@"/user/app/query/userteam" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.lab1.text = [NSString stringWithFormat:@"%d",[resp[@"result"][@"all"][@"betweenPush"] intValue]+[resp[@"result"][@"all"][@"directPush"] intValue]];
+        weakSelf.lab2.text = [NSString stringWithFormat:@"%@",resp[@"result"][@"all"][@"realName"]];
+        weakSelf.lab3.text = [NSString stringWithFormat:@"%@",resp[@"result"][@"all"][@"vip"]];
     }];
     
-    [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/usersys/query/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCTeamModel mj_objectArrayWithKeyValuesArray:resp.result[@"thirdLevelDistribution"]];
+    [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/usersys/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCTeamModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"thirdLevelDistribution"]];
         [weakSelf.dataSource removeAllObjects];
         if (SharedUserInfo.brandStatus.intValue != 0) { //贴牌商
             weakSelf.dataSource = [NSMutableArray arrayWithArray:temp];

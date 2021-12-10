@@ -58,24 +58,24 @@
 
 - (void)requestData {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        weakSelf.availableLab.text = [NSString stringWithFormat:@"%.2f", [resp.result[@"rebateBalance"] floatValue]];
-    } other:^(MCNetResponse * _Nonnull resp) {
+        weakSelf.availableLab.text = [NSString stringWithFormat:@"%.2f", [resp[@"result"][@"rebateBalance"] floatValue]];
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scroll.mj_header endRefreshing];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];
     }];
-    [self.sessionManager mc_POST:@"/user/app/rebate/query/sumrebate" parameters:@{@"user_id":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/user/app/rebate/query/sumrebate" parameters:@{@"user_id":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        weakSelf.yestodayLab.text = [NSString stringWithFormat:@"%.2f",[resp.result[@"yesterdayRebate"] floatValue]];
-        weakSelf.todayLab.text = [NSString stringWithFormat:@"%.2f",[resp.result[@"todayRebate"] floatValue]];
-        weakSelf.totalLab.text = [NSString stringWithFormat:@"%.2f",[resp.result[@"allRebate"] floatValue]];
-    } other:^(MCNetResponse * _Nonnull resp) {
+        weakSelf.yestodayLab.text = [NSString stringWithFormat:@"%.2f",[resp[@"result"][@"yesterdayRebate"] floatValue]];
+        weakSelf.todayLab.text = [NSString stringWithFormat:@"%.2f",[resp[@"result"][@"todayRebate"] floatValue]];
+        weakSelf.totalLab.text = [NSString stringWithFormat:@"%.2f",[resp[@"result"][@"allRebate"] floatValue]];
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scroll.mj_header endRefreshing];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];

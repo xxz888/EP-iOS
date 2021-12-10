@@ -117,8 +117,8 @@
 -(void)requestlimitmin{
     kWeakSelf(self);
     //请求市
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/limit/min" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.limitPrice = [NSString stringWithFormat:@"%@",resp.result];
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/limit/min" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        weakself.limitPrice = [NSString stringWithFormat:@"%@",resp[@"result"]];
     }];
 }
 #pragma mark -------------------获取默认日期顺序还款的还款日期--------------------------
@@ -183,10 +183,10 @@
     
     kWeakSelf(self);
     //1.查询当天是否可以开始执行
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/plan/today/run" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/plan/today/run" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         //结果说明：resp_message为0代表当天不执行计划，为1代表当天开始执行计划
         NSString * currentDayString = currentDay < 10 ? [NSString stringWithFormat:@"0%ld",currentDay] : [NSString stringWithFormat:@"%ld",currentDay];
-        if ([resp.messege isEqualToString:@"1"]) {
+        if ([resp[@"messege"] isEqualToString:@"1"]) {
             weakself.refundDateLabel.text = [NSString stringWithFormat:@"%@-%@~%@-%@",currentMonth,currentDayString,jisuanRepaymentMonth,repaymentDay];
             
         }else{
@@ -396,11 +396,11 @@
         if (currentTime - time > 1) {
         //处理逻辑
             //请求通道
-            [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/chooes/repayment/channel" parameters:[self getParameters] ok:^(MCNetResponse * _Nonnull resp) {
-                if ([resp.result isKindOfClass:[NSArray class]] && [resp.result count] > 0) {
-                    NSString * version = resp.result[0][@"version"];
+            [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/chooes/repayment/channel" parameters:[self getParameters] ok:^(NSDictionary * _Nonnull resp) {
+                if ([resp[@"result"] isKindOfClass:[NSArray class]] && [resp[@"result"] count] > 0) {
+                    NSString * version = resp[@"result"][0][@"version"];
                     weakself.version = version;
-                    weakself.channelTag = resp.result[0][@"channelTag"];
+                    weakself.channelTag = resp[@"result"][0][@"channelTag"];
                    
                     
                     //如果选择日期选框，就直接要请求次数
@@ -445,8 +445,8 @@
     };
     kWeakSelf(self);
     //1.查询当天是否可以开始执行
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/balance/plan/budget/day" parameters:parDic ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.needDay = [resp.result integerValue];
+    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/balance/plan/budget/day" parameters:parDic ok:^(NSDictionary * _Nonnull resp) {
+        weakself.needDay = [resp[@"result"] integerValue];
         [weakself.modalVC showWithAnimated:YES completion:nil];
     }];
 }
@@ -487,8 +487,8 @@
     kWeakSelf(self);
     //请求省市
     NSDictionary * dic = @{@"type":@"1",@"channelTag":self.channelTag};
-    [[MCSessionManager shareManager] mc_POST:@"/paymentgateway/verification/getcitycode" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray * result = resp.result;
+    [[MCSessionManager shareManager] mc_POST:@"/paymentgateway/verification/getcitycode" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+        NSArray * result = resp[@"result"];
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
             BRResultModel * model = [[BRResultModel alloc]init];
@@ -515,8 +515,8 @@
     kWeakSelf(self);
     //请求市
     NSDictionary * dic = @{@"type":@"2",@"channelTag":self.channelTag,@"provinceCode":cityKey};
-    [[MCSessionManager shareManager] mc_POST:@"/paymentgateway/verification/getcitycode" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray * result = resp.result;
+    [[MCSessionManager shareManager] mc_POST:@"/paymentgateway/verification/getcitycode" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+        NSArray * result = resp[@"result"];
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
         for (NSDictionary * dic in result) {
             BRResultModel * model = [[BRResultModel alloc]init];
@@ -592,10 +592,10 @@
  },
 ,*/
     __weak typeof(self) weakSelf = self;
-    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/plan" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/plan" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf respCode000000:resp];
 
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -626,9 +626,9 @@
     
     /*
     //查询是否有公测用户
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/creditcardmanager/app/verify/beta/user" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/creditcardmanager/app/verify/beta/user" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
    
-    }other:^(MCNetResponse * _Nonnull resp) {
+    }other:^(NSDictionary * _Nonnull resp) {
         //创建老的余额任务  999999
         [weakself requestCreateRepaymentTask:@"/creditcardmanager/app/create/repayment/task" params:params];
     } failure:^(NSError * _Nonnull error) {}];
@@ -637,10 +637,10 @@
 //② 第三步制定计划
 -(void)requestCreateRepaymentTask:(NSString *)url params:(NSDictionary *)params{
     kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_POST:url parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_POST:url parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [weakself respCode000000:resp];
-    }other:^(MCNetResponse * _Nonnull resp) {
-        [MCToast showMessage:resp.messege];
+    }other:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"messege"]];
     }];
 }
 //③ 第三步制定计划

@@ -67,10 +67,10 @@
         //处理逻辑/v1.0/paymentgateway/verification/getcitycode
             NSString * provinceUrl =  @"/paymentgateway/verification/getcitycode" ;
             NSDictionary * dic = @{@"type":@"1",@"channelTag":self.extendModel.bindChannelName};
-            [MCSessionManager.shareManager mc_POST:provinceUrl parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
-                NSArray * resultArray = resp.result;
+            [MCSessionManager.shareManager mc_POST:provinceUrl parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+                NSArray * resultArray = resp[@"result"];
                 NSMutableArray * resultShengArray = [[NSMutableArray alloc]init];
-                for (NSDictionary * dic in resp.result) {
+                for (NSDictionary * dic in resp[@"result"]) {
                     [resultShengArray addObject:dic[@"cityName"]];
                 }
                 if (resultShengArray.count == 0) {
@@ -87,15 +87,15 @@
                     weakSelf.shengLbl.textColor = [UIColor blackColor];
                     weakSelf.shiLbl.textColor = [UIColor qmui_colorWithHexString:@"#B4B4B4"];
                     weakSelf.shiLbl.text = @"请选择城市";
-                    for (NSDictionary * dic in resp.result) {
+                    for (NSDictionary * dic in resp[@"result"]) {
                         if ([resultModel.value isEqualToString:dic[@"cityName"]]) {
                             weakSelf.provinceCode = dic[@"cityCode"];
                         };
                     }
                 };
-            } other:^(MCNetResponse * _Nonnull resp) {
+            } other:^(NSDictionary * _Nonnull resp) {
                 [MCLoading hidden];
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }];
         }
     time = currentTime;
@@ -116,10 +116,10 @@
         if (currentTime - time > 1) {
             NSString * provinceUrl =  @"/paymentgateway/verification/getcitycode" ;
             NSDictionary * dic = @{@"type":@"2",@"channelTag":self.extendModel.bindChannelName,@"provinceCode":self.provinceCode};
-            [MCSessionManager.shareManager mc_POST:provinceUrl parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
-                NSArray * resultArray = resp.result;
+            [MCSessionManager.shareManager mc_POST:provinceUrl parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+                NSArray * resultArray = resp[@"result"];
                 NSMutableArray * resultShengArray = [[NSMutableArray alloc]init];
-                for (NSDictionary * dic in resp.result) {
+                for (NSDictionary * dic in resp[@"result"]) {
                     [resultShengArray addObject:dic[@"cityName"]];
                 }
                 if (resultShengArray.count == 0) {
@@ -135,15 +135,15 @@
                 weakSelf.pickView2.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
                     weakSelf.shiLbl.text = resultModel.value;
                     weakSelf.shiLbl.textColor = [UIColor blackColor];
-                    for (NSDictionary * dic in resp.result) {
+                    for (NSDictionary * dic in resp[@"result"]) {
                         if ([resultModel.value isEqualToString:dic[@"cityName"]]) {
                             weakSelf.incitycode = dic[@"cityCode"];
                         }
                     }
                 };
-            } other:^(MCNetResponse * _Nonnull resp) {
+            } other:^(NSDictionary * _Nonnull resp) {
                 [MCLoading hidden];
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             }];
         }
     time = currentTime;
@@ -164,27 +164,27 @@
     [dicParams setValue:self.provinceCode forKey:@"provinceCode"];
     [dicParams setValue:self.incitycode forKey:@"city"];
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:url parameters:dicParams ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:url parameters:dicParams ok:^(NSDictionary * _Nonnull resp) {
         //拼凑的model
         [weakSelf changeSendBtnText:weakSelf.codeBtn];
         weakSelf.lastParamsExtendModel = [[MCCustomModel alloc]init];
-        [weakSelf.lastParamsExtendModel setValue:resp.result forKey:@"api"];
+        [weakSelf.lastParamsExtendModel setValue:resp[@"result"] forKey:@"api"];
         
         
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
         //统统付的返回999998,跳转短信界面,等待银行出款中！
-        if ([resp.code isEqualToString:@"999998"]) {
+        if ([resp[@"code"] isEqualToString:@"999998"]) {
             [weakSelf changeSendBtnText:weakSelf.codeBtn];
             //拼凑的model
             weakSelf.lastParamsExtendModel = [[MCCustomModel alloc]init];
             [weakSelf.lastParamsExtendModel setValue:url forKey:@"smsApi"];
             [weakSelf.lastParamsExtendModel setValue:dicParams forKey:@"smsParameters"];
-            [weakSelf.lastParamsExtendModel setValue:resp.result forKey:@"api"];
+            [weakSelf.lastParamsExtendModel setValue:resp[@"result"] forKey:@"api"];
             
         }else{
             //失败处理
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
 
     } failure:^(NSError * _Nonnull error) {
@@ -234,16 +234,16 @@
         [dic setValue:self.codeView.text forKey:@"smsMsg"];
     }
 
-    [[MCSessionManager shareManager] mc_POST:requestUrl parameters:dic ok:^(MCNetResponse * _Nonnull okResponse) {
+    [[MCSessionManager shareManager] mc_POST:requestUrl parameters:dic ok:^(NSDictionary * _Nonnull okResponse) {
         [weakself commonAction];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        if ([resp.code isEqualToString:@"999998"]) {
+        if ([resp[@"code"] isEqualToString:@"999998"]) {
             //计时器开启，每隔1秒查询一次结果，如果查询成功
-            [weakself fiveSecondTimerSearch:resp.result];
+            [weakself fiveSecondTimerSearch:resp[@"result"]];
         }else{
             //失败处理
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
 
     } failure:^(NSError * _Nonnull error) {
@@ -276,8 +276,8 @@
     [params setValue:[MCDateStore getYear] forKey:@"year"];
     [params setValue:[MCDateStore getMonth] forKey:@"month"];
 
-    [self.sessionManager mc_POST:@"/transactionclear/app/add/querypaybycard/make/information" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        if ([resp.result[@"content"] count] == 0) {
+    [self.sessionManager mc_POST:@"/transactionclear/app/add/querypaybycard/make/information" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp[@"result"][@"content"] count] == 0) {
             //这里是确认收款后，跳转收款界面，多做了一个判断防止闪退
             if ([[weakself.navigationController viewControllers] count] > 1) {
                 [weakself.navigationController popToViewController:[weakself.navigationController viewControllers][1] animated:YES];
@@ -286,7 +286,7 @@
             }
         }else{
             
-            [MCPagingStore pagingURL:rt_card_shoukuanxiangqing withUerinfo:@{@"param":resp.result[@"content"][0]}];
+            [MCPagingStore pagingURL:rt_card_shoukuanxiangqing withUerinfo:@{@"param":resp[@"result"][@"content"][0]}];
         }
     }];
 }
@@ -307,9 +307,9 @@
     kWeakSelf(self);
     NSMutableDictionary * dic = [MCSessionManager dictionaryWithUrlString:url];
     NSString * requestUrl = [url split:@"?"][0];
-    [[MCSessionManager shareManager] mc_POST:requestUrl parameters:dic ok:^(MCNetResponse * _Nonnull okResponse) {
+    [[MCSessionManager shareManager] mc_POST:requestUrl parameters:dic ok:^(NSDictionary * _Nonnull okResponse) {
         [weakself commonAction];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         

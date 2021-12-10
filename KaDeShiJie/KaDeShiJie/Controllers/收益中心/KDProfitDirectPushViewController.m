@@ -155,7 +155,7 @@
     [params setValue:NSIntegerToNSString(self.page) forKey:@"page"];
     [params setValue:@"20" forKey:@"size"];
     kWeakSelf(self);
-    [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/detail" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/detail" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         if ([weakself.mc_tableview.mj_header isRefreshing]) {
             [weakself.mc_tableview.mj_header endRefreshing];
         }
@@ -163,7 +163,7 @@
             [weakself.mc_tableview.mj_footer endRefreshing];
         }
         
-        NSArray *arr = [KDProfitDirectPushModel mj_objectArrayWithKeyValuesArray:resp.result];
+        NSArray *arr = [KDProfitDirectPushModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
 
         //如果是下拉刷新，数组清空，page=0
         if (cleanData) {

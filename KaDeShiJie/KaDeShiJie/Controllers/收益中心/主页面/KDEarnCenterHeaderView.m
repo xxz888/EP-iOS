@@ -140,8 +140,8 @@
 - (void)reloadData
 {
     __weak typeof(self) weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/query/user/account/sum" parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        weakSelf.earnModel = [KDEarnCenterModel mj_objectWithKeyValues:resp.result];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/query/user/account/sum" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.earnModel = [KDEarnCenterModel mj_objectWithKeyValues:resp[@"result"]];
     }];
 }
 

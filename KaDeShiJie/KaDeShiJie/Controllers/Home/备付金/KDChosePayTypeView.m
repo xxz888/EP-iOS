@@ -83,8 +83,8 @@
 }
 - (void)requestCards {
     __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCBankCardModel *model in temArr) {
             if ([model.nature containsString:@"借"]) {
                 KDChosePayTypeModel *typeModel = [[KDChosePayTypeModel alloc] init];

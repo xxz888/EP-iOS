@@ -57,10 +57,10 @@
 -(void)requestCollectionData{
     kWeakSelf(self);
     
-    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/goods/list" parameters:@{@"name":@"",@"page":@"1",@"size":@"20"} ok:^(MCNetResponse * _Nonnull resp) {
-        weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp.result[@"content"]];
+    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/goods/list" parameters:@{@"name":@"",@"page":@"1",@"size":@"20"} ok:^(NSDictionary * _Nonnull resp) {
+        weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp[@"result"][@"content"]];
         [weakself.jfCollectionView reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

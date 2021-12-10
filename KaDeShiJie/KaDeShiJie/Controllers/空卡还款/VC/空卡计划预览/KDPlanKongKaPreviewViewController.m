@@ -142,16 +142,16 @@
 #pragma mark -------------------------where=2或者3,请求数据-------------------------
 - (void)setDataWhere1Where2or3{
     kWeakSelf(self);
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/get" parameters:@{@"planId":self.directModel.hasWaitingEmptyOrder} ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/get" parameters:@{@"planId":self.directModel.hasWaitingEmptyOrder} ok:^(NSDictionary * _Nonnull resp) {
         weakself.previewArray = [[NSMutableArray alloc]init];
         weakself.startDic = [[NSMutableDictionary alloc]init];
-        [weakself.startDic setValue:resp.result[@"taskCount"] forKey:@"taskCount"];
-        [weakself.startDic setValue:resp.result[@"taskAmount"] forKey:@"taskAmount"];
-        [weakself.startDic setValue:resp.result[@"totalServiceCharge"] forKey:@"totalServiceCharge"];
-        [weakself.startDic setValue:resp.result[@"repaymentedAmount"] forKey:@"repaymentedAmount"];
-        [weakself.startDic setValue:resp.result[@"status"] forKey:@"status"];
+        [weakself.startDic setValue:resp[@"result"][@"taskCount"] forKey:@"taskCount"];
+        [weakself.startDic setValue:resp[@"result"][@"taskAmount"] forKey:@"taskAmount"];
+        [weakself.startDic setValue:resp[@"result"][@"totalServiceCharge"] forKey:@"totalServiceCharge"];
+        [weakself.startDic setValue:resp[@"result"][@"repaymentedAmount"] forKey:@"repaymentedAmount"];
+        [weakself.startDic setValue:resp[@"result"][@"status"] forKey:@"status"];
         [weakself setDataWhere1];
-        for (NSDictionary * dic in resp.result[@"emptyCardPlanItemList"]) {
+        for (NSDictionary * dic in resp[@"result"][@"emptyCardPlanItemList"]) {
             if ([dic[@"type"] integerValue] != 2) {
                 [weakself.previewArray addObject:dic];
             }
@@ -173,9 +173,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.previewArray[indexPath.row][@"status"] integerValue] == 4) {
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/error/message" parameters:@{@"planItemId":self.previewArray[indexPath.row][@"id"]} ok:^(MCNetResponse * _Nonnull resp) {
+        [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/error/message" parameters:@{@"planItemId":self.previewArray[indexPath.row][@"id"]} ok:^(NSDictionary * _Nonnull resp) {
             KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-            [commonAlert initKDCommonAlertContent:resp.messege isShowClose:YES];
+            [commonAlert initKDCommonAlertContent:resp[@"messege"] isShowClose:YES];
         }];
     }
  
@@ -216,13 +216,13 @@
     //判断是否鉴权
     kWeakSelf(self);
     NSDictionary * dic = @{@"userId":SharedUserInfo.userid,@"creditCardNumber":self.startDic[@"creditCardNumber"],@"version":self.version};
-    [MCSessionManager.shareManager mc_POST:@"/creditcardmanager/app/empty/card/verify/card" parameters:dic ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/creditcardmanager/app/empty/card/verify/card" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:SharedUserInfo.userid forKey:@"userId"];
         [params setValue:weakself.startDic[@"creditCardNumber"] forKey:@"creditCardNumber"];
         
         
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/save" parameters:self.startDic ok:^(MCNetResponse * _Nonnull resp) {
+        [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/save" parameters:self.startDic ok:^(NSDictionary * _Nonnull resp) {
             KDKongKaViewController * directRefundVC = nil;
             for (UIViewController * vc in [self.navigationController viewControllers]) {
                 if ([vc isKindOfClass:[KDKongKaViewController class]]) {
@@ -236,38 +236,38 @@
                 [weakself.navigationController popToRootViewControllerAnimated:YES];
             }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:resp.messege];
+                [MCToast showMessage:resp[@"messege"]];
             });
-        } other:^(MCNetResponse * _Nonnull resp) {
+        } other:^(NSDictionary * _Nonnull resp) {
             
         }];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
          //"resp_message": "需要鉴权绑卡!", "resp_code": "999992"
-         if ([resp.code isEqualToString:@"999992"]) {
+         if ([resp[@"code"] isEqualToString:@"999992"]) {
              MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
-             cardModel.cardNo = resp.result[@"bankCard"];
-             cardModel.bankName = resp.result[@"bankName"];
-             cardModel.channelTag = resp.result[@"channelTag"];
-             cardModel.expiredTime = resp.result[@"expiredTime"];
-             cardModel.idcard = resp.result[@"idCard"];
+             cardModel.cardNo = resp[@"result"][@"bankCard"];
+             cardModel.bankName = resp[@"result"][@"bankName"];
+             cardModel.channelTag = resp[@"result"][@"channelTag"];
+             cardModel.expiredTime = resp[@"result"][@"expiredTime"];
+             cardModel.idcard = resp[@"result"][@"idCard"];
              
-             cardModel.phone = resp.result[@"phone"];
-             cardModel.securityCode = resp.result[@"securityCode"];
-             cardModel.userName = resp.result[@"userName"];
-             cardModel.rate = resp.result[@"rate"];
-             cardModel.extraFee = resp.result[@"extraFee"];
+             cardModel.phone = resp[@"result"][@"phone"];
+             cardModel.securityCode = resp[@"result"][@"securityCode"];
+             cardModel.userName = resp[@"result"][@"userName"];
+             cardModel.rate = resp[@"result"][@"rate"];
+             cardModel.extraFee = resp[@"result"][@"extraFee"];
 
-             cardModel.dbankCard = resp.result[@"dbankCard"];
-             cardModel.dbankName = resp.result[@"dbankName"];
-             cardModel.dphone    = resp.result[@"dphone"];
+             cardModel.dbankCard = resp[@"result"][@"dbankCard"];
+             cardModel.dbankName = resp[@"result"][@"dbankName"];
+             cardModel.dphone    = resp[@"result"][@"dphone"];
 
              //拼凑的model
              MCCustomModel * customModel = [[MCCustomModel alloc]init];
 
-             customModel.bindChannelName = resp.result[@"channelTag"];
+             customModel.bindChannelName = resp[@"result"][@"channelTag"];
              customModel.whereCome = kongkahuankuan_jianquan;
-             customModel.smsApi = [resp.result[@"ipAddress"] append:resp.result[@"getSmsUrlNew"]];
-             customModel.api    = [resp.result[@"ipAddress"] append:resp.result[@"confirmSmsUrl"]];
+             customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
+             customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
              customModel.kongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:dic];
              [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
          }
@@ -302,10 +302,10 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
     [params setValue:self.directModel.hasWaitingEmptyOrder forKey:@"planId"];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/stop" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/stop" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [weakself.navigationController popViewControllerAnimated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         });
     }];
 }
@@ -316,10 +316,10 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:SharedUserInfo.userid forKey:@"userId"];
     [params setValue:self.directModel.hasWaitingEmptyOrder forKey:@"planId"];
-    [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/reRun" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/creditcardmanager/app/empty/card/plan/reRun" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         [weakself.navigationController popViewControllerAnimated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         });
     }];
 }

@@ -197,8 +197,8 @@
                          @"type":@"0",
                          @"nature":@"0",
                          @"isDefault":@"1"};
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         for (MCChooseCardModel *model in temp) {
             if (!model.billDay || !model.repaymentDay) {
                 [weakSelf nocardAlertShowWithMessage:@"您的信用卡信息填写不完整，请补充完整" type:MCBankCardTypeXinyongka cardModel:model];
@@ -208,12 +208,12 @@
             }
             break;
         }
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
-        if ([resp.code isEqualToString:@"666666"]) {
-            [weakSelf nocardAlertShowWithMessage:resp.messege type:MCBankCardTypeXinyongka cardModel:nil];
+        if ([resp[@"code"] isEqualToString:@"666666"]) {
+            [weakSelf nocardAlertShowWithMessage:resp[@"messege"] type:MCBankCardTypeXinyongka cardModel:nil];
         } else {
-            [MCToast showMessage:resp.messege];
+            [MCToast showMessage:resp[@"messege"]];
         }
     }];
 }
@@ -223,8 +223,8 @@
                             @"cardType":@"1"
     };
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/np/find" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        NBNPFindBankCardModel *model = [NBNPFindBankCardModel mj_objectWithKeyValues:resp.result];
+    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/np/find" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        NBNPFindBankCardModel *model = [NBNPFindBankCardModel mj_objectWithKeyValues:resp[@"result"]];
         weakSelf.findModel = model;
         // 费率
         float rate = [model.channelRate.rate floatValue] * 100;

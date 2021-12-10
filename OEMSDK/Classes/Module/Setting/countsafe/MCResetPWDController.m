@@ -130,7 +130,7 @@
     NSDictionary *param = @{@"phone":self.userInfo.phone,
                             @"brand_id":BCFI.brand_id};
     
-    [MCSessionManager.shareManager mc_GET:@"/notice/app/sms/send" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_GET:@"/notice/app/sms/send" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [MCToast showMessage:@"验证码已发送，若未收到请稍等或检查手机网络后重试"];
         MCSMSController *vc = [[MCSMSController alloc] initWithType:self.type password:self.fieldNew.text];
         [self.navigationController pushViewController:vc animated:YES];

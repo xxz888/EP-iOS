@@ -59,8 +59,8 @@
     NSString *userId = SharedUserInfo.userid;
     NSDictionary *defaultCardDic = @{@"userId":userId, @"type":@"3", @"nature":@"0", @"isDefault":@"1"};
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:defaultCardDic ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *result = resp.result;
+    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:defaultCardDic ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *result = resp[@"result"];
         NSDictionary *dict = result.firstObject;
         NSString *cardNo = [NSString stringWithFormat:@"%@", dict[@"cardNo"]];
         
@@ -141,7 +141,7 @@
                     return;
                 }
                 
-                [MCSessionManager.shareManager mc_POST:@"/user/app/update/users/nick/name" parameters:@{@"nickName":tf.text} ok:^(MCNetResponse * _Nonnull resp) {
+                [MCSessionManager.shareManager mc_POST:@"/user/app/update/users/nick/name" parameters:@{@"nickName":tf.text} ok:^(NSDictionary * _Nonnull resp) {
                     //删除成功发送一个通知让 KDWebContainer 重新设置
                     [MCToast showMessage:@"修改成功"];
                     [weakSelf reloadData];

@@ -62,8 +62,8 @@
     
     __weak __typeof(self)weakSelf = self;
     
-    [self.sessionManager mc_POST:@"/user/app/qrcodepicture/getqrcodepictureby/brandid" parameters:@{@"brandId":SharedConfig.brand_id} ok:^(MCNetResponse * _Nonnull resp) {
-        weakSelf.dataSource = [MCPosterModel mj_objectArrayWithKeyValuesArray:resp.result];
+    [self.sessionManager mc_POST:@"/user/app/qrcodepicture/getqrcodepictureby/brandid" parameters:@{@"brandId":SharedConfig.brand_id} ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.dataSource = [MCPosterModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         [weakSelf.header.pageView reloadData];
     }];
 }

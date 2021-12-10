@@ -100,22 +100,23 @@
     
     __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/bank/credit";
-    [self.sessionManager mc_GET:url1 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
         if ([temArr count] != 0) {
+        
             MCBankCardModel * model = temArr[0];
-            weakSelf.chuxuInfo = model;
+            weakSelf.xinyongInfo = model;
         }else{
             
         }
     }];
     
     NSString * url2 = @"/api/v1/player/bank/debit";
-    [self.sessionManager mc_GET:url2 parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:url2 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
         if ([temArr count] != 0) {
             MCBankCardModel * model = temArr[0];
-            weakSelf.xinyongInfo = model;
+            weakSelf.chuxuInfo = model;
         }else{
             
         }
@@ -129,8 +130,8 @@
 //                         @"type":@"2",
 //                         @"nature":@"2",
 //                         @"isDefault":@"1"};
-//    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(MCNetResponse * _Nonnull resp) {
-//        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+//    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(NSDictionary * _Nonnull resp) {
+//        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
 //        for (MCBankCardModel *model in temp) {
 //            weakSelf.chuxuInfo = model;
 //            break;
@@ -138,13 +139,13 @@
 //        [weakSelf setChuxuInfo:weakSelf.chuxuInfo];
 //        //绑定过储蓄卡的话，就看是否绑定过信用卡
 //        [weakSelf requestDefaultXinYongCards];
-//    } other:^(MCNetResponse * _Nonnull resp) {
+//    } other:^(NSDictionary * _Nonnull resp) {
 //        [MCLoading hidden];
-//        if ([resp.code isEqualToString:@"666666"]) {
+//        if ([resp[@"code"] isEqualToString:@"666666"]) {
 //            [weakSelf nocardAlertShowWithMessage:@"你还未添加到账提现卡(储蓄卡)，是否前往添加？" type:MCBankCardTypeChuxuka cardModel:nil];
 //            [weakSelf showChuXuGuidePage];
 //        } else {
-//            [MCToast showMessage:resp.messege];
+//            [MCToast showMessage:resp[@"messege"]];
 //        }
 //    }];
 
@@ -156,8 +157,8 @@
 //                         @"type":@"0",
 //                         @"nature":@"0",
 //                         @"isDefault":@"1"};
-//    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
-//        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
+//    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(NSDictionary * _Nonnull resp) {
+//        NSArray *temp = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
 //
 //        for (MCBankCardModel *model in temp) {
 //            if (!model.billDay || !model.repaymentDay) {
@@ -172,14 +173,14 @@
 //        }
 //        [weakSelf setXinyongInfo:weakSelf.xinyongInfo];
 //
-//    } other:^(MCNetResponse * _Nonnull resp) {
+//    } other:^(NSDictionary * _Nonnull resp) {
 //        [MCLoading hidden];
-//        if ([resp.code isEqualToString:@"666666"]) {
+//        if ([resp[@"code"] isEqualToString:@"666666"]) {
 //            [weakSelf nocardAlertShowWithMessage:@"你还未添加收款充值卡(信用卡)，是否前往添加？" type:MCBankCardTypeXinyongka cardModel:nil];
 //            weakSelf.xinyongInfo = nil;
 //            [weakSelf showXinYongGuidePage];
 //        } else {
-//            [MCToast showMessage:resp.messege];
+//            [MCToast showMessage:resp[@"messege"]];
 //        }
 //    }];
 //}
@@ -308,7 +309,7 @@
         
         //先把储蓄卡设为默认
         __weak __typeof(self)weakSelf = self;
-        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":self.chuxuInfo.cardNo} ok:^(MCNetResponse * _Nonnull resp) {
+        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":self.chuxuInfo.cardNo} ok:^(NSDictionary * _Nonnull resp) {
             KDSlotCardAisleViewController *vc = [[KDSlotCardAisleViewController alloc] init];
             vc.money = self.moneyView.text;
             vc.xinyongInfo = self.xinyongInfo;
@@ -333,14 +334,14 @@
 //                             @"type":@"0",
 //                             @"nature":@"0",
 //                             @"isDefault":@"1"};
-//        [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(MCNetResponse * _Nonnull resp) {
+//        [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p1 ok:^(NSDictionary * _Nonnull resp) {
 //            [weakSelf pushCardVCWithType:MCBankCardTypeXinyongka];
-//        } other:^(MCNetResponse * _Nonnull resp) {
+//        } other:^(NSDictionary * _Nonnull resp) {
 //            [MCLoading hidden];
-//            if ([resp.code isEqualToString:@"666666"]) {
+//            if ([resp[@"code"] isEqualToString:@"666666"]) {
 //                [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(MCBankCardTypeXinyongka), @"isLogin":@(NO),@"whereCome":@"1"}];
 //            } else {
-//                [MCToast showMessage:resp.messege];
+//                [MCToast showMessage:resp[@"messege"]];
 //            }
 //        }];
 //    }];
@@ -371,7 +372,7 @@
         _addressPicker.selectValues = @[@"上海市", @"上海市"];
         __weak __typeof(self)weakSelf = self;
         _addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {
-            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
                 NSArray * respArry = [NSArray arrayWithArray:resp];
                 for (NSDictionary * dic1 in respArry) {
                     if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {

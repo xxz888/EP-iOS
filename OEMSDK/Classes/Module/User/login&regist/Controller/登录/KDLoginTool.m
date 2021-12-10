@@ -27,22 +27,22 @@ static KDLoginTool *tool = nil;
 - (void)getChuXuCardData:(BOOL)isHandLogin
 {
     //默认储蓄卡
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp.result];
-        NSMutableArray *arr = [NSMutableArray array];
-        for (MCBankCardModel *model in temArr) {
-            if ([model.nature containsString:@"借"]) {
-                [arr addObject:model];
-            }
-        }
-        if (arr.count != 0) {
-            [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-            //登录成功弹出系统消息
-            [self requestPlatform:isHandLogin];
-        } else {
-            [self nocardAlertShowWithMessage:@"你还未添加到账提现卡(储蓄卡)，是否前往添加？" type:MCBankCardTypeChuxuka cardModel:nil];
-        }
-    }];
+//    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/bank/query/userid/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+//        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
+//        NSMutableArray *arr = [NSMutableArray array];
+//        for (MCBankCardModel *model in temArr) {
+//            if ([model.nature containsString:@"借"]) {
+//                [arr addObject:model];
+//            }
+//        }
+//        if (arr.count != 0) {
+//            [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+//            //登录成功弹出系统消息
+//            [self requestPlatform:isHandLogin];
+//        } else {
+//            [self nocardAlertShowWithMessage:@"你还未添加到账提现卡(储蓄卡)，是否前往添加？" type:MCBankCardTypeChuxuka cardModel:nil];
+//        }
+//    }];
 }
 
 - (void)requestPlatform:(BOOL)isHandLogin{
@@ -52,51 +52,51 @@ static KDLoginTool *tool = nil;
     
     
     
-    NSDictionary *param = @{@"page":@(0),@"size":@"1"};
-    __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(MCNetResponse * _Nonnull resp) {
-        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
-        MCMessageModel * model = tempA[0];
-        NSInteger currentInterva = [weakSelf getNowTimeStamp];
-        NSInteger endInterva = [weakSelf cTimestampFromString:model.endTime];
-        NSInteger chazhi = endInterva - currentInterva;
-        if (endInterva - currentInterva > 0) {
-            //记录id
-            NSString * contentId = [[NSUserDefaults standardUserDefaults] objectForKey:@"contentId"];
-            
-            //showalert之前进行 一天一次判断
-            NSDate *now = [NSDate date];
-            
-            NSDate *agoDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"nowDate"];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-            NSString *ageDateString = [dateFormatter stringFromDate:agoDate];
-            NSString *nowDateString = [dateFormatter stringFromDate:now];
-            if ([ageDateString isEqualToString:nowDateString] && [contentId integerValue] == [model.id integerValue]) {
-                NSLog(@"一天就显示一次");
-            }else{
-                //记录弹窗时间
-                NSDate *nowDate = [NSDate date];
-                NSUserDefaults *dataUser = [NSUserDefaults standardUserDefaults];
-                [dataUser setObject:nowDate forKey:@"nowDate"];
-                [dataUser synchronize];
-                
-                NSUserDefaults * contentIdUser = [NSUserDefaults standardUserDefaults];
-                [contentIdUser setObject:model.id forKey:@"contentId"];
-                [contentIdUser synchronize];
-                
-                
-                KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-                [commonAlert initKDCommonAlertContent:model.content  isShowClose:YES];
-            }
-        }
-    } other:^(MCNetResponse * _Nonnull resp) {
-        [MCLoading hidden];
-        [MCToast showMessage:resp.messege];
-    } failure:^(NSError * _Nonnull error) {
-        [MCLoading hidden];
-        [MCToast showMessage:error.localizedFailureReason];
-    }];
+//    NSDictionary *param = @{@"page":@(0),@"size":@"1"};
+//    __weak __typeof(self)weakSelf = self;
+//    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+//        MCMessageModel * model = tempA[0];
+//        NSInteger currentInterva = [weakSelf getNowTimeStamp];
+//        NSInteger endInterva = [weakSelf cTimestampFromString:model.endTime];
+//        NSInteger chazhi = endInterva - currentInterva;
+//        if (endInterva - currentInterva > 0) {
+//            //记录id
+//            NSString * contentId = [[NSUserDefaults standardUserDefaults] objectForKey:@"contentId"];
+//
+//            //showalert之前进行 一天一次判断
+//            NSDate *now = [NSDate date];
+//
+//            NSDate *agoDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"nowDate"];
+//            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//            NSString *ageDateString = [dateFormatter stringFromDate:agoDate];
+//            NSString *nowDateString = [dateFormatter stringFromDate:now];
+//            if ([ageDateString isEqualToString:nowDateString] && [contentId integerValue] == [model.id integerValue]) {
+//                NSLog(@"一天就显示一次");
+//            }else{
+//                //记录弹窗时间
+//                NSDate *nowDate = [NSDate date];
+//                NSUserDefaults *dataUser = [NSUserDefaults standardUserDefaults];
+//                [dataUser setObject:nowDate forKey:@"nowDate"];
+//                [dataUser synchronize];
+//
+//                NSUserDefaults * contentIdUser = [NSUserDefaults standardUserDefaults];
+//                [contentIdUser setObject:model.id forKey:@"contentId"];
+//                [contentIdUser synchronize];
+//
+//
+//                KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
+//                [commonAlert initKDCommonAlertContent:model.content  isShowClose:YES];
+//            }
+//        }
+//    } other:^(NSDictionary * _Nonnull resp) {
+//        [MCLoading hidden];
+//        [MCToast showMessage:resp[@"messege"]];
+//    } failure:^(NSError * _Nonnull error) {
+//        [MCLoading hidden];
+//        [MCToast showMessage:error.localizedFailureReason];
+//    }];
 }
 -(NSInteger)getNowTimeStamp {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;

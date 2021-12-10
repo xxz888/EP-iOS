@@ -84,8 +84,8 @@
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcardapply" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-            self.dataArray = resp.result;
+        [self.sessionManager mc_POST:@"/creditcardmanager/app/get/creditcardapply" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+            self.dataArray = resp[@"result"];
             [self.mc_tableview reloadData];
         }];
 }

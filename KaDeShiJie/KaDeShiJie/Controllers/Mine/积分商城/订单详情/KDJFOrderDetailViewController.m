@@ -33,12 +33,12 @@
 }
 -(void)getData{
     kWeakSelf(self);
-    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/order/detail" parameters:@{@"ordercode":self.orderDic[@"ordercode"]} ok:^(MCNetResponse * _Nonnull resp) {
-        if (resp.result) {
-            weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp.result[@"content"]];
+    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/order/detail" parameters:@{@"ordercode":self.orderDic[@"ordercode"]} ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"result"]) {
+            weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp[@"result"][@"content"]];
         }
 //        [weakself.jfCollectionView reloadData];
-    } other:^(MCNetResponse * _Nonnull resp) {
+    } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
         [MCLoading hidden];

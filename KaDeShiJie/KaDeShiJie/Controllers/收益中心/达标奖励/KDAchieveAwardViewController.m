@@ -101,15 +101,15 @@
     if (self.page == 0) {
         [self.mc_tableview.mj_footer resetNoMoreData];
     }   
-    [self.sessionManager mc_POST:@"/transactionclear/app/query/order/detail" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-        MCLog(@"%@",resp.result);
+    [self.sessionManager mc_POST:@"/transactionclear/app/query/order/detail" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+        MCLog(@"%@",resp[@"result"]);
         if ([self.mc_tableview.mj_header isRefreshing]) {
             [self.mc_tableview.mj_header endRefreshing];
         }
         if ([self.mc_tableview.mj_footer isRefreshing]) {
             [self.mc_tableview.mj_footer endRefreshing];
         }
-        self.historyModel = [KDHistoryModel mj_objectWithKeyValues:resp.result];
+        self.historyModel = [KDHistoryModel mj_objectWithKeyValues:resp[@"result"]];
         [self.mc_tableview reloadData];
     }];
 }

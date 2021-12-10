@@ -107,7 +107,7 @@
     [params setValue:@(self.page) forKey:@"page"];
     [params setValue:@(20) forKey:@"size"];
 
-    [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/detail" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/detail" parameters:params ok:^(NSDictionary * _Nonnull resp) {
         if ([self.mc_tableview.mj_header isRefreshing]) {
             [self.mc_tableview.mj_header endRefreshing];
         }
@@ -117,9 +117,9 @@
         
         
         if (self.page == 0) {
-            self.dataArray = [KDProfitDirectPushModel mj_objectArrayWithKeyValuesArray:resp.result];
+            self.dataArray = [KDProfitDirectPushModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         }else{
-            NSMutableArray * plusArray = [KDProfitDirectPushModel mj_objectArrayWithKeyValuesArray:resp.result];
+            NSMutableArray * plusArray = [KDProfitDirectPushModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
             [self.dataArray addObjectsFromArray:plusArray];
         }
         

@@ -220,10 +220,10 @@
     [MCPagingStore pagingURL:rt_notice_list];
 }
 - (void)getMessage {
-    [MCLATESTCONTROLLER.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
-        for (NSDictionary *dic in resp.result[@"content"]) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        for (NSDictionary *dic in resp[@"result"][@"content"]) {
             if (![dic[@"btype"] isEqualToString:@"androidVersion"]) { // 过滤安卓消息
-                self.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp.result[@"content"]];
+                self.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
 //                self.dataArray = [NSMutableArray arrayWithArray:@[@"1", @"2", @"3", @"4", @"5", @"6"]];
                 self.cyView.localizationImageNamesGroup = self.dataArray;
                 break;
@@ -234,8 +234,8 @@
 
 - (void)pushTopDelegateVC
 {
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/transactionclear/app/standard/extension/user/query" parameters:@{@"userId":SharedUserInfo.userid} ok:^(MCNetResponse * _Nonnull resp) {
-        NSDictionary *dict = resp.result;
+    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/transactionclear/app/standard/extension/user/query" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
+        NSDictionary *dict = resp[@"result"];
         if (dict.allKeys != 0) {
             NSInteger grade = [dict[@"promotionLevelId"] intValue];
             if (grade < 3) {

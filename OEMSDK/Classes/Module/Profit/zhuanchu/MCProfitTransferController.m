@@ -52,13 +52,13 @@
 
 - (void)requstData {
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(MCNetResponse * _Nonnull resp) {
+    [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        self.availableLab.text = [NSString stringWithFormat:@"可转出金额%.2f元", [resp.result[@"rebateBalance"] floatValue]];
-        weakSelf.availableProfit = [NSString stringWithFormat:@"%.2f", [resp.result[@"rebateBalance"] floatValue]];
-    } other:^(MCNetResponse * _Nonnull resp) {
+        self.availableLab.text = [NSString stringWithFormat:@"可转出金额%.2f元", [resp[@"result"][@"rebateBalance"] floatValue]];
+        weakSelf.availableProfit = [NSString stringWithFormat:@"%.2f", [resp[@"result"][@"rebateBalance"] floatValue]];
+    } other:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:resp.messege];
+        [MCToast showMessage:resp[@"messege"]];
     } failure:^(NSError * _Nonnull error) {
         [weakSelf.scroll.mj_header endRefreshing];
         [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];
@@ -91,7 +91,7 @@
                             @"amount":self.textField.text,
                             @"order_desc":@"分润提现",
                             @"brandId":SharedConfig.brand_id};
-    [MCSessionManager.shareManager mc_POST:@"/facade/app/withdraw/rebate" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_POST:@"/facade/app/withdraw/rebate" parameters:param ok:^(NSDictionary * _Nonnull resp) {
         
         
         KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
