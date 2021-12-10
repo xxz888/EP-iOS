@@ -32,15 +32,23 @@
 
 @property(nonatomic, strong) BRAddressPickerView *addressPicker;
 @property(nonatomic, strong) BRAddressPickerView *bankNameAddressPicker;
+@property (weak, nonatomic) IBOutlet UITextField *sehfenzhengTf;
 
 @property (weak, nonatomic) IBOutlet UIStackView *imgStack;
 @property(nonatomic, strong) NSString * idCard;
 @property (weak, nonatomic) IBOutlet UITextField *kaihuyinhangTf;
-@property (nonatomic ,strong)NSString * selectBankId;
+@property (nonatomic ,strong)NSString * bankId;
 @property (weak, nonatomic) IBOutlet UITextField *kaihuzhihangTf;
 
+@property (nonatomic ,strong)NSString * province;
 @property(nonatomic, strong) NSString * provinceId;
+
+@property (nonatomic ,strong)NSString * city;
 @property(nonatomic, strong) NSString * cityId;
+
+@property (nonatomic ,strong)NSString * subBankCode;
+@property (nonatomic ,strong)NSString * subBankName;
+
 
 @end
 
@@ -57,10 +65,13 @@
                 for (NSDictionary * dic1 in respArry) {
                     if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
                         for (NSDictionary * dic2 in dic1[@"cities"]) {
-                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic1[@"city"]]) {
+                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic2[@"city"]]) {
                                 weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
                                 weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
-                                weakSelf.textField4.text = [NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]];
+                                
+                                weakSelf.province = dic1[@"province"];
+                                weakSelf.city = dic2[@"city"];
+                                weakSelf.textField4.text = [NSString stringWithFormat:@"%@%@",dic1[@"province"],dic2[@"city"]];
                             }
                         }
                     }
@@ -102,6 +113,11 @@
     [self.textField3 addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     
     
+}
+-(void)setData{
+    self.textField1.text = self.shimingName;
+    self.textField3.text = self.shimingPhone;
+    self.sehfenzhengTf.text = self.shimingIdCard;
 }
 - (void)textChanged:(UITextField *)textField {
     
@@ -155,19 +171,21 @@
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
-     address*    string
-     bank*    string
-     Enum:
-     [ ICBC ]
      bankCardNo*    string
+     bankId*    integer($int32)
      billingDate    integer($int32)
      cardType*    string
      Enum:
      [ CreditCard, DebitCard ]
+     city    string
+     cityId    integer($int32)
      cvc    string
-     name*    string
      phone*    string
+     province    string
+     provinceId    integer($int32)
      repaymentDate    integer($int32)
+     subBankCode    string
+     subBankName    string
      validPeriod    string
      
      **/
@@ -179,9 +197,14 @@
 //                            @"province":addr[0],
 //                            @"city":addr[1]};
     NSDictionary *param = @{
-                            @"address":[self.textField4.text replaceAll:@"-" target:@""],
                             @"bankCardNo":cardNo,
-                            @"bankId":self.selectBankId,
+                            @"bankId":self.bankId,
+                            @"city":self.city,
+                            @"cityId":self.cityId,
+                            @"province":self.province,
+                            @"provinceId":self.provinceId,
+                         
+                            
                             @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
@@ -285,7 +308,7 @@
     }
     self.textField2.text = string;
     self.textField3.text = model.phone;
-    self.textField4.text = [NSString stringWithFormat:@"%@-%@",model.province,model.city];
+    self.textField4.text = [NSString stringWithFormat:@"%@%@",model.province,model.city];
 }
 #pragma mark - UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -344,7 +367,7 @@
         pickView.dataSourceArr = modelArray;
         [pickView show];
         pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
-            weakSelf.selectBankId = [NSString stringWithFormat:@"%@",resultModel.key];
+            weakSelf.bankId = [NSString stringWithFormat:@"%@",resultModel.key];
             weakSelf.kaihuyinhangTf.text = resultModel.name;
         };
         pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
@@ -355,13 +378,13 @@
         [MCToast showMessage:@"请先选择地区"];
         return;
     }
-    if (self.selectBankId.length == 0 ) {
+    if (self.bankId.length == 0 ) {
         [MCToast showMessage:@"请先选择开户银行"];
         return;
     }
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/bank/branch?provinceId=%@&cityId=%@&bankId=%@",self.provinceId,self.cityId,self.selectBankId];
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/bank/branch?provinceId=%@&cityId=%@&bankId=%@",self.provinceId,self.cityId,self.bankId];
     [MCLATESTCONTROLLER.sessionManager mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
         NSArray * result = resp;
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];
@@ -376,7 +399,8 @@
         pickView.dataSourceArr = modelArray;
         [pickView show];
         pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
-//            weakSelf.selectBankId = [NSString stringWithFormat:@"%@",resultModel.key];
+            weakSelf.subBankCode = [NSString stringWithFormat:@"%@",resultModel.key];
+            weakSelf.subBankName =  resultModel.value;
             weakSelf.kaihuzhihangTf.text = resultModel.value;
         };
         pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };

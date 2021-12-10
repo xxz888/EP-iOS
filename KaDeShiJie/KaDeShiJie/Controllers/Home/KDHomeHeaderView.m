@@ -150,7 +150,7 @@
                 break;
             case 202: // 实名认证
                 [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                    if (userInfo.certification) {
+                    if ([userInfo.certification integerValue] == 1) {
                         [MCToast showMessage:@"您已实名认证"];
                     }else{
                         [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];

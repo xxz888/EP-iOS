@@ -16,7 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MCXinyongkaHeader : UIView
 
 @property(nonatomic, strong) MCBankCardModel *model;
-
+@property (nonatomic ,strong)NSString * shimingName;
+@property (nonatomic ,strong)NSString * shimingPhone;
+@property (nonatomic ,strong)NSString * shimingIdCard;
+-(void)setData;
 @end
 
 NS_ASSUME_NONNULL_END

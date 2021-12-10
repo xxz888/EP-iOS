@@ -47,14 +47,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-//tradeRate = 76.26000000000001,
-//channelType = OLT,
-//channelId = 1,
+//channelType = JiaFuTong,
+//channelId = 4,
 //tradeStartTime = 06:00,
-//title = 开连通好棒棒,
-//dailyMaxAmount = 200000,
+//rate = 0.62,
+//title = 佳付通,
+//dailyMaxAmount = 50000,
+//bind = 0,
 //tradeEndTime = 22:00,
-//extraRate = 1
+//fee = 6.2
 @end
 
 NS_ASSUME_NONNULL_END

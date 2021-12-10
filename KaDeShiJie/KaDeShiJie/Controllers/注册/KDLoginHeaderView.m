@@ -156,27 +156,17 @@
 
 // 获取验证码
 - (IBAction)getCodeAction:(UIButton *)sender {
+    __weak typeof(self) weakSelf = self;
     NSString *phone = self.phoneView.text;
     if (phone.length != 11) {
         [MCToast showMessage:@"请输入正确的手机号"];
         return;
     }
-    
-    kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_POST:@"/user/app/phone/select" parameters:@{@"phone":phone} ok:^(MCNetResponse * _Nonnull resp) {
-        //已注册
-        if ([resp.messege containsString:@"已注册"]) {
-            //已注册开始请求验证码
-            [weakself changeSendBtnText];
-            // 发送验证码
-            [LoginAndRegistHTTPTools getSMS:phone];
-        }
-        if ([resp.messege containsString:@"未注册"]) {
-            [MCToast showMessage:@"你未注册,请先注册"];
-        }
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=Login&phone=%@",self.phoneView.text];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(MCNetResponse * _Nonnull resp) {
+        [MCToast showMessage:@"验证码已发送"];
+        [weakSelf changeSendBtnText];
     }];
-
-
 }
 
 
@@ -196,29 +186,13 @@
             [MCToast showMessage:@"请输入密码"];
             return;
         }
-//        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//        [params setValue:phone forKey:@"phone"];
-//        [params setValue:code forKey:@"password"];
-//        [params setValue:BCFI.brand_id forKey:@"brandId"];
-//        //后缀
-//        NSString * houzhui = [NSString stringWithFormat:@"&key=cader#%%world"];
-//        //前缀
-//        NSString * qianzhui = [NSString stringWithFormat:@"brandId=%@&password=%@&phone=%@",BCFI.brand_id,code,phone];
-//        //合并的签名
-//        NSString * sign = [NSString stringWithFormat:@"%@%@",qianzhui,houzhui];
-//        sign = [self MD5ForUpper32Bate:sign];
-//        [params setValue:sign forKey:@"sign"];
-    
-        
-        
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:phone forKey:@"phone"];
         [params setValue:code forKey:@"password"];
         [params setValue:SharedDefaults.deviceid forKey:@"deviceId"];
         
         [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
-                [weakSelf loginSucess:resp];
-
+            [weakSelf loginSucess:resp];
         } other:^(MCNetResponse * _Nonnull resp) {
             
         } failure:^(NSError * _Nonnull error) {
@@ -226,17 +200,19 @@
         }];
     //验证码登录
     }else{
-
-        if (code.length != 6) {
+        if (code.length == 0) {
             [MCToast showMessage:@"短信验证码错误,请重新核对并输入正确的验证码"];
             return;
         }
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setValue:phone forKey:@"phone"];
-        [params setValue:code forKey:@"vericode"];
-        [params setValue:BCFI.brand_id forKey:@"brandId"];
-        [[MCSessionManager shareManager] mc_POST:@"/user/app/smslogin" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
+        [params setValue:code forKey:@"code"];
+        [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/login/code" parameters:params ok:^(MCNetResponse * _Nonnull resp) {
             [weakSelf loginSucess:resp];
+        } other:^(MCNetResponse * _Nonnull resp) {
+            
+        } failure:^(NSError * _Nonnull error) {
+            
         }];
     }
     

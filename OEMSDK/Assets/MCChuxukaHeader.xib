@@ -45,7 +45,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-1z-FgP">
+                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-1z-FgP">
                                     <rect key="frame" x="104" y="0.0" width="310" height="52"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -92,7 +92,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGY-wW-GGY">
+                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGY-wW-GGY">
                                     <rect key="frame" x="104" y="0.0" width="310" height="53"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -245,7 +245,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-5f-zAe">
+                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-5f-zAe">
                                     <rect key="frame" x="104" y="0.0" width="257" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -446,6 +446,7 @@
                 <outlet property="bgview" destination="U9L-cs-SYq" id="Jpd-Zi-MQl"/>
                 <outlet property="kaihuyinhangTf" destination="u2q-eP-2id" id="eti-Gj-9q7"/>
                 <outlet property="kaihuzhihangTf" destination="rQ1-DU-OPd" id="DQM-Md-t46"/>
+                <outlet property="sehfenzhengTf" destination="aGY-wW-GGY" id="2bq-ND-dvS"/>
                 <outlet property="sureButton" destination="YrT-GR-KbS" id="Rrs-jX-1Tn"/>
                 <outlet property="textField1" destination="Jna-1z-FgP" id="hco-ld-zRp"/>
                 <outlet property="textField2" destination="x9N-np-ZGu" id="r8D-3b-Irx"/>
@@ -454,7 +455,7 @@
                 <outlet property="topCons" destination="RiV-bZ-ARw" id="NFT-dV-tgd"/>
                 <outlet property="wenhaoBtn" destination="EqX-d0-cFC" id="Fnn-4W-hP2"/>
             </connections>
-            <point key="canvasLocation" x="-968" y="81"/>
+            <point key="canvasLocation" x="-1412" y="81"/>
         </view>
     </objects>
     <resources>

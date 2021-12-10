@@ -119,7 +119,10 @@
 //    self.textField6.text = @"16日";
 //    self.textField7.text = @"4日";
 }
-
+-(void)setData{
+    self.textField1.text = self.shimingName;
+    self.textField3.text = self.shimingPhone;
+}
 - (void)textChanged:(UITextField *)textField {
     
     if (textField == self.textField3 && textField.text.length >= 11) {
@@ -148,56 +151,59 @@
 
 - (IBAction)buttonTouched:(id)sender {
 
-    if ([self verifyFailedTextField:self.textField1] ||
-        [self verifyFailedTextField:self.textField2] ||
-        [self verifyFailedTextField:self.textField3] ||
-        [self verifyFailedTextField:self.textField4] ||
-        [self verifyFailedTextField:self.textField5] ||
-        [self verifyFailedTextField:self.textField6] ||
-        [self verifyFailedTextField:self.textField7] ||
-        [self verifyFailedTextField:self.kaihuyinhangTf]) {
-        return;
-    }
-    if (self.model) {   //修改
-        [self modifyXinyong];
-    } else {    //新增
-        [self bindXinyong];
-    }
-    
+//    if ([self verifyFailedTextField:self.textField1] ||
+//        [self verifyFailedTextField:self.textField2] ||
+//        [self verifyFailedTextField:self.textField3] ||
+//        [self verifyFailedTextField:self.textField4] ||
+//        [self verifyFailedTextField:self.textField5] ||
+//        [self verifyFailedTextField:self.textField6] ||
+//        [self verifyFailedTextField:self.textField7] ||
+//        [self verifyFailedTextField:self.kaihuyinhangTf]) {
+//        return;
+//    }
+//    if (self.model) {   //修改
+//        [self modifyXinyong];
+//    } else {    //新增
+//        [self bindXinyong];
+//    }
+    [self bindXinyong];
+
 }
 //新增信用卡
 - (void)bindXinyong {
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
-    NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
+//    NSString *cardNo = [self.kaihuyinhangTf.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
-     address*    string
-     bank*    string
-     Enum:
-     [ ICBC ]
+     {
      bankCardNo*    string
+     bankId*    integer($int32)
      billingDate    integer($int32)
      cardType*    string
      Enum:
      [ CreditCard, DebitCard ]
+     city    string
+     cityId    integer($int32)
      cvc    string
-     name*    string
      phone*    string
+     province    string
+     provinceId    integer($int32)
      repaymentDate    integer($int32)
+     subBankCode    string
+     subBankName    string
      validPeriod    string
+     }
      
      **/
 
     NSDictionary *param = @{
-                            @"address":[self.textField4.text replaceAll:@"-" target:@""],
-                            @"bankId":self.selectBankId,
-                            @"bankCardNo":cardNo,
-                            @"cardType":@"1",
-                            @"name":self.textField1.text,
-                            @"phone":self.textField3.text,
+                            @"bankCardNo":self.kaihuyinhangTf.text,
                             @"billingDate":[self.textField6.text substringToIndex:self.textField6.text.length-1],
+                            @"cardType":@"CreditCard",
+                            @"cvc":self.textField4.text,
+                            @"phone":self.textField3.text,
                             @"repaymentDate":[self.textField7.text substringToIndex:self.textField7.text.length-1],
                             @"validPeriod":self.textField5.text,
-                            @"cvc":self.textField4.text
+
                             };
     kWeakSelf(self);
     [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(MCNetResponse * _Nonnull resp) {
@@ -329,11 +335,11 @@
         [self.hkDayPicker show];
         return NO;
     }
-    if (textField == self.kaihuyinhangTf) {
-        [self endEditing:YES];
-        [self selctSheng];
-        return NO;
-    }
+//    if (textField == self.kaihuyinhangTf) {
+//        [self endEditing:YES];
+//        [self selctSheng];
+//        return NO;
+//    }
     return YES;
 }
 -(void)selctSheng{

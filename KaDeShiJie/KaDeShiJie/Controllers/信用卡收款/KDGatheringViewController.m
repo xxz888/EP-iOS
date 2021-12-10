@@ -10,6 +10,8 @@
 #import "KDSlotCardAisleViewController.h"
 #import "KDCommonAlert.h"
 #import "BRAddressPickerView.h"
+#import "KDBingCardNewViewController.h"
+#import "KDSlotCardAisleViewController.h"
 @interface KDGatheringViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet QMUIButton *addCreditBtn;
@@ -269,7 +271,9 @@
 }
 // 立即收款
 - (IBAction)clickGatherBtnAction:(QMUIButton *)sender {
-    
+//    KDBingCardNewViewController * vc1 = [[KDBingCardNewViewController alloc]init];
+//    [self.navigationController pushViewController:vc1 animated:YES];
+//    return;
 //    [[KDGuidePageManager shareManager] requestShiMing:^{
         if (self.moneyView.text.floatValue <= 0 || [[self firstCharactorWithString:self.moneyView.text] isEqualToString:@"."]) {
             [MCToast showMessage:@"请输入正确的金额" position:MCToastPositionCenter];
@@ -372,7 +376,7 @@
                 for (NSDictionary * dic1 in respArry) {
                     if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
                         for (NSDictionary * dic2 in dic1[@"cities"]) {
-                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic1[@"city"]]) {
+                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic2[@"city"]]) {
                                 weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
                                 weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
                                 [weakSelf.selectAdress setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]] forState:0];

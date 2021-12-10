@@ -40,7 +40,7 @@
 
 - (void)setModel:(MCBankCardModel *)model {
     _model = model;
-    self.bankName.text = model.bank;
+    self.bankName.text = model.bankName;
     NSString *firstName = [model.name substringWithRange:NSMakeRange(0, 1)];
     if (model.name.length == 2) {
         self.username.text = [NSString stringWithFormat:@"（%@*）", firstName];

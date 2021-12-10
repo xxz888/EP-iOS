@@ -12,6 +12,8 @@
 #import "KDPayGatherViewController.h"
 #import "KDCommonAlert.h"
 #import "MCCustomModel.h"
+#import "KDBingCardNewViewController.h"
+
 @interface KDSlotCardAisleViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, WBQRCodeVCDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property(nonatomic, copy) NSString *orderCode;
@@ -102,6 +104,22 @@
 
 - (void)payAction:(MCChannelModel *)channelModel cardModel:(MCBankCardModel *)cardModel
 {
+    
+    __weak typeof(self) weakSelf = self;
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",channelModel.channelId,self.xinyongInfo.id];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+
+        if ([resp[@"bind"] integerValue] == 0) {
+            [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+            KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES]
+        }
+    }];
+
+    
+    
+;
+    return;
 //
 //    NSString *phone = SharedUserInfo.phone;
 //    NSString *order_desc = [NSString stringWithFormat:@"%@%@", channelModel.name,channelModel.channelParams];
@@ -119,7 +137,6 @@
     
 //
   
-    __weak typeof(self) weakSelf = self;
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/receivePayment" parameters:@{
         @"amount":@"",
         @"channelPlatform":@"1",

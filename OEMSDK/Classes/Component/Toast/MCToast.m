@@ -13,7 +13,7 @@
 
 + (void)showMessage:(NSString *)message {
     
-    [self showMessage:message position:MCToastPositionBottom];
+    [self showMessage:message position:MCToastPositionCenter];
 }
 + (void)showMessage:(NSString *)message position:(MCToastPosition)position {
     if (message && message.length > 0) {

@@ -113,7 +113,9 @@ static MCSessionManager *_singleManager = nil;
                 [MCToast showMessage:responseObject[@"messege"]];
             }
         } else {
-            [MCLoading hidden];
+            
+            [MCToast showMessage:responseObject[@"message"]];
+
             NSLog(@"请求失败error=%@", error);
         }
     }];
@@ -284,6 +286,18 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 }
 
 - (void)handleHTTPError:(NSError *)error failureHandler:(MCSMErrorHandler)failure {
+
+    NSDictionary *UserInfo = error.userInfo;
+
+    NSHTTPURLResponse * responses = UserInfo[@"com.alamofire.serialization.response.error.response"];
+
+    NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
+
+    NSString *errorStr = errorDict[@"message"];
+    [MCToast showMessage:errorStr];
+
+    
+    return;
     if (error.code == -1001) { //请求超时
         
         [MCToast showMessage:@"请求超时，请重试"];

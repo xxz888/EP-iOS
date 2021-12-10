@@ -7,15 +7,15 @@
 //
 
 #import "MCEditBankCardController.h"
-
+#import "MCManualRealNameController.h"
 #import "MCXinyongkaHeader.h"
 #import "MCChuxukaHeader.h"
 @interface MCEditBankCardController ()
 
 @property(nonatomic, strong) MCBankCardModel *model;
 @property(nonatomic, assign) MCBankCardType type;
-
-
+@property (nonatomic ,strong)MCXinyongkaHeader *header;
+@property (nonatomic ,strong) MCChuxukaHeader *chuxuheader;
 @end
 
 @implementation MCEditBankCardController
@@ -32,21 +32,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (self.type == MCBankCardTypeXinyongka) {
-        MCXinyongkaHeader *header = [MCXinyongkaHeader newFromNib];
+        self.header = [MCXinyongkaHeader newFromNib];
         if (self.model) {
-            header.model = self.model;
+            self.header.model = self.model;
             [self setNavigationBarTitle:@"修改信用卡" tintColor:nil];
         } else {
             [self setNavigationBarTitle:@"添加信用卡" tintColor:nil];
             [self showGuidePage];
         }
-        self.mc_tableview.tableHeaderView = header;
+        self.mc_tableview.tableHeaderView = self.header;
     } else {
-        MCChuxukaHeader *header = [MCChuxukaHeader newFromNib];
-        header.loginVC = self.loginVC;
-        header.whereCome = self.whereCome;
+        self.chuxuheader = [MCChuxukaHeader newFromNib];
+        self.chuxuheader.loginVC = self.loginVC;
+        self.chuxuheader.whereCome = self.whereCome;
         if (self.model) {
-            header.model = self.model;
+            self.chuxuheader.model = self.model;
             [self setNavigationBarTitle:@"修改储蓄卡" tintColor:nil];
         } else {
             [self setNavigationBarTitle:@"添加储蓄卡" tintColor:nil];
@@ -64,12 +64,33 @@
             shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
         }
-        self.mc_tableview.tableHeaderView = header;
+        self.mc_tableview.tableHeaderView = self.chuxuheader;
     }
     
-    
-    
+
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    __weak typeof(self) weakSelf = self;
+    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+        if ([userInfo.certification integerValue] == 1) {
+            weakSelf.chuxuheader.shimingName = userInfo.name;
+            weakSelf.chuxuheader.shimingIdCard = userInfo.idCardNo;
+            weakSelf.chuxuheader.shimingPhone = userInfo.phone;
+            [weakSelf.chuxuheader setData];
+            
+            
+            weakSelf.header.shimingName = userInfo.name;
+            weakSelf.header.shimingIdCard = userInfo.idCardNo;
+            weakSelf.header.shimingPhone = userInfo.phone;
+            [weakSelf.header setData];
+        }else{
+            [MCToast showMessage:@"实名认证完成才可绑定卡片"];
+            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+        }
+    }];
+}
+
 -(void)clickRightBtnAction{
 [MCServiceStore pushMeiqiaVC];
 }

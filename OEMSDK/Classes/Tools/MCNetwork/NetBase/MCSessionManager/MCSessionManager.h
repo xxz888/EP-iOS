@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef void (^MCSMNormalHandler) (MCNetResponse *resp);
+typedef void (^MCSMNormalHandler) (NSDictionary *respDic);
 typedef void (^MCSMErrorHandler) (NSError *error);
 
 @interface MCSessionManager : AFHTTPSessionManager
