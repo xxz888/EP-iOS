@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KDDirectRefundModel.h"
+#import "MCBankCardModel.h"
 
 @protocol KDPlanCenterViewCellDelegate <NSObject>
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDPlanCenterViewCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @property (nonatomic, weak) id<KDPlanCenterViewCellDelegate> delegate;
-@property (nonatomic, strong) KDDirectRefundModel *directModel;
+@property (nonatomic, strong) MCBankCardModel *directModel;
 @end
 
 NS_ASSUME_NONNULL_END

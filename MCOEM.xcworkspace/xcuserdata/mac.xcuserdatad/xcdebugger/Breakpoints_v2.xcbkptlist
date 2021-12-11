@@ -5,66 +5,30 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "524DDE9D-EB1C-4A31-8230-BAB59BDE474F"
+            uuid = "668C5CC2-8FB5-4363-B5FE-18EBD6340654"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5236;&#x5b9a;&#x8ba1;&#x5212;/KDPlanTopViewCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-setDirectModel:"
-            landmarkType = "7">
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C6FA11B-7951-437B-BA07-154DE72D1A95"
+            uuid = "F88A2FF8-40A8-4F8C-98B3-833D0BB49ACD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5217;&#x8868;&#x754c;&#x9762;/KDDirectRefundViewCell.m"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x7ed1;&#x5361;&#x548c;&#x6536;&#x6b3e;/KDBingCardNewViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
-            landmarkName = "-clickPlanBtn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "40D51175-A303-4F3F-8B24-4EFF7BEE49DB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5217;&#x8868;&#x754c;&#x9762;/KDDirectRefundViewCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-setRefundModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DC658AC3-24E6-4631-B007-6408FE723DB9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x8ba1;&#x5212;&#x9884;&#x89c8;/KDPlanPreviewViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "561"
-            endingLineNumber = "561"
-            landmarkName = "-setUI"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-requestBindCardVCAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,12 +11,12 @@
 #import "KDCommonAlert.h"
 #import "KDChannelView.h"
 #import "KDDirectRefundModel.h"
+#import "KDBingCardNewViewController.h"
 @interface KDPlanPreviewViewController ()<UITableViewDataSource, KDPlanPreviewViewDelegate, UITableViewDelegate>
 @property (nonatomic, strong) NSString * getSmsUrl;
 @property (nonatomic, strong) NSString * confirmSmsUrl;
 @property (nonatomic, strong) NSString * channelTag;
 @property (nonatomic, strong) NSString * smsCode;
-@property (nonatomic, strong) KDDirectRefundModel * directRefundModel;//信用卡的信息
 @property (nonatomic, strong) MCBankCardModel * mcBankCardmodel;//储蓄卡的信息
 @property (nonatomic, strong) QMUIModalPresentationViewController * presentAlert;
 @property (nonatomic, strong) NSString * message;//
@@ -42,6 +42,7 @@
     [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * respDic = (NSDictionary *)resp;
         KDTotalAmountModel * amountModel = [[KDTotalAmountModel alloc]init];
+        
         amountModel.taskCount = [respDic[@"totalRepaymentCount"] integerValue];          //还款总次数
         amountModel.repaymentedSuccessCount = [respDic[@"alreadyRepaymentCount"] integerValue]; //已还次数
 //        amountModel.consumedAmount = [respDic[@"totalRepaymentAmount"] floatValue];      //还款总金额
@@ -82,26 +83,60 @@
     }
     
 }
--(void)creditcardSaveTask{
-    [MCLoading show];
+-(void)checkBind{
+    __weak typeof(self) weakSelf = self;
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",self.startDic[@"plan"][@"channelId"],self.directRefundModel.id];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+
+        if ([resp[@"bind"] integerValue] == 0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+            });
+            KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
+            vc.cardModel = self.directRefundModel;
+
+
+            vc.channelId = self.startDic[@"plan"][@"channelId"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            [weakSelf startPlan];
+            //如果是鉴权过就开始执行计划
+            
+        }
+    }];
+}
+-(void)startPlan{
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
     NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/start/",self.startDic[@"plan"][@"id"]];
     [self.sessionManager mc_put:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"计划执行成功"];
         });
-        [
-         weakSelf.navigationController popToRootViewControllerAnimated:YES];
-        
-
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
     }];
-    
+}
+-(void)stopPlan{
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/termination/",self.startDic[@"plan"][@"id"]];
+    [self.sessionManager mc_put:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"计划已终止"];
+        });
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+-(void)creditcardSaveTask{
+    [self checkBind];
     return;
     
     
@@ -110,158 +145,169 @@
     
     
     
-    
-    
-    
-    if (self.balancePlanId) {
-        [params setValue:SharedUserInfo.userid forKey:@"userId"];
-        [params setValue:self.repaymentModel.creditCardNumber forKey:@"creditCardNumber"];
-        [params setValue:self.city forKey:@"city"];
-//        /api/v1/player/plan/start/{planId}
-        //如果是新的余额还款，需要先查询是否鉴权
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/balance/verify/band/card" parameters:params ok:^(NSDictionary * _Nonnull resp) {
-            //然后再保存计划
-            [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/save" parameters:params ok:^(NSDictionary * _Nonnull resp) {
-                [MCLoading hidden];
-                //查询多通道
-                [weakSelf getAllXinYongKaList];
-            } other:^(NSDictionary * _Nonnull resp) {
-                [MCLoading hidden];
-            } failure:^(NSError * _Nonnull error) {
-                [MCLoading hidden];
-            }];
-        } other:^(NSDictionary * _Nonnull resp) {
-            [MCLoading hidden];
-            //如果需要鉴权
-            if ([resp[@"code"] isEqualToString:@"999992"]) {
-                MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
-                cardModel.cardNo = resp[@"result"][@"bankCard"];
-                cardModel.bankName = resp[@"result"][@"bankName"];
-                cardModel.channelTag = resp[@"result"][@"channelTag"];
-                cardModel.expiredTime = resp[@"result"][@"expiredTime"];
-                cardModel.idcard = resp[@"result"][@"idCard"];
-                
-                cardModel.phone = resp[@"result"][@"phone"];
-                cardModel.securityCode = resp[@"result"][@"securityCode"];
-                cardModel.userName = resp[@"result"][@"userName"];
-                cardModel.rate = resp[@"result"][@"rate"];
-                cardModel.extraFee = resp[@"result"][@"extraFee"];
-
-                cardModel.dbankCard = resp[@"result"][@"dbankCard"];
-                cardModel.dbankName = resp[@"result"][@"dbankName"];
-                cardModel.dphone    = resp[@"result"][@"dphone"];
-
-                //拼凑的model
-                MCCustomModel * customModel = [[MCCustomModel alloc]init];
-                customModel.bindChannelName = resp[@"result"][@"channelTag"];
-                customModel.whereCome = yuehuankuan_jianquan;
-                customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
-                customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
-                customModel.             xinYongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:params];
-                [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
-            }else{
-                [MCToast showMessage:resp[@"messege"]];
-            }
-        } failure:^(NSError * _Nonnull error) {
-            
-        }];
-        
-        
-    }else{
-        [params setValue:self.taskJSON forKey:@"taskJSON"];              //生成任务返回的result
-        [params setValue:self.amount forKey:@"amount"];                  // 还款金额
-        [params setValue:self.reservedAmount forKey:@"reservedAmount"];  //预留金额
-        [params setValue:self.version forKey:@"version"];                //版本
-        [params setValue:self.city forKey:@"city"];
-        [params setValue:self.extra forKey:@"extra"];
-        [params setValue:self.repaymentModel.creditCardNumber forKey:@"creditCardNumber"];
-        //这两个参数可选
-        [params setValue:@"" forKey:@"isCustom"];       //可选
-        [params setValue:@"" forKey:@"couponId"];       // 优惠券ID
-        
-       
-        [self.sessionManager mc_POST:@"/creditcardmanager/app/save/all/task" parameters:params ok:^(NSDictionary * _Nonnull resp) {
-            [MCLoading hidden];
-            //查询多通道
-            [weakSelf getAllXinYongKaList];
-        } other:^(NSDictionary * _Nonnull resp) {
-            [MCLoading hidden];
-            //需要鉴权
-            if ([resp[@"code"] isEqualToString:@"999992"]) {
-                MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
-                cardModel.cardNo = resp[@"result"][@"bankCard"];
-                cardModel.bankName = resp[@"result"][@"bankName"];
-                cardModel.channelTag = resp[@"result"][@"channelTag"];
-                cardModel.expiredTime = resp[@"result"][@"expiredTime"];
-                cardModel.idcard = resp[@"result"][@"idCard"];
-                
-                cardModel.phone = resp[@"result"][@"phone"];
-                cardModel.securityCode = resp[@"result"][@"securityCode"];
-                cardModel.userName = resp[@"result"][@"userName"];
-                cardModel.rate = resp[@"result"][@"rate"];
-                cardModel.extraFee = resp[@"result"][@"extraFee"];
-
-                cardModel.dbankCard = resp[@"result"][@"dbankCard"];
-                cardModel.dbankName = resp[@"result"][@"dbankName"];
-                cardModel.dphone    = resp[@"result"][@"dphone"];
-
-                //拼凑的model
-                MCCustomModel * customModel = [[MCCustomModel alloc]init];
-                customModel.bindChannelName = resp[@"result"][@"channelTag"];
-                customModel.whereCome = yuehuankuan_jianquan;
-                customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
-                customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
-                customModel.xinYongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:params];
-                [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
-            }else{
-                [MCToast showMessage:resp[@"messege"]];
-            }
-        } failure:^(NSError * _Nonnull error) {
-            [MCLoading hidden];
-        }];
-    }
+//
+//
+//
+//    if (self.balancePlanId) {
+//        [params setValue:SharedUserInfo.userid forKey:@"userId"];
+//        [params setValue:self.repaymentModel.creditCardNumber forKey:@"creditCardNumber"];
+//        [params setValue:self.city forKey:@"city"];
+////        /api/v1/player/plan/start/{planId}
+//        //如果是新的余额还款，需要先查询是否鉴权
+//        [self.sessionManager mc_POST:@"/creditcardmanager/app/balance/verify/band/card" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//            //然后再保存计划
+//            [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/save" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//                [MCLoading hidden];
+//                //查询多通道
+//                [weakSelf getAllXinYongKaList];
+//            } other:^(NSDictionary * _Nonnull resp) {
+//                [MCLoading hidden];
+//            } failure:^(NSError * _Nonnull error) {
+//                [MCLoading hidden];
+//            }];
+//        } other:^(NSDictionary * _Nonnull resp) {
+//            [MCLoading hidden];
+//            //如果需要鉴权
+//            if ([resp[@"code"] isEqualToString:@"999992"]) {
+//                MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
+//                cardModel.cardNo = resp[@"result"][@"bankCard"];
+//                cardModel.bankName = resp[@"result"][@"bankName"];
+//                cardModel.channelTag = resp[@"result"][@"channelTag"];
+//                cardModel.expiredTime = resp[@"result"][@"expiredTime"];
+//                cardModel.idcard = resp[@"result"][@"idCard"];
+//
+//                cardModel.phone = resp[@"result"][@"phone"];
+//                cardModel.securityCode = resp[@"result"][@"securityCode"];
+//                cardModel.userName = resp[@"result"][@"userName"];
+//                cardModel.rate = resp[@"result"][@"rate"];
+//                cardModel.extraFee = resp[@"result"][@"extraFee"];
+//
+//                cardModel.dbankCard = resp[@"result"][@"dbankCard"];
+//                cardModel.dbankName = resp[@"result"][@"dbankName"];
+//                cardModel.dphone    = resp[@"result"][@"dphone"];
+//
+//                //拼凑的model
+//                MCCustomModel * customModel = [[MCCustomModel alloc]init];
+//                customModel.bindChannelName = resp[@"result"][@"channelTag"];
+//                customModel.whereCome = yuehuankuan_jianquan;
+//                customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
+//                customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
+//                customModel.             xinYongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:params];
+//                [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
+//            }else{
+//                [MCToast showMessage:resp[@"messege"]];
+//            }
+//        } failure:^(NSError * _Nonnull error) {
+//
+//        }];
+//
+//
+//    }else{
+//        [params setValue:self.taskJSON forKey:@"taskJSON"];              //生成任务返回的result
+//        [params setValue:self.amount forKey:@"amount"];                  // 还款金额
+//        [params setValue:self.reservedAmount forKey:@"reservedAmount"];  //预留金额
+//        [params setValue:self.version forKey:@"version"];                //版本
+//        [params setValue:self.city forKey:@"city"];
+//        [params setValue:self.extra forKey:@"extra"];
+//        [params setValue:self.repaymentModel.creditCardNumber forKey:@"creditCardNumber"];
+//        //这两个参数可选
+//        [params setValue:@"" forKey:@"isCustom"];       //可选
+//        [params setValue:@"" forKey:@"couponId"];       // 优惠券ID
+//
+//
+//        [self.sessionManager mc_POST:@"/creditcardmanager/app/save/all/task" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//            [MCLoading hidden];
+//            //查询多通道
+//            [weakSelf getAllXinYongKaList];
+//        } other:^(NSDictionary * _Nonnull resp) {
+//            [MCLoading hidden];
+//            //需要鉴权
+//            if ([resp[@"code"] isEqualToString:@"999992"]) {
+//                MCBankCardModel * cardModel = [[MCBankCardModel alloc]init];
+//                cardModel.cardNo = resp[@"result"][@"bankCard"];
+//                cardModel.bankName = resp[@"result"][@"bankName"];
+//                cardModel.channelTag = resp[@"result"][@"channelTag"];
+//                cardModel.expiredTime = resp[@"result"][@"expiredTime"];
+//                cardModel.idcard = resp[@"result"][@"idCard"];
+//
+//                cardModel.phone = resp[@"result"][@"phone"];
+//                cardModel.securityCode = resp[@"result"][@"securityCode"];
+//                cardModel.userName = resp[@"result"][@"userName"];
+//                cardModel.rate = resp[@"result"][@"rate"];
+//                cardModel.extraFee = resp[@"result"][@"extraFee"];
+//
+//                cardModel.dbankCard = resp[@"result"][@"dbankCard"];
+//                cardModel.dbankName = resp[@"result"][@"dbankName"];
+//                cardModel.dphone    = resp[@"result"][@"dphone"];
+//
+//                //拼凑的model
+//                MCCustomModel * customModel = [[MCCustomModel alloc]init];
+//                customModel.bindChannelName = resp[@"result"][@"channelTag"];
+//                customModel.whereCome = yuehuankuan_jianquan;
+//                customModel.smsApi = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"getSmsUrlNew"]];
+//                customModel.api    = [resp[@"result"][@"ipAddress"] append:resp[@"result"][@"confirmSmsUrl"]];
+//                customModel.xinYongKa_Save_Parameters = [NSDictionary dictionaryWithDictionary:params];
+//                [MCPagingStore pagingURL:rt_card_jianquan withUerinfo:@{@"param":cardModel,@"extend":customModel}];
+//            }else{
+//                [MCToast showMessage:resp[@"messege"]];
+//            }
+//        } failure:^(NSError * _Nonnull error) {
+//            [MCLoading hidden];
+//        }];
+//    }
 
 }
 #pragma mark -------------------------底部按钮方法-------------------------
 - (IBAction)clickBottomAction:(KDFillButton *)sender {
+    kWeakSelf(self)
     //余额还款启动计划
     if ([sender.titleLabel.text isEqualToString:@"启动计划"]) {
         [self creditcardSaveTask];
     }
     if ([sender.titleLabel.text isEqualToString:@"结束还款"] || [sender.titleLabel.text isEqualToString:@"终止计划"]) {
-        KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-        [commonAlert initKDCommonAlertContent:@"是否结束本次信用卡还款计划？"  isShowClose:NO];
-        __weak __typeof(self)weakSelf = self;
-        commonAlert.rightActionBlock = ^{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if (weakSelf.balancePlanId) {
-                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/stop" parameters:@{@"planId":self.balancePlanId} ok:^(NSDictionary * _Nonnull resp) {
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            [MCToast showMessage:resp[@"messege"]];
-                        });
-                        [weakSelf.navigationController popViewControllerAnimated:YES];
-                    }];
-                    
-                }else{
-                    NSMutableArray *arr = [NSMutableArray array];
-                    for (KDTotalOrderModel *orderModel in self.detailModel.totalOrder) {
-                        if (orderModel.taskStatus == 0) {
-                            [arr addObject:orderModel.taskId];
-                        }
-                    }
-                    NSString *repaymentTaskId = [arr componentsJoinedByString:@","];
-                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                    [params setValue:repaymentTaskId forKey:@"repaymentTaskId"];
-                    [params setValue:@"1" forKey:@"isCloseAutoConsume"];
-                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/delete/repaymenttask/by/repaymenttaskid" parameters:params ok:^(NSDictionary * _Nonnull resp) {
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            [MCToast showMessage:resp[@"messege"]];
-                        });
-                        [weakSelf.navigationController popViewControllerAnimated:YES];
-                    }];
-                }
-            });
-        };
+    
+            QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:nil message:@"是否结束本次信用卡还款计划？" preferredStyle:QMUIAlertControllerStyleAlert];
+            [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleCancel handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
+                [weakself stopPlan];
+            }]];
+            [alert showWithAnimated:YES];
+            
+        
+        
+        
+//        KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
+//        [commonAlert initKDCommonAlertContent:@"是否结束本次信用卡还款计划？"  isShowClose:NO];
+//        __weak __typeof(self)weakSelf = self;
+//        commonAlert.rightActionBlock = ^{
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                if (weakSelf.balancePlanId) {
+//                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/balance/plan/stop" parameters:@{@"planId":self.balancePlanId} ok:^(NSDictionary * _Nonnull resp) {
+//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                            [MCToast showMessage:resp[@"messege"]];
+//                        });
+//                        [weakSelf.navigationController popViewControllerAnimated:YES];
+//                    }];
+//
+//                }else{
+//                    NSMutableArray *arr = [NSMutableArray array];
+//                    for (KDTotalOrderModel *orderModel in self.detailModel.totalOrder) {
+//                        if (orderModel.taskStatus == 0) {
+//                            [arr addObject:orderModel.taskId];
+//                        }
+//                    }
+//                    NSString *repaymentTaskId = [arr componentsJoinedByString:@","];
+//                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//                    [params setValue:repaymentTaskId forKey:@"repaymentTaskId"];
+//                    [params setValue:@"1" forKey:@"isCloseAutoConsume"];
+//                    [weakSelf.sessionManager mc_POST:@"/creditcardmanager/app/delete/repaymenttask/by/repaymenttaskid" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                            [MCToast showMessage:resp[@"messege"]];
+//                        });
+//                        [weakSelf.navigationController popViewControllerAnimated:YES];
+//                    }];
+//                }
+//            });
+//        };
     }
 }
 #pragma mark - KDPlanPreviewViewDelegate
@@ -280,39 +326,42 @@
     if (self.whereCome == 1) {
         self.bottomBtn.hidden = NO;
         [self.bottomBtn setTitle:@"启动计划" forState:UIControlStateNormal];
-        self.lab3.text = [NSString stringWithFormat:@"%.2f元", amountModel.consumedAmount];
         self.bottomHeight.constant = 50;
     }else{
-        if (self.balancePlanId) {
-            NSString * btnString = @"";
-            if (self.repaymentModel.status == 5) {
-                btnString = @"取消中";
-                self.bottomBtn.hidden = NO;
-                self.bottomBtn.userInteractionEnabled = NO;
-                [self.bottomBtn setupDisAppearance];
-            }else if (self.repaymentModel.status == 1 ||
-                      self.repaymentModel.status == 2 ||
-                      self.repaymentModel.status == 4 ||
-                      self.repaymentModel.status == 7){
-                btnString = @"终止计划";
-                self.bottomBtn.hidden = NO;
-                self.bottomBtn.userInteractionEnabled = YES;
-
-            }
-            [self.bottomBtn setTitle:btnString forState:UIControlStateNormal];
-            self.bottomHeight.constant = self.bottomBtn.hidden ? 0 : 50;
-            
-        }else{
-            [self.bottomBtn setTitle:@"终止计划" forState:UIControlStateNormal];
-            self.bottomBtn.hidden = self.repaymentModel.taskStatus == 1 || self.repaymentModel.taskStatus == 4 || self.repaymentModel.taskStatus == 3;
-            self.bottomHeight.constant = self.bottomBtn.hidden ? 0 : 50;
-        }
+        self.bottomBtn.hidden = NO;
+        [self.bottomBtn setTitle:@"终止计划" forState:UIControlStateNormal];
+        self.bottomHeight.constant = 50;
+//        return;
+//        if (self.balancePlanId) {
+//            NSString * btnString = @"";
+//            if (self.repaymentModel.status == 5) {
+//                btnString = @"取消中";
+//                self.bottomBtn.hidden = NO;
+//                self.bottomBtn.userInteractionEnabled = NO;
+//                [self.bottomBtn setupDisAppearance];
+//            }else if (self.repaymentModel.status == 1 ||
+//                      self.repaymentModel.status == 2 ||
+//                      self.repaymentModel.status == 4 ||
+//                      self.repaymentModel.status == 7){
+//                btnString = @"终止计划";
+//                self.bottomBtn.hidden = NO;
+//                self.bottomBtn.userInteractionEnabled = YES;
+//
+//            }
+//            [self.bottomBtn setTitle:btnString forState:UIControlStateNormal];
+//            self.bottomHeight.constant = self.bottomBtn.hidden ? 0 : 50;
+//
+//        }else{
+//            [self.bottomBtn setTitle:@"终止计划" forState:UIControlStateNormal];
+//            self.bottomBtn.hidden = self.repaymentModel.taskStatus == 1 || self.repaymentModel.taskStatus == 4 || self.repaymentModel.taskStatus == 3;
+//            self.bottomHeight.constant = self.bottomBtn.hidden ? 0 : 50;
+//        }
 
     }
     [self.tableView reloadData];
     
     //获取信用卡的信息
-    [self getDirectCardData];
+//    [self getDirectCardData];
 }
 
 
@@ -558,18 +607,18 @@
     
     
     
-    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.repaymentModel.bankName];
+    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.directRefundModel.bankName];
     self.iconView.image = info.logo;
     self.topView.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
 
-    NSString *cardNo = [NSString stringWithFormat:@"(%@)", [self.repaymentModel.bankCardNo substringFromIndex:self.repaymentModel.bankCardNo.length - 4]];
-    NSString *desStr = [NSString stringWithFormat:@"%@%@", self.repaymentModel.bankName, cardNo];
+    NSString *cardNo = [NSString stringWithFormat:@"(%@)", [self.directRefundModel.bankCardNo substringFromIndex:self.directRefundModel.bankCardNo.length - 4]];
+    NSString *desStr = [NSString stringWithFormat:@"%@%@", self.directRefundModel.bankName, cardNo];
     NSRange range = [desStr rangeOfString:cardNo];
     NSMutableAttributedString *atts = [[NSMutableAttributedString alloc] initWithString:desStr];
     [atts addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:range];
     self.nameLabel.attributedText = atts;
     
-    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%@日｜还款日 每月%@日", self.repaymentModel.billingDate, self.repaymentModel.repaymentDate];
+    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%@日｜还款日 每月%@日", self.directRefundModel.billingDate, self.directRefundModel.repaymentDate];
     //如果是下单进来，隐藏状态的label
     if (self.whereCome == 1) {
         self.statusLabelWidth.constant = 15;

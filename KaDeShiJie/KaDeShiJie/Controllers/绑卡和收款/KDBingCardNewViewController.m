@@ -78,8 +78,8 @@
      **/
     NSDictionary *params =
     @{
-        @"bankCardId":self.cardModel.id,
-        @"channelId":self.channelId,
+        @"bankCardId":[NSString stringWithFormat:@"%@",self.cardModel.id],
+        @"channelId":[NSString stringWithFormat:@"%@",self.channelId],
         @"code":self.codeView.text,
      };
     __weak typeof(self) weakSelf = self;

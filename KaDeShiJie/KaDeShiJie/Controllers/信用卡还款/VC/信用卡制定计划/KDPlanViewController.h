@@ -7,13 +7,13 @@
 //
 
 #import "MCBaseViewController.h"
-#import "KDDirectRefundModel.h"
+#import "MCBankCardModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDPlanViewController : MCBaseViewController
 @property (nonatomic, strong) NSString *navTitle;
-@property (nonatomic, strong) KDDirectRefundModel *directModel;
+@property (nonatomic, strong) MCBankCardModel *directModel;
 @end
 
 NS_ASSUME_NONNULL_END

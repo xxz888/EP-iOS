@@ -50,7 +50,7 @@
     return cell;
 }
 
-- (void)setDirectModel:(KDDirectRefundModel *)directModel
+- (void)setDirectModel:(MCBankCardModel *)directModel
 {
     _directModel = directModel;
     

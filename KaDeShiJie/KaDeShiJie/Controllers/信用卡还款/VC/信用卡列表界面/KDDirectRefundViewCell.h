@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KDDirectRefundModel.h"
+#import "MCBankCardModel.h"
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^RefreshUIBlock)(void);
 @interface KDDirectRefundViewCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @property (nonatomic, strong) NSString *titleString;
-@property (nonatomic, strong) KDDirectRefundModel *refundModel;
+@property (nonatomic, strong) MCBankCardModel *refundModel;
 @property (nonatomic,strong)RefreshUIBlock refreshUIBlock;
 @end
 

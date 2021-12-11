@@ -199,17 +199,17 @@
 -(void)clickProgressContentView:(id)tap{
     
     //planType 老的余额还款
-    if ([self.refundModel.planType integerValue] == 3) {
-        if (self.refundModel.allAmount == 0) {
-            [self clickPlanBtn:self.planBtn];
-        }else{
-            //只有在待执行状态下才可点击。
-            KDDirectRefundModel * directRefundModel = self.refundModel;
-            [self getHistory:directRefundModel];
-        }
-    }else{
-        [self requestDetail];
-    }
+//    if ([self.refundModel.planType integerValue] == 3) {
+//        if (self.refundModel.allAmount == 0) {
+//            [self clickPlanBtn:self.planBtn];
+//        }else{
+//            //只有在待执行状态下才可点击。
+//            KDDirectRefundModel * directRefundModel = self.refundModel;
+//            [self getHistory:directRefundModel];
+//        }
+//    }else{
+//        [self requestDetail];
+//    }
     
     
 
@@ -218,18 +218,18 @@
       
 }
 -(void)requestDetail{
-    KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-    
-    KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
-    repaymentModel.bankName = self.refundModel.bankName;
-    repaymentModel.creditCardNumber = self.refundModel.cardNo;
-    repaymentModel.statusName = @"";
-    vc.repaymentModel = repaymentModel;
-    vc.orderType = 2;
-    vc.isCanDelete = YES;
-    vc.balancePlanId = self.refundModel.balancePlanId;
-    vc.whereCome = 3;// 1 下单 2 历史记录 3 信用卡还款进来
-    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+//    KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
+//
+//    KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
+//    repaymentModel.bankName = self.refundModel.bankName;
+//    repaymentModel.creditCardNumber = self.refundModel.cardNo;
+//    repaymentModel.statusName = @"";
+//    vc.repaymentModel = repaymentModel;
+//    vc.orderType = 2;
+//    vc.isCanDelete = YES;
+//    vc.balancePlanId = self.refundModel.balancePlanId;
+//    vc.whereCome = 3;// 1 下单 2 历史记录 3 信用卡还款进来
+//    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
     
     
 
@@ -244,47 +244,47 @@
 }
 #pragma mark - 数据请求
 - (void)getHistory:(KDDirectRefundModel *)directRefundModel{
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:SharedUserInfo.userid forKey:@"userId"];
-    [params setValue:BCFI.brand_id forKey:@"brandId"];
-    NSString * year = @"";
-    if ([[self.refundModel.planCreateTime split:@"/"] count] > 0) {
-        year = [self.refundModel.planCreateTime split:@"/"][0];
-    }else{
-        year = [MCDateStore getYear];
-    }
-    [params setValue:year forKey:@"year"];
-    
-    NSString * month = @"";
-    if ([[self.refundModel.planCreateTime split:@"/"] count] > 1) {
-        month = [self.refundModel.planCreateTime split:@"/"][1];
-    }else{
-        month = [MCDateStore getMonth];
-    }
-    [params setValue:month forKey:@"month"];
-    [params setValue:@"2" forKey:@"orderType"];
-    kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(NSDictionary * _Nonnull resp) {
-        NSMutableArray * repaymentModelArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
-        KDRepaymentModel * selectRepaymentModel = nil;
-        for (KDRepaymentModel * repaymentModel in repaymentModelArray) {
-            NSString * time1 = [repaymentModel.createTime substringWithRange:NSMakeRange(8, 2)];
-            NSString * time2 = [weakself.refundModel.planCreateTime substringWithRange:NSMakeRange(8, 2)];
-            if ([repaymentModel.creditCardNumber isEqualToString:directRefundModel.cardNo] && [time1 isEqualToString:time2]) {
-                    selectRepaymentModel = repaymentModel;
-                    break;
-            }
-        }
-        if (selectRepaymentModel) {
-            KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-            vc.repaymentModel = selectRepaymentModel;
-            vc.orderType = 2;
-            vc.isCanDelete = YES;
-            vc.whereCome = 3;// 1 下单 2 历史记录 3 信用卡还款进来
-            [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-        }
-
-    }];
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    [params setValue:SharedUserInfo.userid forKey:@"userId"];
+//    [params setValue:BCFI.brand_id forKey:@"brandId"];
+//    NSString * year = @"";
+//    if ([[self.refundModel.planCreateTime split:@"/"] count] > 0) {
+//        year = [self.refundModel.planCreateTime split:@"/"][0];
+//    }else{
+//        year = [MCDateStore getYear];
+//    }
+//    [params setValue:year forKey:@"year"];
+//    
+//    NSString * month = @"";
+//    if ([[self.refundModel.planCreateTime split:@"/"] count] > 1) {
+//        month = [self.refundModel.planCreateTime split:@"/"][1];
+//    }else{
+//        month = [MCDateStore getMonth];
+//    }
+//    [params setValue:month forKey:@"month"];
+//    [params setValue:@"2" forKey:@"orderType"];
+//    kWeakSelf(self);
+//    [[MCSessionManager shareManager] mc_POST:@"/creditcardmanager/app/add/queryrepayment/make/informationn" parameters:params ok:^(NSDictionary * _Nonnull resp) {
+//        NSMutableArray * repaymentModelArray = [KDRepaymentModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+//        KDRepaymentModel * selectRepaymentModel = nil;
+//        for (KDRepaymentModel * repaymentModel in repaymentModelArray) {
+//            NSString * time1 = [repaymentModel.createTime substringWithRange:NSMakeRange(8, 2)];
+//            NSString * time2 = [weakself.refundModel.planCreateTime substringWithRange:NSMakeRange(8, 2)];
+//            if ([repaymentModel.creditCardNumber isEqualToString:directRefundModel.cardNo] && [time1 isEqualToString:time2]) {
+//                    selectRepaymentModel = repaymentModel;
+//                    break;
+//            }
+//        }
+//        if (selectRepaymentModel) {
+//            KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
+//            vc.repaymentModel = selectRepaymentModel;
+//            vc.orderType = 2;
+//            vc.isCanDelete = YES;
+//            vc.whereCome = 3;// 1 下单 2 历史记录 3 信用卡还款进来
+//            [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+//        }
+//
+//    }];
     
 }
 @end

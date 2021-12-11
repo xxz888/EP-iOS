@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KDDirectRefundModel.h"
+#import "MCBankCardModel.h"
 
 @protocol KDPlanTopViewCellDelegate <NSObject>
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDPlanTopViewCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-@property (nonatomic, strong) KDDirectRefundModel *directModel;
+@property (nonatomic, strong) MCBankCardModel *directModel;
 @property (nonatomic, weak) id<KDPlanTopViewCellDelegate>delegate;
 @end
 

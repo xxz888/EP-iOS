@@ -7,7 +7,8 @@
 //
 
 #import "KDTrandingRecordViewCell.h"
-
+#import "KDPlanPreviewViewController.h"
+#import "MCBankCardModel.h"
 @interface KDTrandingRecordViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -48,13 +49,13 @@
     self.nameLabel.text = startDic[@"creditCard"][@"bankName"];
     self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [startDic[@"creditCard"][@"bankCardNo"] substringFromIndex:[startDic[@"creditCard"][@"bankCardNo"] length] - 4]];
     self.statusLabel.text = startDic[@"planStatus"];
-//    NSString *desStr = [NSString stringWithFormat:@"已还%.2f元 | 总额%.2f元", repaymentModel.repaymentedAmount, repaymentModel.taskAmount];
-//    NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
-//    NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%.2f元", repaymentModel.repaymentedAmount]];
-//    [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range];
-//    self.desLabel.attributedText = attsDes;
+    NSString *desStr = [NSString stringWithFormat:@"已还%@元 | 总额%@元", startDic[@"alreadyRepaymentAmount"],startDic[@"repaymentAmount"]];
+    NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
+    NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@元", startDic[@"alreadyRepaymentAmount"]]];
+    [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range];
+    self.desLabel.attributedText = attsDes;
     
-//    self.timeLabel.text = repaymentModel.createTime;
+    self.timeLabel.text = startDic[@"createTime"];
 //
 //    if (repaymentModel.orderType == 2) {
 //
@@ -79,7 +80,27 @@
 //        self.statusLabel.text = repaymentModel.statuskongkaName;
 //        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:repaymentModel.statuskongkaColor];
 //
-//    }
+//    }//            NSArray *status = @[@"执行中", @"已失败", @"执行中", @"已完成",@"已失败"];
+
+    //Close, Padding, Running, Successful, Termination
+    if ([startDic[@"planStatus"] isEqualToString:@"Successful"]) {
+        self.statusLabel.text = @"已成功";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
+    } else if ([startDic[@"planStatus"] isEqualToString:@"Termination"]) {
+        self.statusLabel.text = @"已终止";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    }  else if ([startDic[@"planStatus"] isEqualToString:@"Close"]) {
+        self.statusLabel.text = @"已关闭";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    } else if ([startDic[@"planStatus"] isEqualToString:@"Padding"]) {
+        self.statusLabel.text = @"执行中";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
+    } else if ([startDic[@"planStatus"] isEqualToString:@"Running"]) {
+        self.statusLabel.text = @"执行中";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
+    }
+}
+- (IBAction)toDetail:(id)sender {
 
 }
 

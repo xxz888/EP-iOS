@@ -56,7 +56,7 @@
 
         
         //还款前面有一个小蓝点,消费前面没有
-        self.pointView.hidden =  [orderModel.planTaskType isEqualToString:@"Repayment"];
+        self.pointView.hidden =  ![orderModel.planTaskType isEqualToString:@"Repayment"];
         //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
     self.taskStatusLabel.text = [orderModel.planTaskType isEqualToString:@"Repayment"] ? @"还款" : @"消费";
         //金额的label,消费计划取realAmount,还款计划取amount

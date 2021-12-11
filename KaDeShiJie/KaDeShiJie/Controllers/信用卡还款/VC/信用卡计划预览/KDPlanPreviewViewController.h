@@ -14,10 +14,14 @@
 #import "KDPlanPreviewView.h"
 #import "KDTotalAmountModel.h"
 #import "KDConsumptionDetailView.h"
+#import "KDDirectRefundModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDPlanPreviewViewController : MCBaseViewController
 @property (nonatomic, strong) KDRepaymentModel *repaymentModel;
+@property (nonatomic, strong) MCBankCardModel * directRefundModel;//信用卡的信息
+
+
 @property (nonatomic, assign) NSInteger whereCome;// 1 下单 2 历史记录 3 信用卡还款进来
 @property (nonatomic, assign) NSInteger orderType;
 @property (nonatomic, assign) BOOL isCanDelete;

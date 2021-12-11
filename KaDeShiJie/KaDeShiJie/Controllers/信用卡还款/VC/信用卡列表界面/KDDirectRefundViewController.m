@@ -177,7 +177,7 @@
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
             [weakself.tableView.mj_header endRefreshing];
             [weakself.dataArray removeAllObjects];
-            weakself.dataArray = [KDDirectRefundModel mj_objectArrayWithKeyValuesArray:resp];
+            weakself.dataArray = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
             if (weakself.dataArray == 0) {
                 weakself.tableView.hidden = YES;
                 weakself.etyView.hidden = NO;

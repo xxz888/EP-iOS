@@ -542,46 +542,36 @@
  "repaymentAmount": 0
  **/
 -(void)requestCreatePlan{
+    //First, Fourth, Second, Third
+    NSString * period;
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"1次"]) {
+        period = @"First";
+    }
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"2次"]) {
+        period = @"Second";
+    }
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"3次"]) {
+        period = @"Third";
+    }
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"4次"]) {
+        period = @"Fourth";
+    }
+
+      NSDate *date = [NSDate date];
+      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+      [formatter setDateFormat:@"yyyy-MM-dd"];
+      //获取当前时间日期展示字符串 如：2019-05-23-13:58:59
+      NSString *planStartDate = [formatter stringFromDate:date];
+
     NSDictionary * dic = @{
         @"cardBalance":self.cardBalanceView.text,
 //        @"consumptionArea":@"string",
-        @"creditCardId":[NSString stringWithFormat:@"%ld",(long)self.directModel.itemId],
-        @"period":@"First",
-        @"planStartDate":@"2021-12-10",
+        @"creditCardId":[NSString stringWithFormat:@"%@",self.directModel.id],
+        @"period":period,
+        @"planStartDate":planStartDate,
         @"repaymentAmount":[NSString stringWithFormat:@"%.0f",[self inRefundMoneyToNewMoney]],
         @"cityId":self.cityId
     };
-    /**
-     
-     bind = 0,
-     plan = {
-     id = 57,
-     creditCardId = 16,
-     channelId = 1,
-     period = First,
-     channelType = OLT,
-     planStartDate = 2021-12-05,
-     cardBalance = 333,
-     tasks = [
- {
-     id = 0,
-     planTaskType = Consumption,
-     channelId = 1,
-     surplusFee = 0.74,
-     channelType = OLT,
-     planId = 57,
-     amount = 159,
-     cardBalance = 174,
-     fee = 2,
-     executeFailCount = 0,
-     consumptionArea = string,
-     memberId = 19,
-     planTaskId = 2021120516392568286487,
-     executeTime = 2021-12-05T17:40:00,
-     status = Padding,
-     actualFee = 1.26
- },
-,*/
     __weak typeof(self) weakSelf = self;
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/plan" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf respCode000000:resp];
@@ -638,13 +628,12 @@
 -(void)respCode000000:(NSDictionary *_Nonnull)resp{
     //拼凑
     KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
-    repaymentModel.bankName = self.directModel.bankName;
-    repaymentModel.creditCardNumber = self.directModel.cardNo;
-    repaymentModel.statusName = @"";
-
+    
+    
     KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-
-    vc.whereCome = 1;// 1 下单 2 历史记录 3 信用卡还款进来  
+    vc.repaymentModel = repaymentModel;
+    vc.directRefundModel  = self.directModel;
+    vc.whereCome = 1;// 1 下单 2 历史记录 3 信用卡还款进来
     vc.startDic = resp;
     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }

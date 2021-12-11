@@ -16,6 +16,7 @@
 #import "KDSlotCardOrderInfoViewController.h"
 #import "KDPlanPreviewViewController.h"
 #import "KDPlanKongKaPreviewViewController.h"
+#import "MCBankCardModel.h"
 @interface KDTrandingRecordViewController ()<KDTrandingRecordHeaderViewDelegate, QMUITableViewDataSource, QMUITableViewDelegate>
 @property (nonatomic, strong) KDTrandingRecordHeaderView *headerView;
 @property (nonatomic, copy) NSString *year;
@@ -69,7 +70,7 @@
     self.mc_tableview.ly_emptyView = [MCEmptyView emptyView];
 
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        [self getHistory];
+        [self getHistory];
     }];
     self.type = 1;
 }
@@ -116,9 +117,11 @@
 {
     if (self.type == 1) {
         KDSlotCardHistoryViewCell *cell = [KDSlotCardHistoryViewCell cellWithTableView:tableView];
-        KDSlotCardHistoryModel *model = self.dataArray[indexPath.row];
-        model.orderType = 1;
-        cell.slotHistoryModel = model;
+        NSDictionary * dic = self.dataArray[indexPath.row];
+//        model.orderType = 1;
+
+        cell.slotHistoryModel = self.dataArray[indexPath.row];
+
         return cell;
     } else {
         KDTrandingRecordViewCell *cell = [KDTrandingRecordViewCell cellWithTableView:tableView];
@@ -138,16 +141,26 @@
     }
     //余额还款
     if (self.type == 2) {
-        KDRepaymentModel *repaymentModel = self.repaymentArray[indexPath.row];
-        //新的余额还款
+//        KDRepaymentModel *repaymentModel = self.repaymentArray[indexPath.row];
+//        //新的余额还款
+//        KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
+//        vc.repaymentModel = repaymentModel;
+//        vc.orderType = self.type;
+//        vc.isCanDelete = YES;
+//        vc.whereCome = 2;// 1 下单 2 历史记录 3 信用卡还款进来
+//        if (repaymentModel.balance) {
+//            vc.balancePlanId = repaymentModel.itemId;
+//        }
+//        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+        
+        
         KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-        vc.repaymentModel = repaymentModel;
-        vc.orderType = self.type;
-        vc.isCanDelete = YES;
+        vc.directRefundModel  = [MCBankCardModel mj_objectArrayWithKeyValuesArray:@[self.repaymentArray[indexPath.row][@"creditCard"]]][0];
         vc.whereCome = 2;// 1 下单 2 历史记录 3 信用卡还款进来
-        if (repaymentModel.balance) {
-            vc.balancePlanId = repaymentModel.itemId;
-        }
+        NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:self.repaymentArray[indexPath.row]];
+//        NSDictionary * planDic = @[@"task":self.repaymentArray[indexPath.row][@"planId"]];
+        [dic setValue:@{@"id":[NSString stringWithFormat:@"%@",self.repaymentArray[indexPath.row][@"planId"]]} forKey:@"plan"];
+        vc.startDic = dic;
         [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
     }
     
@@ -190,17 +203,30 @@
 {
     [self.dataArray removeAllObjects];
     [self.mc_tableview reloadData];
-
+//    /api/v1/player/plan/order
     kWeakSelf(self);
-    NSString * orderType = self.type == 1 ? @"ReceivePayment" : self.type == 2 ? @"Repayment" : @"Repayment";
+
     //刷卡
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=%@&current=%@&size=%@",orderType,@"1",@"20"];
+    NSString * url = @"";
+    if (self.type == 1) {
+        url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=ReceivePayment&current=%@&size=%@",@"0",@"20"];
+    }
+    if (self.type == 2) {
+        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@",@"0",@"20"];
+    }
     [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        [weakself.mc_tableview.mj_header endRefreshing];
         if ([respDic[@"data"] count] == 0) {
-            
+     
         }else{
-            self.dataArray = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]];
-           [self.mc_tableview reloadData];
+            if (weakself.type == 1) {
+                weakself.dataArray = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]];
+
+            }else if (weakself.type == 2){
+                [weakself.repaymentArray addObjectsFromArray:respDic[@"data"]];
+            }
+
+           [weakself.mc_tableview reloadData];
         }
     }] ;
     
