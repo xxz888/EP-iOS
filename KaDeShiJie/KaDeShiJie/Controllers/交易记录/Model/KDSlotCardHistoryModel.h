@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** eg. 广东发展银行 */
 @property (nonatomic, copy) NSString *bankName;
 /** eg. 3 */
-@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, assign) NSString * status;
 /** eg. 911245432 */
 @property (nonatomic, assign) NSInteger itemId;
 /** eg.  */
@@ -94,7 +94,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** eg. 0 */
 @property (nonatomic, copy) NSString *subChannelType;
 @property (nonatomic, assign) NSInteger orderType;
-
+@property (nonatomic, copy) NSString *state;
+@property (nonatomic, copy) NSDictionary *creditCard;
 
 //"agentCommission": 0,
 //  "amount": 0,
@@ -135,9 +136,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *ownCommission;
 @property (nonatomic, copy) NSString *planId;
 @property (nonatomic, copy) NSString *planTaskId;
-@property (nonatomic, copy) NSString *state;
 @property (nonatomic, copy) NSString *thirdOrderId;
 @property (nonatomic, copy) NSString *totalCommission;
+@property (nonatomic, copy) NSString *bankCardNo;
+
 
 
 @end

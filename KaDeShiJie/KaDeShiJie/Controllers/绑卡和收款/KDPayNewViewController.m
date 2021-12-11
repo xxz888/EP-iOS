@@ -123,7 +123,10 @@
         if ([respDic[@"state"] isEqualToString:@"Successful"] ) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MCToast showMessage:@"操作成功"];
+                
             });
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+
         }
         //完成
         if ([respDic[@"state"] isEqualToString:@"Unpaid"] ) {
@@ -132,7 +135,6 @@
             });
         }
      
-        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull respDic) {
         
     } failure:^(NSError * _Nonnull error) {

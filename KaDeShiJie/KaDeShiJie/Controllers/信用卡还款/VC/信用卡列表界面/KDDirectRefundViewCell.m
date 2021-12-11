@@ -62,7 +62,7 @@
     self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", refundModel.billDay, refundModel.repaymentDay];
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:refundModel.bankName];
     self.iconView.image = info.logo;
-    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [refundModel.cardNo substringFromIndex:refundModel.cardNo.length - 4]];
+    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [refundModel.bankCardNo substringFromIndex:refundModel.bankCardNo.length - 4]];
     
 //    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)",refundModel.bankCardNo];
 

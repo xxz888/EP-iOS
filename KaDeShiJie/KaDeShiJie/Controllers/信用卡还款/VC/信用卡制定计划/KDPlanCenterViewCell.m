@@ -45,7 +45,7 @@
 // 地址按钮
 @property (weak, nonatomic) IBOutlet QMUIButton *addressBtn;
 // 指定计划
-@property (weak, nonatomic) IBOutlet KDFillButton *planBtn;
+@property (weak, nonatomic) IBOutlet UIButton *planBtn;
 // 选择地址view
 @property (nonatomic, strong) BRAddressPickerView *addressPicker;
 
@@ -86,7 +86,8 @@
 
 @property (nonatomic, assign) NSInteger needDay;
 @property (nonatomic, strong) NSString *limitPrice;
-
+@property(nonatomic, strong) NSString * provinceId;
+    @property(nonatomic, strong) NSString * cityId;
 @end
 
 @implementation KDPlanCenterViewCell
@@ -109,7 +110,7 @@
     [self.addressBtn setTitle:@"请选择消费地区" forState:UIControlStateNormal];
     self.cardBalanceView.delegate = self;
     [self changeStatesAndChannel];
-    [self.planBtn setupDisAppearance];
+//    [self.planBtn setupDisAppearance];
     self.planBtn.userInteractionEnabled = NO;
     self.needDay = 0;
     [self requestlimitmin];
@@ -217,7 +218,7 @@
     for (UIView *view in self.refundTimeContentView.subviews) {
         view.hidden = NO;
     }
-    self.refundTimeContentView.backgroundColor = [[UIColor qmui_colorWithHexString:@"#FF9630"] colorWithAlphaComponent:0.1];
+
     [UIView animateWithDuration:0.5 animations:^{
         self.refundTypeCons.constant = 60;
         self.refundTimeContentView.hidden = NO;
@@ -292,50 +293,10 @@
 }
 #pragma mark ------------------还款消费是否取消小数点------------------------
 - (IBAction)choseMoneyTypeView:(UIButton *)sender {
-    [self.cardBalanceView endEditing:NO];
-    if (self.fouBtn.selected) {
-       
-    }else{
-        self.fouBtn.selected = YES;
-        self.shiBtn.selected = NO;
 
-    }
-    self.moneyTypeTopCons.constant = 33.5;
-
-//    if (sender.selected) {
-//        self.moneyDetailLabel.hidden = YES;
-//        self.moneyTypeTopCons.constant = 14;
-//    } else {
-//        self.moneyDetailLabel.hidden = NO;
-//        self.moneyTypeTopCons.constant = 33.5;
-//    }
-    CGFloat cellHeight = 600 - 14 + self.refundTypeCons.constant - 14 + self.moneyTypeTopCons.constant;
-    if ([self.delegate respondsToSelector:@selector(centerCellChoseRefundType:changeCenterCellHeight:)]) {
-        [self.delegate centerCellChoseRefundType:@"1" changeCenterCellHeight:cellHeight];
-    }
 }
 - (IBAction)shiAction:(id)sender {
-    [self.cardBalanceView endEditing:NO];
-    if (self.shiBtn.selected) {
-        
-    }else{
-        self.shiBtn.selected = YES;
-        self.fouBtn.selected = NO;
 
-    }
-    self.moneyTypeTopCons.constant = 33.5;
-
-//    if (sender.selected) {
-//        self.moneyDetailLabel.hidden = YES;
-//        self.moneyTypeTopCons.constant = 14;
-//    } else {
-//        self.moneyDetailLabel.hidden = NO;
-//        self.moneyTypeTopCons.constant = 33.5;
-//    }
-    CGFloat cellHeight = 600 - 14 + self.refundTypeCons.constant - 14 + self.moneyTypeTopCons.constant;
-    if ([self.delegate respondsToSelector:@selector(centerCellChoseRefundType:changeCenterCellHeight:)]) {
-        [self.delegate centerCellChoseRefundType:@"1" changeCenterCellHeight:cellHeight];
-    }
 }
 #pragma mark ------------------选择地址------------------------
 - (IBAction)clickAddressBtn:(QMUIButton *)sender {
@@ -472,15 +433,44 @@
 #pragma mark ------------------第一步请求通道------------------------
 - (void)getRepayMentChannel{
     if (![self getParameters]) {return;}
+    //直接请求省
+    [self.addressPicker show];
+
+        
     //self.normalRefundTypeBtn.selected 代表默认日期
-    if (self.normalRefundTypeBtn.selected) {
-        //现请求通道，在请求省
-        [self needDayAction1];
-    }else{
-        //直接请求省
-        [self requestProvice];
-    }
+//    if (self.normalRefundTypeBtn.selected) {
+//        //现请求通道，在请求省
+//        [self needDayAction1];
+//    }else{
+//        //直接请求省
+//        [self requestProvice];
+//    }
     
+}
+- (BRAddressPickerView *)addressPicker {
+    if (!_addressPicker) {
+        _addressPicker = [[BRAddressPickerView alloc] initWithPickerMode:BRAddressPickerModeCity];
+        _addressPicker.title = @"请选择开户省市";
+        _addressPicker.selectValues = @[@"上海市", @"上海市"];
+        __weak __typeof(self)weakSelf = self;
+        _addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {
+            [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+                NSArray * respArry = [NSArray arrayWithArray:resp];
+                for (NSDictionary * dic1 in respArry) {
+                    if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
+                        for (NSDictionary * dic2 in dic1[@"cities"]) {
+                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic2[@"city"]]) {
+                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
+                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
+                                [weakSelf.addressBtn setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]] forState:0];
+                            }
+                        }
+                    }
+                }
+            }];
+        };
+    }
+    return _addressPicker;
 }
 #pragma mark ------------------第二步请求省------------------------
 -(void)requestProvice{
@@ -554,11 +544,12 @@
 -(void)requestCreatePlan{
     NSDictionary * dic = @{
         @"cardBalance":self.cardBalanceView.text,
-        @"consumptionArea":@"string",
+//        @"consumptionArea":@"string",
         @"creditCardId":[NSString stringWithFormat:@"%ld",(long)self.directModel.itemId],
         @"period":@"First",
-        @"planStartDate":@"2021-12-05",
-        @"repaymentAmount":[NSString stringWithFormat:@"%.0f",[self inRefundMoneyToNewMoney]]
+        @"planStartDate":@"2021-12-10",
+        @"repaymentAmount":[NSString stringWithFormat:@"%.0f",[self inRefundMoneyToNewMoney]],
+        @"cityId":self.cityId
     };
     /**
      
@@ -694,10 +685,10 @@
 //设置选择地址的可点击状态
 -(void)changeBtnStatus{
     if ([self inRefundMoneyToNewMoney] <= 0) {
-        [self.planBtn setupDisAppearance];
+//        [self.planBtn setupDisAppearance];
         self.planBtn.userInteractionEnabled = NO;
     }else{
-        [self.planBtn setupAppearance];
+//        [self.planBtn setupAppearance];
         self.planBtn.userInteractionEnabled = YES;
 
     }

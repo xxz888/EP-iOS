@@ -188,8 +188,11 @@
 #pragma mark - 数据请求
 - (void)getHistory
 {
+    [self.dataArray removeAllObjects];
+    [self.mc_tableview reloadData];
+
     kWeakSelf(self);
-    NSString * orderType = self.type == 1 ? @"Consumption" : self.type == 2 ? @"ReceivePayment" : @"Repayment";
+    NSString * orderType = self.type == 1 ? @"ReceivePayment" : self.type == 2 ? @"Repayment" : @"Repayment";
     //刷卡
     NSString * url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=%@&current=%@&size=%@",orderType,@"1",@"20"];
     [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {

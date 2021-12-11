@@ -55,8 +55,8 @@
     _directModel = directModel;
     
     self.nameLabel.text = directModel.bankName;
-    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [directModel.cardNo substringFromIndex:directModel.cardNo.length - 4]];
-    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", directModel.billDay, directModel.repaymentDay];
+    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [directModel.bankCardNo substringFromIndex:directModel.bankCardNo.length - 4]];
+    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%@日｜还款日 每月%@日", directModel.billingDate, directModel.repaymentDate];
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:directModel.bankName];
     self.iconView.image = info.logo;
     self.bgView.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];

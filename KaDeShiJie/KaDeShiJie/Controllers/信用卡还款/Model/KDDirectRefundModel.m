@@ -21,27 +21,10 @@
 {
      return @{
               @"itemId" : @"id",
-              @"bankName":@"bank",
-              @"repaymentDay":@"repaymentDate",
-              @"billDay":@"billingDate",
-              @"cardNo":@"bankCardNo"
              };
 }
 
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key  {
-    if([key isEqualToString:@"bank"])
-        self.bankName = value;
-    
-    if([key isEqualToString:@"bankCardNo"])
-        self.cardNo = value;
-    
-    if([key isEqualToString:@"repaymentDate"])
-        self.repaymentDay = [value integerValue];
-    
-    if([key isEqualToString:@"billingDate"])
-        self.billDay = [value integerValue];
-}
 
 
 @end

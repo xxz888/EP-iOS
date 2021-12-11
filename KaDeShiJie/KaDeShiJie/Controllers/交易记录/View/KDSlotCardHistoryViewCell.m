@@ -48,31 +48,36 @@
     
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:slotHistoryModel.bankName];
     self.iconView.image = info.logo;
+    NSString * no  = slotHistoryModel.creditCard[@"bankCardNo"];
+    self.nameLabel.text = slotHistoryModel.creditCard[@"bankName"];
+    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [no substringFromIndex:no.length - 4]];
     
-    self.nameLabel.text = slotHistoryModel.bankName;
-    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [slotHistoryModel.bankcard substringFromIndex:slotHistoryModel.bankcard.length - 4]];
-    
-    NSString *desStr = [NSString stringWithFormat:@"费率%.2f%%", slotHistoryModel.rate * 100];
+    NSString *desStr = [NSString stringWithFormat:@"费率%.2f%%", slotHistoryModel.rate ];
     NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
-    NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%.2f%%", slotHistoryModel.rate * 100]];
+    NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%.2f%%", slotHistoryModel.rate ]];
     [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range];
     self.desLabel.attributedText = attsDes;
     
     self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", slotHistoryModel.amount];
     
-    if (slotHistoryModel.status == 0) {
-        
-    }
-    if (slotHistoryModel.status == 1) {
+    //Close, Failed, Process, Successful, Unpaid
+    if ([slotHistoryModel.state isEqualToString:@"Successful"]) {
         self.statusLabel.text = @"已成功";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
-    } else if (slotHistoryModel.status == 2) {
+    } else if ([slotHistoryModel.state isEqualToString:@"Failed"]) {
         self.statusLabel.text = @"已失败";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
-    } else if (slotHistoryModel.status == 3) {
+    }  else if ([slotHistoryModel.state isEqualToString:@"Close"]) {
+        self.statusLabel.text = @"已关闭";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    } else if ([slotHistoryModel.state isEqualToString:@"Process"]) {
         self.statusLabel.text = @"待结算";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
+    } else if ([slotHistoryModel.state isEqualToString:@"Unpaid"]) {
+        self.statusLabel.text = @"未付款";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
     }
+    
 }
 
 @end

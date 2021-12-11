@@ -36,7 +36,7 @@
         self.slotHistoryModel.extraFee = [slotHistoryDic[@"extraFee"] floatValue];
         self.slotHistoryModel.costfee = [slotHistoryDic[@"costfee"] floatValue];
         self.slotHistoryModel.desc = slotHistoryDic[@"desc"] ;
-        self.slotHistoryModel.status = [slotHistoryDic[@"status"] integerValue];
+        self.slotHistoryModel.status = slotHistoryDic[@"status"];
         self.slotHistoryModel.createTime = slotHistoryDic[@"createTime"] ;
         self.slotHistoryModel.ordercode = slotHistoryDic[@"ordercode"] ;
         self.slotHistoryModel.amount = [slotHistoryDic[@"amount"] floatValue];
@@ -81,7 +81,7 @@
 }
 - (void)setupView
 {
-    self.nameLabel.text = self.slotHistoryModel.channelname;
+    self.nameLabel.text = self.slotHistoryModel.channelType;
     self.rateLabel.text = [NSString stringWithFormat:@"%.2f%%", self.slotHistoryModel.rate * 100];
     self.rateLabel.layer.cornerRadius = 3;
     self.rateLabel.layer.masksToBounds = YES;
@@ -89,21 +89,30 @@
     self.moneyLabel.text = [NSString stringWithFormat:@"￥%.2f", self.slotHistoryModel.amount];
     self.moneyLabel.textColor = [UIColor mainColor];
     
-    if (self.slotHistoryModel.status == 1) {
+
+    if ([self.slotHistoryModel.state isEqualToString:@"Successful"]) {
         self.statusLabel.text = @"订单状态：已成功";
-    } else if (self.slotHistoryModel.status == 2) {
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
+    } else if ([self.slotHistoryModel.state isEqualToString:@"Failed"]) {
         self.statusLabel.text = @"订单状态：已失败";
-    } else if (self.slotHistoryModel.status == 3) {
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    }  else if ([self.slotHistoryModel.state isEqualToString:@"Close"]) {
+        self.statusLabel.text = @"订单状态：已关闭";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    } else if ([self.slotHistoryModel.state isEqualToString:@"Process"]) {
         self.statusLabel.text = @"订单状态：待结算";
-        
-       
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
+    } else if ([self.slotHistoryModel.state isEqualToString:@"Unpaid"]) {
+        self.statusLabel.text = @"订单状态：未付款";
+        self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
     }
     
-    self.lab1.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.realAmount];
-    self.lab2.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.amount - self.slotHistoryModel.realAmount];
-    self.lab3.text = [NSString stringWithFormat:@"%@", self.slotHistoryModel.desc];
-    self.lab4.text = self.slotHistoryModel.createTime;
-    self.lab5.text = self.slotHistoryModel.ordercode;
+    
+    self.lab1.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.amount - self.slotHistoryModel.amount*self.slotHistoryModel.rate/100];
+    self.lab2.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.amount*self.slotHistoryModel.rate/100];
+    self.lab3.text = self.slotHistoryModel.channelType;
+    self.lab4.text = self.slotHistoryModel.createdTime;
+    self.lab5.text = self.slotHistoryModel.orderId;
 }
 
 @end

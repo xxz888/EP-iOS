@@ -556,17 +556,20 @@
     self.bottomBtn.layer.masksToBounds = YES;
     self.centerView.layer.cornerRadius = 12;
     
+    
+    
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.repaymentModel.bankName];
     self.iconView.image = info.logo;
     self.topView.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
 
-    NSString *cardNo = [NSString stringWithFormat:@"(%@)", [self.repaymentModel.creditCardNumber substringFromIndex:self.repaymentModel.creditCardNumber.length - 4]];
+    NSString *cardNo = [NSString stringWithFormat:@"(%@)", [self.repaymentModel.bankCardNo substringFromIndex:self.repaymentModel.bankCardNo.length - 4]];
     NSString *desStr = [NSString stringWithFormat:@"%@%@", self.repaymentModel.bankName, cardNo];
     NSRange range = [desStr rangeOfString:cardNo];
     NSMutableAttributedString *atts = [[NSMutableAttributedString alloc] initWithString:desStr];
     [atts addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:range];
     self.nameLabel.attributedText = atts;
     
+    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%@日｜还款日 每月%@日", self.repaymentModel.billingDate, self.repaymentModel.repaymentDate];
     //如果是下单进来，隐藏状态的label
     if (self.whereCome == 1) {
         self.statusLabelWidth.constant = 15;
