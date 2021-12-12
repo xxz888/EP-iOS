@@ -54,10 +54,10 @@
     [self.contentView addGestureRecognizer:tap];
 }
 
-- (void)setRefundModel:(KDDirectRefundModel *)refundModel
+- (void)setRefundModel:(MCBankCardModel *)refundModel
 {
     _refundModel = refundModel;
-    
+    //Close, Padding, Running, Successful, Termination
     self.nameLabel.text = refundModel.bankName;
     self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", refundModel.billDay, refundModel.repaymentDay];
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:refundModel.bankName];
@@ -71,6 +71,23 @@
     self.planBtn.hidden = NO;
     self.planBtn.userInteractionEnabled = YES;
     self.desLabel.text = @"请及时设置本月还款计划";
+    
+    
+    if ([refundModel.planStatus isEqualToString:@"Running"] || [refundModel.planStatus isEqualToString:@"Padding"]) {
+        self.planBtn.hidden = YES;
+        self.progressView.progress = [refundModel.alreadyRepaymentAmount doubleValue] / [refundModel.repaymentAmount doubleValue];
+        self.progressView.hidden = self.jihuajinduBtn.hidden = NO;
+        self.progressContentView.userInteractionEnabled = YES;
+        
+    }else{
+        self.progressView.hidden = self.jihuajinduBtn.hidden = YES;
+        self.progressContentView.userInteractionEnabled = NO;
+        self.planBtn.hidden = NO;
+        self.planBtn.userInteractionEnabled = YES;
+        self.desLabel.text = @"请及时设置本月还款计划";
+    }
+    
+    
         //planType 新的余额还款,如果要显示制定计划按钮，暂时planType就不等于1，走老的逻辑 2 4 5 7             136去掉
 //        if ([refundModel.planType integerValue] == 1) {
 //            NSArray  * keyStatus = @[@"",@"",@"执行中", @"", @"失败", @"取消中",@"",@"失败"];
@@ -197,41 +214,20 @@
 //    };
 }
 -(void)clickProgressContentView:(id)tap{
-    
-    //planType 老的余额还款
-//    if ([self.refundModel.planType integerValue] == 3) {
-//        if (self.refundModel.allAmount == 0) {
-//            [self clickPlanBtn:self.planBtn];
-//        }else{
-//            //只有在待执行状态下才可点击。
-//            KDDirectRefundModel * directRefundModel = self.refundModel;
-//            [self getHistory:directRefundModel];
-//        }
-//    }else{
-//        [self requestDetail];
-//    }
-    
-    
-
-
-
-      
+    [self requestDetail];
 }
 -(void)requestDetail{
-//    KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-//
-//    KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
-//    repaymentModel.bankName = self.refundModel.bankName;
-//    repaymentModel.creditCardNumber = self.refundModel.cardNo;
-//    repaymentModel.statusName = @"";
-//    vc.repaymentModel = repaymentModel;
-//    vc.orderType = 2;
-//    vc.isCanDelete = YES;
-//    vc.balancePlanId = self.refundModel.balancePlanId;
-//    vc.whereCome = 3;// 1 下单 2 历史记录 3 信用卡还款进来
-//    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-    
-    
+    if ([self.refundModel.planStatus isEqualToString:@"Running"] || [self.refundModel.planStatus isEqualToString:@"Padding"]) {
+        KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
+        vc.directRefundModel  = self.refundModel;
+        vc.whereCome = 2;// 1 下单 2 历史记录 3 信用卡还款进来
+    //    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:self.repaymentArray[indexPath.row]];
+    ////        NSDictionary * planDic = @[@"task":self.repaymentArray[indexPath.row][@"planId"]];
+    //    [dic setValue:@{@"id":[NSString stringWithFormat:@"%@",self.repaymentArray[indexPath.row][@"planId"]]} forKey:@"plan"];
+        vc.startDic = @{@"plan":@{@"id":[NSString stringWithFormat:@"%@",self.refundModel.planId]}};
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+
+    }
 
 }
 - (IBAction)clickPlanBtn:(id)sender {
@@ -254,7 +250,7 @@
 //        year = [MCDateStore getYear];
 //    }
 //    [params setValue:year forKey:@"year"];
-//    
+//
 //    NSString * month = @"";
 //    if ([[self.refundModel.planCreateTime split:@"/"] count] > 1) {
 //        month = [self.refundModel.planCreateTime split:@"/"][1];

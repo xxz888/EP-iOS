@@ -97,6 +97,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * bankCardNo;
 @property (nonatomic, strong) NSString * cvc;
 
+@property (nonatomic, strong) NSString * planId;
+@property (nonatomic, strong) NSString * planStatus;
+@property (nonatomic, strong) NSString * repaymentAmount;
+@property (nonatomic, strong) NSString * alreadyRepaymentAmount;
+@property (nonatomic, strong) NSString * createdTime;
 
 @end
 

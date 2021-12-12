@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "668C5CC2-8FB5-4363-B5FE-18EBD6340654"
+            uuid = "5EBDB157-BEFB-4061-B9B0-998282DD9224"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -19,16 +19,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F88A2FF8-40A8-4F8C-98B3-833D0BB49ACD"
+            uuid = "E3F3DC2A-280E-4198-BF57-87D6E885E45D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x7ed1;&#x5361;&#x548c;&#x6536;&#x6b3e;/KDBingCardNewViewController.m"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5217;&#x8868;&#x754c;&#x9762;/KDDirectRefundViewCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-requestBindCardVCAction"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "-clickPlanBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99CCDC01-C04B-487C-BD01-E6FBA77B7131"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5236;&#x5b9a;&#x8ba1;&#x5212;/KDPlanCenterViewCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
+            landmarkName = "-requestCreatePlan"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

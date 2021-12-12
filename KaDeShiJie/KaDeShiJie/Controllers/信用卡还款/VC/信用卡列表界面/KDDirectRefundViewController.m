@@ -173,11 +173,32 @@
     
     
     __weak __typeof(self)weakself = self;
-    NSString * url1 = @"/api/v1/player/bank/credit";
+    NSString * url1 = @"/api/v1/player/plan/cards";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
             [weakself.tableView.mj_header endRefreshing];
             [weakself.dataArray removeAllObjects];
-            weakself.dataArray = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
+            NSMutableArray * newArray = [[NSMutableArray alloc]init];
+            for (NSDictionary * dic in resp) {
+                NSMutableDictionary * newDic = [[NSMutableDictionary alloc]initWithDictionary:dic[@"creditCard"]];
+                if (dic[@"planId"]) {
+                    [newDic setValue:dic[@"planId"] forKey:@"planId"];
+                }
+                if (dic[@"planStatus"]) {
+                    [newDic setValue:dic[@"planStatus"] forKey:@"planStatus"];
+                }
+                if (dic[@"alreadyRepaymentAmount"]) {
+                    [newDic setValue:dic[@"alreadyRepaymentAmount"] forKey:@"alreadyRepaymentAmount"];
+                }
+       
+                if (dic[@"repaymentAmount"]) {
+                    [newDic setValue:dic[@"repaymentAmount"] forKey:@"repaymentAmount"];
+                }
+                [newArray addObject:newDic];
+            }
+        
+        
+        
+            weakself.dataArray = [MCBankCardModel mj_objectArrayWithKeyValuesArray:newArray];
             if (weakself.dataArray == 0) {
                 weakself.tableView.hidden = YES;
                 weakself.etyView.hidden = NO;
