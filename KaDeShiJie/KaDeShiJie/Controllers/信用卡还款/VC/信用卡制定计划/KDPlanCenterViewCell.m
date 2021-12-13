@@ -17,6 +17,7 @@
 
 #import "KDRepaymentDetailModel.h"
 #import "KDTotalAmountModel.h"
+#import "KDBingCardNewViewController.h"
 @interface KDPlanCenterViewCell ()<KDRefundTimeViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIView *markView;
@@ -457,12 +458,12 @@
             [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
                 NSArray * respArry = [NSArray arrayWithArray:resp];
                 for (NSDictionary * dic1 in respArry) {
-                    if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
+                    if ([dic1[@"name"] containsString:province.name] || [province.name containsString:dic1[@"name"]]) {
                         for (NSDictionary * dic2 in dic1[@"cities"]) {
-                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic2[@"city"]]) {
-                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
-                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
-                                [weakSelf.addressBtn setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]] forState:0];
+                            if ([dic2[@"name"] containsString:city.name] || [city.name containsString:dic2[@"name"]]) {
+//                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
+                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"id"]];
+                                [weakSelf.addressBtn setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"name"],dic2[@"name"]] forState:0];
                             }
                         }
                     }
@@ -626,16 +627,31 @@
 }
 //③ 第三步制定计划
 -(void)respCode000000:(NSDictionary *_Nonnull)resp{
-    //拼凑
-    KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
+    
+    if ([resp[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+        });
+        KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
+        vc.cardModel = self.directModel;
+        vc.channelBindId = [NSString stringWithFormat:@"%@",resp[@"channelBind"][@"id"]];
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+
+    }else{
+        //拼凑
+        KDRepaymentModel *repaymentModel = [[KDRepaymentModel alloc]init];
+        
+        
+        KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
+        vc.repaymentModel = repaymentModel;
+        vc.directRefundModel  = self.directModel;
+        vc.whereCome = 1;// 1 下单 2 历史记录 3 信用卡还款进来
+        vc.startDic = resp;
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    }
     
     
-    KDPlanPreviewViewController *vc = [[KDPlanPreviewViewController alloc] init];
-    vc.repaymentModel = repaymentModel;
-    vc.directRefundModel  = self.directModel;
-    vc.whereCome = 1;// 1 下单 2 历史记录 3 信用卡还款进来
-    vc.startDic = resp;
-    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+  
 }
 //获取总金额
 -(CGFloat)inRefundMoneyToNewMoney{

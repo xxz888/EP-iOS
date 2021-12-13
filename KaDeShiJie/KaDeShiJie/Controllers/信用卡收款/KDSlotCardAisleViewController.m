@@ -105,34 +105,40 @@
 
 - (void)payAction:(MCChannelModel *)channelModel cardModel:(MCBankCardModel *)cardModel
 {
+    KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+    vc.cardModel = cardModel;
+    vc.cardchuxuModel = self.chuxuInfo;
+    vc.channelId = channelModel.channelId;
+    vc.amount = self.money;
+    [self.navigationController pushViewController:vc animated:YES];
     
     __weak typeof(self) weakSelf = self;
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",channelModel.channelId,self.xinyongInfo.id];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
-
-        if ([resp[@"bind"] integerValue] == 0) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
-            });
-            KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
-            vc.cardModel = cardModel;
-            vc.channelId = channelModel.channelId;
-            [self.navigationController pushViewController:vc animated:YES];
-        }else{
-            
-            KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
-            vc.cardModel = cardModel;
-            vc.cardchuxuModel = self.chuxuInfo;
-            vc.channelId = channelModel.channelId;
-            vc.amount = weakSelf.money;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    }];
-
-    
-    
-;
-    return;
+//    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",channelModel.channelId,self.xinyongInfo.id];
+//    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+//
+//        if ([resp[@"bind"] integerValue] == 0) {
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+//            });
+//            KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
+//            vc.cardModel = cardModel;
+//            vc.cha = channelModel.channelId;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }else{
+//
+//            KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+//            vc.cardModel = cardModel;
+//            vc.cardchuxuModel = self.chuxuInfo;
+//            vc.channelId = channelModel.channelId;
+//            vc.amount = weakSelf.money;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }];
+//
+//
+//
+//;
+//    return;
 //
 //    NSString *phone = SharedUserInfo.phone;
 //    NSString *order_desc = [NSString stringWithFormat:@"%@%@", channelModel.name,channelModel.channelParams];
@@ -150,28 +156,28 @@
     
 //
   
-    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/receivePayment" parameters:@{
-        @"amount":@"",
-        @"channelPlatform":@"1",
-        @"creditCardId":self.xinyongInfo.id,
-        @"debitCardId":self.chuxuInfo.id,
-        @"deviceId":SharedDefaults.deviceid,
-        @"merchantId":@""
-        
-        
-    } ok:^(NSDictionary * _Nonnull resp) {
-        NSDictionary * dic  =(NSDictionary *)resp;
-        if ([dic[@"successful"] integerValue] == 1) {
-                        [MCToast showMessage:@"操作成功"];
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-        }
-    } other:^(NSDictionary * _Nonnull resp) {
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
-    
-    
+//    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/receivePayment" parameters:@{
+//        @"amount":@"",
+//        @"channelPlatform":@"1",
+//        @"creditCardId":self.xinyongInfo.id,
+//        @"debitCardId":self.chuxuInfo.id,
+//        @"deviceId":SharedDefaults.deviceid,
+//        @"merchantId":@""
+//
+//
+//    } ok:^(NSDictionary * _Nonnull resp) {
+//        NSDictionary * dic  =(NSDictionary *)resp;
+//        if ([dic[@"successful"] integerValue] == 1) {
+//                        [MCToast showMessage:@"操作成功"];
+//            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+//        }
+//    } other:^(NSDictionary * _Nonnull resp) {
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
+//
+//
 //    kWeakSelf(self);
 //    [MCSessionManager.shareManager mc_POST:@"/facade/app/topup/new" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
 //        NSString * result = resp[@"result"];
@@ -231,7 +237,6 @@
     [self.sessionManager mc_GET:url2 parameters:@{
         @"amount":self.money,
         @"creditCardId":self.xinyongInfo.id,
-        @"province":self.provinceId,
         @"city":self.cityId
     } ok:^(NSDictionary * _Nonnull resp) {
         self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp];

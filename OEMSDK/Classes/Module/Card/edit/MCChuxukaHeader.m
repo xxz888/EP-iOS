@@ -63,15 +63,15 @@
             [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
                 NSArray * respArry = [NSArray arrayWithArray:resp];
                 for (NSDictionary * dic1 in respArry) {
-                    if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
+                    if ([dic1[@"name"] containsString:province.name] || [province.name containsString:dic1[@"name"]]) {
                         for (NSDictionary * dic2 in dic1[@"cities"]) {
-                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic2[@"city"]]) {
-                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
-                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
+                            if ([dic2[@"name"] containsString:city.name] || [city.name containsString:dic2[@"name"]]) {
+//                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
+                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"id"]];
                                 
-                                weakSelf.province = dic1[@"province"];
-                                weakSelf.city = dic2[@"city"];
-                                weakSelf.textField4.text = [NSString stringWithFormat:@"%@%@",dic1[@"province"],dic2[@"city"]];
+//                                weakSelf.province = dic1[@"province"];
+                                weakSelf.city = dic2[@"name"];
+                                weakSelf.textField4.text = [NSString stringWithFormat:@"%@%@",dic1[@"name"],dic2[@"name"]];
                             }
                         }
                     }
@@ -154,9 +154,8 @@
 - (IBAction)buttonTouched:(id)sender {
     
     if ([self verifyFailedTextField:self.textField1] ||
-        [self verifyFailedTextField:self.textField2] ||
-        [self verifyFailedTextField:self.textField3] ||
-        [self verifyFailedTextField:self.textField4] ) {
+        [self verifyFailedTextField:self.textField3] 
+        ) {
         return;
     }
     if (self.model) {   //修改
@@ -171,22 +170,13 @@
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
-     bankCardNo*    string
-     bankId*    integer($int32)
-     billingDate    integer($int32)
-     cardType*    string
-     Enum:
-     [ CreditCard, DebitCard ]
-     city    string
-     cityId    integer($int32)
-     cvc    string
-     phone*    string
-     province    string
-     provinceId    integer($int32)
-     repaymentDate    integer($int32)
-     subBankCode    string
-     subBankName    string
-     validPeriod    string
+     "bankCardNo": "string",
+       "billingDate": 0,
+       "cardType": "CreditCard",
+       "cvc": "string",
+       "phone": "string",
+       "repaymentDate": 0,
+       "validPeriod": "string"
      
      **/
 //    NSDictionary *param = @{@"realname":self.textField1.text,
@@ -198,13 +188,6 @@
 //                            @"city":addr[1]};
     NSDictionary *param = @{
                             @"bankCardNo":cardNo,
-                            @"bankId":self.bankId,
-                            @"city":self.city,
-                            @"cityId":self.cityId,
-                            @"province":self.province,
-                            @"provinceId":self.provinceId,
-                         
-                            
                             @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
@@ -331,11 +314,11 @@
         [self selctBank];
         return NO;
     }
-    if (textField == self.kaihuzhihangTf) {
-        [self endEditing:YES];
-        [self selectKaihuzhihang];
-        return NO;
-    }
+//    if (textField == self.kaihuzhihangTf) {
+//        [self endEditing:YES];
+//        [self selectKaihuzhihang];
+//        return NO;
+//    }
     return YES;
 }
 -(void)selectProvince{
@@ -347,7 +330,7 @@
     }];
 }
 -(void)selctBank{
-    if (self.provinceId.length == 0 || self.cityId.length == 0) {
+    if ( self.cityId.length == 0) {
         [MCToast showMessage:@"请先选择地区"];
         return;
     }
@@ -374,7 +357,7 @@
     }];
 }
 -(void)selectKaihuzhihang{
-    if (self.provinceId.length == 0 || self.cityId.length == 0) {
+    if ( self.cityId.length == 0) {
         [MCToast showMessage:@"请先选择地区"];
         return;
     }
@@ -384,7 +367,7 @@
     }
     NSString * proviceUrl = @"";
     __weak typeof(self) weakSelf = self;
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/bank/branch?provinceId=%@&cityId=%@&bankId=%@",self.provinceId,self.cityId,self.bankId];
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/bank/branch?cityId=%@&bankId=%@",self.cityId,self.bankId];
     [MCLATESTCONTROLLER.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         NSArray * result = resp;
         NSMutableArray * modelArray = [[NSMutableArray alloc]init];

@@ -83,28 +83,28 @@
     }
     
 }
--(void)checkBind{
-    __weak typeof(self) weakSelf = self;
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",self.startDic[@"plan"][@"channelId"],self.directRefundModel.id];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
-
-        if ([resp[@"bind"] integerValue] == 0) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
-            });
-            KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
-            vc.cardModel = self.directRefundModel;
-
-
-            vc.channelId = self.startDic[@"plan"][@"channelId"];
-            [self.navigationController pushViewController:vc animated:YES];
-        }else{
-            [weakSelf startPlan];
-            //如果是鉴权过就开始执行计划
-            
-        }
-    }];
-}
+//-(void)checkBind{
+//    __weak typeof(self) weakSelf = self;
+//    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",self.startDic[@"plan"][@"channelId"],self.directRefundModel.id];
+//    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+//
+//        if ([resp[@"bind"] integerValue] == 0) {
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [MCToast showMessage:@"当前信用卡未绑定该通道,请先绑卡"];
+//            });
+//            KDBingCardNewViewController * vc = [[KDBingCardNewViewController alloc]init];
+//            vc.cardModel = self.directRefundModel;
+//
+//
+//            vc.channelId = self.startDic[@"plan"][@"channelId"];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }else{
+//            [weakSelf startPlan];
+//            //如果是鉴权过就开始执行计划
+//            
+//        }
+//    }];
+//}
 -(void)startPlan{
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -136,7 +136,7 @@
     }];
 }
 -(void)creditcardSaveTask{
-    [self checkBind];
+    [self startPlan];
     return;
     
     

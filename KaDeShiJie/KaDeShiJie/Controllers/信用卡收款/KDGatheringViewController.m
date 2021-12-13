@@ -302,7 +302,7 @@
     vc.money = self.moneyView.text;
     vc.xinyongInfo = self.xinyongInfo;
     vc.chuxuInfo = self.chuxuInfo;
-    vc.provinceId = self.provinceId;
+//    vc.provinceId = self.provinceId;
     vc.cityId = self.cityId;
     [self.navigationController pushViewController:vc animated:YES];
     return;
@@ -375,12 +375,12 @@
             [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
                 NSArray * respArry = [NSArray arrayWithArray:resp];
                 for (NSDictionary * dic1 in respArry) {
-                    if ([dic1[@"province"] containsString:province.name] || [province.name containsString:dic1[@"province"]]) {
+                    if ([dic1[@"name"] containsString:province.name] || [province.name containsString:dic1[@"name"]]) {
                         for (NSDictionary * dic2 in dic1[@"cities"]) {
-                            if ([dic2[@"city"] containsString:city.name] || [city.name containsString:dic2[@"city"]]) {
-                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
-                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"cityId"]];
-                                [weakSelf.selectAdress setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"province"],dic2[@"city"]] forState:0];
+                            if ([dic2[@"name"] containsString:city.name] || [city.name containsString:dic2[@"name"]]) {
+//                                weakSelf.provinceId = [NSString stringWithFormat:@"%@",dic2[@"provinceId"]];
+                                weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"id"]];
+                                [weakSelf.selectAdress setTitle:[NSString stringWithFormat:@"%@-%@",dic1[@"name"],dic2[@"name"]] forState:0];
                             }
                         }
                     }
@@ -399,7 +399,7 @@
     self.commonAlert.rightActionBlock = ^{
         [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":cardType==MCBankCardTypeXinyongka?@(MCBankCardTypeXinyongka):@(MCBankCardTypeChuxuka), @"isLogin":@(NO),@"whereCome":@"1"}];
 
-//        [weakSelf pushCardVCWithType:cardType];
+//[weakSelf pushCardVCWithType:cardType];
         
     };
 }

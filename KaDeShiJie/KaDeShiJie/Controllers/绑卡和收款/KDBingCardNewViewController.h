@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) MCBankCardModel *cardModel;
 @property (nonatomic, strong) NSString *money;
 - (instancetype)initWithClassification:(MCBankCardModel *)cardModel;
-@property (nonatomic ,strong)NSString * channelId;
+@property (nonatomic ,strong)NSString * channelBindId;
 
 @property (weak, nonatomic) IBOutlet UILabel *change2Lbl;
 

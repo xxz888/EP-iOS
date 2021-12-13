@@ -667,7 +667,6 @@
 		1BC5E3E0250392D10064CA30 /* KDHomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeHeaderView.h; sourceTree = "<group>"; };
 		1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeHeaderView.m; sourceTree = "<group>"; };
 		1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeHeaderView.xib; sourceTree = "<group>"; };
-		1BCF5E19251444EF0095328E /* 卡德世界.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "卡德世界.entitlements"; sourceTree = "<group>"; };
 		1BCF5E1A2514B4770095328E /* KDPushModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPushModel.h; sourceTree = "<group>"; };
 		1BCF5E1B2514B4770095328E /* KDPushModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPushModel.m; sourceTree = "<group>"; };
 		1BCF5E1D2514CD410095328E /* KDProfitDirectPushModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDProfitDirectPushModel.h; sourceTree = "<group>"; };
@@ -1413,7 +1412,6 @@
 		1BC5E3962503404C0064CA30 /* KaDeShiJie */ = {
 			isa = PBXGroup;
 			children = (
-				1BCF5E19251444EF0095328E /* 卡德世界.entitlements */,
 				1BC5E3BA250343AA0064CA30 /* Controllers */,
 				1BC5E3B2250341180064CA30 /* AppDelegate.h */,
 				1BC5E3B3250341180064CA30 /* AppDelegate.m */,
@@ -2371,7 +2369,7 @@
 				CODE_SIGN_ENTITLEMENTS = "KaDeShiJie/卡德世界.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5.8.1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 5TF7NHQ5SS;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
@@ -2512,7 +2510,7 @@
 				CODE_SIGN_ENTITLEMENTS = "KaDeShiJie/卡德世界.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5.8.1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

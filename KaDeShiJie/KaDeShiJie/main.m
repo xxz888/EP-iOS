@@ -14,7 +14,5 @@ int main(int argc, char * argv[]) {
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
         appDelegateClassName = NSStringFromClass([AppDelegate class]);
-    }
-
-    return UIApplicationMain(argc, argv, NSStringFromClass([Application_TimeOut class]), appDelegateClassName);
+    }    return UIApplicationMain(argc, argv, NSStringFromClass([Application_TimeOut class]), appDelegateClassName);
 }
