@@ -72,6 +72,46 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString * planTaskType;
 
+
+//planId = 82,
+//actualFee = 30.55,
+//status = Padding,
+//creditCardId = 15,
+//amount = 3867,
+//cardBalance = 5021,
+//surplusFee = 0.45,
+//planTaskId = 2021121115083773103204,
+//creditCardNo = 222222222222222,
+//executeTime = 2021-12-11T13:30:00,
+//channelCityId = 0,
+//name = Wangpei1,
+//channelType = JiaFuTong,
+//createdTime = 2021-12-11T15:08:37,
+//id = 689,
+//cityId = 2900,
+//executeFailCount = 0,
+//fee = 31,
+//reservedPhone = 13383773802,
+//memberId = 24,
+//planTaskType = Consumption,
+//channelId = 4
+@property (nonatomic, strong) NSString * planId;
+@property (nonatomic, strong) NSString * actualFee;
+@property (nonatomic, strong) NSString * surplusFee;
+@property (nonatomic, strong) NSString * creditCardId;
+@property (nonatomic, strong) NSString * planTaskId;
+@property (nonatomic, strong) NSString * creditCardNo;
+@property (nonatomic, strong) NSString * channelCityId;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * channelType;
+@property (nonatomic, strong) NSString * createdTime;
+@property (nonatomic, strong) NSString * cityId;
+@property (nonatomic, strong) NSString * executeFailCount;
+@property (nonatomic, strong) NSString * fee;
+@property (nonatomic, strong) NSString * reservedPhone;
+@property (nonatomic, strong) NSString * memberId;
+@property (nonatomic, strong) NSString * channelId;
+
 @end
 
 NS_ASSUME_NONNULL_END

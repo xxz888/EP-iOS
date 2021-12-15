@@ -83,6 +83,7 @@
     }
 }
 -(void)receivePayment{
+    
     NSDictionary *params =
     @{
         @"code":self.codeView.text,

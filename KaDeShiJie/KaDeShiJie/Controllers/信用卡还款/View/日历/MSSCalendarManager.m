@@ -79,7 +79,7 @@
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
     
     NSDateComponents *components = [self dateToComponents:_todayDate];
-    components.year = targetMonth==12?2020:2021;
+    components.year = targetMonth==12?2021:2022;
     components.day = 1;
     components.month = targetMonth - 2;
     

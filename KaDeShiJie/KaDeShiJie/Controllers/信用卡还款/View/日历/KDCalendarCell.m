@@ -68,23 +68,23 @@
     //选择的日期
     NSString * clickString = [NSString stringWithFormat:@"%ld-%ld-%ld",model.year,model.month,model.day];
     //如果日期在当前日期和还款日之间，就亮色，否则就灰色
-    if ([MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
+//    if ([MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
         self.cLab.textColor = UIColorMakeWithHex(@"#626262");
-    }else{
-        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
-    }
+//    }else{
+//        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
+//    }
     NSInteger data1 = [self getSelectShiJianChuo:[NSString stringWithFormat:@"%ld-%ld-%ld",model.year,model.month,model.day]];
     NSInteger  data2 = [self getCurrentShiJianChuo];
     if (model.day == 27) {
         
     }
     
-    if (data1 > data2 ||
-        (model.year == [[MCDateStore getYear] integerValue] && model.month == [[MCDateStore getMonth] integerValue] && model.day == [MCDateStore getCurrentDay])) {
-        self.cLab.textColor = UIColorMakeWithHex(@"#626262");
-    }else{
-        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
-    }
+//    if (data1 > data2 ||
+//        (model.year == [[MCDateStore getYear] integerValue] && model.month == [[MCDateStore getMonth] integerValue] && model.day == [MCDateStore getCurrentDay])) {
+//        self.cLab.textColor = UIColorMakeWithHex(@"#626262");
+//    }else{
+//        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
+//    }
      
     
     

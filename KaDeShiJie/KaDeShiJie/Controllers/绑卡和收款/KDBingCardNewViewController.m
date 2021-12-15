@@ -70,20 +70,12 @@
         [MCToast showMessage:@"请填写正确的验证码"];
         return;
     }
-    /*
-     
-       "bankCardId": 0,
-       "channelId": 0,
-       "code": "string
-     **/
     NSDictionary *params =
     @{
         @"channelBindId":[NSString stringWithFormat:@"%@",self.channelBindId],
         @"code":self.codeView.text,
      };
     __weak typeof(self) weakSelf = self;
-//    /api/v1/player/plan/bind/confirm
-//    /api/v1/player/plan/bind
     [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/plan/bind/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"绑定成功"];

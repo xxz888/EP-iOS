@@ -46,7 +46,7 @@
     _slotHistoryModel = slotHistoryModel;
     
     
-    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:slotHistoryModel.bankName];
+    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:slotHistoryModel.creditCard[@"bankName"]];
     self.iconView.image = info.logo;
     NSString * no  = slotHistoryModel.creditCard[@"bankCardNo"];
     self.nameLabel.text = slotHistoryModel.creditCard[@"bankName"];

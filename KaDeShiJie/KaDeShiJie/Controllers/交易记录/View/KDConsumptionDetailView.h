@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) KDTotalOrderModel *orderModel;
 @property (nonatomic, strong) NSString * balancePlanId;//
 @property (nonatomic, strong) NSString * message;//
-
+@property (nonatomic ,strong)NSDictionary * startDic;
 @end
 
 NS_ASSUME_NONNULL_END

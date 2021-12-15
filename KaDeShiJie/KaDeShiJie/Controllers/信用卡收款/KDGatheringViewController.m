@@ -64,7 +64,7 @@
     UITextInputAssistantItem* item = [self.moneyView inputAssistantItem];
     item.leadingBarButtonGroups = @[];
     item.trailingBarButtonGroups = @[];
-    
+    self.cityId = @"-1";
 //    self.moneyView.delegate = self;
     // 设置按钮显示
     self.addCreditBtn.imagePosition = QMUIButtonImagePositionRight;
@@ -81,12 +81,12 @@
     
     [self setNavigationBarTitle:@"快速收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor qmui_colorWithHexString:@"#FF9F58"]]];
 
-    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    shareBtn.titleLabel.font = LYFont(13);
-    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
+//    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
+//    [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+//    [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
+//    shareBtn.titleLabel.font = LYFont(13);
+//    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
 
     [self requestDefaultChuXuCards];
@@ -298,6 +298,12 @@
             return;
         }
     
+    
+    if ([self.cityId isEqualToString:@"-1"]) {
+        [MCToast showMessage:@"请选择地区" position:MCToastPositionCenter];
+        return;
+    }
+    
     KDSlotCardAisleViewController *vc = [[KDSlotCardAisleViewController alloc] init];
     vc.money = self.moneyView.text;
     vc.xinyongInfo = self.xinyongInfo;
@@ -430,7 +436,7 @@
         self.depositLabel.hidden = YES;
         return;
     }
-    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:chuxuInfo.bank];
+    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:chuxuInfo.bankName];
     self.depositImg.image = ii.logo;
     self.depositImg.hidden = NO;
     NSString *cardNo = chuxuInfo.bankCardNo;
@@ -450,7 +456,7 @@
         self.creditLabel.hidden = YES;
         return;
     }
-    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:xinyongInfo.bank];
+    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:xinyongInfo.bankName];
     self.creditImg.image = ii.logo;
     self.creditImg.hidden = NO;
     NSString *cardNo = xinyongInfo.bankCardNo;

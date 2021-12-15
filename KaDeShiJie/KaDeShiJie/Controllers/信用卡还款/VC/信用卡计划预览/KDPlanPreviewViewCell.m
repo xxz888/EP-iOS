@@ -51,17 +51,17 @@
         self.statusLabel.text = [orderModel.status isEqualToString:@"Padding"]  ? @"待执行" :
                                     [orderModel.status isEqualToString:@"Running"]  ? @"还款中" :
                                     [orderModel.status isEqualToString:@"Successful"] ? @"已成功" :
-                                    [orderModel.status isEqualToString:@"Close"] ? @"Close" :
-                                    [orderModel.status isEqualToString:@"Termination"] ? @"Termination" : @"";
+                                    [orderModel.status isEqualToString:@"Close"] ? @"已关闭" :
+                                    [orderModel.status isEqualToString:@"Termination"] ? @"已终止" : @"";
 
         
         //还款前面有一个小蓝点,消费前面没有
         self.pointView.hidden =  ![orderModel.planTaskType isEqualToString:@"Repayment"];
         //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
-    self.taskStatusLabel.text = [orderModel.planTaskType isEqualToString:@"Repayment"] ? @"还款" : @"消费";
+            self.taskStatusLabel.text = [orderModel.planTaskType isEqualToString:@"Consumption"] ? @"消费" : @"还款";
         //金额的label,消费计划取realAmount,还款计划取amount
         self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
-    self.moneyLabel.text = [orderModel.planTaskType isEqualToString:@"Repayment"] ? [@"+" append:self.moneyLabel.text] : [@"-" append:self.moneyLabel.text];
+        self.moneyLabel.text = [orderModel.planTaskType isEqualToString:@"Repayment"] ? [@"+" append:self.moneyLabel.text] : [@"-" append:self.moneyLabel.text];
         self.timeLabel.text = orderModel.executeTime;
         //记录和还款点击进来,需要显示状态一列
         self.statusLabel.hidden = NO;

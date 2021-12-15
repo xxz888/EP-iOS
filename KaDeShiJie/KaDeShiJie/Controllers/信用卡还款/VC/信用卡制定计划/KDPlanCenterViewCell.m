@@ -114,6 +114,7 @@
 //    [self.planBtn setupDisAppearance];
     self.planBtn.userInteractionEnabled = NO;
     self.needDay = 0;
+    self.cityId = @"-1";
     [self requestlimitmin];
 }
 -(void)requestlimitmin{
@@ -328,8 +329,6 @@
         
     };
 }
-
-
 #pragma mark ------------------检查界面参数------------------------
 -(BOOL)checkParameters{
     //检查还款总金额参数
@@ -383,15 +382,6 @@
 
 }
 -(void)needDayAction2{
-    /*
-     String userId, // 用户id
-     String creditCardNumber, // 信用卡号
-     String amount, // 还款金额
-     String reservedAmount, // 预留金额
-     String brandId, // 品牌id
-     String version, // 通道的标识
-     String dayRepaymentCount // 每天的还款次数
-     **/
 
     NSDictionary * parDic = @{
 
@@ -436,17 +426,6 @@
     if (![self getParameters]) {return;}
     //直接请求省
     [self.addressPicker show];
-
-        
-    //self.normalRefundTypeBtn.selected 代表默认日期
-//    if (self.normalRefundTypeBtn.selected) {
-//        //现请求通道，在请求省
-//        [self needDayAction1];
-//    }else{
-//        //直接请求省
-//        [self requestProvice];
-//    }
-    
 }
 - (BRAddressPickerView *)addressPicker {
     if (!_addressPicker) {
@@ -533,15 +512,6 @@
 - (IBAction)clickPlanBtn:(KDFillButton *)sender {
     [self requestCreatePlan];
 }
-
-/*
- "cardBalance": 0,
- "consumptionArea": "string",
- "creditCardId": 0,
- "period": "First",
- "planStartDate": "2021-12-05",
- "repaymentAmount": 0
- **/
 -(void)requestCreatePlan{
     //First, Fourth, Second, Third
     NSString * period;
@@ -557,26 +527,51 @@
     if ([self.refundCountBtn.titleLabel.text isEqualToString:@"4次"]) {
         period = @"Fourth";
     }
+    
+
 
       NSDate *date = [NSDate date];
       NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
       [formatter setDateFormat:@"yyyy-MM-dd"];
       //获取当前时间日期展示字符串 如：2019-05-23-13:58:59
       NSString *planStartDate = [formatter stringFromDate:date];
-
-    NSDictionary * dic = @{
+    if ([self inRefundMoneyToNewMoney] <= 0) {
+        [MCToast showMessage:@"请填写还款总金额"];
+        return;
+    }
+    if ([self.cardBalanceView.text doubleValue] <= 0) {
+        [MCToast showMessage:@"请填写卡余额"];
+        return;
+    }
+    if ([self.cityId isEqualToString:@"-1"]) {
+        [MCToast showMessage:@"请选择地区"];
+        return;
+    }
+   
+    // "planDates": "2021-12-16,2021-12-17,2021-12-18,2021-12-19"
+      NSDictionary * dic = @{
         @"cardBalance":self.cardBalanceView.text,
-//        @"consumptionArea":@"string",
         @"creditCardId":[NSString stringWithFormat:@"%@",self.directModel.id],
         @"period":period,
-        @"planStartDate":planStartDate,
         @"repaymentAmount":[NSString stringWithFormat:@"%.0f",[self inRefundMoneyToNewMoney]],
-        @"cityId":self.cityId
+        @"cityId":self.cityId,
     };
+    
+    NSMutableDictionary * mdic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+    
+ 
+    
+    //默认日期
+    if (self.normalRefundTypeBtn.selected) {
+        [mdic setValue:planStartDate forKey:@"planStartDate"];
+    }else{
+        NSString *executeDateString = [self.timeArray componentsJoinedByString:@","];
+        [mdic setValue:executeDateString forKey:@"planDates"];
+    }
+    
     __weak typeof(self) weakSelf = self;
-    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/plan" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/plan" parameters:mdic ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf respCode000000:resp];
-
     } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
@@ -592,7 +587,6 @@
     }
     //中间需要的天数
     NSString *executeDateString = [self.timeArray componentsJoinedByString:@","];
-    
     //通道的版本号
     NSString * version = self.version;
     //拼凑起最后制定计划接口所需的参数
@@ -605,16 +599,6 @@
     [params setValue:self.shiBtn.selected?@"1":@"0" forKey:@"isNotPoint"];
     //创建新的余额任务
     [self requestCreateRepaymentTask:@"/creditcardmanager/app/create/repayment/task/new" params:params];
-    
-    /*
-    //查询是否有公测用户
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/creditcardmanager/app/verify/beta/user" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
-   
-    }other:^(NSDictionary * _Nonnull resp) {
-        //创建老的余额任务  999999
-        [weakself requestCreateRepaymentTask:@"/creditcardmanager/app/create/repayment/task" params:params];
-    } failure:^(NSError * _Nonnull error) {}];
-     */
 }
 //② 第三步制定计划
 -(void)requestCreateRepaymentTask:(NSString *)url params:(NSDictionary *)params{
@@ -737,8 +721,8 @@
             NSMutableArray *dateArray = [NSMutableArray array];
             [weakSelf.timeArray removeAllObjects];
             for (MSSCalendarModel *model in models) {
-                [dateArray addObject:[NSString stringWithFormat:@"%ld/%ld",model.month, model.day]];
-                [weakSelf.timeArray addObject:[NSString stringWithFormat:@"%ld-%ld-%ld",model.year ,model.month, model.day]];
+                [dateArray addObject:[NSString stringWithFormat:@"%02ld/%02ld",(long)model.month, model.day]];
+                [weakSelf.timeArray addObject:[NSString stringWithFormat:@"%ld-%02ld-%0l2d",model.year ,model.month, model.day]];
             }
             [weakSelf showCalendarDateWithChose:dateArray];
         };
