@@ -120,6 +120,7 @@
     return self;
 }
 - (IBAction)btnAction:(QMUIButton *)sender {
+    
     if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
             switch (sender.tag) {
                 case 100:{
