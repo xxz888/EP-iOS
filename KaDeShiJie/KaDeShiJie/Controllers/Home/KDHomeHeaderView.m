@@ -147,7 +147,6 @@
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
                 break;
             case 201: // 信用管理
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDCreditManagerViewController new] animated:YES];
                 break;
             case 202: // 实名认证
                 [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
@@ -160,14 +159,12 @@
                
                 break;
             case 203:
-//                [MCLATESTCONTROLLER.navigationController pushViewController:[KDHomeXinYongKaViewController new] animated:YES];
                 break;
             case 204:
                 break;
             case 205:
                 break;
-            case 206: // 备付金
-//                [MCLATESTCONTROLLER.navigationController pushViewController:[KDProvisionsViewController new] animated:YES];
+            case 206:
                 break;
             case 207:
                 break;

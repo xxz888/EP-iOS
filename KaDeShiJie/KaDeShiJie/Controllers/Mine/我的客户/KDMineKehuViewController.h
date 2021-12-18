@@ -11,6 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDMineKehuViewController : MCBaseViewController
+@property (weak, nonatomic) IBOutlet UILabel *tuiguangzongrenshu;
+@property (weak, nonatomic) IBOutlet UILabel *jinrituiguang;
+@property (weak, nonatomic) IBOutlet UILabel *benzhoutuiguang;
+@property (weak, nonatomic) IBOutlet UILabel *benyuetuiguang;
+@property (weak, nonatomic) IBOutlet UILabel *zhituiLbl;
+@property (weak, nonatomic) IBOutlet UILabel *jianquanLbl;
 
 @end
 

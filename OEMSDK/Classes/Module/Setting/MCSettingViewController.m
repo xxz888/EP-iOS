@@ -73,16 +73,16 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
                             @"subTitle":[NSString stringWithFormat:@"%.2fM",size],
                             @"action":@"cleanCache"
     }];
-    [self.items addObject:@{@"imgName":@"one_mine_icon_safe",
-                            @"title":SharedConfig.safe_title,
-                            @"subTitle":@"",
-                            @"action":@"manageCount"
-    }];
-    [self.items addObject:@{@"imgName":@"one_mine_icon_loginSafe",
-                            @"title":@"设置登录密码",
-                            @"subTitle":@"",
-                            @"action":@"resetLoginPwd"
-    }];
+//    [self.items addObject:@{@"imgName":@"one_mine_icon_safe",
+//                            @"title":SharedConfig.safe_title,
+//                            @"subTitle":@"",
+//                            @"action":@"manageCount"
+//    }];
+//    [self.items addObject:@{@"imgName":@"one_mine_icon_loginSafe",
+//                            @"title":@"设置登录密码",
+//                            @"subTitle":@"",
+//                            @"action":@"resetLoginPwd"
+//    }];
     
     [self.mc_tableview reloadData];
 }

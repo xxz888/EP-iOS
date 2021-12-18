@@ -18,6 +18,23 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
     [self setNavigationBarTitle:@"我的客户" tintColor:[UIColor whiteColor]];
+    
+    [self requestData];
+}
+-(void)requestData{
+    __weak __typeof(self)weakSelf = self;
+    NSString * url1 = @"/api/v1/player/user/recommendation";
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"directCount"]) {
+            weakSelf.zhituiLbl.text = [NSString stringWithFormat:@"%@",resp[@"directCount"]];
+        }
+        if (resp[@"indirectCount"]) {
+            weakSelf.jianquanLbl.text =  [NSString stringWithFormat:@"%@",resp[@"indirectCount"]];
+
+        }
+    }];
+    
+    
 }
 
 /*

@@ -73,13 +73,15 @@
     
     
     
-    self.imgView.image = [MCImageStore creatShareImageWithImage:[UIImage imageNamed:@"share_single_img"]];
     
     [self layoutIfNeeded];
     
     
 }
+-(void)setUrl:(NSString *)url{
+    self.imgView.image = [MCImageStore creatShareImageWithImage:[UIImage imageNamed:@"share_single_img"] shareUrlString:url];
 
+}
 - (UIImage *)snapshotScreenInView:(UIView *)view
 {
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
