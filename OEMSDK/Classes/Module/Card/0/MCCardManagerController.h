@@ -15,7 +15,7 @@ typedef void(^selectCard)(MCBankCardModel *cardModel, NSInteger type);
 @interface MCCardManagerController : MCBaseViewController
 @property (nonatomic, copy) NSString *titleString;
 
-@property (nonatomic, copy)selectCard selectCard;
+@property (nonatomic, copy)selectCard selectCardBlock;
 @end
 
 NS_ASSUME_NONNULL_END

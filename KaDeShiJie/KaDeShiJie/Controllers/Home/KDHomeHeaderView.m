@@ -124,7 +124,7 @@
     if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
             switch (sender.tag) {
                 case 100:{
-                    [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+//                    [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
                 }
                     break;
                 case 101:{
@@ -160,14 +160,14 @@
                
                 break;
             case 203:
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDHomeXinYongKaViewController new] animated:YES];
+//                [MCLATESTCONTROLLER.navigationController pushViewController:[KDHomeXinYongKaViewController new] animated:YES];
                 break;
             case 204:
                 break;
             case 205:
                 break;
             case 206: // 备付金
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDProvisionsViewController new] animated:YES];
+//                [MCLATESTCONTROLLER.navigationController pushViewController:[KDProvisionsViewController new] animated:YES];
                 break;
             case 207:
                 break;

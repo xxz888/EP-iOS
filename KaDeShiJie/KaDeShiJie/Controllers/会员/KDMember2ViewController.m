@@ -16,8 +16,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setNavigationBarTitle:@"支付订单" tintColor:UIColor.whiteColor];
+    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
+    [self.payBtn setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F07E1B"]];
+    
 }
+- (IBAction)zhifubaoAction:(id)sender {
+    if (!self.zhifubaoBtn.selected) {
+        self.zhifubaoBtn.selected = YES;
+        self.weixinBtn.selected = self.chuxukaBtn.selected = self.xinyongkaBtn.selected = NO;
+    }
+}
+- (IBAction)weixinAction:(id)sender {
+    if (!self.weixinBtn.selected) {
+        self.weixinBtn.selected = YES;
+        self.zhifubaoBtn.selected = self.chuxukaBtn.selected = self.xinyongkaBtn.selected = NO;
+    }
+}
+- (IBAction)chuxukaAction:(id)sender {
+    if (!self.chuxukaBtn.selected) {
+        self.chuxukaBtn.selected = YES;
+        self.weixinBtn.selected = self.zhifubaoBtn.selected = self.xinyongkaBtn.selected = NO;
+    }
+}
+- (IBAction)xinyongkaAction:(id)sender {
+    if (!self.xinyongkaBtn.selected) {
+        self.xinyongkaBtn.selected = YES;
+        self.weixinBtn.selected = self.chuxukaBtn.selected = self.zhifubaoBtn.selected = NO;
+    }
+}
+
+
+
 
 /*
 #pragma mark - Navigation

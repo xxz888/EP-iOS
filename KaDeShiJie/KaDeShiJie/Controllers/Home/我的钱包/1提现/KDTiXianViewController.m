@@ -34,8 +34,13 @@
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:kfBtn];
     
     [self requestData];
+    
+    
+    
 }
-
+-(void)clicktixianjiluAction{
+    [self.navigationController pushViewController:[KDTixianjiluViewController new] animated:YES];
+}
 -(void)requestData{
     __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/wallet";
@@ -44,55 +49,68 @@
         weakSelf.zhanghuyue.text = [NSString stringWithFormat:@"%.2f",[dic[@"balance"] doubleValue]];
         weakSelf.ketixianjine.text = [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
     }];
-}
--(void)clicktixianjiluAction{
-
     
-    [self pushCardVCWithType:MCBankCardTypeChuxuka];
-//    MCCardManagerController *vc = [[MCCardManagerController alloc] init];
-//    vc.titleString = @"选择储蓄卡";
-//    vc.selectCard = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
-//        if (type == 0) {
-//
-//        } else {
-//            self.chuxuInfo = cardModel;
-//
-//            MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:self.chuxuInfo.bank];
-//            self.bankLogo.image = ii.logo;
-//            NSString *cardNo = self.chuxuInfo.bankCardNo;
-//            if (cardNo && cardNo.length > 4) {
-//                NSString *bank = [NSString stringWithFormat:@"%@ (%@)",self.chuxuInfo.bank,[cardNo substringFromIndex:cardNo.length-4]];
-//                self.bankLbl.text = bank;
-//            }
-//        }
-//    };
-//    [self.navigationController pushViewController:vc animated:YES];
-
+    
+    NSString * url2 = @"/api/v1/player/bank/debit";
+    [self.sessionManager mc_GET:url2 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
+        if ([temArr count] != 0) {
+            MCBankCardModel * model = temArr[0];
+            weakSelf.chuxuInfo = model;
+            [self setChuxuKaData];
+        }else{
+            
+        }
+    }];
 }
-
-- (void)pushCardVCWithType:(MCBankCardType)cardType
-{
+- (IBAction)tixianAction:(id)sender{
     MCCardManagerController *vc = [[MCCardManagerController alloc] init];
-    vc.selectCard = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
-        
-    };
-    if (cardType == MCBankCardTypeXinyongka) {
-        vc.titleString = @"选择信用卡";
-    } else {
-        vc.titleString = @"选择储蓄卡";
-    }
+    vc.titleString = @"选择储蓄卡";
     [self.navigationController pushViewController:vc animated:YES];
-    vc.selectCard = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
+    vc.selectCardBlock = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
         if (type == 0) {
-//            self.xinyongInfo = cardModel;
+
         } else {
-//            self.chuxuInfo = cardModel;
+            self.chuxuInfo = cardModel;
+            [self setChuxuKaData];
         }
     };
 }
 
-- (IBAction)tixianRequestLast:(id)sender {
 
+-(void)setChuxuKaData{
+    MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:self.chuxuInfo.bankName];
+    self.bankLogo.image = ii.logo;
+    NSString *cardNo = self.chuxuInfo.bankCardNo;
+    if (cardNo && cardNo.length > 4) {
+        NSString *bank = [NSString stringWithFormat:@"%@ (%@)",self.chuxuInfo.bankName,[cardNo substringFromIndex:cardNo.length-4]];
+        self.bankLbl.text = bank;
+    }
+}
+
+- (IBAction)tixianRequestLast:(id)sender {
+    NSString * url1 = @"/api/v1/player/wallet/withdraw";
+    if ([self.inputPrice.text doubleValue] <=0) {
+        [MCToast showMessage:@"请输入提现金额"];
+        return;
+    }
+    if (!self.chuxuInfo) {
+        [MCToast showMessage:@"请选择提现储蓄卡"];
+        return;
+    }
+//    "amount": 0,
+//    "debitCardId": 0
+    __weak typeof(self) weakSelf = self;
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:url1 parameters:@{@"amount":self.inputPrice.text,@"debitCardId":self.chuxuInfo.id} ok:^(NSDictionary * _Nonnull respDic) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"操作成功"];
+        });
+        [weakSelf clicktixianjiluAction];
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
     
 /*
@@ -105,7 +123,4 @@
 }
 */
 
-- (IBAction)tixianAction:(id)sender {
-    [MCPagingStore pagingURL:rt_card_list];
-}
 @end

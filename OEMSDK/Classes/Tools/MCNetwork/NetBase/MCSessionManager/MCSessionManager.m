@@ -295,7 +295,13 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 
         NSString *errorStr = errorDict[@"message"];
         [MCToast showMessage:errorStr];
-
+        
+        if ([errorStr isEqualToString:@"无法获得当前登陆用户"]) {
+            [MCApp userLogout];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MCToast showMessage:@"无法获得当前登陆用户"];
+            });
+        }
         
         return;
         if (error.code == -1001) { //请求超时

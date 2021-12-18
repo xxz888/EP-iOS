@@ -11,6 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDWallDetailTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *eventTag;
+@property (weak, nonatomic) IBOutlet UILabel *eventTime;
+@property (weak, nonatomic) IBOutlet UILabel *eventPrice;
 
 @end
 

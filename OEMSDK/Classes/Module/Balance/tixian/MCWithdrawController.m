@@ -255,7 +255,7 @@
     vc.titleString = @"选择储蓄卡";
     [self.navigationController pushViewController:vc animated:YES];
     __weak typeof(self) weakSelf = self;
-    vc.selectCard = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
+    vc.selectCardBlock = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
         self.withDrawType = @"card";
         MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:cardModel.bankName];
         weakSelf.bankLogoImgView.image = ii.logo;

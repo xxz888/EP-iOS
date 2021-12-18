@@ -19,7 +19,7 @@
     [super viewDidLoad];
     [self setNavigationBarTitle:@"支付" tintColor:UIColor.whiteColor];
 
-    [self.payBtn setBackgroundColor:[UIColor qmui_colorWithHexString:@"##E5E5E5"]];
+    [self.payBtn setBackgroundColor:[UIColor qmui_colorWithHexString:@"#E5E5E5"]];
     self.payBtn.userInteractionEnabled = NO;
 }
 - (IBAction)selectAction:(id)sender {

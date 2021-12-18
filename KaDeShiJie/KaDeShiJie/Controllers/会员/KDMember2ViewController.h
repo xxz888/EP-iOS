@@ -11,6 +11,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDMember2ViewController : MCBaseViewController
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *zhifubaoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weixinBtn;
+@property (weak, nonatomic) IBOutlet UIButton *chuxukaBtn;
+@property (weak, nonatomic) IBOutlet UIButton *xinyongkaBtn;
+
+
+
+
 
 @end
 

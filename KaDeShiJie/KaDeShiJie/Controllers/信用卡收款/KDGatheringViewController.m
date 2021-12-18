@@ -418,7 +418,7 @@
         vc.titleString = @"选择储蓄卡";
     }
     [self.navigationController pushViewController:vc animated:YES];
-    vc.selectCard = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
+    vc.selectCardBlock = ^(MCBankCardModel * _Nonnull cardModel, NSInteger type) {
         if (type == 0) {
             self.xinyongInfo = cardModel;
         } else {

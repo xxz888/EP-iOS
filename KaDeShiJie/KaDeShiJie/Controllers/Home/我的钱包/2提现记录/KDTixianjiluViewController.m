@@ -10,6 +10,7 @@
 #import "KDTixianjiluTableViewCell.h"
 
 @interface KDTixianjiluViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *yitixianjineLbl;
 @property (nonatomic ,strong)NSMutableArray * jiluArray;
 @end
 
@@ -27,35 +28,22 @@
     self.jiluArray = [[NSMutableArray alloc]init];
     [self requestData];
 }
+
 -(void)requestData{
-//    __weak __typeof(self)weakSelf = self;
-//    NSString * url1 = @"/api/v1/player/wallet/history?event=Withdraw";
-//    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-//        [weakSelf.jiluArray removeAllObjects];
-//        [weakSelf.jiluArray addObjectsFromArray:resp];
-//        [weakSelf.tableView reloadData];
-//    }];
-//
-//
+
   __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/wallet/withdraw";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        
         [weakSelf.jiluArray removeAllObjects];
         [weakSelf.jiluArray addObjectsFromArray:resp];
         [weakSelf.tableView reloadData];
     }];
     
-//    {
-//        "bank": "ICBC",
-//        "bankCardId": 0,
-//        "bankCardNo": "string",
-//        "createdTime": "2021-12-06T08:22:02.691Z",
-//        "id": 0,
-//        "memberId": 0,
-//        "modifyTime": "2021-12-06T08:22:02.691Z",
-//        "orderId": "string",
-//        "state": "Close"
-//      }
+    NSString * url2 = @"/api/v1/player/wallet";
+    [self.sessionManager mc_GET:url2 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        weakSelf.yitixianjineLbl.text =   [NSString stringWithFormat:@"已提现金额(元）    %.2f",[resp[@"historyWithdrawAmount"] doubleValue]];
+    }];
 }
 
 #pragma mark - QMUITableViewDataSource
@@ -76,6 +64,25 @@
     cell.eventPrice.text = [NSString stringWithFormat:@"%.2f",[dic[@"amount"] doubleValue]];
     cell.eventTime.text = dic[@"createdTime"];
     cell.eventStatus.text = dic[@"state"];
+    
+//    Close, Failed, Process, Successful, Unpaid
+    if ([dic[@"state"] isEqualToString:@"Successful"]) {
+        cell.eventStatus.text = @"已成功";
+        cell.eventStatus.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
+    } else if ([dic[@"state"] isEqualToString:@"Failed"]) {
+        cell.eventStatus.text = @"已失败";
+        cell.eventStatus.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    }  else if ([dic[@"state"] isEqualToString:@"Close"]) {
+        cell.eventStatus.text = @"已关闭";
+        cell.eventStatus.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
+    } else if ([dic[@"state"] isEqualToString:@"Process"]) {
+        cell.eventStatus.text = @"处理中";
+        cell.eventStatus.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
+    } else if ([dic[@"state"] isEqualToString:@"Unpaid"]) {
+        cell.eventStatus.text = @"处理中";
+        cell.eventStatus.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
+    }
+    
     
     
     //    {

@@ -44,14 +44,14 @@
                                 <constraint firstAttribute="height" constant="1" id="q47-Ev-6qF"/>
                             </constraints>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kd_home_top_bg" translatesAutoresizingMaskIntoConstraints="NO" id="cg7-ku-hya">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BANK_default" translatesAutoresizingMaskIntoConstraints="NO" id="cg7-ku-hya">
                             <rect key="frame" x="96" y="16" width="18" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="8cc-T5-d26"/>
                                 <constraint firstAttribute="width" constant="18" id="t9m-Ua-6mA"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工商银行:6210  ****  ****  ****710" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1v-08-L3f">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请添加储蓄卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1v-08-L3f">
                             <rect key="frame" x="119" y="16.5" width="255" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
@@ -220,15 +220,20 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wG-VM-g49">
-                    <rect key="frame" x="16" y="306" width="382" height="45"/>
+                    <rect key="frame" x="16" y="306" width="382" height="50"/>
                     <color key="backgroundColor" red="0.9882352941176471" green="0.60784313725490191" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="06D-Ee-nML"/>
+                        <constraint firstAttribute="height" constant="50" id="06D-Ee-nML"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="提现">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="tixianRequestLast:" destination="-1" eventType="touchUpInside" id="Z45-ko-nMD"/>
                     </connections>
@@ -251,7 +256,7 @@
         </view>
     </objects>
     <resources>
-        <image name="kd_home_top_bg" width="540" height="325"/>
+        <image name="BANK_default" width="100" height="100"/>
         <image name="左箭头 拷贝 3" width="6" height="11.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -98,8 +98,8 @@
     if (self.currentIndex == 0 && self.daijikas.count == 1) {
         model = self.daijikas[0];
         [self.navigationController qmui_popViewControllerAnimated:YES completion:^{
-            if (self.selectCard) {
-                self.selectCard(model, self.currentIndex);
+            if (self.selectCardBlock) {
+                self.selectCardBlock(model, self.currentIndex);
             }
         }];
         return NO;
@@ -206,12 +206,12 @@
     } else {
         model = self.jiejikas[indexPath.row];
     }
-    if (!self.selectCard) {
+    if (!self.selectCardBlock) {
         return;
     }
     [self.navigationController qmui_popViewControllerAnimated:YES completion:^{
-        if (self.selectCard) {
-            self.selectCard(model, self.currentIndex);
+        if (self.selectCardBlock) {
+            self.selectCardBlock(model, self.currentIndex);
         }
         
     }];
