@@ -46,6 +46,37 @@
     }
 }
 
+- (IBAction)zhifuAction:(id)sender {
+    
+    
+    
+    __weak typeof(self) weakSelf = self;
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/diamond" parameters:@{@"payType":@"Alipay"} ok:^(NSDictionary * _Nonnull resp) {
+        NSString * orderId = resp[@"orderId"];
+        NSString *  link = resp[@"link"];
+        
+        
+        NSString * url1 = [NSString stringWithFormat:@"https://wukatest.flyaworld.com:443/api/v1/player/third/pay?orderId=%@",orderId];
+        [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+            [MCToast showMessage:@"支付成功，你已经成为钻石会员"];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }];
+        
+//
+//        MCWebViewController *web = [[MCWebViewController alloc] init];
+//        web.urlString = link;
+//        web.title = @"支付宝支付";
+//        [weakSelf.navigationController pushViewController:web animated:YES];
+        
+        
+        
+        
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
 
 
 

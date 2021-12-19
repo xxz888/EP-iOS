@@ -127,16 +127,50 @@
     }
     
     //发短信
-    NSDictionary *param = @{@"phone":self.userInfo.phone,
-                            @"brand_id":BCFI.brand_id};
-    
-    [MCSessionManager.shareManager mc_GET:@"/notice/app/sms/send" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        [MCToast showMessage:@"验证码已发送，若未收到请稍等或检查手机网络后重试"];
-        MCSMSController *vc = [[MCSMSController alloc] initWithType:self.type password:self.fieldNew.text];
-        [self.navigationController pushViewController:vc animated:YES];
+//    NSDictionary *param = @{@"phone":self.userInfo.phone,
+//                            @"brand_id":BCFI.brand_id};
+//
+//    [MCSessionManager.shareManager mc_GET:@"/notice/app/sms/send" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        [MCToast showMessage:@"验证码已发送，若未收到请稍等或检查手机网络后重试"];
+//        MCSMSController *vc = [[MCSMSController alloc] initWithType:self.type password:self.fieldNew.text];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }];
+    kWeakSelf(self)
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=Login&phone=%@",self.userInfo.phone];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:@"验证码已发送"];
+        [weakself changeSendBtnText];
     }];
+}
+- (void)changeSendBtnText {
     
-    
+    __block NSInteger second = 60;
+    // 全局队列 默认优先级
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    // 定时器模式 事件源
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    // NSEC_PER_SEC是秒 *1是每秒
+    dispatch_source_set_timer(timer, dispatch_walltime(NULL, 0), 1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    //设置响应dispatch源事件的block，在dispatch源指定的队列上运行
+    dispatch_source_set_event_handler(timer, ^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+//            if (second >= 0) {
+//                
+//                [self.codeBtn setTitle:[NSString stringWithFormat:@"%lds", second] forState:UIControlStateNormal];
+//                [self.codeBtn setUserInteractionEnabled:NO];
+//                second--;
+//            }else {
+//                dispatch_source_cancel(timer);
+//                [self.codeBtn setTitle:@"重新发送" forState:(UIControlStateNormal)];
+//                [self.codeBtn setUserInteractionEnabled:YES];
+//            }
+            
+        });
+    });
+    // 启动源
+    dispatch_resume(timer);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

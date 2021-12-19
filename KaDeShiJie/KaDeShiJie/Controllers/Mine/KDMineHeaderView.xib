@@ -358,7 +358,7 @@
                 <outlet property="topContentView" destination="pdg-6j-e63" id="mFv-Lh-xWd"/>
                 <outlet property="wodekefuView" destination="Mc5-eB-7cw" id="RKP-PB-7xp"/>
             </connections>
-            <point key="canvasLocation" x="-217.39130434782609" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="42" y="-9"/>
         </view>
     </objects>
     <resources>

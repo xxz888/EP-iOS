@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"资讯" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"推广" tintColor:[UIColor whiteColor]];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.rowHeight = 300;

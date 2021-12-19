@@ -38,6 +38,10 @@
 		04CDE20F274E7D580038A649 /* KDTixianjiluTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDE20D274E7D580038A649 /* KDTixianjiluTableViewCell.xib */; };
 		04F224C7276B8B8700EA2DB7 /* KDMember2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F224C5276B8B8700EA2DB7 /* KDMember2ViewController.m */; };
 		04F224C8276B8B8700EA2DB7 /* KDMember2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F224C6276B8B8700EA2DB7 /* KDMember2ViewController.xib */; };
+		04F224CD276E2F1000EA2DB7 /* KDPopularizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F224CB276E2F1000EA2DB7 /* KDPopularizeViewController.m */; };
+		04F224CE276E2F1000EA2DB7 /* KDPopularizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F224CC276E2F1000EA2DB7 /* KDPopularizeViewController.xib */; };
+		04F224D2276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F224D0276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m */; };
+		04F224D3276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F224D1276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib */; };
 		180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */; };
 		180B17962575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B17942575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib */; };
 		180B17A22575EBD8006D3D13 /* KDKongKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17A02575EBD8006D3D13 /* KDKongKaViewController.m */; };
@@ -360,6 +364,12 @@
 		04F224C4276B8B8700EA2DB7 /* KDMember2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMember2ViewController.h; sourceTree = "<group>"; };
 		04F224C5276B8B8700EA2DB7 /* KDMember2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMember2ViewController.m; sourceTree = "<group>"; };
 		04F224C6276B8B8700EA2DB7 /* KDMember2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMember2ViewController.xib; sourceTree = "<group>"; };
+		04F224CA276E2F1000EA2DB7 /* KDPopularizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPopularizeViewController.h; sourceTree = "<group>"; };
+		04F224CB276E2F1000EA2DB7 /* KDPopularizeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPopularizeViewController.m; sourceTree = "<group>"; };
+		04F224CC276E2F1000EA2DB7 /* KDPopularizeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPopularizeViewController.xib; sourceTree = "<group>"; };
+		04F224CF276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPPopularizeTableViewCell.h; sourceTree = "<group>"; };
+		04F224D0276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPPopularizeTableViewCell.m; sourceTree = "<group>"; };
+		04F224D1276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPPopularizeTableViewCell.xib; sourceTree = "<group>"; };
 		180B17922575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPlanKongKaPreviewViewController.h; sourceTree = "<group>"; };
 		180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPlanKongKaPreviewViewController.m; sourceTree = "<group>"; };
 		180B17942575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPlanKongKaPreviewViewController.xib; sourceTree = "<group>"; };
@@ -905,6 +915,19 @@
 				04B70017275C5A5500A755B8 /* KDMineKehuViewController.xib */,
 			);
 			path = "我的客户";
+			sourceTree = "<group>";
+		};
+		04F224C9276E2EC800EA2DB7 /* 直推间推 */ = {
+			isa = PBXGroup;
+			children = (
+				04F224CA276E2F1000EA2DB7 /* KDPopularizeViewController.h */,
+				04F224CB276E2F1000EA2DB7 /* KDPopularizeViewController.m */,
+				04F224CC276E2F1000EA2DB7 /* KDPopularizeViewController.xib */,
+				04F224CF276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.h */,
+				04F224D0276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m */,
+				04F224D1276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib */,
+			);
+			path = "直推间推";
 			sourceTree = "<group>";
 		};
 		180B17982575E9ED006D3D13 /* 空卡还款 */ = {
@@ -1549,6 +1572,7 @@
 		1BC5E3BE250343D60064CA30 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				04F224C9276E2EC800EA2DB7 /* 直推间推 */,
 				04B70014275C59EE00A755B8 /* 我的客户 */,
 				187CE1DF266CEC0E00CDB9DB /* 积分商城 */,
 				1BC5E3CA250344540064CA30 /* KDMineViewController.h */,
@@ -1988,6 +2012,7 @@
 				EE8D73462509D725007AF076 /* wza.xcassets in Resources */,
 				1BD2F224250A3B590061580C /* KDProfitViewCell.xib in Resources */,
 				1B937087251CC89600E51EC9 /* KDEmptyCardRefundViewCell.xib in Resources */,
+				04F224D3276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib in Resources */,
 				04318A04274D334400D9D959 /* KDHomeBillManagerTableViewCell.xib in Resources */,
 				187D8B1D2565FC900097A650 /* KDTrandingRecordViewCell.xib in Resources */,
 				1B9C9B1925075D2F00EE0819 /* KDMsgViewCell.xib in Resources */,
@@ -2002,6 +2027,7 @@
 				1BAE2A7E251E168C00E7E0DF /* KDEditDirectCardViewController.xib in Resources */,
 				180B17962575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib in Resources */,
 				180B990E2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib in Resources */,
+				04F224CE276E2F1000EA2DB7 /* KDPopularizeViewController.xib in Resources */,
 				6F7628B427634BFF00E03BFA /* KDPayNewViewController.xib in Resources */,
 				1B86CFA82509D60000AD09F7 /* KDExtendEarnViewController.xib in Resources */,
 				1B9723A9251C41ED00F4120C /* KDDirectRefundViewCell.xib in Resources */,
@@ -2092,6 +2118,7 @@
 				1B1C0EAD2508B12A0009CDC6 /* KDTopDelegateViewController.m in Sources */,
 				1BCF5E1C2514B4770095328E /* KDPushModel.m in Sources */,
 				6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */,
+				04F224D2276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m in Sources */,
 				187D8B212565FC900097A650 /* KDTrandingRecordViewCell.m in Sources */,
 				04F224C7276B8B8700EA2DB7 /* KDMember2ViewController.m in Sources */,
 				187D8B1A2565FC900097A650 /* KDTotalAmountModel.m in Sources */,
@@ -2266,6 +2293,7 @@
 				1BD3DC15250B148A00A5D148 /* KDProfitDirectPushViewCell.m in Sources */,
 				1BD3DC0F250B11B500A5D148 /* KDProfitDirectPushEmptyView.m in Sources */,
 				1B1C0EBC2508C4C90009CDC6 /* KDCreditManagerHeaderView.m in Sources */,
+				04F224CD276E2F1000EA2DB7 /* KDPopularizeViewController.m in Sources */,
 				1B543D27250F3FC200076628 /* KDCreditExtensionModel.m in Sources */,
 				1B808D5E251379EA0095926E /* KDExtendPerformanceModel.m in Sources */,
 				1B937058251C757200E51EC9 /* KDPlanTopViewCell.m in Sources */,

@@ -42,7 +42,7 @@
 
 
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     
 }
 -(void)clickRightBtnAction{
@@ -64,10 +64,12 @@
     }
 
     // 发送验证码
-    NSDictionary *params = @{@"phone":phone, @"brand_id":MCModelStore.shared.brandConfiguration.brand_id};
-//    [[MCSessionManager shareManager] mc_GET:@"/notice/app/sms/send" parameters:params ok:^(NSDictionary * _Nonnull okResponse) {
-//        [self changeSendBtnText];
-//    }];
+    kWeakSelf(self)
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=ModifyPassword&phone=%@",phone];
+    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:@"验证码已发送"];
+        [weakself changeSendBtnText];
+    }];
 }
 
 
@@ -136,21 +138,64 @@
         return;
     }
     if ([self.pwd1Tf.text isEqualToString:self.pwd2Tf.text] ) {
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        [params setValue:self.phoneTf.text forKey:@"phone"];
-        [params setValue:self.pwd1Tf.text forKey:@"password"];
-        [params setValue:self.codeTf.text forKey:@"vericode"];
-        [params setValue:SharedConfig.brand_id forKey:@"brandId"];
 
         __weak typeof(self) weakSelf = self;
-        [[MCSessionManager shareManager] mc_POST:@"/user/app/password/update" parameters:params ok:^(NSDictionary * _Nonnull resp) {
-//            if ([resp[@"code"] isEqualToString:@"000000"]) {
-//                [MCToast showMessage:@"修改成功"];
-//                [weakSelf.navigationController popViewControllerAnimated:YES];
-//            }
+
+        NSDictionary * dic =@{
+            @"code":self.codeTf.text,
+            @"password":self.pwd1Tf.text,
+            @"phone": self.phoneTf.text
+        };
+ 
+        
+        
+        [self.sessionManager mc_put:@"/api/v1/player/user/modify/pwd" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MCToast showMessage:@"密码修改成功"];
+            });
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        } other:^(NSDictionary * _Nonnull resp) {
+            
+        } failure:^(NSError * _Nonnull error) {
+            
         }];
-    }else{
-        [MCToast showMessage:@"两次密码不一致"];
     }
+}
+-(NSString *)convertToJsonData:(NSDictionary *)dict
+
+{
+
+    NSError *error;
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+
+    NSString *jsonString;
+
+    if (!jsonData) {
+
+        NSLog(@"%@",error);
+
+    }else{
+
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    }
+
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+
+    NSRange range = {0,jsonString.length};
+
+    //去掉字符串中的空格
+
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+
+    NSRange range2 = {0,mutStr.length};
+
+    //去掉字符串中的换行符
+
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+
+    return mutStr;
+
 }
 @end

@@ -77,8 +77,7 @@
                             </constraints>
                             <state key="normal" image="kd_mine_referrer_phone"/>
                             <connections>
-                                <action selector="guanfangkefuAction:" destination="-1" eventType="touchUpInside" id="ofO-SG-auS"/>
-                                <action selector="zhituiTelAction:" destination="-1" eventType="touchUpInside" id="8fT-f7-svm"/>
+                                <action selector="guanfangkefuAction:" destination="-1" eventType="touchUpInside" id="auj-8j-4zL"/>
                             </connections>
                         </button>
                     </subviews>

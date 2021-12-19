@@ -129,45 +129,33 @@ static MCSessionManager *_singleManager = nil;
           ok:(nullable MCSMNormalHandler)okResp
        other:(nullable MCSMNormalHandler)otherResp
      failure:(nullable MCSMErrorHandler)failure {
-
+//
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     }
-    __weak typeof(self) weakSelf = self;
-    [MCLoading show];
-    NSString *full = [self getFullUrlWithShort:shortURLString];
-    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------请求参数-------------\n%@\n-------------请求Token-------------\n%@\n-------------请求DeviceId-------------\n%@\n",full, parameters,TOKEN, SharedDefaults.deviceid);
-    
-    NSURLSessionDataTask *task = [self PUT:full parameters:parameters headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
-        [MCLoading hidden];
-        okResp(@{});
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-    
-    return task;
-    
-    
-//    NSURLSessionDataTask *task = [self GET:full parameters:parameters headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 //
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+  
+    
+    // 设置HTTPBody
+    
+
+//    __weak typeof(self) weakSelf = self;
+//    [MCLoading show];
+//    NSString *full = [self getFullUrlWithShort:shortURLString];
+//    if ([full containsString:@"player/user/modify/pwd"]) {
+//        [self.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error){
+//            return [self convertToJsonData:parameters];
+//         }];
+//
+//    }
+//    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------请求参数-------------\n%@\n-------------请求Token-------------\n%@\n-------------请求DeviceId-------------\n%@\n",full, parameters,TOKEN, SharedDefaults.deviceid);
+//
+//    NSURLSessionDataTask *task = [self PUT:full parameters:nil headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
 //        [MCLoading hidden];
-//
-//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//            if (responseObject[@"message"]) {
-//                [MCToast showMessage:responseObject[@"messege"]];
-//            }else{
-//                okResp(responseObject);
-//            }
-//        }else{
-//            okResp(responseObject);
-//        }
-//
-//
+//        okResp(@{});
 //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        //MCLog(@"%@",error);
 //        [MCLoading hidden];
 //        [self handleHTTPError:error failureHandler:failure];
 //        if (self.delegate) {
@@ -176,6 +164,63 @@ static MCSessionManager *_singleManager = nil;
 //    }];
 //
 //    return task;
+//
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+
+    NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:[self getFullUrlWithShort:shortURLString] parameters:parameters error:nil];
+    request.timeoutInterval = 10.f;
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:TOKEN forHTTPHeaderField:@"Authorization"];
+    [request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
+    [request setValue:@"ios" forHTTPHeaderField:@"platform"];
+    [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSData *data = [[self convertToJsonData:parameters] dataUsingEncoding:NSUTF8StringEncoding];
+
+
+    [request setHTTPBody:data];
+    NSLog(@"%@",TOKEN);
+ 
+    [MCLoading show];
+    NSString * full= [self getFullUrlWithShort:shortURLString];
+    
+
+    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
+
+    NSURLSessionDataTask *task = [manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
+        [MCLoading hidden];
+        if (!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            NSInteger code = [httpResponse statusCode];
+            if (code == 200) {
+                if (responseObject[@"message"]) {
+                    [MCToast showMessage:responseObject[@"messege"]];
+                }else{
+                    okResp(responseObject);
+                }
+            }else if (code == 204){
+                [MCToast showMessage:@"操作成功"];
+                okResp(@{});
+            }else{
+                [MCToast showMessage:responseObject[@"messege"]];
+            }
+        } else {
+            
+            [MCToast showMessage:responseObject[@"message"]];
+
+            NSLog(@"请求失败error=%@", error);
+        }
+    }];
+    [task resume];
+
+    return task;
 }
 
 
@@ -479,10 +524,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     m.requestSerializer.timeoutInterval = 30.f;
     m.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/htLY", @"text/json", @"text/plain", @"text/javascript", @"text/xLY", @"image/*" ,nil];
     [m.requestSerializer setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    // 设置HTTPBody
-//    [m.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *parameters, NSError *__autoreleasing *error){
-//         return soapStr;
-//     }];
 
     return m;
 }
@@ -519,7 +560,43 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 - (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp other:(MCSMNormalHandler)otherResp {
     return [self mc_GET:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
 }
+-(NSString *)convertToJsonData:(NSDictionary *)dict
 
+{
+
+    NSError *error;
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+
+    NSString *jsonString;
+
+    if (!jsonData) {
+
+        NSLog(@"%@",error);
+
+    }else{
+
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    }
+
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+
+    NSRange range = {0,jsonString.length};
+
+    //去掉字符串中的空格
+
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+
+    NSRange range2 = {0,mutStr.length};
+
+    //去掉字符串中的换行符
+
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+
+    return mutStr;
+
+}
 @end
 
 

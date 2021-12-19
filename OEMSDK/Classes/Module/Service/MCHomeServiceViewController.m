@@ -97,15 +97,11 @@
     }
 }
 - (IBAction)guanfangkefuAction:(id)sender {
-    if (SharedBrandInfo.brandPhone) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedBrandInfo.brandPhone]]];
-    } else {
-        [MCToast showMessage:@"获取客服电话失败！"];
-    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"400-6666-085"]]];
 }
 
 - (IBAction)kefuAction:(id)sender {
-    [MCServiceStore pushMeiqiaVC];
+//    [MCServiceStore pushMeiqiaVC];
 }
 #pragma mark === 永久闪烁的动画 ======
 

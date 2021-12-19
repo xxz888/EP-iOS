@@ -104,6 +104,11 @@
     [self.view addSubview:self.webView];
     [self.view addSubview:self.progress];
     [self loadWebRequest];
+    
+    if ([self.title isEqualToString:@"支付宝支付"]) {
+     
+    }
+    
 }
 
 -(void)loadWebRequest{

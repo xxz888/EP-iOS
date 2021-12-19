@@ -59,8 +59,7 @@
         self.bannerHigCons.constant = h;
     };
     
-    self.phoneLabel.text = SharedDefaults.phone;
-    self.nameLabel.text = SharedDefaults.nickname;
+ 
     //推广二维码
     [self.erweimaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCPagingStore pagingURL:rt_share_single];

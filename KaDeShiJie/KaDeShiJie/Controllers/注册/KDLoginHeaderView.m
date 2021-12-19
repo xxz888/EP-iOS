@@ -175,10 +175,10 @@
     NSString *phone = self.phoneView.text;
     NSString *code = self.codeView.text;
     __weak typeof(self) weakSelf = self;
-    if (phone.length != 11) {
-        [MCToast showMessage:@"手机号码错误,请重新核对并输入正确的手机号"];
-        return;
-    }
+//    if (phone.length != 11) {
+//        [MCToast showMessage:@"手机号码错误,请重新核对并输入正确的手机号"];
+//        return;
+//    }
     
     //密码登录
     if (self.segmentBtn1.selected) {

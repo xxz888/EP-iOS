@@ -32,6 +32,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.tabBarController.tabBar setHidden:NO];
+    [self reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -74,8 +75,23 @@
             [self.mc_tableview.mj_header endRefreshing];
         }
         
-        SharedUserInfo = userInfo;
-        self.header.nameLabel.text = SharedUserInfo.nickname || SharedUserInfo.nickname.length != 0 ? SharedUserInfo.nickname :SharedUserInfo.realname;
+        //
+        NSString * level = @"";
+        if (userInfo.level) {
+            if ([userInfo.level isEqualToString:@"Normal"]) {
+                level = @"普通用户";
+            }else{
+                level = @"钻石用户";
+            }
+        }
+     
+    
+        self.header.phoneLabel.text = userInfo.phone;
+        self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",userInfo.nickname,level];
+        
+        
+//        SharedUserInfo = userInfo;
+//        self.header.nameLabel.text = SharedUserInfo.nickname || SharedUserInfo.nickname.length != 0 ? SharedUserInfo.nickname :SharedUserInfo.realname;
         
 //        NSString *firstName = [userInfo.realname substringWithRange:NSMakeRange(0, 1)];
 //        if (userInfo.realname.length == 2) {
@@ -84,16 +100,16 @@
 //            NSString *lastName = [userInfo.realname substringFromIndex:userInfo.realname.length-1];
 //            self.header.nameLabel.text = [NSString stringWithFormat:@"%@*%@", firstName, lastName];
 //        }
-        NSString *first = [userInfo.phone substringWithRange:NSMakeRange(0, 3)];
-        NSString *last = [userInfo.phone substringWithRange:NSMakeRange(7, 4)];
-        self.header.phoneLabel.text = [NSString stringWithFormat:@"%@****%@", first, last];
-        self.header.idLabel.text = [NSString stringWithFormat:@"ID：%@", userInfo.userid];
-
-
-        [self.header getUserGradeName];
-        
-        MCUserHeaderView * mcUserHeaderView = [self.header viewWithTag:2001];
-        [mcUserHeaderView fetchHeaderPath];
+//        NSString *first = [userInfo.phone substringWithRange:NSMakeRange(0, 3)];
+//        NSString *last = [userInfo.phone substringWithRange:NSMakeRange(7, 4)];
+//        self.header.phoneLabel.text = [NSString stringWithFormat:@"%@****%@", first, last];
+//        self.header.idLabel.text = [NSString stringWithFormat:@"ID：%@", userInfo.userid];
+//
+//
+//        [self.header getUserGradeName];
+//
+//        MCUserHeaderView * mcUserHeaderView = [self.header viewWithTag:2001];
+//        [mcUserHeaderView fetchHeaderPath];
     }];
 }
 
