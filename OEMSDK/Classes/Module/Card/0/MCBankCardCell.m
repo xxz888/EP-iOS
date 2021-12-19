@@ -62,8 +62,10 @@
         [MCToast showMessage:@"发现未识别的卡"];
     }
     
-    NSString *subCardString = [model.bankCardNo substringWithRange:NSMakeRange(4, model.bankCardNo.length - 3 - 4)];
-    self.cardNo.text = [model.bankCardNo stringByReplacingOccurrencesOfString:subCardString withString:@" **** **** **** "];
+    NSString *subCardString = model.bankCardNo;
+    
+//    [model.bankCardNo substringWithRange:NSMakeRange(4, model.bankCardNo.length - 3 - 4)];
+    self.cardNo.text = subCardString;//[model.bankCardNo stringByReplacingOccurrencesOfString:subCardString withString:@" **** **** **** "];
     
 //    self.cardDetail.text = model.cardType;
     

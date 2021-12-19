@@ -148,6 +148,8 @@
     titleLabel.textColor = UIColor.whiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
+    
+    [self popFirstLogin];
 
 }
 

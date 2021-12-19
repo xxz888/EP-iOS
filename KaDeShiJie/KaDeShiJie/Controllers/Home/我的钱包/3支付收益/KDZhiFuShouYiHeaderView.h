@@ -11,6 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDZhiFuShouYiHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *zongshouyi;
+@property (weak, nonatomic) IBOutlet UILabel *dangrishouyi;
+@property (weak, nonatomic) IBOutlet UILabel *dangyueshouyi;
+@property (weak, nonatomic) IBOutlet UILabel *huankuanfenrun;
+@property (weak, nonatomic) IBOutlet UILabel *kuaijiefenrun;
 
 @end
 

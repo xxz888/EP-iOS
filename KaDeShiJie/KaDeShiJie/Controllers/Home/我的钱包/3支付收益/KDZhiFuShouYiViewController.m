@@ -56,7 +56,25 @@
     titleLabel.textColor = UIColor.whiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
+    [self requestData];
 }
+
+-(void)requestData{
+    __weak __typeof(self)weakSelf = self;
+    NSString * url1 = @"/api/v1/player/wallet/commission/payment";
+    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+
+            weakSelf.headerView.zongshouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"totalCommission"]doubleValue]];
+            weakSelf.headerView.dangrishouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"todayCommission"]doubleValue]];
+            weakSelf.headerView.dangyueshouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"monthCommission"]doubleValue]];
+ 
+        weakSelf.headerView.kuaijiefenrun.text = [NSString stringWithFormat:@"%.2f",[resp[@"consumptionCommission"]doubleValue]];
+        weakSelf.headerView.huankuanfenrun.text = [NSString stringWithFormat:@"%.2f",[resp[@"receivePaymentCommission"]doubleValue]];
+
+
+    }];
+}
+
 -(void)leftItemClick{
     [self.navigationController popViewControllerAnimated:YES];
 }

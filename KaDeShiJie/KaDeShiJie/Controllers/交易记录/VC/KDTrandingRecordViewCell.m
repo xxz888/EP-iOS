@@ -43,11 +43,15 @@
 - (void)setStartDic:(NSDictionary *)startDic
 {
     
-    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:startDic[@"creditCard"][@"bankName"]];
-    self.iconView.image = info.logo;
+    if (startDic[@"creditCard"]) {
+        MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:startDic[@"creditCard"][@"bankName"]];
+        self.iconView.image = info.logo;
+        self.nameLabel.text = startDic[@"creditCard"][@"bankName"];
+        self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [startDic[@"creditCard"][@"bankCardNo"] substringFromIndex:[startDic[@"creditCard"][@"bankCardNo"] length] - 4]];
+    }
+   
     
-    self.nameLabel.text = startDic[@"creditCard"][@"bankName"];
-    self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [startDic[@"creditCard"][@"bankCardNo"] substringFromIndex:[startDic[@"creditCard"][@"bankCardNo"] length] - 4]];
+
     self.statusLabel.text = startDic[@"planStatus"];
     NSString *desStr = [NSString stringWithFormat:@"已还%@元 | 总额%@元", startDic[@"alreadyRepaymentAmount"],startDic[@"repaymentAmount"]];
     NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];

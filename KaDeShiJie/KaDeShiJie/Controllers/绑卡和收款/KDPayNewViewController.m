@@ -114,27 +114,19 @@
     __weak typeof(self) weakSelf = self;
     [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/pre" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
         //发短信
-        if ([respDic[@"state"] isEqualToString:@"Process"] ) {
+        if ([respDic[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"] ) {
             weakSelf.stackViewHeight.constant = 320;
             weakSelf.smsView.hidden = NO;
-            [MCToast showMessage:@"需要获取验证码来验证"];
+            [MCToast showMessage:@"需要填写验证码"];
             weakSelf.orderId = respDic[@"orderId"];
-        }
-        //完成
-        if ([respDic[@"state"] isEqualToString:@"Successful"] ) {
+        }else{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MCToast showMessage:@"操作成功"];
                 
             });
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }
 
-        }
-        //完成
-        if ([respDic[@"state"] isEqualToString:@"Unpaid"] ) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"订单处理中"];
-            });
-        }
      
     } other:^(NSDictionary * _Nonnull respDic) {
         

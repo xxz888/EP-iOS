@@ -26,6 +26,8 @@
 #import "jintMyWallViewController.h"
 #import "KDTrandingRecordViewController.h"
 #import "MCManualRealNameController.h"
+#import "jintMyWallViewController.h"
+#import "UIView+Extension.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -61,7 +63,7 @@
         btn.imagePosition = QMUIButtonImagePositionTop;
     }
     
-    NSArray *titleArray = @[@"账单管理", @"申请办卡", @"实名认证", @"信誉检测"];
+    NSArray *titleArray = @[@"账单管理", @"申请办卡", @"实名认证", @"我的钱包"];
     for (int i = 0; i < 4; i++) {
         QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
         btn.imagePosition = QMUIButtonImagePositionTop;
@@ -109,6 +111,16 @@
     [self.msgView addSubview:cyView];
     self.cyView = cyView;
 //    [self getMessage];
+    
+    [self.bangkaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+
+    }];
+    
+    [self.huabeiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+
+    }];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -124,19 +136,39 @@
     if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
             switch (sender.tag) {
                 case 100:{
-//                    [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+                    [MCToast showMessage:@"暂未开放"];
                 }
                     break;
                 case 101:{
-                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
-                    vc.navTitle = @"信用卡还款";
-                    //订单类型（2为还款记录、3为空卡记录）
-                    vc.orderType = @"2";
-                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+                    
+                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                        if ([userInfo.certification integerValue] == 1) {
+                            KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
+                            vc.navTitle = @"信用卡还款";
+                            //订单类型（2为还款记录、3为空卡记录）
+                            vc.orderType = @"2";
+                            [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+                        }else{
+                            [MCToast showMessage:@"请先实名认证"];
+                            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+                        }
+                    }];
+                    
+                    
+                    
+
                 }
                     break;
                 case 102:
-                    [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
+                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                        if ([userInfo.certification integerValue] == 1) {
+                            [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
+                        }else{
+                            [MCToast showMessage:@"请先实名认证"];
+                            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+                        }
+                    }];
+               
                     break;
                 default:
                     break;
@@ -147,6 +179,7 @@
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
                 break;
             case 201: // 信用管理
+            { [MCToast showMessage:@"暂未开放"];}
                 break;
             case 202: // 实名认证
                 [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
@@ -158,15 +191,23 @@
                 }];
                
                 break;
-            case 203:
+            case 203:{
+                [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+
+            }
                 break;
-            case 204:
+            case 300:
+            { [MCToast showMessage:@"暂未开放"];}
+               
                 break;
-            case 205:
+            case 301:
+            { [MCToast showMessage:@"暂未开放"];}
                 break;
-            case 206:
+            case 302:
+            { [MCToast showMessage:@"暂未开放"];}
                 break;
-            case 207:
+            case 303:
+            { [MCToast showMessage:@"暂未开放"];}
                 break;
             default:
                 break;

@@ -223,13 +223,13 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="绑定信用卡" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-k5-SJS">
+                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="绑定信用卡" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-k5-SJS">
                             <rect key="frame" x="0.0" y="245" width="189" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="cKA-3c-VRj"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-GS-BQH">
+                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-GS-BQH">
                             <rect key="frame" x="195" y="245" width="187" height="80"/>
                         </imageView>
                     </subviews>
@@ -269,9 +269,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bangkaView" destination="31Z-k5-SJS" id="Zko-12-GyV"/>
                 <outlet property="cententBottomView" destination="wjI-4V-d9G" id="qmo-aq-DZo"/>
                 <outlet property="centerView" destination="NJr-rh-seA" id="8N9-fQ-5b3"/>
                 <outlet property="contentView" destination="Wem-cK-bkb" id="Zsr-Qn-Wbp"/>
+                <outlet property="huabeiView" destination="OEf-GS-BQH" id="s9I-xX-q3R"/>
                 <outlet property="topView" destination="3fR-TA-5bX" id="3d3-4t-sfD"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="59.263392857142854"/>

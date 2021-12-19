@@ -11,6 +11,7 @@
 @implementation MCBankStore
 
 + (MCBankCardInfo *)getBankCellInfoWithName:(NSString *)name {
+
     name = [name replaceAll:@"中国" target:@""];
     name = [name replaceAll:@"银行" target:@""];
 

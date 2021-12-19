@@ -11,6 +11,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDJiangliView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *zongshouyi;
+@property (weak, nonatomic) IBOutlet UILabel *dangrishouyi;
+@property (weak, nonatomic) IBOutlet UILabel *dangyueshouyi;
+
+@property (weak, nonatomic) IBOutlet UILabel *shuakayongjin;
+@property (weak, nonatomic) IBOutlet UILabel *huankuanyongjin;
+
+@property (weak, nonatomic) IBOutlet UILabel *fenxiangjiang;
+@property (weak, nonatomic) IBOutlet UILabel *tuanduizhuoyue;
+@property (weak, nonatomic) IBOutlet UILabel *ganen;
+@property (weak, nonatomic) IBOutlet UILabel *dailishoukuanyongjin;
+@property (weak, nonatomic) IBOutlet UILabel *dailihuankuanyongjin;
+@property (weak, nonatomic) IBOutlet UILabel *pipngjifenrun;
 
 @end
 

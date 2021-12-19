@@ -237,7 +237,7 @@
     [self.sessionManager mc_GET:url2 parameters:@{
         @"amount":self.money,
         @"creditCardId":self.xinyongInfo.id,
-        @"city":self.cityId
+        @"cityId":self.cityId
     } ok:^(NSDictionary * _Nonnull resp) {
         self.dataArray = [MCChannelModel mj_objectArrayWithKeyValuesArray:resp];
         [self.mc_tableview reloadData];

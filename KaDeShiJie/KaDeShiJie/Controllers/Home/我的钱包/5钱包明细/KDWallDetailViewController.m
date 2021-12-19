@@ -18,21 +18,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"提现记录" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"钱包明细" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
     [self.navigationController.navigationBar setShadowImage:nil];
 
     
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;
     [self.mc_tableview registerNib:[UINib nibWithNibName:@"KDWallDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDWallDetailTableViewCell"];
-        
+    
+    __weak typeof(self) weakSelf = self;
+    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf.mc_tableview.mj_header endRefreshing];
+    }];
     self.dataArray = [[NSMutableArray alloc]init];
-    __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/wallet/history";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:resp];
         [self.mc_tableview reloadData];
+        [weakSelf.mc_tableview.mj_header endRefreshing];
     }];
     
 }
@@ -89,15 +93,12 @@
     cell.eventTag.text = eventTag;
     
     cell.eventTime.text = dic[@"createdTime"];
-    cell.eventPrice.text = [NSString stringWithFormat:@"%.2f元",dic[@"amount"]];
+    cell.eventPrice.text = [NSString stringWithFormat:@"%@元",dic[@"amount"]];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
 }
-- (void)layoutTableView
-{
-    self.mc_tableview.frame = CGRectMake(0, 10, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
-}
+
 @end
