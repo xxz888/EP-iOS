@@ -37,15 +37,11 @@
         @{@"title":@"昵称",
           @"subTitle":SharedUserInfo.nickname ?:@"请填写昵称"},
     @{@"title":@"姓名",
-      @"subTitle":SharedUserInfo.realname?:@""},
+      @"subTitle":SharedUserInfo.name?:@""},
     @{@"title":@"手机号",
       @"subTitle":SharedUserInfo.phone?:@""},
-    @{@"title":@"ID编号",
-      @"subTitle":SharedUserInfo.userid?:@""},
-    @{@"title":@"注册日期",
-      @"subTitle":SharedUserInfo.cTime?:@""},
     @{@"title":@"实名状态",
-      @"subTitle":SharedUserInfo.realnameStatusName?:@""},
+      @"subTitle":[SharedUserInfo.certification isEqualToString:@"0"]? @"未实名" :@"已实名"},
     /*@{@"title":@"提现手续费",
       @"subTitle":[NSString stringWithFormat:@"%@元/笔",SharedUserInfo.withdrawFee]}*/
     ];

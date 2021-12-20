@@ -48,7 +48,8 @@
     self.change1TagLbl.text = @"手机号";
     self.change2TagLbl.text = @"验证码";
     self.change2Lbl.hidden = YES;
-    self.codeBtn.hidden = self.codeView.hidden =  NO;
+    self.codeBtn.hidden = YES;
+   self.codeView.hidden =  NO;
     self.phoneLabel.textColor = [UIColor blackColor];
     self.change2Lbl.textColor = [UIColor blackColor];
     self.phoneLabel.userInteractionEnabled = self.change2Lbl.userInteractionEnabled = NO;

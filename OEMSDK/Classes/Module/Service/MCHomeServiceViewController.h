@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *kefuView;
 @property (weak, nonatomic) IBOutlet UILabel *liuyanbanMessageLbl;
 @property (weak, nonatomic) IBOutlet UIView *liuyanbanView;
+@property (weak, nonatomic) IBOutlet UILabel *guanfangkefudianhua;
 
 @end
 

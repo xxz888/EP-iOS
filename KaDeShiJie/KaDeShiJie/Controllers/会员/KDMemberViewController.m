@@ -31,7 +31,21 @@
     self.memberView.layer.cornerRadius = 21;
     
     [self.huiyuanImg rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [self.navigationController pushViewController:[KDMember1ViewController new] animated:YES];
+        
+        
+        // 头部数据
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+  
+            if (userInfo.level) {
+                if ([userInfo.level isEqualToString:@"Normal"]) {
+                    [self.navigationController pushViewController:[KDMember1ViewController new] animated:YES];
+                }else{
+                    [MCToast showMessage:@"你已开通会员"];
+                }
+            }else{
+                [self.navigationController pushViewController:[KDMember1ViewController new] animated:YES];
+            }
+        }];
     }];
 }
 

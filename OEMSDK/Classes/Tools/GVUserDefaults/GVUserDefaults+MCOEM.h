@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) NSString *receivePaymentRate;
 @property(nonatomic, copy) NSString *agentId;
 @property(nonatomic, copy) NSString *repaymentRate;
+@property(nonatomic, copy) NSString *servicePhone;
+@property(nonatomic, copy) NSString *wechat;
 
 
 @property(nonatomic, copy) NSString *pwd;

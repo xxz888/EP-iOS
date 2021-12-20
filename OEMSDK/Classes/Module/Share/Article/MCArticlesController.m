@@ -35,14 +35,14 @@
     
     self.page = 0;
     __weak __typeof(self)weakSelf = self;
-    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.page = 0;
-        [weakSelf requestData:YES];
-    }];
-    self.mc_tableview.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        weakSelf.page += 1;
-        [weakSelf requestData:NO];
-    }];
+//    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        weakSelf.page = 0;
+//        [weakSelf requestData:YES];
+//    }];
+//    self.mc_tableview.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        weakSelf.page += 1;
+//        [weakSelf requestData:NO];
+//    }];
     [self requestData:YES];
     
     [self setupHeader];;
@@ -74,7 +74,7 @@
     [hv addSubview:line2];
     hv.frame = CGRectMake(0, 0, SCREEN_WIDTH, headLab.height+20);
     
-    self.mc_tableview.tableHeaderView = hv;
+//    self.mc_tableview.tableHeaderView = hv;
     self.mc_tableview.rowHeight = UITableViewAutomaticDimension;
     
 //    self.mc_tableview.qmui_cacheCellHeightByKeyAutomatically = YES;
@@ -82,6 +82,24 @@
 
 - (void)requestData:(BOOL)cleanData {
     __weak __typeof(self)weakSelf = self;
+
+    [self.sessionManager mc_GET:@"/api/v1/player/promote/materials" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+            
+        NSArray *arr = [MCArticleModel mj_objectArrayWithKeyValuesArray:respDic];
+        [weakSelf.dataSource addObjectsFromArray:arr];
+        [weakSelf.mc_tableview reloadData];
+        if ([weakSelf.mc_tableview.mj_header isRefreshing]) {
+            [weakSelf.mc_tableview.mj_header endRefreshing];
+        }
+        if ([weakSelf.mc_tableview.mj_footer isRefreshing]) {
+            [weakSelf.mc_tableview.mj_footer endRefreshing];
+        }
+    } other:^(NSDictionary * _Nonnull respDic) {
+            
+        }];
+    
+    
+    return;
     [self.sessionManager mc_POST:@"/user/app/imagetext/query/brandid" parameters:@{@"brand_id":SharedConfig.brand_id,@"page":@(self.page),@"size":@(20)
                                                                             
     } ok:^(NSDictionary * _Nonnull resp) {

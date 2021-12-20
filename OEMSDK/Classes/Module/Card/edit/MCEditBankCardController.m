@@ -38,7 +38,6 @@
             [self setNavigationBarTitle:@"修改信用卡" tintColor:nil];
         } else {
             [self setNavigationBarTitle:@"添加信用卡" tintColor:nil];
-            [self showGuidePage];
         }
         self.mc_tableview.tableHeaderView = self.header;
     } else {

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *wxHaoMaLbl;
 - (IBAction)zhidaoleAction:(id)sender;
 @property (nonatomic ,copy)zhidaoleBlock block;
+@property (weak, nonatomic) IBOutlet UILabel *wxLbl;
 
 @end
 

@@ -136,7 +136,7 @@
                                     <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请扫描银行卡或输入卡号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-np-ZGu" customClass="BankCardTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入卡号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-np-ZGu" customClass="BankCardTextField">
                                     <rect key="frame" x="104" y="0.0" width="280" height="52"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="52" id="GQz-Il-ICi"/>
@@ -174,7 +174,7 @@
                         <view tag="2002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJ4-8I-vgy" userLabel="预留手机号">
                             <rect key="frame" x="0.0" y="179" width="414" height="53"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预留手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMZ-iJ-WVI">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMZ-iJ-WVI">
                                     <rect key="frame" x="20" y="0.0" width="80" height="52"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="SUb-X9-Ifd"/>
@@ -189,7 +189,7 @@
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-5f-zAe">
+                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行预留手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-5f-zAe">
                                     <rect key="frame" x="104" y="0.0" width="257" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>

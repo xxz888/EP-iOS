@@ -24,7 +24,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.guanfangkefudianhua.text = [NSString stringWithFormat:@"电话：%@",SharedDefaults.servicePhone];
     [self setUI];
 //    [self setData];
 }
@@ -97,11 +97,11 @@
     }
 }
 - (IBAction)guanfangkefuAction:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"400-6666-085"]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@""]]];
 }
 
 - (IBAction)kefuAction:(id)sender {
-//    [MCServiceStore pushMeiqiaVC];
+    [MCServiceStore pushMeiqiaVC];
 }
 #pragma mark === 永久闪烁的动画 ======
 

@@ -20,6 +20,7 @@
 #import "KDWithDrawHistoryViewController.h"
 #import "KDShareSingleVC.h"
 #import "KDSlotCardHistoryModel.h"
+#import "KDShareViewController.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -114,7 +115,7 @@
         @{@"title":@"推广",
           @"iconName":@"tab_icon_news",
           @"selectedIconName":@"tab_icon_news_selected",
-          @"controller":[KDNewsViewController new]
+          @"controller":[KDShareViewController new]
         },
         @{@"title":@"会员",
           @"iconName":@"tab_icon_share",

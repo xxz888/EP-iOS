@@ -16,7 +16,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yg-AT-nUH">
                     <rect key="frame" x="0.0" y="0.0" width="232" height="231"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ktl01" translatesAutoresizingMaskIntoConstraints="NO" id="qqn-4m-CGO">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="微信 (1)" translatesAutoresizingMaskIntoConstraints="NO" id="qqn-4m-CGO">
                             <rect key="frame" x="0.0" y="0.0" width="232" height="231"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
@@ -28,7 +28,7 @@
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyT-Lo-yS6">
                             <rect key="frame" x="15" y="113" width="10" height="10"/>
-                            <color key="backgroundColor" red="0.19215686274509802" green="0.44705882352941173" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.94117647059999998" green="0.4941176471" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="10" id="W5g-Uf-97e"/>
                                 <constraint firstAttribute="width" constant="10" id="bTm-rt-E0V"/>
@@ -39,7 +39,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="管理员微信号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zQG-zo-97x">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官方社群管理员:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zQG-zo-97x">
                             <rect key="frame" x="30" y="107.5" width="122" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="122" id="dL8-Gl-tV1"/>
@@ -48,19 +48,22 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ktl008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hiy-iB-siq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wksh001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hiy-iB-siq">
                             <rect key="frame" x="153" y="107.5" width="78" height="21"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                            <color key="textColor" red="0.19215686269999999" green="0.44705882349999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.94117647059999998" green="0.4941176471" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cV-re-I0x">
-                            <rect key="frame" x="15" y="142.5" width="202" height="29.5"/>
+                            <rect key="frame" x="15" y="142.5" width="202" height="68"/>
                             <attributedString key="attributedText">
-                                <fragment content="加入社群，将为您提供丰富的推广素材、完善的推广培训和系统化的引导服务。">
+                                <fragment>
+                                    <string key="content">加入社群，将为您提供丰富的推广素材、完善的推广培训和系统化的引导服务。
+</string>
                                     <attributes>
                                         <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
+                                        <font key="NSFont" metaFont="smallSystem"/>
+                                        <font key="NSOriginalFont" metaFont="smallSystem"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
@@ -68,8 +71,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MK-05-Qtk">
-                            <rect key="frame" x="34.5" y="181" width="163" height="40"/>
-                            <color key="backgroundColor" red="0.19215686269999999" green="0.44705882349999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="34.5" y="220.5" width="163" height="40"/>
+                            <color key="backgroundColor" red="0.94117647059999998" green="0.4941176471" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="9mp-4Z-ei1"/>
                                 <constraint firstAttribute="width" constant="163" id="ddH-ei-6dU"/>
@@ -98,11 +101,11 @@
                         <constraint firstAttribute="bottom" secondItem="qqn-4m-CGO" secondAttribute="bottom" id="CmI-QW-qxQ"/>
                         <constraint firstItem="0cV-re-I0x" firstAttribute="leading" secondItem="9Yg-AT-nUH" secondAttribute="leading" constant="15" id="DFp-gT-0SA"/>
                         <constraint firstItem="zQG-zo-97x" firstAttribute="leading" secondItem="XyT-Lo-yS6" secondAttribute="trailing" constant="5" id="Ihn-GN-tal"/>
+                        <constraint firstItem="3MK-05-Qtk" firstAttribute="top" secondItem="0cV-re-I0x" secondAttribute="bottom" constant="10" id="QN6-0V-dj9"/>
                         <constraint firstItem="1rx-SQ-Vkx" firstAttribute="top" secondItem="9Yg-AT-nUH" secondAttribute="top" constant="75" id="QSM-1h-BXc"/>
                         <constraint firstAttribute="trailing" secondItem="0cV-re-I0x" secondAttribute="trailing" constant="15" id="Sw5-Nz-rG1"/>
                         <constraint firstItem="Hiy-iB-siq" firstAttribute="leading" secondItem="zQG-zo-97x" secondAttribute="trailing" constant="1" id="TLv-4R-tc1"/>
                         <constraint firstItem="0cV-re-I0x" firstAttribute="top" secondItem="zQG-zo-97x" secondAttribute="bottom" constant="14" id="XcN-iS-KHc"/>
-                        <constraint firstAttribute="bottom" secondItem="3MK-05-Qtk" secondAttribute="bottom" constant="10" id="YdW-i9-Xem"/>
                         <constraint firstItem="1rx-SQ-Vkx" firstAttribute="centerX" secondItem="9Yg-AT-nUH" secondAttribute="centerX" id="ZdY-EK-is9"/>
                         <constraint firstAttribute="trailing" secondItem="qqn-4m-CGO" secondAttribute="trailing" id="fUq-w8-bEm"/>
                         <constraint firstItem="Hiy-iB-siq" firstAttribute="leading" secondItem="zQG-zo-97x" secondAttribute="trailing" constant="1" id="haw-9z-YUP"/>
@@ -133,6 +136,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ktl01" width="534" height="508"/>
+        <image name="微信 (1)" width="267" height="229"/>
     </resources>
 </document>

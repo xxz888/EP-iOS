@@ -13,6 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDShareHeaderView : UIView
 
 @property (nonatomic, strong) NSDictionary *content;
+
+@property (weak, nonatomic) IBOutlet UIView *tuiguangwuliaoView;
+@property (weak, nonatomic) IBOutlet UIView *pingtaijieshaoView;
+@property (weak, nonatomic) IBOutlet UIView *caozuoshuomingView;
+@property (weak, nonatomic) IBOutlet UIView *weixinView;
+
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

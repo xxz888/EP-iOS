@@ -28,6 +28,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *onOff;
 @property (nonatomic, copy) NSString *classifiCation;
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *cover;
+@property (nonatomic, copy) NSString *describe;
+
+@property (nonatomic, copy) NSString *logo;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *background;
+@property (nonatomic, copy) NSString *link;
+
 @end
 
 NS_ASSUME_NONNULL_END

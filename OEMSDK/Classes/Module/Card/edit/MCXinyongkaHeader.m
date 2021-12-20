@@ -161,12 +161,11 @@
 //        [self verifyFailedTextField:self.kaihuyinhangTf]) {
 //        return;
 //    }
-//    if (self.model) {   //修改
-//        [self modifyXinyong];
-//    } else {    //新增
-//        [self bindXinyong];
-//    }
-    [self bindXinyong];
+    if (self.model) {   //修改
+        [self modifyXinyong];
+    } else {    //新增
+        [self bindXinyong];
+    }
 
 }
 //新增信用卡
@@ -237,18 +236,24 @@
 }
 //修改信用卡
 - (void)modifyXinyong {
-    NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
-    NSDictionary *param = @{@"userId":SharedUserInfo.userid,
-                            @"bankCardNumber":cardNo,
-                            @"securityCode":self.textField4.text,
-                            @"expiredTime":self.textField5.text,
-                            @"billDay":[self.textField6.text substringToIndex:self.textField6.text.length-1],
-                            @"repaymentDay":[self.textField7.text substringToIndex:self.textField7.text.length-1]
+    NSDictionary *param = @{
+                            @"bankCardNo":self.kaihuyinhangTf.text,
+                            @"billingDate":[self.textField6.text substringToIndex:self.textField6.text.length-1],
+                            @"cardType":@"CreditCard",
+                            @"cvc":self.textField4.text,
+                            @"phone":self.textField3.text,
+                            @"repaymentDate":[self.textField7.text substringToIndex:self.textField7.text.length-1],
+                            @"validPeriod":self.textField5.text,
+                            @"id":self.model.id
+
                             };
-    //MCLog(@"%@",param);
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        [MCToast showMessage:resp[@"messege"]];
+    [MCSessionManager.shareManager mc_put:@"/api/v1/player/bank" parameters:param ok:^(NSDictionary * _Nonnull respDic) {
+        [MCToast showMessage:@"修改成功"];
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
 }
 
@@ -287,28 +292,21 @@
         return;
     }
     [self.sureButton setTitle:@"确认修改" forState:UIControlStateNormal];
-    for (int i=2000; i<2003; i++) {
-        UIView *vv = [self viewWithTag:i];
-        vv.userInteractionEnabled = NO;
-        vv.alpha = 0.3;
-    }
+//    for (int i=2000; i<2003; i++) {
+//        UIView *vv = [self viewWithTag:i];
+//        vv.userInteractionEnabled = NO;
+//        vv.alpha = 0.3;
+//    }
     self.scanBtn.hidden = YES;
-    self.textField1.text = model.userName;
-    NSMutableString *string = [NSMutableString string];
-    for (int i = 0; i < model.cardNo.length; i++) {
-        [string appendString:[model.cardNo substringWithRange:NSMakeRange(i, 1)]];
-        if (i % 4 == 3) {
-            [string appendString:@" "];
-        }
-    }
-    self.textField2.text = string;
+    self.textField1.text = model.name;
+    self.kaihuyinhangTf.text = model.bankCardNo;
     self.textField3.text = model.phone;
-    self.textField4.text = model.securityCode;
-    self.textField5.text = model.expiredTime;
+    self.textField4.text = model.cvc;
+    self.textField5.text = model.validPeriod;
     
-    self.textField6.text = [NSString stringWithFormat:@"%ld日",(long)model.billDay];
+    self.textField6.text = [NSString stringWithFormat:@"%@日",(long)model.billingDate];
     
-    self.textField7.text = [NSString stringWithFormat:@"%ld日",(long)model.repaymentDay];
+    self.textField7.text = [NSString stringWithFormat:@"%@日",(long)model.repaymentDate];
 
     
 }

@@ -87,15 +87,15 @@
     NSDictionary *params =
     @{
         @"code":self.codeView.text,
-        @"orderId":self.orderId,
+        @"channelBindId":self.orderId,
      };
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/bind/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:@"操作成功"];
+            [MCToast showMessage:@"绑定成功"];
         });
     
-        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull respDic) {
         
     } failure:^(NSError * _Nonnull error) {
@@ -118,7 +118,7 @@
             weakSelf.stackViewHeight.constant = 320;
             weakSelf.smsView.hidden = NO;
             [MCToast showMessage:@"需要填写验证码"];
-            weakSelf.orderId = respDic[@"orderId"];
+            weakSelf.orderId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];
         }else{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MCToast showMessage:@"操作成功"];

@@ -430,11 +430,11 @@ typedef struct {
 }
 
 
-//+ (UIImage *)creatShareImageWithImage:(UIImage *)image shareUrlString:(nonnull NSString *)url {
-//    
-////    NSString *url = [NSString stringWithFormat:@"%@?phone=%@&brand_id=%@&ip=%@", SharedBrandInfo.shareMainAddress,SharedUserInfo.phone,SharedConfig.brand_id,BCFI.pureHost];
-//    return [self creatShareImageWithImage:image shareUrlString:url];
-//}
++ (UIImage *)creatShareImageWithImage:(UIImage *)image {
+    
+    NSString *url =MCModelStore.shared.shareLink;//[NSString stringWithFormat:@"%@?phone=%@&brand_id=%@&ip=%@", SharedBrandInfo.shareMainAddress,SharedUserInfo.phone,SharedConfig.brand_id,BCFI.pureHost];
+    return [self creatShareImageWithImage:image shareUrlString:url];
+}
 
 //创建二维码
 + (UIImage *)creatQrcodeImageWithUrlString:(NSString *)str width:(CGFloat)size {
@@ -464,7 +464,7 @@ typedef struct {
 
 + (UIImage *)creatShareImageWithImageFenXiang:(UIImage *)image {
     
-    NSString *url = [NSString stringWithFormat:@"%@?phone=%@&brand_id=%@&ip=%@", SharedBrandInfo.shareMainAddress,SharedUserInfo.phone,SharedConfig.brand_id,BCFI.pureHost];
+    NSString *url = MCModelStore.shared.shareLink;
     return [self creatShareImageWithImageFenXiang:image shareUrlString:url];
 }
 + (UIImage *)creatShareImageWithImageFenXiang:(UIImage *)image shareUrlString:(NSString *)url {

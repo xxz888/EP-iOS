@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MCHomeServiceViewController">
             <connections>
                 <outlet property="bottomView" destination="gP9-9v-a2f" id="HUt-aH-duc"/>
+                <outlet property="guanfangkefudianhua" destination="kMA-lH-3fN" id="CfS-9x-X2M"/>
                 <outlet property="kefuBtn" destination="Qgw-EC-Djv" id="8wL-PU-q5f"/>
                 <outlet property="kefuView" destination="Qmf-kD-pGr" id="10q-HA-fb5"/>
                 <outlet property="middleView" destination="Qmf-kD-pGr" id="hHq-SM-gci"/>
@@ -63,8 +64,8 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：400-6666-085" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-lH-3fN">
-                            <rect key="frame" x="10" y="50.5" width="143" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-lH-3fN">
+                            <rect key="frame" x="10" y="50.5" width="43" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

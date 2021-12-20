@@ -116,6 +116,9 @@
         self.mc_tableview.frame = CGRectMake(0, NavigationContentTop+self.segView.qmui_height, SCREEN_WIDTH, SCREEN_HEIGHT-self.segView.qmui_bottom-self.addButton.qmui_height);
     }
 }
+- (void)mc_tableviewRefresh {
+    [self.mc_tableview.mj_header endRefreshing];
+}
 #pragma mark - Actions
 - (void)requestCards {
     __weak __typeof(self)weakSelf = self;

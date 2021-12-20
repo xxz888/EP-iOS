@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *remarks1;
 @property (nonatomic, copy) NSString *brand_id;
 
-@property (nonatomic, strong) NSArray<NSString *> *img_url;
+@property (nonatomic, strong) NSArray<NSString *> *images;
 
 @end
 

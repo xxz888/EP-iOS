@@ -30,8 +30,8 @@
         [tableview registerNib:[UINib nibWithNibName:cellID bundle:[NSBundle OEMSDKBundle]] forCellReuseIdentifier:cellID];
         cell = [tableview dequeueReusableCellWithIdentifier:cellID];
     }
-    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:model.lowSource] placeholderImage:[MCImageStore placeholderImageWithSize:CGSizeMake(118, 90)]];
-    cell.titLab.text = model.title;
+    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[MCImageStore placeholderImageWithSize:CGSizeMake(50, 50)]];
+    cell.titLab.text = model.name;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([model.createTime hasSuffix:@"000"]) {
         cell.timeLab.text = [MCDateStore compareCurrentTime:model.createTime];
@@ -39,34 +39,33 @@
         cell.timeLab.text = model.createTime;
     }
     
-    if (model.onOff.intValue == 0) {
-//        cell.limitLab.text = @" #全部会员可见 ";
-        cell.limitLab.hidden = YES;
-    } else {
-        cell.limitLab.hidden = NO;
-        [MCGradeName getGradeNameWithGrade:model.onOff callBack:^(NSString * _Nonnull gradeName) {
-            cell.limitLab.text = [NSString stringWithFormat:@" #%@用户及以上可见 ", gradeName];
-        }];
-        
-    }
-    cell.readNumLab.text = [NSString stringWithFormat:@"阅读：%d",model.previewNumber.intValue];
+
+    cell.readNumLab.text = [NSString stringWithFormat:@"阅读：%@",@"-"];
+    
+    
+//    if ([model.background isEqualToString:@"Blue"]) {
+//        cell.bgView.backgroundColor = [UIColor blueColor];
+//    }else{
+//        cell.bgView.backgroundColor = [UIColor redColor];
+//
+//    }
     return cell;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.imageView.layer.cornerRadius = 25;
+//    self.limitLab.backgroundColor = MAINCOLOR;
+//    self.limitLab.textColor = UIColor.whiteColor;
     
-    self.limitLab.backgroundColor = MAINCOLOR;
-    self.limitLab.textColor = UIColor.whiteColor;
-    
-    self.limitLab.contentEdgeInsets = UIEdgeInsetsMake(3, 5, 3, 5);
-    self.limitLab.layer.cornerRadius = 2.f;
+//    self.limitLab.contentEdgeInsets = UIEdgeInsetsMake(3, 5, 3, 5);
+//    self.limitLab.layer.cornerRadius = 2.f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.imgView.layer.cornerRadius = 4.f;
+//    self.imgView.layer.cornerRadius = 4.f;
     
 }
 

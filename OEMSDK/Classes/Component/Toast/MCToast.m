@@ -41,7 +41,7 @@
             hud.offset = CGPointMake(hud.offset.x, offSetY);
         }
 
-        [hud hideAnimated:YES afterDelay:3.0];
+        [hud hideAnimated:YES afterDelay:1.0];
     }
 }
 @end

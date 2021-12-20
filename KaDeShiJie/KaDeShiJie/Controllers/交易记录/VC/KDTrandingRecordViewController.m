@@ -202,6 +202,7 @@
 - (void)getHistory
 {
     [self.dataArray removeAllObjects];
+    [self.repaymentArray removeAllObjects];
     [self.mc_tableview reloadData];
 //    /api/v1/player/plan/order
     kWeakSelf(self);

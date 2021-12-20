@@ -38,7 +38,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+    self.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
+
     self.gradeLabel.layer.borderColor = [UIColor whiteColor].CGColor;
     self.gradeLabel.layer.borderWidth = 1;
     self.gradeLabel.layer.cornerRadius = self.gradeLabel.ly_height * 0.5;

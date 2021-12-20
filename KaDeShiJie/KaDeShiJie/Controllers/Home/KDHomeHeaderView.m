@@ -113,7 +113,7 @@
 //    [self getMessage];
     
     [self.bangkaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCToast showMessage:@"暂未开放"];
+        [self pushCardVCWithType:MCBankCardTypeXinyongka];
 
     }];
     
@@ -132,7 +132,7 @@
     return self;
 }
 - (IBAction)btnAction:(QMUIButton *)sender {
-    
+    __weak typeof(self) weakSelf = self;
     if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
             switch (sender.tag) {
                 case 100:{
@@ -141,34 +141,29 @@
                     break;
                 case 101:{
                     
-                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                        if ([userInfo.certification integerValue] == 1) {
+                        if ([SharedUserInfo.certification integerValue] == 1) {
                             KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
                             vc.navTitle = @"信用卡还款";
                             //订单类型（2为还款记录、3为空卡记录）
                             vc.orderType = @"2";
                             [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
                         }else{
-                            [MCToast showMessage:@"请先实名认证"];
-                            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+                            [weakSelf showRenzhengView];
                         }
-                    }];
                     
                     
                     
 
                 }
                     break;
-                case 102:
-                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                        if ([userInfo.certification integerValue] == 1) {
+                case 102:{
+                        if ([SharedUserInfo.certification integerValue] == 1) {
                             [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
                         }else{
-                            [MCToast showMessage:@"请先实名认证"];
-                            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+                            [weakSelf showRenzhengView];
+
                         }
-                    }];
-               
+                }
                     break;
                 default:
                     break;
@@ -182,13 +177,12 @@
             { [MCToast showMessage:@"暂未开放"];}
                 break;
             case 202: // 实名认证
-                [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                    if ([userInfo.certification integerValue] == 1) {
+                
+                    if ([SharedUserInfo.certification integerValue] == 1) {
                         [MCToast showMessage:@"您已实名认证"];
                     }else{
                         [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
                     }
-                }];
                
                 break;
             case 203:{
@@ -216,6 +210,12 @@
 
    
 }
+- (void)pushCardVCWithType:(MCBankCardType)cardType
+{
+    [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(MCBankCardTypeXinyongka), @"isLogin":@(YES)}];
+
+}
+
 -(void)showRenzhengView{
     QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
     KDRenZhengView * renzhengView = [KDRenZhengView renZhengView];
@@ -226,6 +226,7 @@
     
     
     renzhengView.quedingBtnActionBlock = ^{
+        [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
         [alert hideWithAnimated:YES completion:nil];
 
     };

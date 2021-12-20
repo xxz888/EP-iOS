@@ -7,6 +7,7 @@
 //
 
 #import "KDGuidePageManager.h"
+#import "MCManualRealNameController.h"
 @interface KDGuidePageManager ()
 
 @property (nonatomic, copy) FinishBlock finish;
@@ -31,18 +32,11 @@
 #pragma mark --------------------先查询是否实名-------------------------
 -(void)requestShiMing:(ShiMingBlock)shimingBlock{
 
-    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        //realnameStatus为0的话，就是未实名
-        if ([userInfo.realnameStatus integerValue] != 1) {
-            NSString *msg = @"您的账号还未实名，实名认证后即可使用所有功能";
-            QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:msg preferredStyle:QMUIAlertControllerStyleAlert];
-            [alert addAction:[QMUIAlertAction actionWithTitle:@"暂不实名" style:QMUIAlertActionStyleCancel handler:nil]];
-            [alert addAction:[QMUIAlertAction actionWithTitle:@"去实名" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
-                [MCLATESTCONTROLLER.navigationController pushViewController:[MGJRouter objectForURL:rt_card_vc2] animated:YES];
-            }]];
-            [alert showWithAnimated:YES];
-        }else{
+    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+        if ([userInfo.certification integerValue] == 1) {
             shimingBlock();
+        }else{
+            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
         }
     }];
 }

@@ -235,29 +235,20 @@
     SharedDefaults.repaymentRate = [NSString stringWithFormat:@"%@",result[@"repaymentRate"]];
     SharedDefaults.token = [NSString stringWithFormat:@"%@",result[@"token"]];
     [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-    // 4.获取贴牌信息
-//        [LoginAndRegistHTTPTools getBrandInfo];
-
-
-//    [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-//        if ([userInfo.realnameStatus integerValue] == 1 && [userInfo.verificationStatus integerValue] == 0) {
-//            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
-//        }
-//        if ([userInfo.realnameStatus integerValue] != 1) {
-//            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTWEISHIMING"];
-//        }
-//        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-//
-//        // 5.绑定推送别名
-//        NSString *userid = [NSString stringWithFormat:@"%@",userInfo.userid];
-//        [MCApp setJPushAlias:userid];
-//        [MCApp setJAnalyticsIdentifyAccount:userInfo];
-//
-//        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
-//    }];
-//    [KDWebContainer.shared setupContainer];
     
+    
+    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+       
+    }];
 
+    [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
+        SharedDefaults.servicePhone = [NSString stringWithFormat:@"%@",okResponse[@"servicePhone"]];
+        SharedDefaults.wechat = okResponse[@"wechat"];
+
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    }];
+    
 //    [[KDLoginTool shareInstance] getChuXuCardData:YES];
     //获取贴牌信息
 }

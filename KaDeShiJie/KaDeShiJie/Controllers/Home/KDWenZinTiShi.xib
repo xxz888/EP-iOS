@@ -36,30 +36,9 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ows-u6-8XY">
-                    <rect key="frame" x="22" y="209.5" width="350" height="64"/>
+                    <rect key="frame" x="22" y="209.5" width="350" height="66.5"/>
                     <attributedString key="attributedText">
-                        <fragment content="欢迎使用無卡生活，现可通过【首页】点击进入【在线客服】板块直接进行在线咨询，我们的服务时间为早上">
-                            <attributes>
-                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="9:00">
-                            <attributes>
-                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" metaFont="system" size="14"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="至晚上">
-                            <attributes>
-                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="21:00!">
+                        <fragment content="欢迎使用無卡生活，现可通过【首页】点击进入【在线客服】板块直接进行在线咨询，我们的服务时间为早上9:00至晚上21:00!">
                             <attributes>
                                 <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" metaFont="system" size="14"/>
@@ -70,7 +49,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LP-Hk-PBO">
-                    <rect key="frame" x="100" y="315.5" width="194" height="32"/>
+                    <rect key="frame" x="100" y="298" width="194" height="32"/>
                     <color key="backgroundColor" red="0.94117647059999998" green="0.4941176471" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="194" id="Jbu-GK-xPd"/>
@@ -95,7 +74,7 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ehi-wR-cLl" secondAttribute="trailing" constant="6" id="6cb-zT-ZxY"/>
                 <constraint firstItem="ows-u6-8XY" firstAttribute="top" secondItem="7QD-lv-0v8" secondAttribute="bottom" constant="15" id="BRd-8P-Koh"/>
-                <constraint firstItem="2LP-Hk-PBO" firstAttribute="top" secondItem="ows-u6-8XY" secondAttribute="bottom" constant="42" id="CK8-Yk-veK"/>
+                <constraint firstItem="2LP-Hk-PBO" firstAttribute="top" secondItem="ows-u6-8XY" secondAttribute="bottom" constant="22" id="CK8-Yk-veK"/>
                 <constraint firstItem="UP4-Eq-0Hr" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="L3d-Sn-W83"/>
                 <constraint firstItem="ows-u6-8XY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="OZ1-Ve-EvG"/>
                 <constraint firstItem="2LP-Hk-PBO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="dv2-Y6-YKV"/>

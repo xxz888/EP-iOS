@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dangyueshouyi;
 @property (weak, nonatomic) IBOutlet UILabel *huankuanfenrun;
 @property (weak, nonatomic) IBOutlet UILabel *kuaijiefenrun;
+@property (weak, nonatomic) IBOutlet UILabel *jiujifenrun;
 
 @end
 

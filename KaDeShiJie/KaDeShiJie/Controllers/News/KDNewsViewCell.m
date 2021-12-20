@@ -44,8 +44,8 @@
     _model = model;
     
     self.titleView.text = model.title;
-    self.desView.text = model.remark;
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.lowSource]];
+    self.desView.text = model.content;
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
     self.timeView.text = model.createTime;
 }
 - (void)layoutSubviews

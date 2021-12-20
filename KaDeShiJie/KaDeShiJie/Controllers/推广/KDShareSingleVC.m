@@ -65,30 +65,12 @@
     self.mc_tableview.tableHeaderView = self.header;
 //    self.header.imgView.image = [MCImageStore creatShareImageWithImage:[UIImage imageNamed:@"share_single_img"]];
     [self.view addSubview:self.dragView];
-    
-    [self requestData];
 }
 - (void)layoutTableView {
     self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
 }
 
-
--(void)requestData{
-    __weak __typeof(self)weakSelf = self;
-    NSString * url1 = @"/api/v1/player/user/propaganda/link";
-    [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-        if (resp[@"link"]) {
-            [weakSelf.header setUrl:resp[@"link"]];
-        }
-      
-    }];
-    
-    
-}
 - (void)shareTouched {
-    
-    
-    
     [self.header snapshotScreenInView:self.header.imgView];
     UIImage *shareImg = [self.header snapshotScreenInView:self.header.imgView];
     [MCShareStore shareIOS:shareImg];

@@ -70,8 +70,9 @@
  
         weakSelf.headerView.kuaijiefenrun.text = [NSString stringWithFormat:@"%.2f",[resp[@"consumptionCommission"]doubleValue]];
         weakSelf.headerView.huankuanfenrun.text = [NSString stringWithFormat:@"%.2f",[resp[@"receivePaymentCommission"]doubleValue]];
+        weakSelf.headerView.jiujifenrun.text = [NSString stringWithFormat:@"%.2f",[resp[@"agentLevelCommission"]doubleValue]];
 
-
+        
     }];
 }
 

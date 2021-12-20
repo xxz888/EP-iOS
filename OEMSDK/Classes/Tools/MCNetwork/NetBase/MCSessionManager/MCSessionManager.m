@@ -97,9 +97,10 @@ static MCSessionManager *_singleManager = nil;
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
         [MCLoading hidden];
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger code = [httpResponse statusCode];
         if (!error) {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-            NSInteger code = [httpResponse statusCode];
+     
             if (code == 200) {
                 if (responseObject[@"message"]) {
                     [MCToast showMessage:responseObject[@"messege"]];
@@ -109,11 +110,23 @@ static MCSessionManager *_singleManager = nil;
             }else if (code == 204){
                 [MCToast showMessage:@"操作成功"];
                 okResp(@{});
+            }else if (code == 401){
+                [MCToast showMessage:@"请重新登陆"];
+                [MCApp userLogout];
+            }else if (code == 404){
+                [MCToast showMessage:@"请重新登陆"];
+                [MCApp userLogout];
             }else{
                 [MCToast showMessage:responseObject[@"messege"]];
             }
         } else {
-            
+            if (code == 401){
+                [MCApp userLogout];
+            }else if (code == 404){
+                [MCApp userLogout];
+            }else{
+
+            }
             [MCToast showMessage:responseObject[@"message"]];
 
             NSLog(@"请求失败error=%@", error);
@@ -238,7 +251,7 @@ remoteFields:(nullable NSArray<NSString *>*)fields
      failure:(nullable MCSMErrorHandler)failure {
 
     if (TOKEN) {    //每次都添加为了及时变化
-        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
+        [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     }
     if (SharedDefaults.deviceid.length != 0) {
         [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
@@ -279,10 +292,11 @@ remoteFields:(nullable NSArray<NSString *>*)fields
             [MCLoading hidden];
         okResp(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (isSharedSession) {
-            [MCLoading hidden];
-        }
+        [MCLoading hidden];
         [self handleHTTPError:error failureHandler:failure];
+        if (self.delegate) {
+            [self.delegate mc_session:self.session task:task didReceiveResponse:error];
+        }
     }];
     return task;
 }

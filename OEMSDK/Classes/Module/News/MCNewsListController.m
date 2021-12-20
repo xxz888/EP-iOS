@@ -35,20 +35,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBarTitle:self.classification tintColor:nil];
-    
+    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.separatorInset = UIEdgeInsetsZero;
-    
+    self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self requstData];
 }
 - (void)requstData {
-    NSDictionary *param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":self.classification};
-    __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        weakSelf.dataSource = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+        __weak __typeof(self)weakSelf = self;
+        [self.sessionManager mc_GET:@"/api/v1/player/promote/files" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        weakSelf.dataSource = [MCNewsModel mj_objectArrayWithKeyValuesArray:respDic];
         [weakSelf.mc_tableview reloadData];
-    }];
+        } other:^(NSDictionary * _Nonnull respDic) {
+            
+        }];
+   
+    
+    
+//    NSDictionary *param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":self.classification};
+//    __weak __typeof(self)weakSelf = self;
+//    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        weakSelf.dataSource = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+//        [weakSelf.mc_tableview reloadData];
+//    }];
 }
 
 #pragma mark - Tableview
@@ -58,9 +68,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [MCNewsCell cellWithTableview:tableView newsModel:self.dataSource[indexPath.row]];
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *title = self.dataSource[indexPath.row].title;
-    [MCPagingStore pushWebWithTitle:title classification:self.classification];
+    MCNewsModel * model = self.dataSource[indexPath.row];
+    
+    MCWebViewController *web = [[MCWebViewController alloc] init];
+     web.title = model.name;
+    NSString *url = model.link;
+    web.urlString = [MCVerifyStore verifyURL:url];
+    [MCLATESTCONTROLLER.navigationController pushViewController:web animated:YES];
 }
 
 

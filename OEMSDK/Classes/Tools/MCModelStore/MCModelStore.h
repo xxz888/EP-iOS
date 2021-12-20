@@ -63,6 +63,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 推荐人号码
 @property(nonatomic, copy) NSString *preUserPhone;
+@property(nonatomic, copy) NSString *shareLink;
+
+@property(nonatomic, assign) BOOL isFirstLogin;
 
 @property(nonatomic, assign) BOOL updateViewIsShow;
 

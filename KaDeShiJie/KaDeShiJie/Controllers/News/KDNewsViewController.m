@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"推广" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"行业资讯" tintColor:[UIColor whiteColor]];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.rowHeight = 300;
@@ -55,13 +55,23 @@
     }
 }
 - (void)getData {
-    
-    NSDictionary *param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":@"资讯"};
+    /*
+     title = 我是标题,
+     content = 我是内容,
+     cover = cover,
+     describe = 我是描述**/
     __weak __typeof(self)weakSelf = self;
-    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        weakSelf.dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+    [self.sessionManager mc_GET:@"/api/v1/player/promote/news" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        weakSelf.dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:respDic];
         [weakSelf.mc_tableview reloadData];
     }];
+    
+//    NSDictionary *param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":@"资讯"};
+//    __weak __typeof(self)weakSelf = self;
+//    [self.sessionManager mc_POST:@"/user/app/news/getnewsby/brandidandclassification/andpage" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        weakSelf.dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
+//        [weakSelf.mc_tableview reloadData];
+//    }];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

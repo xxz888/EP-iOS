@@ -10,13 +10,11 @@
 
 @implementation KDGuanFangSheQun
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+    self.wxHaoMaLbl.text = SharedDefaults.wechat;
 }
-*/
+
 
 - (IBAction)zhidaoleAction:(id)sender {
     if (self.block) {

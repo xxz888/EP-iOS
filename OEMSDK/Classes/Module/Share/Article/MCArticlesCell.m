@@ -127,7 +127,7 @@
     
     self.contentLab.text = model.content;
     
-    if (model.img_url.count == 9) {
+    if (model.images.count == 9) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -140,21 +140,21 @@
         self.imgV9.hidden = NO;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[5]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[6]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[7]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV9 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[8]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[7]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV9 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[8]] placeholderImage:SharedAppInfo.icon];
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
         self.imgV7.superview.hidden = NO;
         
-    }else if (model.img_url.count == 8) {
+    }else if (model.images.count == 8) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -168,20 +168,20 @@
         [self.imgV9 sd_setImageWithURL:@"" placeholderImage:nil];
         self.imgV9.userInteractionEnabled = NO;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[5]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[6]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[7]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[7]] placeholderImage:SharedAppInfo.icon];
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
         self.imgV7.superview.hidden = NO;
         
-    }else if (model.img_url.count == 7) {
+    }else if (model.images.count == 7) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -197,19 +197,19 @@
         [self.imgV9 sd_setImageWithURL:@"" placeholderImage:nil];
         self.imgV9.userInteractionEnabled = NO;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[5]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[6]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
         self.imgV7.superview.hidden = NO;
         
-    }else if (model.img_url.count == 6) {
+    }else if (model.images.count == 6) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -223,18 +223,18 @@
         self.imgV9.hidden = YES;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[5]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
         self.imgV7.superview.hidden = YES;
         
-    }else if (model.img_url.count == 5) {
+    }else if (model.images.count == 5) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -250,17 +250,17 @@
         self.imgV9.hidden = YES;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[4]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
         self.imgV7.superview.hidden = YES;
         
-    }else if (model.img_url.count == 4) {
+    }else if (model.images.count == 4) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -274,16 +274,16 @@
         self.imgV9.hidden = YES;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[3]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
         self.imgV7.superview.hidden = YES;
         
-    } else if (model.img_url.count == 3) {
+    } else if (model.images.count == 3) {
         self.imgHW.constant = 104*MCSCALE;
         self.imgV1.hidden = NO;
         self.imgV2.hidden = NO;
@@ -296,15 +296,15 @@
         self.imgV8.hidden = YES;
         self.imgV9.hidden = YES;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[2]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = YES;
         self.imgV7.superview.hidden = YES;
 
-    } else if (model.img_url.count == 2) {
+    } else if (model.images.count == 2) {
         self.imgHW.constant = 104*MCSCALE;
         
         self.imgV1.hidden = NO;
@@ -317,14 +317,14 @@
         self.imgV8.hidden = YES;
         self.imgV9.hidden = YES;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[1]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = YES;
         self.imgV7.superview.hidden = YES;
 
-    } else if (model.img_url.count == 1) {
+    } else if (model.images.count == 1) {
         self.imgHW.constant = 104 * MCSCALE;//213*MCSCALE;
         self.imgV1.hidden = NO;
         
@@ -337,7 +337,7 @@
         self.imgV8.hidden = YES;
         self.imgV9.hidden = YES;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.img_url[0]] placeholderImage:SharedAppInfo.icon];
+        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = YES;
@@ -369,7 +369,7 @@
     return [NSURL URLWithString:imgUrl];
 }
 - (void)saveAction {
-    if (self.model.img_url.count == 9) {
+    if (self.model.images.count == 9) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV3.image];
@@ -379,7 +379,7 @@
         [MCShareStore saveToAlbum:self.imgV7.image];
         [MCShareStore saveToAlbum:self.imgV8.image];
         [MCShareStore saveToAlbum:self.imgV9.image];
-    }else if (self.model.img_url.count == 8) {
+    }else if (self.model.images.count == 8) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV3.image];
@@ -388,7 +388,7 @@
         [MCShareStore saveToAlbum:self.imgV6.image];
         [MCShareStore saveToAlbum:self.imgV7.image];
         [MCShareStore saveToAlbum:self.imgV8.image];
-    }else if (self.model.img_url.count == 7) {
+    }else if (self.model.images.count == 7) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV3.image];
@@ -396,32 +396,32 @@
         [MCShareStore saveToAlbum:self.imgV5.image];
         [MCShareStore saveToAlbum:self.imgV6.image];
         [MCShareStore saveToAlbum:self.imgV7.image];
-    }else if (self.model.img_url.count == 6) {
+    }else if (self.model.images.count == 6) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV3.image];
         [MCShareStore saveToAlbum:self.imgV4.image];
         [MCShareStore saveToAlbum:self.imgV5.image];
         [MCShareStore saveToAlbum:self.imgV6.image];
-    }else if (self.model.img_url.count == 5) {
+    }else if (self.model.images.count == 5) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV3.image];
         [MCShareStore saveToAlbum:self.imgV4.image];
         [MCShareStore saveToAlbum:self.imgV5.image];
-    }else if (self.model.img_url.count == 4) {
+    }else if (self.model.images.count == 4) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV4.image];
         [MCShareStore saveToAlbum:self.imgV5.image];
-    }else if (self.model.img_url.count == 3) {
+    }else if (self.model.images.count == 3) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
         [MCShareStore saveToAlbum:self.imgV3.image];
-    } else if (self.model.img_url.count == 2) {
+    } else if (self.model.images.count == 2) {
         [MCShareStore saveToAlbum:self.imgV1.image];
         [MCShareStore saveToAlbum:self.imgV2.image];
-    } else if (self.model.img_url.count == 1) {
+    } else if (self.model.images.count == 1) {
         [MCShareStore saveToAlbum:self.imgV1.image];
     } else {
         [MCToast showMessage:@"暂无可保存图片"];
@@ -433,6 +433,17 @@
         [MCToast showMessage:@"文案已复制到剪切板"];
     }
 }
+- (IBAction)saveImvAction:(id)sender {
+    [self saveAction];
+
+}
+
+- (IBAction)fuzhiwenanAction:(id)sender {
+    [self cpAction];
+}
+
+
+
 - (IBAction)moreBtnTouched:(UIButton *)sender {
     [self.moreOptationView showWithAnimated:YES];
 }

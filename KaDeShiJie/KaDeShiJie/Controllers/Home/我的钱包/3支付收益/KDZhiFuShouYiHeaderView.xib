@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KDZhiFuShouYiHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="413"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="461"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JP-Kl-PN1">
@@ -103,7 +103,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVZ-y7-oWD">
                     <rect key="frame" x="16" y="260" width="382" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快捷分润（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh9-q4-bfQ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刷卡分润（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh9-q4-bfQ">
                             <rect key="frame" x="16" y="16" width="107.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
@@ -160,6 +160,36 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sk9-5S-CtO">
+                    <rect key="frame" x="16" y="380" width="382" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="九星平级分润（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxS-Jt-MAh">
+                            <rect key="frame" x="16" y="16" width="138" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEA-1D-dg4">
+                            <rect key="frame" x="359" y="16" width="7" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <color key="textColor" red="0.98823529409999999" green="0.60784313729999995" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="vxS-Jt-MAh" firstAttribute="leading" secondItem="Sk9-5S-CtO" secondAttribute="leading" constant="16" id="45i-Gs-gjN"/>
+                        <constraint firstItem="SEA-1D-dg4" firstAttribute="centerY" secondItem="Sk9-5S-CtO" secondAttribute="centerY" id="6eg-wQ-DWE"/>
+                        <constraint firstAttribute="height" constant="50" id="OfK-0j-4ZY"/>
+                        <constraint firstAttribute="trailing" secondItem="SEA-1D-dg4" secondAttribute="trailing" constant="16" id="XfM-tK-O62"/>
+                        <constraint firstItem="vxS-Jt-MAh" firstAttribute="centerY" secondItem="Sk9-5S-CtO" secondAttribute="centerY" id="uRD-3S-mai"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -167,9 +197,12 @@
                 <constraint firstItem="D4Q-ZK-7jo" firstAttribute="leading" secondItem="nVZ-y7-oWD" secondAttribute="leading" id="3pL-Z2-2bb"/>
                 <constraint firstItem="nVZ-y7-oWD" firstAttribute="top" secondItem="7JP-Kl-PN1" secondAttribute="bottom" constant="10" id="4US-jL-eLk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nVZ-y7-oWD" secondAttribute="trailing" constant="16" id="8b3-0I-HSw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Sk9-5S-CtO" secondAttribute="trailing" constant="16" id="E0D-UT-Jzp"/>
                 <constraint firstItem="7JP-Kl-PN1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JVA-tH-rY4"/>
                 <constraint firstItem="nVZ-y7-oWD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="MSo-97-8d3"/>
+                <constraint firstItem="Sk9-5S-CtO" firstAttribute="top" secondItem="D4Q-ZK-7jo" secondAttribute="bottom" constant="10" id="Mj3-eP-DAG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7JP-Kl-PN1" secondAttribute="trailing" id="Sj9-hP-ylK"/>
+                <constraint firstItem="Sk9-5S-CtO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="T8l-Ye-mtv"/>
                 <constraint firstItem="D4Q-ZK-7jo" firstAttribute="top" secondItem="nVZ-y7-oWD" secondAttribute="bottom" constant="10" id="bax-cB-kPp"/>
                 <constraint firstItem="7JP-Kl-PN1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kDC-3e-DOz"/>
                 <constraint firstItem="D4Q-ZK-7jo" firstAttribute="trailing" secondItem="nVZ-y7-oWD" secondAttribute="trailing" id="sLS-Au-DyH"/>
@@ -179,10 +212,11 @@
                 <outlet property="dangrishouyi" destination="T81-zh-3SS" id="c3L-KA-YL5"/>
                 <outlet property="dangyueshouyi" destination="hfq-sA-X9K" id="gGp-S0-5HZ"/>
                 <outlet property="huankuanfenrun" destination="RB9-u8-5du" id="fqB-C5-zYn"/>
+                <outlet property="jiujifenrun" destination="SEA-1D-dg4" id="ako-Tq-njk"/>
                 <outlet property="kuaijiefenrun" destination="f4j-da-pem" id="VkR-We-gv7"/>
                 <outlet property="zongshouyi" destination="Tio-Zc-f1P" id="UEk-kl-W4v"/>
             </connections>
-            <point key="canvasLocation" x="86.956521739130437" y="-92.075892857142847"/>
+            <point key="canvasLocation" x="86.956521739130437" y="-76.004464285714278"/>
         </view>
     </objects>
     <resources>

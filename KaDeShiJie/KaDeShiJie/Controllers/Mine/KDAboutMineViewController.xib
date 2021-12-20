@@ -34,7 +34,7 @@
                     <rect key="frame" x="30" y="247.5" width="354" height="156"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">無卡生活是行业领先的信用卡还款、刷卡、办卡软件，空卡仅需留足手续费，或5%以上的可用余额，即可全额快速还款，每万元手续费低至75元，让您彻底远离逾期;刷卡10秒内到账，每万元手续费低至38元。银联授信，安全稳定。
+                            <string key="content">無卡生活是行业领先的信用卡还款、刷卡、办卡软件，空卡仅需留足手续费，或5%以上的可用余额，即可全额快速还款，每万元手续费低至60元，让您彻底远离逾期;刷卡10秒内到账，每万元手续费低至38元。银联授信，安全稳定。
 </string>
                             <attributes>
                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -45,7 +45,7 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服电话：400-6666-085" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oti-ub-jxJ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服电话：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oti-ub-jxJ">
                     <rect key="frame" x="0.0" y="463.5" width="414" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>

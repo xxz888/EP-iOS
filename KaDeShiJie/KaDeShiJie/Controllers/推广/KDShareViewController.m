@@ -83,6 +83,13 @@
         [self getPlatformData];
     }];
     [self getPlatformData];
+    
+    [self.sessionManager mc_GET:@"/api/v1/player/user/propaganda/link" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"link"]) {
+            MCModelStore.shared.shareLink = resp[@"link"];
+        }
+      
+    }];
 
 }
 

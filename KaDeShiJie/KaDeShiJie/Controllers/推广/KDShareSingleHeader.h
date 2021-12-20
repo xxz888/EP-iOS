@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 
--(void)setUrl:(NSString *)url;
+
 - (UIImage *)snapshotScreenInView:(UIView *)view;
 @end
 

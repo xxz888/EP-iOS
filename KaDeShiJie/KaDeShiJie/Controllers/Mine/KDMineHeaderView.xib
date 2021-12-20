@@ -309,8 +309,8 @@
                         <constraint firstItem="dvZ-IA-LNl" firstAttribute="leading" secondItem="pdg-6j-e63" secondAttribute="leading" id="t1m-a7-khv"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系客服：400-6666-085" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-dJ-Qne">
-                    <rect key="frame" x="132.5" y="442" width="149" height="14.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系客服：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-dJ-Qne">
+                    <rect key="frame" x="176.5" y="442" width="61.5" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -344,6 +344,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="dianhua" destination="O9a-dJ-Qne" id="mf6-C9-K9B"/>
                 <outlet property="erweimaView" destination="Tgz-6g-0Mx" id="NBb-ut-4Gy"/>
                 <outlet property="gradeLabel" destination="39C-gJ-G4P" id="dbA-Za-MbG"/>
                 <outlet property="guanyuwomenView" destination="5uq-eA-cZl" id="9uh-Et-Ygw"/>

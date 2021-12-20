@@ -60,7 +60,7 @@
 -(void)popFirstLogin{
     QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
     KDWenZinTiShi * renzhengView = [KDWenZinTiShi renZhengView];
-    renzhengView.frame = CGRectMake(0, 0, 316, 350);
+    renzhengView.frame = CGRectMake(0, 0, 316, 330);
     alert.contentView = renzhengView;
     alert.dimmingView.userInteractionEnabled = NO;
     [alert showWithAnimated:YES completion:nil];
@@ -116,7 +116,7 @@
  
     
     
-    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
+//    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     self.mc_tableview.tableHeaderView = self.headerView;
 
     self.mc_tableview.backgroundColor = [UIColor clearColor];
@@ -149,7 +149,10 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
-    [self popFirstLogin];
+    if (MCModelStore.shared.isFirstLogin) {
+        [self popFirstLogin];
+        MCModelStore.shared.isFirstLogin= NO;
+    }
 
 }
 

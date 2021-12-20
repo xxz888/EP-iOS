@@ -84,15 +84,21 @@ static const CGFloat margin = 10;
     UIView *nameView = [[UIView alloc] initWithFrame:CGRectMake(margin, margin, scrollView.width - margin * 2, 40)];
     nameView.layer.cornerRadius = 6;
     nameView.layer.masksToBounds = YES;
-    nameView.layer.borderColor = kViewColor.CGColor;
-    nameView.layer.borderWidth = 1;
+//    nameView.layer.borderColor = kViewColor.CGColor;
+//    nameView.layer.borderWidth = 1;
     [scrollView addSubview:nameView];
     
-    UILabel *nameTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"用户名" textColor:[UIColor darkGrayColor] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:14]];
+    
+    
+
+    
+    
+    
+    UILabel *nameTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"姓名" textColor:[UIColor darkGrayColor] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:14]];
     
     [nameView addSubview:nameTitleLabel];
     UIView *nameLineView = [[UIView alloc] initWithFrame:CGRectMake(nameTitleLabel.right, 5, 1, nameView.height - 10)];
-    nameLineView.backgroundColor = kViewColor;
+    nameLineView.backgroundColor = KClearColor;
     [nameView addSubview:nameLineView];
     UITextField *nameTF = [[UITextField alloc] initWithFrame:CGRectMake(nameLineView.right + 5, 0, nameView.width - nameLineView.right - 5 - margin, nameView.height)];
     nameTF.textColor = [UIColor lightGrayColor];
@@ -106,17 +112,32 @@ static const CGFloat margin = 10;
     self.nameTF = nameTF;
     //身份证号
     UIView *cardNoView = [[UIView alloc] initWithFrame:CGRectMake(nameView.left, nameView.bottom + margin, nameView.width, nameView.height)];
+    
+    CALayer *deleteBtnBorder1 = [CALayer layer];
+
+    float height1=cardNoView.height;
+
+    float width1=cardNoView.width;
+
+    deleteBtnBorder1.frame = CGRectMake(height1-5, 0,width1, 1);
+
+    deleteBtnBorder1.backgroundColor =[UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
+
+    [cardNoView.layer addSublayer:deleteBtnBorder1];
+    
+    
+    
     cardNoView.layer.cornerRadius = 6;
     cardNoView.layer.masksToBounds = YES;
-    cardNoView.layer.borderColor = kViewColor.CGColor;
-    cardNoView.layer.borderWidth = 1;
+//    cardNoView.layer.borderColor = kViewColor.CGColor;
+//    cardNoView.layer.borderWidth = 1;
     [scrollView addSubview:cardNoView];
     
     
     UILabel *cardNoTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"身份证" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
     [cardNoView addSubview:cardNoTitleLabel];
     UIView *cardNoLineView = [[UIView alloc] initWithFrame:CGRectMake(cardNoTitleLabel.right, 5, 1, cardNoView.height - 10)];
-    cardNoLineView.backgroundColor = kViewColor;
+    cardNoLineView.backgroundColor = KClearColor;
     [cardNoView addSubview:cardNoLineView];
     UITextField *idCardTF = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
     idCardTF.textColor = [UIColor lightGrayColor];
@@ -132,17 +153,30 @@ static const CGFloat margin = 10;
     
     //储蓄卡
     UIView * bankcardNoView = [[UIView alloc] initWithFrame:CGRectMake(cardNoView.left, cardNoView.bottom + margin, cardNoView.width, cardNoView.height)];
+    
+    
+    CALayer *deleteBtnBorder = [CALayer layer];
+
+    float height=bankcardNoView.height;
+
+    float width=bankcardNoView.width;
+
+    deleteBtnBorder.frame = CGRectMake(height-5, 0,width, 1);
+
+    deleteBtnBorder.backgroundColor =[UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
+
+    [bankcardNoView.layer addSublayer:deleteBtnBorder];
     bankcardNoView.layer.cornerRadius = 6;
     bankcardNoView.layer.masksToBounds = YES;
-    bankcardNoView.layer.borderColor = kViewColor.CGColor;
-    bankcardNoView.layer.borderWidth = 1;
+//    bankcardNoView.layer.borderColor = kViewColor.CGColor;
+//    bankcardNoView.layer.borderWidth = 1;
     [scrollView addSubview:bankcardNoView];
     
     
     UILabel * bankcardNoTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"储蓄卡" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
     [bankcardNoView addSubview:bankcardNoTitleLabel];
     UIView *cardcardNoLineView = [[UIView alloc] initWithFrame:CGRectMake(bankcardNoTitleLabel.right, 5, 1, bankcardNoTitleLabel.height - 10)];
-    cardcardNoLineView.backgroundColor = kViewColor;
+    cardcardNoLineView.backgroundColor = KClearColor;
     [bankcardNoView addSubview:cardcardNoLineView];
     UITextField *bankCardTf = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
     bankCardTf.textColor = [UIColor lightGrayColor];
@@ -156,13 +190,20 @@ static const CGFloat margin = 10;
     self.bankCardTF = bankCardTf;
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, bankcardNoView.bottom + margin, scrollView.width, 10)];
-    lineView.backgroundColor = kViewColor;
+    
+    
+
+
+    
+    
+    
+    lineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
     [scrollView addSubview:lineView];
     
     // 2. 拍摄区
     // 头部文字
-    NSString *headerMessage = @"请拍摄如下照片用于认证，可点击放大查看示例\n（上传图片占用较大流量，建议使用WiFi）";
-    UILabel *headerMessageLabel = [self labelWithFrame:CGRectMake(margin, lineView.bottom, scrollView.width - margin * 2, 60) text:headerMessage textColor:[UIColor lightGrayColor] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:12]];
+    NSString *headerMessage = @"请拍摄并上传";
+    UILabel *headerMessageLabel = [self labelWithFrame:CGRectMake(margin, lineView.bottom, scrollView.width - margin * 2, 60) text:headerMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:13]];
     headerMessageLabel.numberOfLines = 0;
     [scrollView addSubview:headerMessageLabel];
     // 示例图片
@@ -186,23 +227,34 @@ static const CGFloat margin = 10;
     CGFloat buttonW = (SCREEN_WIDTH - buttonMargin * 4) / 3;
     CGFloat buttonH = buttonW;
     UIButton *frontPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    frontPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
     frontPhotoButton.frame = CGRectMake(buttonMargin, downArrowImageView.bottom + 5, buttonW, buttonH);
     frontPhotoButton.tag = 0;
-    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
+    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:0];
+//    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
     [frontPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [scrollView addSubview:frontPhotoButton];
     self.frontPhotoButton = frontPhotoButton;
     UIButton *backPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    backPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
     backPhotoButton.frame = CGRectMake(frontPhotoButton.right + buttonMargin, frontPhotoButton.top, frontPhotoButton.width, frontPhotoButton.height);
     backPhotoButton.tag = 1;
-    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
+    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:0];
+
+//    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
     [backPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [scrollView addSubview:backPhotoButton];
     self.backPhotoButton = backPhotoButton;
     UIButton *personPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    personPhotoButton.contentMode = UIViewContentModeScaleToFill;
+    personPhotoButton.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;//水平方向拉伸
+    personPhotoButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;//垂直方向拉伸
+    personPhotoButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     personPhotoButton.frame = CGRectMake(backPhotoButton.right + buttonMargin, backPhotoButton.top, backPhotoButton.width, backPhotoButton.height);
     personPhotoButton.tag = 2;
-    [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:(UIControlStateNormal)];
+    [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:0];
+
+//    [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:(UIControlStateNormal)];
     [personPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [scrollView addSubview:personPhotoButton];
     self.personPhotoButton = personPhotoButton;
@@ -210,7 +262,7 @@ static const CGFloat margin = 10;
     // 3. 底部说明文字
     NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n•必须上传身份证的正反面\n•手持证件照片需拍到持有人五官，请勿佩戴眼镜、帽子等遮罩物\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
     CGFloat bottomMessageH = [self stringHeightWithString:bottomMessage width:scrollView.width - margin * 2 font:[UIFont systemFontOfSize:12]];
-    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, personPhotoButton.bottom + margin, scrollView.width - margin * 2, bottomMessageH) text:bottomMessage textColor:MAINCOLOR textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:12]];
+    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, personPhotoButton.bottom + margin, scrollView.width - margin * 2, bottomMessageH) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:12]];
     bottomMessageLabel.numberOfLines = 0;
     [scrollView addSubview:bottomMessageLabel];
     
@@ -368,9 +420,35 @@ static const CGFloat margin = 10;
 #pragma mark --- SET DATA
 //------ 传入姓名身份证号数据请求(用来判定是否可以上传图片) ------//
 - (void)requestDataForCheckInputInfo {
-
     NSString *idCardNo = [self.idCardTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *debitCardNo = [self.bankCardTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+
+    
+    
+    if (self.nameTF.text.length == 0) {
+        [MCToast showMessage:@"请填写姓名"];
+        return;
+    }
+    if (idCardNo.length == 0) {
+        [MCToast showMessage:@"请填写身份证号"];
+        return;
+    }
+    if (debitCardNo.length == 0) {
+        [MCToast showMessage:@"请填写储蓄卡号"];
+        return;
+    }
+    if (!self.imageOneURL) {
+        [MCToast showMessage:@"请上传身份证正面照"];
+        return;
+    }
+    if (!self.imageTwoURL) {
+        [MCToast showMessage:@"请上传身份证反面照"];
+        return;
+    }
+    if (!self.imageThreeURL) {
+        [MCToast showMessage:@"请上传手持身份证照片"];
+        return;
+    }
 
 
     /* token  realname:真实姓名  idcard:身份证号  */
@@ -391,7 +469,10 @@ static const CGFloat margin = 10;
         }else{
             [MCToast showMessage:dic[@"message"]];
         }
-    
+        
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+           
+        }];
         
     } other:^(NSDictionary * _Nonnull resp) {
         

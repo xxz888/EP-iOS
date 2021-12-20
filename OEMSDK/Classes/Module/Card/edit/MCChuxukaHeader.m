@@ -153,11 +153,6 @@
 
 - (IBAction)buttonTouched:(id)sender {
     
-    if ([self verifyFailedTextField:self.textField1] ||
-        [self verifyFailedTextField:self.textField3] 
-        ) {
-        return;
-    }
     if (self.model) {   //修改
         [self modifyChuxu];
     } else {    //新增
@@ -222,18 +217,36 @@
 
 //修改储蓄卡
 - (void)modifyChuxu {
-    return;
+
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
 
-    NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
-    NSDictionary *param = @{@"userId":SharedUserInfo.userid,
-                            @"bankCardNumber":cardNo,
-                            @"province":addr[0],
-                            @"city":addr[1]};
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo/province/city" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        [MCToast showMessage:resp[@"messege"]];
+    NSDictionary *param = @{
+                            @"bankCardNo":cardNo,
+                            @"cardType":@"DebitCard",
+                            @"name":self.textField1.text,
+                            @"phone":self.textField3.text,
+                            @"id":self.model.id
+                            };
+    [MCSessionManager.shareManager mc_put:@"/api/v1/player/bank" parameters:param ok:^(NSDictionary * _Nonnull respDic) {
+        [MCToast showMessage:@"修改成功"];
         [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
+    
+//    NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
+//
+//    NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
+//    NSDictionary *param = @{@"userId":SharedUserInfo.userid,
+//                            @"bankCardNumber":cardNo,
+//                            @"province":addr[0],
+//                            @"city":addr[1]};
+//    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/set/bankinfo/province/city" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        [MCToast showMessage:resp[@"messege"]];
+//        [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
+//    }];
 }
 
 
@@ -267,11 +280,6 @@
     vv.hidden = YES;
     
     
-    for (int i=2000; i<2003; i++) {
-        UIView *vv = [self viewWithTag:i];
-        vv.userInteractionEnabled = NO;
-        vv.alpha = 0.3;
-    }
     self.scanBtn.hidden = YES;
     self.scanBtnBottomLabel.hidden = YES;
     self.wenhaoBtn.hidden = YES;
@@ -282,14 +290,8 @@
 //        weakself.idCard = userInfo.idcard;
 //    }];
 //
-    NSMutableString *string = [NSMutableString string];
-    for (int i = 0; i < model.cardNo.length; i++) {
-        [string appendString:[model.cardNo substringWithRange:NSMakeRange(i, 1)]];
-        if (i % 4 == 3) {
-            [string appendString:@" "];
-        }
-    }
-    self.textField2.text = string;
+
+    self.textField2.text = model.bankCardNo;
     self.textField3.text = model.phone;
     self.textField4.text = [NSString stringWithFormat:@"%@%@",model.province,model.city];
 }

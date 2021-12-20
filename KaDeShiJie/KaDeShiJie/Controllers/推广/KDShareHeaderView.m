@@ -9,7 +9,8 @@
 #import "KDShareHeaderView.h"
 #import "KDWXViewController.h"
 #import "KDGuanFangSheQun.h"
-
+#import "KDNewsViewController.h"
+#import "UIView+Extension.h"
 @interface KDShareHeaderView ()
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
@@ -40,7 +41,7 @@
         _alertCroller.contentView = self.kdGuanFangSheQun;
         __weak __typeof(self)weakSelf = self;
         _alertCroller.layoutBlock = ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
-            weakSelf.kdGuanFangSheQun.frame = CGRectMake((self.frame.size.width-266)/2, NavigationContentTop+50, 266, 253);
+            weakSelf.kdGuanFangSheQun.frame = CGRectMake((self.frame.size.width-285)/2, NavigationContentTop+50, 285, 280);
             [weakSelf.kdGuanFangSheQun setCenterY:weakSelf.centerY];
         };
     }
@@ -63,7 +64,21 @@
     UITapGestureRecognizer *disPhoneTap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(disPhoneClicktuiguang2Imv)];
     [self.tuiguang2Imv addGestureRecognizer:disPhoneTap1];
     
-
+    
+    [self.tuiguangwuliaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_news_list withUerinfo:@{@"classification":@"推广物料"}];
+    }] ;
+    
+    [self.pingtaijieshaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+    }] ;
+    [self.caozuoshuomingView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+    }] ;
+    [self.weixinView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [self disPhoneClicktuiguang1Imv];
+    }] ;
+    
 }
 -(void)disPhoneClicktuiguang1Imv{
     [self.alertCroller showWithAnimated:YES completion:nil];
@@ -109,7 +124,10 @@
     } else if ([title isEqualToString:@"推广二维码"]) {
         [MCPagingStore pagingURL:rt_share_single];
     } else if ([title isEqualToString:@"收益规则"]) {
-        [MCPagingStore pushWebWithTitle:title classification:@"功能跳转"];
+        [MCToast showMessage:@"暂未开放"];
+    }
+    else if ([title isEqualToString:@"行业资讯"]) {
+        [self.viewController.navigationController pushViewController:[KDNewsViewController new] animated:YES];
     }
 }
 

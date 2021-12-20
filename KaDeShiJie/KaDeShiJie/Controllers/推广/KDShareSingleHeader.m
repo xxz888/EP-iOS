@@ -32,15 +32,7 @@
 - (UILabel *)bottomLabel
 {
     if (!_bottomLabel) {
-        CGRect rect =  [MCImageStore getAlphaFrameInImage:[UIImage imageNamed:@"share_single_img"]];
-        _bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5,
-                                                                 
-                                                                 [[UIScreen mainScreen] bounds].size.height == 667 ? 248 :
-                                                                 [[UIScreen mainScreen] bounds].size.height == 896 ? 275 :
-                                                                 [[UIScreen mainScreen] bounds].size.height == 736 ? 280 :
-                                                                 [[UIScreen mainScreen] bounds].size.height == 812 ? 255 : 255
-
-                                                                 , 150, 15)];
+        _bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, self.topLabel.qmui_bottom - 20, 150, 15)];
         NSString *first = [SharedUserInfo.phone substringWithRange:NSMakeRange(0, 3)];
         NSString *last = [SharedUserInfo.phone substringWithRange:NSMakeRange(7, 4)];
         _bottomLabel.text = [NSString stringWithFormat:@"推荐人:%@****%@", first, last];
@@ -69,19 +61,13 @@
         [self.imgView addSubview:self.bottomLabel];
     }
     
-    
-    
-    
-    
+    self.imgView.image = [MCImageStore creatShareImageWithImage:[UIImage imageNamed:@"share_single_img"]];
     
     [self layoutIfNeeded];
     
     
 }
--(void)setUrl:(NSString *)url{
-    self.imgView.image = [MCImageStore creatShareImageWithImage:[UIImage imageNamed:@"share_single_img"] shareUrlString:url];
 
-}
 - (UIImage *)snapshotScreenInView:(UIView *)view
 {
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){

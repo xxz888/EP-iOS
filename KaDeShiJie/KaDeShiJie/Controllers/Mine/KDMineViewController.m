@@ -32,7 +32,23 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.tabBarController.tabBar setHidden:NO];
-    [self reloadData];
+    
+    
+    //
+    NSString * level = @"";
+    if (SharedUserInfo.level) {
+        if ([SharedUserInfo.level isEqualToString:@"Normal"]) {
+            level = @"普通用户";
+        }else{
+            level = @"钻石用户";
+        }
+    }
+ 
+
+    self.header.phoneLabel.text = SharedUserInfo.phone;
+    self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",SharedUserInfo.nickname,level];
+    
+    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -50,7 +66,8 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    
+    [self reloadData];
+
 //    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];
 //    [backBtn addTarget:self action:@selector(leftItemClick) forControlEvents:UIControlEventTouchUpInside];
@@ -89,28 +106,19 @@
         self.header.phoneLabel.text = userInfo.phone;
         self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",userInfo.nickname,level];
         
-        
-//        SharedUserInfo = userInfo;
-//        self.header.nameLabel.text = SharedUserInfo.nickname || SharedUserInfo.nickname.length != 0 ? SharedUserInfo.nickname :SharedUserInfo.realname;
-        
-//        NSString *firstName = [userInfo.realname substringWithRange:NSMakeRange(0, 1)];
-//        if (userInfo.realname.length == 2) {
-//            self.header.nameLabel.text = [NSString stringWithFormat:@"%@*", firstName];
-//        } else {
-//            NSString *lastName = [userInfo.realname substringFromIndex:userInfo.realname.length-1];
-//            self.header.nameLabel.text = [NSString stringWithFormat:@"%@*%@", firstName, lastName];
-//        }
-//        NSString *first = [userInfo.phone substringWithRange:NSMakeRange(0, 3)];
-//        NSString *last = [userInfo.phone substringWithRange:NSMakeRange(7, 4)];
-//        self.header.phoneLabel.text = [NSString stringWithFormat:@"%@****%@", first, last];
-//        self.header.idLabel.text = [NSString stringWithFormat:@"ID：%@", userInfo.userid];
-//
-//
-//        [self.header getUserGradeName];
-//
-//        MCUserHeaderView * mcUserHeaderView = [self.header viewWithTag:2001];
-//        [mcUserHeaderView fetchHeaderPath];
     }];
+    
+    
+    
+    [self.sessionManager mc_GET:@"/api/v1/player/user/propaganda/link" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        if (resp[@"link"]) {
+            MCModelStore.shared.shareLink = resp[@"link"];
+        }
+      
+    }];
+    
 }
+-(void)requestData{
 
+}
 @end

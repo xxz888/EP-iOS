@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MCNewsCell : UITableViewCell
 
 + (instancetype)cellWithTableview:(UITableView *)tableview newsModel:(MCNewsModel *)model;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @end
 

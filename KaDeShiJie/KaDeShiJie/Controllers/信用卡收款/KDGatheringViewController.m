@@ -526,12 +526,5 @@
 -(void)cardVCBack:(NSNotification *)notification{
     [self requestDefaultChuXuCards];
 }
--(void)showGuidePage2{
-    //空白的frame
-    CGRect emptyRect = CGRectMake(23, 101+kStatusBarHeight+40,KScreenWidth-46, 60);
-    //图片的frame
-    CGRect imgRect = CGRectMake(23, 101+kStatusBarHeight+100, kRealWidthValue(200), kRealWidthValue(200)*1417/1890);
-    kWeakSelf(self);
-    [[KDGuidePageManager shareManager] showGuidePageWithType:KDGuidePageTypeXinYongKaShouKuan emptyRect:emptyRect imgRect:imgRect imgStr:@"guide4" completion:^{}];
-}
+
 @end
