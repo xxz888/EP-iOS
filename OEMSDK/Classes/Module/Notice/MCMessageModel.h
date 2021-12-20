@@ -23,10 +23,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *endTime;
-@property (nonatomic, copy) NSString *createTime;
+@property (nonatomic, copy) NSString *createdTime;
 
 @property (nonatomic, assign) CGFloat cellHeight;
 
+
+//status = Normal,
+//id = 11,
+//title = 激发开始发售,
+//content = 发大水发的说法,
+//noticeType = Normal,
+//createdTime = 2021-12-13T20:11:20
 @end
 
 NS_ASSUME_NONNULL_END

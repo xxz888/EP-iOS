@@ -350,15 +350,18 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 
         NSHTTPURLResponse * responses = UserInfo[@"com.alamofire.serialization.response.error.response"];
 
+                NSInteger code = [responses statusCode];
+        
+        
         NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
 
         NSString *errorStr = errorDict[@"message"];
         [MCToast showMessage:errorStr];
         
-        if ([errorStr isEqualToString:@"无法获得当前登陆用户"]) {
+        if ([errorStr isEqualToString:@"无法获得当前登陆用户"] || code == 401) {
             [MCApp userLogout];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"无法获得当前登陆用户"];
+                [MCToast showMessage:@"请重新登录"];
             });
         }
         

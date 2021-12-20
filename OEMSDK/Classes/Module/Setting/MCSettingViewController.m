@@ -61,17 +61,35 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
 - (void)setdata {
     [self.items removeAllObjects];
     
-    [self.items addObject:@{@"imgName":@"set_update",
+    
+    [self.items addObject:@{@"imgName":@"手机 (5)",
+                            @"title":@"绑定手机号",
+                            @"subTitle":SharedUserInfo.phone,
+                            @"action":@""
+    }];
+
+    CGFloat size = [[SDImageCache sharedImageCache] totalDiskSize]/1024/1024;
+    [self.items addObject:@{
+                            @"imgName":@"删除",
+                                                    @"title":@"清除缓存",
+                            @"subTitle":[NSString stringWithFormat:@"%.2fM",size],
+                            @"action":@"cleanCache"
+    }];
+    [self.items addObject:@{@"imgName":@"椭圆 1",
                             @"title":@"版本更新",
                             @"subTitle":[NSString stringWithFormat:@"v%@",SharedAppInfo.version],
                             @"action":@"checkVersion"
     }];
-    
-    CGFloat size = [[SDImageCache sharedImageCache] totalDiskSize]/1024/1024;
-    [self.items addObject:@{@"imgName":@"set_clean",
-                            @"title":@"清理缓存",
-                            @"subTitle":[NSString stringWithFormat:@"%.2fM",size],
-                            @"action":@"cleanCache"
+
+    [self.items addObject:@{@"imgName":@"椭圆 2",
+                            @"title":@"设置交易密码",
+                            @"subTitle":@"",
+                            @"action":@"manageCount"
+    }];
+    [self.items addObject:@{@"imgName":@"钥匙",
+                            @"title":@"设置登录密码",
+                            @"subTitle":@"",
+                            @"action":@"resetLoginPwd"
     }];
 //    [self.items addObject:@{@"imgName":@"one_mine_icon_safe",
 //                            @"title":SharedConfig.safe_title,
@@ -120,7 +138,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     NSString *iT = [self.items[indexPath.row] objectForKey:@"title"];
     NSString *iST = [self.items[indexPath.row] objectForKey:@"subTitle"];
     
-    
+   
     if ([iT isEqualToString:@"语音提示"]) {
         MCSettingCell *cell = [MCSettingCell voiceCellWithTableView:tableView];
         cell.imgView.image = img;
@@ -137,7 +155,9 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
         cell.imgView.image = img;
         cell.titleLab.text = iT;
         cell.subTitleLab.text = iST;
-        
+        if ([iT isEqualToString:@"绑定手机号"]) {
+            cell.subTitleLab.textColor = [UIColor qmui_colorWithHexString:@"#FF9641"];
+        }
         return cell;
     }
     
@@ -180,13 +200,17 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     [MCVerifyStore verifyVersionShowToast:YES];
 }
 - (void)manageCount {
-    MCResetPWDController *vc = [[MCResetPWDController alloc] initWithType:MCResetPWDTypeTrade];
-    [self.navigationController pushViewController:vc animated:YES];
+    [MCToast showMessage:@"暂未开放"];
+
+//    MCResetPWDController *vc = [[MCResetPWDController alloc] initWithType:MCResetPWDTypeTrade];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)logout:(id)sedner {
     [MCApp userLogout];
 }
 -(void)resetLoginPwd{
-    [MCLATESTCONTROLLER.navigationController pushViewController:[KDForgetPwdViewController new] animated:YES];
+    KDForgetPwdViewController * vc = [[KDForgetPwdViewController alloc]init];
+    vc.iscome = @"1";
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }
 @end

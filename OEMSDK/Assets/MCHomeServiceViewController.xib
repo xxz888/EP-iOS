@@ -106,7 +106,7 @@
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="top" secondItem="Qmf-kD-pGr" secondAttribute="bottom" constant="20" id="tR8-gB-Yd5"/>
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="leading" secondItem="Qmf-kD-pGr" secondAttribute="leading" id="xUC-Wf-qDd"/>
             </constraints>
-            <point key="canvasLocation" x="225" y="214"/>
+            <point key="canvasLocation" x="490" y="206"/>
         </view>
     </objects>
     <resources>

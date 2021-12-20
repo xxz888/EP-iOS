@@ -34,6 +34,8 @@
     self.mc_tableview.backgroundColor = [UIColor whiteColor];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
+    self.mc_tableview.tableHeaderView = self.headerView;
+
 //    self.mc_tableview.rowHeight = UITableViewAutomaticDimension; //
 //    self.mc_tableview.estimatedRowHeight = 100;
     __weak typeof(self) weakSelf = self;
@@ -43,15 +45,15 @@
 //        [weakSelf.mc_tableview.mj_header endRefreshing];
 //    }];
 
-    [self getDetailData];
+//    [self getDetailData];
     
     
-    [self.headerView.detailImv sd_setImageWithURL:self.goodDic[@"primaryMessage"]];
-    self.headerView.detailTitle.text = self.goodDic[@"name"];
-    self.headerView.detailPrice.text = [NSString stringWithFormat:@"%@积分+%@元",self.goodDic[@"priceCoin"],self.goodDic[@"priceMoney"]];
-    self.headerView.detailKuCun.text = [NSString stringWithFormat:@"库存:%@",self.goodDic[@"stock"]];
+    [self.headerView.detailImv sd_setImageWithURL:self.goodDic[@"logo"]];
+    self.headerView.detailTitle.text = self.goodDic[@"title"];
+    self.headerView.detailPrice.text = [NSString stringWithFormat:@"¥%@元",self.goodDic[@"price"]];
+    self.headerView.detailKuCun.text = [NSString stringWithFormat:@"库存:%@",self.goodDic[@"num"]];
 
-    self.headerView.detailTitle1.text = self.goodDic[@"name"];
+    self.headerView.detailTitle1.text = self.goodDic[@"introduce"];
 }
 - (KDJFShopDetailHeaderView *)headerView
 {

@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *personTitle;
 @property (weak, nonatomic) IBOutlet UILabel *jifenLbl;
 @property (weak, nonatomic) IBOutlet UIView *jifenView;
+@property (weak, nonatomic) IBOutlet QMUIButton *btn1;
+@property (weak, nonatomic) IBOutlet QMUIButton *btn2;
+@property (weak, nonatomic) IBOutlet QMUIButton *btn3;
+@property (weak, nonatomic) IBOutlet QMUIButton *btn4;
 
 @end
 

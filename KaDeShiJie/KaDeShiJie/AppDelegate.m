@@ -28,7 +28,7 @@
 #import "KDWelcomeAlertView.h"
 #import "KDWebContainer.h"
 #import "KDCommonAlert.h"
-
+#import "KDJFShopViewController.h"
 @interface AppDelegate ()
 
 @property(nonatomic, strong) KDWelcomeAlertView *alertContent;
@@ -120,7 +120,7 @@
         @{@"title":@"会员",
           @"iconName":@"tab_icon_share",
           @"selectedIconName":@"tab_icon_share_selected",
-          @"controller":[KDMemberViewController new]
+          @"controller":[KDJFShopViewController new]
         },
         @{@"title":@"我的",
           @"iconName":@"tab_icon_mine",

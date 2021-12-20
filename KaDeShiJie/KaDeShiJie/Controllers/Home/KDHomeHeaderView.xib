@@ -217,38 +217,69 @@
                                 <constraint firstAttribute="height" constant="80" id="weA-vl-e2R"/>
                             </constraints>
                         </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdL-hW-TO5">
+                            <rect key="frame" x="0.0" y="193" width="382" height="50"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kd_home_news" translatesAutoresizingMaskIntoConstraints="NO" id="hAm-56-b0i">
+                                    <rect key="frame" x="8.5" y="9" width="40" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="hAm-56-b0i" secondAttribute="height" multiplier="65:52" id="TmC-y9-OgR"/>
+                                        <constraint firstAttribute="width" constant="40" id="iNM-is-0lk"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kd_home_more" translatesAutoresizingMaskIntoConstraints="NO" id="dqu-8t-gDb">
+                                    <rect key="frame" x="366.5" y="19" width="7" height="12"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npI-aP-zBa">
+                                    <rect key="frame" x="56" y="0.0" width="303" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="dqu-8t-gDb" secondAttribute="trailing" constant="8.5" id="0tv-bV-oNT"/>
+                                <constraint firstItem="npI-aP-zBa" firstAttribute="leading" secondItem="hAm-56-b0i" secondAttribute="trailing" constant="7.5" id="Fr2-Gy-p9b"/>
+                                <constraint firstItem="hAm-56-b0i" firstAttribute="leading" secondItem="qdL-hW-TO5" secondAttribute="leading" constant="8.5" id="G6p-ck-2DU"/>
+                                <constraint firstItem="npI-aP-zBa" firstAttribute="top" secondItem="qdL-hW-TO5" secondAttribute="top" id="g4r-My-lkT"/>
+                                <constraint firstAttribute="bottom" secondItem="npI-aP-zBa" secondAttribute="bottom" id="hhl-cs-nCv"/>
+                                <constraint firstItem="dqu-8t-gDb" firstAttribute="centerY" secondItem="qdL-hW-TO5" secondAttribute="centerY" id="toc-UC-sHn"/>
+                                <constraint firstItem="dqu-8t-gDb" firstAttribute="leading" secondItem="npI-aP-zBa" secondAttribute="trailing" constant="7.5" id="u89-na-XD1"/>
+                                <constraint firstItem="hAm-56-b0i" firstAttribute="centerY" secondItem="npI-aP-zBa" secondAttribute="centerY" id="v9i-kw-V2g"/>
+                                <constraint firstAttribute="height" constant="50" id="yNq-HP-19j">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="widthScreen" value="NO"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                            </constraints>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPS-wx-cbb">
-                            <rect key="frame" x="0.0" y="208" width="57.5" height="17"/>
+                            <rect key="frame" x="0.0" y="263" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="绑定信用卡" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-k5-SJS">
-                            <rect key="frame" x="0.0" y="245" width="189" height="80"/>
+                            <rect key="frame" x="0.0" y="300" width="382" height="101.5"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="80" id="cKA-3c-VRj"/>
+                                <constraint firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="height" multiplier="656:174" id="sIQ-N9-3ax"/>
                             </constraints>
-                        </imageView>
-                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-GS-BQH">
-                            <rect key="frame" x="195" y="245" width="187" height="80"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="NJr-rh-seA" firstAttribute="top" secondItem="Wem-cK-bkb" secondAttribute="top" constant="13" id="37X-CJ-jkv"/>
-                        <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" constant="115" id="9oG-7h-Hxb"/>
+                        <constraint firstAttribute="trailing" secondItem="31Z-k5-SJS" secondAttribute="trailing" id="5QP-fh-Jhv"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="Blh-gJ-2gV"/>
+                        <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="qdL-hW-TO5" secondAttribute="bottom" constant="20" id="Ci0-h0-3zA"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="leading" secondItem="aPS-wx-cbb" secondAttribute="leading" id="E2l-tf-lfW"/>
-                        <constraint firstItem="31Z-k5-SJS" firstAttribute="width" secondItem="Wem-cK-bkb" secondAttribute="width" multiplier="0.5" constant="-2" id="G47-HA-vdo"/>
                         <constraint firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="GZM-Fl-b3g"/>
-                        <constraint firstItem="OEf-GS-BQH" firstAttribute="top" secondItem="31Z-k5-SJS" secondAttribute="top" id="Ilb-aX-CDR"/>
-                        <constraint firstItem="OEf-GS-BQH" firstAttribute="bottom" secondItem="31Z-k5-SJS" secondAttribute="bottom" id="MMd-a1-bgv"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" id="ThE-TT-xJq"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="top" secondItem="aPS-wx-cbb" secondAttribute="bottom" constant="20" id="XOm-th-jCg"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="ZHZ-ob-Z6k"/>
-                        <constraint firstItem="OEf-GS-BQH" firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="width" constant="-2" id="iOz-Eg-gOC"/>
-                        <constraint firstAttribute="trailing" secondItem="OEf-GS-BQH" secondAttribute="trailing" id="qo0-is-F1f"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="leading" secondItem="NJr-rh-seA" secondAttribute="leading" id="s9S-Nz-Fin"/>
+                        <constraint firstAttribute="trailing" secondItem="qdL-hW-TO5" secondAttribute="trailing" id="u1R-9Q-RuX"/>
+                        <constraint firstItem="qdL-hW-TO5" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="uZJ-QS-K7U"/>
+                        <constraint firstItem="qdL-hW-TO5" firstAttribute="top" secondItem="wjI-4V-d9G" secondAttribute="bottom" constant="20" id="vhY-rU-aIF"/>
                         <constraint firstItem="NJr-rh-seA" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="yRX-06-doQ"/>
                     </constraints>
                 </view>
@@ -273,7 +304,8 @@
                 <outlet property="cententBottomView" destination="wjI-4V-d9G" id="qmo-aq-DZo"/>
                 <outlet property="centerView" destination="NJr-rh-seA" id="8N9-fQ-5b3"/>
                 <outlet property="contentView" destination="Wem-cK-bkb" id="Zsr-Qn-Wbp"/>
-                <outlet property="huabeiView" destination="OEf-GS-BQH" id="s9I-xX-q3R"/>
+                <outlet property="msgContentView" destination="qdL-hW-TO5" id="9AP-v7-Oxi"/>
+                <outlet property="msgView" destination="npI-aP-zBa" id="GQZ-rV-zHf"/>
                 <outlet property="topView" destination="3fR-TA-5bX" id="3d3-4t-sfD"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="59.263392857142854"/>
@@ -281,12 +313,13 @@
     </objects>
     <resources>
         <image name="kd_home_bottom_0" width="45.5" height="45.5"/>
+        <image name="kd_home_more" width="7" height="12"/>
+        <image name="kd_home_news" width="65" height="52"/>
         <image name="kd_home_top_bg" width="540" height="325"/>
         <image name="信用卡 (4)" width="39" height="31"/>
         <image name="信用卡还款" width="39" height="32"/>
         <image name="收款" width="39" height="39"/>
-        <image name="绑定信用卡" width="163.5" height="75"/>
-        <image name="花呗" width="163.5" height="75"/>
+        <image name="绑定信用卡" width="328" height="87"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

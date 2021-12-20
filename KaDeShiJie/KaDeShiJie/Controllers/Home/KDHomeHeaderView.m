@@ -106,21 +106,12 @@
     cyView.showPageControl = NO;
     cyView.clipsToBounds = YES;
     [cyView disableScrollGesture];
-//    cyView.imageURLStringsGroup = self.dataArray;
+    cyView.imageURLStringsGroup = self.dataArray;
     cyView.scrollDirection = UICollectionViewScrollDirectionVertical;
     [self.msgView addSubview:cyView];
     self.cyView = cyView;
-//    [self getMessage];
+    [self getMessage];
     
-    [self.bangkaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [self pushCardVCWithType:MCBankCardTypeXinyongka];
-
-    }];
-    
-    [self.huabeiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCToast showMessage:@"暂未开放"];
-
-    }];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -251,7 +242,7 @@
 {
     MCMessageModel *model = self.dataArray[index];
     KDMsgViewCell *myCell = (KDMsgViewCell *)cell;
-    myCell.topLabel.text = [NSString stringWithFormat:@"%@%@", model.title, model.createTime];
+    myCell.topLabel.text = [NSString stringWithFormat:@"%@ %@", model.title, model.createdTime];
     myCell.centerLabel.text = model.content;
     
 }
@@ -260,15 +251,9 @@
     [MCPagingStore pagingURL:rt_notice_list];
 }
 - (void)getMessage {
-    [MCLATESTCONTROLLER.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-        for (NSDictionary *dic in resp[@"result"][@"content"]) {
-            if (![dic[@"btype"] isEqualToString:@"androidVersion"]) { // 过滤安卓消息
-                self.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"result"][@"content"]];
-//                self.dataArray = [NSMutableArray arrayWithArray:@[@"1", @"2", @"3", @"4", @"5", @"6"]];
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+                self.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
                 self.cyView.localizationImageNamesGroup = self.dataArray;
-                break;
-            }
-        }
     }];
 }
 

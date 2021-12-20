@@ -28,7 +28,7 @@
     }
     cell.lab1.text = model.title;
     cell.lab2.text = model.content;
-    cell.lab3.text = model.createTime;
+    cell.lab3.text = model.createdTime;
     cell.imgV.image = SharedAppInfo.icon;
     
     return cell;

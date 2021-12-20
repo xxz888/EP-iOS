@@ -18,20 +18,25 @@
     [super awakeFromNib];
     
     ViewRadius(self.personImv, 15);
-    SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.lunboView.bounds];
+    SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth-24, 138)];
+    cyView.layer.cornerRadius = 7;
     cyView.delegate = self;
     cyView.backgroundColor = [UIColor clearColor];
     cyView.showPageControl = YES;
     cyView.clipsToBounds = YES;
     [cyView disableScrollGesture];
-    cyView.imageURLStringsGroup = @[@"http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png",@"http://www.baidu.com/img/bdlogo.png"];
+    cyView.localizationImageNamesGroup =@[@"画板 1.png"];
     cyView.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     [self.lunboView addSubview:cyView];
     self.cyView = cyView;
-    
+    self.btn1.imagePosition = QMUIButtonImagePositionTop;
+    self.btn2.imagePosition = QMUIButtonImagePositionTop;
+    self.btn3.imagePosition = QMUIButtonImagePositionTop;
+    self.btn4.imagePosition = QMUIButtonImagePositionTop;
+
     [self.personImv sd_setImageWithURL:[NSURL URLWithString:SharedUserInfo.headImvUrl]];
     self.personTitle.text = SharedUserInfo.realname;
-    [self requestJiFenData];
+//    [self requestJiFenData];
     //添加手势
     self.jifenView.userInteractionEnabled = YES;
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickNoAdressAction:)];

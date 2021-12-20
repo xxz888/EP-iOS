@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)finishAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property(nonatomic, strong) NSString * startPhone;
+@property(nonatomic, strong) NSString * iscome;
+
 
 @end
 

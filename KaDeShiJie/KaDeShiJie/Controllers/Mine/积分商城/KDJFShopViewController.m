@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CGRect frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
+    CGRect frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop-kTabBarHeight);
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     self.jfCollectionView = [[UICollectionView alloc]initWithFrame:frame collectionViewLayout:layout];
     self.jfCollectionView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
@@ -31,6 +31,7 @@
     self.jfCollectionView.dataSource = self;
     [self.jfCollectionView registerNib:[UINib nibWithNibName:@"KDJFShopCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"KDJFShopCollectionViewCell"];
     [self.view addSubview:self.jfCollectionView];
+    self.view.backgroundColor = self.jfCollectionView.backgroundColor = [UIColor whiteColor];
 
     
     if (@available(iOS 11.0, *)) {
@@ -38,9 +39,9 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    [self setNavigationBarTitle:@"积分商城" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+//    [self setNavigationBarTitle:@"商城" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
     
-    
+    [self setNavigationBarTitle:@"商城" tintColor:[UIColor whiteColor]];
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"我的订单" forState:UIControlStateNormal];
     [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
@@ -52,14 +53,19 @@
     [self requestCollectionData];
 }
 -(void)clickRightBtnAction{
-    [self.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
+//    [self.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
+    [MCToast showMessage:@"开发中"];
 }
 -(void)requestCollectionData{
     kWeakSelf(self);
-    
-    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/goods/list" parameters:@{@"name":@"",@"page":@"1",@"size":@"20"} ok:^(NSDictionary * _Nonnull resp) {
-        weakself.dataArray  = [[NSMutableArray alloc]initWithArray:resp[@"result"][@"content"]];
+    [self.sessionManager mc_GET:@"/api/v1/player/shop/product" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        weakself.dataArray  = [[NSMutableArray alloc]initWithArray:respDic];
         [weakself.jfCollectionView reloadData];
+    }];
+    
+    return;
+    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/goods/list" parameters:@{@"name":@"",@"page":@"1",@"size":@"20"} ok:^(NSDictionary * _Nonnull resp) {
+      
     } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {
@@ -81,11 +87,9 @@
 {
     static NSString * CellIdentifier = @"KDJFShopCollectionViewCell";
     KDJFShopCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.collTitle.text = self.dataArray[indexPath.row][@"name"];
-    cell.collPrice.text = [NSString stringWithFormat:@"%@积分+%@元",
-                           self.dataArray[indexPath.row][@"priceCoin"],
-                           self.dataArray[indexPath.row][@"priceMoney"]];
-    [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"primaryMessage"]];
+    cell.collTitle.text = self.dataArray[indexPath.row][@"title"];
+    cell.collPrice.text = [NSString stringWithFormat:@"¥%@元",self.dataArray[indexPath.row][@"price"]];
+    [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"logo"]];
 
     cell.backgroundColor = KWhiteColor;
     return cell;
@@ -105,6 +109,8 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [MCToast showMessage:@"开发中"];
+    return;
     KDJFShopDetailViewController * vc = [[KDJFShopDetailViewController alloc]init];
     vc.goodDic = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
@@ -117,7 +123,7 @@
 
 // 要先设置表头大小
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 220);
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 390);
     return size;
 }
  

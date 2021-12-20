@@ -47,7 +47,8 @@
 
     self.header.phoneLabel.text = SharedUserInfo.phone;
     self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",SharedUserInfo.nickname,level];
-    
+    self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
+
     
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -105,7 +106,8 @@
     
         self.header.phoneLabel.text = userInfo.phone;
         self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",userInfo.nickname,level];
-        
+        self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
+
     }];
     
     

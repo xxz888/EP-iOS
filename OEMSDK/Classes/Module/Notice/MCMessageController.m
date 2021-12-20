@@ -30,7 +30,7 @@
 }
 - (QMUITableView *)tableview {
     if (!_tableview) {
-        _tableview = [[QMUITableView alloc] initWithFrame:CGRectMake(0, self.segement.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.segement.bottom) style:UITableViewStylePlain];
+        _tableview = [[QMUITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _tableview.dataSource = self;
         _tableview.delegate = self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -68,7 +68,7 @@
     [self setNavigationBarTitle:@"消息中心" tintColor:nil];
     self.page = 0;
     self.type = @"0";
-    [self.view addSubview:self.segement];
+//    [self.view addSubview:self.segement];
     [self.view addSubview:self.tableview];
     self.mc_tableview.hidden = YES;
     [self requestPerson];
@@ -76,8 +76,20 @@
 
 #pragma mark - Actions
 - (void)requestPerson {
-    NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
+        [weakSelf.dataSource removeAllObjects];
+        [weakSelf.dataSource addObjectsFromArray:tempA];
+        [weakSelf.tableview reloadData];
+        [weakSelf.tableview.mj_header endRefreshing];
+        [weakSelf.tableview.mj_footer endRefreshing];
+    }];
+    
+    
+    
+    return;
+    NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
     [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.tableview.mj_header endRefreshing];
         [weakSelf.tableview.mj_footer endRefreshing];

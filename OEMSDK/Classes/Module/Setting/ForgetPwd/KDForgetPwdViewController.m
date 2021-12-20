@@ -24,7 +24,7 @@
         self.phoneTf.text = SharedUserInfo.phone;
     }
     self.pwd2Tf.font = self.pwd1Tf.font = Font_System(14);
-    [self setNavigationBarTitle:@"重置登录密码" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:[self.iscome isEqualToString:@"1"]?@"设置登录密码": @"重置登录密码" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     [self.bottomView addSubview:self.footView];
     

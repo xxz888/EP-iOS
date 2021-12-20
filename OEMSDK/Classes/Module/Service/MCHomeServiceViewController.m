@@ -97,7 +97,7 @@
     }
 }
 - (IBAction)guanfangkefuAction:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@""]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.servicePhone]]];
 }
 
 - (IBAction)kefuAction:(id)sender {
