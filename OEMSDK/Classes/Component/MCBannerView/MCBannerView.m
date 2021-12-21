@@ -125,17 +125,34 @@
     if (city && city.length > 0) {
         [param setObject:city forKey:@"city"];
     }
-    [MCSessionManager.shareManager mc_POST:@"/user/app/slideshow/query/brandid" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        self.infos = resp[@"result"];
+    
+    [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
+        SharedDefaults.servicePhone = [NSString stringWithFormat:@"%@",okResponse[@"servicePhone"]];
+        SharedDefaults.wechat = okResponse[@"wechat"];
+        self.infos = okResponse[@"indexBanners"];
         NSMutableArray *imgUrls = [NSMutableArray new];
         for (NSDictionary *item in self.infos) {
-            [imgUrls addObject:item[@"imgurl"]];
+            [imgUrls addObject:item[@"link"]];
         }
         self.banner.imageURLStringsGroup = imgUrls;
-        if (imgUrls.count) {
-            [self getHeightWith:imgUrls.firstObject];
-        }
+//        if (imgUrls.count) {
+//            [self getHeightWith:imgUrls.firstObject];
+//        }
+    } other:^(NSDictionary * _Nonnull resp) {
+        
     }];
+    
+//    [MCSessionManager.shareManager mc_POST:@"/user/app/slideshow/query/brandid" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+//        self.infos = resp[@"result"];
+//        NSMutableArray *imgUrls = [NSMutableArray new];
+//        for (NSDictionary *item in self.infos) {
+//            [imgUrls addObject:item[@"imgurl"]];
+//        }
+//        self.banner.imageURLStringsGroup = imgUrls;
+//        if (imgUrls.count) {
+//            [self getHeightWith:imgUrls.firstObject];
+//        }
+//    }];
     
 }
 
@@ -210,6 +227,7 @@
     if (!_banner) {
         _banner = [SDCycleScrollView cycleScrollViewWithFrame:self.bounds delegate:self placeholderImage:nil];
         _banner.backgroundColor = [UIColor clearColor];
+        
     }
     return _banner;
 }

@@ -117,7 +117,7 @@
           @"selectedIconName":@"tab_icon_news_selected",
           @"controller":[KDShareViewController new]
         },
-        @{@"title":@"会员",
+        @{@"title":@"商城",
           @"iconName":@"tab_icon_share",
           @"selectedIconName":@"tab_icon_share_selected",
           @"controller":[KDJFShopViewController new]

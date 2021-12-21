@@ -9,6 +9,7 @@
 #import "KDMineViewController.h"
 #import "KDMineHeaderView.h"
 #import "MCUserHeaderView.h"
+#import "KDTrandingRecordViewController.h"
 @interface KDMineViewController ()
 @property (nonatomic, strong) KDMineHeaderView *header;
 @end
@@ -82,8 +83,22 @@
     titleLabel.textColor = UIColor.whiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
+    
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareBtn setTitle:@"交易记录" forState:UIControlStateNormal];
+//    [shareBtn setBackgroundColor:[UIColor whiteColor]];
+//    shareBtn.layer.cornerRadius = 11;
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(jiaoyijiluAction) forControlEvents:UIControlEventTouchUpInside];
+    shareBtn.titleLabel.font = LYFont(13);
+    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 84, StatusBarHeightConstant + 12, 94, 22);
+    [self.view addSubview:shareBtn];
 }
+-(void)jiaoyijiluAction{
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
 
+}
 
 - (void)reloadData {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];

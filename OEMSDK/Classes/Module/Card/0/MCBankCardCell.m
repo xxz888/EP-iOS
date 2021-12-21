@@ -92,34 +92,26 @@
 }
 - (IBAction)delBtnTouched:(id)sender {  //删除卡片
 
-    KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-    [commonAlert initKDCommonAlertContent:@"确定要解绑此银行卡吗？"  isShowClose:NO];
-    kWeakSelf(self);
-
-    commonAlert.rightActionBlock = ^{
+    
+    QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定要解绑此银行卡吗？" preferredStyle:QMUIAlertControllerStyleAlert];
+    [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDestructive handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo,@"type":self.model.type} ok:^(NSDictionary * _Nonnull resp) {
-                  //删除成功发送一个通知让 KDWebContainer 重新设置
-                  [MCToast showMessage:@"删除成功"];
+         
+            [MCSessionManager.shareManager mc_put:@"/api/v1/player/bank" parameters:@{@"status":@"Delete",@"id":[NSString stringWithFormat:@"%@",self.model.id]} ok:^(NSDictionary * _Nonnull respDic) {
+                [MCToast showMessage:@"解绑成功"];
                 
-                  [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
-                weakself.block(MCBankCardCellActionDelete, weakself.model);
+                self.block(MCBankCardCellActionDelete, self.model);
+
+            } other:^(NSDictionary * _Nonnull respDic) {
+                
+            } failure:^(NSError * _Nonnull error) {
+                
             }];
         });
 
-    };
-    
-//    QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定要解绑此银行卡吗？" preferredStyle:QMUIAlertControllerStyleAlert];
-//    [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
-//    [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDestructive handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
-//        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":self.model.cardNo,@"type":self.model.type} ok:^(NSDictionary * _Nonnull resp) {
-//            //删除成功发送一个通知让 KDWebContainer 重新设置
-//            [MCToast showMessage:@"删除成功"];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"mcNotificationWebContainnerReset" object:nil];
-//            self.block(MCBankCardCellActionDelete, self.model);
-//        }];
-//    }]];
-//    [alert showWithAnimated:YES];
+    }]];
+    [alert showWithAnimated:YES];
     
 }
 - (IBAction)modifyTouched:(id)sender {  //修改

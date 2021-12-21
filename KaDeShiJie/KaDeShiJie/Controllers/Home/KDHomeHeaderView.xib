@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KDHomeHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="661"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kd_home_top_bg" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-2N-ECy">
@@ -69,7 +69,7 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wem-cK-bkb">
-                    <rect key="frame" x="16" y="195" width="382" height="466"/>
+                    <rect key="frame" x="16" y="195" width="382" height="522"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NJr-rh-seA">
                             <rect key="frame" x="0.0" y="13" width="382" height="80"/>
@@ -259,23 +259,36 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="绑定信用卡" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-k5-SJS">
-                            <rect key="frame" x="0.0" y="300" width="382" height="101.5"/>
+                            <rect key="frame" x="0.0" y="300" width="382" height="119.5"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="height" multiplier="656:174" id="sIQ-N9-3ax"/>
+                                <constraint firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="height" multiplier="16:5" id="Ct9-rv-cnI"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-r9-oqj" customClass="MCBannerView">
+                            <rect key="frame" x="0.0" y="300" width="382" height="119.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="bannerType">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="NJr-rh-seA" firstAttribute="top" secondItem="Wem-cK-bkb" secondAttribute="top" constant="13" id="37X-CJ-jkv"/>
                         <constraint firstAttribute="trailing" secondItem="31Z-k5-SJS" secondAttribute="trailing" id="5QP-fh-Jhv"/>
+                        <constraint firstItem="yqH-r9-oqj" firstAttribute="top" secondItem="31Z-k5-SJS" secondAttribute="top" id="AT0-Vd-1s2"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="Blh-gJ-2gV"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="qdL-hW-TO5" secondAttribute="bottom" constant="20" id="Ci0-h0-3zA"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="leading" secondItem="aPS-wx-cbb" secondAttribute="leading" id="E2l-tf-lfW"/>
                         <constraint firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="GZM-Fl-b3g"/>
+                        <constraint firstItem="yqH-r9-oqj" firstAttribute="leading" secondItem="31Z-k5-SJS" secondAttribute="leading" id="S9T-d1-gJM"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" id="ThE-TT-xJq"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="top" secondItem="aPS-wx-cbb" secondAttribute="bottom" constant="20" id="XOm-th-jCg"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="ZHZ-ob-Z6k"/>
+                        <constraint firstItem="yqH-r9-oqj" firstAttribute="bottom" secondItem="31Z-k5-SJS" secondAttribute="bottom" id="bSo-9u-XRM"/>
+                        <constraint firstItem="yqH-r9-oqj" firstAttribute="trailing" secondItem="31Z-k5-SJS" secondAttribute="trailing" id="onS-Ee-Gjf"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="leading" secondItem="NJr-rh-seA" secondAttribute="leading" id="s9S-Nz-Fin"/>
                         <constraint firstAttribute="trailing" secondItem="qdL-hW-TO5" secondAttribute="trailing" id="u1R-9Q-RuX"/>
                         <constraint firstItem="qdL-hW-TO5" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="uZJ-QS-K7U"/>
@@ -301,6 +314,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bangkaView" destination="31Z-k5-SJS" id="Zko-12-GyV"/>
+                <outlet property="bannerView" destination="yqH-r9-oqj" id="Ah5-qD-lOE"/>
                 <outlet property="cententBottomView" destination="wjI-4V-d9G" id="qmo-aq-DZo"/>
                 <outlet property="centerView" destination="NJr-rh-seA" id="8N9-fQ-5b3"/>
                 <outlet property="contentView" destination="Wem-cK-bkb" id="Zsr-Qn-Wbp"/>
@@ -308,7 +322,7 @@
                 <outlet property="msgView" destination="npI-aP-zBa" id="GQZ-rV-zHf"/>
                 <outlet property="topView" destination="3fR-TA-5bX" id="3d3-4t-sfD"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="59.263392857142854"/>
+            <point key="canvasLocation" x="131.8840579710145" y="78.013392857142847"/>
         </view>
     </objects>
     <resources>

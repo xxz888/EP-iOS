@@ -41,7 +41,6 @@
     [super viewWillAppear:animated];
     
     [self updateNavigationBarAppearance];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewMQMessages:) name:MQ_RECEIVED_NEW_MESSAGES_NOTIFICATION object:nil];
 
@@ -94,7 +93,8 @@
 //        weakSelf.headerView.ly_height = viewHig;
 //    };
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.mc_tableview.mj_header endRefreshing];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
+        [self.mc_tableview.mj_header endRefreshing];
     }];
 //    [self setNavigationBarTitle:@"首页" backgroundImage:[UIImage qmui_imageWithColor:[UIColor colorWithHexString:@"#F07E1B"]]];
 //
@@ -153,13 +153,11 @@
         [self popFirstLogin];
         MCModelStore.shared.isFirstLogin= NO;
     }
-
 }
 
 - (void)clickKFAction
 {
     [self.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
-    //    [MCServiceStore pushMeiqiaVC];
 }
 -(void)showGuidePage{
     UIButton * btn = [self.headerView viewWithTag:102];

@@ -189,7 +189,7 @@
             }
             [MCPagingStore pagingURL:rt_card_edit withUerinfo:info];
         } else {
-//            [weakSelf requestCards];
+            [weakSelf requestCards];
         }
     };
     return cell;

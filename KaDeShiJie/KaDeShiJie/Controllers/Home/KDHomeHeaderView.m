@@ -92,13 +92,14 @@
     self.contentView.layer.cornerRadius = 7;
     self.msgContentView.layer.cornerRadius = 10;
     self.lineView.layer.cornerRadius = 2.3;
+    self.bannerView.layer.cornerRadius = 27;
     __weak typeof(self) weakSelf = self;
-    self.bannerView.resetHeightBlock = ^(CGFloat h) {
-        weakSelf.bannerHigCons.constant = h;
-        if (self.callBack) {
-            self.callBack(661 - 128 + h);
-        }
-    };
+//    self.bannerView.resetHeightBlock = ^(CGFloat h) {
+//        weakSelf.bannerHigCons.constant = h;
+//        if (self.callBack) {
+//            self.callBack(661 - 128 + h);
+//        }
+//    };
     
     SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.msgView.bounds];
     cyView.delegate = self;

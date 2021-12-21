@@ -28,9 +28,10 @@
         _dragView.backgroundColor = UIColor.clearColor;
         __weak __typeof(self)weakSelf = self;
         _dragView.clickDragViewBlock = ^(WMDragView *dragView) {
-            UIImage *img = weakSelf.header.imgView.image;
-            if (img) {
-                [MCShareStore saveToAlbum:img];
+            [self.header snapshotScreenInView:self.header.imgView];
+            UIImage *shareImg = [self.header snapshotScreenInView:self.header.imgView];
+            if (shareImg) {
+                [MCShareStore saveToAlbum:shareImg];
             }
         };
     }

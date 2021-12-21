@@ -59,7 +59,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhA-9x-1Nz" customClass="QMUIButton">
-                                        <rect key="frame" x="196" y="14.5" width="42" height="16"/>
+                                        <rect key="frame" x="176" y="14.5" width="42" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <state key="normal" title="修改" image="card_edit">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,8 +73,8 @@
                                             <action selector="modifyTouched:" destination="t2f-wI-BQn" eventType="touchUpInside" id="XBg-QR-BLX"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-df-yrp" customClass="QMUIButton">
-                                        <rect key="frame" x="238" y="14.5" width="42" height="16"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-df-yrp" customClass="QMUIButton">
+                                        <rect key="frame" x="228" y="14.5" width="42" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <state key="normal" title="删除" image="card_delete">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,9 +94,9 @@
                                     <constraint firstItem="Ljq-i9-Je0" firstAttribute="leading" secondItem="VoG-5b-ev0" secondAttribute="leading" constant="15" id="OWT-U1-v51"/>
                                     <constraint firstAttribute="height" constant="45" id="WtQ-a5-3Ob"/>
                                     <constraint firstItem="V8f-df-yrp" firstAttribute="centerY" secondItem="YhA-9x-1Nz" secondAttribute="centerY" id="aIl-xW-p8I"/>
-                                    <constraint firstItem="V8f-df-yrp" firstAttribute="leading" secondItem="YhA-9x-1Nz" secondAttribute="trailing" id="deh-uf-mVP"/>
+                                    <constraint firstItem="V8f-df-yrp" firstAttribute="leading" secondItem="YhA-9x-1Nz" secondAttribute="trailing" constant="10" id="deh-uf-mVP"/>
                                     <constraint firstAttribute="trailing" secondItem="Ljq-i9-Je0" secondAttribute="trailing" constant="15" id="idz-bc-Je9"/>
-                                    <constraint firstAttribute="trailing" secondItem="V8f-df-yrp" secondAttribute="trailing" id="m56-XL-CO2"/>
+                                    <constraint firstAttribute="trailing" secondItem="V8f-df-yrp" secondAttribute="trailing" constant="10" id="m56-XL-CO2"/>
                                     <constraint firstItem="V8f-df-yrp" firstAttribute="centerY" secondItem="VoG-5b-ev0" secondAttribute="centerY" id="xup-SC-ZKE"/>
                                 </constraints>
                             </view>

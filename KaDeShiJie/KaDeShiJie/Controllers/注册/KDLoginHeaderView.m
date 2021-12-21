@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIView *segmentLine2;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *img1Tag;
+@property (weak, nonatomic) IBOutlet UIImageView *img2Tag;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
@@ -44,12 +46,16 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pwdBottomViewRight;
 @property (weak, nonatomic) IBOutlet UIImageView *pwdHeadImv;
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneIconTopCons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *codeIconTopCons;
 @end
 
 @implementation KDLoginHeaderView
+- (IBAction)agreeActino:(id)sender {
+    self.agreeBtn.selected = !self.agreeBtn.selected;
+}
 
 - (void)awakeFromNib
 {
@@ -99,7 +105,8 @@
 //    ViewBorderRadius(self.codeBtn, 1, 0.5, SegmentBtn_COLOR);
     self.codeView.placeholder = @"请输入密码";
     self.phoneView.placeholder = @"请输入账号";
-
+    self.img1Tag.image = [UIImage imageNamed:@"账号"];
+    self.img2Tag.image = [UIImage imageNamed:@"密码"];
     self.phoneView.placeholderColor = self.codeView.placeholderColor = SegmentBtn_COLOR;
     
     [self.codeView addTarget:self action:@selector(textFiledEditChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -123,8 +130,9 @@
         self.pwdHeadImv.image = [UIImage imageNamed:@"KD_Login_Pwd"];
         self.forgetBtn.hidden = NO;
         self.codeView.secureTextEntry = YES;
-        self.codeView.keyboardType = UIKeyboardTypeDefault;
-
+        
+        self.img1Tag.image = [UIImage imageNamed:@"账号"];
+        self.img2Tag.image = [UIImage imageNamed:@"密码"];
     }else{
         self.segmentBtn2.selected = YES;
         self.segmentBtn1.selected = NO;
@@ -139,8 +147,9 @@
         self.pwdHeadImv.image = [UIImage imageNamed:@"KD_Login_SMS"];
         self.forgetBtn.hidden = YES;
         self.codeView.secureTextEntry = NO;
-        self.codeView.keyboardType = UIKeyboardTypeNumberPad;
-
+        
+        self.img1Tag.image = [UIImage imageNamed:@"手机"];
+        self.img2Tag.image = [UIImage imageNamed:@"短信"];
 
     }
 }
@@ -180,6 +189,10 @@
 //        return;
 //    }
     
+    if (!self.agreeBtn.selected) {
+        [MCToast showMessage:@"请同意登录服务协议"];
+        return;
+    }
     //密码登录
     if (self.segmentBtn1.selected) {
         if (code.length == 0) {
@@ -241,13 +254,7 @@
        
     }];
 
-    [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
-        SharedDefaults.servicePhone = [NSString stringWithFormat:@"%@",okResponse[@"servicePhone"]];
-        SharedDefaults.wechat = okResponse[@"wechat"];
-
-    } other:^(NSDictionary * _Nonnull resp) {
-        
-    }];
+ 
     
 //    [[KDLoginTool shareInstance] getChuXuCardData:YES];
     //获取贴牌信息
@@ -331,4 +338,5 @@
         tf.text = [tf.text substringToIndex:6];
     }
 }
+
 @end

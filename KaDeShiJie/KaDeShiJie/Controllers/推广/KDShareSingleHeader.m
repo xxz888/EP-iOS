@@ -32,11 +32,9 @@
 - (UILabel *)bottomLabel
 {
     if (!_bottomLabel) {
-        _bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, self.topLabel.qmui_bottom - 20, 150, 15)];
-        NSString *first = [SharedUserInfo.phone substringWithRange:NSMakeRange(0, 3)];
-        NSString *last = [SharedUserInfo.phone substringWithRange:NSMakeRange(7, 4)];
-        _bottomLabel.text = [NSString stringWithFormat:@"推荐人:%@****%@", first, last];
-        _bottomLabel.font = LYFont(11);
+        _bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, self.topLabel.qmui_bottom - 15, 150, 15)];
+        _bottomLabel.text = [NSString stringWithFormat:@"推荐人ID:%@", SharedUserInfo.promoteId];
+        _bottomLabel.font =  [UIFont boldSystemFontOfSize:13];
         _bottomLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffffff"];
         _bottomLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -56,7 +54,7 @@
 {
     [super awakeFromNib];
     
-    if (MCModelStore.shared.preUserPhone.length == 11) {
+    if (SharedUserInfo.promoteId.length > 0) {
 //        [self.imgView addSubview:self.topLabel];
         [self.imgView addSubview:self.bottomLabel];
     }

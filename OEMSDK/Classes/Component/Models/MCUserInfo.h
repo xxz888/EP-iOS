@@ -64,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString * idCardNo;
 @property(nonatomic, strong) NSString * level;
 @property(nonatomic, strong) NSString * name;
+@property(nonatomic, strong) NSString * promoteId;
 
 
 @end

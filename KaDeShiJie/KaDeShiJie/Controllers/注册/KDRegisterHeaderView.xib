@@ -66,7 +66,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CM1-wt-Id7">
                     <rect key="frame" x="37" y="262" width="86" height="19"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csj-1n-495">
                     <rect key="frame" x="39" y="289" width="313" height="1"/>
@@ -85,7 +85,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAY-4a-e6N">
                     <rect key="frame" x="37" y="460.5" width="86" height="19"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-e3-ihJ">
                     <rect key="frame" x="281" y="456.5" width="62" height="27"/>
@@ -122,7 +122,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFU-xM-EyY">
                     <rect key="frame" x="37" y="364" width="72" height="19"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有账号？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eth-9t-Ibu">
                     <rect key="frame" x="156" y="616.5" width="52" height="12"/>
@@ -199,7 +199,7 @@
                 <outlet property="tuijianLine" destination="KFE-RF-L4D" id="dgy-bT-G5p"/>
                 <outlet property="tuijianTf" destination="DFU-xM-EyY" id="mkS-Lk-esi"/>
             </connections>
-            <point key="canvasLocation" x="-481" y="95"/>
+            <point key="canvasLocation" x="-1129" y="40"/>
         </view>
     </objects>
     <resources>
