@@ -8,7 +8,7 @@
 
 #import "KDRegisterHeaderView.h"
 #import <MeiQiaSDK/MQDefinition.h>
-
+#import "KDRegisterViewController.h"
 @interface KDRegisterHeaderView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 @property (weak, nonatomic) IBOutlet UITextField *phoneView;
@@ -24,11 +24,19 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tuijianImv;
 @property (weak, nonatomic) IBOutlet UIView *tuijianLine;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tujianBottomHeight;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
+@property (weak, nonatomic) IBOutlet UITextField *tuijianrenIdTf;
 
 @end
 
 @implementation KDRegisterHeaderView
-
+- (IBAction)agreeActino:(id)sender {
+    self.agreeBtn.selected = !self.agreeBtn.selected;
+}
+// 注册
+- (IBAction)registerAction:(id)sender {
+  
+}
 - (IBAction)kefuAction:(id)sender {
     [MCServiceStore pushMeiqiaVC];
 
@@ -44,7 +52,6 @@
     if (StatusBarHeight == 20) {
         self.topImg.image = [UIImage imageNamed:@"register_top_bg_nor"];
         [self.registerBtn setBackgroundImage:nil forState:UIControlStateNormal];
-        self.registerBtn.layer.cornerRadius = 28;
         [self.registerBtn setBackgroundColor:[UIColor mainColor]];
         [self.registerBtn setTitle:@"注册" forState:UIControlStateNormal];
         [self.registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -127,6 +134,10 @@
 - (IBAction)registerBtnAction:(UIButton *)sender {
     NSString *phone = self.phoneView.text;
     NSString *code = self.codeView.text;
+    if (!self.agreeBtn.selected) {
+        [MCToast showMessage:@"请同意登陆服务协议"];
+        return;
+    }
     if (phone.length != 11) {
         [MCToast showMessage:@"请输入正确的手机号"];
         return;
@@ -139,10 +150,14 @@
         [MCToast showMessage:@"请输入密码"];
         return;
     }
+    if (self.tuijianrenIdTf.text.length == 0) {
+        [MCToast showMessage:@"请输入推荐人ID号"];
+        return;
+    }
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:phone forKey:@"phone"];
-    [params setValue:@"1" forKey:@"agentId"];
+    [params setValue:self.tuijianrenIdTf.text forKey:@"agentId"];
     [params setValue:self.tuijianTf.text forKey:@"password"];
     [params setValue:code forKey:@"code"];
 
@@ -201,7 +216,7 @@
 {
     [super layoutSubviews];
     
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT+100);
 }
 
 @end

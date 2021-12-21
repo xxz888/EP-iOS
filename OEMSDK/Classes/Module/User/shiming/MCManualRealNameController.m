@@ -47,6 +47,9 @@ static const CGFloat margin = 10;
 @property (nonatomic, strong) NSString *imageTwoURL;
 /** imageThree */
 @property (nonatomic, strong) NSString *imageThreeURL;
+
+@property (nonatomic, weak) UITextField * phoneTf;
+
 @end
 
 @implementation MCManualRealNameController
@@ -84,26 +87,26 @@ static const CGFloat margin = 10;
     UIView *nameView = [[UIView alloc] initWithFrame:CGRectMake(margin, margin, scrollView.width - margin * 2, 40)];
     nameView.layer.cornerRadius = 6;
     nameView.layer.masksToBounds = YES;
-//    nameView.layer.borderColor = kViewColor.CGColor;
-//    nameView.layer.borderWidth = 1;
+    nameView.layer.borderColor =  [UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
+    nameView.layer.borderWidth = 1;
     [scrollView addSubview:nameView];
     
     
-    
+  
 
     
     
     
-    UILabel *nameTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"姓名" textColor:[UIColor darkGrayColor] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:14]];
+    UILabel *nameTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 100, nameView.height-1) text:@"姓名" textColor:[UIColor darkGrayColor] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:14]];
     
     [nameView addSubview:nameTitleLabel];
     UIView *nameLineView = [[UIView alloc] initWithFrame:CGRectMake(nameTitleLabel.right, 5, 1, nameView.height - 10)];
-    nameLineView.backgroundColor = KClearColor;
+    nameLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
     [nameView addSubview:nameLineView];
-    UITextField *nameTF = [[UITextField alloc] initWithFrame:CGRectMake(nameLineView.right + 5, 0, nameView.width - nameLineView.right - 5 - margin, nameView.height)];
-    nameTF.textColor = [UIColor lightGrayColor];
+    UITextField *nameTF = [[UITextField alloc] initWithFrame:CGRectMake(nameLineView.right + 5, 0, nameView.width - nameLineView.right - 5 - margin, nameView.height-1)];
+    nameTF.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
     nameTF.textAlignment = NSTextAlignmentLeft;
-    nameTF.font = [UIFont systemFontOfSize:12];
+    nameTF.font = [UIFont systemFontOfSize:14];
     nameTF.tintColor = [UIColor lightGrayColor];
     nameTF.placeholder = @"请输入真实姓名";
     nameTF.keyboardType = UIKeyboardTypeDefault;
@@ -113,36 +116,24 @@ static const CGFloat margin = 10;
     //身份证号
     UIView *cardNoView = [[UIView alloc] initWithFrame:CGRectMake(nameView.left, nameView.bottom + margin, nameView.width, nameView.height)];
     
-    CALayer *deleteBtnBorder1 = [CALayer layer];
-
-    float height1=cardNoView.height;
-
-    float width1=cardNoView.width;
-
-    deleteBtnBorder1.frame = CGRectMake(height1-5, 0,width1, 1);
-
-    deleteBtnBorder1.backgroundColor =[UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
-
-    [cardNoView.layer addSublayer:deleteBtnBorder1];
-    
     
     
     cardNoView.layer.cornerRadius = 6;
     cardNoView.layer.masksToBounds = YES;
-//    cardNoView.layer.borderColor = kViewColor.CGColor;
-//    cardNoView.layer.borderWidth = 1;
+    cardNoView.layer.borderColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
+    cardNoView.layer.borderWidth = 1;
     [scrollView addSubview:cardNoView];
     
     
-    UILabel *cardNoTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"身份证" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
+    UILabel *cardNoTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 100, nameView.height) text:@"身份证" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
     [cardNoView addSubview:cardNoTitleLabel];
     UIView *cardNoLineView = [[UIView alloc] initWithFrame:CGRectMake(cardNoTitleLabel.right, 5, 1, cardNoView.height - 10)];
-    cardNoLineView.backgroundColor = KClearColor;
+    cardNoLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
     [cardNoView addSubview:cardNoLineView];
     UITextField *idCardTF = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
-    idCardTF.textColor = [UIColor lightGrayColor];
+    idCardTF.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
     idCardTF.textAlignment = NSTextAlignmentLeft;
-    idCardTF.font = [UIFont systemFontOfSize:12];
+    idCardTF.font = [UIFont systemFontOfSize:14];
     idCardTF.tintColor = [UIColor lightGrayColor];
     idCardTF.placeholder = @"请输入身份证号";
     idCardTF.keyboardType = UIKeyboardTypeDefault;
@@ -151,37 +142,24 @@ static const CGFloat margin = 10;
     self.idCardTF = idCardTF;
    
     
-    //储蓄卡
+
     UIView * bankcardNoView = [[UIView alloc] initWithFrame:CGRectMake(cardNoView.left, cardNoView.bottom + margin, cardNoView.width, cardNoView.height)];
-    
-    
-    CALayer *deleteBtnBorder = [CALayer layer];
-
-    float height=bankcardNoView.height;
-
-    float width=bankcardNoView.width;
-
-    deleteBtnBorder.frame = CGRectMake(height-5, 0,width, 1);
-
-    deleteBtnBorder.backgroundColor =[UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
-
-    [bankcardNoView.layer addSublayer:deleteBtnBorder];
     bankcardNoView.layer.cornerRadius = 6;
     bankcardNoView.layer.masksToBounds = YES;
-//    bankcardNoView.layer.borderColor = kViewColor.CGColor;
-//    bankcardNoView.layer.borderWidth = 1;
+    bankcardNoView.layer.borderColor =  [UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
+    bankcardNoView.layer.borderWidth = 1;
     [scrollView addSubview:bankcardNoView];
     
     
-    UILabel * bankcardNoTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 80, nameView.height) text:@"储蓄卡" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
+    UILabel * bankcardNoTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 100, nameView.height) text:@"储蓄卡" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
     [bankcardNoView addSubview:bankcardNoTitleLabel];
     UIView *cardcardNoLineView = [[UIView alloc] initWithFrame:CGRectMake(bankcardNoTitleLabel.right, 5, 1, bankcardNoTitleLabel.height - 10)];
-    cardcardNoLineView.backgroundColor = KClearColor;
+    cardcardNoLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
     [bankcardNoView addSubview:cardcardNoLineView];
     UITextField *bankCardTf = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
-    bankCardTf.textColor = [UIColor lightGrayColor];
+    bankCardTf.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
     bankCardTf.textAlignment = NSTextAlignmentLeft;
-    bankCardTf.font = [UIFont systemFontOfSize:12];
+    bankCardTf.font = [UIFont systemFontOfSize:14];
     bankCardTf.tintColor = [UIColor lightGrayColor];
     bankCardTf.placeholder = @"请输入你的银行卡号";
     bankCardTf.keyboardType = UIKeyboardTypeDefault;
@@ -189,7 +167,40 @@ static const CGFloat margin = 10;
     [bankcardNoView addSubview:bankCardTf];
     self.bankCardTF = bankCardTf;
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, bankcardNoView.bottom + margin, scrollView.width, 10)];
+    
+    
+    
+    
+    
+    UIView * phoneView = [[UIView alloc] initWithFrame:CGRectMake(bankcardNoView.left, bankcardNoView.bottom + margin, bankcardNoView.width, bankcardNoView.height)];
+    phoneView.layer.cornerRadius = 6;
+    phoneView.layer.masksToBounds = YES;
+    phoneView.layer.borderColor =  [UIColor qmui_colorWithHexString:@"#F1F1F1"].CGColor;
+    phoneView.layer.borderWidth = 1;
+    [scrollView addSubview:phoneView];
+    
+    
+    UILabel * phoneTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 100, nameView.height) text:@"银行预留手机号" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
+    [phoneView addSubview:phoneTitleLabel];
+    UIView * phoneLineView = [[UIView alloc] initWithFrame:CGRectMake(phoneTitleLabel.right, 5, 1, phoneTitleLabel.height - 10)];
+    phoneLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
+    [phoneView addSubview:phoneLineView];
+    UITextField *phoneTf = [[UITextField alloc] initWithFrame:CGRectMake(phoneLineView.right + 5, 0, phoneView.width - phoneLineView.height - 5 - margin, phoneView.height)];
+    phoneTf.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
+    phoneTf.textAlignment = NSTextAlignmentLeft;
+    phoneTf.font = [UIFont systemFontOfSize:14];
+    phoneTf.tintColor = [UIColor lightGrayColor];
+    phoneTf.placeholder = @"请输入你的手机号";
+    phoneTf.keyboardType = UIKeyboardTypeDefault;
+    phoneTf.delegate = self;
+    [phoneView addSubview:phoneTf];
+    self.phoneTf = phoneTf;
+    
+    
+    
+    
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, phoneView.bottom + margin, scrollView.width, 10)];
     
     
 
@@ -227,8 +238,7 @@ static const CGFloat margin = 10;
     CGFloat buttonW = (SCREEN_WIDTH - buttonMargin * 4) / 3;
     CGFloat buttonH = buttonW;
     UIButton *frontPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    frontPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
-    frontPhotoButton.frame = CGRectMake(buttonMargin, downArrowImageView.bottom + 5, buttonW, buttonH);
+    frontPhotoButton.frame = CGRectMake(buttonMargin, downArrowImageView.bottom + 5, showImageW, showImageH);
     frontPhotoButton.tag = 0;
     [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:0];
 //    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
@@ -236,8 +246,7 @@ static const CGFloat margin = 10;
     [scrollView addSubview:frontPhotoButton];
     self.frontPhotoButton = frontPhotoButton;
     UIButton *backPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    backPhotoButton.contentMode = UIViewContentModeScaleAspectFit;
-    backPhotoButton.frame = CGRectMake(frontPhotoButton.right + buttonMargin, frontPhotoButton.top, frontPhotoButton.width, frontPhotoButton.height);
+    backPhotoButton.frame = CGRectMake(frontPhotoButton.right + buttonMargin, frontPhotoButton.top, showImageW, showImageH);
     backPhotoButton.tag = 1;
     [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:0];
 
@@ -246,11 +255,7 @@ static const CGFloat margin = 10;
     [scrollView addSubview:backPhotoButton];
     self.backPhotoButton = backPhotoButton;
     UIButton *personPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    personPhotoButton.contentMode = UIViewContentModeScaleToFill;
-    personPhotoButton.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;//水平方向拉伸
-    personPhotoButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;//垂直方向拉伸
-    personPhotoButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    personPhotoButton.frame = CGRectMake(backPhotoButton.right + buttonMargin, backPhotoButton.top, backPhotoButton.width, backPhotoButton.height);
+    personPhotoButton.frame = CGRectMake(backPhotoButton.right + buttonMargin, backPhotoButton.top, showImageW, showImageH);
     personPhotoButton.tag = 2;
     [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:0];
 
@@ -260,7 +265,7 @@ static const CGFloat margin = 10;
     self.personPhotoButton = personPhotoButton;
     
     // 3. 底部说明文字
-    NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n•必须上传身份证的正反面\n•手持证件照片需拍到持有人五官，请勿佩戴眼镜、帽子等遮罩物\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
+    NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n\n•必须上传身份证的正反面\n\n•手持证件照片需拍到持有人五官，请勿佩戴眼镜、帽子等遮罩物\n\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
     CGFloat bottomMessageH = [self stringHeightWithString:bottomMessage width:scrollView.width - margin * 2 font:[UIFont systemFontOfSize:12]];
     UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, personPhotoButton.bottom + margin, scrollView.width - margin * 2, bottomMessageH) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:12]];
     bottomMessageLabel.numberOfLines = 0;
@@ -268,12 +273,12 @@ static const CGFloat margin = 10;
     
     // 4. 提交按钮
     UIButton *submitButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    submitButton.frame = CGRectMake(margin, bottomMessageLabel.bottom + 20, scrollView.width - margin * 2, 40);
+    submitButton.frame = CGRectMake(margin, bottomMessageLabel.bottom + 40, scrollView.width - margin * 2, 40);
     submitButton.backgroundColor = MAINCOLOR;
     submitButton.layer.cornerRadius = 6;
     submitButton.layer.masksToBounds = YES;
     submitButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    [submitButton setTitle:@"提交" forState:(UIControlStateNormal)];
+    [submitButton setTitle:@"立即认证" forState:(UIControlStateNormal)];
     [submitButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [submitButton addTarget:self action:@selector(submitButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
     [scrollView addSubview:submitButton];
@@ -346,6 +351,10 @@ static const CGFloat margin = 10;
     }
     if (self.bankCardTF.text.length == 0 ) {
         [self showAlertWithMessage:@"请填写储蓄卡号"];
+        return;
+    }
+    if (self.phoneTf.text.length == 0) {
+        [self showAlertWithMessage:@"请填写银行预留手机号"];
         return;
     }
     if (self.imageOne == nil || self.imageTwo == nil || self.imageThree == nil) {
@@ -437,6 +446,10 @@ static const CGFloat margin = 10;
         [MCToast showMessage:@"请填写储蓄卡号"];
         return;
     }
+    if (self.phoneTf.text.length == 0) {
+        [MCToast showMessage:@"请填写银行预留手机号"];
+        return;
+    }
     if (!self.imageOneURL) {
         [MCToast showMessage:@"请上传身份证正面照"];
         return;
@@ -458,6 +471,7 @@ static const CGFloat margin = 10;
                             @"faceUrl":self.imageThreeURL,
                             @"idCardBackUrl":self.imageTwoURL,
                             @"idCardFrontUrl":self.imageOneURL,
+                            @"bankPhone":self.phoneTf.text
 
     };
     __weak __typeof(self)weakSelf = self;

@@ -28,7 +28,8 @@
 @property(nonatomic, copy) NSString *bindcardmessageid;//验证码id
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *stackViewHeight;
 @property (weak, nonatomic) IBOutlet UIView *smsView;
-@property (nonatomic ,strong)NSString * orderId;
+
+
 @property (nonatomic, strong) BRStringPickerView *pickView1;
 @property (nonatomic, strong) BRStringPickerView *pickView2;
 @end
@@ -46,7 +47,7 @@
     self.safeCodeLabel.text = self.cardModel.cvc;
     self.phoneLabel.text = self.cardModel.phone;
     //鉴权绑卡界面
-    [self setNavigationBarTitle:@"支付确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:self.channelBindId ? @"绑卡确认":@"支付确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
     self.change1TagLbl.text = @"手机号";
     self.change2TagLbl.text = @"验证码";
     self.change2Lbl.hidden = YES;
@@ -55,39 +56,28 @@
     self.change2Lbl.textColor = [UIColor blackColor];
     self.phoneLabel.userInteractionEnabled = self.change2Lbl.userInteractionEnabled = NO;
     
-    self.stackViewHeight.constant = 270;
-    self.smsView.hidden = YES;
-}
-#pragma mark ---------------获取验证码-------------------
-- (IBAction)getCodeAction:(UIButton *)sender {
-    // 发送验证码
-    __weak typeof(self) weakSelf = self;
-    
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=BindChannel&phone=%@",self.cardModel.phone];
-    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
-        [MCToast showMessage:@"验证码已发送"];
-        [self changeSendBtnText:weakSelf.codeBtn];
-    }];
+    self.stackViewHeight.constant = 320;
+    self.smsView.hidden = NO;
 }
 #pragma mark ---------------确认支付请求方法-------------------
 -(void)requestBindCardVCAction{
-    //代表第一次进来，不需要验证码
-    if (self.smsView.hidden ) {
-        [self gotoPay];
+    if ([self.codeView.text isEqualToString:@""]) {
+        [MCToast showMessage:@"请填写正确的验证码"];
+        return;
+    }
+    
+    if (self.channelBindId ) {
+        [self bindConfirm];
     }else{
-        if ([self.codeView.text isEqualToString:@""]) {
-            [MCToast showMessage:@"请填写正确的验证码"];
-            return;
-        }
-        [self receivePayment];
+        [self receivePaymentConfirm];
     }
 }
--(void)receivePayment{
+-(void)bindConfirm{
     
     NSDictionary *params =
     @{
         @"code":self.codeView.text,
-        @"channelBindId":self.orderId,
+        @"channelBindId":self.channelBindId,
      };
     __weak typeof(self) weakSelf = self;
     [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/bind/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
@@ -96,6 +86,25 @@
         });
     
         [weakSelf.navigationController popViewControllerAnimated:YES];
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+-(void)receivePaymentConfirm{
+    
+    NSDictionary *params =
+    @{
+        @"code":self.codeView.text,
+        @"orderId":self.orderId,
+     };
+    __weak typeof(self) weakSelf = self;
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"操作成功"];
+        });
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull respDic) {
         
     } failure:^(NSError * _Nonnull error) {
@@ -117,14 +126,13 @@
         if ([respDic[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"] ) {
             weakSelf.stackViewHeight.constant = 320;
             weakSelf.smsView.hidden = NO;
-            [MCToast showMessage:@"需要填写验证码"];
-            weakSelf.orderId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];
+            [MCToast showMessage:@"验证码已发送,请填写验证码"];
+            weakSelf.channelBindId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];
         }else{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"操作成功"];
-                
-            });
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            weakSelf.stackViewHeight.constant = 320;
+            weakSelf.smsView.hidden = NO;
+            [MCToast showMessage:@"验证码已发送,请填写验证码"];
+            weakSelf.orderId = [NSString stringWithFormat:@"%@",respDic[@"orderId"]];
         }
 
      

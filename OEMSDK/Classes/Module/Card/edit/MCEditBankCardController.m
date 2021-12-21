@@ -71,23 +71,23 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     __weak typeof(self) weakSelf = self;
-    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        if ([userInfo.certification integerValue] == 1) {
-            weakSelf.chuxuheader.shimingName = userInfo.name;
-            weakSelf.chuxuheader.shimingIdCard = userInfo.idCardNo;
-            weakSelf.chuxuheader.shimingPhone = userInfo.phone;
-            [weakSelf.chuxuheader setData];
-            
-            
-            weakSelf.header.shimingName = userInfo.name;
-            weakSelf.header.shimingIdCard = userInfo.idCardNo;
-            weakSelf.header.shimingPhone = userInfo.phone;
-            [weakSelf.header setData];
-        }else{
-            [MCToast showMessage:@"实名认证完成才可绑定卡片"];
-            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
-        }
-    }];
+//    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+//        if ([userInfo.certification integerValue] == 1) {
+//            weakSelf.chuxuheader.shimingName = userInfo.name;
+//            weakSelf.chuxuheader.shimingIdCard = userInfo.idCardNo;
+//            weakSelf.chuxuheader.shimingPhone = userInfo.phone;
+//            [weakSelf.chuxuheader setData];
+//
+//
+//            weakSelf.header.shimingName = userInfo.name;
+//            weakSelf.header.shimingIdCard = userInfo.idCardNo;
+//            weakSelf.header.shimingPhone = userInfo.phone;
+//            [weakSelf.header setData];
+//        }else{
+//            [MCToast showMessage:@"实名认证完成才可绑定卡片"];
+//            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+//        }
+//    }];
 }
 
 -(void)clickRightBtnAction{

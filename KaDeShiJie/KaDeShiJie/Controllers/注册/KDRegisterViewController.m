@@ -24,7 +24,8 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    KDRegisterHeaderView *headView = [[KDRegisterHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    KDRegisterHeaderView *headView = [[KDRegisterHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT+100)];
+    self.view.backgroundColor = headView.backgroundColor = [UIColor whiteColor];
     self.mc_tableview.tableHeaderView = headView;
     self.mc_tableview.mj_header = nil;
     self.mc_tableview.mj_footer = nil;

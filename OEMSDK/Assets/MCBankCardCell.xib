@@ -73,7 +73,7 @@
                                             <action selector="modifyTouched:" destination="t2f-wI-BQn" eventType="touchUpInside" id="XBg-QR-BLX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-df-yrp" customClass="QMUIButton">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-df-yrp" customClass="QMUIButton">
                                         <rect key="frame" x="228" y="14.5" width="42" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <state key="normal" title="删除" image="card_delete">

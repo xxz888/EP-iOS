@@ -94,8 +94,8 @@
 
     
     QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定要解绑此银行卡吗？" preferredStyle:QMUIAlertControllerStyleAlert];
-    [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDestructive handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
+    [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
          
             [MCSessionManager.shareManager mc_put:@"/api/v1/player/bank" parameters:@{@"status":@"Delete",@"id":[NSString stringWithFormat:@"%@",self.model.id]} ok:^(NSDictionary * _Nonnull respDic) {

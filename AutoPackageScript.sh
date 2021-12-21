@@ -31,7 +31,7 @@ method="ad-hoc"
 mobileprovision_name=""
 
 # 项目的bundleID，手动管理Profile时必填
-bundle_identifier=""
+bundle_identifier="com.wukashidai"
 
 
 echo "--------------------脚本配置参数检查--------------------"
@@ -55,7 +55,7 @@ project_dir=$script_dir
 # 时间
 DATE=`date '+%Y%m%d_%H%M%S'`
 # 指定输出导出文件夹路径
-export_path="/Users/junan/Desktop/无卡生活ipa/$scheme_name-$DATE"
+export_path="/Users/mac/Desktop/无卡生活ipa/$scheme_name-$DATE"
 # 指定输出归档文件路径
 export_archive_path="$export_path/$scheme_name.xcarchive"
 # 指定输出ipa文件夹路径
@@ -174,7 +174,7 @@ echo "\033[36;1m使用AutoPackageScript打包总用时: ${SECONDS}s \033[0m"
 
 fir publish $export_ipa_path/$ipa_name.ipa
 
-rm -rf /Users/junan/Desktop/无卡生活ipa
+rm -rf /Users/mac/Desktop/无卡生活ipa
 
 echo "删除文件夹成功"
 

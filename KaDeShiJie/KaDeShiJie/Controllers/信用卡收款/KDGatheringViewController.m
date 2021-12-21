@@ -81,13 +81,13 @@
     
     [self setNavigationBarTitle:@"快速收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor qmui_colorWithHexString:@"#FF9F58"]]];
 
-//    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
-//    [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-//    [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
-//    shareBtn.titleLabel.font = LYFont(13);
-//    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    shareBtn.titleLabel.font = LYFont(13);
+    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
 
     [self requestDefaultChuXuCards];
 
@@ -184,9 +184,11 @@
 //        }
 //    }];
 //}
-- (void)clickRightBtnAction
-{
-    [MCPagingStore pushWebWithTitle:@"使用说明" classification:@"功能跳转"];
+- (void)clickRightBtnAction{
+    MCWebViewController *web = [[MCWebViewController alloc] init];
+  web.urlString = SharedDefaults.configDic[@"config"][@"receivePaymentInstructionLink"];
+  web.title = @"快速收款使用说明";
+  [self.navigationController pushViewController:web animated:YES];
 }
 - (IBAction)hideKeyboard:(id)sender {
     [UIView animateWithDuration:0.5 animations:^{

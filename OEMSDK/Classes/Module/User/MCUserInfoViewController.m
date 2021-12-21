@@ -121,6 +121,9 @@
     if (indexPath.section == 0) {
         UIImageView * imv = [[UIImageView alloc]initWithFrame:CGRectMake(KScreenWidth-70, 7, 30, 30)];
         [cell addSubview:imv];
+        imv.layer.masksToBounds = YES;
+        imv.layer.cornerRadius = 15;
+        
         [imv sd_setImageWithURL:subTit placeholderImage:[UIImage mc_imageNamed:@"321"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
@@ -244,7 +247,7 @@
     NSDictionary *uploadDic = @{};
     NSArray *imagesArr = @[selectImg];
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/System" parameters:uploadDic images:imagesArr remoteFields:nil imageNames:@[name] imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/App" parameters:uploadDic images:imagesArr remoteFields:nil imageNames:@[name] imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
         NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
         // 设置图片
         weakSelf.headImg = dic[@"fileUrl"];

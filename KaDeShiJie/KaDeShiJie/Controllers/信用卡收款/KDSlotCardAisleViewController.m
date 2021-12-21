@@ -105,14 +105,39 @@
 
 - (void)payAction:(MCChannelModel *)channelModel cardModel:(MCBankCardModel *)cardModel
 {
-    KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
-    vc.cardModel = cardModel;
-    vc.cardchuxuModel = self.chuxuInfo;
-    vc.channelId = channelModel.channelId;
-    vc.amount = self.money;
-    [self.navigationController pushViewController:vc animated:YES];
     
+    NSDictionary *params =
+    @{
+        @"creditCardId":self.xinyongInfo.id,
+        @"debitCardId":self.chuxuInfo.id,
+        @"amount":self.money,
+        @"channelId":channelModel.channelId,
+     };
     __weak typeof(self) weakSelf = self;
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/pre" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+        KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+        vc.cardModel = cardModel;
+        vc.cardchuxuModel = self.chuxuInfo;
+        vc.channelId = channelModel.channelId;
+        vc.amount = self.money;
+        //发短信
+        if ([respDic[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"] ) {
+            vc.channelBindId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];
+        }else{
+            vc.orderId = [NSString stringWithFormat:@"%@",respDic[@"orderId"]];
+        }
+
+
+ 
+        [self.navigationController pushViewController:vc animated:YES];
+     
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+ 
+    
 //    NSString * url = [NSString stringWithFormat:@"/api/v1/player/channel/bind/check?channelId=%@&bankCardId=%@",channelModel.channelId,self.xinyongInfo.id];
 //    [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
 //

@@ -14,6 +14,10 @@
 - (void)drawRect:(CGRect)rect {
     self.wxHaoMaLbl.text = SharedDefaults.wechat;
 }
+- (IBAction)fuzhiAction:(id)sender {
+    UIPasteboard.generalPasteboard.string = SharedDefaults.wechat;
+    [MCToast showMessage:@"微信号已复制到剪切板"];
+}
 
 
 - (IBAction)zhidaoleAction:(id)sender {

@@ -47,9 +47,9 @@
  
 
     self.header.phoneLabel.text = SharedUserInfo.phone;
-    self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",SharedUserInfo.nickname,level];
+    self.header.nameLabel.text = [NSString stringWithFormat:@"%@",SharedUserInfo.nickname];
     self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
-
+    [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:SharedUserInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
     
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -120,8 +120,10 @@
      
     
         self.header.phoneLabel.text = userInfo.phone;
-        self.header.nameLabel.text = [NSString stringWithFormat:@"%@ [%@]",userInfo.nickname,level];
+        self.header.nameLabel.text = [NSString stringWithFormat:@"%@",userInfo.nicknamex4];
         self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
+        [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:userInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
+        self.header.idLabel.text =[NSString stringWithFormat:@"ID：%@", userInfo.promoteId];
 
     }];
     

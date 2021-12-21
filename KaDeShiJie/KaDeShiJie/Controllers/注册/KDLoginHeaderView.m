@@ -278,9 +278,7 @@
 }
 // 协议
 - (IBAction)agreementAction:(id)sender {
-    MCProtocolViewController * vc = [MCProtocolViewController new];
-    vc.whereCome = @"1";
-    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+
 }
 //------ 验证码发送按钮动态改变文字 ------//
 - (void)changeSendBtnText {

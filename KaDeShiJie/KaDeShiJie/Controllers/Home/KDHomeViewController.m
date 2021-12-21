@@ -159,15 +159,4 @@
 {
     [self.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
 }
--(void)showGuidePage{
-    UIButton * btn = [self.headerView viewWithTag:102];
-    //空白的frame
-    CGRect emptyRect = CGRectMake(0, kTopHeight+29, btn.size_sd.width, btn.size_sd.height);
-    //图片的frame
-    CGRect imgRect = CGRectMake(btn.size_sd.width/2, kTopHeight+35+btn.size_sd.height, kRealWidthValue(200), kRealWidthValue(200)*1417/1890);
-    kWeakSelf(self);
-    [[KDGuidePageManager shareManager] showGuidePageWithType:KDGuidePageTypeHome emptyRect:emptyRect imgRect:imgRect imgStr:@"guide1" completion:^{
-        [weakself.headerView btnAction:[weakself.headerView viewWithTag:102]];
-    }];
-}
 @end

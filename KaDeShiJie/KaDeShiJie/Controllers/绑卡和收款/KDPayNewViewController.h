@@ -25,7 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *change1TagLbl;
 @property (weak, nonatomic) IBOutlet UILabel *change2TagLbl;
-
+@property (nonatomic ,strong)NSString * channelBindId;
+@property (nonatomic ,strong)NSString * orderId;
 
 @end
 

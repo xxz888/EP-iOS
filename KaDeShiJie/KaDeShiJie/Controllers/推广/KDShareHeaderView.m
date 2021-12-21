@@ -41,7 +41,7 @@
         _alertCroller.contentView = self.kdGuanFangSheQun;
         __weak __typeof(self)weakSelf = self;
         _alertCroller.layoutBlock = ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
-            weakSelf.kdGuanFangSheQun.frame = CGRectMake((self.frame.size.width-285)/2, NavigationContentTop+50, 285, 280);
+            weakSelf.kdGuanFangSheQun.frame = CGRectMake(20, NavigationContentTop+50, KScreenWidth-40, (KScreenWidth-40) * 228 /266);
             [weakSelf.kdGuanFangSheQun setCenterY:weakSelf.centerY];
         };
     }
