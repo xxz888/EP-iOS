@@ -93,7 +93,11 @@
     cell.eventTag.text = eventTag;
     
     cell.eventTime.text = dic[@"createdTime"];
-    cell.eventPrice.text = [NSString stringWithFormat:@"%@元",dic[@"amount"]];
+    if([dic[@"event"] isEqualToString:@"Withdraw"]) {
+        cell.eventPrice.text = [NSString stringWithFormat:@"-%@元",dic[@"amount"]];
+    }else{
+        cell.eventPrice.text = [NSString stringWithFormat:@"+%@元",dic[@"amount"]];
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

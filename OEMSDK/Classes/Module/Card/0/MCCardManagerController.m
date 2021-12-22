@@ -139,15 +139,10 @@
     }];
 }
 - (void)addButtonTouched:(QMUIButton *)sender {
-    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        if ([userInfo.certification integerValue] == 1) {
+    
             MCBankCardType type = (self.currentIndex == 0)?MCBankCardTypeXinyongka:MCBankCardTypeChuxuka;
             [MCPagingStore pagingURL:rt_card_edit withUerinfo:@{@"type":@(type), @"isLogin":@(NO)}];
-        }else{
-            [MCToast showMessage:@"实名认证完成才可绑定卡片"];
-            [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
-        }
-    }];
+  
    
 }
 

@@ -76,7 +76,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setNavigationBarTitle:@"账单管理" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"交易记录" tintColor:UIColor.whiteColor];
 
 
     [self getHistory];

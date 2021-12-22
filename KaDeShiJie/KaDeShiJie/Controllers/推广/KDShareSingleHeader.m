@@ -32,9 +32,11 @@
 - (UILabel *)bottomLabel
 {
     if (!_bottomLabel) {
-        _bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, self.topLabel.qmui_bottom - 15, 150, 15)];
-        _bottomLabel.text = [NSString stringWithFormat:@"推荐人ID:%@", SharedUserInfo.promoteId];
-        _bottomLabel.font =  [UIFont boldSystemFontOfSize:13];
+        UIImage *img = [UIImage imageNamed:@"share_single_img"];
+        CGFloat hig = img.size.height * SCREEN_WIDTH / img.size.width;
+        _bottomLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5,hig - 250, 150, 15)];
+        _bottomLabel.text = [NSString stringWithFormat:@"邀请码:%@", SharedUserInfo.promoteId];
+        _bottomLabel.font =  [UIFont boldSystemFontOfSize:14];
         _bottomLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffffff"];
         _bottomLabel.textAlignment = NSTextAlignmentCenter;
     }

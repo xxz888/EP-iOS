@@ -120,10 +120,10 @@
      
     
         self.header.phoneLabel.text = userInfo.phone;
-        self.header.nameLabel.text = [NSString stringWithFormat:@"%@",userInfo.nicknamex4];
+        self.header.nameLabel.text = [NSString stringWithFormat:@"%@",userInfo.nickname];
         self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
         [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:userInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
-        self.header.idLabel.text =[NSString stringWithFormat:@"ID：%@", userInfo.promoteId];
+        self.header.idLabel.text =[NSString stringWithFormat:@"邀请码：%@", userInfo.promoteId];
 
     }];
     

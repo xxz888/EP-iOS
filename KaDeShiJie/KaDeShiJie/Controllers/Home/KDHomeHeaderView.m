@@ -139,7 +139,9 @@
                             vc.orderType = @"2";
                             [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
                         }else{
-                            [weakSelf showRenzhengView];
+                            [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                                [weakSelf showRenzhengView];
+                            }];
                         }
                     
                     
@@ -151,8 +153,9 @@
                         if ([SharedUserInfo.certification integerValue] == 1) {
                             [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
                         }else{
-                            [weakSelf showRenzhengView];
-
+                            [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                                [weakSelf showRenzhengView];
+                            }];
                         }
                 }
                     break;

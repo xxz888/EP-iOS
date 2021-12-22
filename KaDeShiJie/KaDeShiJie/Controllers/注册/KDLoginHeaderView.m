@@ -234,24 +234,24 @@
 }
 -(void)loginSucess:(MCNetResponse * _Nonnull) resp{
 
-    // 2.保存登录信息
-    NSDictionary *result = (NSDictionary *)resp;
-    TOKEN = result[@"token"];
-    MCModelStore.shared.preUserPhone = result[@"phone"];
-
-    SharedDefaults.phone = result[@"phone"];
-    SharedDefaults.nickname = result[@"nickname"];
-    SharedDefaults.certification = [NSString stringWithFormat:@"%@",result[@"certification"]];
-    SharedDefaults.level = [NSString stringWithFormat:@"%@",result[@"level"]];
-    SharedDefaults.receivePaymentRate =[NSString stringWithFormat:@"%@",result[@"receivePaymentRate"]];
-    SharedDefaults.agentId = [NSString stringWithFormat:@"%@",result[@"agentId"]];
-    SharedDefaults.repaymentRate = [NSString stringWithFormat:@"%@",result[@"repaymentRate"]];
-    SharedDefaults.token = [NSString stringWithFormat:@"%@",result[@"token"]];
-    [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+   
     
     
     [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-       
+        // 2.保存登录信息
+        NSDictionary *result = (NSDictionary *)resp;
+        TOKEN = result[@"token"];
+        MCModelStore.shared.preUserPhone = result[@"phone"];
+        
+        SharedDefaults.phone = result[@"phone"];
+        SharedDefaults.nickname = result[@"nickname"];
+        SharedDefaults.certification = [NSString stringWithFormat:@"%@",result[@"certification"]];
+        SharedDefaults.level = [NSString stringWithFormat:@"%@",result[@"level"]];
+        SharedDefaults.receivePaymentRate =[NSString stringWithFormat:@"%@",result[@"receivePaymentRate"]];
+        SharedDefaults.agentId = [NSString stringWithFormat:@"%@",result[@"agentId"]];
+        SharedDefaults.repaymentRate = [NSString stringWithFormat:@"%@",result[@"repaymentRate"]];
+        SharedDefaults.token = [NSString stringWithFormat:@"%@",result[@"token"]];
+        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
     }];
 
  

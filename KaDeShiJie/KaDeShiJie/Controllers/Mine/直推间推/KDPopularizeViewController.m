@@ -42,6 +42,7 @@
     [self requestData];
 }
 -(void)requestData{
+//    diamond=true
     __weak __typeof(self)weakSelf = self;
     NSString * url1 = self.whereCome == 1 ?   @"/api/v1/player/user/recommendation/direct" : @"/api/v1/player/user/recommendation/indirect";
     NSDictionary * dic = @{};
