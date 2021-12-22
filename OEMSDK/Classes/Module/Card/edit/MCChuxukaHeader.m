@@ -426,25 +426,35 @@
 //        }
 //    }];
 }
-
+//fileName = "8d1e2b42c54846749144efd8d6c2cb1a.jpg";
+//fileUrl = "https://wuuka.oss-cn-hongkong.aliyuncs.com/8d1e2b42c54846749144efd8d6c2cb1a.jpg";
 
 //#pragma mark - 上传银行卡图片
 - (void)uploadBankImage:(UIImage *)image {
     __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_UPLOAD:@"/paymentchannel/app/auth/bankcardocr" parameters:@{@"brandId":SharedConfig.brand_id} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
-        //MCLog(@"%@",resp[@"result"]);
-        if (resp[@"result"][@"cardNum"] && [resp[@"result"][@"cardNum"] length] > 10) {
-            NSString * no = [NSString stringWithFormat:@"%@",resp[@"result"][@"cardNum"]];
-            NSMutableString *string = [NSMutableString string];
-            for (int i = 0; i < no.length; i++) {
-                [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
-                if (i % 4 == 3) {
-                    [string appendString:@" "];
+    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        
+        if (resp[@"fileUrl"]) {
+            NSDictionary *param = @{
+                                    @"link":resp[@"fileUrl"],
+                                    @"orcType":@"BankCard",
+                                    };
+            kWeakSelf(self);
+            [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/orc" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+                NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
+                NSMutableString *string = [NSMutableString string];
+                for (int i = 0; i < no.length; i++) {
+                    [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
+                    if (i % 4 == 3) {
+                        [string appendString:@" "];
+                    }
                 }
-            }
-            weakSelf.textField2.text = [NSString stringWithFormat:@"%@",string];
-        }else{
-            [MCToast showMessage:@"卡号识别失败，请手动填写卡号"];
+                weakSelf.textField2.text = [NSString stringWithFormat:@"%@",string];
+            } other:^(NSDictionary * _Nonnull resp) {
+
+            } failure:^(NSError * _Nonnull error) {
+                
+            }];
         }
 
 
@@ -459,6 +469,7 @@
         MCTXResult *rr = [[MCTXResult alloc] init];
         rr.error = error;
     }];
+    
 }
 
 - (IBAction)alertPhone:(id)sender {

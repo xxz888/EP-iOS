@@ -35,9 +35,9 @@
         self.header = [MCXinyongkaHeader newFromNib];
         if (self.model) {
             self.header.model = self.model;
-            [self setNavigationBarTitle:@"修改信用卡" tintColor:nil];
+            [self setNavigationBarTitle:@"修改信用卡" tintColor:[UIColor whiteColor]];
         } else {
-            [self setNavigationBarTitle:@"添加信用卡" tintColor:nil];
+            [self setNavigationBarTitle:@"添加信用卡" tintColor:[UIColor whiteColor]];
         }
         self.mc_tableview.tableHeaderView = self.header;
     } else {
@@ -46,22 +46,22 @@
         self.chuxuheader.whereCome = self.whereCome;
         if (self.model) {
             self.chuxuheader.model = self.model;
-            [self setNavigationBarTitle:@"修改储蓄卡" tintColor:nil];
+            [self setNavigationBarTitle:@"修改储蓄卡" tintColor:[UIColor whiteColor]];
         } else {
-            [self setNavigationBarTitle:@"添加储蓄卡" tintColor:nil];
+            [self setNavigationBarTitle:@"添加储蓄卡" tintColor:[UIColor whiteColor]];
             
             
-            UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [shareBtn setTitle:@"客服" forState:UIControlStateNormal];
-            [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-            [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
-            shareBtn.titleLabel.font = LYFont(14);
-            shareBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-            shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-
-
-            shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+//            UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [shareBtn setTitle:@"客服" forState:UIControlStateNormal];
+//            [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+//            [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
+//            shareBtn.titleLabel.font = LYFont(14);
+//            shareBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//            shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+//
+//
+//            shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
+//            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
         }
         self.mc_tableview.tableHeaderView = self.chuxuheader;
     }
@@ -93,12 +93,5 @@
 -(void)clickRightBtnAction{
 [MCServiceStore pushMeiqiaVC];
 }
--(void)showGuidePage{
-    //空白的frame
-    CGRect emptyRect = CGRectMake(0, 52+kTopHeight,KScreenWidth, 381);
-    //图片的frame
-    CGRect imgRect = CGRectMake(20,52+kTopHeight+381, kRealWidthValue(200), kRealWidthValue(200)*1417/1890);
-    kWeakSelf(self);
-    [[KDGuidePageManager shareManager] showGuidePageWithType:KDGuidePageTypeXinYongKaShouKuan emptyRect:emptyRect imgRect:imgRect imgStr:@"guide3" completion:^{}];
-}
+
 @end

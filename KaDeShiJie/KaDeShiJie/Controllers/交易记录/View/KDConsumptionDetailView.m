@@ -99,7 +99,7 @@
  **/
     self.orderNumLbl.text = orderModel.planTaskId;
     self.lab1.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
-    self.lab4.text = [NSString stringWithFormat:@"%@%%", orderModel.surplusFee];
+    self.lab4.text = [NSString stringWithFormat:@"%.2f%%", orderModel.rate];
     //扣款金额
     self.lab2.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
     //计划手续费
@@ -110,7 +110,7 @@
     self.lab8.text = orderModel.executeTime;
     //计划状态
     self.lab6.text = [orderModel.status isEqualToString:@"Padding"]  ? @"待执行" :
-    [orderModel.status isEqualToString:@"Running"]  ? @"还款中" :
+    [orderModel.status isEqualToString:@"Running"]  ? @"执行中" :
     [orderModel.status isEqualToString:@"Successful"] ? @"已成功" :
     [orderModel.status isEqualToString:@"Close"] ? @"已关闭" :
     [orderModel.status isEqualToString:@"Termination"] ? @"已终止" : @"";
@@ -156,7 +156,7 @@
     
     if ([self.lab6.text isEqualToString:@"已成功"]) {
         self.lab6.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
-    } else if ([self.lab6.text isEqualToString:@"待执行"] || [orderModel.taskStatusName isEqualToString:@"待完成"] ) {
+    } else if ([self.lab6.text isEqualToString:@"待执行"] || [self.lab6.text isEqualToString:@"待完成"]|| [self.lab6.text isEqualToString:@"执行中"] ) {
         self.lab6.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
     } else if ([self.lab6.text isEqualToString:@"已失败"]) {
         self.lab6.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];

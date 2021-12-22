@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) NSString *servicePhone;
 @property(nonatomic, copy) NSString *wechat;
 
+@property(nonatomic, copy) NSString *extraFee;
 
 @property(nonatomic, copy) NSString *pwd;
 @property(nonatomic, copy) NSString *token;

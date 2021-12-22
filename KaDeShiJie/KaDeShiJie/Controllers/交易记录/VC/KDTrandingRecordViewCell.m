@@ -97,7 +97,7 @@
         self.statusLabel.text = @"已关闭";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
     } else if ([startDic[@"planStatus"] isEqualToString:@"Padding"]) {
-        self.statusLabel.text = @"执行中";
+        self.statusLabel.text = @"待执行";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
     } else if ([startDic[@"planStatus"] isEqualToString:@"Running"]) {
         self.statusLabel.text = @"执行中";

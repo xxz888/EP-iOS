@@ -99,7 +99,9 @@
     [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
 
 }
-
+- (void)mc_tableviewRefresh {
+    [self reloadData];
+}
 - (void)reloadData {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
     // 头部数据

@@ -140,7 +140,15 @@
                             [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
                         }else{
                             [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                                [weakSelf showRenzhengView];
+                                if ([SharedUserInfo.certification integerValue] == 1) {
+                                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
+                                    vc.navTitle = @"信用卡还款";
+                                    //订单类型（2为还款记录、3为空卡记录）
+                                    vc.orderType = @"2";
+                                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];}
+                                else{
+                                    [weakSelf showRenzhengView];
+                                }
                             }];
                         }
                     
@@ -154,7 +162,11 @@
                             [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
                         }else{
                             [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                                [weakSelf showRenzhengView];
+                                if ([SharedUserInfo.certification integerValue] == 1) {
+                                    [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
+                                }else{
+                                    [weakSelf showRenzhengView];
+                                }
                             }];
                         }
                 }

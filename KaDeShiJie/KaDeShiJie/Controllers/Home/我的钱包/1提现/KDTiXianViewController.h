@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *bankLbl;
 - (IBAction)tixianAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *bankLogo;
+@property (weak, nonatomic) IBOutlet UIButton *tixianBtn;
 @property (nonatomic ,strong)NSDictionary * startDic;
 @end
 

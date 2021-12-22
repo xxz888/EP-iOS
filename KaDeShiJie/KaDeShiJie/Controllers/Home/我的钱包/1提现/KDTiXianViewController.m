@@ -12,6 +12,9 @@
 @interface KDTiXianViewController ()
 @property(nonatomic, strong) MCBankCardModel *chuxuInfo;
 
+@property(nonatomic, assign) BOOL canWithdraw;
+
+@property (weak, nonatomic) IBOutlet UILabel *tip;
 @end
 
 @implementation KDTiXianViewController
@@ -19,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor qmui_colorWithHexString:@"#F6F6F6"];
-    
+    self.canWithdraw = NO;
     [self setNavigationBarTitle:@"提现" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
     [self.navigationController.navigationBar setShadowImage:nil];
-    
+    self.tip.text = [NSString stringWithFormat:@"需大于100元，%@元/笔",SharedDefaults.extraFee];
     
     QMUIButton *kfBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
     [kfBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
@@ -48,6 +51,14 @@
         NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
         weakSelf.zhanghuyue.text = [NSString stringWithFormat:@"%.2f",[dic[@"balance"] doubleValue]];
         weakSelf.ketixianjine.text = [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
+        weakSelf.inputPrice.text =  [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
+        if ([dic[@"canWithdraw"] integerValue] != 1) {
+            self.canWithdraw = true;
+
+        }else{
+            self.canWithdraw = NO;
+
+        }
     }];
     
     
@@ -89,6 +100,10 @@
 }
 
 - (IBAction)tixianRequestLast:(id)sender {
+    if (!self.canWithdraw) {
+        [MCToast showMessage:@"当前状态不可提现"];
+        return;
+    }
     NSString * url1 = @"/api/v1/player/wallet/withdraw";
     if ([self.inputPrice.text doubleValue] <=0) {
         [MCToast showMessage:@"请输入提现金额"];

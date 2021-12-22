@@ -267,10 +267,12 @@
     if ([sender.titleLabel.text isEqualToString:@"结束还款"] || [sender.titleLabel.text isEqualToString:@"终止计划"]) {
     
             QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:nil message:@"是否结束本次信用卡还款计划？" preferredStyle:QMUIAlertControllerStyleAlert];
-            [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleCancel handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
+            [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
                 [weakself stopPlan];
             }]];
-            [alert showWithAnimated:YES];
+        [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
+        }]];
+        [alert showWithAnimated:YES];
             
         
         
@@ -328,9 +330,18 @@
         [self.bottomBtn setTitle:@"启动计划" forState:UIControlStateNormal];
         self.bottomHeight.constant = 50;
     }else{
+   
+        
+    if ([self.startDic[@"planStatus"] isEqualToString:@"Padding"] ||
+        [self.startDic[@"planStatus"] isEqualToString:@"Running"]) {
         self.bottomBtn.hidden = NO;
         [self.bottomBtn setTitle:@"终止计划" forState:UIControlStateNormal];
         self.bottomHeight.constant = 50;
+    }else{
+        self.bottomBtn.hidden = YES;
+        [self.bottomBtn setTitle:@"终止计划" forState:UIControlStateNormal];
+        self.bottomHeight.constant = 0;
+    }
 //        return;
 //        if (self.balancePlanId) {
 //            NSString * btnString = @"";

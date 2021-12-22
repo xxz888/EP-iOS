@@ -27,7 +27,7 @@
                         <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gi7-xD-1lV" customClass="QMUIButton">
                             <rect key="frame" x="0.0" y="0.0" width="138" height="90"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="快速收款" image="收款"/>
+                            <state key="normal" title="快捷收款" image="收款"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
                                     <real key="value" value="10"/>
@@ -252,20 +252,20 @@
                                 </constraint>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPS-wx-cbb">
-                            <rect key="frame" x="0.0" y="263" width="57.5" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPS-wx-cbb">
+                            <rect key="frame" x="0.0" y="263" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="绑定信用卡" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-k5-SJS">
-                            <rect key="frame" x="0.0" y="300" width="382" height="119.5"/>
+                            <rect key="frame" x="0.0" y="296" width="382" height="119"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="31Z-k5-SJS" secondAttribute="height" multiplier="16:5" id="Ct9-rv-cnI"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-r9-oqj" customClass="MCBannerView">
-                            <rect key="frame" x="0.0" y="300" width="382" height="119.5"/>
+                            <rect key="frame" x="0.0" y="296" width="382" height="119"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="bannerType">
@@ -273,6 +273,13 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weinifuwu" translatesAutoresizingMaskIntoConstraints="NO" id="E2V-Ew-2qe">
+                            <rect key="frame" x="0.0" y="263" width="55" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="E2V-Ew-2qe" secondAttribute="height" multiplier="322:104" id="ZlY-ew-yUI"/>
+                                <constraint firstAttribute="width" constant="55" id="thL-RP-aQf"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -283,12 +290,14 @@
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="top" secondItem="qdL-hW-TO5" secondAttribute="bottom" constant="20" id="Ci0-h0-3zA"/>
                         <constraint firstItem="31Z-k5-SJS" firstAttribute="leading" secondItem="aPS-wx-cbb" secondAttribute="leading" id="E2l-tf-lfW"/>
                         <constraint firstAttribute="trailing" secondItem="NJr-rh-seA" secondAttribute="trailing" id="GZM-Fl-b3g"/>
+                        <constraint firstItem="31Z-k5-SJS" firstAttribute="top" secondItem="E2V-Ew-2qe" secondAttribute="bottom" constant="15" id="QKx-m7-1av"/>
                         <constraint firstItem="yqH-r9-oqj" firstAttribute="leading" secondItem="31Z-k5-SJS" secondAttribute="leading" id="S9T-d1-gJM"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="top" secondItem="NJr-rh-seA" secondAttribute="bottom" id="ThE-TT-xJq"/>
-                        <constraint firstItem="31Z-k5-SJS" firstAttribute="top" secondItem="aPS-wx-cbb" secondAttribute="bottom" constant="20" id="XOm-th-jCg"/>
+                        <constraint firstItem="E2V-Ew-2qe" firstAttribute="top" secondItem="aPS-wx-cbb" secondAttribute="top" id="Vwt-y0-SBS"/>
                         <constraint firstItem="aPS-wx-cbb" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="ZHZ-ob-Z6k"/>
                         <constraint firstItem="yqH-r9-oqj" firstAttribute="bottom" secondItem="31Z-k5-SJS" secondAttribute="bottom" id="bSo-9u-XRM"/>
                         <constraint firstItem="yqH-r9-oqj" firstAttribute="trailing" secondItem="31Z-k5-SJS" secondAttribute="trailing" id="onS-Ee-Gjf"/>
+                        <constraint firstItem="E2V-Ew-2qe" firstAttribute="leading" secondItem="aPS-wx-cbb" secondAttribute="leading" id="ptm-5M-42a"/>
                         <constraint firstItem="wjI-4V-d9G" firstAttribute="leading" secondItem="NJr-rh-seA" secondAttribute="leading" id="s9S-Nz-Fin"/>
                         <constraint firstAttribute="trailing" secondItem="qdL-hW-TO5" secondAttribute="trailing" id="u1R-9Q-RuX"/>
                         <constraint firstItem="qdL-hW-TO5" firstAttribute="leading" secondItem="Wem-cK-bkb" secondAttribute="leading" id="uZJ-QS-K7U"/>
@@ -322,7 +331,7 @@
                 <outlet property="msgView" destination="npI-aP-zBa" id="GQZ-rV-zHf"/>
                 <outlet property="topView" destination="3fR-TA-5bX" id="3d3-4t-sfD"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="78.013392857142847"/>
+            <point key="canvasLocation" x="-33.333333333333336" y="77.34375"/>
         </view>
     </objects>
     <resources>
@@ -330,6 +339,7 @@
         <image name="kd_home_more" width="7" height="12"/>
         <image name="kd_home_news" width="65" height="52"/>
         <image name="kd_home_top_bg" width="540" height="325"/>
+        <image name="weinifuwu" width="322" height="104"/>
         <image name="信用卡 (4)" width="39" height="31"/>
         <image name="信用卡还款" width="39" height="32"/>
         <image name="收款" width="39" height="39"/>

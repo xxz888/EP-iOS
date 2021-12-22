@@ -49,7 +49,7 @@
 
         //状态
         self.statusLabel.text = [orderModel.status isEqualToString:@"Padding"]  ? @"待执行" :
-                                    [orderModel.status isEqualToString:@"Running"]  ? @"还款中" :
+                                    [orderModel.status isEqualToString:@"Running"]  ? @"执行中" :
                                     [orderModel.status isEqualToString:@"Successful"] ? @"已成功" :
                                     [orderModel.status isEqualToString:@"Close"] ? @"已关闭" :
                                     [orderModel.status isEqualToString:@"Termination"] ? @"已终止" : @"";
@@ -69,7 +69,7 @@
         //设置状态颜色
         if ([self.statusLabel.text isEqualToString:@"已成功"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
-        } else if ([self.statusLabel.text isEqualToString:@"待执行"] || [self.statusLabel.text isEqualToString:@"待完成"] ) {
+        } else if ([self.statusLabel.text isEqualToString:@"待执行"] || [self.statusLabel.text isEqualToString:@"待完成"] || [self.statusLabel.text isEqualToString:@"执行中"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
         } else if ([self.statusLabel.text isEqualToString:@"已失败"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
