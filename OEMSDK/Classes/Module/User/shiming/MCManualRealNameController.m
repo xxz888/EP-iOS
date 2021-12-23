@@ -70,7 +70,7 @@ static const CGFloat margin = 10;
     
     // 0. 初始值
     
-    [self setNavigationBarTitle:@"实名认证" tintColor:MAINCOLOR];
+    [self setNavigationBarTitle:@"实名认证" tintColor:nil];
     self.imageOne = nil;
     self.imageTwo = nil;
     self.imageThree = nil;

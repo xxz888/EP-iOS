@@ -19,13 +19,17 @@
     [super viewDidLoad];
     
     [self setNavigationBarTitle:@"钱包明细" tintColor:nil];
-    [self.navigationController.navigationBar setShadowImage:nil];
+//    [self.navigationController.navigationBar setShadowImage:nil];
 
-    
+    if (@available(iOS 11.0, *)) {
+        self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;
     [self.mc_tableview registerNib:[UINib nibWithNibName:@"KDWallDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDWallDetailTableViewCell"];
-    
+    self.view.backgroundColor = self.mc_tableview.backgroundColor = [UIColor whiteColor];
     __weak typeof(self) weakSelf = self;
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.mc_tableview.mj_header endRefreshing];

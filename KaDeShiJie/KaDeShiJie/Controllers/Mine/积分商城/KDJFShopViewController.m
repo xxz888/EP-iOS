@@ -109,7 +109,8 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  
+    [MCToast showMessage:@"开发中"];
+    return;
     KDJFShopDetailViewController * vc = [[KDJFShopDetailViewController alloc]init];
     vc.goodDic = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];

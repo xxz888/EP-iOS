@@ -5,29 +5,19 @@
 //  Created by wza on 2020/3/16.
 //  Copyright © 2020 MingChe. All rights reserved.
 //
-
 #import "MCSessionManager.h"
 #import "MCRequestMannager.h"
 #import "KDCommonAlert.h"
-
-
 #import "MCSessionManagerMessageModel.h"
 #import "MCApp.h"
-
-
 static MCSessionManager *_singleManager = nil;
-
 @interface MCSessionManager()
-
 //  记录一个controller的sessionManager创建的网络任务
 @property (nonatomic, strong) NSMutableArray <MCSessionManagerMessageModel *>* tempActions;
 // 调用过reload方法证明任务数组已经加好了
 @property (nonatomic, assign) BOOL isReloaded;
-
 @end
-
 @implementation MCSessionManager
-
 - (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp other:(MCSMNormalHandler)otherResp failure:(MCSMErrorHandler)failure {
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"Authorization"];
@@ -35,13 +25,12 @@ static MCSessionManager *_singleManager = nil;
     __weak typeof(self) weakSelf = self;
     [MCLoading show];
     NSString *full = [self getFullUrlWithShort:shortURLString];
-    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------请求参数-------------\n%@\n-------------请求Token-------------\n%@\n-------------请求DeviceId-------------\n%@\n",full, parameters,TOKEN, SharedDefaults.deviceid);
+    NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------请求参数-------------\n%@\n-------------请求Token-------------\n%@\n",full, parameters,TOKEN);
     NSURLSessionDataTask *task = [self GET:full parameters:parameters headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
         [MCLoading hidden];
-
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             if (responseObject[@"message"]) {
                 [MCToast showMessage:responseObject[@"messege"]];
@@ -54,7 +43,6 @@ static MCSessionManager *_singleManager = nil;
     
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        //MCLog(@"%@",error);
         [MCLoading hidden];
         [self handleHTTPError:error failureHandler:failure];
         if (self.delegate) {
@@ -69,9 +57,7 @@ static MCSessionManager *_singleManager = nil;
           ok:(nullable MCSMNormalHandler)okResp
        other:(nullable MCSMNormalHandler)otherResp
      failure:(nullable MCSMErrorHandler)failure {
-
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-
     NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[self getFullUrlWithShort:shortURLString] parameters:parameters error:nil];
     request.timeoutInterval = 10.f;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -87,9 +73,7 @@ static MCSessionManager *_singleManager = nil;
     [MCLoading show];
     NSString * full= [self getFullUrlWithShort:shortURLString];
     
-
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
-
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
@@ -124,20 +108,15 @@ static MCSessionManager *_singleManager = nil;
                 [MCApp userLogout];
             }else if (code == 404){
                 [MCApp userLogout];
-            }else if(code == 400){
-            
+            }else{
             }
-            
             [MCToast showMessage:responseObject[@"message"]];
-
             NSLog(@"请求失败error=%@", error);
         }
     }];
     [task resume];
-
     return task;
 }
-
 - (nullable NSURLSessionDataTask *)mc_put:(NSString *)shortURLString
   parameters:(nullable id)parameters
           ok:(nullable MCSMNormalHandler)okResp
@@ -153,7 +132,6 @@ static MCSessionManager *_singleManager = nil;
     
     // 设置HTTPBody
     
-
 //    __weak typeof(self) weakSelf = self;
 //    [MCLoading show];
 //    NSString *full = [self getFullUrlWithShort:shortURLString];
@@ -181,7 +159,6 @@ static MCSessionManager *_singleManager = nil;
 //
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-
     NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:[self getFullUrlWithShort:shortURLString] parameters:parameters error:nil];
     request.timeoutInterval = 10.f;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -192,17 +169,13 @@ static MCSessionManager *_singleManager = nil;
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     NSData *data = [[self convertToJsonData:parameters] dataUsingEncoding:NSUTF8StringEncoding];
-
-
     [request setHTTPBody:data];
     NSLog(@"%@",TOKEN);
  
     [MCLoading show];
     NSString * full= [self getFullUrlWithShort:shortURLString];
     
-
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
-
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
@@ -228,18 +201,12 @@ static MCSessionManager *_singleManager = nil;
         } else {
             
             [MCToast showMessage:responseObject[@"message"]];
-
             NSLog(@"请求失败error=%@", error);
         }
     }];
     [task resume];
-
     return task;
 }
-
-
-
-
 - (nullable NSURLSessionDataTask *)mc_UPLOAD:(NSString *)shortURLString
   parameters:(nullable id)parameters
       images:(nullable NSArray<UIImage*>*)images
@@ -250,7 +217,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
           ok:(nullable MCSMNormalHandler)okResp
        other:(nullable MCSMNormalHandler)otherResp
      failure:(nullable MCSMErrorHandler)failure {
-
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     }
@@ -259,7 +225,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }
     [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
     [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-
     BOOL isSharedSession = (self == [MCSessionManager shareManager]);
     if (isSharedSession) {
         [MCLoading show];
@@ -267,7 +232,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     NSString *full = [self getFullUrlWithShort:shortURLString];
         
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
-
     
     NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
@@ -301,7 +265,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }];
     return task;
 }
-
 /// 去掉请求地址多余的斜杠
 /// @param url url
 - (NSString*)removeExtraSlashOfUrl:(NSString*)url{
@@ -312,7 +275,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     NSRegularExpression*expression = [[NSRegularExpression alloc]initWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
     return [expression stringByReplacingMatchesInString:url options:0 range:NSMakeRange(0, url.length) withTemplate:@"/"];
 }
-
 - (NSString *)getFullUrlWithShort:(NSString *)url {
     NSString *full = [NSString stringWithFormat:@"%@%@",api_host,url];
     return [self removeExtraSlashOfUrl:full];
@@ -344,21 +306,17 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     }
     
 }
-
 - (void)handleHTTPError:(NSError *)error failureHandler:(MCSMErrorHandler)failure {
     if (error.userInfo) {
         NSDictionary *UserInfo = error.userInfo;
-
         NSHTTPURLResponse * responses = UserInfo[@"com.alamofire.serialization.response.error.response"];
-
                 NSInteger code = [responses statusCode];
         
         
         NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
-
         NSString *errorStr = errorDict[@"message"];
         [MCToast showMessage:errorStr];
-        
+        NSLog(@"%@",errorStr);
         if ([errorStr isEqualToString:@"无法获得当前登陆用户"] || code == 401) {
             [MCApp userLogout];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -386,14 +344,10 @@ remoteFields:(nullable NSArray<NSString *>*)fields
         }
         
     }
-
 }
 - (void)handleOther:(MCNetResponse *)resp {
 //    [MCToast showMessage:resp[@"messege"] ];
 }
-
-
-
 //链接转字典  （参数）
 +(NSMutableDictionary *)dictionaryWithUrlString:(NSString *)urlStr{
     if (urlStr && urlStr.length && [urlStr rangeOfString:@"?"].length == 1) {
@@ -432,7 +386,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
                                         ok:(nullable MCSMNormalHandler)okResp{
     return [self mc_POST:shortURLString parameters:parameters ok:okResp other:nil];
 }
-
 /// POST请求
 /// @param shortURLString shortURLString
 /// @param parameters 参数
@@ -444,7 +397,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
                                      other:(nullable MCSMNormalHandler)otherResp{
     return [self mc_POST:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
 }
-
 /// POST请求
 /// @param shortURLString shortURLString
 /// @param parameters 参数
@@ -457,7 +409,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
                                      other:(nullable MCSMNormalHandler)otherResp
                                    failure:(nullable MCSMErrorHandler)failure{
     return  nil;
-
     if (TOKEN) {    //每次都添加为了及时变化
         [self.requestSerializer setValue:TOKEN forHTTPHeaderField:@"authToken"];
     }
@@ -466,7 +417,6 @@ remoteFields:(nullable NSArray<NSString *>*)fields
 //    }
 //    [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
 //    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
-
     //如果url不包含1.0再拼接请求字符串,这个是区别通道用的，因为后台返回就返回的完整url
     NSString * full = [self getFullUrlWithShort:shortURLString];
     
@@ -481,11 +431,9 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     if (isSharedSession) {
         [MCLoading show];
     }
-
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
     NSURLSessionDataTask *task = [self POST:full parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
-
         
         //如果是收款轮询的查询，查询不成功就不要隐藏菊花
         //返回数据不一样的数据，需要在这里重新拼接数组,计算手续费
@@ -535,17 +483,14 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     
     return task;
 }
-
 + (instancetype)manager {
     MCSessionManager *m = [super manager];
     //自定义配置
     m.requestSerializer.timeoutInterval = 30.f;
     m.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/htLY", @"text/json", @"text/plain", @"text/javascript", @"text/xLY", @"image/*" ,nil];
     [m.requestSerializer setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-
     return m;
 }
-
 + (instancetype)shareManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
@@ -553,25 +498,19 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     });
     return _singleManager;
 }
-
-
 - (NSMutableArray<MCSessionManagerMessageModel *> *)tempActions {
     if (!_tempActions) {
         _tempActions = [NSMutableArray new];
     }
     return _tempActions;
 }
-
 - (void)mc_reloadTasks {
     self.isReloaded = YES;
     for (MCSessionManagerMessageModel *model in self.tempActions) {
         [model msgSend];
     }
 }
-
-
 #pragma mark - /*********************GET请求*******************/
-
 - (NSURLSessionDataTask *)mc_GET:(NSString *)shortURLString parameters:(id)parameters ok:(MCSMNormalHandler)okResp {
     return [self mc_GET:shortURLString parameters:parameters ok:okResp other:nil];
 }
@@ -579,42 +518,22 @@ remoteFields:(nullable NSArray<NSString *>*)fields
     return [self mc_GET:shortURLString parameters:parameters ok:okResp other:otherResp failure:nil];
 }
 -(NSString *)convertToJsonData:(NSDictionary *)dict
-
 {
-
     NSError *error;
-
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-
     NSString *jsonString;
-
     if (!jsonData) {
-
         NSLog(@"%@",error);
-
     }else{
-
         jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-
     }
-
     NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
-
     NSRange range = {0,jsonString.length};
-
     //去掉字符串中的空格
-
     [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
-
     NSRange range2 = {0,mutStr.length};
-
     //去掉字符串中的换行符
-
     [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
-
     return mutStr;
-
 }
 @end
-
-
