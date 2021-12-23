@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="KDMyWallView">
-            <rect key="frame" x="0.0" y="0.0" width="315" height="474"/>
+            <rect key="frame" x="0.0" y="0.0" width="315" height="470"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5H-BW-pB0">
@@ -303,7 +303,7 @@
                 <outlet property="tixianView" destination="6Xv-jl-aoi" id="9sp-00-sKA"/>
                 <outlet property="zhifushouyiView" destination="Kma-dt-Rrr" id="9SY-4U-ehC"/>
             </connections>
-            <point key="canvasLocation" x="-1112" y="-143"/>
+            <point key="canvasLocation" x="-1112.3188405797102" y="-144.64285714285714"/>
         </view>
     </objects>
     <resources>

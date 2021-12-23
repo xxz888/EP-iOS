@@ -29,7 +29,6 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    self.backgroundColor = [UIColor qmui_colorWithHexString:@"#FC9B33"];
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTixiantView:)];
     [self.tixianView addGestureRecognizer:tap];
     

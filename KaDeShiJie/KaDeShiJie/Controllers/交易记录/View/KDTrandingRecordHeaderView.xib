@@ -142,16 +142,16 @@
                 <outlet property="topView" destination="g0x-Ow-cXb" id="Vgo-zs-mcm"/>
                 <outlet property="yearBtn" destination="Hlh-9e-ayz" id="GKQ-V9-NPx"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="-97.767857142857139"/>
+            <point key="canvasLocation" x="-57" y="42"/>
         </view>
     </objects>
     <resources>
         <image name="kd_earn_btn_img_gray" width="8" height="6"/>
         <image name="kd_home_top_bg" width="540" height="325"/>
-        <image name="kd_trandingRecord_btn_0" width="40" height="40"/>
-        <image name="kd_trandingRecord_btn_0_selected" width="40" height="40"/>
-        <image name="kd_trandingRecord_btn_1" width="40" height="40"/>
-        <image name="kd_trandingRecord_btn_1_selected" width="40" height="40"/>
+        <image name="kd_trandingRecord_btn_0" width="35" height="35"/>
+        <image name="kd_trandingRecord_btn_0_selected" width="35" height="35"/>
+        <image name="kd_trandingRecord_btn_1" width="41" height="32"/>
+        <image name="kd_trandingRecord_btn_1_selected" width="41" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

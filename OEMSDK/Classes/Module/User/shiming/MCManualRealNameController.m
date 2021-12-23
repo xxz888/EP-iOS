@@ -8,7 +8,7 @@
 
 #import "MCManualRealNameController.h"
 #import "LYImageMagnification.h"// 查看图片大图
-
+#import "DDPhotoViewController.h"
 #define kViewColor [UIColor colorWithRed:210/255.0 green:210/255.0 blue:220/255.0 alpha:1.0]
 
 static const CGFloat margin = 10;
@@ -49,6 +49,9 @@ static const CGFloat margin = 10;
 @property (nonatomic, strong) NSString *imageThreeURL;
 
 @property (nonatomic, weak) UITextField * phoneTf;
+
+
+@property (nonatomic, assign) NSInteger ocrIndex;
 
 @end
 
@@ -140,7 +143,19 @@ static const CGFloat margin = 10;
     idCardTF.delegate = self;
     [cardNoView addSubview:idCardTF];
     self.idCardTF = idCardTF;
-   
+    
+    
+    UIView *codeRightView1 = [[UIView alloc] initWithFrame:CGRectMake(cardNoView.width - 50,0,40,40)];
+    UIButton * scanBankCardButton1 =[UIButton buttonWithType:UIButtonTypeCustom];
+    [scanBankCardButton1 setImage:[UIImage mc_imageNamed:@"lx_card_scan"] forState:0];
+    scanBankCardButton1.frame = CGRectMake(0, 0,40,40);
+    scanBankCardButton1.tag = 1002;
+    [scanBankCardButton1 addTarget:self action:@selector(clickScan:) forControlEvents:UIControlEventTouchUpInside];
+    [codeRightView1 addSubview:scanBankCardButton1];
+    [cardNoView addSubview:codeRightView1];
+    
+    
+    
     
 
     UIView * bankcardNoView = [[UIView alloc] initWithFrame:CGRectMake(cardNoView.left, cardNoView.bottom + margin, cardNoView.width, cardNoView.height)];
@@ -158,6 +173,7 @@ static const CGFloat margin = 10;
     [bankcardNoView addSubview:cardcardNoLineView];
     UITextField *bankCardTf = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
     bankCardTf.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
+    bankCardTf.tag = 1002;
     bankCardTf.textAlignment = NSTextAlignmentLeft;
     bankCardTf.font = [UIFont systemFontOfSize:14];
     bankCardTf.tintColor = [UIColor lightGrayColor];
@@ -168,6 +184,15 @@ static const CGFloat margin = 10;
     self.bankCardTF = bankCardTf;
     
     
+    
+    UIView *codeRightView = [[UIView alloc] initWithFrame:CGRectMake(bankcardNoView.width - 50,0,40,40)];
+    UIButton * scanBankCardButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    [scanBankCardButton setImage:[UIImage mc_imageNamed:@"lx_card_scan"] forState:0];
+    scanBankCardButton.frame = CGRectMake(0, 0,40,40);
+    scanBankCardButton.tag = 1001;
+    [scanBankCardButton addTarget:self action:@selector(clickScan:) forControlEvents:UIControlEventTouchUpInside];
+    [codeRightView addSubview:scanBankCardButton];
+    [bankcardNoView addSubview:codeRightView];
     
     
     
@@ -366,7 +391,67 @@ static const CGFloat margin = 10;
     [self requestDataForCheckInputInfo];
 }
 #pragma mark --- DELEGATE
+-(void)clickScan:(UIButton *)btn{
+    self.ocrIndex = btn.tag;
+__weak __typeof(self)weakSelf = self;
+AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+if (authStatus == AVAuthorizationStatusDenied) {
+    [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
+    return;
+}
 
+//调用身份证大小的相机
+DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
+vc.modalPresentationStyle = UIModalPresentationFullScreen;
+vc.imageblock = ^(UIImage *image) {
+    [self uploadBankImage:image];
+};
+[MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
+}
+//#pragma mark - 上传银行卡图片
+- (void)uploadBankImage:(UIImage *)image {
+__weak __typeof(self)weakSelf = self;
+[MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+    
+    if (resp[@"fileUrl"]) {
+        NSDictionary *param = @{
+                                @"link":resp[@"fileUrl"],
+                                @"orcType": self.ocrIndex == 1001 ? @"BankCard" :@"IdCard",
+                                };
+        kWeakSelf(self);
+        [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/orc" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+            NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
+         
+            if (self.ocrIndex == 1001) {
+                NSMutableString *string = [NSMutableString string];
+                for (int i = 0; i < no.length; i++) {
+                    [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
+                    if (i % 4 == 3) {
+                        [string appendString:@" "];
+                    }
+                }
+                weakSelf.bankCardTF.text = [NSString stringWithFormat:@"%@",string];
+            }else{
+                weakSelf.idCardTF.text = no;
+            }
+        } other:^(NSDictionary * _Nonnull resp) {
+
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }
+
+
+} other:^(NSDictionary * _Nonnull resp) {
+    [MCLoading hidden];
+    [MCToast showMessage:resp[@"messege"]];
+
+} failure:^(NSError * _Nonnull error) {
+    [MCLoading hidden];
+    [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@", (long)error.code, error.localizedFailureReason]];
+}];
+
+}
 
 #pragma mark --- PRIVATE METHOD
 #pragma mark --- 调用系统相册的方法

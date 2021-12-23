@@ -515,24 +515,30 @@
 -(void)requestCreatePlan{
     //First, Fourth, Second, Third
     NSString * period;
-    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"1次"]) {
+    NSInteger count = 0;
+    if([self.refundCountBtn.titleLabel.text isEqualToString:@"1次"]) {
         period = @"First";
+        count = 1;
     }
     if ([self.refundCountBtn.titleLabel.text isEqualToString:@"2次"]) {
         period = @"Second";
+        count = 2;
     }
     if ([self.refundCountBtn.titleLabel.text isEqualToString:@"3次"]) {
         period = @"Third";
+        count = 3;
     }
     if ([self.refundCountBtn.titleLabel.text isEqualToString:@"4次"]) {
         period = @"Fourth";
+        count = 4;
     }
     
 
 
-      NSDate *date = [NSDate date];
-      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-      [formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
       //获取当前时间日期展示字符串 如：2019-05-23-13:58:59
       NSString *planStartDate = [formatter stringFromDate:date];
     if ([self inRefundMoneyToNewMoney] <= 0) {
@@ -548,6 +554,12 @@
         return;
     }
    
+
+    
+    
+    
+    
+    
     // "planDates": "2021-12-16,2021-12-17,2021-12-18,2021-12-19"
       NSDictionary * dic = @{
         @"cardBalance":self.cardBalanceView.text,
@@ -567,6 +579,24 @@
     }else{
         NSString *executeDateString = [self.timeArray componentsJoinedByString:@","];
         [mdic setValue:executeDateString forKey:@"planDates"];
+        
+        
+        //    前端初步校验 选择的日期总数 > 还款金额 / (卡余额 * 还款次数) + 1天
+        //    即：卡余额1000，还款1万 每日还款一次 需要选择 10 + 1天
+        //    如还款日期选择包含今天 则还需+1天
+        NSInteger count2 = ([self inRefundMoneyToNewMoney] / ([self.cardBalanceView.text doubleValue] * count)) + 1;
+        if ([self.timeArray containsObject:planStartDate]) {
+            if ([self.timeArray count] <= count2+1) {
+                [MCToast showMessage:@"选择的日期少于实际计划日期,请增加还款天数或余额"];
+                return;
+            }
+        }else{
+            if ([self.timeArray count] <= count2) {
+                [MCToast showMessage:@"选择的日期少于实际计划日期,请增加还款天数或余额"];
+                return;
+            }
+        }
+    
     }
     
     __weak typeof(self) weakSelf = self;
