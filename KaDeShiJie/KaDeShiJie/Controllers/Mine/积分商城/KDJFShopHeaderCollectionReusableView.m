@@ -18,7 +18,7 @@
     [super awakeFromNib];
     
     ViewRadius(self.personImv, 15);
-    SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth-24, 138)];
+    SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth-24, (KScreenWidth-24)*0.43)];
     cyView.layer.cornerRadius = 7;
     cyView.delegate = self;
     cyView.backgroundColor = [UIColor clearColor];

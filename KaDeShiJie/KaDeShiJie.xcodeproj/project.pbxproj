@@ -934,17 +934,8 @@
 			isa = PBXGroup;
 			children = (
 				180B179A2575EAE6006D3D13 /* VC */,
-				180B179B2575EAE6006D3D13 /* View */,
-				180B17992575EAE6006D3D13 /* Model */,
 			);
 			path = "空卡还款";
-			sourceTree = "<group>";
-		};
-		180B17992575EAE6006D3D13 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		180B179A2575EAE6006D3D13 /* VC */ = {
@@ -955,13 +946,6 @@
 				180B179E2575EB21006D3D13 /* 空卡计划预览 */,
 			);
 			path = VC;
-			sourceTree = "<group>";
-		};
-		180B179B2575EAE6006D3D13 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		180B179C2575EB21006D3D13 /* 空卡制定计划 */ = {

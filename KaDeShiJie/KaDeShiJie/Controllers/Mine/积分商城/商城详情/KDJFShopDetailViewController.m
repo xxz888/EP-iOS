@@ -31,7 +31,7 @@
     [self setNavigationBarTitle:@"商品详情" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
 
 
-    self.mc_tableview.backgroundColor = [UIColor whiteColor];
+    self.mc_tableview.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.tableHeaderView = self.headerView;
@@ -48,9 +48,9 @@
 //    [self getDetailData];
     
     
-    [self.headerView.detailImv sd_setImageWithURL:self.goodDic[@"logo"]];
+    [self.headerView.detailImv sd_setImageWithURL:self.goodDic[@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
     self.headerView.detailTitle.text = self.goodDic[@"title"];
-    self.headerView.detailPrice.text = [NSString stringWithFormat:@"¥%@元",self.goodDic[@"price"]];
+//    self.headerView.detailPrice.text = [NSString stringWithFormat:@"¥%@元",self.goodDic[@"price"]];
     self.headerView.detailKuCun.text = [NSString stringWithFormat:@"库存:%@",self.goodDic[@"num"]];
 
     self.headerView.detailTitle1.text = self.goodDic[@"introduce"];
@@ -59,8 +59,8 @@
 {
     if (!_headerView) {
         _headerView = [[KDJFShopDetailHeaderView alloc] init];
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 323);
-
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 417);
+        _headerView.goodDic = self.goodDic;
     }
 
 
@@ -70,12 +70,12 @@
     if (!_footView) {
         _footView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight - 70 , KScreenWidth, 70)];
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(10, 5 , KScreenWidth-20, 33);
+        button.frame = CGRectMake(10, 5 , KScreenWidth-20, 50);
         button.titleLabel.font = [UIFont systemFontOfSize: 14.0];
         [button setTitleColor:KWhiteColor forState:0];
         [button setBackgroundColor:UIColor.mainColor];
-        [button setTitle:@"购买" forState:0];
-        ViewRadius(button, 5);
+        [button setTitle:@"立即购买" forState:0];
+        ViewRadius(button, 25);
         [_footView addSubview:button];
         
         [button addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];

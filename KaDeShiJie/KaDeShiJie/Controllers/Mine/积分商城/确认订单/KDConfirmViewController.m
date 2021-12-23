@@ -22,14 +22,11 @@
     self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     self.noAddressView.backgroundColor = KWhiteColor;
     ViewRadius(self.noAddressView, 3);
-    ViewRadius(self.confrimBtn, 3);
     ViewRadius(self.goodImv, 3);
 
-    [self.goodImv sd_setImageWithURL:self.goodDic[@"primaryMessage"]];
-    self.goodPrice.text = self.goodTotalPrice.text =
-    [NSString stringWithFormat:@"%@积分+%@元",
-                          self.goodDic[@"stock"],
-                          self.goodDic[@"priceMoney"]];
+    [self.goodImv sd_setImageWithURL:[NSURL URLWithString:self.goodDic[@"logo"]] placeholderImage:[UIImage imageNamed:@"logo"]];
+    self.goodPrice.text =
+    [NSString stringWithFormat:@"¥%@元",self.goodDic[@"price"]];
     
     
     //添加没有地址view的手势
@@ -46,15 +43,15 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     kWeakSelf(self);
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"facade/app/coin/address/get"] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
-        if (resp[@"result"]) {
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/api/v1/player/shop/address"] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        if ([resp count] != 0) {
             weakself.noAddressView.hidden = YES;
             weakself.haveAddressView.hidden = NO;
-            
-            weakself.cPhone.text = resp[@"result"][@"phone"];
-            weakself.cAdress.text = [NSString stringWithFormat:@"%@ %@ %@",resp[@"result"][@"province"],resp[@"result"][@"district"],resp[@"result"][@"city"]];
-            weakself.cName.text = resp[@"result"][@"username"];
-            weakself.cDetailAdress.text = resp[@"result"][@"detail"];
+            NSArray * arr = [NSArray arrayWithArray:resp];
+            weakself.cPhone.text = @"";
+            weakself.cAdress.text = [NSString stringWithFormat:@"%@",arr[0][@"completeAddress"]];
+            weakself.cName.text = arr[0][@"receiptName"];
+//            weakself.cDetailAdress.text = resp[@"completeAddress"];
 
         }else{
             weakself.noAddressView.hidden = NO;

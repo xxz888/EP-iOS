@@ -7,9 +7,9 @@
 //
 
 #import "KDJFAdressManagerViewController.h"
-
+#import "BRAddressPickerView.h"
 @interface KDJFAdressManagerViewController ()
-
+@property (nonatomic ,strong)NSString * cityId;
 @end
 
 @implementation KDJFAdressManagerViewController
@@ -19,8 +19,33 @@
     [self setNavigationBarTitle:self.whereCome ? @"新增地址" : @"编辑地址" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
     self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
 
+    [self.adressTf addTarget:self action:@selector(textFieldChangeAction:) forControlEvents:(UIControlEventEditingDidBegin)];
+    
 }
-
+-(void)textFieldChangeAction:(id)tf{
+    [self.view endEditing:YES];
+    BRAddressPickerView * addressPicker = [[BRAddressPickerView alloc] initWithPickerMode:BRAddressPickerModeCity];
+    addressPicker.title = @"请选择省市";
+    addressPicker.selectValues = @[@"上海市", @"上海市"];
+   __weak __typeof(self)weakSelf = self;
+    addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {
+        weakSelf.adressTf.text = [NSString stringWithFormat:@"%@%@%@",province.name,city.name,area.name];
+        [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/province" parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+            NSArray * respArry = [NSArray arrayWithArray:resp];
+            for (NSDictionary * dic1 in respArry) {
+                if ([dic1[@"name"] containsString:province.name] || [province.name containsString:dic1[@"name"]]) {
+                    for (NSDictionary * dic2 in dic1[@"cities"]) {
+                        if ([dic2[@"name"] containsString:city.name] || [city.name containsString:dic2[@"name"]]) {
+                            weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"id"]];
+                            weakSelf.adressTf.text = [NSString stringWithFormat:@"%@-%@",dic1[@"name"],dic2[@"name"]];
+                        }
+                    }
+                }
+            }
+        }];
+    };
+    [addressPicker show];
+}
 /*
 #pragma mark - Navigation
 
@@ -32,17 +57,29 @@
 */
 
 - (IBAction)saveAction:(id)sender {
-    kWeakSelf(self);
-    [self.sessionManager mc_Post_QingQiuTi:@"facade/app/coin/address/add" parameters:@{@"username":self.shouhuorenTf.text,
-                                                                                       @"phone":@"王沛",
-                                                                                       @"province":@"浙江省",
-                                                                                       @"city":@"杭州市",
-                                                                                       @"district":@"西湖区",
-                                                                                       @"detail":@"发展大厦12楼",
-                                                                                       @"zipcode":@""
-                                                                                       
+    __weak typeof(self) weakSelf = self;
+    if (self.shouhuorenTf.text.length == 0) {
+        [MCToast showMessage:@"请填写收货人姓名"];
+        return;
+    }
+    if (self.phoneTf.text.length == 0) {
+        [MCToast showMessage:@"请填写收货人手机号"];
+        return;
+    }
+    if (!self.cityId) {
+        [MCToast showMessage:@"请选择城市"];
+        return;
+    }
+    if (self.detailAdressTf.text.length == 0) {
+        [MCToast showMessage:@"请填写详细地址"];
+        return;
+    }
+    [self.sessionManager mc_Post_QingQiuTi:@"/api/v1/player/shop/address" parameters:@{@"receiptName":self.shouhuorenTf.text,
+                                                                                       @"cityId":self.cityId,
+                                                                                       @"address":self.detailAdressTf.text,
+                                                                    
     } ok:^(NSDictionary * _Nonnull resp) {
-        [weakself.navigationController popViewControllerAnimated:YES];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull resp) {
         [MCLoading hidden];
     } failure:^(NSError * _Nonnull error) {

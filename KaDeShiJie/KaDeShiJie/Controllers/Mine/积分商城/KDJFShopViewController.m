@@ -89,7 +89,7 @@
     KDJFShopCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.collTitle.text = self.dataArray[indexPath.row][@"title"];
     cell.collPrice.text = [NSString stringWithFormat:@"¥%@元",self.dataArray[indexPath.row][@"price"]];
-    [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"logo"]];
+    [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
 
     cell.backgroundColor = KWhiteColor;
     return cell;
@@ -109,8 +109,7 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [MCToast showMessage:@"开发中"];
-    return;
+  
     KDJFShopDetailViewController * vc = [[KDJFShopDetailViewController alloc]init];
     vc.goodDic = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
@@ -123,7 +122,7 @@
 
 // 要先设置表头大小
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 390);
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 248+(KScreenWidth-24)*0.43);
     return size;
 }
  

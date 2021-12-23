@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *detailTitle1;
 @property (weak, nonatomic) IBOutlet UILabel *detailDaiJin;
 @property (weak, nonatomic) IBOutlet UILabel *detailKuCun;
+@property (weak, nonatomic) IBOutlet UIView *luboView;
+@property(nonatomic,strong)NSDictionary * goodDic;
+
 
 @end
 
