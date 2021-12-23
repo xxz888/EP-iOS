@@ -153,6 +153,10 @@
         [self popFirstLogin];
         MCModelStore.shared.isFirstLogin= NO;
     }
+    
+    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+
+    }];
 }
 
 - (void)clickKFAction

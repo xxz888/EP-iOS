@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.provinceCode = nil;
     self.incitycode = nil;
-    [self setNavigationBarTitle:@"支付确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"支付确认" tintColor:nil];
     self.nameLabel.text = self.cardModel.userName;
     self.cardNoLabel.text = self.cardModel.cardNo;
     self.validityLabel.text = self.cardModel.expiredTime;

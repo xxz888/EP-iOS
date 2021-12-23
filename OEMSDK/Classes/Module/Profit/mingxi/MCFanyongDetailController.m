@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationBarTitle:@"返佣详情" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"返佣详情" tintColor:nil];
     self.mc_tableview.mj_header = nil;
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;

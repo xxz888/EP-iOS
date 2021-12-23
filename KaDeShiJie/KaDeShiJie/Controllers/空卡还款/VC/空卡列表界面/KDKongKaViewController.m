@@ -74,7 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:self.navTitle tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:self.navTitle tintColor:nil];
     [self setupView];
 }
 

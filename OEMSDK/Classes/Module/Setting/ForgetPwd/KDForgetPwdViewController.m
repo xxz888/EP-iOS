@@ -24,11 +24,14 @@
         self.phoneTf.text = SharedUserInfo.phone;
     }
     self.pwd2Tf.font = self.pwd1Tf.font = Font_System(14);
-    [self setNavigationBarTitle:[self.iscome isEqualToString:@"1"]?@"设置登录密码": @"重置登录密码" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    
+    [self setNavigationBarTitle:
+     [self.iscome isEqualToString:@"1"]?@"重置登录密码":
+     [self.iscome isEqualToString:@"2"]?@"设置登录密码":
+     [self.iscome isEqualToString:@"3"]?@"设置交易密码":@"" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     [self.bottomView addSubview:self.footView];
-    
-    self.phoneTf.text = self.startPhone;
+
     [self.phoneTf addTarget:self action:@selector(textFiledEditChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.codeTf addTarget:self action:@selector(textFiledEditChanged:) forControlEvents:UIControlEventEditingChanged];
     
@@ -64,8 +67,11 @@
     }
 
     // 发送验证码
-    kWeakSelf(self)
-    NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=ModifyPassword&phone=%@",phone];
+    kWeakSelf(self);
+    NSString * typpe = self.iscome == @"1" ? @"ModifyPassword" :
+                       self.iscome == @"2" ? @"ModifyPassword" :
+                       self.iscome == @"3" ? @"ModifyPayPassword" : @"";
+    NSString * url = [NSString stringWithFormat:@"/api/v1/player/sms?smsType=%@&phone=%@",typpe,phone];
     [[MCSessionManager shareManager] mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         [MCToast showMessage:@"验证码已发送"];
         [weakself changeSendBtnText];
@@ -141,19 +147,30 @@
 
         __weak typeof(self) weakSelf = self;
 
-        NSDictionary * dic =@{
-            @"code":self.codeTf.text,
-            @"password":self.pwd1Tf.text,
-            @"phone": self.phoneTf.text
-        };
- 
+        NSDictionary * dic = @{};
+        NSString * url = @"";
+        if ([self.iscome isEqualToString:@"1"] || [self.iscome isEqualToString:@"2"]) {
+            dic =   @{
+                @"code":self.codeTf.text,
+                @"password":self.pwd1Tf.text,
+                @"phone": self.phoneTf.text
+            };
+            
+            url = @"/api/v1/player/user/modify/pwd";
+        }else{
+            dic = @{@"code":self.codeTf.text,
+                    @"payPassword":self.pwd1Tf.text
+            };
+            url = @"/api/v1/player/user/modify/payPassword";
+
+        }
         
-        
-        [self.sessionManager mc_put:@"/api/v1/player/user/modify/pwd" parameters:dic ok:^(NSDictionary * _Nonnull resp) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"密码修改成功"];
-            });
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        [self.sessionManager mc_put:url parameters:dic ok:^(NSDictionary * _Nonnull resp) {
+    
+            [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+
+            }];
         } other:^(NSDictionary * _Nonnull resp) {
             
         } failure:^(NSError * _Nonnull error) {

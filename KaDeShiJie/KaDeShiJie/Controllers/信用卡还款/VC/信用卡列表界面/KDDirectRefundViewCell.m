@@ -224,7 +224,7 @@
     //    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:self.repaymentArray[indexPath.row]];
     ////        NSDictionary * planDic = @[@"task":self.repaymentArray[indexPath.row][@"planId"]];
     //    [dic setValue:@{@"id":[NSString stringWithFormat:@"%@",self.repaymentArray[indexPath.row][@"planId"]]} forKey:@"plan"];
-        vc.startDic = @{@"plan":@{@"id":[NSString stringWithFormat:@"%@",self.refundModel.planId]}};
+        vc.startDic = @{@"planStatus":self.refundModel.planStatus,@"plan":@{@"id":[NSString stringWithFormat:@"%@",self.refundModel.planId]}};
         [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 
     }

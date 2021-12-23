@@ -52,7 +52,7 @@
     // 1 下单 2 历史记录 3 信用卡还款进来
     [self setNavigationBarTitle:self.whereCome == 1 ? @"空卡计划预览" :
                                 self.whereCome == 2 ? @"空卡计划详情":
-                                                      @"空卡计划详情" tintColor:UIColor.whiteColor];
+                                                      @"空卡计划详情" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
 }
 #pragma mark -------------------------where=1,下单进来直接带过来数据-------------------------

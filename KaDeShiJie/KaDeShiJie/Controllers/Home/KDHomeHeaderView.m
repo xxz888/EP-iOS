@@ -63,7 +63,7 @@
         btn.imagePosition = QMUIButtonImagePositionTop;
     }
     
-    NSArray *titleArray = @[@"账单管理", @"申请办卡", @"实名认证", @"我的钱包"];
+    NSArray *titleArray = @[@"交易记录", @"申请办卡", @"实名认证", @"我的钱包"];
     for (int i = 0; i < 4; i++) {
         QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
         btn.imagePosition = QMUIButtonImagePositionTop;

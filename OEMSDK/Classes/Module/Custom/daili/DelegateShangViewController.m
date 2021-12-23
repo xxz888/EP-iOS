@@ -16,7 +16,7 @@
     
     
     /* 初始化 */
-    [self setNavigationBarTitle:@"代理商入口" tintColor:MAINCOLOR];
+    [self setNavigationBarTitle:@"代理商入口" tintColor:nil];
     self.mc_tableview.tableHeaderView = [DLSTextView newFromNib];
 }
 -(void)viewWillAppear:(BOOL)animated{

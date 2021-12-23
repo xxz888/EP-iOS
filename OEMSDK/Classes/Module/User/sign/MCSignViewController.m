@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"签到" tintColor:MAINCOLOR];
+    [self setNavigationBarTitle:@"签到" tintColor:nil];
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem qmui_itemWithTitle:@"签到记录" target:self action:@selector(signHistory:)];
     MCSignHeader *header = [MCSignHeader newFromNib];
@@ -27,7 +27,7 @@
     
     header.qmui_height = SCREEN_HEIGHT - NavigationContentTop;
     
-    [self setNavigationBarTitle:@"签到" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"签到" tintColor:nil];
     
 }
 - (void)signHistory:(UIBarButtonItem *)sender {

@@ -62,7 +62,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"修改信息" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"修改信息" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     self.editBtn.layer.cornerRadius = 25;
     self.editBtn.layer.masksToBounds = YES;

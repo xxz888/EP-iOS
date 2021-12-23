@@ -17,7 +17,7 @@
 @implementation KDPayJianQuanViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"绑卡确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"绑卡确认" tintColor:nil];
     self.codeBtn.hidden = self.codeView.hidden =  NO;
     self.phoneLabel.textColor = [UIColor blackColor];
     self.nameLabel.text = self.cardModel.userName;

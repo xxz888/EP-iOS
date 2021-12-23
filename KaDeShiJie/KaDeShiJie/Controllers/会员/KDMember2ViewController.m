@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"支付订单" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"支付订单" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
     [self.payBtn setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F07E1B"]];
     

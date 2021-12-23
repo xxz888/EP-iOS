@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"分享赚钱" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"分享赚钱" tintColor:nil];
     [self addSubView];
 }
 

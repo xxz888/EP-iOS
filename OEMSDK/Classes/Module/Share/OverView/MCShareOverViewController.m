@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationBarTitle:@"分享" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"分享" tintColor:nil];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;

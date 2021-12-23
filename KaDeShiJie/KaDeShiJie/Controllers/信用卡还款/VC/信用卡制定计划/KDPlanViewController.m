@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:self.navTitle tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:self.navTitle tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     self.mc_tableview.backgroundColor = [UIColor clearColor];
     self.mc_tableview.tableFooterView = [UIView new];

@@ -56,7 +56,7 @@
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    [self setNavigationBarTitle:@"选择刷卡通道" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+//    [self setNavigationBarTitle:@"选择刷卡通道" tintColor:nil];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];

@@ -13,7 +13,7 @@
 @property(nonatomic, strong) MCBankCardModel *chuxuInfo;
 
 @property(nonatomic, assign) BOOL canWithdraw;
-
+@property(nonatomic,strong)NSString * payPassword;
 @property (weak, nonatomic) IBOutlet UILabel *tip;
 @end
 
@@ -23,12 +23,12 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor qmui_colorWithHexString:@"#F6F6F6"];
     self.canWithdraw = NO;
-    [self setNavigationBarTitle:@"提现" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"提现" tintColor:nil];
     [self.navigationController.navigationBar setShadowImage:nil];
     self.tip.text = [NSString stringWithFormat:@"需大于100元，%@元/笔",SharedDefaults.extraFee];
     
     QMUIButton *kfBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
-    [kfBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [kfBtn setTitleColor:[UIColor qmui_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
     [kfBtn setTitle:@"提现记录" forState:UIControlStateNormal];
     [kfBtn addTarget:self action:@selector(clicktixianjiluAction) forControlEvents:UIControlEventTouchUpInside];
     kfBtn.spacingBetweenImageAndTitle = 5;
@@ -104,19 +104,52 @@
         [MCToast showMessage:@"当前状态不可提现"];
         return;
     }
+    
+    
+    if ([SharedUserInfo.hasPayPassword integerValue]  == 0) {
+        QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先设置支付密码" preferredStyle:QMUIAlertControllerStyleAlert];
+        [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
+            KDForgetPwdViewController * VC= [[KDForgetPwdViewController alloc]init];
+            VC.iscome = @"3";
+            [MCLATESTCONTROLLER.navigationController pushViewController:VC animated:YES];
+
+        }]];
+        [alert showWithAnimated:YES];
+    }else{
+        QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"请输入支付密码" message:[NSString stringWithFormat:@"提现金额%@元",self.inputPrice.text] preferredStyle:QMUIAlertControllerStyleAlert];
+        
+        [alert addTextFieldWithConfigurationHandler:^(QMUITextField * _Nonnull textField) {
+            textField.tag = 1003;
+           
+        }];
+        [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
+            QMUITextField * tf = [aAlertController.view viewWithTag:1003];
+            self.payPassword = tf.text;
+            [self withdraw];
+        }]];
+        [alert showWithAnimated:YES];
+
+    }
+
+}
+-(void)withdraw{
     NSString * url1 = @"/api/v1/player/wallet/withdraw";
     if ([self.inputPrice.text doubleValue] <=0) {
         [MCToast showMessage:@"请输入提现金额"];
+        return;
+    }
+    if ([self.payPassword doubleValue] <=0) {
+        [MCToast showMessage:@"请输入提现密码"];
         return;
     }
     if (!self.chuxuInfo) {
         [MCToast showMessage:@"请选择提现储蓄卡"];
         return;
     }
-//    "amount": 0,
-//    "debitCardId": 0
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_Post_QingQiuTi:url1 parameters:@{@"amount":self.inputPrice.text,@"debitCardId":self.chuxuInfo.id} ok:^(NSDictionary * _Nonnull respDic) {
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:url1 parameters:@{@"debitCardId":self.chuxuInfo.id,@"payPassword":self.payPassword} ok:^(NSDictionary * _Nonnull respDic) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"操作成功"];
         });
@@ -127,7 +160,6 @@
         
     }];
 }
-    
 /*
 #pragma mark - Navigation
 

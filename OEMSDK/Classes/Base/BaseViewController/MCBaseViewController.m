@@ -111,7 +111,7 @@
     [super viewDidDisappear:animated];
 }
 - (void)setNavigationBarTitle:(NSString *)title tintColor:(UIColor *)color {
-    self.mc_nav_color = color ?: UIColorWhite;
+    self.mc_nav_color = UIColorWhite;
     if (title && title.length > 0) {
         self.mc_titleview.title = title;
         self.navigationItem.titleView = self.mc_titleview;

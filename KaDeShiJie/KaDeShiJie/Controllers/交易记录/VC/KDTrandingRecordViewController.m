@@ -76,7 +76,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setNavigationBarTitle:@"交易记录" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"交易记录" tintColor:nil];
 
 
     [self getHistory];

@@ -31,7 +31,7 @@
 //        [header reloadData];
 //    }];
     
-    [self setNavigationBarTitle:@"收益中心" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"收益中心" tintColor:nil];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"收益规则" forState:UIControlStateNormal];

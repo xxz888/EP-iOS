@@ -48,7 +48,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     
     
     
-    [self setNavigationBarTitle:@"设置" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"设置" tintColor:nil];
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;
     self.mc_tableview.separatorInset = UIEdgeInsetsZero;
@@ -156,7 +156,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
         cell.titleLab.text = iT;
         cell.subTitleLab.text = iST;
         if ([iT isEqualToString:@"绑定手机号"]) {
-            cell.subTitleLab.textColor = [UIColor qmui_colorWithHexString:@"#FF9641"];
+//            cell.subTitleLab.textColor = [UIColor qmui_colorWithHexString:@"#FF9641"];
         }
         return cell;
     }
@@ -200,17 +200,16 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     [MCVerifyStore verifyVersionShowToast:YES];
 }
 - (void)manageCount {
-    [MCToast showMessage:@"暂未开放"];
-
-//    MCResetPWDController *vc = [[MCResetPWDController alloc] initWithType:MCResetPWDTypeTrade];
-//    [self.navigationController pushViewController:vc animated:YES];
+    KDForgetPwdViewController * vc = [[KDForgetPwdViewController alloc]init];
+    vc.iscome = @"3";
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }
 - (void)logout:(id)sedner {
     [MCApp userLogout];
 }
 -(void)resetLoginPwd{
     KDForgetPwdViewController * vc = [[KDForgetPwdViewController alloc]init];
-    vc.iscome = @"1";
+    vc.iscome = @"2";
     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }
 @end

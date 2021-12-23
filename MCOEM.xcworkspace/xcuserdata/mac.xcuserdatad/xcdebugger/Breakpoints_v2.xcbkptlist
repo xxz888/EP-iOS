@@ -3,4 +3,54 @@
    uuid = "456420E7-3494-4262-9A71-2F5902EEE5B6"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA5A61F2-D17E-494F-9290-ADE3599E8913"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OEMSDK/Classes/Module/Card/edit/MCXinyongkaHeader.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "-verifyFailedTextField:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7918F9F8-A1CB-4CB2-AA8E-9C1E65E7F85C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x8ba1;&#x5212;&#x9884;&#x89c8;/KDPlanPreviewViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-setDataWhere1"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF7521E3-F529-4156-A73A-E923D389C5E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x8ba1;&#x5212;&#x9884;&#x89c8;/KDPlanPreviewViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-requestPlanDetail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

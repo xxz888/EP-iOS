@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:SharedConfig.safe_title tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:SharedConfig.safe_title tintColor:nil];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.mj_header = nil;

@@ -241,6 +241,7 @@
     MCModelStore.shared.preUserPhone = result[@"phone"];
     
     SharedDefaults.extraFee = result[@"info"][@"extraFee"];
+    SharedDefaults.hasPayPassword = result[@"info"][@"hasPayPassword"];
 
     SharedDefaults.phone = result[@"phone"];
     SharedDefaults.nickname = result[@"info"][@"nickname"];
@@ -328,7 +329,7 @@
     }else{
         VC.startPhone = @"";
     }
-
+    VC.iscome = @"1";
     [MCLATESTCONTROLLER.navigationController pushViewController:VC animated:YES];
     
 }

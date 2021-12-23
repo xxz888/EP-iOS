@@ -35,7 +35,7 @@
 -(void)setUI{
     ViewRadius(self.fanImv,5);
     ViewRadius(self.zhengImv,5);
-    [self setNavigationBarTitle:@"实名认证" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"实名认证" tintColor:nil];
     //选择省
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(zhengmianAction:)];
     [self.zhengImv addGestureRecognizer:tap1];

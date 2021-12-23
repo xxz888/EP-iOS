@@ -19,7 +19,7 @@
     [self setUI];
 }
 -(void)setUI{
-    [self setNavigationBarTitle:@"授权" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"授权" tintColor:nil];
     UIImage *hlImg = [[UIImage mc_imageNamed:@"card_yes"] imageWithColor: UIColor.mainColor];
     [self.selectBtn setImage:hlImg forState:UIControlStateSelected];
     [self.selectBtn setImage:[UIImage mc_imageNamed:@"card_no"] forState:UIControlStateNormal];

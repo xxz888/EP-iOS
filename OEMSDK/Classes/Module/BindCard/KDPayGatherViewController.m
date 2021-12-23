@@ -45,7 +45,7 @@
     self.phoneLabel.text = self.cardModel.phone;
     //鉴权绑卡界面
     if ([self.cardModel.jumpWhereVC isEqualToString:@"1"]){
-        [self setNavigationBarTitle:@"绑卡确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+        [self setNavigationBarTitle:@"绑卡确认" tintColor:nil];
         self.change1TagLbl.text = @"手机号";
         self.change2TagLbl.text = @"验证码";
         self.change2Lbl.hidden = YES;
@@ -55,7 +55,7 @@
         self.phoneLabel.userInteractionEnabled = self.change2Lbl.userInteractionEnabled = NO;
     //交易界面
     }else if ([self.cardModel.jumpWhereVC isEqualToString:@"2"]) {
-        [self setNavigationBarTitle:@"支付确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+        [self setNavigationBarTitle:@"支付确认" tintColor:nil];
         self.change1TagLbl.text = @"省份";
         self.phoneLabel.text = @"请选择省份";
         self.change2TagLbl.text = @"城市";

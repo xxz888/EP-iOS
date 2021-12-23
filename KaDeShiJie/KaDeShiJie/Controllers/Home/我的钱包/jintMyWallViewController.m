@@ -55,7 +55,7 @@
         backBtn.frame = CGRectMake(0, StatusBarHeightConstant, 44, 44);
         [self.view addSubview:backBtn];
     
-//    [self setNavigationBarTitle:@"我的钱包" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+//    [self setNavigationBarTitle:@"我的钱包" tintColor:nil];
     [self setNavigationBarHidden];
 
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, StatusBarHeightConstant, 150, 44)];

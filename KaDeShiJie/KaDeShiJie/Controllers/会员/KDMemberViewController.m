@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"会员" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"会员" tintColor:nil];
     
  
     self.memberView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];

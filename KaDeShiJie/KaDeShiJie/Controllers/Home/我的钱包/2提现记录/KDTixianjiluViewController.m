@@ -20,7 +20,7 @@
     [super viewDidLoad];
 
     
-    [self setNavigationBarTitle:@"提现记录" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"提现记录" tintColor:nil];
     [self.navigationController.navigationBar setShadowImage:nil];
 
     [self.tableView registerNib:[UINib nibWithNibName:@"KDTixianjiluTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDTixianjiluTableViewCell"];

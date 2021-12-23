@@ -38,7 +38,7 @@
 
 }
 -(void)setUI{
-    [self setNavigationBarTitle:@"客服" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"客服" tintColor:nil];
 
     self.topView.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.09].CGColor;
     self.topView.layer.shadowOffset = CGSizeMake(0,2.5);

@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"钱包明细" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"钱包明细" tintColor:nil];
     [self.navigationController.navigationBar setShadowImage:nil];
 
     

@@ -111,7 +111,7 @@
     NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/start/",self.startDic[@"plan"][@"id"]];
     [self.sessionManager mc_put:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:@"计划执行成功"];
+//            [MCToast showMessage:@"计划执行成功"];
         });
         [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull resp) {
@@ -126,7 +126,7 @@
     NSString * url = [NSString stringWithFormat:@"%@%@",@"/api/v1/player/plan/termination/",self.startDic[@"plan"][@"id"]];
     [self.sessionManager mc_put:url parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCToast showMessage:@"计划已终止"];
+//            [MCToast showMessage:@"计划已终止"];
         });
         [weakSelf.navigationController popToRootViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull resp) {
@@ -608,7 +608,7 @@
     [self.topView.layer insertSublayer:gl atIndex:0];
     // 1 下单 2 历史记录 3 信用卡还款进来
     [self setNavigationBarTitle:self.whereCome == 1 ? @"设置还款计划" :
-                                self.whereCome == 2 ? @"计划详情": @"计划详情" tintColor:UIColor.whiteColor];
+                                self.whereCome == 2 ? @"计划详情": @"计划详情" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     self.topBgView.layer.cornerRadius = 12;
     self.bottomBtn.titleLabel.font = [UIFont qmui_systemFontOfSize:16 weight:QMUIFontWeightBold italic:NO];

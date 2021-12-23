@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"我的二维码" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"我的二维码" tintColor:nil];
     self.mc_tableview.mj_header = nil;
     
     self.mc_tableview.tableHeaderView = [[UIImageView alloc] initWithImage:self.originalImg];

@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"提现" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"提现" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     if (self.count == 0) {
         self.tipLbl.text = @"您尚未达到提现标准,直推激活8人后即可提现";

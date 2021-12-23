@@ -56,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"顶级代理" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:@"顶级代理" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];

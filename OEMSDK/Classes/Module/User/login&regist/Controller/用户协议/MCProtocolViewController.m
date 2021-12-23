@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:[self.whereCome isEqualToString:@"1"] ? @"注册协议" : @"用户信息授权协议" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:[self.whereCome isEqualToString:@"1"] ? @"注册协议" : @"用户信息授权协议" tintColor:nil];
     
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationContentTopConstant, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTopConstant) configuration:config];

@@ -93,7 +93,7 @@
     [shareBtn addTarget:self action:@selector(jiaoyijiluAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 84, StatusBarHeightConstant + 12, 94, 22);
-    [self.view addSubview:shareBtn];
+//    [self.view addSubview:shareBtn];
 }
 -(void)jiaoyijiluAction{
     [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];

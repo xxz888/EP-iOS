@@ -151,16 +151,15 @@
 
 - (IBAction)buttonTouched:(id)sender {
 
-//    if ([self verifyFailedTextField:self.textField1] ||
-//        [self verifyFailedTextField:self.textField2] ||
-//        [self verifyFailedTextField:self.textField3] ||
-//        [self verifyFailedTextField:self.textField4] ||
-//        [self verifyFailedTextField:self.textField5] ||
-//        [self verifyFailedTextField:self.textField6] ||
-//        [self verifyFailedTextField:self.textField7] ||
-//        [self verifyFailedTextField:self.kaihuyinhangTf]) {
-//        return;
-//    }
+    if ([self verifyFailedTextField:self.textField1] ||
+        [self verifyFailedTextField:self.kaihuyinhangTf] ||
+         [self verifyFailedTextField:self.textField5] ||
+         [self verifyFailedTextField:self.textField4] ||
+        [self verifyFailedTextField:self.textField6] ||
+        [self verifyFailedTextField:self.textField7] ||
+         [self verifyFailedTextField:self.textField3]) {
+        return;
+    }
     if (self.model) {   //修改
         [self modifyXinyong];
     } else {    //新增
@@ -170,6 +169,7 @@
 }
 //新增信用卡
 - (void)bindXinyong {
+    
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.kaihuyinhangTf.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
@@ -258,8 +258,11 @@
 }
 
 - (BOOL)verifyFailedTextField:(UITextField *)textField {
-    
-    if (textField == self.textField2 && textField.text.length < 16) {
+    if (textField == self.textField1 && textField.text.length <= 0) {
+        [MCToast showMessage:textField.placeholder];
+        return YES;
+    }
+    if (textField == self.kaihuyinhangTf && textField.text.length < 16) {
         [MCToast showMessage:textField.placeholder];
         return YES;
     }

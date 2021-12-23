@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setNavigationBarTitle:@"余额提现" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"余额提现" tintColor:nil];
     [self.totalButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     [self.commitButton setBackgroundColor:MAINCOLOR];
     

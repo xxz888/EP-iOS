@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) BOOL not_voice_notify;//语音播报
 @property(nonatomic, assign) BOOL not_auto_logonin; //自动登录
 @property(nonatomic, assign) BOOL not_rember_pwd; //记住密码
+@property(nonatomic, copy)  NSString *hasPayPassword;
 
 @property(nonatomic, copy)  NSDictionary * configDic;
 

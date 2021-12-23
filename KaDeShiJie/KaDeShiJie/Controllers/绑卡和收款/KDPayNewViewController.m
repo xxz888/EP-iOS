@@ -47,7 +47,7 @@
     self.safeCodeLabel.text = self.cardModel.cvc;
     self.phoneLabel.text = self.cardModel.phone;
     //鉴权绑卡界面
-    [self setNavigationBarTitle:self.channelBindId ? @"绑卡确认":@"支付确认" backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:self.channelBindId ? @"绑卡确认":@"支付确认" tintColor:nil];
     self.change1TagLbl.text = @"手机号";
     self.change2TagLbl.text = @"验证码";
     self.change2Lbl.hidden = YES;

@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setNavigationBarTitle:@"关于我们" tintColor:UIColor.whiteColor];
+    [self setNavigationBarTitle:@"关于我们" tintColor:nil];
     
     self.mc_tableview.tableHeaderView = [MCAboutHeader newFromNib];
     self.mc_tableview.mj_header = nil;

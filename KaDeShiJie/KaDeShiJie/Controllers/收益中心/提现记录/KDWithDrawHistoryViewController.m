@@ -41,7 +41,7 @@
     self.mc_tableview.rowHeight = 68.5;
     self.mc_tableview.dataSource = self;
     // 导航条
-    [self setNavigationBarTitle:self.titleString backgroundImage:[UIImage qmui_imageWithColor:[UIColor mainColor]]];
+    [self setNavigationBarTitle:self.titleString tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

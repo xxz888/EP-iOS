@@ -42,7 +42,7 @@
         logoutBtn.layer.cornerRadius = logoutBtn.height / 2;
         
         logoutBtn.center = _footView.center;
-        [logoutBtn setTitle:@"下一步" forState:UIControlStateNormal];
+        [logoutBtn setTitle:@"确认修改" forState:UIControlStateNormal];
         [_footView addSubview:logoutBtn];
         [logoutBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -95,7 +95,13 @@
     @{@"title":@"新密码",
       @"textField":self.fieldNew
     },
-    @{@"title":@"确认密码",
+    @{@"title":@"确认新密码",
+      @"textField":self.fieldSure
+    },
+    @{@"title":@"请输入手机号",
+      @"textField":self.fieldSure
+    },
+    @{@"title":@"获取验证码",
       @"textField":self.fieldSure
     }];
     [self.mc_tableview reloadData];
@@ -183,9 +189,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    QMUILabel *label = [[QMUILabel alloc] initWithFrame:CGRectMake(20, 0, 80, 30)];
+    QMUILabel *label = [[QMUILabel alloc] initWithFrame:CGRectMake(20, 0, 100, 30)];
     label.qmui_centerY = cell.qmui_centerY;
-    label.textAlignment = NSTextAlignmentRight;
+    label.textAlignment = NSTextAlignmentLeft;
     label.textColor = UIColorBlack;
     label.font = UIFontMake(15);
     [cell addSubview:label];
