@@ -20,7 +20,7 @@ project_name="KaDeShiJie"
 scheme_name="KaDeShiJie"
 
 # 指定要打包编译的方式 : Release,Debug。一般用Release。必填
-build_configuration="Release"
+build_configuration="Debug"
 
 # method，打包的方式。方式分别为 development, ad-hoc, app-store, enterprise 。必填
 method="ad-hoc"
@@ -55,7 +55,7 @@ project_dir=$script_dir
 # 时间
 DATE=`date '+%Y%m%d_%H%M%S'`
 # 指定输出导出文件夹路径
-export_path="/Users/mac/Desktop/无卡生活ipa/$scheme_name-$DATE"
+export_path="/Users/junan/Desktop/无卡生活ipa/$scheme_name-$DATE"
 # 指定输出归档文件路径
 export_archive_path="$export_path/$scheme_name.xcarchive"
 # 指定输出ipa文件夹路径
@@ -174,7 +174,7 @@ echo "\033[36;1m使用AutoPackageScript打包总用时: ${SECONDS}s \033[0m"
 
 fir publish $export_ipa_path/$ipa_name.ipa
 
-rm -rf /Users/mac/Desktop/无卡生活ipa
+rm -rf /Users/junan/Desktop/无卡生活ipa
 
 echo "删除文件夹成功"
 

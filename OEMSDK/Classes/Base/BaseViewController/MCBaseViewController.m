@@ -203,6 +203,8 @@
     return _mc_tableview;
 }
 - (void)mc_tableviewRefresh {
+    [_mc_tableview.mj_header endRefreshing];
+
     if (!_sessionManager) {
         [_mc_tableview.mj_header endRefreshing];
     } else {

@@ -9,11 +9,13 @@
 #import "MCManualRealNameController.h"
 #import "LYImageMagnification.h"// 查看图片大图
 #import "DDPhotoViewController.h"
+#import "liveness/Liveness.h"
+
 #define kViewColor [UIColor colorWithRed:210/255.0 green:210/255.0 blue:220/255.0 alpha:1.0]
 
 static const CGFloat margin = 10;
 
-@interface MCManualRealNameController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate>
+@interface MCManualRealNameController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate,LivenessDetectDelegate>
 
 /** 姓名输入框 */
 @property (nonatomic, weak) UITextField *nameTF;
@@ -352,9 +354,53 @@ static const CGFloat margin = 10;
 - (void)photoButtonClick:(UIButton *)sender {
     
     self.index = sender.tag;
+    if (self.index == 2) {
+        [self shiming];
+    }else{
+        // 拍照
+        [self getImageFromIpc];
+    }
+
+}
+-(void)shiming{
+    // UI设置，默认不用设置
+    NSDictionary *uiConfig = @{
+       @"bottomAreaBgColor":@"F08300"    //屏幕下方颜色 026a86
+       ,@"navTitleColor": @"FFFFFF"      // 导航栏标题颜色 FFFFFF
+       ,@"navBgColor": @"F08300"         // 导航栏背景颜色 0186aa
+       ,@"navTitle": @"人脸识别"          // 导航栏标题 活体检测
+       ,@"navTitleSize":@"18"            // 导航栏标题大小 20
+    };
+    NSDictionary *param = @{@"actions":@"1279", @"actionsNum":@"3",
+                            @"uiConfig":uiConfig};
+#if TARGET_IPHONE_SIMULATOR  //模拟器
+
+#else if TARGET_OS_IPHONE      //真机
     
-    // 拍照
-    [self getImageFromIpc];
+    [[Liveness shareInstance] startProcess:self withParam:param withDelegate:self];
+#endif
+}
+#pragma mark -----------活物识别完成,回调到这个界面---------------
+- (void)onLiveDetectCompletion:(NSDictionary *)result{
+    //code=0 代表监测成功
+    __weak __typeof(self)weakSelf = self;
+    if ([result[@"code"] integerValue] == 0) {
+        NSString *code = [result objectForKey:@"code"];
+        // 错误信息
+        NSString *msg = [result objectForKey:@"msg"];
+        NSString *base64String = [result objectForKey:@"passFace"];
+        // 将base64字符串转为NSData
+        NSData *decodeData = [[NSData alloc]initWithBase64EncodedString:base64String options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
+        // 将NSData转为UIImage
+        UIImage *decodedImage = [UIImage imageWithData: decodeData];
+        //身份证上传
+        self.imageThree = decodedImage;
+        [self.personPhotoButton setImage:decodedImage forState:(UIControlStateNormal)];
+        [self requestDataForUploadImages:decodedImage fileName:@"three"];
+      
+    }else{
+        [MCToast showMessage:result[@"msg"]];
+    }
 }
 /// 3. 提交按钮点击事件
 - (void)submitButtonClick

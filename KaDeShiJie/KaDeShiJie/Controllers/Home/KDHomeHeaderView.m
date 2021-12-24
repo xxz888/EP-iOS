@@ -106,7 +106,7 @@
     cyView.showPageControl = NO;
     cyView.clipsToBounds = YES;
     [cyView disableScrollGesture];
-    cyView.imageURLStringsGroup = self.dataArray;
+//    cyView.imageURLStringsGroup = self.dataArray;
     cyView.scrollDirection = UICollectionViewScrollDirectionVertical;
     [self.msgView addSubview:cyView];
     self.cyView = cyView;
@@ -257,8 +257,12 @@
 {
     MCMessageModel *model = self.dataArray[index];
     KDMsgViewCell *myCell = (KDMsgViewCell *)cell;
-    myCell.topLabel.text = [NSString stringWithFormat:@"%@ %@", model.title, model.createdTime];
-    myCell.centerLabel.text = model.content;
+    myCell.topLabel.text = [NSString stringWithFormat:@"%@ %@", model.title?model.title:@"", model.createdTime?model.createdTime:@""];
+    
+    
+    if (model.content) {
+        myCell.centerLabel.text = model.content;
+    }
     
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
@@ -268,7 +272,9 @@
 - (void)getMessage {
     [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
                 self.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
-                self.cyView.localizationImageNamesGroup = self.dataArray;
+        if ([self.dataArray count] > 0) {
+            self.cyView.localizationImageNamesGroup = self.dataArray;
+        }
     }];
 }
 

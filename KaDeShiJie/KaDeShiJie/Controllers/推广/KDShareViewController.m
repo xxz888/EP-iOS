@@ -79,9 +79,9 @@
     self.mc_tableview.rowHeight = 60;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mc_tableview.tableFooterView = [UIView new];
-    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getPlatformData];
-    }];
+//    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [self getPlatformData];
+//    }];
     [self getPlatformData];
     
     [self.sessionManager mc_GET:@"/api/v1/player/user/propaganda/link" parameters:nil ok:^(NSDictionary * _Nonnull resp) {

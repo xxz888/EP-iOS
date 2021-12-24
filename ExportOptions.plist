@@ -6,7 +6,7 @@
 	<string>ad-hoc</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key></key>
+		<key>com.wukashidai</key>
 		<string></string>
 	</dict>
 </dict>
