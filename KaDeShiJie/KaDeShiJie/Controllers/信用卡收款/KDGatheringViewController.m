@@ -272,6 +272,9 @@
     return [pinYin substringToIndex:1];
 
 }
+- (IBAction)shoukuanAction:(id)sender {
+    [self clickGatherBtnAction:self.gatherBtn];
+}
 // 立即收款
 - (IBAction)clickGatherBtnAction:(QMUIButton *)sender {
 //    KDBingCardNewViewController * vc1 = [[KDBingCardNewViewController alloc]init];

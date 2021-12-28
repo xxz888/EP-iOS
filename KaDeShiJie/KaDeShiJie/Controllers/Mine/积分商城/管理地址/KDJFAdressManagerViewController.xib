@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -181,8 +181,8 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IO-fn-LEr">
-                    <rect key="frame" x="16" y="812" width="382" height="50"/>
-                    <color key="backgroundColor" red="0.9137254901960784" green="0.43137254901960786" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="16" y="802" width="382" height="50"/>
+                    <color key="backgroundColor" red="0.9882352941176471" green="0.60784313725490191" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="bWf-qd-nvN"/>
                     </constraints>
@@ -203,7 +203,7 @@
             <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="5IO-fn-LEr" secondAttribute="trailing" constant="16" id="1Z9-j1-1zo"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="5IO-fn-LEr" secondAttribute="bottom" id="TZ7-h2-tzt"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="5IO-fn-LEr" secondAttribute="bottom" constant="10" id="TZ7-h2-tzt"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="bde-FA-ZPo" secondAttribute="trailing" id="fXT-UI-Tl8"/>
                 <constraint firstItem="bde-FA-ZPo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gTO-1c-1E5"/>
                 <constraint firstItem="5IO-fn-LEr" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="jf1-gg-OxE"/>

@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *goodImv;
 @property (weak, nonatomic) IBOutlet UILabel *goodTitle;
 @property (weak, nonatomic) IBOutlet UILabel *goodPrice;
+@property (weak, nonatomic) IBOutlet UILabel *goodPrice1;
+@property (weak, nonatomic) IBOutlet UILabel *goodPrice2;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodTotalPrice;
 - (IBAction)confirmAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *confrimBtn;

@@ -21,6 +21,10 @@
 
     [self.adressTf addTarget:self action:@selector(textFieldChangeAction:) forControlEvents:(UIControlEventEditingDidBegin)];
     
+    
+    if (!self.whereCome) {
+        self.shouhuorenTf.text = self.startDic[@"receiptName"];
+    }
 }
 -(void)textFieldChangeAction:(id)tf{
     [self.view endEditing:YES];
@@ -37,7 +41,7 @@
                     for (NSDictionary * dic2 in dic1[@"cities"]) {
                         if ([dic2[@"name"] containsString:city.name] || [city.name containsString:dic2[@"name"]]) {
                             weakSelf.cityId = [NSString stringWithFormat:@"%@",dic2[@"id"]];
-                            weakSelf.adressTf.text = [NSString stringWithFormat:@"%@-%@",dic1[@"name"],dic2[@"name"]];
+                            weakSelf.adressTf.text = [NSString stringWithFormat:@"%@%@",dic1[@"name"],dic2[@"name"]];
                         }
                     }
                 }
@@ -74,16 +78,40 @@
         [MCToast showMessage:@"请填写详细地址"];
         return;
     }
-    [self.sessionManager mc_Post_QingQiuTi:@"/api/v1/player/shop/address" parameters:@{@"receiptName":self.shouhuorenTf.text,
-                                                                                       @"cityId":self.cityId,
-                                                                                       @"address":self.detailAdressTf.text,
-                                                                    
-    } ok:^(NSDictionary * _Nonnull resp) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    } other:^(NSDictionary * _Nonnull resp) {
-        [MCLoading hidden];
-    } failure:^(NSError * _Nonnull error) {
-        [MCLoading hidden];
-    }];
+    
+    NSString * adress = [NSString stringWithFormat:@"%@%@",weakSelf.adressTf.text,self.detailAdressTf.text];
+
+    
+    if (self.whereCome) {
+
+        [self.sessionManager mc_Post_QingQiuTi:@"/api/v1/player/shop/address" parameters:@{@"receiptName":self.shouhuorenTf.text,
+                                                                                           @"cityId":self.cityId,
+                                                                                           @"address":adress,
+                                                                        
+        } ok:^(NSDictionary * _Nonnull resp) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } other:^(NSDictionary * _Nonnull resp) {
+            [MCLoading hidden];
+        } failure:^(NSError * _Nonnull error) {
+            [MCLoading hidden];
+        }];
+    }else{
+        [MCSessionManager.shareManager mc_put:@"/api/v1/player/shop/address" parameters:@{@"status":@"Maintain",
+                                                                                          @"id":[NSString stringWithFormat:@"%@",self.startDic[@"id"]],
+                                                                                          @"receiptName":self.shouhuorenTf.text,
+                                                                                          @"cityId":self.cityId,
+                                                                                          @"address":adress,
+                                                                                        
+                                                                                        } ok:^(NSDictionary * _Nonnull respDic) {
+            [MCToast showMessage:@"修改成功"];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } other:^(NSDictionary * _Nonnull respDic) {
+            
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }
+    
+
 }
 @end

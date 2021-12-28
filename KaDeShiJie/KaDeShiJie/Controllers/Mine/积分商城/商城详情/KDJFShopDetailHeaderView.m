@@ -24,15 +24,19 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 417)];
-    cyView.layer.cornerRadius = 7;
+    SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 220)];
     cyView.delegate = self;
     cyView.backgroundColor = [UIColor clearColor];
     cyView.showPageControl = YES;
     cyView.clipsToBounds = YES;
     [cyView disableScrollGesture];
-    self.cyView.localizationImageNamesGroup = self.goodDic[@"images"];
+    cyView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+
     cyView.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.cyView = cyView;
     [self.luboView addSubview:cyView];
+}
+-(void)setData{
+    self.cyView.imageURLStringsGroup = self.goodDic[@"images"];
 }
 @end

@@ -27,6 +27,8 @@
     [cyView disableScrollGesture];
     cyView.localizationImageNamesGroup =@[@"画板 1.png"];
     cyView.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    cyView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+
     [self.lunboView addSubview:cyView];
     self.cyView = cyView;
     self.btn1.imagePosition = QMUIButtonImagePositionTop;

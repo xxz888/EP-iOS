@@ -12,31 +12,41 @@
 
 + (MCBankCardInfo *)getBankCellInfoWithName:(NSString *)name {
 
-    name = [name replaceAll:@"中国" target:@""];
-    name = [name replaceAll:@"银行" target:@""];
+    if (name) {
+        name = [name replaceAll:@"中国" target:@""];
+        name = [name replaceAll:@"银行" target:@""];
 
-    NSArray *localA = [MCBankStore getLocalJson:@"card_bankName"];
-    NSString * localName = @"BANK_default";
-    UIImage *logo = [UIImage mc_imageNamed:localName];
-    UIColor * backGround = MAINCOLOR; //  默认主题色
-    BOOL ishave = NO;
-    for (NSDictionary *bankDic in localA) {// 添加本地logo
-        
-        NSString *ss = bankDic[@"bank_name"];
-//        BANK_HXBANK
-        if ([ss containsString:name] || [name containsString:ss]) {
-            localName = [NSString stringWithFormat:@"BANK_%@", bankDic[@"bank_acronym"]];
-            logo = [UIImage mc_imageNamed:localName];
-            backGround = [MCBankStore getBankThemeColorWithLogo:logo];
-            ishave = YES;
+        NSArray *localA = [MCBankStore getLocalJson:@"card_bankName"];
+        NSString * localName = @"BANK_default";
+        UIImage *logo = [UIImage mc_imageNamed:localName];
+        UIColor * backGround = MAINCOLOR; //  默认主题色
+        BOOL ishave = NO;
+        for (NSDictionary *bankDic in localA) {// 添加本地logo
+            
+            NSString *ss = bankDic[@"bank_name"];
+    //        BANK_HXBANK
+            if ([ss containsString:name] || [name containsString:ss]) {
+                localName = [NSString stringWithFormat:@"BANK_%@", bankDic[@"bank_acronym"]];
+                logo = [UIImage mc_imageNamed:localName];
+                backGround = [MCBankStore getBankThemeColorWithLogo:logo];
+                ishave = YES;
+            }
         }
+        if (!ishave) {
+            localName = [NSString stringWithFormat:@"BANK_%@", @"BANK_default"];
+               logo = [UIImage mc_imageNamed:localName];
+               backGround = [MCBankStore getBankThemeColorWithLogo:logo];
+        }
+        return [[MCBankCardInfo alloc] initWithLogo:logo cardCellBackgroundColor:backGround];
+    }else{
+        NSString *  localName = [NSString stringWithFormat:@"BANK_%@", @"BANK_default"];
+        NSString *   logo = [UIImage mc_imageNamed:localName];
+        NSString *    backGround = [MCBankStore getBankThemeColorWithLogo:logo];
+        return [[MCBankCardInfo alloc] initWithLogo:logo cardCellBackgroundColor:backGround];
+
     }
-    if (!ishave) {
-        localName = [NSString stringWithFormat:@"BANK_%@", @"BANK_default"];
-           logo = [UIImage mc_imageNamed:localName];
-           backGround = [MCBankStore getBankThemeColorWithLogo:logo];
-    }
-    return [[MCBankCardInfo alloc] initWithLogo:logo cardCellBackgroundColor:backGround];
+    
+
 }
 
 + (NSArray *)getLocalJson:(NSString *)jsonName {

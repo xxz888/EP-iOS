@@ -56,6 +56,10 @@
 - (IBAction)agreeActino:(id)sender {
     self.agreeBtn.selected = !self.agreeBtn.selected;
 }
+- (IBAction)kefuAction:(id)sender {
+    [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+
+}
 
 - (void)awakeFromNib
 {

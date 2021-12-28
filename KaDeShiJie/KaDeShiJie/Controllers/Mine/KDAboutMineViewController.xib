@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                     <rect key="frame" x="30" y="247.5" width="354" height="156"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">無卡生活是行业领先的信用卡还款、刷卡、办卡软件，空卡仅需留足手续费，或5%以上的可用余额，即可全额快速还款，每万元手续费低至60元，让您彻底远离逾期;刷卡10秒内到账，每万元手续费低至38元。银联授信，安全稳定。
+                            <string key="content">無卡生活是行业领先的信用卡还款、刷卡、办卡软件，空卡仅需留足手续费，或5%以上的可用余额，即可全额快速还款，每万元手续费低至79元，让您彻底远离逾期;刷卡10秒内到账，每万元手续费低至62元。银联授信，安全稳定。
 </string>
                             <attributes>
                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>

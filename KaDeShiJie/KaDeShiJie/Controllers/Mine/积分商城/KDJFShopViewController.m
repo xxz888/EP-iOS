@@ -44,7 +44,7 @@
     [self setNavigationBarTitle:@"商城" tintColor:nil];
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"我的订单" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
@@ -53,8 +53,8 @@
     [self requestCollectionData];
 }
 -(void)clickRightBtnAction{
-//    [self.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
-    [MCToast showMessage:@"开发中"];
+    [self.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
+//    [MCToast showMessage:@"开发中"];
 }
 -(void)requestCollectionData{
     kWeakSelf(self);
@@ -109,8 +109,8 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [MCToast showMessage:@"开发中"];
-    return;
+//    [MCToast showMessage:@"开发中"];
+//    return;
     KDJFShopDetailViewController * vc = [[KDJFShopDetailViewController alloc]init];
     vc.goodDic = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
@@ -123,7 +123,7 @@
 
 // 要先设置表头大小
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 248+(KScreenWidth-24)*0.43);
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 228+(KScreenWidth-24)*0.43);
     return size;
 }
  

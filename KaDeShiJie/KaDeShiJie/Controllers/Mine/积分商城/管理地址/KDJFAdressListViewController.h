@@ -7,11 +7,11 @@
 //
 
 #import "MCBaseViewController.h"
-
+typedef void (^SelectAddressBlock)(NSDictionary *);
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDJFAdressListViewController : MCBaseViewController
-
+@property (nonatomic ,copy)SelectAddressBlock block;
 @end
 
 NS_ASSUME_NONNULL_END

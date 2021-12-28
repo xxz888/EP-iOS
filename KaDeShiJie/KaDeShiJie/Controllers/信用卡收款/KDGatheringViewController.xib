@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -273,7 +273,7 @@
                         </constraint>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwr-YL-zdT">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwr-YL-zdT">
                     <rect key="frame" x="0.0" y="654" width="414" height="242"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RfB-hJ-jOX">
@@ -942,7 +942,7 @@
                         <constraint firstAttribute="height" constant="242" id="i3O-KV-DG0"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzv-uq-1vz" customClass="QMUIButton">
+                <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzv-uq-1vz" customClass="QMUIButton">
                     <rect key="frame" x="310.5" y="714.5" width="103.5" height="181.5"/>
                     <color key="backgroundColor" red="0.94117647059999998" green="0.51372549020000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -955,16 +955,37 @@
                         <action selector="clickGatherBtnAction:" destination="-1" eventType="touchUpInside" id="Zyf-db-RZe"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbr-kd-1ES">
+                    <rect key="frame" x="16" y="802" width="382" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.62352941176470589" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ynu-xz-3cb"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="确认收款">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="shoukuanAction:" destination="-1" eventType="touchUpInside" id="Uf2-sJ-1LD"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Wbr-kd-1ES" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="AZ2-hG-eiJ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="R6i-tK-Kb9" secondAttribute="trailing" constant="10" id="CFE-hJ-Dci"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Kwr-YL-zdT" secondAttribute="trailing" id="EWn-F6-VdF"/>
                 <constraint firstAttribute="bottom" secondItem="Kwr-YL-zdT" secondAttribute="bottom" id="FD9-km-Nsi"/>
                 <constraint firstItem="nzv-uq-1vz" firstAttribute="height" secondItem="Kwr-YL-zdT" secondAttribute="height" multiplier="0.75" id="JTN-wg-XTa"/>
                 <constraint firstItem="R6i-tK-Kb9" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="KP8-Gr-l6T"/>
                 <constraint firstItem="Kwr-YL-zdT" firstAttribute="bottom" secondItem="nzv-uq-1vz" secondAttribute="bottom" id="Pg2-ne-aDc"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Wbr-kd-1ES" secondAttribute="bottom" constant="10" id="SbC-gc-MuV"/>
                 <constraint firstItem="R6i-tK-Kb9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="UMg-N3-XOU">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="widthScreen" value="YES"/>
@@ -973,6 +994,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="nzv-uq-1vz" secondAttribute="trailing" id="WZD-hW-pm4"/>
                 <constraint firstItem="nzv-uq-1vz" firstAttribute="width" secondItem="Kwr-YL-zdT" secondAttribute="width" multiplier="0.25" id="dkf-lO-KdQ"/>
                 <constraint firstItem="Kwr-YL-zdT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="gGD-Be-FsR"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Wbr-kd-1ES" secondAttribute="trailing" constant="16" id="jLe-dp-TGW"/>
             </constraints>
             <point key="canvasLocation" x="29" y="70"/>
         </view>

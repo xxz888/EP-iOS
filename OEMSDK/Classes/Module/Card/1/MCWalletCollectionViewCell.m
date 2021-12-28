@@ -25,12 +25,12 @@
     self.bankNameLab.text = model.bankName;
     if([model.nature containsString:@"借"]){
         if([model.type isEqualToString:@"0"]){
-            self.cardTypeLab.text = @"充值卡";
+            self.cardTypeLab.text = @"";
         } else if([model.type isEqualToString:@"2"]){
-            self.cardTypeLab.text = @"提现卡";
+            self.cardTypeLab.text = @"";
         }
     } else if([model.nature containsString:@"贷"]) {
-        self.cardTypeLab.text = @"充值卡";
+        self.cardTypeLab.text = @"";
     }
     self.dfButton.hidden = !model.idDef;
     [self.dfSwitch setOn:model.idDef];

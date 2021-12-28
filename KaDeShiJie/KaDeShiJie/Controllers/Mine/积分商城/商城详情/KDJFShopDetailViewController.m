@@ -31,7 +31,7 @@
     [self setNavigationBarTitle:@"商品详情" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
 
 
-    self.mc_tableview.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
+    self.mc_tableview.backgroundColor = self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.tableHeaderView = self.headerView;
@@ -50,9 +50,10 @@
     
     [self.headerView.detailImv sd_setImageWithURL:self.goodDic[@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
     self.headerView.detailTitle.text = self.goodDic[@"title"];
-//    self.headerView.detailPrice.text = [NSString stringWithFormat:@"¥%@元",self.goodDic[@"price"]];
+    self.headerView.detailPrice.text = [NSString stringWithFormat:@"¥%@元",self.goodDic[@"price"]];
     self.headerView.detailKuCun.text = [NSString stringWithFormat:@"库存:%@",self.goodDic[@"num"]];
-
+    self.headerView.goodDic = self.goodDic;
+    [self.headerView setData];
     self.headerView.detailTitle1.text = self.goodDic[@"introduce"];
 }
 - (KDJFShopDetailHeaderView *)headerView
@@ -69,6 +70,7 @@
 -(UIView *)footView{
     if (!_footView) {
         _footView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight - 70 , KScreenWidth, 70)];
+        _footView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(10, 5 , KScreenWidth-20, 50);
         button.titleLabel.font = [UIFont systemFontOfSize: 14.0];
@@ -94,6 +96,8 @@
         [weakself.mc_tableview reloadData];
         
         weakself.mc_tableview.tableHeaderView = weakself.headerView;
+        weakself.headerView.goodDic = weakself.goodDic;
+        [weakself.headerView setData];
 
     }];
 }

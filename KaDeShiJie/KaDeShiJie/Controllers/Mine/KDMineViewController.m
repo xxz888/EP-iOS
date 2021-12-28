@@ -115,14 +115,16 @@
         if (userInfo.level) {
             if ([userInfo.level isEqualToString:@"Normal"]) {
                 level = @"普通用户";
+            }else if ([userInfo.level isEqualToString:@"Diamond"]) {
+                level = @"VIP用户";
             }else{
-                level = @"钻石用户";
+                level = userInfo.level;
             }
         }
      
     
         self.header.phoneLabel.text = userInfo.phone;
-        self.header.nameLabel.text = [NSString stringWithFormat:@"%@",userInfo.nickname];
+        self.header.nameLabel.text = [NSString stringWithFormat:@"%@ %@",userInfo.nickname,level];
         self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
         [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:userInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
         self.header.idLabel.text =[NSString stringWithFormat:@"邀请码：%@", userInfo.promoteId];

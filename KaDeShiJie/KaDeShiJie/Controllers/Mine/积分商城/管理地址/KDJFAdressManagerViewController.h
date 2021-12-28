@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *phoneTf;
 @property (weak, nonatomic) IBOutlet UITextField *adressTf;
 @property (weak, nonatomic) IBOutlet UITextField *detailAdressTf;
-
+@property (nonatomic ,strong)NSDictionary * startDic;
 
 - (IBAction)saveAction:(id)sender;
 

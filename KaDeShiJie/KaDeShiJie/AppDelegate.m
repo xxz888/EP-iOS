@@ -57,17 +57,8 @@
     MCLog(@"配置app基本信息");
 //    SharedDefaults.host = @"https://api.flyaworld.com";
       SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
+//    SharedDefaults.host = @"https://api.paywooka.com";
 
-    //正式环境域名
-//    SharedDefaults.host = @"https://api.flyaworld.com";
-    //正式环境IP
-//      SharedDefaults.host = @"http://139.196.145.125";
-    //金地址
-//    SharedDefaults.host = @"http://192 .168.10.32";
-    //陶地址
-//    SharedDefaults.host = @"http://192.168.10.29";
-    //测试环境
-//    SharedDefaults.host = @"http://test1012.caderworld.com";
     SharedDefaults.deviceid = [UIDevice identifierByKeychain];
     /* Require，必填 */
     BCFI.brand_id = @"100";

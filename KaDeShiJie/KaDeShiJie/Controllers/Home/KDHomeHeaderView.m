@@ -106,6 +106,7 @@
     cyView.showPageControl = NO;
     cyView.clipsToBounds = YES;
     [cyView disableScrollGesture];
+    cyView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
 //    cyView.imageURLStringsGroup = self.dataArray;
     cyView.scrollDirection = UICollectionViewScrollDirectionVertical;
     [self.msgView addSubview:cyView];

@@ -50,17 +50,17 @@
     }
     
     
-    if([model.cardType containsString:@"CreditCard"]){
-//        self.defBtn.hidden = NO;
-        self.cardType.text = @"提现卡";
-        
-    } else if([model.cardType containsString:@"DebitCard"]) {
-//        self.defBtn.hidden = YES;
-        self.cardType.text = @"充值卡";
-                
-    } else {
-        [MCToast showMessage:@"发现未识别的卡"];
-    }
+//    if([model.cardType containsString:@"CreditCard"]){
+////        self.defBtn.hidden = NO;
+//        self.cardType.text = @"提现卡";
+//
+//    } else if([model.cardType containsString:@"DebitCard"]) {
+////        self.defBtn.hidden = YES;
+//        self.cardType.text = @"充值卡";
+//
+//    } else {
+//        [MCToast showMessage:@"发现未识别的卡"];
+//    }
     
     NSString *subCardString = model.bankCardNo;
     
