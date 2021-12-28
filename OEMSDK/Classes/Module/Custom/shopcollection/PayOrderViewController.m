@@ -41,7 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"付款" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"付款" tintColor:nil];
     
     
     

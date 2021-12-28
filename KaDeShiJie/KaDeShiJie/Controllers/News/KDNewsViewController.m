@@ -26,14 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"行业资讯" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"行业资讯" tintColor:nil];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.rowHeight = 300;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getData];
-    }];
+    self.mc_tableview.mj_header = nil;
     [self getData];
 }
 
@@ -64,6 +62,7 @@
     [self.sessionManager mc_GET:@"/api/v1/player/promote/news" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
         weakSelf.dataArray = [MCNewsModel mj_objectArrayWithKeyValuesArray:respDic];
         [weakSelf.mc_tableview reloadData];
+        
     }];
     
 //    NSDictionary *param = @{@"brandId":SharedConfig.brand_id,@"size":@"999",@"classifiCation":@"资讯"};

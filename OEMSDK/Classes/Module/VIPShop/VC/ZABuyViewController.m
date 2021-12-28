@@ -20,7 +20,7 @@
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    [self setNavigationBarTitle:@"购买商品" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"购买商品" tintColor:nil];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop)];
     [self.view addSubview:scrollView];

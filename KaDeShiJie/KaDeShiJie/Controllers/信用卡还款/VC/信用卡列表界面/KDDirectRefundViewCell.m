@@ -185,33 +185,41 @@
 
 - (IBAction)cancelAction:(id)sender {
     
-    KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-    [commonAlert initKDCommonAlertContent:@"确定要解绑此银行卡吗？"  isShowClose:NO];
-    commonAlert.rightBtn.tag = 9999; //设置而这个是代表有请求，请求完再隐藏弹框
-    __weak __typeof(self)weakSelf = self;
-    commonAlert.rightActionBlock = ^{
+//    KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
+//    [commonAlert initKDCommonAlertContent:@"确定要解绑此银行卡吗？"  isShowClose:NO];
+//    commonAlert.rightBtn.tag = 9999; //设置而这个是代表有请求，请求完再隐藏弹框
+//    __weak __typeof(self)weakSelf = self;
+//    commonAlert.rightActionBlock = ^{
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":weakSelf.refundModel.cardNo,@"type":@"0"} ok:^(NSDictionary * _Nonnull resp) {
+//                if (weakSelf.refreshUIBlock) {
+//                    weakSelf.refreshUIBlock();
+//                }
+//            }];
+//        });
+//
+//    };
+    kWeakSelf(self)
+    QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定要解绑此银行卡吗？" preferredStyle:QMUIAlertControllerStyleAlert];
+    [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[QMUIAlertAction actionWithTitle:@"解绑" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/del/%@",TOKEN] parameters:@{@"cardno":weakSelf.refundModel.cardNo,@"type":@"0"} ok:^(NSDictionary * _Nonnull resp) {
-                if (weakSelf.refreshUIBlock) {
-                    weakSelf.refreshUIBlock();
-                }
+         
+            [MCSessionManager.shareManager mc_put:@"/api/v1/player/bank" parameters:@{@"status":@"Delete",@"id":[NSString stringWithFormat:@"%@",self.refundModel.id]} ok:^(NSDictionary * _Nonnull respDic) {
+                [MCToast showMessage:@"解绑成功"];
+                
+                if (weakself.refreshUIBlock) {
+                    weakself.refreshUIBlock();
+                 }
+            } other:^(NSDictionary * _Nonnull respDic) {
+                
+            } failure:^(NSError * _Nonnull error) {
+                
             }];
         });
 
-    };
-    
-//    QMUIModalPresentationViewController *diaVC = [[QMUIModalPresentationViewController alloc] init];
-//    KDDirectAlertView *typeView = [[KDDirectAlertView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 218)];
-//    diaVC.contentView = typeView;
-//    diaVC.contentViewMargins = UIEdgeInsetsMake(0, 32.5, 0, 32.5);
-//    [diaVC showWithAnimated:YES completion:nil];
-//    __weak typeof(self) weakSelf = self;
-//    typeView.cancelBtnAction = ^{
-//        [diaVC hideWithAnimated:YES completion:nil];
-//    };
-//    typeView.sureBtnAction = ^{
-//
-//    };
+    }]];
+    [alert showWithAnimated:YES];
 }
 -(void)clickProgressContentView:(id)tap{
     [self requestDetail];

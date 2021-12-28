@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"账单管理" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"账单管理" tintColor:nil];
     [self.tableview registerNib:[UINib nibWithNibName:@"KDHomeBillManagerTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDHomeBillManagerTableViewCell"];
     
 }

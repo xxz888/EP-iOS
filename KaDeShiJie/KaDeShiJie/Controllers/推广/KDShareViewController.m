@@ -68,12 +68,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"推广分享" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"推广分享" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     
     self.mc_tableview.tableHeaderView = self.header;
-    
-    self.mc_tableview.backgroundColor = [UIColor clearColor];
+    self.mc_tableview.mj_header = nil;
+//    self.mc_tableview.backgroundColor = [UIColor clearColor];
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;
     self.mc_tableview.rowHeight = 60;

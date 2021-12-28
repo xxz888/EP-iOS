@@ -41,7 +41,7 @@
     }
 //    [self setNavigationBarTitle:@"商城" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
     
-    [self setNavigationBarTitle:@"商城" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"商城" tintColor:nil];
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"我的订单" forState:UIControlStateNormal];
     [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];

@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
-    [self setNavigationBarTitle:@"官方社群微信号" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"官方社群微信号" tintColor:nil];
     self.mc_tableview.dataSource = self;
     self.mc_tableview.tableFooterView = [UIView new];
     self.mc_tableview.backgroundColor = [UIColor clearColor];

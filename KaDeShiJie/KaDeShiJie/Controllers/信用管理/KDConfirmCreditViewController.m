@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
-    [self setNavigationBarTitle:@"确认授信" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"确认授信" tintColor:nil];
     self.mc_tableview.backgroundColor = [UIColor clearColor];
     if (@available(iOS 11.0, *)) {
         self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

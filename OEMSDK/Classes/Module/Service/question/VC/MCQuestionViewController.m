@@ -30,7 +30,7 @@
     titleView.font = [UIFont qmui_dynamicSystemFontOfSize:18 weight:QMUIFontWeightNormal italic:YES];
     titleView.textColor = [UIColor blackColor];
     self.navigationItem.titleView = titleView;
-//    [self setNavigationBarTitle:@"常见问题" tintColor:[UIColor whiteColor]];
+//    [self setNavigationBarTitle:@"常见问题" tintColor:nil];
     
     self.dataSource = [[MCQuestionDataSource alloc] init];
     self.delegate = [[MCQuestionDelegate alloc] init];

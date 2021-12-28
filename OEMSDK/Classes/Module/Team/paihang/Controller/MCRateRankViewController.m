@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"收益排行榜" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"收益排行榜" tintColor:nil];
     
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;

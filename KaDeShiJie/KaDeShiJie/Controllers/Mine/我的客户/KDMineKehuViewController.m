@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
-    [self setNavigationBarTitle:@"我的客户" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"我的客户" tintColor:nil];
     [self.zhituiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         KDPopularizeViewController * vc = [[KDPopularizeViewController alloc]init];
         vc.whereCome = 1;

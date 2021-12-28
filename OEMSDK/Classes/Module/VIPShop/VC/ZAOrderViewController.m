@@ -22,7 +22,7 @@
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    [self setNavigationBarTitle:@"收货确认" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"收货确认" tintColor:nil];
     
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;

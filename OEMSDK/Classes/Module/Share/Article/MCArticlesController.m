@@ -32,7 +32,7 @@
     self.mc_tableview.ly_emptyView = [MCEmptyView emptyView];
     self.mc_tableview.separatorInset = UIEdgeInsetsZero;
     
-    
+    self.mc_tableview.mj_header = nil;
     self.page = 0;
     __weak __typeof(self)weakSelf = self;
 //    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

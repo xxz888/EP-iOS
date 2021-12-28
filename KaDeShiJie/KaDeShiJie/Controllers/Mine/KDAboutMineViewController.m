@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:@"关于我们" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:@"关于我们" tintColor:nil];
     self.topImage.layer.cornerRadius = 10;
     
     self.versionLbl.text = [NSString stringWithFormat:@"v%@",SharedAppInfo.version];

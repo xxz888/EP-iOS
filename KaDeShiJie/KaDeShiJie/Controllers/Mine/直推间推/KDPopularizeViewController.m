@@ -30,7 +30,7 @@
     self.name = @"";
     self.phone= @"";
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
-    [self setNavigationBarTitle:self.whereCome == 1 ? @"直推用户" : @"间推用户" tintColor:[UIColor whiteColor]];
+    [self setNavigationBarTitle:self.whereCome == 1 ? @"直推用户" : @"间推用户" tintColor:nil];
     [self.yyTableView registerNib:[UINib nibWithNibName:@"KDPPopularizeTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDPPopularizeTableViewCell"];
     self.normalDataArray = [[NSMutableArray alloc]init];
     self.diamondDataArray = [[NSMutableArray alloc]init];

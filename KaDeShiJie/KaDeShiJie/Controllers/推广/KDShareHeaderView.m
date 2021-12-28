@@ -70,10 +70,16 @@
     }] ;
     
     [self.pingtaijieshaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCToast showMessage:@"暂未开放"];
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"platformInstructionLink"];
+      web.title = @"平台介绍";
+      [self.viewController.navigationController pushViewController:web animated:YES];
     }] ;
     [self.caozuoshuomingView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCToast showMessage:@"暂未开放"];
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"operateInstructionLink"];
+      web.title = @"操作说明";
+      [self.viewController.navigationController pushViewController:web animated:YES];
     }] ;
     [self.weixinView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [self disPhoneClicktuiguang1Imv];
@@ -124,7 +130,12 @@
     } else if ([title isEqualToString:@"推广二维码"]) {
         [MCPagingStore pagingURL:rt_share_single];
     } else if ([title isEqualToString:@"收益规则"]) {
-        [MCToast showMessage:@"暂未开放"];
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"commissionRuleLink"];
+      web.title = @"收益规则";
+      [self.viewController.navigationController pushViewController:web animated:YES];
+        
+        
     }
     else if ([title isEqualToString:@"行业资讯"]) {
         [self.viewController.navigationController pushViewController:[KDNewsViewController new] animated:YES];

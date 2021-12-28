@@ -52,5 +52,37 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDFAF386-09A6-40E1-B865-D316C4831927"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5217;&#x8868;&#x754c;&#x9762;/KDDirectRefundViewCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-cancelAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6BA4D35-721B-4864-BC46-AC20CEECD329"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x5217;&#x8868;&#x754c;&#x9762;/KDDirectRefundViewCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-cancelAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

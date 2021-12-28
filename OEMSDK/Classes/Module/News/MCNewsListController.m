@@ -40,6 +40,7 @@
     self.mc_tableview.delegate = self;
     self.mc_tableview.separatorInset = UIEdgeInsetsZero;
     self.mc_tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.mc_tableview.mj_header = nil;
     [self requstData];
 }
 - (void)requstData {

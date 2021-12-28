@@ -69,9 +69,7 @@
     self.mc_tableview.tableFooterView = [UIView new];
     self.mc_tableview.ly_emptyView = [MCEmptyView emptyView];
 
-    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getHistory];
-    }];
+    self.mc_tableview.mj_header = nil;
     self.type = 1;
 }
 -(void)viewWillAppear:(BOOL)animated{
