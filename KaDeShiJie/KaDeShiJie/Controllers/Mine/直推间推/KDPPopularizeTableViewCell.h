@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *cellPhone;
 @property (weak, nonatomic) IBOutlet UILabel *cellTime;
 @property (weak, nonatomic) IBOutlet UILabel *cellUserLlb;
+@property (weak, nonatomic) IBOutlet UIImageView *cellRenSheng;
 
 @end
 

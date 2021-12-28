@@ -35,22 +35,8 @@
         _tableview.delegate = self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         __weak __typeof(self)weakSelf = self;
-        _tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            weakSelf.page = 0;
-            if ([weakSelf.type isEqualToString:@"0"]) {
-                [weakSelf requestPerson];
-            } else {
-                [weakSelf requestPlatform];
-            }
-        }];
-        _tableview.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-            weakSelf.page += 1;
-            if ([weakSelf.type isEqualToString:@"0"]) {
-                [weakSelf requestPerson];
-            } else {
-                [weakSelf requestPlatform];
-            }
-        }];
+        _tableview.mj_header = nil;
+    
     }
     return _tableview;
 }
@@ -71,6 +57,8 @@
 //    [self.view addSubview:self.segement];
     [self.view addSubview:self.tableview];
     self.mc_tableview.hidden = YES;
+    self.mc_tableview.mj_header = nil;
+
     [self requestPerson];
 }
 

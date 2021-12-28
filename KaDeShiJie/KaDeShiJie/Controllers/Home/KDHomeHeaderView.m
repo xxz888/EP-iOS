@@ -184,12 +184,12 @@
             { [MCToast showMessage:@"暂未开放"];}
                 break;
             case 202: // 实名认证
-                
-                    if ([SharedUserInfo.certification integerValue] == 1) {
-                        [MCToast showMessage:@"您已实名认证"];
-                    }else{
-                        [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
-                    }
+                [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+//                    if ([SharedUserInfo.certification integerValue] == 1) {
+//                        [MCToast showMessage:@"您已实名认证"];
+//                    }else{
+//                        [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+//                    }
                
                 break;
             case 203:{

@@ -31,9 +31,7 @@
     [self.mc_tableview registerNib:[UINib nibWithNibName:@"KDWallDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDWallDetailTableViewCell"];
     self.view.backgroundColor = self.mc_tableview.backgroundColor = [UIColor whiteColor];
     __weak typeof(self) weakSelf = self;
-    self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.mc_tableview.mj_header endRefreshing];
-    }];
+    self.mc_tableview.mj_header =  nil;
     self.dataArray = [[NSMutableArray alloc]init];
     NSString * url1 = @"/api/v1/player/wallet/history";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {

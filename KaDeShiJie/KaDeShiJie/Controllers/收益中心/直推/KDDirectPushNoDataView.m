@@ -29,15 +29,7 @@
     [super awakeFromNib];
     
     // gradient
-    CAGradientLayer *gl = [CAGradientLayer layer];
-    gl.frame = CGRectMake(0,0,103,30);
-    gl.startPoint = CGPointMake(0.53, 0);
-    gl.endPoint = CGPointMake(0.53, 1);
-    gl.colors = @[(__bridge id)[UIColor colorWithRed:204/255.0 green:162/255.0 blue:100/255.0 alpha:1.0].CGColor, (__bridge id)[UIColor colorWithRed:170/255.0 green:115/255.0 blue:34/255.0 alpha:1.0].CGColor];
-    gl.locations = @[@(0), @(1.0f)];
-    self.pushBtn.layer.cornerRadius = 15;
-    self.pushBtn.layer.masksToBounds = YES;
-    [self.pushBtn.layer insertSublayer:gl atIndex:0];
+
 }
 
 
@@ -45,7 +37,7 @@
 {
     [super layoutSubviews];
     
-    self.frame = CGRectMake(0, (SCREEN_HEIGHT - 242) * 0.5, SCREEN_WIDTH, 242);
+    self.frame = CGRectMake(0, (SCREEN_HEIGHT - 274) * 0.6, SCREEN_WIDTH, 274);
 }
 
 /** 立即推广 */
