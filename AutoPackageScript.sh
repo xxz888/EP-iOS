@@ -14,16 +14,16 @@ is_workspace="true"
 workspace_name="MCOEM"
 
 # .xcodeproj的名字，如果is_workspace为false，则必须填。否则可不填
-project_name="KaDeShiJie"
+#project_name="jintStudentProject"
 
 # 指定项目的scheme名称（也就是工程的target名称），必填
 scheme_name="KaDeShiJie"
 
 # 指定要打包编译的方式 : Release,Debug。一般用Release。必填
-build_configuration="Debug"
+build_configuration="Release"
 
 # method，打包的方式。方式分别为 development, ad-hoc, app-store, enterprise 。必填
-method="ad-hoc"
+method="development"
 
 
 #  下面两个参数只是在手动指定Pofile文件的时候用到，如果使用Xcode自动管理Profile,直接留空就好
@@ -31,7 +31,7 @@ method="ad-hoc"
 mobileprovision_name=""
 
 # 项目的bundleID，手动管理Profile时必填
-bundle_identifier="com.wukashidai"
+bundle_identifier=""
 
 
 echo "--------------------脚本配置参数检查--------------------"
@@ -55,7 +55,7 @@ project_dir=$script_dir
 # 时间
 DATE=`date '+%Y%m%d_%H%M%S'`
 # 指定输出导出文件夹路径
-export_path="/Users/junan/Desktop/无卡生活ipa/$scheme_name-$DATE"
+export_path="/Users/junan/Desktop/無卡生活ipa/$scheme_name-$DATE"
 # 指定输出归档文件路径
 export_archive_path="$export_path/$scheme_name.xcarchive"
 # 指定输出ipa文件夹路径
@@ -174,7 +174,7 @@ echo "\033[36;1m使用AutoPackageScript打包总用时: ${SECONDS}s \033[0m"
 
 fir publish $export_ipa_path/$ipa_name.ipa
 
-rm -rf /Users/junan/Desktop/无卡生活ipa
+rm -rf /Users/junan/Desktop/無卡生活ipa
 
 echo "删除文件夹成功"
 

@@ -64,8 +64,8 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-lH-3fN">
-                            <rect key="frame" x="10" y="50.5" width="43" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：400-6666-085" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-lH-3fN">
+                            <rect key="frame" x="10" y="50.5" width="143" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="top" secondItem="Qmf-kD-pGr" secondAttribute="bottom" constant="20" id="tR8-gB-Yd5"/>
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="leading" secondItem="Qmf-kD-pGr" secondAttribute="leading" id="xUC-Wf-qDd"/>
             </constraints>
-            <point key="canvasLocation" x="490" y="206"/>
+            <point key="canvasLocation" x="104" y="235"/>
         </view>
     </objects>
     <resources>

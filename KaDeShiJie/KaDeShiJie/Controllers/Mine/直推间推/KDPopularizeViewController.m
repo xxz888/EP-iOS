@@ -168,7 +168,7 @@
     cell.cellStatus.text = dic[@"name"] ;
     BOOL isNormal = [dic[@"level"] isEqualToString:@"Normal"];
 //    cell.cellImv.image = isNormal ? [UIImage imageNamed:@"会员"]:[UIImage imageNamed:@"会员1"];
-    [cell.cellImv sd_setImageWithURL:dic[@"headImg"] placeholderImage: [UIImage imageNamed:@"321"]];
+    [cell.cellImv sd_setImageWithURL:dic[@"headImg"] placeholderImage: [UIImage imageNamed:@"tuiguangmoren"]];
     cell.cellUserLlb.text = isNormal ? @"普通会员" : @"VIP会员";
     cell.cellRenSheng.hidden = [dic[@"certification"] integerValue] == 0;
     if ([dic[@"level"] isEqualToString:@"Diamond"]) {

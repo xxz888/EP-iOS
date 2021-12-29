@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>method</key>
-	<string>ad-hoc</string>
+	<string>development</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.wukashidai</key>
+		<key></key>
 		<string></string>
 	</dict>
 </dict>

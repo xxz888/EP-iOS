@@ -664,7 +664,7 @@
 		1BC55AC3250B8A56001BE2DF /* KDSlotCardAisleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDSlotCardAisleViewCell.xib; sourceTree = "<group>"; };
 		1BC55AC6250B8EDA001BE2DF /* KDAisleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAisleDetailViewController.h; sourceTree = "<group>"; };
 		1BC55AC7250B8EDA001BE2DF /* KDAisleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAisleDetailViewController.m; sourceTree = "<group>"; };
-		1BC5E3942503404C0064CA30 /* 卡德世界.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "卡德世界.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC5E3942503404C0064CA30 /* KaDeShiJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaDeShiJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BC5E3A12503404C0064CA30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BC5E3B0250341180064CA30 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		1BC5E3B1250341180064CA30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1442,7 +1442,7 @@
 		1BC5E3952503404C0064CA30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1BC5E3942503404C0064CA30 /* 卡德世界.app */,
+				1BC5E3942503404C0064CA30 /* KaDeShiJie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1882,7 +1882,7 @@
 			);
 			name = KaDeShiJie;
 			productName = KaDeShiJie;
-			productReference = 1BC5E3942503404C0064CA30 /* 卡德世界.app */;
+			productReference = 1BC5E3942503404C0064CA30 /* KaDeShiJie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2540,7 +2540,7 @@
 				);
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wukashidai;
-				PRODUCT_NAME = "卡德世界";
+				PRODUCT_NAME = KaDeShiJie;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KaDeShiJie/Controllers/Home/信用卡办卡/KaDeShiJie-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2680,7 +2680,7 @@
 				);
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wukashidai;
-				PRODUCT_NAME = "卡德世界";
+				PRODUCT_NAME = KaDeShiJie;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KaDeShiJie/Controllers/Home/信用卡办卡/KaDeShiJie-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
