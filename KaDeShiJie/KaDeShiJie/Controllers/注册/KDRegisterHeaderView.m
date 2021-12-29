@@ -138,18 +138,25 @@
         [MCToast showMessage:@"请同意登陆服务协议"];
         return;
     }
+
+    
     if (phone.length != 11) {
         [MCToast showMessage:@"请输入正确的手机号"];
-        return;
-    }
-    if (code.length == 0) {
-        [MCToast showMessage:@"请输入验证码"];
         return;
     }
     if (self.tuijianTf.text.length == 0) {
         [MCToast showMessage:@"请输入密码"];
         return;
     }
+    if (![self isSafePassword:self.tuijianTf.text]) {
+        [MCToast showMessage:@"请输入8-16位数字+字母组合密码"];
+        return;
+    }
+    if (code.length == 0) {
+        [MCToast showMessage:@"请输入验证码"];
+        return;
+    }
+
     if (self.tuijianrenIdTf.text.length == 0) {
         [MCToast showMessage:@"请输入推荐人ID号"];
         return;
@@ -179,6 +186,20 @@
 //        [MCLATESTCONTROLLER.navigationController popViewControllerAnimated:YES];
 //    }];
 
+}
+- (BOOL) isSafePassword:(NSString *)strPwd{
+    NSString *passWordRegex = @"^((?![0-9]+$)(?![a-zA-Z]+$)(?![~!@#$^&|*-_+=.?,]+$))[0-9A-Za-z~!@#$^&|*-_+=.?,]{6,20}$";   // 数字，字符或符号至少两种
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passWordRegex];
+    
+    if ([regextestcm evaluateWithObject:strPwd] == YES)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+ 
 }
 //------ 验证码发送按钮动态改变文字 ------//
 - (void)changeSendBtnText {

@@ -67,7 +67,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"账单详情" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"账单详情" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     
     [self setupView];

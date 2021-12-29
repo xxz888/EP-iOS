@@ -35,7 +35,7 @@
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 
     }];
-    [self setNavigationBarTitle:@"积分变动" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"积分变动" tintColor:nil];
     
     [self.mc_tableview reloadData];
 

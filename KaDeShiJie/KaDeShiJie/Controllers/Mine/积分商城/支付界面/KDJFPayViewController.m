@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"支付" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"支付" tintColor:nil];
     self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
 
     self.wxBtn.selected = YES;

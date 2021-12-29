@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:@"确认订单" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"确认订单" tintColor:nil];
     self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     self.noAddressView.backgroundColor = KWhiteColor;
     ViewRadius(self.noAddressView, 3);

@@ -50,6 +50,12 @@
 
 
 - (IBAction)clickTypeBtnAction:(QMUIButton *)sender {
+    if (sender.tag == 102) {
+        [MCToast showMessage:@"暂未开放"];
+        return;
+    }
+    
+    
     if (sender.selected) {
         return;
     }

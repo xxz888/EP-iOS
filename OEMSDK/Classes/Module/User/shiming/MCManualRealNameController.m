@@ -13,9 +13,12 @@
 
 #define kViewColor [UIColor colorWithRed:210/255.0 green:210/255.0 blue:220/255.0 alpha:1.0]
 
+#define ZhengMian @"身份证正面"
+#define FanMian   @"身份证反面"
 static const CGFloat margin = 10;
 
 @interface MCManualRealNameController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate,LivenessDetectDelegate>
+@property(assign,nonatomic)NSString * zhengmianfanmian;
 
 /** 姓名输入框 */
 @property (nonatomic, weak) UITextField *nameTF;
@@ -246,14 +249,14 @@ static const CGFloat margin = 10;
     [scrollView addSubview:headerMessageLabel];
     // 示例图片
     CGFloat showImageMargin = 10;
-    CGFloat showImageW = (SCREEN_WIDTH - showImageMargin * 4) / 3;
-    CGFloat showImageH = showImageW - 20;
-    NSArray *showImageArr = @[@"common_shiming_01_new", @"common_shiming_02_new", @"common_shiming_03_new"];
+    CGFloat showImageW = (SCREEN_WIDTH - showImageMargin * 4) / 2;
+    CGFloat showImageH = showImageW *0.8;
+    NSArray *showImageArr = @[@"common_shiming_01_new", @"common_shiming_02_new"];
     for (int i = 0; i < showImageArr.count; i++) {
         UIButton *tempButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
         tempButton.frame = CGRectMake(showImageMargin + (showImageW + showImageMargin) * i, headerMessageLabel.bottom, showImageW, showImageH);
-        [tempButton setImage:[UIImage mc_imageNamed:showImageArr[i]] forState:(UIControlStateNormal)];
-        [tempButton addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        [tempButton setBackgroundImage:[UIImage mc_imageNamed:showImageArr[i]] forState:(UIControlStateNormal)];
+   
         [scrollView addSubview:tempButton];
     }
     // 箭头
@@ -262,45 +265,44 @@ static const CGFloat margin = 10;
     [scrollView addSubview:downArrowImageView];
     // 拍摄按钮
     CGFloat buttonMargin = 10;
-    CGFloat buttonW = (SCREEN_WIDTH - buttonMargin * 4) / 3;
-    CGFloat buttonH = buttonW;
+    CGFloat buttonW = (SCREEN_WIDTH - buttonMargin * 4) / 2;
+    CGFloat buttonH = buttonW *0.8;
     UIButton *frontPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     frontPhotoButton.frame = CGRectMake(buttonMargin, downArrowImageView.bottom + 5, showImageW, showImageH);
     frontPhotoButton.tag = 0;
-    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:0];
+    [frontPhotoButton setBackgroundImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:0];
 //    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
-    [frontPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [frontPhotoButton addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    
     [scrollView addSubview:frontPhotoButton];
     self.frontPhotoButton = frontPhotoButton;
     UIButton *backPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     backPhotoButton.frame = CGRectMake(frontPhotoButton.right + buttonMargin, frontPhotoButton.top, showImageW, showImageH);
     backPhotoButton.tag = 1;
-    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:0];
-
+    [backPhotoButton setBackgroundImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:0];
 //    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
-    [backPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [backPhotoButton addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [scrollView addSubview:backPhotoButton];
     self.backPhotoButton = backPhotoButton;
-    UIButton *personPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    personPhotoButton.frame = CGRectMake(backPhotoButton.right + buttonMargin, backPhotoButton.top, showImageW, showImageH);
-    personPhotoButton.tag = 2;
-    [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:0];
-
-//    [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:(UIControlStateNormal)];
-    [personPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [scrollView addSubview:personPhotoButton];
-    self.personPhotoButton = personPhotoButton;
+//    UIButton *personPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+//    personPhotoButton.frame = CGRectMake(backPhotoButton.right + buttonMargin, backPhotoButton.top, showImageW, showImageH);
+//    personPhotoButton.tag = 2;
+//    [personPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_03"] forState:0];
+//
+//    [personPhotoButton addTarget:self action:@selector(photoButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//    [scrollView addSubview:personPhotoButton];
+//    self.personPhotoButton = personPhotoButton;
     
     // 3. 底部说明文字
-    NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n\n•必须上传身份证的正反面\n\n•手持证件照片需拍到持有人五官，请勿佩戴眼镜、帽子等遮罩物\n\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
+    NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n\n•必须上传身份证的正反面\n\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
     CGFloat bottomMessageH = [self stringHeightWithString:bottomMessage width:scrollView.width - margin * 2 font:[UIFont systemFontOfSize:12]];
-    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, personPhotoButton.bottom + margin, scrollView.width - margin * 2, bottomMessageH) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:12]];
+    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
     bottomMessageLabel.numberOfLines = 0;
     [scrollView addSubview:bottomMessageLabel];
     
     // 4. 提交按钮
     UIButton *submitButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    submitButton.frame = CGRectMake(margin, bottomMessageLabel.bottom + 40, scrollView.width - margin * 2, 40);
+    submitButton.frame = CGRectMake(margin, bottomMessageLabel.bottom + 50, scrollView.width - margin * 2, 50);
     submitButton.backgroundColor = MAINCOLOR;
     submitButton.layer.cornerRadius = 6;
     submitButton.layer.masksToBounds = YES;
@@ -308,6 +310,7 @@ static const CGFloat margin = 10;
     [submitButton setTitle:@"立即认证" forState:(UIControlStateNormal)];
     [submitButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [submitButton addTarget:self action:@selector(submitButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
+    submitButton.tag = 2;
     [scrollView addSubview:submitButton];
     
     // 修改容器高度
@@ -340,28 +343,105 @@ static const CGFloat margin = 10;
 
 
 
-
-
-#pragma mark --- TARGET METHOD
-/// 1. 示例图片按钮点击事件
-- (void)showImageButtonClick:(UIButton *)sender {
-    
-    UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0)];
-    tempImageView.image = sender.imageView.image;
-    [LYImageMagnification scanBigImageWithImageView:tempImageView alpha:.6];
-}
-/// 2. 拍摄按钮点击事件
-- (void)photoButtonClick:(UIButton *)sender {
-    
-    self.index = sender.tag;
-    if (self.index == 2) {
-        [self shiming];
-    }else{
-        // 拍照
-        [self getImageFromIpc];
+-(void)showImageButtonClick:(UIButton *)btn{
+    self.index = btn.tag;
+    UIViewController *current = MCLATESTCONTROLLER;
+    __weak __typeof(self)weakSelf = self;
+    if (btn.tag == 0) {
+        self.zhengmianfanmian = ZhengMian;
+    }
+    if (btn.tag == 1) {
+        self.zhengmianfanmian = FanMian;
     }
 
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusDenied) {
+            [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
+            return;
+        }
+        
+        //调用身份证大小的相机
+        DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
+ 
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        vc.imageblock = ^(UIImage *image) {
+           
+            if ([self.zhengmianfanmian isEqualToString:ZhengMian]) {
+                self.imageOne = image;
+                [self.frontPhotoButton setImage:image forState:(UIControlStateNormal)];
+                [self requestDataForUploadImages:self.imageOne fileName:@"one"];
+            }else{
+                //向服务器上传身份证反面
+                self.imageTwo = image;
+                [self.backPhotoButton setImage:image forState:(UIControlStateNormal)];
+                [self requestDataForUploadImages:self.imageTwo fileName:@"two"];
+            }
+            
+        };
+        [self presentViewController:vc animated:YES completion:nil];
+    }];
+    UIAlertAction *picture = [UIAlertAction actionWithTitle:@"选择照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        }
+        pickerImage.delegate = self;
+        pickerImage.allowsEditing = NO;
+        [current presentViewController:pickerImage animated:YES completion:nil];
+    }];
+    [alertVc addAction:cancle];
+    [alertVc addAction:camera];
+    [alertVc addAction:picture];
+    [current presentViewController:alertVc animated:YES completion:nil];
 }
+#pragma mark Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    if ([type isEqualToString:@"public.image"]) {
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        if ([self.zhengmianfanmian isEqualToString:ZhengMian]) {
+            self.imageOne = info[UIImagePickerControllerOriginalImage];
+            [self.frontPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
+            [self requestDataForUploadImages:self.imageOne fileName:@"one"];
+        }else{
+            //向服务器上传身份证反面
+            self.imageTwo = info[UIImagePickerControllerOriginalImage];
+            [self.backPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
+            [self requestDataForUploadImages:self.imageTwo fileName:@"two"];
+        }
+    }
+    
+
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+//#pragma mark --- TARGET METHOD
+///// 1. 示例图片按钮点击事件
+//- (void)showImageButtonClick:(UIButton *)sender {
+//
+//    UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0)];
+//    tempImageView.image = sender.imageView.image;
+//    [LYImageMagnification scanBigImageWithImageView:tempImageView alpha:.6];
+//}
+/// 2. 拍摄按钮点击事件
+//- (void)photoButtonClick:(UIButton *)sender {
+//
+//    self.index = sender.tag;
+//    if (self.index == 2) {
+//        [self shiming];
+//    }else{
+//        // 拍照
+//        [self getImageFromIpc];
+//    }
+//
+//}
 -(void)shiming{
     // UI设置，默认不用设置
     NSDictionary *uiConfig = @{
@@ -371,7 +451,7 @@ static const CGFloat margin = 10;
        ,@"navTitle": @"人脸识别"          // 导航栏标题 活体检测
        ,@"navTitleSize":@"18"            // 导航栏标题大小 20
     };
-    NSDictionary *param = @{@"actions":@"1279", @"actionsNum":@"3",
+    NSDictionary *param = @{@"actions":@"1279", @"actionsNum":@"1",
                             @"uiConfig":uiConfig};
 #if TARGET_IPHONE_SIMULATOR  //模拟器
 
@@ -395,7 +475,6 @@ static const CGFloat margin = 10;
         UIImage *decodedImage = [UIImage imageWithData: decodeData];
         //身份证上传
         self.imageThree = decodedImage;
-        [self.personPhotoButton setImage:decodedImage forState:(UIControlStateNormal)];
         [self requestDataForUploadImages:decodedImage fileName:@"three"];
       
     }else{
@@ -410,7 +489,7 @@ static const CGFloat margin = 10;
 //    return;
     
     
-    
+    self.index = 2;
     // 判断
     if (self.nameTF.text.length == 0 ) {
         [self showAlertWithMessage:@"请填写姓名"];
@@ -428,13 +507,14 @@ static const CGFloat margin = 10;
         [self showAlertWithMessage:@"请填写银行预留手机号"];
         return;
     }
-    if (self.imageOne == nil || self.imageTwo == nil || self.imageThree == nil) {
-        [self showAlertWithMessage:@"请上传图片！"];
+    if (self.imageOne == nil || self.imageTwo == nil) {
+        [self showAlertWithMessage:@"请上传身份证正反面图片！"];
         return;
     }
     
+    [self shiming];
     // 请求提交
-    [self requestDataForCheckInputInfo];
+//    [self requestDataForCheckInputInfo];
 }
 #pragma mark --- DELEGATE
 -(void)clickScan:(UIButton *)btn{
@@ -501,61 +581,61 @@ __weak __typeof(self)weakSelf = self;
 
 #pragma mark --- PRIVATE METHOD
 #pragma mark --- 调用系统相册的方法
-- (void)getImageFromIpc {
-    
-    // 1. 判断是否可以打开相册
-//    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//- (void)getImageFromIpc {
 //
-//        return;
+//    // 1. 判断是否可以打开相册
+////    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+////
+////        return;
+////    }
+//    // 2. 创建图片选择控制器
+//    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+//    /**
+//     typedef NS_ENUM(NSInteger, UIImagePickerControllerSourceType) {
+//     UIImagePickerControllerSourceTypePhotoLibrary, // 相册
+//     UIImagePickerControllerSourceTypeCamera, // 用相机拍摄获取
+//     UIImagePickerControllerSourceTypeSavedPhotosAlbum // 相簿
+//     }
+//     */
+//    // 3. 设置打开照片相册类型(显示所有相薄)
+//    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    // 4. 设置代理
+//    ipc.delegate = self;
+//    // 5. modal出这个控制器
+//    [self presentViewController:ipc animated:YES completion:nil];
+//}
+//#pragma mark --- UIImagePickerControllerDelegate代理方法
+//// 1. 选择图片时调用
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+//
+//    // 销毁控制器
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//    // 设置图片
+//    if (self.index == 0) {
+//        self.imageOne = info[UIImagePickerControllerOriginalImage];
+//        [self.frontPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
+//        [self requestDataForUploadImages:self.imageOne fileName:@"one"];
+//
 //    }
-    // 2. 创建图片选择控制器
-    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
-    /**
-     typedef NS_ENUM(NSInteger, UIImagePickerControllerSourceType) {
-     UIImagePickerControllerSourceTypePhotoLibrary, // 相册
-     UIImagePickerControllerSourceTypeCamera, // 用相机拍摄获取
-     UIImagePickerControllerSourceTypeSavedPhotosAlbum // 相簿
-     }
-     */
-    // 3. 设置打开照片相册类型(显示所有相薄)
-    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    // 4. 设置代理
-    ipc.delegate = self;
-    // 5. modal出这个控制器
-    [self presentViewController:ipc animated:YES completion:nil];
-}
-#pragma mark --- UIImagePickerControllerDelegate代理方法
-// 1. 选择图片时调用
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // 销毁控制器
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    // 设置图片
-    if (self.index == 0) {
-        self.imageOne = info[UIImagePickerControllerOriginalImage];
-        [self.frontPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-        [self requestDataForUploadImages:self.imageOne fileName:@"one"];
-        
-    }
-    if (self.index == 1) {
-        self.imageTwo = info[UIImagePickerControllerOriginalImage];
-        [self.backPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-        [self requestDataForUploadImages:self.imageTwo fileName:@"two"];
-
-    }
-    if (self.index == 2) {
-        self.imageThree = info[UIImagePickerControllerOriginalImage];
-        [self.personPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-        [self requestDataForUploadImages:self.imageThree fileName:@"three"];
-
-    }
-}
-
-// 2. 取消选择时调用
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
+//    if (self.index == 1) {
+//        self.imageTwo = info[UIImagePickerControllerOriginalImage];
+//        [self.backPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
+//        [self requestDataForUploadImages:self.imageTwo fileName:@"two"];
+//
+//    }
+//    if (self.index == 2) {
+//        self.imageThree = info[UIImagePickerControllerOriginalImage];
+//        [self.personPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
+//        [self requestDataForUploadImages:self.imageThree fileName:@"three"];
+//
+//    }
+//}
+//
+//// 2. 取消选择时调用
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+//
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//}
 
 #pragma mark --- SET DATA
 //------ 传入姓名身份证号数据请求(用来判定是否可以上传图片) ------//
@@ -590,7 +670,7 @@ __weak __typeof(self)weakSelf = self;
         return;
     }
     if (!self.imageThreeURL) {
-        [MCToast showMessage:@"请上传手持身份证照片"];
+        [MCToast showMessage:@"请进行活体检测"];
         return;
     }
 
@@ -640,11 +720,10 @@ __weak __typeof(self)weakSelf = self;
         }
         if (self.index == 1) {
             self.imageTwoURL = dic[@"fileUrl"];
-
         }
         if (self.index == 2) {
             self.imageThreeURL = dic[@"fileUrl"];
-
+            [self requestDataForCheckInputInfo];
         }
 //        [MCToast showMessage:@"提交成功，请耐心等待审核通过"];
 //        [weakSelf.navigationController popViewControllerAnimated:YES];

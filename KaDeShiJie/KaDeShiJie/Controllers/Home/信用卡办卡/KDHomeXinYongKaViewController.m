@@ -19,7 +19,7 @@
     [super viewDidLoad];
     [self setNavigationBarTitle:@"在线申请信用卡" tintColor:nil];
 
-//    [self setNavigationBarTitle:@"在线申请信用卡" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+//    [self setNavigationBarTitle:@"在线申请信用卡" tintColor:nil];
 
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     

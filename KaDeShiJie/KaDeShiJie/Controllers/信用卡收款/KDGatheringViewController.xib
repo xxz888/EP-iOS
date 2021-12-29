@@ -76,20 +76,10 @@
                                         <constraint firstAttribute="height" constant="1" id="6ve-NQ-Q7k"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl9-7p-Nps">
-                                    <rect key="frame" x="30" y="27" width="318" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="DT8-Gm-6Vr"/>
-                                    </constraints>
-                                    <connections>
-                                        <action selector="clickTextView:" destination="-1" eventType="touchUpInside" id="Yls-jj-BcQ"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="i9g-me-b1R" firstAttribute="leading" secondItem="JCh-rF-b9N" secondAttribute="leading" constant="5" id="7yl-7B-DCa"/>
-                                <constraint firstItem="Cl9-7p-Nps" firstAttribute="centerY" secondItem="IAG-c1-dbK" secondAttribute="centerY" id="C0W-eG-ewz"/>
                                 <constraint firstItem="IAG-c1-dbK" firstAttribute="top" secondItem="JCh-rF-b9N" secondAttribute="top" constant="28" id="CdW-OI-4oP">
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="widthScreen" value="YES"/>
@@ -101,8 +91,6 @@
                                 <constraint firstItem="TPR-i3-xyW" firstAttribute="leading" secondItem="IAG-c1-dbK" secondAttribute="trailing" constant="8" id="kr1-mc-yaD"/>
                                 <constraint firstAttribute="trailing" secondItem="i9g-me-b1R" secondAttribute="trailing" constant="5" id="oJT-io-5HX"/>
                                 <constraint firstAttribute="trailing" secondItem="TPR-i3-xyW" secondAttribute="trailing" constant="20" id="ryX-l7-duQ"/>
-                                <constraint firstAttribute="trailing" secondItem="Cl9-7p-Nps" secondAttribute="trailing" constant="20" id="s2L-pJ-NqN"/>
-                                <constraint firstItem="Cl9-7p-Nps" firstAttribute="leading" secondItem="IAG-c1-dbK" secondAttribute="trailing" constant="5" id="vjW-aU-3Hz"/>
                                 <constraint firstAttribute="height" constant="80" id="xZZ-gx-r54">
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="widthScreen" value="YES"/>

@@ -35,7 +35,7 @@
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 
     }];
-    [self setNavigationBarTitle:@"商品管理" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"商品管理" tintColor:nil];
     
     [self.mc_tableview reloadData];
 

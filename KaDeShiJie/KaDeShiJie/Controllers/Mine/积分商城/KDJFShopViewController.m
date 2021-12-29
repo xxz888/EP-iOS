@@ -39,7 +39,6 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-//    [self setNavigationBarTitle:@"商城" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
     
     [self setNavigationBarTitle:@"商城" tintColor:nil];
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];

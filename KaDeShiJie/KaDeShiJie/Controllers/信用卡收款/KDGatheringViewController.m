@@ -55,15 +55,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
+    [self setNavigationBarTitle:@"快捷收款" tintColor:nil];
 
     //显示光标，但隐藏键盘
-    [self.moneyView becomeFirstResponder];
-    self.moneyView.inputView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.moneyView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.moneyView reloadInputViews];
-    UITextInputAssistantItem* item = [self.moneyView inputAssistantItem];
-    item.leadingBarButtonGroups = @[];
-    item.trailingBarButtonGroups = @[];
+//    [self.moneyView becomeFirstResponder];
+//    self.moneyView.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+//    self.moneyView.inputAccessoryView = [[UIView alloc] initWithFrame:CGRectZero];
+//    [self.moneyView reloadInputViews];
+//    UITextInputAssistantItem* item = [self.moneyView inputAssistantItem];
+//    item.leadingBarButtonGroups = @[];
+//    item.trailingBarButtonGroups = @[];
     self.cityId = @"-1";
 //    self.moneyView.delegate = self;
     // 设置按钮显示
@@ -79,7 +80,7 @@
     self.topView.layer.shadowOpacity = 1;
     self.topView.layer.shadowRadius = 10;
     
-    [self setNavigationBarTitle:@"快速收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor qmui_colorWithHexString:@"#FF9F58"]]];
+//    [self setNavigationBarTitle:@"快速收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor qmui_colorWithHexString:@"#FF9F58"]]];
 
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];

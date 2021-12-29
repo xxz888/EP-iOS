@@ -28,7 +28,7 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    [self setNavigationBarTitle:@"商品详情" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"商品详情" tintColor:nil];
 
 
     self.mc_tableview.backgroundColor = self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];

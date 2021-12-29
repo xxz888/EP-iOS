@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
  
-    [self setNavigationBarTitle:@"订单详情" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"订单详情" tintColor:nil];
     KDJFOrderDetailHeaderView * headView = [[KDJFOrderDetailHeaderView alloc] initWithFrame:CGRectMake(0, kTopHeight, SCREEN_WIDTH, 700+kTopHeight)];
     self.mc_tableview.tableHeaderView = headView;
     self.mc_tableview.mj_header = nil;

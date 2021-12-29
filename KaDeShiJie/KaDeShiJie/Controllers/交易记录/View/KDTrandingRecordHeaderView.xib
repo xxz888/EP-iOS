@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,7 +72,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="394" height="124.5"/>
                             <subviews>
                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6B0-Qv-vVR" customClass="QMUIButton">
-                                    <rect key="frame" x="0.0" y="0.0" width="197" height="124.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131.5" height="124.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="刷卡记录" image="kd_trandingRecord_btn_0">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,7 +85,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPG-kg-A2J" customClass="QMUIButton">
-                                    <rect key="frame" x="197" y="0.0" width="197" height="124.5"/>
+                                    <rect key="frame" x="131.5" y="0.0" width="131" height="124.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="还款记录" image="kd_trandingRecord_btn_1">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -95,6 +95,19 @@
                                     </state>
                                     <connections>
                                         <action selector="clickTypeBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ro5-co-zb3"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzX-XL-sM4" customClass="QMUIButton">
+                                    <rect key="frame" x="262.5" y="0.0" width="131.5" height="124.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="空卡还款" image="kd_trandingRecord_btn_2">
+                                        <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="selected" title="还款记录" image="kd_trandingRecord_btn_2_selected">
+                                        <color key="titleColor" red="1" green="0.58823529409999997" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickTypeBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="CKy-mn-XVU"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -138,6 +151,7 @@
             <connections>
                 <outlet property="btn1" destination="6B0-Qv-vVR" id="wDH-Ev-e7O"/>
                 <outlet property="btn2" destination="dPG-kg-A2J" id="9AK-8E-FFD"/>
+                <outlet property="btn3" destination="gzX-XL-sM4" id="sjX-w7-0QG"/>
                 <outlet property="monthBtn" destination="hW8-AY-5hq" id="hz0-ZX-ya2"/>
                 <outlet property="topView" destination="g0x-Ow-cXb" id="Vgo-zs-mcm"/>
                 <outlet property="yearBtn" destination="Hlh-9e-ayz" id="GKQ-V9-NPx"/>
@@ -152,6 +166,8 @@
         <image name="kd_trandingRecord_btn_0_selected" width="35" height="35"/>
         <image name="kd_trandingRecord_btn_1" width="41" height="32"/>
         <image name="kd_trandingRecord_btn_1_selected" width="41" height="32"/>
+        <image name="kd_trandingRecord_btn_2" width="43.5" height="34"/>
+        <image name="kd_trandingRecord_btn_2_selected" width="41.5" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

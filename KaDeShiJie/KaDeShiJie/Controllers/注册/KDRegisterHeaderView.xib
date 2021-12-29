@@ -64,7 +64,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CM1-wt-Id7">
-                    <rect key="frame" x="37" y="262" width="86" height="18.5"/>
+                    <rect key="frame" x="37" y="262" width="377" height="18.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -120,7 +120,7 @@
                     <rect key="frame" x="37" y="319.5" width="24" height="24"/>
                 </imageView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFU-xM-EyY">
-                    <rect key="frame" x="37" y="363.5" width="71.5" height="17"/>
+                    <rect key="frame" x="37" y="363.5" width="377" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                 </textField>
@@ -140,8 +140,8 @@
                         <action selector="loginV:" destination="pIH-DQ-gx1" eventType="touchUpInside" id="qeB-Qg-zNk"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入推荐人ID号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Als-qG-4q2">
-                    <rect key="frame" x="37" y="556.5" width="114" height="18.5"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入推荐人邀请码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Als-qG-4q2">
+                    <rect key="frame" x="37" y="556.5" width="377" height="18.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -159,8 +159,8 @@
                         <constraint firstAttribute="height" constant="1" id="LjY-AO-1dl"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入推荐人ID号（必填）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txA-IT-N5p">
-                    <rect key="frame" x="71" y="515" width="195.5" height="19.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐人邀请码（必填）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txA-IT-N5p">
+                    <rect key="frame" x="71" y="515" width="163.5" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <color key="textColor" red="1" green="0.62352941179999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -206,15 +206,18 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="P7H-CE-plO" firstAttribute="top" secondItem="PM6-iB-teO" secondAttribute="bottom" constant="30" id="0Yw-GW-Ddi"/>
+                <constraint firstItem="XXM-RB-0cN" firstAttribute="trailing" secondItem="CM1-wt-Id7" secondAttribute="trailing" id="0yX-r9-RaE"/>
                 <constraint firstAttribute="trailing" secondItem="qb5-ss-2iC" secondAttribute="trailing" id="1FK-a1-Kx0"/>
                 <constraint firstAttribute="trailing" secondItem="Bxm-KR-2Jt" secondAttribute="trailing" constant="62" id="1qb-ee-phi"/>
                 <constraint firstItem="qb5-ss-2iC" firstAttribute="leading" secondItem="XXM-RB-0cN" secondAttribute="leading" id="1wC-O8-MGj"/>
                 <constraint firstItem="HQC-uT-IPD" firstAttribute="centerY" secondItem="OUp-Pw-7aT" secondAttribute="centerY" id="2EE-F0-tnk"/>
                 <constraint firstItem="T57-eK-OpY" firstAttribute="leading" secondItem="I6j-PC-f3A" secondAttribute="trailing" constant="10" id="2jW-pG-hvd"/>
                 <constraint firstItem="2Yl-e3-ihJ" firstAttribute="centerY" secondItem="DAY-4a-e6N" secondAttribute="centerY" id="2zy-an-nGN"/>
+                <constraint firstItem="XXM-RB-0cN" firstAttribute="trailing" secondItem="Als-qG-4q2" secondAttribute="trailing" id="4de-yS-EDN"/>
                 <constraint firstItem="OUp-Pw-7aT" firstAttribute="leading" secondItem="MUs-6V-03M" secondAttribute="leading" id="563-1G-cgx"/>
                 <constraint firstItem="DFU-xM-EyY" firstAttribute="top" secondItem="OUp-Pw-7aT" secondAttribute="bottom" constant="20" id="5kB-bO-7RR"/>
                 <constraint firstItem="HQC-uT-IPD" firstAttribute="leading" secondItem="OUp-Pw-7aT" secondAttribute="trailing" constant="10" id="60H-GT-31h"/>
+                <constraint firstItem="XXM-RB-0cN" firstAttribute="trailing" secondItem="DFU-xM-EyY" secondAttribute="trailing" id="6Mk-K4-s62"/>
                 <constraint firstItem="eth-9t-Ibu" firstAttribute="top" secondItem="P7H-CE-plO" secondAttribute="bottom" constant="16" id="80K-Tk-2IQ"/>
                 <constraint firstItem="txA-IT-N5p" firstAttribute="centerY" secondItem="Qoz-9U-wVe" secondAttribute="centerY" id="9Zd-Nj-ANs"/>
                 <constraint firstItem="csj-1n-495" firstAttribute="leading" secondItem="pIH-DQ-gx1" secondAttribute="leading" constant="39" id="9vM-V4-d9D"/>

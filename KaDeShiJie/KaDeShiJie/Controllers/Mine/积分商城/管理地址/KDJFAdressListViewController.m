@@ -37,7 +37,7 @@
         [self requestData];
 
     }];
-    [self setNavigationBarTitle:@"收货地址" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:@"收货地址" tintColor:nil];
     [self.view addSubview:self.footView];
 
     [self.mc_tableview reloadData];

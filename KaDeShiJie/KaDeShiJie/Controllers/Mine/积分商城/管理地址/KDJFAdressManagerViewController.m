@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarTitle:self.whereCome ? @"新增地址" : @"编辑地址" backgroundImage:[UIImage qmui_imageWithColor:UIColor.mainColor]];
+    [self setNavigationBarTitle:self.whereCome ? @"新增地址" : @"编辑地址" tintColor:nil];
     self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
 
     [self.adressTf addTarget:self action:@selector(textFieldChangeAction:) forControlEvents:(UIControlEventEditingDidBegin)];

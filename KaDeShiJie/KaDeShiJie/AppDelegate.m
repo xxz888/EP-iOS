@@ -56,8 +56,8 @@
 - (void)setupApp {
     MCLog(@"配置app基本信息");
 //    SharedDefaults.host = @"https://api.flyaworld.com";
-      SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
-//    SharedDefaults.host = @"https://api.paywooka.com";
+//      SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
+    SharedDefaults.host = @"https://api.paywooka.com";
 
     SharedDefaults.deviceid = [UIDevice identifierByKeychain];
     /* Require，必填 */

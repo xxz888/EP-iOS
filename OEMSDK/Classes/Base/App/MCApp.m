@@ -25,7 +25,7 @@
     [self setAlertControllerAppearance];
     [self setMoreOperationAppearance];
     [self observeNetwork];
-//    [self registPlatforms:application options:launchOptions appDelegate:appDelegate];
+    [self registPlatforms:application options:launchOptions appDelegate:appDelegate];
 //    [MCModelStore.shared getInfos];
     
     if (MCModelStore.shared.userDefaults.not_first_launch || !MCModelStore.shared.brandConfiguration.is_guide_page) {
@@ -67,7 +67,7 @@
     if ([SharedDefaults.host containsString:@"test1012"] || [SharedDefaults.host containsString:@"32"] || [SharedDefaults.host containsString:@"29"]) {
         
     }else{
-//        [self registDns:application options:launchOptions appDelegate:appDelegate];
+        [self registDns:application options:launchOptions appDelegate:appDelegate];
     }
 
 }
