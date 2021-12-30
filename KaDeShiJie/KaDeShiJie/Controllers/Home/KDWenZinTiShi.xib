@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,7 +49,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LP-Hk-PBO">
-                    <rect key="frame" x="100" y="298" width="194" height="32"/>
+                    <rect key="frame" x="100" y="351" width="194" height="32"/>
                     <color key="backgroundColor" red="0.94117647059999998" green="0.4941176471" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="194" id="Jbu-GK-xPd"/>
@@ -74,7 +74,6 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ehi-wR-cLl" secondAttribute="trailing" constant="6" id="6cb-zT-ZxY"/>
                 <constraint firstItem="ows-u6-8XY" firstAttribute="top" secondItem="7QD-lv-0v8" secondAttribute="bottom" constant="15" id="BRd-8P-Koh"/>
-                <constraint firstItem="2LP-Hk-PBO" firstAttribute="top" secondItem="ows-u6-8XY" secondAttribute="bottom" constant="22" id="CK8-Yk-veK"/>
                 <constraint firstItem="UP4-Eq-0Hr" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="L3d-Sn-W83"/>
                 <constraint firstItem="ows-u6-8XY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="OZ1-Ve-EvG"/>
                 <constraint firstItem="2LP-Hk-PBO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="dv2-Y6-YKV"/>
@@ -84,6 +83,7 @@
                 <constraint firstItem="ows-u6-8XY" firstAttribute="centerX" secondItem="UP4-Eq-0Hr" secondAttribute="centerX" id="m8F-A2-hCO"/>
                 <constraint firstItem="Ehi-wR-cLl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="nt8-ZX-UxP"/>
                 <constraint firstItem="7QD-lv-0v8" firstAttribute="top" secondItem="UP4-Eq-0Hr" secondAttribute="bottom" constant="15" id="oMA-Nt-kLE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2LP-Hk-PBO" secondAttribute="bottom" constant="20" id="u3a-uq-ato"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>
@@ -91,6 +91,10 @@
                     <integer key="value" value="12"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="content" destination="ows-u6-8XY" id="axC-Tp-FiC"/>
+                <outlet property="title" destination="7QD-lv-0v8" id="dIc-aj-bl6"/>
+            </connections>
             <point key="canvasLocation" x="197.10144927536234" y="-69.977678571428569"/>
         </view>
     </objects>

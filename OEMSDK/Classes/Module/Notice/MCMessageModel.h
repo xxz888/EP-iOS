@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *createdTime;
 
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, copy) NSString *noticeType;
 
 
 //status = Normal,

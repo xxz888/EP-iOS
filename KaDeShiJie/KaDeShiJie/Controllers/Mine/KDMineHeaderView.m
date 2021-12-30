@@ -63,7 +63,13 @@
  
     //推广二维码
     [self.erweimaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCPagingStore pagingURL:rt_share_single];
+        [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/propaganda/link" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+            if (resp[@"link"]) {
+                MCModelStore.shared.shareLink = resp[@"link"];
+            }
+            [MCPagingStore pagingURL:rt_share_single];
+
+        }];
     }];
     //我的卡包
     [self.kabaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {

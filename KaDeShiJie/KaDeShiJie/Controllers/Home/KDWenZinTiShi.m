@@ -11,9 +11,13 @@
 @implementation KDWenZinTiShi
 + (instancetype)renZhengView {
     KDWenZinTiShi *view = [[[NSBundle mainBundle] loadNibNamed:@"KDWenZinTiShi" owner:nil options:nil] lastObject];
+    
     return view;
 }
-
+-(void)setData{
+    self.title.text = self.titleString;
+    self.content.text = self.contentString;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

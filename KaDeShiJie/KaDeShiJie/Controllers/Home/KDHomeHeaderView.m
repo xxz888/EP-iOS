@@ -15,7 +15,7 @@
 #import "KDGatheringViewController.h"
 #import <MCMessageModel.h>
 #import "KDDirectRefundViewController.h"
-
+#import "QMUIModalPresentationViewController.h"
 #import <OEMSDK/MCWebViewController.h>
 #import "KDWebContainer.h"
 #import "KDCreditModel.h"
@@ -28,6 +28,7 @@
 #import "MCManualRealNameController.h"
 #import "jintMyWallViewController.h"
 #import "UIView+Extension.h"
+#import "KDWenZinTiShi.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -271,13 +272,15 @@
     [MCPagingStore pagingURL:rt_notice_list];
 }
 - (void)getMessage {
+    kWeakSelf(self)
     [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-                self.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
-        if ([self.dataArray count] > 0) {
-            self.cyView.localizationImageNamesGroup = self.dataArray;
+        weakself.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
+        if ([weakself.dataArray count] > 0) {
+            weakself.cyView.localizationImageNamesGroup = weakself.dataArray;
         }
     }];
 }
+    
 
 - (void)pushTopDelegateVC
 {

@@ -58,7 +58,7 @@
     NSDictionary * dic = self.dataArray[indexPath.row];
     cell.titleLbl.text = [NSString stringWithFormat:@"%@元现金抵扣券",dic[@"maximumUsageAmount"]];
     cell.priceLbl.text =  [NSString stringWithFormat:@"%@",dic[@"maximumUsageAmount"]];
-    cell.shouxufeiLbl.text = [NSString stringWithFormat:@"单次抵扣手续费的%.0f%%",[dic[@"discountRate"] doubleValue] * 100];
+    cell.shouxufeiLbl.text = [NSString stringWithFormat:@"单次抵扣手续费的%.0f%%",[dic[@"discountRate"] doubleValue]];
     cell.shengyueLbl.text =  [NSString stringWithFormat:@"剩余可抵金额：%@",dic[@"usageAmount"]];
     cell.beizhuLbl.text =   [NSString stringWithFormat:@"备注：%@",dic[@"describe"]];
     return cell;

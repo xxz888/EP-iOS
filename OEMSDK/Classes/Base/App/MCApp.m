@@ -223,6 +223,8 @@
     TOKEN = nil;
     SharedUserInfo = [[MCUserInfo alloc] init];
     SharedDefaults.not_auto_logonin = NO;
+    MCModelStore.shared.isFirstLogin = NO;
+
     if (!SharedDefaults.not_rember_pwd) {
         SharedDefaults.pwd = @"";
     }

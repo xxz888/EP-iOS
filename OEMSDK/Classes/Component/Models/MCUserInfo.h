@@ -70,6 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString * consumptionRate;
 @property(nonatomic, strong) NSString * extraFee;
 
+@property(nonatomic, strong) NSString * agentPromoteId;
 
 @end
 

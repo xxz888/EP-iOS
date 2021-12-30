@@ -431,7 +431,7 @@ typedef struct {
 
 
 + (UIImage *)creatShareImageWithImage:(UIImage *)image {
-    
+
     NSString *url =MCModelStore.shared.shareLink;//[NSString stringWithFormat:@"%@?phone=%@&brand_id=%@&ip=%@", SharedBrandInfo.shareMainAddress,SharedUserInfo.phone,SharedConfig.brand_id,BCFI.pureHost];
     return [self creatShareImageWithImage:image shareUrlString:url];
 }

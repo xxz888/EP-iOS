@@ -14,7 +14,7 @@
 #import "KDGuidePageManager.h"
 #import "KDRenZhengView.h"
 #import "KDWenZinTiShi.h"
-
+#import "MCMessageModel.h"
 @interface KDHomeViewController ()
 @property(nonatomic, strong) QMUIModalPresentationViewController *withdrawTypeModal;
 @property (nonatomic, strong) KDHomeHeaderView *headerView;
@@ -46,7 +46,11 @@
     
     [self.navigationController.tabBarController.tabBar setHidden:NO];
 
-    
+    [self getMessage];
+    if (MCModelStore.shared.isFirstLogin) {
+        [self popFirstLogin];
+        MCModelStore.shared.isFirstLogin= NO;
+    }
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -148,10 +152,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
-    if (MCModelStore.shared.isFirstLogin) {
-        [self popFirstLogin];
-        MCModelStore.shared.isFirstLogin= NO;
-    }
+
     
     [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
 
@@ -161,5 +162,61 @@
 - (void)clickKFAction
 {
     [self.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+}
+- (void)getMessage {
+    kWeakSelf(self)
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+         NSMutableArray * dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
+    
+        //Dialog
+        NSString * alertString = @"";
+        NSString * alertTitle = @"";
+        NSString * msgId = @"";
+        for (MCMessageModel * model in dataArray) {
+            if ([model.noticeType isEqualToString:@"Diamond"]) {
+                msgId = model.id;
+                alertString = model.content;
+                alertTitle = model.title;
+                break;
+            }
+        }
+           
+        NSString * currentId =  [NSString stringWithFormat:@"%@%@",@"msgShow",msgId];
+        NSString * saveId = [[NSUserDefaults standardUserDefaults] objectForKey:currentId];
+        if (saveId && [saveId isEqualToString:@"1"]) {
+            
+        }else{
+            if (alertString.length == 0) {
+                
+            }else{
+                if (msgId.length == 0) {
+                    
+                }else{
+                    [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:currentId];
+                    [self messageAlert1:alertTitle content:alertString];
+                }
+               
+            }
+
+        }
+    
+    }];
+}
+-(void)messageAlert1:(NSString *)title content:(NSString *)content{
+    QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
+    KDWenZinTiShi * renzhengView = [KDWenZinTiShi renZhengView];
+    renzhengView.titleString = title;
+    renzhengView.contentString = content;
+    [renzhengView setData];
+    renzhengView.frame = CGRectMake(0, 0, 316, 330);
+    alert.contentView = renzhengView;
+    alert.dimmingView.userInteractionEnabled = NO;
+    [alert showWithAnimated:YES completion:nil];
+    
+    
+    renzhengView.closeActionBlock = ^{
+        [alert hideWithAnimated:YES completion:nil];
+
+    };
 }
 @end

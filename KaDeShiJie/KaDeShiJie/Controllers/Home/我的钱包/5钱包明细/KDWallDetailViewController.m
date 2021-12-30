@@ -42,6 +42,10 @@
     }];
     
 }
+-(void)layoutTableView{
+    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
+
+}
 #pragma mark - QMUITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

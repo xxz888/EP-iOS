@@ -238,7 +238,7 @@
 }
 -(void)loginSucess:(MCNetResponse * _Nonnull) resp{
 
-   
+    MCModelStore.shared.isFirstLogin = YES;
     // 2.保存登录信息
     NSDictionary *result = (NSDictionary *)resp;
     TOKEN = result[@"token"];

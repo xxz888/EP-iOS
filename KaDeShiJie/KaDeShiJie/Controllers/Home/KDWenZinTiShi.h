@@ -14,6 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDWenZinTiShi : UIView
 @property(nonatomic,copy)CloseActionBlock closeActionBlock;
 + (instancetype)renZhengView;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+
+@property (weak, nonatomic) IBOutlet UILabel *content;
+
+-(void)setData;
+@property(nonatomic,strong)NSString * titleString;
+@property(nonatomic,strong)NSString * contentString;
+
 @end
 
 NS_ASSUME_NONNULL_END
