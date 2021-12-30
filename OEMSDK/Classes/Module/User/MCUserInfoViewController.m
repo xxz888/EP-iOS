@@ -46,7 +46,7 @@
         @{@"title":@"真实姓名",
           @"subTitle":SharedUserInfo.name?:@"-"},
         @{@"title":@"我的推荐人",
-          @"subTitle":SharedUserInfo.promoteId ?:@"-"},
+          @"subTitle":SharedUserInfo.agentId ?:@"-"},
         @{@"title":@"认证时间",
           @"subTitle":SharedUserInfo.certificationTime ?:@"-"},
         @{@"title":@"当前等级",

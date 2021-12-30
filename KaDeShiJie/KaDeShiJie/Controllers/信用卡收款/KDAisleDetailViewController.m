@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationBarTitle:self.model.channelType tintColor:[UIColor mainColor]];
+    [self setNavigationBarTitle:self.model.title tintColor:[UIColor mainColor]];
     self.mc_tableview.tableHeaderView = [[KDAisleDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     self.mc_tableview.delegate = self;
     self.mc_tableview.dataSource = self;

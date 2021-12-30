@@ -12,6 +12,7 @@
 #import "KDChannelView.h"
 #import "KDDirectRefundModel.h"
 #import "KDBingCardNewViewController.h"
+#import "KDTrandingRecordViewController.h"
 @interface KDPlanPreviewViewController ()<UITableViewDataSource, KDPlanPreviewViewDelegate, UITableViewDelegate>
 @property (nonatomic, strong) NSString * getSmsUrl;
 @property (nonatomic, strong) NSString * confirmSmsUrl;
@@ -113,7 +114,8 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [MCToast showMessage:@"计划执行成功"];
         });
-        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        
+        [weakSelf.navigationController pushViewController:[KDDirectRefundViewController new] animated:YES];
     } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
@@ -128,7 +130,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [MCToast showMessage:@"计划已终止"];
         });
-        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        [weakSelf.navigationController pushViewController:[KDDirectRefundViewController new] animated:YES];
     } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {

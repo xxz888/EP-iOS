@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *singeMinAmount;
 @property (nonatomic, copy) NSString *createdTime;
 
+@property (nonatomic, copy) NSString *bankName;
 
 @end
 

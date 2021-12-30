@@ -21,6 +21,10 @@
 @property (nonatomic, strong) KDTrandingRecordHeaderView *headerView;
 @property (nonatomic, copy) NSString *year;
 @property (nonatomic, copy) NSString *month;
+@property (nonatomic, copy) NSString *startDate;
+@property (nonatomic, copy) NSString *endDate;
+
+
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *repaymentArray;
@@ -85,7 +89,7 @@
     self.year = [time substringWithRange:NSMakeRange(0, 4)];
     self.month = [time substringWithRange:NSMakeRange(4, 2)];
     
-//    [self getHistory];
+    [self getHistory];
 }
 - (void)headerViewDelegateWithType:(NSInteger)type
 {
@@ -195,6 +199,30 @@
     }
 }
 
+- (NSArray *)getMonthFirstAndLastDayWith:(NSString *)dateStr{
+    
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd"];
+    NSDate *newDate=[format dateFromString:dateStr];
+    double interval = 0;
+    NSDate *firstDate = nil;
+    NSDate *lastDate = nil;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    BOOL OK = [calendar rangeOfUnit:NSCalendarUnitMonth startDate:& firstDate interval:&interval forDate:newDate];
+    
+    if (OK) {
+        lastDate = [firstDate dateByAddingTimeInterval:interval - 1];
+    }else {
+        return @[@"",@""];
+    }
+
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    [myDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *firstString = [myDateFormatter stringFromDate: firstDate];
+    NSString *lastString = [myDateFormatter stringFromDate: lastDate];
+    return @[firstString, lastString];
+}
 
 #pragma mark - 数据请求
 - (void)getHistory
@@ -204,14 +232,16 @@
     [self.mc_tableview reloadData];
 //    /api/v1/player/plan/order
     kWeakSelf(self);
+    self.startDate = [NSString stringWithFormat:@"%@-%@-%@",self.year,self.month,@"01"];
+    self.endDate = [self getMonthFirstAndLastDayWith:self.startDate][1];
 
     //刷卡
     NSString * url = @"";
     if (self.type == 1) {
-        url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=ReceivePayment&current=%@&size=%@",@"0",@"20"];
+        url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=ReceivePayment&current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"100",self.startDate,self.endDate];
     }
     if (self.type == 2) {
-        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@",@"0",@"20"];
+        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"100",self.startDate,self.endDate];
     }
     [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
         [weakself.mc_tableview.mj_header endRefreshing];

@@ -13,20 +13,7 @@
 @end
 
 @implementation KDJFAdressManagerViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setNavigationBarTitle:self.whereCome ? @"新增地址" : @"编辑地址" tintColor:nil];
-    self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
-
-    [self.adressTf addTarget:self action:@selector(textFieldChangeAction:) forControlEvents:(UIControlEventEditingDidBegin)];
-    
-    
-    if (!self.whereCome) {
-        self.shouhuorenTf.text = self.startDic[@"receiptName"];
-    }
-}
--(void)textFieldChangeAction:(id)tf{
+- (IBAction)adressAction:(id)sender {
     [self.view endEditing:YES];
     BRAddressPickerView * addressPicker = [[BRAddressPickerView alloc] initWithPickerMode:BRAddressPickerModeCity];
     addressPicker.title = @"请选择省市";
@@ -49,6 +36,17 @@
         }];
     };
     [addressPicker show];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setNavigationBarTitle:self.whereCome ? @"新增地址" : @"编辑地址" tintColor:nil];
+    self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
+
+    
+    if (!self.whereCome) {
+        self.shouhuorenTf.text = self.startDic[@"receiptName"];
+    }
 }
 /*
 #pragma mark - Navigation

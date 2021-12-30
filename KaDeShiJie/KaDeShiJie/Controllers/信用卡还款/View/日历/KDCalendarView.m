@@ -212,25 +212,21 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     MSSCalendarModel *calendarItem = self.dataArray[indexPath.row];
-//    KDCalendarCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
-//    cell.
-    //得到还款日
-//    NSString * repayString = [NSString stringWithFormat:@"%@-%ld-%ld",
-//                              [MCDateStore getUseYear:self.currentMonth],
-//                              self.repaymentMonth,
-//                              self.repaymentDay];
-    //点击的日期
+    NSString * repayString =  [NSString stringWithFormat:@"%@-%ld-%ld",
+                              [MCDateStore getUseYear:self.currentMonth],
+                              self.repaymentMonth,
+                              self.repaymentDay];
+    //选择的日期
     NSString * clickString = [NSString stringWithFormat:@"%ld-%ld-%ld",calendarItem.year,calendarItem.month,calendarItem.day];
-
-    //结果说明：resp_message为0代表当天不执行计划，为1代表当天开始执行计划
-//    if (calendarItem.day == [MCDateStore getCurrentDay] && self.selectCurrent == 0) {
-//        return;
-//    }
+    //如果日期在当前日期和还款日之间，就亮色，否则就灰色
+    if ([MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
+       
+    }else{
+        return;
+    }
     
-//    if (![MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
-//        return;
-//    }
-
+    
+    
     
     if (calendarItem.labType == MSSCircleLabelTypeSelected) {
         if (calendarItem.month == self.currentMonth && calendarItem.day == self.billDay) { //账单日

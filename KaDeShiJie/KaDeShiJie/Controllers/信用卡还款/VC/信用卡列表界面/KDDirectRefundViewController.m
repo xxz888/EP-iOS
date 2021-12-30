@@ -231,4 +231,10 @@
 //        }
 //    }];
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    　　if ([self.navigationController.viewControllers indexOfObject:[KDPlanPreviewViewController class]] != NSNotFound) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    　　}
+}
 @end

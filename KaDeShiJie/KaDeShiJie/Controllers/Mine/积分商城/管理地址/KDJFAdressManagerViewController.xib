@@ -129,16 +129,28 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws1-u9-t52">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="  "/>
+                                            <connections>
+                                                <action selector="adressAction:" destination="-1" eventType="touchUpInside" id="8sK-dW-bUB"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="2XN-79-Odc" secondAttribute="trailing" id="6ar-ZK-G6E"/>
                                         <constraint firstItem="FyE-Wl-mw5" firstAttribute="centerY" secondItem="1tH-2u-fPL" secondAttribute="centerY" id="JtI-7j-ULe"/>
+                                        <constraint firstItem="2XN-79-Odc" firstAttribute="top" secondItem="ws1-u9-t52" secondAttribute="bottom" id="T0A-8p-wgZ"/>
                                         <constraint firstItem="2XN-79-Odc" firstAttribute="leading" secondItem="1tH-2u-fPL" secondAttribute="leading" id="YJV-8T-Lgi"/>
                                         <constraint firstItem="6lt-Rq-cfB" firstAttribute="centerY" secondItem="1tH-2u-fPL" secondAttribute="centerY" id="Z2U-Rp-3nt"/>
                                         <constraint firstItem="6lt-Rq-cfB" firstAttribute="height" secondItem="1tH-2u-fPL" secondAttribute="height" id="coC-s4-da1"/>
                                         <constraint firstAttribute="bottom" secondItem="2XN-79-Odc" secondAttribute="bottom" id="iKe-ON-YT6"/>
+                                        <constraint firstAttribute="trailing" secondItem="ws1-u9-t52" secondAttribute="trailing" id="lfE-bc-aY2"/>
+                                        <constraint firstItem="ws1-u9-t52" firstAttribute="leading" secondItem="1tH-2u-fPL" secondAttribute="leading" id="nAi-oZ-rYV"/>
                                         <constraint firstItem="FyE-Wl-mw5" firstAttribute="leading" secondItem="1tH-2u-fPL" secondAttribute="leading" constant="15" id="qeB-xc-STW"/>
+                                        <constraint firstItem="ws1-u9-t52" firstAttribute="top" secondItem="1tH-2u-fPL" secondAttribute="top" id="saW-Va-K4p"/>
                                         <constraint firstAttribute="trailing" secondItem="6lt-Rq-cfB" secondAttribute="trailing" constant="15" id="zzv-nC-bYe"/>
                                     </constraints>
                                 </view>

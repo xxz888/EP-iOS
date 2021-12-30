@@ -37,7 +37,7 @@
 {
     _model = model;
     
-    self.leftLabel.text = model.bank;
+    self.leftLabel.text = model.bankName;
     NSString * str1 = [NSString stringWithFormat:@"%@", model.singeMinAmount];
 //    str1 = [self getDealNumwithstring:str1];
     

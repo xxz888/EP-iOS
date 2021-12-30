@@ -64,7 +64,7 @@
     BCFI.brand_id = @"100";
     BCFI.key_jpush = @"ca5246c0e40eaf60a38794cd";
     BCFI.key_meiqia = @"1c392b4bf42c4c4988792714636ad6f5";
-    BCFI.key_dns = @"41611";
+    BCFI.key_dns = @"112161";
     BCFI.color_main = [UIColor qmui_colorWithHexString:@"#FC9B33"];//7198ff
     BCFI.image_logo = [UIImage imageNamed:@"logo"];
     BCFI.image_login_logo = [UIImage imageNamed:@"login_logo"];

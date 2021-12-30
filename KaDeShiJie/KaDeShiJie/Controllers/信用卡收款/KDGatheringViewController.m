@@ -37,9 +37,7 @@
 
 @implementation KDGatheringViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -84,7 +82,7 @@
 
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);

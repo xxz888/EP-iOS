@@ -144,39 +144,39 @@
     
     
     //还款日
-    NSString *repaymentDay  = self.directModel.repaymentDay < 10 ?
-    [NSString stringWithFormat:@"0%ld",self.directModel.repaymentDay] :
-    [NSString stringWithFormat:@"%ld",self.directModel.repaymentDay];
+    NSString *repaymentDay  = [self.directModel.repaymentDate integerValue] < 10 ?
+    [NSString stringWithFormat:@"0%ld",[self.directModel.repaymentDate integerValue]] :
+    [NSString stringWithFormat:@"%ld",[self.directModel.repaymentDate integerValue]];
     
     //账单月份
     NSString * jisuanBillMonth = @"";
     //还款月份
     NSString * jisuanRepaymentMonth = @"";
 
-    if (self.directModel.repaymentDay > self.directModel.billDay) {
-        if (currentDay <= self.directModel.repaymentDay) {
+    if ([self.directModel.repaymentDate integerValue] > [self.directModel.billingDate integerValue]) {
+        if (currentDay <= [self.directModel.repaymentDate integerValue]) {
             jisuanBillMonth = currentMonth;
             jisuanRepaymentMonth = currentMonth;
         }else{
             jisuanBillMonth = nextMonth;
             jisuanRepaymentMonth = nextMonth;
         }
-    }else if (self.directModel.repaymentDay < self.directModel.billDay){
-        if (currentDay >= self.directModel.billDay) {
+    }else if ([self.directModel.repaymentDate integerValue] < [self.directModel.billingDate integerValue]){
+        if (currentDay >= [self.directModel.billingDate integerValue]) {
             jisuanBillMonth = currentMonth;
             jisuanRepaymentMonth = nextMonth;
-        }else if (currentDay > self.directModel.repaymentDay && currentDay < self.directModel.billDay){
+        }else if (currentDay > [self.directModel.repaymentDate integerValue] && currentDay < [self.directModel.billingDate integerValue]){
             jisuanBillMonth = currentMonth;
             jisuanRepaymentMonth = nextMonth;
-        }else if (currentDay <= self.directModel.repaymentDay){
+        }else if (currentDay <= [self.directModel.repaymentDate integerValue]){
             jisuanBillMonth = upperDay;
             jisuanRepaymentMonth = currentMonth;
         }
-    }else if (self.directModel.repaymentDay == self.directModel.billDay){
-        if (currentDay < self.directModel.repaymentDay) {
+    }else if ([self.directModel.repaymentDate integerValue] == [self.directModel.billingDate integerValue]){
+        if (currentDay < [self.directModel.repaymentDate integerValue]) {
             jisuanBillMonth = upperDay;
             jisuanRepaymentMonth = currentMonth;
-        }else if (currentDay > self.directModel.repaymentDay){
+        }else if (currentDay > [self.directModel.repaymentDate integerValue]){
             jisuanBillMonth = currentMonth;
             jisuanRepaymentMonth = nextMonth;
         }
@@ -586,12 +586,12 @@
         //    如还款日期选择包含今天 则还需+1天
         NSInteger count2 = ([self inRefundMoneyToNewMoney] / ([self.cardBalanceView.text doubleValue] * count)) + 1;
         if ([self.timeArray containsObject:planStartDate]) {
-            if ([self.timeArray count] <= count2+1) {
+            if ([self.timeArray count] < count2+1) {
                 [MCToast showMessage:@"选择的日期少于实际计划日期,请增加还款天数或余额"];
                 return;
             }
         }else{
-            if ([self.timeArray count] <= count2) {
+            if ([self.timeArray count] < count2+2) {
                 [MCToast showMessage:@"选择的日期少于实际计划日期,请增加还款天数或余额"];
                 return;
             }
@@ -736,8 +736,8 @@
 - (KDCalendarView *)calendar {
     if (!_calendar) {
         _calendar = [[[NSBundle mainBundle] loadNibNamed:@"KDCalendarView" owner:nil options:nil] lastObject];
-        _calendar.billDay =      1;//self.directModel.billDay;         //账单日
-        _calendar.repaymentDay = 10;//self.directModel.repaymentDay;    //还款日
+        _calendar.billDay =     [self.directModel.billingDate integerValue];         //账单日
+        _calendar.repaymentDay = [self.directModel.repaymentDate integerValue];    //还款日
         _calendar.billMonth = self.billMonth;//账单月
         _calendar.repaymentMonth = self.repaymentMonth;//还款月
         
@@ -757,9 +757,41 @@
             [weakSelf showCalendarDateWithChose:dateArray];
         };
     }
-//    _calendar.needDayCount = [self needDay];    //
     
-//    _calendar.needDayLbl.text = [NSString stringWithFormat:@"(至少选择 %ld 天)", [self needDay]];
+    
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *planStartDate = [formatter stringFromDate:date];
+    //    前端初步校验 选择的日期总数 > 还款金额 / (卡余额 * 还款次数) + 1天
+    //    即：卡余额1000，还款1万 每日还款一次 需要选择 10 + 1天
+    //    如还款日期选择包含今天 则还需+1天
+    NSInteger count = 0;
+    if([self.refundCountBtn.titleLabel.text isEqualToString:@"1次"]) {
+        count = 1;
+    }
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"2次"]) {
+        count = 2;
+    }
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"3次"]) {
+        count = 3;
+    }
+    if ([self.refundCountBtn.titleLabel.text isEqualToString:@"4次"]) {
+        count = 4;
+    }
+    
+    NSInteger count2 = ([self inRefundMoneyToNewMoney] / ([self.cardBalanceView.text doubleValue] * count)) + 1;
+    if ([self.timeArray containsObject:planStartDate]) {
+        self.needDay = count2+1;
+    }else{
+        self.needDay = count2+2;
+
+    }
+//    _calendar.needDayCount = [self needDay];    //
+//
+    _calendar.needDayLbl.hidden = NO;
+    _calendar.needDayLbl.text = [NSString stringWithFormat:@"(至少选择 %ld 天)", self.needDay];
     
     return _calendar;
 }

@@ -35,9 +35,9 @@
         self.header = [MCXinyongkaHeader newFromNib];
         if (self.model) {
             self.header.model = self.model;
-            [self setNavigationBarTitle:@"修改信用卡" tintColor:nil];
+            [self setNavigationBarTitle:@"修改信用卡" tintColor:[UIColor whiteColor]];
         } else {
-            [self setNavigationBarTitle:@"添加信用卡" tintColor:nil];
+            [self setNavigationBarTitle:@"添加信用卡" tintColor:[UIColor whiteColor]];
         }
         self.mc_tableview.tableHeaderView = self.header;
     } else {
@@ -46,9 +46,9 @@
         self.chuxuheader.whereCome = self.whereCome;
         if (self.model) {
             self.chuxuheader.model = self.model;
-            [self setNavigationBarTitle:@"修改储蓄卡" tintColor:nil];
+            [self setNavigationBarTitle:@"修改储蓄卡" tintColor:[UIColor whiteColor]];
         } else {
-            [self setNavigationBarTitle:@"添加储蓄卡" tintColor:nil];
+            [self setNavigationBarTitle:@"添加储蓄卡" tintColor:[UIColor whiteColor]];
             
             
 //            UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];

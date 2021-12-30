@@ -61,18 +61,18 @@
         self.cLab.text = @"还款日";
     }
 //还款日
-//    NSString * repayString =  [NSString stringWithFormat:@"%@-%ld-%ld",
-//                              [MCDateStore getUseYear:self.currentMonth],
-//                              self.repaymentMonth,
-//                              self.repaymentDay];
+    NSString * repayString =  [NSString stringWithFormat:@"%@-%ld-%ld",
+                              [MCDateStore getUseYear:self.currentMonth],
+                              self.repaymentMonth,
+                              self.repaymentDay];
     //选择的日期
     NSString * clickString = [NSString stringWithFormat:@"%ld-%ld-%ld",model.year,model.month,model.day];
     //如果日期在当前日期和还款日之间，就亮色，否则就灰色
-//    if ([MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
+    if ([MCDateStore date:clickString isBetweenDate:[NSDate date] andDate:@"2030-01-01"]) {
         self.cLab.textColor = UIColorMakeWithHex(@"#626262");
-//    }else{
-//        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
-//    }
+    }else{
+        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
+    }
     NSInteger data1 = [self getSelectShiJianChuo:[NSString stringWithFormat:@"%ld-%ld-%ld",model.year,model.month,model.day]];
     NSInteger  data2 = [self getCurrentShiJianChuo];
     if (model.day == 27) {
@@ -90,13 +90,13 @@
     
 
     self.cLab.textColor = model.selectItem ? KWhiteColor:self.cLab.textColor;
-    
-    self.cLab.textColor = model.labType == 2 || model.labType == 3 ? KWhiteColor : self.cLab.textColor;
+//
+//    self.cLab.textColor = model.labType == 2 || model.labType == 3 ? KWhiteColor : self.cLab.textColor;
     
     //这里判断当天是否可以点击
     //结果说明：resp_message为0代表当天不执行计划，为1代表当天开始执行计划
     if (model.day == [MCDateStore getCurrentDay] && self.selectCurrent == 0) {
-        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
+//        self.cLab.textColor = UIColorMakeWithHex(@"#B3B3B3");
     }
 }
 -(NSInteger )getCurrentShiJianChuo{
