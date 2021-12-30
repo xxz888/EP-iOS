@@ -65,7 +65,6 @@
         }
         self.mc_tableview.tableHeaderView = self.chuxuheader;
     }
-    
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -93,5 +92,7 @@
 -(void)clickRightBtnAction{
 [MCServiceStore pushMeiqiaVC];
 }
-
+- (void)layoutTableView {
+    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop+1, SCREEN_WIDTH, SCREEN_HEIGHT- NavigationContentTop-1);
+}
 @end

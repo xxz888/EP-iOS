@@ -32,7 +32,7 @@
     [super viewDidLoad];
     self.name = @"";
     self.phone= @"";
-    self.page = 1;
+    self.page = 0;
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F6F6F6"];
     [self setNavigationBarTitle:self.whereCome == 1 ? @"直推用户" : @"间推用户" tintColor:nil];
     [self.yyTableView registerNib:[UINib nibWithNibName:@"KDPPopularizeTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDPPopularizeTableViewCell"];
@@ -44,7 +44,7 @@
     self.segmentLine2.backgroundColor = [UIColor clearColor];
     [self requestData];
     self.yyTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        self.page = 1;
+        self.page = 0;
         [self requestData];
     }];
     
@@ -84,7 +84,7 @@
             [weakSelf.yyTableView.mj_footer endRefreshing];
         }
         
-        if (weakSelf.page == 1) {
+        if (weakSelf.page == 0) {
             [weakSelf.dataArray removeAllObjects];
             [weakSelf.dataArray addObjectsFromArray:resp[@"data"]];
             
@@ -145,7 +145,7 @@
         self.segmentLine2.backgroundColor = MAINCOLOR;
         self.segmentLine1.backgroundColor = [UIColor clearColor];
     }
-    self.page = 1;
+    self.page = 0;
     
     [self.dataArray removeAllObjects];
 

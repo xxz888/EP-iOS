@@ -14,6 +14,7 @@
 #import "KDTrandingRecordViewController.h"
 #import "KDJFShopManagerViewController.h"
 #import "KDMineKehuViewController.h"
+#import "KDMineCouponController.h"
 
 #import "KDWebContainer.h"
 #import "KDJFShopViewController.h"
@@ -75,8 +76,8 @@
     }];
     //我的客服
     [self.kefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
-
+        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineCouponController alloc] init] animated:YES];
+        
     }];
     //关于我们
     [self.guanyuwomenView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {

@@ -166,11 +166,37 @@
         }
         
         [self.sessionManager mc_put:url parameters:dic ok:^(NSDictionary * _Nonnull resp) {
-    
-            [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                [weakSelf.navigationController popViewControllerAnimated:YES];
+            
+            if (TOKEN) {
+                [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
 
-            }];
+                }];
+            }else{
+                // 2.保存登录信息
+                NSDictionary *result = (NSDictionary *)resp;
+                TOKEN = result[@"token"];
+                MCModelStore.shared.preUserPhone = result[@"phone"];
+                
+                SharedDefaults.extraFee = result[@"info"][@"extraFee"];
+                SharedDefaults.hasPayPassword = result[@"info"][@"hasPayPassword"];
+
+                SharedDefaults.phone = result[@"phone"];
+                SharedDefaults.nickname = result[@"info"][@"nickname"];
+                SharedDefaults.certification = [NSString stringWithFormat:@"%@",result[@"info"][@"certification"]];
+                SharedDefaults.level = [NSString stringWithFormat:@"%@",result[@"info"][@"level"]];
+                SharedDefaults.receivePaymentRate =[NSString stringWithFormat:@"%@",result[@"info"][@"receivePaymentRate"]];
+                SharedDefaults.agentId = [NSString stringWithFormat:@"%@",result[@"info"][@"agentId"]];
+                SharedDefaults.repaymentRate = [NSString stringWithFormat:@"%@",result[@"info"][@"repaymentRate"]];
+                SharedDefaults.token = [NSString stringWithFormat:@"%@",result[@"token"]];
+                [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+                
+                [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+              
+                }];
+               
+            }
+          
         } other:^(NSDictionary * _Nonnull resp) {
             
         } failure:^(NSError * _Nonnull error) {

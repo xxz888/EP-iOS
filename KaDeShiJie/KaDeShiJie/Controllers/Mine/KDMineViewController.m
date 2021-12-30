@@ -35,19 +35,12 @@
     [self.navigationController.tabBarController.tabBar setHidden:NO];
     
     
-    //
-    NSString * level = @"";
-    if (SharedUserInfo.level) {
-        if ([SharedUserInfo.level isEqualToString:@"Normal"]) {
-            level = @"普通用户";
-        }else{
-            level = @"钻石用户";
-        }
-    }
+
  
+    NSString * level = [self getLevel:SharedUserInfo.level];
 
     self.header.phoneLabel.text = SharedUserInfo.phone;
-    self.header.nameLabel.text = [NSString stringWithFormat:@"%@",SharedUserInfo.nickname];
+    self.header.nameLabel.text = [NSString stringWithFormat:@"%@ %@",SharedUserInfo.nickname,level];
     self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
     [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:SharedUserInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
     
@@ -111,18 +104,7 @@
         }
         
         //
-        NSString * level = @"";
-        if (userInfo.level) {
-            if ([userInfo.level isEqualToString:@"Normal"]) {
-                level = @"普通用户";
-            }else if ([userInfo.level isEqualToString:@"Diamond"]) {
-                level = @"VIP用户";
-            }else{
-                level = userInfo.level;
-            }
-        }
-     
-    
+        NSString * level = [self getLevel:userInfo.level];
         self.header.phoneLabel.text = userInfo.phone;
         self.header.nameLabel.text = [NSString stringWithFormat:@"%@ %@",userInfo.nickname,level];
         self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
@@ -141,7 +123,40 @@
     }];
     
 }
--(void)requestData{
-
+-(NSString *)getLevel:(NSString *)level{
+    if ([level isEqualToString:@"Normal"]) {
+        return  @"普通用户";
+    }
+    if ([level isEqualToString:@"Diamond"]) {
+        return  @"VIP会员";
+    }
+    if ([level containsString:@"1"]) {
+        return  @"一星";
+    }
+    if ([level containsString:@"2"]) {
+        return  @"二星";
+    }
+    if ([level containsString:@"3"]) {
+        return  @"三星";
+    }
+    if ([level containsString:@"4"]) {
+        return  @"四星";
+    }
+    if ([level containsString:@"5"]) {
+        return  @"五星";
+    }
+    if ([level containsString:@"6"]) {
+        return  @"六星";
+    }
+    if ([level containsString:@"7"]) {
+        return  @"七星";
+    }
+    if ([level containsString:@"8"]) {
+        return  @"八星";
+    }
+    if ([level containsString:@"9"]) {
+        return  @"九星";
+    }
+    return  @"";
 }
 @end

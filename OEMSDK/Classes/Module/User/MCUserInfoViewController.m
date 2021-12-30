@@ -50,7 +50,7 @@
         @{@"title":@"认证时间",
           @"subTitle":SharedUserInfo.certificationTime ?:@"-"},
         @{@"title":@"当前等级",
-          @"subTitle":SharedUserInfo.level ?:@"-"},
+          @"subTitle":[self getLevel:SharedUserInfo.level] ?:@"-"},
         @{@"title":@"邀请码",
           @"subTitle":SharedUserInfo.promoteId ?:@"-"},
         @{@"title":@"实名状态",
@@ -59,6 +59,42 @@
       @"subTitle":[NSString stringWithFormat:@"%@元/笔",SharedUserInfo.withdrawFee]}*/
     ];
     [self.mc_tableview reloadData];
+}
+-(NSString *)getLevel:(NSString *)level{
+    if ([level isEqualToString:@"Normal"]) {
+        return  @"普通用户";
+    }
+    if ([level isEqualToString:@"Diamond"]) {
+        return  @"VIP会员";
+    }
+    if ([level containsString:@"1"]) {
+        return  @"一星";
+    }
+    if ([level containsString:@"2"]) {
+        return  @"二星";
+    }
+    if ([level containsString:@"3"]) {
+        return  @"三星";
+    }
+    if ([level containsString:@"4"]) {
+        return  @"四星";
+    }
+    if ([level containsString:@"5"]) {
+        return  @"五星";
+    }
+    if ([level containsString:@"6"]) {
+        return  @"六星";
+    }
+    if ([level containsString:@"7"]) {
+        return  @"七星";
+    }
+    if ([level containsString:@"8"]) {
+        return  @"八星";
+    }
+    if ([level containsString:@"9"]) {
+        return  @"九星";
+    }
+    return  @"";
 }
 //- (void)viewWillAppear:(BOOL)animated {
 //    [super viewWillAppear:animated];
@@ -116,17 +152,18 @@
     NSString *tit = [self.dataArray[indexPath.section] objectForKey:@"title"];
     NSString *subTit = [self.dataArray[indexPath.section] objectForKey:@"subTitle"];
     cell.textLabel.text = tit;
-
+    UIImageView * imv = [[UIImageView alloc]initWithFrame:CGRectMake(KScreenWidth-70, 7, 30, 30)];
+    [cell addSubview:imv];
+    imv.layer.masksToBounds = YES;
+    imv.layer.cornerRadius = 15;
     
     if (indexPath.section == 0) {
-        UIImageView * imv = [[UIImageView alloc]initWithFrame:CGRectMake(KScreenWidth-70, 7, 30, 30)];
-        [cell addSubview:imv];
-        imv.layer.masksToBounds = YES;
-        imv.layer.cornerRadius = 15;
+        imv.hidden = NO;
         
         [imv sd_setImageWithURL:subTit placeholderImage:[UIImage mc_imageNamed:@"321"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
+        imv.hidden = YES;
         cell.detailTextLabel.text = subTit;
         if (indexPath.section == 1) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

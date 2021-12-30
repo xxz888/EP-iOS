@@ -42,7 +42,6 @@
     
     [self updateNavigationBarAppearance];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewMQMessages:) name:MQ_RECEIVED_NEW_MESSAGES_NOTIFICATION object:nil];
 
     
     [self.navigationController.tabBarController.tabBar setHidden:NO];

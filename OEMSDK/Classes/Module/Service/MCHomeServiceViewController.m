@@ -135,7 +135,7 @@
 // 监听收到美洽聊天消息的广播
 - (void)didReceiveNewMQMessages:(NSNotification *)notification {
     //请求未读消息
-    [self requestGetUnreadMessages];
+//    [self requestGetUnreadMessages];
 }
 
 -(void)requestGetUnreadMessages{

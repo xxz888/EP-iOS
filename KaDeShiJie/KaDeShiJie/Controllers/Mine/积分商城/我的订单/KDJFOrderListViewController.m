@@ -115,5 +115,7 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 }
 
-
+-(void)layoutTableView{
+    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
+}
 @end
