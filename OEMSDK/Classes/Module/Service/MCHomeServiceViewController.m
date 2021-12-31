@@ -38,8 +38,9 @@
 
 }
 -(void)setUI{
-    [self setNavigationBarTitle:@"客服" tintColor:nil];
+    [self setNavigationBarTitle:@"客服" tintColor:[UIColor whiteColor]];
 
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     self.topView.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.09].CGColor;
     self.topView.layer.shadowOffset = CGSizeMake(0,2.5);
     self.topView.layer.shadowOpacity = 1;
@@ -62,24 +63,33 @@
     
     ViewRadius(self.liuyanbanMessageLbl, 8);
     //添加点击手势
-    self.kefuView.userInteractionEnabled = YES;
+//    self.kefuView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer *click = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView:)];
+//    [self.kefuView addGestureRecognizer:click];
+//
+//    //添加点击手势
+//    self.liuyanbanView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer * liuyanbanClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickLiuyanbanView:)];
+//    [self.liuyanbanView addGestureRecognizer:liuyanbanClick];
+//
+//    //添加点击手势
+//    self.bottomView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer * dianhuaClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(guanfangkefuAction:)];
+//    [self.bottomView addGestureRecognizer:dianhuaClick];
+//
+//    //添加点击手势
+//    self.topView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer * topViewClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zhituiTelAction:)];
+//    [self.topView addGestureRecognizer:topViewClick];
+//
+    
+    self.server1Imv.userInteractionEnabled = YES;
     UITapGestureRecognizer *click = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView:)];
-    [self.kefuView addGestureRecognizer:click];
-        
-    //添加点击手势
-    self.liuyanbanView.userInteractionEnabled = YES;
-    UITapGestureRecognizer * liuyanbanClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickLiuyanbanView:)];
-    [self.liuyanbanView addGestureRecognizer:liuyanbanClick];
+    [self.server1Imv addGestureRecognizer:click];
     
-    //添加点击手势
-    self.bottomView.userInteractionEnabled = YES;
-    UITapGestureRecognizer * dianhuaClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(guanfangkefuAction:)];
-    [self.bottomView addGestureRecognizer:dianhuaClick];
-    
-    //添加点击手势
-    self.topView.userInteractionEnabled = YES;
-    UITapGestureRecognizer * topViewClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zhituiTelAction:)];
-    [self.topView addGestureRecognizer:topViewClick];
+        self.server2Imv.userInteractionEnabled = YES;
+        UITapGestureRecognizer * dianhuaClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(guanfangkefuAction:)];
+        [self.server2Imv addGestureRecognizer:dianhuaClick];
 
 }
 -(void)clickView:(id)tp{

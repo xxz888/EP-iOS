@@ -15,6 +15,8 @@
                 <outlet property="kefuBtn" destination="Qgw-EC-Djv" id="8wL-PU-q5f"/>
                 <outlet property="kefuView" destination="Qmf-kD-pGr" id="10q-HA-fb5"/>
                 <outlet property="middleView" destination="Qmf-kD-pGr" id="hHq-SM-gci"/>
+                <outlet property="server1Imv" destination="leS-oM-NgC" id="vtc-W7-ttu"/>
+                <outlet property="server2Imv" destination="OqH-Mo-SKo" id="ita-Wb-E8c"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xnM-gf-sCn"/>
             </connections>
         </placeholder>
@@ -23,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmf-kD-pGr">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmf-kD-pGr">
                     <rect key="frame" x="16" y="54" width="382" height="82.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KD_kefu1" translatesAutoresizingMaskIntoConstraints="NO" id="byd-6U-7hH">
@@ -49,7 +51,7 @@
                         <constraint firstAttribute="trailing" secondItem="Qgw-EC-Djv" secondAttribute="trailing" id="mA6-4V-cnd"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-9v-a2f">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-9v-a2f">
                     <rect key="frame" x="16" y="156.5" width="382" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官方客服：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnV-H7-YCm">
@@ -95,14 +97,53 @@
                         <constraint firstItem="b6r-az-3tK" firstAttribute="bottom" secondItem="FnV-H7-YCm" secondAttribute="bottom" id="yKz-JA-0Xs"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-gf-413">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5B8-uF-Vy9">
+                            <rect key="frame" x="16" y="284" width="382" height="156"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serve1" translatesAutoresizingMaskIntoConstraints="NO" id="leS-oM-NgC">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="73"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serve2" translatesAutoresizingMaskIntoConstraints="NO" id="OqH-Mo-SKo">
+                                    <rect key="frame" x="0.0" y="83" width="382" height="73"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="156" id="ZuR-MQ-e4h"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="5B8-uF-Vy9" secondAttribute="trailing" constant="16" id="8V1-v9-DIW"/>
+                        <constraint firstItem="5B8-uF-Vy9" firstAttribute="centerY" secondItem="RzW-gf-413" secondAttribute="centerY" multiplier="0.85" id="VKU-68-cVW"/>
+                        <constraint firstItem="5B8-uF-Vy9" firstAttribute="leading" secondItem="RzW-gf-413" secondAttribute="leading" constant="16" id="YDX-8O-1uP"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RzW-gf-413" secondAttribute="trailing" id="34Q-si-bGJ"/>
                 <constraint firstItem="Qmf-kD-pGr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="LHQ-p1-3jz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qmf-kD-pGr" secondAttribute="trailing" constant="16" id="LSH-5R-hiY"/>
+                <constraint firstItem="RzW-gf-413" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Nxf-4p-Er2"/>
                 <constraint firstItem="Qmf-kD-pGr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="gDT-xq-y1U"/>
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="trailing" secondItem="Qmf-kD-pGr" secondAttribute="trailing" id="kSY-vq-yZn"/>
+                <constraint firstItem="RzW-gf-413" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mQW-eQ-1iy"/>
+                <constraint firstAttribute="bottom" secondItem="RzW-gf-413" secondAttribute="bottom" id="ma0-cR-APq"/>
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="top" secondItem="Qmf-kD-pGr" secondAttribute="bottom" constant="20" id="tR8-gB-Yd5"/>
                 <constraint firstItem="gP9-9v-a2f" firstAttribute="leading" secondItem="Qmf-kD-pGr" secondAttribute="leading" id="xUC-Wf-qDd"/>
             </constraints>
@@ -112,5 +153,7 @@
     <resources>
         <image name="KD_kefu1" width="328" height="71"/>
         <image name="kd_mine_referrer_phone" width="17" height="17"/>
+        <image name="serve1" width="479" height="98.5"/>
+        <image name="serve2" width="476" height="95"/>
     </resources>
 </document>

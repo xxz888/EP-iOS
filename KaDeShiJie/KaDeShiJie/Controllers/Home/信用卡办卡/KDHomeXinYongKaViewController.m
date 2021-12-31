@@ -44,7 +44,7 @@
 #pragma mark - QMUITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ((SCREEN_WIDTH-32) * 478/994)+5;
+    return 266;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

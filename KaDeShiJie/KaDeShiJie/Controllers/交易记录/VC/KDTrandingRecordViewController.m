@@ -238,10 +238,11 @@
     //刷卡
     NSString * url = @"";
     if (self.type == 1) {
-        url = [NSString stringWithFormat:@"/api/v1/player/order?orderType=ReceivePayment&current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"100",self.startDate,self.endDate];
+        url = [NSString stringWithFormat:@"/api/v1/player/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"20",self.startDate,self.endDate];
+        
     }
     if (self.type == 2) {
-        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"100",self.startDate,self.endDate];
+        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"20",self.startDate,self.endDate];
     }
     [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
         [weakself.mc_tableview.mj_header endRefreshing];

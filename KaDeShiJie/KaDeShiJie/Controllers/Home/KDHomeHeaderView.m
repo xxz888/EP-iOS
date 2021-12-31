@@ -29,6 +29,8 @@
 #import "jintMyWallViewController.h"
 #import "UIView+Extension.h"
 #import "KDWenZinTiShi.h"
+#import "KDXinYongKaViewController.h"
+
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -182,7 +184,12 @@
                 [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
                 break;
             case 201: // 信用管理
-            { [MCToast showMessage:@"暂未开放"];}
+            {
+                
+                
+                [MCLATESTCONTROLLER.navigationController pushViewController:[KDXinYongKaViewController new] animated:YES];
+
+            }
                 break;
             case 202: // 实名认证
 
