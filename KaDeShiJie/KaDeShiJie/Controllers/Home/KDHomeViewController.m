@@ -166,6 +166,7 @@
 - (void)getMessage {
     kWeakSelf(self)
     [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        
          NSMutableArray * dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
     
         //Dialog

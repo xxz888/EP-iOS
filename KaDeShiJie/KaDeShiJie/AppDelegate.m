@@ -124,6 +124,8 @@
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webContainerReset) name:@"mcNotificationWebContainnerReset" object:nil];
     
+    
+
 }
 
 - (void)dealloc

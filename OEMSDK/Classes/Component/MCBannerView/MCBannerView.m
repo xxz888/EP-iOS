@@ -136,9 +136,6 @@
             [imgUrls addObject:item[@"link"]];
         }
         self.banner.imageURLStringsGroup = imgUrls;
-//        if (imgUrls.count) {
-//            [self getHeightWith:imgUrls.firstObject];
-//        }
     } other:^(NSDictionary * _Nonnull resp) {
         
     }];

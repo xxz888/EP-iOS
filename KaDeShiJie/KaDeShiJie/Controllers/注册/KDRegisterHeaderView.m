@@ -199,7 +199,7 @@
     {
         return NO;
     }
- 
+
 }
 //------ 验证码发送按钮动态改变文字 ------//
 - (void)changeSendBtnText {
@@ -240,4 +240,10 @@
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT+100);
 }
 
+- (IBAction)zhucexieyi:(id)sender {
+    MCWebViewController *web = [[MCWebViewController alloc] init];
+  web.urlString = SharedDefaults.configDic[@"registerProtocolLink"];
+  web.title = @"注册服务协议";
+  [MCLATESTCONTROLLER.navigationController pushViewController:web animated:YES];
+}
 @end

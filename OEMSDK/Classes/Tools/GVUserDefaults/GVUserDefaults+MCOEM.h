@@ -48,6 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy)  NSDictionary * configDic;
 
+@property(nonatomic, copy)  NSDictionary * registerProtocolLink;
+
 @end
 
 NS_ASSUME_NONNULL_END

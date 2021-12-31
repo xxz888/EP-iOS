@@ -165,7 +165,7 @@
                     <color key="textColor" red="1" green="0.62352941179999999" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FAI-RC-VgS">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FAI-RC-VgS">
                     <rect key="frame" x="67" y="602" width="214" height="18"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="win-g2-fqB">
@@ -182,6 +182,7 @@
                             </state>
                             <connections>
                                 <action selector="registerAction:" destination="pIH-DQ-gx1" eventType="touchUpInside" id="GTv-Dh-ctw"/>
+                                <action selector="zhucexieyi:" destination="pIH-DQ-gx1" eventType="touchUpInside" id="g6K-i6-lMt"/>
                             </connections>
                         </button>
                     </subviews>
@@ -189,7 +190,7 @@
                         <constraint firstAttribute="height" constant="18" id="jNx-Mn-XAX"/>
                     </constraints>
                 </stackView>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM6-iB-teO">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM6-iB-teO">
                     <rect key="frame" x="37" y="596" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="6Bk-2S-eRk"/>
@@ -278,12 +279,12 @@
                 <outlet property="tuijianTf" destination="DFU-xM-EyY" id="mkS-Lk-esi"/>
                 <outlet property="tuijianrenIdTf" destination="Als-qG-4q2" id="2Xe-sD-z8Z"/>
             </connections>
-            <point key="canvasLocation" x="-1029" y="16"/>
+            <point key="canvasLocation" x="-1330" y="-8"/>
         </view>
     </objects>
     <resources>
         <image name="login_top_bg" width="533.5" height="322"/>
-        <image name="密码" width="44.5" height="50.5"/>
+        <image name="密码" width="23" height="23"/>
         <image name="手机" width="70" height="70"/>
         <image name="手机 拷贝" width="15" height="17"/>
         <image name="打勾" width="16" height="16"/>
