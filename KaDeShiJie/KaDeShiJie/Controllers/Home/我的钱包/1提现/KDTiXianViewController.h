@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *ketixianjine;
 @property (weak, nonatomic) IBOutlet UITextField *inputPrice;
 @property (weak, nonatomic) IBOutlet UILabel *bankLbl;
+@property (weak, nonatomic) IBOutlet UILabel *tipLbl;
 - (IBAction)tixianAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *bankLogo;
 @property (weak, nonatomic) IBOutlet UIButton *tixianBtn;

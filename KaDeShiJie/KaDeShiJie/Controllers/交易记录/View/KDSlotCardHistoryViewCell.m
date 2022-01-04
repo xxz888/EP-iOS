@@ -59,6 +59,8 @@
     self.desLabel.attributedText = attsDes;
     
     self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", slotHistoryModel.amount];
+    self.timeLabel.text = slotHistoryModel.createdTime;
+
     
     //Close, Failed, Process, Successful, Unpaid
     if ([slotHistoryModel.state isEqualToString:@"Successful"]) {

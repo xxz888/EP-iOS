@@ -82,8 +82,12 @@
       [self.viewController.navigationController pushViewController:web animated:YES];
     }] ;
     [self.weixinView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCToast showMessage:@"开发中"];
-//        [self disPhoneClicktuiguang1Imv];
+        
+        
+      MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"activeLink"];
+      web.title = @"奖励活动";
+      [self.viewController.navigationController pushViewController:web animated:YES];
     }] ;
     
 }

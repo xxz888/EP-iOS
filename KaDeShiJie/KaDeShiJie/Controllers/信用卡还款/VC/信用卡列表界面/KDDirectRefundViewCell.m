@@ -59,7 +59,7 @@
     _refundModel = refundModel;
     //Close, Padding, Running, Successful, Termination
     self.nameLabel.text = refundModel.bankName;
-    self.desLabel.text = [NSString stringWithFormat:@"账单日 每月%ld日｜还款日 每月%ld日", refundModel.billDay, refundModel.repaymentDay];
+    self.billdayLabel.text = [NSString stringWithFormat:@"账单日 每月%@日｜还款日 每%@日", refundModel.billingDate, refundModel.repaymentDate];
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:refundModel.bankName];
     self.iconView.image = info.logo;
     self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [refundModel.bankCardNo substringFromIndex:refundModel.bankCardNo.length - 4]];

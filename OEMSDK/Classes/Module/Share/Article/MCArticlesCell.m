@@ -126,14 +126,17 @@
 }
 - (void)setModel:(MCArticleModel *)model {
     _model = model;
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.create_time.longLongValue/1000];
-    NSDateFormatter *f1 = [[NSDateFormatter alloc] init];
-    f1.dateFormat = @"yyyy/MM/dd";
-    self.dayLab.text = [f1 stringFromDate:date];
-    
-    NSDateFormatter *f2 = [[NSDateFormatter alloc] init];
-    f2.dateFormat = @"HH:mm";
-    self.timeLab.text = [f2 stringFromDate:date];
+    if (model.create_time) {
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.create_time.longLongValue/1000];
+        NSDateFormatter *f1 = [[NSDateFormatter alloc] init];
+        f1.dateFormat = @"yyyy/MM/dd";
+        self.dayLab.text = [f1 stringFromDate:date];
+        
+        NSDateFormatter *f2 = [[NSDateFormatter alloc] init];
+        f2.dateFormat = @"HH:mm";
+        self.timeLab.text = [f2 stringFromDate:date];
+    }
+ 
     
     self.contentLab.text = model.content;
     

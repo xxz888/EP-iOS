@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0428B43A2784A1ED004B2D54 /* KDPayNewViewControllerShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428B4372784A1EB004B2D54 /* KDPayNewViewControllerShop.m */; };
+		0428B43B2784A1ED004B2D54 /* KDPayNewViewControllerShop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0428B4392784A1ED004B2D54 /* KDPayNewViewControllerShop.xib */; };
 		043189F0274BDD9500D9D959 /* KDRenZhengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043189EF274BDD9500D9D959 /* KDRenZhengView.m */; };
 		043189F2274BDDA900D9D959 /* KDRenZhengView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043189F1274BDDA900D9D959 /* KDRenZhengView.xib */; };
 		043189F5274BE6B100D9D959 /* KDWenZinTiShi.m in Sources */ = {isa = PBXBuildFile; fileRef = 043189F4274BE6B100D9D959 /* KDWenZinTiShi.m */; };
@@ -324,6 +326,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0428B4372784A1EB004B2D54 /* KDPayNewViewControllerShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPayNewViewControllerShop.m; sourceTree = "<group>"; };
+		0428B4382784A1EC004B2D54 /* KDPayNewViewControllerShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPayNewViewControllerShop.h; sourceTree = "<group>"; };
+		0428B4392784A1ED004B2D54 /* KDPayNewViewControllerShop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDPayNewViewControllerShop.xib; sourceTree = "<group>"; };
 		043189EE274BDD9500D9D959 /* KDRenZhengView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDRenZhengView.h; sourceTree = "<group>"; };
 		043189EF274BDD9500D9D959 /* KDRenZhengView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDRenZhengView.m; sourceTree = "<group>"; };
 		043189F1274BDDA900D9D959 /* KDRenZhengView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDRenZhengView.xib; sourceTree = "<group>"; };
@@ -1038,6 +1043,9 @@
 				1848CE65266F68F900D6E148 /* KDConfirmViewController.h */,
 				1848CE66266F68F900D6E148 /* KDConfirmViewController.m */,
 				1848CE67266F68F900D6E148 /* KDConfirmViewController.xib */,
+				0428B4382784A1EC004B2D54 /* KDPayNewViewControllerShop.h */,
+				0428B4372784A1EB004B2D54 /* KDPayNewViewControllerShop.m */,
+				0428B4392784A1ED004B2D54 /* KDPayNewViewControllerShop.xib */,
 			);
 			path = "确认订单";
 			sourceTree = "<group>";
@@ -2033,6 +2041,7 @@
 				1B1C0EBE2508C4D70009CDC6 /* KDCreditManagerHeaderView.xib in Resources */,
 				187D8B1F2565FC900097A650 /* KDPlanPreviewViewCell.xib in Resources */,
 				1B937054251C74C700E51EC9 /* KDPlanHeaderView.xib in Resources */,
+				0428B43B2784A1ED004B2D54 /* KDPayNewViewControllerShop.xib in Resources */,
 				1BC5E3A22503404C0064CA30 /* Main.storyboard in Resources */,
 				1BD3DC43250B60A600A5D148 /* KDGatheringViewController.xib in Resources */,
 				1BD2F21F250A33970061580C /* KDProfitHeaderView.xib in Resources */,
@@ -2299,6 +2308,7 @@
 				1B1C0EA82508A9260009CDC6 /* KDOutProvisionsViewController.m in Sources */,
 				1B543D32250F831C00076628 /* KDAisleDetailModel.m in Sources */,
 				1B86CF982509B82800AD09F7 /* KDConfirmCreditHeaderView.m in Sources */,
+				0428B43A2784A1ED004B2D54 /* KDPayNewViewControllerShop.m in Sources */,
 				1B9C9B1825075D2F00EE0819 /* KDMsgViewCell.m in Sources */,
 				186724992673138C0066122D /* KDJFChangeTableViewCell.m in Sources */,
 				EEF1AD2F251CE69C001DD2AB /* MSSCircleLabel.m in Sources */,

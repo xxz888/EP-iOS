@@ -64,6 +64,7 @@
 //            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
         }
         self.mc_tableview.tableHeaderView = self.chuxuheader;
+        
     }
 
 }

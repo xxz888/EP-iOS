@@ -61,7 +61,7 @@
     rightBtn.imagePosition = QMUIButtonImagePositionLeft;
     rightBtn.spacingBetweenImageAndTitle = 4;
     [rightBtn addTarget:self action:@selector(shareTouched) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
     self.mc_tableview.tableHeaderView = self.header;
 //    self.header.imgView.image = [MCImageStore creatShareImageWithImage:[UIImage imageNamed:@"share_single_img"]];

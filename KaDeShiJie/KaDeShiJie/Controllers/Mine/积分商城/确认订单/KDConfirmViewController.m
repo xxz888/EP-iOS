@@ -10,8 +10,13 @@
 #import "KDJFPayViewController.h"
 #import "KDJFAdressManagerViewController.h"
 #import "KDJFAdressListViewController.h"
+#import "KDPayNewViewController.h"
 @interface KDConfirmViewController ()
 @property (nonatomic ,strong)NSDictionary * adressDic;
+@property (nonatomic ,strong)MCBankCardModel * cardModel;
+
+
+
 @end
 
 @implementation KDConfirmViewController
@@ -39,6 +44,10 @@
     UITapGestureRecognizer* tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHaveAdressAction:)];
     [self.haveAddressView addGestureRecognizer:tap1];
 
+
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     kWeakSelf(self);
 
     [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/api/v1/player/shop/address"] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
@@ -59,10 +68,6 @@
         }
 
     }];
-}
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-
 }
 -(void)clickNoAdressAction:(id)tap{
     KDJFAdressListViewController * vc = [[KDJFAdressListViewController alloc]init];
@@ -94,23 +99,146 @@
         [MCToast showMessage:@"请添加收获地址"];
         return;
     }
-    
+    [self requestCards];
+}
+//请求银行卡
+- (void)requestCards {
+    __weak __typeof(self)weakSelf = self;
+    NSString * url = @"/api/v1/player/bank/credit";
+    [self.sessionManager mc_GET:url parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSArray *temArr = [MCBankCardModel mj_objectArrayWithKeyValuesArray:resp];
+
+        NSMutableArray * modelArray = [[NSMutableArray alloc]init];
+        for (MCBankCardModel * cardModel in temArr) {
+            BRResultModel * model = [[BRResultModel alloc]init];
+            model.key = cardModel.id;
+            model.value = [NSString stringWithFormat:@"%@ %@",cardModel.bankName,cardModel.bankCardNo];
+            [modelArray addObject:model];
+        }
+        BRStringPickerView *pickView = [[BRStringPickerView alloc] initWithPickerMode:BRStringPickerComponentSingle];
+        pickView.title = @"请选择信用卡";
+        pickView.dataSourceArr = modelArray;
+        [pickView show];
+        pickView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
+            
+            
+            for (MCBankCardModel * cardModel in temArr) {
+                if ([cardModel.id integerValue] == [resultModel.key integerValue]) {
+                    weakSelf.cardModel = cardModel;
+                }
+            }
+            
+            [weakSelf shopOrder];
+            
+        };
+        pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
+    }];
+}
+//下单
+-(void)shopOrder{
     __weak typeof(self) weakSelf = self;
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/shop/order" parameters:@{@"shopReceiptAddressId":[NSString stringWithFormat:@"%@",self.adressDic[@"id"]],@"sku":[NSString stringWithFormat:@"%@",self.goodDic[@"sku"]]} ok:^(NSDictionary * _Nonnull resp) {
-        /*
-         payUrl = https://www.baidu.com,
-         orderId = 2021122816422791839157,
-         productTitle = 哈哈1,
-         price = 698
-         **/
-        MCWebViewController *web = [[MCWebViewController alloc] init];
-        web.urlString = resp[@"payUrl"];
-        [weakSelf.navigationController pushViewController:web animated:YES];
         
+        [weakSelf shopPay:resp[@"orderId"]];
+    
     } other:^(NSDictionary * _Nonnull resp) {
         
     } failure:^(NSError * _Nonnull error) {
         
     }];
 }
+
+
+
+
+-(void)shopPay:(NSString *)orderId{
+    if (orderId.length == 0) {
+        [MCToast showMessage:@"orderId为空"];
+        return;
+    }
+    if (!self.cardModel) {
+        [MCToast showMessage:@"creditCardId为空"];
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    [MCLATESTCONTROLLER.sessionManager mc_Post_QingQiuTi:@"/api/v1/player/shop/pay" parameters:@{@"orderId":orderId,@"creditCardId":self.cardModel.id} ok:^(NSDictionary * _Nonnull respDic) {
+        
+        //发短信
+        if ([respDic[@"state"] isEqualToString:@"Sms"] ) {
+            KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+            vc.cardModel = self.cardModel;
+            vc.orderId = orderId;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }else if ([respDic[@"state"] isEqualToString:@"Unpaid"] ){
+            [weakSelf payConfirm:orderId];
+        }
+        
+        
+        
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+-(void)payConfirm:(NSString *)orderId{
+
+    NSDictionary *params = @{@"orderId":orderId,};
+    __weak typeof(self) weakSelf = self;
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/shop/pay/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"操作成功"];
+        });
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//NSDictionary *params =
+//@{
+//    @"creditCardId":self.xinyongInfo.id,
+//    @"debitCardId":self.chuxuInfo.id,
+//    @"amount":self.money,
+//    @"channelId":channelModel.channelId,
+// };
+//__weak typeof(self) weakSelf = self;
+//[MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/pre" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+//    KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+//    vc.cardModel = cardModel;
+//    vc.cardchuxuModel = self.chuxuInfo;
+//    vc.channelId = channelModel.channelId;
+//    vc.amount = self.money;
+//    //发短信
+//    if ([respDic[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"] ) {
+//        vc.channelBindId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];
+//    }else{
+//        vc.orderId = [NSString stringWithFormat:@"%@",respDic[@"orderId"]];
+//    }
+//
+//
+//
+//    [self.navigationController pushViewController:vc animated:YES];
+//
+//} other:^(NSDictionary * _Nonnull respDic) {
+//
+//} failure:^(NSError * _Nonnull error) {
+//
+//}];
+
 @end

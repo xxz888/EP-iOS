@@ -101,7 +101,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5B8-uF-Vy9">
-                            <rect key="frame" x="16" y="284" width="382" height="156"/>
+                            <rect key="frame" x="16" y="10" width="382" height="156"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serve1" translatesAutoresizingMaskIntoConstraints="NO" id="leS-oM-NgC">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="73"/>
@@ -128,8 +128,8 @@
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="5B8-uF-Vy9" secondAttribute="trailing" constant="16" id="8V1-v9-DIW"/>
-                        <constraint firstItem="5B8-uF-Vy9" firstAttribute="centerY" secondItem="RzW-gf-413" secondAttribute="centerY" multiplier="0.85" id="VKU-68-cVW"/>
                         <constraint firstItem="5B8-uF-Vy9" firstAttribute="leading" secondItem="RzW-gf-413" secondAttribute="leading" constant="16" id="YDX-8O-1uP"/>
+                        <constraint firstItem="5B8-uF-Vy9" firstAttribute="top" secondItem="RzW-gf-413" secondAttribute="top" constant="10" id="lEF-g6-rFg"/>
                     </constraints>
                 </view>
             </subviews>

@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="saT-h3-riU" customClass="MCChuxukaHeader">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="612"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9L-cs-SYq">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrT-GR-KbS">
                             <rect key="frame" x="19" y="522.5" width="376" height="45"/>
@@ -377,7 +377,7 @@
                         <constraint firstItem="sY6-9S-r3l" firstAttribute="centerY" secondItem="vi2-sP-chP" secondAttribute="centerY" constant="4" id="P2I-hh-r3q"/>
                         <constraint firstAttribute="trailing" secondItem="YrT-GR-KbS" secondAttribute="trailing" constant="19" id="QO7-O7-Zg8"/>
                         <constraint firstAttribute="trailing" secondItem="3LE-hA-fiE" secondAttribute="trailing" id="Rhj-c9-lgW"/>
-                        <constraint firstAttribute="height" constant="623" id="RiV-bZ-ARw"/>
+                        <constraint firstAttribute="height" constant="800" id="RiV-bZ-ARw"/>
                         <constraint firstItem="3LE-hA-fiE" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" id="T4C-bk-Uc6"/>
                         <constraint firstAttribute="trailing" secondItem="T2y-kF-weh" secondAttribute="trailing" constant="16" id="TO6-Tq-euv"/>
                         <constraint firstItem="YrT-GR-KbS" firstAttribute="leading" secondItem="U9L-cs-SYq" secondAttribute="leading" constant="19" id="W8T-2t-TAj"/>
@@ -416,7 +416,7 @@
                 <outlet property="wenhaoBtn" destination="EqX-d0-cFC" id="Fnn-4W-hP2"/>
                 <outlet property="zhengmianImv" destination="GcY-us-B4l" id="7J3-m6-xk6"/>
             </connections>
-            <point key="canvasLocation" x="-2446.376811594203" y="49.553571428571423"/>
+            <point key="canvasLocation" x="-1704.3478260869567" y="62.946428571428569"/>
         </view>
     </objects>
     <resources>

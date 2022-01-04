@@ -53,13 +53,19 @@
     
 
     self.statusLabel.text = startDic[@"planStatus"];
-    NSString *desStr = [NSString stringWithFormat:@"已还%@元 | 总额%@元", startDic[@"alreadyRepaymentAmount"],startDic[@"repaymentAmount"]];
+    NSString *desStr = [NSString stringWithFormat:@"已还 %@元    总额 %@元", startDic[@"alreadyRepaymentAmount"],startDic[@"repaymentAmount"]];
     NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
     NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@元", startDic[@"alreadyRepaymentAmount"]]];
     [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range];
+    
+    
+    NSRange range1 = [desStr rangeOfString:[NSString stringWithFormat:@"%@元", startDic[@"repaymentAmount"]]];
+    [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range1];
+    
+    
     self.desLabel.attributedText = attsDes;
     
-    self.timeLabel.text = startDic[@"createTime"];
+    self.timeLabel.text = startDic[@"createdTime"];
 //
 //    if (repaymentModel.orderType == 2) {
 //

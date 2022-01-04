@@ -72,7 +72,7 @@
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
         } else if ([self.statusLabel.text isEqualToString:@"待执行"] || [self.statusLabel.text isEqualToString:@"待完成"] || [self.statusLabel.text isEqualToString:@"执行中"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
-        } else if ([self.statusLabel.text isEqualToString:@"已失败"] || [self.statusLabel.text isEqualToString:@"未支付"]) {
+        } else if ([self.statusLabel.text isEqualToString:@"已失败"] || [self.statusLabel.text isEqualToString:@"未支付"] || [self.statusLabel.text isEqualToString:@"已终止"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
         } else if ([self.statusLabel.text isEqualToString:@"还款中"] || [self.statusLabel.text isEqualToString:@"已取消"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];

@@ -374,6 +374,7 @@
     
 }
 - (IBAction)chooseAddressAction:(id)sender {
+    [self.view endEditing:YES];
     [self.addressPicker show];
 }
 - (BRAddressPickerView *)addressPicker {

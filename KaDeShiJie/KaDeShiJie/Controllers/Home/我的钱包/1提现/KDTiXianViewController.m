@@ -52,6 +52,11 @@
         weakSelf.zhanghuyue.text = [NSString stringWithFormat:@"%.2f",[dic[@"balance"] doubleValue]];
         weakSelf.ketixianjine.text = [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
         weakSelf.inputPrice.text =  [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
+       
+        weakSelf.tipLbl.text = [NSString stringWithFormat:@"税费:%.2f元 手续费:%@元 实际到账%.2f元",
+                                [dic[@"availableAmount"] doubleValue]*0.06,
+                                @"2",
+                                [dic[@"availableAmount"] doubleValue]*0.94];
         if ([dic[@"canWithdraw"] integerValue] != 1) {
             self.canWithdraw = true;
 
@@ -59,6 +64,7 @@
             self.canWithdraw = NO;
 
         }
+        
     }];
     
     

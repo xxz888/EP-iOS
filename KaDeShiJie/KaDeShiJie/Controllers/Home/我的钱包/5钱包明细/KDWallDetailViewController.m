@@ -92,7 +92,7 @@
     }else if([dic[@"event"] isEqualToString:@"Withdraw"]) {
         eventTag = @"提现";
     }else if([dic[@"event"] isEqualToString:@"RepaymentSurplusFee"]) {
-        eventTag = @"还款剩余手续费";
+        eventTag = @"还款返现";
     }
     
     

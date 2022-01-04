@@ -51,7 +51,7 @@
     
     self.nameLabel.text = model.title;//[NSString stringWithFormat:@"%@%@",model.name,model.channelParams];
     
-    self.lab1.text = [NSString stringWithFormat:@"单笔限额：%@-%@", @"10", @"20000"];
+    self.lab1.text = [NSString stringWithFormat:@"单笔限额：%d-%d", model.singeMinAmount.intValue, model.singeMaxAmount.intValue];
     
 //    NSString *startTime = [model.startTime substringWithRange:NSMakeRange(0, 5)];
 //    NSString *endTime = [model.endTime substringWithRange:NSMakeRange(0, 5)];
@@ -61,6 +61,14 @@
     self.lab2.text = [NSString stringWithFormat:@"单日限额：¥%d", model.dailyMaxAmount.intValue];
     
     self.lab4.text = [NSString stringWithFormat:@"交易费率：%.2f%%+%@元/笔", [model.rate doubleValue], @"2"];
+    
+    
+    
+    
+    ////单笔最小金额
+//    private BigDecimal singeMinAmount;
+    //单笔最大金额
+//    private BigDecimal singeMaxAmount;
 }
 
 - (void)layoutSubviews

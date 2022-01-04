@@ -45,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *tradeEndTime;
 @property (nonatomic, copy) NSString *extraRate;
 
+@property (nonatomic, copy) NSString *singeMinAmount;
+@property (nonatomic, copy) NSString *singeMaxAmount;
+
 
 
 //channelType = JiaFuTong,

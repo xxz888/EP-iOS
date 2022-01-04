@@ -99,7 +99,7 @@
     [dic[@"logisticsState"] isEqualToString:@"Cancel"] ? @"已取消" :
     [dic[@"logisticsState"] isEqualToString:@"Complete"] ? @"已完成" :
     [dic[@"logisticsState"] isEqualToString:@"Failed"] ? @"已失败" :
-    [dic[@"logisticsState"] isEqualToString:@"Init"] ? @"初始化" :
+    [dic[@"logisticsState"] isEqualToString:@"Init"] ? @"初始" :
     [dic[@"logisticsState"] isEqualToString:@"Paid"] ? @"已支付" :
     [dic[@"logisticsState"] isEqualToString:@"Unpaid"] ? @"未支付" :
     [dic[@"logisticsState"] isEqualToString:@"Unreceived"] ? @"待收货" :
