@@ -24,7 +24,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.guanfangkefudianhua.text = [NSString stringWithFormat:@"电话：%@",SharedDefaults.servicePhone];
+    self.guanfangkefudianhua.text = [NSString stringWithFormat:@"电话：%@",SharedDefaults.configDic[@"config"][@"servicePhone"]];
     [self setUI];
 //    [self setData];
 }
@@ -107,7 +107,7 @@
     }
 }
 - (IBAction)guanfangkefuAction:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.servicePhone]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.configDic[@"config"][@"servicePhone"]]]];
 }
 
 - (IBAction)kefuAction:(id)sender {

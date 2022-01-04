@@ -127,7 +127,6 @@
     }
     
     [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
-        SharedDefaults.servicePhone = [NSString stringWithFormat:@"%@",okResponse[@"servicePhone"]];
         SharedDefaults.wechat = okResponse[@"wechat"];
         SharedDefaults.configDic = okResponse;
         self.infos = okResponse[@"indexBanners"];

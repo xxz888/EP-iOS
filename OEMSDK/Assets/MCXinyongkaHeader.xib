@@ -79,7 +79,7 @@
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请拍照上传信用卡" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6R6-fB-ouQ" customClass="BankCardTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请拍照上传信用卡" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6R6-fB-ouQ" customClass="BankCardTextField">
                                     <rect key="frame" x="80" y="0.0" width="325" height="52"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -146,9 +146,11 @@
                     <color key="textColor" red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP1-EV-t2M" customClass="KDFillButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP1-EV-t2M">
                     <rect key="frame" x="28" y="454.5" width="358" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.56862745100000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="358" id="PBq-3K-nyI"/>
                         <constraint firstAttribute="height" constant="50" id="spN-TV-gRf"/>
                     </constraints>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
@@ -487,7 +489,7 @@
                 <outlet property="textField6" destination="Kt4-7s-OpD" id="jTE-49-EBC"/>
                 <outlet property="textField7" destination="DOL-ch-1Zn" id="X8e-Lj-cNu"/>
             </connections>
-            <point key="canvasLocation" x="-1593" y="78"/>
+            <point key="canvasLocation" x="-2388" y="290"/>
         </view>
     </objects>
     <resources>

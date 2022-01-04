@@ -88,7 +88,7 @@
     }else if([dic[@"event"] isEqualToString:@"AgentConsumptionCommission"]) {
         eventTag = @"代理还款佣金";
     }else if([dic[@"event"] isEqualToString:@"Coupon"]) {
-        eventTag = @"红包";
+        eventTag = @"抵扣券返现";
     }else if([dic[@"event"] isEqualToString:@"Withdraw"]) {
         eventTag = @"提现";
     }else if([dic[@"event"] isEqualToString:@"RepaymentSurplusFee"]) {
@@ -100,9 +100,9 @@
     
     cell.eventTime.text = dic[@"createdTime"];
     if([dic[@"event"] isEqualToString:@"Withdraw"]) {
-        cell.eventPrice.text = [NSString stringWithFormat:@"-%@元",dic[@"amount"]];
+        cell.eventPrice.text = [NSString stringWithFormat:@"-%.2f元",[dic[@"amount"] doubleValue]];
     }else{
-        cell.eventPrice.text = [NSString stringWithFormat:@"+%@元",dic[@"amount"]];
+        cell.eventPrice.text = [NSString stringWithFormat:@"+%.2f元",[dic[@"amount"] doubleValue]];
     }
     return cell;
 }

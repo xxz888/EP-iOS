@@ -13,6 +13,9 @@
 @interface MCArticlesController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 @property(nonatomic, copy) NSMutableArray<MCArticleModel *> *dataSource;
 @property (nonatomic, assign) NSInteger page;
+@property (nonatomic, assign) NSInteger qrCode1Count;
+@property (nonatomic ,strong)NSMutableArray * arrayNew ;
+@property (nonatomic ,strong)NSMutableArray * arrayNew0 ;
 
 @end
 
@@ -27,6 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBarTitle:@"分享素材" tintColor:nil];
+    self.arrayNew = [[NSMutableArray alloc]init];
+    self.arrayNew0 = [[NSMutableArray alloc]init];
+
+    
     self.mc_tableview.dataSource = self;
     self.mc_tableview.delegate = self;
     self.mc_tableview.ly_emptyView = [MCEmptyView emptyView];
@@ -85,99 +92,97 @@
     __weak __typeof(self)weakSelf = self;
 
     [self.sessionManager mc_GET:@"/api/v1/player/promote/materials" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        weakSelf.qrCode1Count = 0;
+        for (NSDictionary * dic in respDic) {
+            if ([dic[@"qrCode"] integerValue] == 1) {
+                weakSelf.qrCode1Count += 1;
+            }
+        }
+        NSMutableArray * respArr = [[NSMutableArray alloc]initWithArray:respDic];
+        NSMutableArray * arr = [[NSMutableArray alloc]init];
+        for (NSInteger i = 0; i < [respArr count]; i++) {
+            NSMutableDictionary * dic = [[NSMutableDictionary alloc]initWithDictionary:respArr[i]];
+            [dic setValue:@(i) forKey:@"cid"];
+          
             
-        NSArray *arr = [MCArticleModel mj_objectArrayWithKeyValuesArray:respDic];
-        [weakSelf.dataSource addObjectsFromArray:arr];
-        [weakSelf.mc_tableview reloadData];
-        if ([weakSelf.mc_tableview.mj_header isRefreshing]) {
-            [weakSelf.mc_tableview.mj_header endRefreshing];
+            if ([dic[@"qrCode"] integerValue] == 0) {
+                [weakSelf.arrayNew0 addObject:dic];
+            }
+            if ([dic[@"qrCode"] integerValue] == 1) {
+                [arr addObject:dic];
+            }
         }
-        if ([weakSelf.mc_tableview.mj_footer isRefreshing]) {
-            [weakSelf.mc_tableview.mj_footer endRefreshing];
-        }
-    } other:^(NSDictionary * _Nonnull respDic) {
-            
-        }];
-    
-    
-    return;
-    [self.sessionManager mc_POST:@"/user/app/imagetext/query/brandid" parameters:@{@"brand_id":SharedConfig.brand_id,@"page":@(self.page),@"size":@(20)
-                                                                            
-    } ok:^(NSDictionary * _Nonnull resp) {
         
-        if ([weakSelf.mc_tableview.mj_header isRefreshing]) {
-            [weakSelf.mc_tableview.mj_header endRefreshing];
-        }
-        if ([weakSelf.mc_tableview.mj_footer isRefreshing]) {
-            [weakSelf.mc_tableview.mj_footer endRefreshing];
-        }
-        if (cleanData) {
-            [weakSelf.dataSource removeAllObjects];
-        }
-        //MCLog(@"%@",resp[@"result"]);
-        NSArray *arr = [MCArticleModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
         
-//        NSString * url =  @"http://192.168.10.32/v1.0/user/app/getQRcode?imageId=112";
-//
-//
-//        MCArticleModel * model0 = arr[0];
-//        NSMutableArray * imgUrl0 = [[NSMutableArray alloc]init];
-//        [imgUrl0 addObject:url];
-//        model0.img_url = imgUrl0;
-//
-//        MCArticleModel * model1 = arr[1];
-//        NSMutableArray * imgUrl1 = [[NSMutableArray alloc]init];
-//        while (imgUrl1.count < 2) {[imgUrl1 addObject:url];}
-//        model1.img_url = imgUrl1;
-//
-//
-//        MCArticleModel * model2 = arr[2];
-//        NSMutableArray * imgUrl2 = [[NSMutableArray alloc]init];
-//        while (imgUrl2.count < 3) {[imgUrl2 addObject:url];}
-//        model2.img_url = imgUrl2;
-//
-//
-//        MCArticleModel * model3 = arr[3];
-//        NSMutableArray * imgUrl3 = [[NSMutableArray alloc]init];
-//        while (imgUrl3.count < 4) {[imgUrl3 addObject:url];}
-//        model3.img_url = imgUrl3;
-//
-//
-//        MCArticleModel * model4 = arr[4];
-//        NSMutableArray * imgUrl4 = [[NSMutableArray alloc]init];
-//        while (imgUrl4.count < 5) {[imgUrl4 addObject:url];}
-//        model4.img_url = imgUrl4;
-//
-//
-//        MCArticleModel * model5 = arr[5];
-//        NSMutableArray * imgUrl5 = [[NSMutableArray alloc]init];
-//        while (imgUrl5.count < 6) {[imgUrl5 addObject:url];}
-//        model5.img_url = imgUrl5;
-//
-//
-//
-//        MCArticleModel * model6 = arr[6];
-//        NSMutableArray * imgUrl6 = [[NSMutableArray alloc]init];
-//        while (imgUrl6.count < 7) {[imgUrl6 addObject:url];}
-//        model6.img_url = imgUrl6;
-//
-//
-//
-//        MCArticleModel * model7 = arr[7];
-//        NSMutableArray * imgUrl7 = [[NSMutableArray alloc]init];
-//        while (imgUrl7.count < 8) {[imgUrl7 addObject:url];}
-//        model7.img_url = imgUrl7;
-//
-//        MCArticleModel * model8 = arr[8];
-//        NSMutableArray * imgUrl8 = [[NSMutableArray alloc]init];
-//        while (imgUrl8.count < 9) {[imgUrl8 addObject:url];}
-//        model8.img_url = imgUrl8;
-        
-        [weakSelf.dataSource addObjectsFromArray:arr];
-        [weakSelf.mc_tableview reloadData];
-        
+        [weakSelf jisuanData1:arr];
+     
+    } other:^(NSDictionary * _Nonnull respDic) { }];
 
+}
+-(void)jisuanData1:(id)respDic{
+    for (NSDictionary * dic in respDic) {
+        if ([dic[@"qrCode"] integerValue] == 1) {
+            [self jisuanData2:dic];
+        }
+        
+       
+    }
+
+
+    
+    
+}
+-(void)jisuanData2:(id)dic{
+
+    __weak typeof(self) weakSelf = self;
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/mere/images" parameters:@{@"imagePaths":dic[@"images"]} ok:^(NSDictionary * _Nonnull resp) {
+        
+        NSMutableDictionary * dicNew = [[NSMutableDictionary alloc]init];
+        [dicNew setValue:dic[@"content"] forKey:@"content"];
+        [dicNew setValue:dic[@"qrCode"] forKey:@"qrCode"];
+        [dicNew setValue:resp[@"baseImages"] forKey:@"images"];
+        [dicNew setValue:dic[@"cid"] forKey:@"cid"];
+
+        [weakSelf.arrayNew addObject:dicNew];
+        
+        
+        if ([weakSelf.arrayNew count] == weakSelf.qrCode1Count) {
+            NSLog(@"arrayNew=%ld||qrCode1Count=%ld",[self.arrayNew count],self.qrCode1Count);
+            
+        
+            
+            
+            [weakSelf.arrayNew addObjectsFromArray:self.arrayNew0];
+            NSArray * narr = [weakSelf sortArray:weakSelf.arrayNew];
+            NSArray *arr = [MCArticleModel mj_objectArrayWithKeyValuesArray:narr];
+            [weakSelf.dataSource addObjectsFromArray:arr];
+            [weakSelf.mc_tableview reloadData];
+            if ([weakSelf.mc_tableview.mj_header isRefreshing]) {
+                [weakSelf.mc_tableview.mj_header endRefreshing];
+            }
+            if ([weakSelf.mc_tableview.mj_footer isRefreshing]) {
+                [weakSelf.mc_tableview.mj_footer endRefreshing];
+            }
+        }
+    
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
+    
+    
+    
+
+}
+- (NSArray *)sortArray:(NSArray *)array{
+
+    NSArray *sortDesc = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"cid" ascending:YES]];
+
+    NSArray *sortedArr = [array sortedArrayUsingDescriptors:sortDesc];
+
+    return sortedArr;
+
 }
 #pragma mark - Tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

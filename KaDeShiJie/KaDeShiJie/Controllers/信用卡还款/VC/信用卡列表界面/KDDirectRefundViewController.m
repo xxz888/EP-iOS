@@ -89,7 +89,7 @@
 //    self.feilvtitleLbl.text = [self.orderType isEqualToString:@"2"] ?
 //    @"费率：0.79%（每1万元79元手续费）+2元/次":
 //    @"费率：1.25%（每1万元125元手续费）+1元/次";
-    self.feilvtitleLbl.text = [NSString stringWithFormat: @"费率：%@%%（每1万元%.0f元手续费）+%@元/次",SharedUserInfo.consumptionRate,([SharedUserInfo.consumptionRate doubleValue])*100,SharedUserInfo.extraFee];
+    self.feilvtitleLbl.text = [NSString stringWithFormat: @"费率：%.2f%%（每1万元%.0f元手续费）+%@元/次",[SharedUserInfo.consumptionRate doubleValue],([SharedUserInfo.consumptionRate doubleValue])*100,SharedUserInfo.extraFee];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(mc_tableviewRefresh)];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];

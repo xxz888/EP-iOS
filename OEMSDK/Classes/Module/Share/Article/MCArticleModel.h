@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *create_time;
 @property (nonatomic, copy) NSString *remarks1;
 @property (nonatomic, copy) NSString *brand_id;
+@property (nonatomic, copy) NSString *qrCode;
 
 @property (nonatomic, strong) NSArray<NSString *> *images;
 

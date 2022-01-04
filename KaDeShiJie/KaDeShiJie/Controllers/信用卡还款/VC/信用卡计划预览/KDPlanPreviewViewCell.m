@@ -52,6 +52,7 @@
                                     [orderModel.status isEqualToString:@"Running"]  ? @"执行中" :
                                     [orderModel.status isEqualToString:@"Successful"] ? @"已成功" :
                                     [orderModel.status isEqualToString:@"Close"] ? @"已关闭" :
+                                    [orderModel.status isEqualToString:@"Unpaid"] ? @"未支付" :
                                     [orderModel.status isEqualToString:@"Termination"] ? @"已终止" : @"";
 
         
@@ -71,13 +72,26 @@
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#87dc5b"];
         } else if ([self.statusLabel.text isEqualToString:@"待执行"] || [self.statusLabel.text isEqualToString:@"待完成"] || [self.statusLabel.text isEqualToString:@"执行中"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
-        } else if ([self.statusLabel.text isEqualToString:@"已失败"]) {
+        } else if ([self.statusLabel.text isEqualToString:@"已失败"] || [self.statusLabel.text isEqualToString:@"未支付"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ff5722"];
         } else if ([self.statusLabel.text isEqualToString:@"还款中"] || [self.statusLabel.text isEqualToString:@"已取消"]) {
             self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
         }
 
-    
+    /**
+     * // 待执行
+    Padding,
+    // 运行中
+    Running,
+    // 终止
+    Termination,
+    // 结束
+    Successful,
+    // 未支付
+    Unpaid,
+    // 关闭
+    Close,
+     */
     
     
     return;

@@ -67,7 +67,7 @@
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TPR-i3-xyW">
                                     <rect key="frame" x="33" y="27" width="315" height="30.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 </textField>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9g-me-b1R">
                                     <rect key="frame" x="5" y="23" width="358" height="1"/>

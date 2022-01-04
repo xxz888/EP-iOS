@@ -149,16 +149,66 @@
         self.imgV8.hidden = NO;
         self.imgV9.hidden = NO;
 
-        
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[7]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV9 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[8]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[7]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV9 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[8]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData2 = [[NSData alloc]initWithBase64EncodedString:model.images[2] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage2 = [UIImage imageWithData:decodedImageData2];
+            self.imgV3.image  = decodedImage2;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData3 = [[NSData alloc]initWithBase64EncodedString:model.images[3] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage3 = [UIImage imageWithData:decodedImageData3];
+            self.imgV4.image  = decodedImage3;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData4 = [[NSData alloc]initWithBase64EncodedString:model.images[4] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage4 = [UIImage imageWithData:decodedImageData4];
+            self.imgV5.image  = decodedImage4;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData5 = [[NSData alloc]initWithBase64EncodedString:model.images[5] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage5 = [UIImage imageWithData:decodedImageData5];
+            self.imgV6.image  = decodedImage5;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData6 = [[NSData alloc]initWithBase64EncodedString:model.images[6] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage6 = [UIImage imageWithData:decodedImageData6];
+            self.imgV7.image  = decodedImage6;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData7 = [[NSData alloc]initWithBase64EncodedString:model.images[7] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage7 = [UIImage imageWithData:decodedImageData7];
+            self.imgV8.image  = decodedImage7;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData8 = [[NSData alloc]initWithBase64EncodedString:model.images[8] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage8 = [UIImage imageWithData:decodedImageData0];
+            self.imgV9.image  = decodedImage8;
+            
+            
+            
+        }
+       
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
@@ -178,14 +228,59 @@
         [self.imgV9 sd_setImageWithURL:@"" placeholderImage:nil];
         self.imgV9.userInteractionEnabled = NO;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[7]] placeholderImage:SharedAppInfo.icon];
+        
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV8 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[7]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData2 = [[NSData alloc]initWithBase64EncodedString:model.images[2] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage2 = [UIImage imageWithData:decodedImageData2];
+            self.imgV3.image  = decodedImage2;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData3 = [[NSData alloc]initWithBase64EncodedString:model.images[3] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage3 = [UIImage imageWithData:decodedImageData3];
+            self.imgV4.image  = decodedImage3;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData4 = [[NSData alloc]initWithBase64EncodedString:model.images[4] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage4 = [UIImage imageWithData:decodedImageData4];
+            self.imgV5.image  = decodedImage4;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData5 = [[NSData alloc]initWithBase64EncodedString:model.images[5] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage5 = [UIImage imageWithData:decodedImageData5];
+            self.imgV6.image  = decodedImage5;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData6 = [[NSData alloc]initWithBase64EncodedString:model.images[6] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage6 = [UIImage imageWithData:decodedImageData6];
+            self.imgV7.image  = decodedImage6;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData7 = [[NSData alloc]initWithBase64EncodedString:model.images[7] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage7 = [UIImage imageWithData:decodedImageData7];
+            self.imgV8.image  = decodedImage7;
+        }
+   
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
@@ -207,13 +302,52 @@
         [self.imgV9 sd_setImageWithURL:@"" placeholderImage:nil];
         self.imgV9.userInteractionEnabled = NO;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
+        
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV7 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[6]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData2 = [[NSData alloc]initWithBase64EncodedString:model.images[2] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage2 = [UIImage imageWithData:decodedImageData2];
+            self.imgV3.image  = decodedImage2;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData3 = [[NSData alloc]initWithBase64EncodedString:model.images[3] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage3 = [UIImage imageWithData:decodedImageData3];
+            self.imgV4.image  = decodedImage3;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData4 = [[NSData alloc]initWithBase64EncodedString:model.images[4] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage4 = [UIImage imageWithData:decodedImageData4];
+            self.imgV5.image  = decodedImage4;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData5 = [[NSData alloc]initWithBase64EncodedString:model.images[5] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage5 = [UIImage imageWithData:decodedImageData5];
+            self.imgV6.image  = decodedImage5;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData6 = [[NSData alloc]initWithBase64EncodedString:model.images[6] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage6 = [UIImage imageWithData:decodedImageData6];
+            self.imgV7.image  = decodedImage6;
+        }
+    
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
@@ -233,12 +367,45 @@
         self.imgV9.hidden = YES;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV6 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[5]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData2 = [[NSData alloc]initWithBase64EncodedString:model.images[2] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage2 = [UIImage imageWithData:decodedImageData2];
+            self.imgV3.image  = decodedImage2;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData3 = [[NSData alloc]initWithBase64EncodedString:model.images[3] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage3 = [UIImage imageWithData:decodedImageData3];
+            self.imgV4.image  = decodedImage3;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData4 = [[NSData alloc]initWithBase64EncodedString:model.images[4] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage4 = [UIImage imageWithData:decodedImageData4];
+            self.imgV5.image  = decodedImage4;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData5 = [[NSData alloc]initWithBase64EncodedString:model.images[5] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage5 = [UIImage imageWithData:decodedImageData5];
+            self.imgV6.image  = decodedImage5;
+        }
+  
 
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
@@ -260,11 +427,39 @@
         self.imgV9.hidden = YES;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[4]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData2 = [[NSData alloc]initWithBase64EncodedString:model.images[2] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage2 = [UIImage imageWithData:decodedImageData2];
+            self.imgV3.image  = decodedImage2;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData3 = [[NSData alloc]initWithBase64EncodedString:model.images[3] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage3 = [UIImage imageWithData:decodedImageData3];
+            self.imgV4.image  = decodedImage3;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData4 = [[NSData alloc]initWithBase64EncodedString:model.images[4] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage4 = [UIImage imageWithData:decodedImageData4];
+            self.imgV5.image  = decodedImage4;
+        }
+      
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
@@ -284,10 +479,34 @@
         self.imgV9.hidden = YES;
 
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV4 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV5 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[3]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData3 = [[NSData alloc]initWithBase64EncodedString:model.images[3] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage3 = [UIImage imageWithData:decodedImageData3];
+            self.imgV4.image  = decodedImage3;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData4 = [[NSData alloc]initWithBase64EncodedString:model.images[4] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage4 = [UIImage imageWithData:decodedImageData4];
+            self.imgV5.image  = decodedImage4;
+        }
+
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = NO;
@@ -306,9 +525,27 @@
         self.imgV8.hidden = YES;
         self.imgV9.hidden = YES;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV3 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[2]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData2 = [[NSData alloc]initWithBase64EncodedString:model.images[2] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage2 = [UIImage imageWithData:decodedImageData2];
+            self.imgV3.image  = decodedImage2;
+        }
+
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = YES;
@@ -327,8 +564,21 @@
         self.imgV8.hidden = YES;
         self.imgV9.hidden = YES;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
-        [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+            [self.imgV2 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[1]] placeholderImage:SharedAppInfo.icon];
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+            
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData1 = [[NSData alloc]initWithBase64EncodedString:model.images[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage1 = [UIImage imageWithData:decodedImageData1];
+            self.imgV2.image  = decodedImage1;
+        }
+
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = YES;
@@ -347,7 +597,15 @@
         self.imgV8.hidden = YES;
         self.imgV9.hidden = YES;
         
-        [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+        if ([model.qrCode integerValue] == 0) {
+            [self.imgV1 sd_setImageWithURL:[self commonChangeImgUrlAction:model.images[0]] placeholderImage:SharedAppInfo.icon];
+
+        }else{
+            //Base64字符串转UIImage图片：
+            NSData *decodedImageData0 = [[NSData alloc]initWithBase64EncodedString:model.images[0] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *decodedImage0 = [UIImage imageWithData:decodedImageData0];
+            self.imgV1.image  = decodedImage0;
+        }
         
         self.imgV1.superview.hidden = NO;
         self.imgV4.superview.hidden = YES;

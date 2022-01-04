@@ -51,7 +51,7 @@
     
     self.nameLabel.text = model.title;//[NSString stringWithFormat:@"%@%@",model.name,model.channelParams];
     
-    self.lab1.text = [NSString stringWithFormat:@"单笔限额：%@-%d", @"1", model.dailyMaxAmount.intValue];
+    self.lab1.text = [NSString stringWithFormat:@"单笔限额：%@-%@", @"10", @"20000"];
     
 //    NSString *startTime = [model.startTime substringWithRange:NSMakeRange(0, 5)];
 //    NSString *endTime = [model.endTime substringWithRange:NSMakeRange(0, 5)];

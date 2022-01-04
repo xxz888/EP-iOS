@@ -89,6 +89,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *ordercode;
 /** eg. 100 */
 @property (nonatomic, assign) CGFloat amount;
+@property (nonatomic, assign) CGFloat fee;
+
 /** eg. 商旅快捷D0 */
 @property (nonatomic, copy) NSString *desc;
 /** eg. 0 */

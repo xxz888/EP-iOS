@@ -82,7 +82,7 @@
 - (void)setupView
 {
     self.nameLabel.text = self.slotHistoryModel.channelType;
-    self.rateLabel.text = [NSString stringWithFormat:@"%.2f%%", self.slotHistoryModel.rate * 100];
+    self.rateLabel.text = [NSString stringWithFormat:@"%.2f%%", self.slotHistoryModel.rate];
     self.rateLabel.layer.cornerRadius = 3;
     self.rateLabel.layer.masksToBounds = YES;
     
@@ -108,8 +108,8 @@
     }
     
     
-    self.lab1.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.amount - self.slotHistoryModel.amount*self.slotHistoryModel.rate/100];
-    self.lab2.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.amount*self.slotHistoryModel.rate/100];
+    self.lab1.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.amount - self.slotHistoryModel.fee];
+    self.lab2.text = [NSString stringWithFormat:@"%.2f元", self.slotHistoryModel.fee];
     self.lab3.text = self.slotHistoryModel.channelType;
     self.lab4.text = self.slotHistoryModel.createdTime;
     self.lab5.text = self.slotHistoryModel.orderId;

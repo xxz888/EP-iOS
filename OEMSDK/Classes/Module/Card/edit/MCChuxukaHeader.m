@@ -13,7 +13,8 @@
 #import "KDPhoneAlertContent.h"
 #import "DDPhotoViewController.h"
 #import "KDCommonAlert.h"
-@interface MCChuxukaHeader ()<UITextFieldDelegate>
+
+@interface MCChuxukaHeader ()<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 @property (weak, nonatomic) IBOutlet BankCardTextField *textField2;
@@ -48,9 +49,14 @@
 
 @property (nonatomic ,strong)NSString * subBankCode;
 @property (nonatomic ,strong)NSString * subBankName;
-@property (nonatomic ,strong)NSString * debitCardUrl;
+@property (nonatomic ,strong)NSString * zhengmianUrl;
+@property (nonatomic ,strong)NSString * fanmianUrl;
+
+@property (weak, nonatomic) IBOutlet UIImageView *zhengmianImv;
+@property (weak, nonatomic) IBOutlet UIImageView *fanmianImv;
 
 
+@property(nonatomic,assign)BOOL isFanmian;
 @end
 
 @implementation MCChuxukaHeader
@@ -85,7 +91,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.buttons = [NSMutableArray new];
-   
+    self.isFanmian = NO;
     self.bgview.layer.cornerRadius = 12;
     
     [self.sureButton setBackgroundColor:[UIColor qmui_colorWithHexString:@"#F7874E"]];
@@ -114,12 +120,159 @@
     [self.textField3 addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     
     
+    
+    self.zhengmianImv.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickzhengmianImv:)];
+    //别忘了添加到testView上
+    [self.zhengmianImv addGestureRecognizer:tap];
+    
+    
+    self.fanmianImv.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickfanmianImv:)];
+    //别忘了添加到testView上
+    [self.fanmianImv addGestureRecognizer:tap1];
+    
+    
+    
+    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+        self.textField3.text = userInfo.phone;
+        self.textField1.text = userInfo.name;
+        self.sehfenzhengTf.text = userInfo.idCardNo;
+    }];
+    
+    
+    
+    [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/info" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
+
+      
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    }];
+    
 }
--(void)setData{
-    self.textField1.text = self.shimingName;
-    self.textField3.text = self.shimingPhone;
-    self.sehfenzhengTf.text = self.shimingIdCard;
+-(void)clickzhengmianImv:(id)tap{
+    
+    UIViewController *current = MCLATESTCONTROLLER;
+    __weak __typeof(self)weakSelf = self;
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusDenied) {
+            [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
+            return;
+        }
+        
+        self.isFanmian = NO;
+
+        //调用身份证大小的相机
+        DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        vc.imageblock = ^(UIImage *image) {
+            weakSelf.zhengmianImv.image = image;
+            [self uploadBankImage:image];
+        };
+        [MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
+        
+        
+    }];
+    UIAlertAction *picture = [UIAlertAction actionWithTitle:@"选择照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        }
+        pickerImage.delegate = self;
+        pickerImage.allowsEditing = NO;
+        [current presentViewController:pickerImage animated:YES completion:nil];
+    }];
+    [alertVc addAction:cancle];
+    [alertVc addAction:camera];
+    [alertVc addAction:picture];
+    [current presentViewController:alertVc animated:YES completion:nil];
+    
+    
+    
+    
+
 }
+-(void)clickfanmianImv:(id)tap{
+    
+    
+    
+    UIViewController *current = MCLATESTCONTROLLER;
+    __weak __typeof(self)weakSelf = self;
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusDenied) {
+            [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
+            return;
+        }
+        
+        self.isFanmian = YES;
+
+        
+        //调用身份证大小的相机
+        DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        vc.imageblock = ^(UIImage *image) {
+            weakSelf.fanmianImv.image = image;
+            [self uploadBankImage:image];
+        };
+        [MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
+        
+        
+    }];
+    UIAlertAction *picture = [UIAlertAction actionWithTitle:@"选择照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        }
+        pickerImage.delegate = self;
+        pickerImage.allowsEditing = NO;
+        [current presentViewController:pickerImage animated:YES completion:nil];
+    }];
+    [alertVc addAction:cancle];
+    [alertVc addAction:camera];
+    [alertVc addAction:picture];
+    [current presentViewController:alertVc animated:YES completion:nil];
+    
+    
+    
+    
+    
+  
+}
+#pragma mark Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    __weak typeof(self) weakSelf = self;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    if ([type isEqualToString:@"public.image"]) {
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+        
+        if (self.isFanmian) {
+            weakSelf.fanmianImv.image = image;
+            [self uploadBankImage:image];
+        }else{
+            weakSelf.zhengmianImv.image = image;
+            [self uploadBankImage:image];
+        }
+     
+        
+        
+    }
+    
+
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)textChanged:(UITextField *)textField {
     
     if (textField == self.textField3 && textField.text.length >= 11) {
@@ -153,6 +306,25 @@
 }
 
 - (IBAction)buttonTouched:(id)sender {
+    if (self.textField1.text.length ==0 ) {
+        [MCToast showMessage:self.textField1.placeholder];
+        return;
+    }
+    if (self.textField3.text.length ==0 ) {
+        [MCToast showMessage:self.textField3.placeholder];
+        return;
+    }
+    if (self.zhengmianUrl.length == 0) {
+        [MCToast showMessage:@"请上传银行卡正面照片"];
+        return;
+    }
+    if (self.fanmianUrl.length == 0) {
+        [MCToast showMessage:@"请上传银行卡反面照片"];
+        return;
+    }
+    
+    
+    
     
     if (self.model) {   //修改
         [self modifyChuxu];
@@ -163,10 +335,7 @@
 
 //新增储蓄卡
 - (void)bindChuxu {
-    if (self.debitCardUrl.length == 0) {
-        [MCToast showMessage:@"请上传银行卡照片"];
-        return;
-    }
+
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
@@ -187,7 +356,8 @@
 //                            @"province":addr[0],
 //                            @"city":addr[1]};
     NSDictionary *param = @{
-                            @"bankCardUrl":self.debitCardUrl,
+                            @"bankCardBackUrl":self.fanmianUrl,
+                            @"bankCardUrl":self.zhengmianUrl,
                             @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
@@ -280,7 +450,7 @@
     if (!model) {
         return;
     }
-    self.topCons.constant = 423;
+//    self.topCons.constant = 600;
     UIView *vv = [self viewWithTag:2004];
     vv.hidden = YES;
     
@@ -297,7 +467,6 @@
 //
 
     self.textField2.text = model.bankCardNo;
-    self.textField3.text = model.phone;
     self.textField4.text = [NSString stringWithFormat:@"%@%@",model.province,model.city];
 }
 #pragma mark - UITextFieldDelegate
@@ -439,27 +608,35 @@
     __weak __typeof(self)weakSelf = self;
     [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
         if (resp[@"fileUrl"]) {
-            weakSelf.debitCardUrl = resp[@"fileUrl"];
-            NSDictionary *param = @{
-                                    @"link":resp[@"fileUrl"],
-                                    @"orcType":@"BankCard",
-                                    };
-            kWeakSelf(self);
-            [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/orc" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-                NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
-                NSMutableString *string = [NSMutableString string];
-                for (int i = 0; i < no.length; i++) {
-                    [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
-                    if (i % 4 == 3) {
-                        [string appendString:@" "];
+            if (weakSelf.isFanmian) {
+                weakSelf.fanmianUrl = resp[@"fileUrl"];
+            }else{
+                weakSelf.zhengmianUrl = resp[@"fileUrl"];
+                kWeakSelf(self);
+                NSDictionary *param = @{
+                                        @"link":resp[@"fileUrl"],
+                                        @"orcType":@"BankCard",
+                                        };
+                [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/orc" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+                    NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
+                    NSMutableString *string = [NSMutableString string];
+                    for (int i = 0; i < no.length; i++) {
+                        [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
+                        if (i % 4 == 3) {
+                            [string appendString:@" "];
+                        }
                     }
-                }
-                weakSelf.textField2.text = [NSString stringWithFormat:@"%@",string];
-            } other:^(NSDictionary * _Nonnull resp) {
+                    weakSelf.textField2.text = [NSString stringWithFormat:@"%@",string];
+                } other:^(NSDictionary * _Nonnull resp) {
 
-            } failure:^(NSError * _Nonnull error) {
+                } failure:^(NSError * _Nonnull error) {
+                    
+                }];
                 
-            }];
+
+            }
+   
+     
         }
 
 

@@ -31,9 +31,9 @@
 
 - (void)getData {
     
- 
+    
     //添加手势
-    self.telLabel.text = [NSString stringWithFormat:@"客服电话:%@",SharedDefaults.servicePhone];
+    self.telLabel.text = [NSString stringWithFormat:@"客服电话:%@",SharedDefaults.configDic[@"config"][@"servicePhone"]];
     self.telLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCall:)];
     [self.telLabel addGestureRecognizer:tap];
@@ -41,7 +41,7 @@
 //    self.telLabel.text = [NSString stringWithFormat:@"电话：%@",SharedBrandInfo.brandPhone];
 }
 -(void)clickCall:(id)tap{
-    [MCServiceStore call:SharedDefaults.servicePhone];
+    [MCServiceStore call:SharedDefaults.configDic[@"config"][@"servicePhone"]];
 
 }
 @end

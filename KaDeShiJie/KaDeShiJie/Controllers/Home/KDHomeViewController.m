@@ -137,13 +137,15 @@
 //    [self.view addSubview:backBtn];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareBtn setTitle:@"客服" forState:UIControlStateNormal];
+    [shareBtn setTitle:@"  客服" forState:UIControlStateNormal];
+    [shareBtn setImage:[UIImage imageNamed:@"kd_home_kf"] forState:UIControlStateNormal];
+
 //    [shareBtn setBackgroundColor:[UIColor whiteColor]];
 //    shareBtn.layer.cornerRadius = 11;
     [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(clickKFAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
-    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 84, StatusBarHeightConstant + 12, 94, 22);
+    shareBtn.frame = CGRectMake(SCREEN_WIDTH - 120, StatusBarHeightConstant + 12, 120, 22);
     [self.view addSubview:shareBtn];
     [self setNavigationBarHidden];
 

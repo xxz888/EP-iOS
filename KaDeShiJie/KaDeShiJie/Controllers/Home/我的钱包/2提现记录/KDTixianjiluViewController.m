@@ -126,7 +126,7 @@
         return @"平级分润";
     }
     if ([key isEqualToString:@"Coupon"]) {
-        return @"红包";
+        return @"抵扣券返现";
     }
     if ([key isEqualToString:@"Withdraw"]) {
         return @"提现";

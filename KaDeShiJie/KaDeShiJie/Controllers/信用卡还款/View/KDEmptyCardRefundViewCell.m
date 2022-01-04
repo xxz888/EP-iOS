@@ -34,7 +34,7 @@
 - (BRAddressPickerView *)addressPicker {
     if (!_addressPicker) {
         _addressPicker = [[BRAddressPickerView alloc] initWithPickerMode:BRAddressPickerModeCity];
-        _addressPicker.title = @"请选择开户省市";
+        _addressPicker.title = @"请选择消费地区";
         _addressPicker.selectValues = @[@"上海市", @"上海市"];
         __weak __typeof(self)weakSelf = self;
         _addressPicker.resultBlock = ^(BRProvinceModel * _Nullable province, BRCityModel * _Nullable city, BRAreaModel * _Nullable area) {

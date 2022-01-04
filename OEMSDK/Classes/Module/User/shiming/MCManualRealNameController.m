@@ -59,6 +59,7 @@ static const CGFloat margin = 10;
 
 @property (nonatomic, assign) NSInteger ocrIndex;
 
+@property (nonatomic, assign) BOOL isScan;
 
 
 @end
@@ -214,7 +215,7 @@ static const CGFloat margin = 10;
     [scrollView addSubview:phoneView];
     
     
-    UILabel * phoneTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 100, nameView.height) text:@"银行预留手机号" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
+    UILabel * phoneTitleLabel = [self labelWithFrame:CGRectMake(0, 0, 100, nameView.height) text:@"预留手机号" textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14]];
     [phoneView addSubview:phoneTitleLabel];
     UIView * phoneLineView = [[UIView alloc] initWithFrame:CGRectMake(phoneTitleLabel.right, 5, 1, phoneTitleLabel.height - 10)];
     phoneLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
@@ -408,11 +409,18 @@ static const CGFloat margin = 10;
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
     if ([type isEqualToString:@"public.image"]) {
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+        if (self.isScan) {
+            [self uploadBankImage:image];
+        }
+        
         if ([self.zhengmianfanmian isEqualToString:ZhengMian]) {
             self.imageOne = info[UIImagePickerControllerOriginalImage];
             [self.frontPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
             [self requestDataForUploadImages:self.imageOne fileName:@"one"];
-        }else{
+        }
+        
+        if ([self.zhengmianfanmian isEqualToString:FanMian]) {
             //向服务器上传身份证反面
             self.imageTwo = info[UIImagePickerControllerOriginalImage];
             [self.backPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
@@ -522,21 +530,47 @@ static const CGFloat margin = 10;
 }
 #pragma mark --- DELEGATE
 -(void)clickScan:(UIButton *)btn{
+    
     self.ocrIndex = btn.tag;
-__weak __typeof(self)weakSelf = self;
-AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-if (authStatus == AVAuthorizationStatusDenied) {
-    [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
-    return;
-}
+    self.isScan = YES;
+    UIViewController *current = MCLATESTCONTROLLER;
+    __weak __typeof(self)weakSelf = self;
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusDenied) {
+            [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
+            return;
+        }
+        
+        //调用身份证大小的相机
+        DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        vc.imageblock = ^(UIImage *image) {
+            [self uploadBankImage:image];
+        };
+        [MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
+    }];
+    UIAlertAction *picture = [UIAlertAction actionWithTitle:@"选择照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        }
+        pickerImage.delegate = self;
+        pickerImage.allowsEditing = NO;
+        [current presentViewController:pickerImage animated:YES completion:nil];
+    }];
+    [alertVc addAction:cancle];
+    [alertVc addAction:camera];
+    [alertVc addAction:picture];
+    [current presentViewController:alertVc animated:YES completion:nil];
+    
+    
+    
 
-//调用身份证大小的相机
-DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
-vc.modalPresentationStyle = UIModalPresentationFullScreen;
-vc.imageblock = ^(UIImage *image) {
-    [self uploadBankImage:image];
-};
-[MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
+
 }
 //#pragma mark - 上传银行卡图片
 - (void)uploadBankImage:(UIImage *)image {
