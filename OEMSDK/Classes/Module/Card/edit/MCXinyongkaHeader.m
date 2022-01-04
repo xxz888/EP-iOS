@@ -39,6 +39,9 @@
 @property (weak, nonatomic) IBOutlet QMUIButton *scanBtn;
 @property (weak, nonatomic) IBOutlet BankCardTextField *kaihuyinhangTf;
 @property (nonatomic ,strong)NSString * selectBankId;
+@property (nonatomic ,strong)NSString * bankCardUrl;
+
+
 @end
 
 
@@ -169,7 +172,10 @@
 }
 //新增信用卡
 - (void)bindXinyong {
-    
+    if (self.bankCardUrl.length == 0) {
+        [MCToast showMessage:@"请上传信用卡照片"];
+        return;
+    }
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.kaihuyinhangTf.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
@@ -195,7 +201,7 @@
      **/
 
     NSDictionary *param = @{
-                            @"bankCardNo":cardNo,
+                            @"bankCardUrl":self.bankCardUrl,
                             @"billingDate":[self.textField6.text substringToIndex:self.textField6.text.length-1],
                             @"cardType":@"CreditCard",
                             @"cvc":self.textField4.text,
@@ -408,6 +414,7 @@
     [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
         
         if (resp[@"fileUrl"]) {
+            weakSelf.bankCardUrl = resp[@"fileUrl"];
             NSDictionary *param = @{
                                     @"link":resp[@"fileUrl"],
                                     @"orcType":@"BankCard",

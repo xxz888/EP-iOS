@@ -52,7 +52,7 @@
     if (!_fieldNew) {
         _fieldNew = [[QMUITextField alloc] init];
         if (self.type == MCResetPWDTypeTrade) {
-            _fieldNew.placeholder = @"请输入您新的交易密码";
+            _fieldNew.placeholder = @"请输入您新的提现密码";
             _fieldNew.keyboardType = UIKeyboardTypeNumberPad;
         } else {
             _fieldNew.placeholder = @"请输入您新的登录密码";
@@ -68,7 +68,7 @@
     if (!_fieldSure) {
         _fieldSure = [[QMUITextField alloc] init];
         if (self.type == MCResetPWDTypeTrade) {
-            _fieldSure.placeholder = @"请再次输入您的交易密码";
+            _fieldSure.placeholder = @"请再次输入您的提现密码";
             _fieldSure.keyboardType = UIKeyboardTypeNumberPad;
         } else {
             _fieldSure.placeholder = @"请再次输入您的登录密码";
@@ -89,7 +89,7 @@
     self.mc_tableview.separatorInset = UIEdgeInsetsZero;
     self.mc_tableview.mj_header = nil;
     self.mc_tableview.tableFooterView = self.footView;
-    NSString *typeName = (self.type == MCResetPWDTypeTrade)?@"设置交易密码":@"重置登录密码";
+    NSString *typeName = (self.type == MCResetPWDTypeTrade)?@"设置提现密码":@"重置登录密码";
     [self setNavigationBarTitle:typeName tintColor:nil];
     self.dataSource = @[
     @{@"title":@"新密码",
@@ -127,7 +127,7 @@
         }
     } else {
         if (self.fieldNew.text.length != 6) {
-            [MCToast showMessage:@"交易密码长度为6位！"];
+            [MCToast showMessage:@"提现密码长度为6位！"];
             return;
         }
     }

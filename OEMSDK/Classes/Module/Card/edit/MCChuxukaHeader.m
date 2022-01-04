@@ -48,6 +48,7 @@
 
 @property (nonatomic ,strong)NSString * subBankCode;
 @property (nonatomic ,strong)NSString * subBankName;
+@property (nonatomic ,strong)NSString * debitCardUrl;
 
 
 @end
@@ -162,6 +163,10 @@
 
 //新增储蓄卡
 - (void)bindChuxu {
+    if (self.debitCardUrl.length == 0) {
+        [MCToast showMessage:@"请上传银行卡照片"];
+        return;
+    }
     NSArray *addr = [self.textField4.text componentsSeparatedByString:@"-"];
     NSString *cardNo = [self.textField2.mc_realText qmui_stringByReplacingPattern:@" " withString:@""];
     /*
@@ -182,7 +187,7 @@
 //                            @"province":addr[0],
 //                            @"city":addr[1]};
     NSDictionary *param = @{
-                            @"bankCardNo":cardNo,
+                            @"bankCardUrl":self.debitCardUrl,
                             @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
@@ -225,7 +230,7 @@
                             @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
-                            @"id":self.model.id
+                            @"id":self.model.id,
                             };
     [MCSessionManager.shareManager mc_put:@"/api/v1/player/bank" parameters:param ok:^(NSDictionary * _Nonnull respDic) {
         [MCToast showMessage:@"修改成功"];
@@ -433,8 +438,8 @@
 - (void)uploadBankImage:(UIImage *)image {
     __weak __typeof(self)weakSelf = self;
     [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
-        
         if (resp[@"fileUrl"]) {
+            weakSelf.debitCardUrl = resp[@"fileUrl"];
             NSDictionary *param = @{
                                     @"link":resp[@"fileUrl"],
                                     @"orcType":@"BankCard",

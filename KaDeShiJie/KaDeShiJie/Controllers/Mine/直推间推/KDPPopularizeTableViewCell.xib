@@ -72,7 +72,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tuiguangrenzheng" translatesAutoresizingMaskIntoConstraints="NO" id="w47-eU-2Ia">
-                        <rect key="frame" x="49" y="15.5" width="14" height="14"/>
+                        <rect key="frame" x="57" y="13.5" width="14" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="7eO-aQ-XlE"/>
                             <constraint firstAttribute="height" constant="14" id="xyT-Gg-le7"/>
@@ -85,7 +85,7 @@
                     <constraint firstItem="Ylo-dp-liH" firstAttribute="leading" secondItem="gmj-S8-LG7" secondAttribute="trailing" constant="16" id="F8d-dp-i9f"/>
                     <constraint firstAttribute="trailing" secondItem="EIK-Cp-gbO" secondAttribute="trailing" id="HOx-nu-W6m"/>
                     <constraint firstAttribute="bottom" secondItem="kwV-Kq-FnV" secondAttribute="bottom" id="Kpv-vS-Awy"/>
-                    <constraint firstItem="w47-eU-2Ia" firstAttribute="top" secondItem="gmj-S8-LG7" secondAttribute="top" id="Owt-42-qTK"/>
+                    <constraint firstItem="w47-eU-2Ia" firstAttribute="top" secondItem="gmj-S8-LG7" secondAttribute="top" constant="-2" id="Owt-42-qTK"/>
                     <constraint firstItem="Fk1-zK-xRV" firstAttribute="top" secondItem="NW6-Ah-XUa" secondAttribute="bottom" constant="8" id="SCZ-Hw-Twq"/>
                     <constraint firstItem="gmj-S8-LG7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15.5" id="c2P-vh-xZQ"/>
                     <constraint firstItem="Fk1-zK-xRV" firstAttribute="leading" secondItem="NW6-Ah-XUa" secondAttribute="leading" id="cNT-3Q-ue3"/>
@@ -94,7 +94,7 @@
                     <constraint firstItem="JDC-9O-LtG" firstAttribute="centerY" secondItem="Fk1-zK-xRV" secondAttribute="centerY" id="oRB-QA-YtR"/>
                     <constraint firstItem="gmj-S8-LG7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ou2-II-fSf"/>
                     <constraint firstItem="Ylo-dp-liH" firstAttribute="top" secondItem="gmj-S8-LG7" secondAttribute="top" id="sML-wj-iu5"/>
-                    <constraint firstItem="w47-eU-2Ia" firstAttribute="trailing" secondItem="gmj-S8-LG7" secondAttribute="trailing" constant="-1" id="tqi-rv-MAK"/>
+                    <constraint firstItem="w47-eU-2Ia" firstAttribute="trailing" secondItem="gmj-S8-LG7" secondAttribute="trailing" constant="7" id="tqi-rv-MAK"/>
                     <constraint firstItem="JDC-9O-LtG" firstAttribute="leading" secondItem="Fk1-zK-xRV" secondAttribute="trailing" constant="5" id="vHt-sy-aP9"/>
                     <constraint firstItem="NW6-Ah-XUa" firstAttribute="leading" secondItem="gmj-S8-LG7" secondAttribute="trailing" constant="16" id="yWD-AP-7aT"/>
                 </constraints>
@@ -108,7 +108,7 @@
                 <outlet property="cellTime" destination="JDC-9O-LtG" id="lGK-MZ-upG"/>
                 <outlet property="cellUserLlb" destination="EIK-Cp-gbO" id="VtH-IE-Zi2"/>
             </connections>
-            <point key="canvasLocation" x="-104" y="51"/>
+            <point key="canvasLocation" x="241" y="43"/>
         </tableViewCell>
     </objects>
     <resources>

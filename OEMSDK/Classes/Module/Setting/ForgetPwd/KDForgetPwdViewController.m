@@ -28,7 +28,7 @@
     [self setNavigationBarTitle:
      [self.iscome isEqualToString:@"1"]?@"重置登录密码":
      [self.iscome isEqualToString:@"2"]?@"设置登录密码":
-     [self.iscome isEqualToString:@"3"]?@"设置交易密码":@"" tintColor:nil];
+     [self.iscome isEqualToString:@"3"]?@"设置提现密码":@"" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     [self.bottomView addSubview:self.footView];
 

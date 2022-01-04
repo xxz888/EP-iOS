@@ -31,11 +31,10 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh4-dv-c3Z">
-                    <rect key="frame" x="30" y="247.5" width="354" height="156"/>
+                    <rect key="frame" x="30" y="247.5" width="354" height="183"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">無卡生活是行业领先的信用卡还款、刷卡、办卡软件，空卡仅需留足手续费，或5%以上的可用余额，即可全额快速还款，每万元手续费低至60元，让您彻底远离逾期;刷卡10秒内到账，每万元手续费低至38元。银联授信，安全稳定。
-</string>
+                            <string key="content">      無卡生活是一个专注于个人信用卡服务的智能管理软件。"经营信用创造美好生活"是我们的愿景。無卡生活APP以全新的信用卡还款模式，提供在线办卡、一键还款、信用卡收款、刷脸支付、手机POS等方方面面的用卡服务，让信用卡管理变得更简单。展望美好明天，無卡生活运营团队愿与各界朋友共发展、共分享、创价值、成未来。</string>
                             <attributes>
                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="15" name="PingFangSC-Regular"/>
@@ -46,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服电话：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oti-ub-jxJ">
-                    <rect key="frame" x="0.0" y="463.5" width="414" height="18"/>
+                    <rect key="frame" x="0.0" y="550.5" width="414" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -57,6 +56,19 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5r-fq-9h5">
+                    <rect key="frame" x="30" y="440.5" width="354" height="48"/>
+                    <attributedString key="attributedText">
+                        <fragment content="      展望美好明天，無卡生活运营团队愿与各界朋友共发展、共分享、创价值、成未来。">
+                            <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" size="15" name="PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -64,17 +76,20 @@
                 <constraint firstItem="UBd-L4-lXJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="2Tx-S6-TTh"/>
                 <constraint firstItem="hh4-dv-c3Z" firstAttribute="top" secondItem="Si6-qH-WbJ" secondAttribute="bottom" constant="20" id="4gt-1T-tkH"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="UBd-L4-lXJ" secondAttribute="trailing" constant="10" id="6y0-4p-aq6"/>
+                <constraint firstItem="K5r-fq-9h5" firstAttribute="trailing" secondItem="hh4-dv-c3Z" secondAttribute="trailing" id="C5W-Gf-m82"/>
+                <constraint firstItem="K5r-fq-9h5" firstAttribute="top" secondItem="hh4-dv-c3Z" secondAttribute="bottom" constant="10" id="Jeh-HU-jTv"/>
                 <constraint firstItem="Oti-ub-jxJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="MGA-8q-sDj"/>
                 <constraint firstItem="UBd-L4-lXJ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="OjC-At-wri"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Oti-ub-jxJ" secondAttribute="trailing" id="P19-he-u4U"/>
                 <constraint firstItem="Oti-ub-jxJ" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="SA1-tC-7Dc"/>
+                <constraint firstItem="K5r-fq-9h5" firstAttribute="leading" secondItem="hh4-dv-c3Z" secondAttribute="leading" id="VoY-IK-Ikz"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="hh4-dv-c3Z" secondAttribute="trailing" constant="30" id="XP4-QJ-tnV"/>
                 <constraint firstItem="Si6-qH-WbJ" firstAttribute="top" secondItem="UBd-L4-lXJ" secondAttribute="bottom" constant="10" id="dQK-UP-yfd"/>
                 <constraint firstItem="Si6-qH-WbJ" firstAttribute="centerX" secondItem="UBd-L4-lXJ" secondAttribute="centerX" id="mSn-kn-doe"/>
                 <constraint firstItem="hh4-dv-c3Z" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="30" id="tV3-3V-frl"/>
-                <constraint firstItem="Oti-ub-jxJ" firstAttribute="top" secondItem="hh4-dv-c3Z" secondAttribute="bottom" constant="60" id="vt4-sf-wdd"/>
+                <constraint firstItem="Oti-ub-jxJ" firstAttribute="top" secondItem="hh4-dv-c3Z" secondAttribute="bottom" constant="120" id="vt4-sf-wdd"/>
             </constraints>
-            <point key="canvasLocation" x="72" y="117"/>
+            <point key="canvasLocation" x="71.014492753623188" y="116.51785714285714"/>
         </view>
     </objects>
     <resources>

@@ -40,10 +40,13 @@
     NSString * level = [self getLevel:SharedUserInfo.level];
 
     self.header.phoneLabel.text = SharedUserInfo.phone;
-    self.header.nameLabel.text = [NSString stringWithFormat:@"%@ %@",SharedUserInfo.nickname,level];
-    self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
+    self.header.nameLabel.text = [NSString stringWithFormat:@"昵称:%@",SharedUserInfo.nickname];
+    self.header.levelViwe.text = [NSString stringWithFormat:@"%@",level];
+//    self.header.nameLabel.text = [NSString stringWithFormat:@"昵称：%@ %@",SharedUserInfo.nickname,level];
+//    self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
     [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:SharedUserInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
-    
+    self.header.idLabel.text =[NSString stringWithFormat:@"邀请码:%@", SharedUserInfo.promoteId];
+
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -106,10 +109,11 @@
         //
         NSString * level = [self getLevel:userInfo.level];
         self.header.phoneLabel.text = userInfo.phone;
-        self.header.nameLabel.text = [NSString stringWithFormat:@"%@ %@",userInfo.nickname,level];
-        self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
+        self.header.nameLabel.text = [NSString stringWithFormat:@"昵称:%@",userInfo.nickname];
+        self.header.levelViwe.text = [NSString stringWithFormat:@"%@",level];
+//        self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.servicePhone];
         [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:userInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
-        self.header.idLabel.text =[NSString stringWithFormat:@"邀请码：%@", userInfo.promoteId];
+        self.header.idLabel.text =[NSString stringWithFormat:@"邀请码:%@", userInfo.promoteId];
 
     }];
     

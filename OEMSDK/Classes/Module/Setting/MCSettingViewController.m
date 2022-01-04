@@ -82,7 +82,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     }];
 
     [self.items addObject:@{@"imgName":@"椭圆 2",
-                            @"title":@"设置交易密码",
+                            @"title":@"设置提现密码",
                             @"subTitle":@"",
                             @"action":@"manageCount"
     }];

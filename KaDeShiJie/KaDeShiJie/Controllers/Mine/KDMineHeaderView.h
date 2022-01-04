@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *dianhua;
 
+@property (weak, nonatomic) IBOutlet UILabel *levelViwe;
 
 @end
 

@@ -114,6 +114,16 @@
         [LYImageMagnification scanBigImageWithImageView:imgView alpha:1];
     }
 }
+-(void)requestImg:(NSString *)imgUrl{
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/mere/images" parameters:@{@"imagePaths":@[imgUrl]} ok:^(NSDictionary * _Nonnull respDic) {
+        
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
+}
 - (void)setModel:(MCArticleModel *)model {
     _model = model;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.create_time.longLongValue/1000];

@@ -12,6 +12,8 @@
 #import "BRStringPickerView.h"
 #import "KDCommonAlert.h"
 #import "MCDateStore.h"
+#import "KDSlotCardHistoryModel.h"
+#import "KDSlotCardOrderInfoViewController.h"
 @interface KDPayNewViewController ()//<WBQRCodeVCDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
@@ -101,10 +103,26 @@
      };
     __weak typeof(self) weakSelf = self;
     [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"操作成功"];
         });
-        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        
+        NSString * url = [NSString stringWithFormat:@"/api/v1/player/order"];
+        [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+            [weakSelf.mc_tableview.mj_header endRefreshing];
+            if ([respDic[@"data"] count] == 0) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+
+            }else{
+                
+                        
+                KDSlotCardOrderInfoViewController *vc1 = [[KDSlotCardOrderInfoViewController alloc] init];
+                vc1.slotHistoryModel = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]][0];
+                [self.navigationController pushViewController:vc1 animated:YES];
+               
+            }
+        }] ;
+        
     } other:^(NSDictionary * _Nonnull respDic) {
         
     } failure:^(NSError * _Nonnull error) {

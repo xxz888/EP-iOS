@@ -70,7 +70,6 @@
     self.progressContentView.userInteractionEnabled = NO;
     self.planBtn.hidden = NO;
     self.planBtn.userInteractionEnabled = YES;
-    self.desLabel.text = @"请及时设置本月还款计划";
     
     
     if ([refundModel.planStatus isEqualToString:@"Running"] || [refundModel.planStatus isEqualToString:@"Padding"]) {
@@ -78,6 +77,8 @@
         self.progressView.progress = [refundModel.alreadyRepaymentAmount doubleValue] / [refundModel.repaymentAmount doubleValue];
         self.progressView.hidden = self.jihuajinduBtn.hidden = NO;
         self.progressContentView.userInteractionEnabled = YES;
+        self.desLabel.text = @"";
+
         
     }else{
         self.progressView.hidden = self.jihuajinduBtn.hidden = YES;

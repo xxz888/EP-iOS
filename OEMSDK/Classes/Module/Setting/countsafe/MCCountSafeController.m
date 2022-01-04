@@ -25,7 +25,7 @@
     self.mc_tableview.mj_header = nil;
     self.dataSource = @[
         @{@"img":[UIImage mc_imageNamed:@"one_safe_paypass_reset"],
-          @"title":@"重置交易密码"
+          @"title":@"重置提现密码"
         }];
     [self.mc_tableview reloadData];
     self.mc_tableview.separatorInset = UIEdgeInsetsZero;

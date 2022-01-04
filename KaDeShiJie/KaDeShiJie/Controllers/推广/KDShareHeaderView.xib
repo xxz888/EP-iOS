@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,8 +18,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NI0-XJ-wEW">
                     <rect key="frame" x="0.0" y="153.5" width="414" height="85"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6S-1S-MYL" customClass="QMUIButton">
-                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="85"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6S-1S-MYL" customClass="QMUIButton">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="85"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="行业资讯" image="矢量智能对象(2)">
@@ -37,24 +37,8 @@
                                 <action selector="topAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Xk-lM-7mF"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4V-8l-GVk" customClass="QMUIButton">
-                            <rect key="frame" x="103.5" y="0.0" width="103.5" height="85"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="推广二维码" image="矢量智能对象(1)">
-                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
-                                    <real key="value" value="4"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="topAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rRF-rZ-Xvv"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lck-yq-Wvw" customClass="QMUIButton">
-                            <rect key="frame" x="207" y="0.0" width="103.5" height="85"/>
+                            <rect key="frame" x="0.0" y="0.0" width="138" height="85"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="分享素材" image="矢量智能对象">
@@ -72,8 +56,24 @@
                                 <action selector="topAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2WW-m9-uw3"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4V-8l-GVk" customClass="QMUIButton">
+                            <rect key="frame" x="138" y="0.0" width="138" height="85"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="推广二维码" image="矢量智能对象(1)">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="spacingBetweenImageAndTitle">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="topAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rRF-rZ-Xvv"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0a-J7-lfh" customClass="QMUIButton">
-                            <rect key="frame" x="310.5" y="0.0" width="103.5" height="85"/>
+                            <rect key="frame" x="276" y="0.0" width="138" height="85"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="收益规则" image="矢量智能对象(3)">
@@ -235,7 +235,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIK-UH-rQe">
                     <rect key="frame" x="16" y="437" width="382" height="50"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="微信" translatesAutoresizingMaskIntoConstraints="NO" id="cbf-70-z06">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="奖杯" translatesAutoresizingMaskIntoConstraints="NO" id="cbf-70-z06">
                             <rect key="frame" x="16" y="15" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="NnG-Vi-aQa"/>
@@ -249,8 +249,8 @@
                                 <constraint firstAttribute="height" constant="11" id="pB9-N4-yUs"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官方社群微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2D-1f-bQw">
-                            <rect key="frame" x="53" y="16" width="92" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奖励活动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2D-1f-bQw">
+                            <rect key="frame" x="53" y="16" width="61.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -315,14 +315,14 @@
                 <outlet property="tuiguangwuliaoView" destination="0Xq-a1-3bW" id="CDg-4u-ZSC"/>
                 <outlet property="weixinView" destination="PIK-UH-rQe" id="AxO-5G-c5Z"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="13.727678571428571"/>
+            <point key="canvasLocation" x="-68" y="5"/>
         </view>
     </objects>
     <resources>
         <image name="weinituijian" width="276" height="84"/>
+        <image name="奖杯" width="22" height="22"/>
         <image name="安全稳定 值得信赖" width="328" height="153.5"/>
         <image name="左箭头 拷贝 3" width="6" height="11.5"/>
-        <image name="微信" width="24" height="24"/>
         <image name="物料管理 (3)" width="24" height="24"/>
         <image name="矢量智能对象" width="39" height="39"/>
         <image name="矢量智能对象(1)" width="39" height="39"/>

@@ -82,7 +82,8 @@
       [self.viewController.navigationController pushViewController:web animated:YES];
     }] ;
     [self.weixinView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [self disPhoneClicktuiguang1Imv];
+        [MCToast showMessage:@"开发中"];
+//        [self disPhoneClicktuiguang1Imv];
     }] ;
     
 }
@@ -137,7 +138,7 @@
         
         
     }
-    else if ([title isEqualToString:@"行业资讯"]) {
+    else if ([title isEqualToString:@"奖励活动"]) {
         [self.viewController.navigationController pushViewController:[KDNewsViewController new] animated:YES];
     }
 }

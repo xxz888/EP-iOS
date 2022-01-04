@@ -87,8 +87,9 @@
     static NSString * CellIdentifier = @"KDXinYongKaCollectionViewCell";
     KDXinYongKaCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
+    cell.collTitle.text = self.dataArray[indexPath.row][@"title"];
+    cell.cellContent.text = self.dataArray[indexPath.row][@"describe"];
 
-    cell.backgroundColor = KWhiteColor;
     return cell;
 }
 //定义每个UICollectionView 的大小

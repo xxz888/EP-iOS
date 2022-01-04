@@ -41,7 +41,7 @@
 {
     
     NSString * phoneStr = [self.phone substringFromIndex:self.phone.length-4];
-    NSString *indexString = (self.index == 0 ? @"重置登录密码" : (self.index == 1 ? @"重置交易密码" : @"忘记交易密码" ));
+    NSString *indexString = (self.index == 0 ? @"重置登录密码" : (self.index == 1 ? @"重置提现密码" : @"忘记提现密码" ));
     
     [self setNavigationBarTitle:indexString tintColor:nil];
     
@@ -199,8 +199,8 @@
         }];
     }
     
-    if (self.index == 1 || self.index == 2) { // 重置交易密码
-        /* token  paypass:新的交易密码 */
+    if (self.index == 1 || self.index == 2) { // 重置提现密码
+        /* token  paypass:新的提现密码 */
         NSString *token = TOKEN;
         NSDictionary *dic = @{@"paypass":self.nowDataString, @"vericode":self.inputTF.text, @"brandId":MCModelStore.shared.brandConfiguration.brand_id};
         __weak typeof(self) weakSelf = self;
@@ -209,13 +209,13 @@
             
             kWeakSelf(self);
             KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-            [commonAlert initKDCommonAlertContent:@"交易密码重置成功！"  isShowClose:YES];
+            [commonAlert initKDCommonAlertContent:@"提现密码重置成功！"  isShowClose:YES];
             commonAlert.middleActionBlock = ^{
                 [weakself.navigationController popToRootViewControllerAnimated:YES];
             };
 
             
-//            [MCAlertStore showWithTittle:@"提示" message:@"交易密码重置成功！" buttonTitles:@[@"确定"] sureBlock:^{
+//            [MCAlertStore showWithTittle:@"提示" message:@"提现密码重置成功！" buttonTitles:@[@"确定"] sureBlock:^{
 //                [self.navigationController popToRootViewControllerAnimated:YES];
 //            }];
         }];

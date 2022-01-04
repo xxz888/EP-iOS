@@ -54,9 +54,12 @@ static const CGFloat margin = 10;
 @property (nonatomic, strong) NSString *imageThreeURL;
 
 @property (nonatomic, weak) UITextField * phoneTf;
+@property (nonatomic, strong) NSString * bankURL;
 
 
 @property (nonatomic, assign) NSInteger ocrIndex;
+
+
 
 @end
 
@@ -79,7 +82,7 @@ static const CGFloat margin = 10;
     self.imageOne = nil;
     self.imageTwo = nil;
     self.imageThree = nil;
-    
+    self.bankURL = nil;
     // 容器
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT-NavigationContentTop)];
     scrollView.directionalLockEnabled = YES;// 单一方向滚动
@@ -177,6 +180,7 @@ static const CGFloat margin = 10;
     cardcardNoLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
     [bankcardNoView addSubview:cardcardNoLineView];
     UITextField *bankCardTf = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
+    bankCardTf.userInteractionEnabled = NO;
     bankCardTf.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
     bankCardTf.tag = 1002;
     bankCardTf.textAlignment = NSTextAlignmentLeft;
@@ -540,6 +544,10 @@ __weak __typeof(self)weakSelf = self;
 [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
     
     if (resp[@"fileUrl"]) {
+        if (self.ocrIndex == 1001) {
+            weakSelf.bankURL = resp[@"fileUrl"];
+        }
+        
         NSDictionary *param = @{
                                 @"link":resp[@"fileUrl"],
                                 @"orcType": self.ocrIndex == 1001 ? @"BankCard" :@"IdCard",
@@ -549,6 +557,7 @@ __weak __typeof(self)weakSelf = self;
             NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
          
             if (self.ocrIndex == 1001) {
+              
                 NSMutableString *string = [NSMutableString string];
                 for (int i = 0; i < no.length; i++) {
                     [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
@@ -653,8 +662,12 @@ __weak __typeof(self)weakSelf = self;
         [MCToast showMessage:@"请填写身份证号"];
         return;
     }
-    if (debitCardNo.length == 0) {
-        [MCToast showMessage:@"请填写储蓄卡号"];
+//    if (debitCardNo.length == 0) {
+//        [MCToast showMessage:@"请填写储蓄卡号"];
+//        return;
+//    }
+    if (self.bankURL.length == 0) {
+        [MCToast showMessage:@"请扫描上传银行卡"];
         return;
     }
     if (self.phoneTf.text.length == 0) {
@@ -682,7 +695,8 @@ __weak __typeof(self)weakSelf = self;
                             @"faceUrl":self.imageThreeURL,
                             @"idCardBackUrl":self.imageTwoURL,
                             @"idCardFrontUrl":self.imageOneURL,
-                            @"bankPhone":self.phoneTf.text
+                            @"bankPhone":self.phoneTf.text,
+                            @"debitCardUrl":self.bankURL
 
     };
     __weak __typeof(self)weakSelf = self;

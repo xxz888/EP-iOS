@@ -97,6 +97,7 @@
 //    };
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
+        [weakSelf getMessage];
         [self.mc_tableview.mj_header endRefreshing];
     }];
 //    [self setNavigationBarTitle:@"首页" backgroundImage:[UIImage qmui_imageWithColor:[UIColor colorWithHexString:@"#F07E1B"]]];
@@ -165,22 +166,18 @@
 }
 - (void)getMessage {
     kWeakSelf(self)
-    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         
-         NSMutableArray * dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
     
         //Dialog
         NSString * alertString = @"";
         NSString * alertTitle = @"";
         NSString * msgId = @"";
-        for (MCMessageModel * model in dataArray) {
-            if ([model.noticeType isEqualToString:@"Diamond"]) {
-                msgId = model.id;
-                alertString = model.content;
-                alertTitle = model.title;
-                break;
+            if ([resp[@"notice"][@"noticeType"] isEqualToString:@"Dialog"]) {
+                msgId = [NSString stringWithFormat:@"%@",resp[@"notice"][@"id"]];
+                alertString = resp[@"notice"][@"content"];
+                alertTitle = resp[@"notice"][@"title"];
             }
-        }
            
         NSString * currentId =  [NSString stringWithFormat:@"%@%@",@"msgShow",msgId];
         NSString * saveId = [[NSUserDefaults standardUserDefaults] objectForKey:currentId];

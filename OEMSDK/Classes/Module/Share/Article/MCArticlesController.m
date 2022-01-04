@@ -46,6 +46,7 @@
     [self requestData:YES];
     
     [self setupHeader];;
+    
 }
 
 - (void)setupHeader {

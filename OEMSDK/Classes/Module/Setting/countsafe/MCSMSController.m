@@ -81,7 +81,7 @@
 }
 - (void)setupSubViews {
     
-    NSString *typeName = (self.type == MCResetPWDTypeTrade)?@"重置交易密码":@"重置登录密码";
+    NSString *typeName = (self.type == MCResetPWDTypeTrade)?@"重置提现密码":@"重置登录密码";
     
     NSString *str = [NSString stringWithFormat:@"您正在发起 %@ 业务，短信验证码已下发手机尾号为 %@ 用户手机请查收",typeName,[SharedUserInfo.phone substringFromIndex:SharedUserInfo.phone.length-4]];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:str];

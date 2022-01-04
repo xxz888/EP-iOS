@@ -72,7 +72,7 @@
     BCFI.tab_selected_index = 0;
     BCFI.is_guide_page = NO;
     BCFI.is_share_conin = YES;
-    BCFI.safe_title = @"设置交易密码";
+    BCFI.safe_title = @"设置提现密码";
     [BCFI registerURLPattern:rt_share_single toObjectHandler:^id(NSDictionary *routerParameters) {
         return [KDShareSingleVC new];
     }];
