@@ -305,7 +305,6 @@
 		6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */; };
 		6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */; };
 		6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */; };
-		6FABF12B27857C9F0026BE32 /* JFTBindFace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FABF12927857C9F0026BE32 /* JFTBindFace.framework */; };
 		6FABF12C27857C9F0026BE32 /* CWResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FABF12A27857C9F0026BE32 /* CWResource.bundle */; };
 		6FABF12E27857D2C0026BE32 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FABF12D27857D150026BE32 /* libc++.tbd */; };
 		6FAC122926FC86FB00E3560F /* KDHomeXinYongKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */; };
@@ -813,7 +812,6 @@
 		6FA44E9B274E43AD00DA1C59 /* KDTiXianViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTiXianViewController.h; sourceTree = "<group>"; };
 		6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTiXianViewController.m; sourceTree = "<group>"; };
 		6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTiXianViewController.xib; sourceTree = "<group>"; };
-		6FABF12927857C9F0026BE32 /* JFTBindFace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JFTBindFace.framework; sourceTree = "<group>"; };
 		6FABF12A27857C9F0026BE32 /* CWResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CWResource.bundle; sourceTree = "<group>"; };
 		6FABF12D27857D150026BE32 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		6FAC122726FC86FB00E3560F /* KDHomeXinYongKaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeXinYongKaViewController.h; sourceTree = "<group>"; };
@@ -861,7 +859,6 @@
 			files = (
 				6FABF12E27857D2C0026BE32 /* libc++.tbd in Frameworks */,
 				CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */,
-				6FABF12B27857C9F0026BE32 /* JFTBindFace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1714,7 +1711,6 @@
 		6FABF12827857C9F0026BE32 /* livingBody */ = {
 			isa = PBXGroup;
 			children = (
-				6FABF12927857C9F0026BE32 /* JFTBindFace.framework */,
 				6FABF12A27857C9F0026BE32 /* CWResource.bundle */,
 			);
 			path = livingBody;

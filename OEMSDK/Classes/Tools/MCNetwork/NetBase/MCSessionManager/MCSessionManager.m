@@ -70,7 +70,11 @@ static MCSessionManager *_singleManager = nil;
     
     NSLog(@"%@",TOKEN);
  
-    [MCLoading show];
+    if ([shortURLString isEqualToString:@"/api/v1/player/facePay/pre"]) {
+        
+    }else{
+        [MCLoading show];
+    }
     NSString * full= [self getFullUrlWithShort:shortURLString];
     
     NSLog(@"\n\n-------------【请求接口】-------------\n%@\n-------------【请求参数】-------------\n%@\n",full, parameters);
@@ -80,7 +84,11 @@ static MCSessionManager *_singleManager = nil;
         
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
-        [MCLoading hidden];
+        if ([shortURLString isEqualToString:@"/api/v1/player/facePay/pre"]) {
+            
+        }else{
+            [MCLoading hidden];
+        }
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
         NSInteger code = [httpResponse statusCode];
         if (!error) {
@@ -101,7 +109,7 @@ static MCSessionManager *_singleManager = nil;
                 [MCToast showMessage:@"请重新登陆"];
                 [MCApp userLogout];
             }else{
-                [MCToast showMessage:responseObject[@"messege"]];
+//                [MCToast showMessage:responseObject[@"messege"]];
             }
         } else {
             if (code == 401){
@@ -110,7 +118,7 @@ static MCSessionManager *_singleManager = nil;
                 [MCApp userLogout];
             }else{
             }
-            [MCToast showMessage:responseObject[@"message"]];
+//            [MCToast showMessage:responseObject[@"message"]];
             NSLog(@"请求失败error=%@", error);
         }
     }];

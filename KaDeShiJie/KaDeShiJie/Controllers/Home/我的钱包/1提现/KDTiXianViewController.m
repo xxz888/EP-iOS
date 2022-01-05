@@ -56,7 +56,7 @@
         weakSelf.tipLbl.text = [NSString stringWithFormat:@"税费:%.2f元 手续费:%@元 实际到账%.2f元",
                                 [dic[@"availableAmount"] doubleValue]*0.06,
                                 @"2",
-                                [dic[@"availableAmount"] doubleValue]*0.94];
+                                [dic[@"availableAmount"] doubleValue]*0.94 -2];
         if ([dic[@"canWithdraw"] integerValue] != 1) {
             self.canWithdraw = true;
 

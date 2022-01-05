@@ -96,10 +96,13 @@
 //        weakSelf.headerView.ly_height = viewHig;
 //    };
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf.mc_tableview.mj_header endRefreshing];
+
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
         [weakSelf getMessage];
-        [self.mc_tableview.mj_header endRefreshing];
     }];
+    
+    self.mc_tableview.mj_footer = nil;
 //    [self setNavigationBarTitle:@"首页" backgroundImage:[UIImage qmui_imageWithColor:[UIColor colorWithHexString:@"#F07E1B"]]];
 //
 //    QMUIButton *kfBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];

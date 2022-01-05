@@ -61,7 +61,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
-
     //显示光标，但隐藏键盘
 //    [self.moneyView becomeFirstResponder];
 //    self.moneyView.inputView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -364,6 +363,7 @@
     }
     
     if (self.whereCome == 3) {
+
         NSString * url = @"/api/v1/player/facePay/pre";
         NSDictionary *params = @{
             @"amount":self.moneyView.text,
@@ -375,13 +375,25 @@
             if ([respDic[@"facePayParam"][@"faceAuthable"] integerValue] == 0) {
                 MCWebViewController *web = [[MCWebViewController alloc] init];
                 web.urlString = respDic[@"facePayParam"][@"url"];
-                web.title = @"活体检测";
+                web.title = @"";
                 [weakSelf.navigationController pushViewController:web animated:YES];
             }else{
                 weakSelf.orderId = respDic[@"orderId"];
-                JFTBindFaceManager *mgr = [[JFTBindFaceManager alloc] init];
-                mgr.delegate = self;
-                [mgr bindFaceAuthPresentController:self];
+                
+                //加入到主线程当中
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    JFTBindFaceManager *mgr = [[JFTBindFaceManager alloc] init];
+                    mgr.delegate = self;
+                    //通知主线程刷新
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [mgr bindFaceAuthPresentController:self];
+                    });
+                });
+        
+                  
+                
+        
+             
                 
 
             }
@@ -397,7 +409,6 @@
 }
 /****************************** == delegate == ********************************/
 - (void)bindFaceMgrDidFinishWithToken:(NSString *)token{
-    NSLog(@"FaceAuth token : %@",token);
     [self facePayConfirm:self.orderId code:token];
 }
 - (void)bindFaceMgrDidFinishWithError:(NSString *)errCode sequence_id:(NSString *)sequenceId{

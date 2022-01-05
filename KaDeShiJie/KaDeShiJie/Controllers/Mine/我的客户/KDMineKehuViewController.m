@@ -39,12 +39,14 @@
     __weak __typeof(self)weakSelf = self;
     NSString * url1 = @"/api/v1/player/user/recommendation";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-        if (resp[@"directCount"]) {
-            weakSelf.jianquanLbl.text = [NSString stringWithFormat:@"%@",resp[@"directCount"]];
-        }
         if (resp[@"indirectCount"]) {
-            weakSelf.zhituiLbl.text =  [NSString stringWithFormat:@"%@",resp[@"indirectCount"]];
+            weakSelf.jianquanLbl.text = [NSString stringWithFormat:@"%@",resp[@"indirectCount"]];
         }
+        if (resp[@"directCount"]) {
+            weakSelf.zhituiLbl.text =  [NSString stringWithFormat:@"%@",resp[@"directCount"]];
+        }
+        
+        
         if (resp[@"totalIndirectCount"]) {
             weakSelf.tuiguangzongrenshu.text =  [NSString stringWithFormat:@"%@",resp[@"totalIndirectCount"]];
         }
