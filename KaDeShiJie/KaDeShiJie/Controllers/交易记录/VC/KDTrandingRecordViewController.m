@@ -75,6 +75,8 @@
 
     self.mc_tableview.mj_header = nil;
     self.type = 1;
+    
+    [self customBackButton];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -82,6 +84,22 @@
 
 
     [self getHistory];
+}
+// 自定义返回按钮
+- (void)customBackButton{
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setBackgroundImage:[UIImage mc_imageNamed:@"nav_left_black"] forState:0];
+    backBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(-8, 0, 22, 22);
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+    self.navigationItem.leftBarButtonItem = item;
+}
+// 返回按钮按下
+- (void)backBtnClicked:(UIButton *)sender{
+    
+        [self.navigationController popViewControllerAnimated:YES];
+    
 }
 #pragma mark - KDTrandingRecordHeaderViewDelegate
 - (void)headerViewDelegateWithTime:(NSString *)time
@@ -238,11 +256,11 @@
     //刷卡
     NSString * url = @"";
     if (self.type == 1) {
-        url = [NSString stringWithFormat:@"/api/v1/player/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"100",self.startDate,self.endDate];
+        url = [NSString stringWithFormat:@"/api/v1/player/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"50",self.startDate,self.endDate];
         
     }
     if (self.type == 2) {
-        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"100",self.startDate,self.endDate];
+        url = [NSString stringWithFormat:@"/api/v1/player/plan/order?current=%@&size=%@&startDate=%@&endDate=%@",@"0",@"50",self.startDate,self.endDate];
     }
     [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
         [weakself.mc_tableview.mj_header endRefreshing];

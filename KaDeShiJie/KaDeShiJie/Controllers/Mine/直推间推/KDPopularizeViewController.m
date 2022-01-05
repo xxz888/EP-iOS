@@ -51,7 +51,9 @@
     self.yyTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         self.page += 1;
         [self requestData];
-    }];}
+    }];
+    
+}
 -(void)requestData{
 //    diamond=true
     __weak __typeof(self)weakSelf = self;

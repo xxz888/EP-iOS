@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) KDSlotCardHistoryModel *slotHistoryModel;
 - (instancetype)initWithClassification:(NSDictionary *)slotHistoryDic;
 @property (weak, nonatomic) IBOutlet UIView *juhuaView;
+@property (nonatomic, assign) BOOL isBackHomeVC;
+
 @end
 
 NS_ASSUME_NONNULL_END

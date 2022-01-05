@@ -10,7 +10,7 @@
 #import "KDJFPayViewController.h"
 #import "KDJFAdressManagerViewController.h"
 #import "KDJFAdressListViewController.h"
-#import "KDPayNewViewController.h"
+#import "KDPayNewViewControllerShop.h"
 @interface KDConfirmViewController ()
 @property (nonatomic ,strong)NSDictionary * adressDic;
 @property (nonatomic ,strong)MCBankCardModel * cardModel;
@@ -165,7 +165,7 @@
         
         //发短信
         if ([respDic[@"state"] isEqualToString:@"Sms"] ) {
-            KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+            KDPayNewViewControllerShop * vc = [[KDPayNewViewControllerShop alloc]init];
             vc.cardModel = self.cardModel;
             vc.orderId = orderId;
             [weakSelf.navigationController pushViewController:vc animated:YES];

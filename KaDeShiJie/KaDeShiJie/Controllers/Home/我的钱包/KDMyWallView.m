@@ -24,7 +24,7 @@
 }
 -(void)setDataDic:(NSDictionary *)dic{
     self.dangqianshouru.text = [NSString stringWithFormat:@"%.2f",[dic[@"balance"] doubleValue]];
-    self.lishitixian.text = [NSString stringWithFormat:@"%.2f",[dic[@"historyWithdrawAmount"] doubleValue]];
+    self.lishitixian.text = [NSString stringWithFormat:@"%.2f",[dic[@"totalCommission"] doubleValue]];
     self.ketixian.text = [NSString stringWithFormat:@"%.2f",[dic[@"availableAmount"] doubleValue]];
 }
 

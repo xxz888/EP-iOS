@@ -5,62 +5,34 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            uuid = "30E4C1A4-9287-44DD-BC05-4C035BC0679F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            breakpointStackSelectionBehavior = "1"
-            scope = "1"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EC93BA07-E034-4705-A2F2-DE16ED81A35E"
+            uuid = "A0F067E5-ACC1-4082-A885-00961C85B851"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/&#x4fe1;&#x7528;&#x5361;&#x8fd8;&#x6b3e;/VC/&#x4fe1;&#x7528;&#x5361;&#x8ba1;&#x5212;&#x9884;&#x89c8;/KDPlanPreviewViewController.m"
+            filePath = "Pods/QMUIKit/QMUIKit/QMUIComponents/QMUIButton/QMUINavigationButton.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-requestPlanDetail"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "-alignmentRectInsets"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5FE77BE-B381-463B-B289-101224F4F1B5"
+            uuid = "8B5FD0C2-FD8F-47AC-A372-C8EB3ECB1D7A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OEMSDK/Classes/Module/Notice/MCMessageController.m"
+            filePath = "OEMSDK/Classes/Tools/MCNetwork/NetBase/MCSessionManager/MCSessionManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-requestPerson"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CB749FA5-CF4B-4DE6-A59C-682C6AC3180B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KaDeShiJie/KaDeShiJie/Controllers/Mine/&#x79ef;&#x5206;&#x5546;&#x57ce;/&#x786e;&#x8ba4;&#x8ba2;&#x5355;/KDPayNewViewControllerShop.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-payConfirm"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-mc_Post_QingQiuTi:parameters:ok:other:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -92,9 +92,9 @@
 //
 //
     __weak typeof(self) weakSelf = self;
-//    self.headerView.callBack = ^(CGFloat viewHig) {
-//        weakSelf.headerView.ly_height = viewHig;
-//    };
+    self.headerView.callBack = ^(CGFloat viewHig) {
+        weakSelf.headerView.ly_height = viewHig;
+    };
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.mc_tableview.mj_header endRefreshing];
 

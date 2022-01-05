@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab4;
 @property (weak, nonatomic) IBOutlet UILabel *lab5;
 
-@property (nonatomic, assign) BOOL isBackHomeVC;
 //需要将dispatch_source_t timer设置为成员变量，不然会立即释放
 @property (nonatomic, strong) dispatch_source_t timer;
 @end
@@ -53,29 +52,35 @@
 // 自定义返回按钮
 - (void)customBackButton{
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:0];
+    [backBtn setBackgroundImage:[UIImage mc_imageNamed:@"nav_left_black"] forState:0];
     backBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [backBtn addTarget:self action:@selector(backBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0, 0, 18, 18);
+    backBtn.frame = CGRectMake(-8, 0, 22, 22);
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
     self.navigationItem.leftBarButtonItem = item;
 }
 // 返回按钮按下
 - (void)backBtnClicked:(UIButton *)sender{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.isBackHomeVC) {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        self.isBackHomeVC = NO;
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBarTitle:@"交易详情" tintColor:nil];
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
-    
+    [self customBackButton];
+
     [self setupView];
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
     if (self.isBackHomeVC) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         self.isBackHomeVC = NO;
     }
 }

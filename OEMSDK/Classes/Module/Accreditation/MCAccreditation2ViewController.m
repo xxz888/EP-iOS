@@ -7,7 +7,7 @@
 
 #import "MCAccreditation2ViewController.h"
 #import "UIViewController+ImagePicker.h"
-#import "liveness/Liveness.h"
+//#import "liveness/Liveness.h"
 #import "KDLoginTool.h"
 #import "DDPhotoViewController.h"
 #import "KDCommonAlert.h"
@@ -18,7 +18,7 @@
 
 #define ZhengMian @"身份证正面"
 #define FanMian   @"身份证反面"
-@interface MCAccreditation2ViewController ()<LivenessDetectDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MCAccreditation2ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(strong,nonatomic)NSString * address;
 
 @property(assign,nonatomic)NSString * zhengmianfanmian;
@@ -238,7 +238,7 @@
 
 #else if TARGET_OS_IPHONE      //真机
     
-    [[Liveness shareInstance] startProcess:self withParam:param withDelegate:self];
+//    [[Liveness shareInstance] startProcess:self withParam:param withDelegate:self];
 #endif
 }
 #pragma mark -----------活物识别完成,回调到这个界面---------------

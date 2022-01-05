@@ -128,17 +128,24 @@
             [MCToast showMessage:@"操作成功"];
         });
         
-        NSString * url = [NSString stringWithFormat:@"/api/v1/player/order"];
-        [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
-            [weakSelf.mc_tableview.mj_header endRefreshing];
-            if ([respDic[@"data"] count] == 0) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        NSString * url = [NSString stringWithFormat:@"/api/v1/player/order?orderId=%@",respDic[@"orderId"]];
+        [weakSelf.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+            if ([respDic[@"data"] count] > 0) {
+                KDSlotCardOrderInfoViewController *vc = [[KDSlotCardOrderInfoViewController alloc] init];
+                KDSlotCardHistoryModel * slotHistoryModel = [[KDSlotCardHistoryModel alloc]init];
+                slotHistoryModel.channelType = respDic[@"data"][0][@"channelType"];
+                slotHistoryModel.rate = [respDic[@"data"][0][@"rate"] doubleValue];
+                slotHistoryModel.amount = [respDic[@"data"][0][@"amount"] doubleValue];
+                slotHistoryModel.state = respDic[@"data"][0][@"state"];
+                slotHistoryModel.fee = [respDic[@"data"][0][@"fee"] doubleValue];
+                slotHistoryModel.createdTime = respDic[@"data"][0][@"createdTime"];
+                slotHistoryModel.orderId = respDic[@"data"][0][@"orderId"];
 
+                vc.slotHistoryModel = slotHistoryModel;
+                vc.isBackHomeVC = YES;
+                [weakSelf.navigationController pushViewController:vc animated:YES];
             }else{
-                KDSlotCardOrderInfoViewController *vc1 = [[KDSlotCardOrderInfoViewController alloc] init];
-                vc1.slotHistoryModel = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]][0];
-                [self.navigationController pushViewController:vc1 animated:YES];
-               
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             }
         }] ;
         

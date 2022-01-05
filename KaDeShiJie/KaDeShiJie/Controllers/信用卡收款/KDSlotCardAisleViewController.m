@@ -14,7 +14,7 @@
 #import "MCCustomModel.h"
 #import "KDBingCardNewViewController.h"
 #import "KDPayNewViewController.h"
-
+#import "KDSlotCardOrderInfoViewController.h"
 @interface KDSlotCardAisleViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, WBQRCodeVCDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property(nonatomic, copy) NSString *orderCode;
@@ -37,7 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    kWeakSelf(self)
+
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     KDSlotCardAisleHeaderView *header = [[KDSlotCardAisleHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
     header.moneyView.text = [NSString stringWithFormat:@"%@元", self.money];

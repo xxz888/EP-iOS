@@ -64,6 +64,7 @@
     
     for (QMUIButton *btn in self.topView.subviews) {
         btn.imagePosition = QMUIButtonImagePositionTop;
+//        btn.spacingBetweenImageAndTitle = 15;
     }
     
     NSArray *titleArray = @[@"交易记录", @"申请办卡", @"实名认证", @"我的钱包"];
@@ -96,12 +97,12 @@
     self.msgContentView.layer.cornerRadius = 10;
     self.lineView.layer.cornerRadius = 2.3;
     __weak typeof(self) weakSelf = self;
-//    self.bannerView.resetHeightBlock = ^(CGFloat h) {
-//        weakSelf.bannerHigCons.constant = h;
-//        if (self.callBack) {
-//            self.callBack(661 - 128 + h);
-//        }
-//    };
+    self.bannerView.resetHeightBlock = ^(CGFloat h) {
+        weakSelf.bannerHigCons.constant = h;
+        if (self.callBack) {
+            self.callBack(661 - 128 + h);
+        }
+    };
     
     SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.msgView.bounds];
     cyView.delegate = self;

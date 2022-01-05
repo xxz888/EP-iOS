@@ -116,7 +116,8 @@ static MCSessionManager *_singleManager = nil;
                 [MCApp userLogout];
             }else if (code == 404){
                 [MCApp userLogout];
-            }else{
+            }else if (code == 400){
+                [MCToast showMessage:responseObject[@"message"]];
             }
 //            [MCToast showMessage:responseObject[@"message"]];
             NSLog(@"请求失败error=%@", error);

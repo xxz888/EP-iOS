@@ -84,15 +84,17 @@
     }else if([dic[@"event"] isEqualToString:@"Thanksgiving"]) {
         eventTag = @"感恩奖";
     }else if([dic[@"event"] isEqualToString:@"AgentReceivePaymentCommission"]) {
-        eventTag = @"代理收款佣金";
+        eventTag = @"刷卡分润";
     }else if([dic[@"event"] isEqualToString:@"AgentConsumptionCommission"]) {
-        eventTag = @"代理还款佣金";
+        eventTag = @"还款分润";
     }else if([dic[@"event"] isEqualToString:@"Coupon"]) {
-        eventTag = @"抵扣券返现";
+        eventTag = @"优惠券";
     }else if([dic[@"event"] isEqualToString:@"Withdraw"]) {
         eventTag = @"提现";
     }else if([dic[@"event"] isEqualToString:@"RepaymentSurplusFee"]) {
         eventTag = @"还款返现";
+    }else if([dic[@"event"] isEqualToString:@"SameLevelCommission"]) {
+        eventTag = @"九星平级分润";
     }
     
     

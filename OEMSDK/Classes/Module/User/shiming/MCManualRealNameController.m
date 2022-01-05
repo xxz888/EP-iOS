@@ -9,7 +9,7 @@
 #import "MCManualRealNameController.h"
 #import "LYImageMagnification.h"// 查看图片大图
 #import "DDPhotoViewController.h"
-#import "liveness/Liveness.h"
+//#import "liveness/Liveness.h"
 
 #define kViewColor [UIColor colorWithRed:210/255.0 green:210/255.0 blue:220/255.0 alpha:1.0]
 
@@ -17,7 +17,7 @@
 #define FanMian   @"身份证反面"
 static const CGFloat margin = 10;
 
-@interface MCManualRealNameController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate,LivenessDetectDelegate>
+@interface MCManualRealNameController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate>
 @property(assign,nonatomic)NSString * zhengmianfanmian;
 
 /** 姓名输入框 */
@@ -469,7 +469,7 @@ static const CGFloat margin = 10;
 
 #else if TARGET_OS_IPHONE      //真机
     
-    [[Liveness shareInstance] startProcess:self withParam:param withDelegate:self];
+//    [[Liveness shareInstance] startProcess:self withParam:param withDelegate:self];
 #endif
 }
 #pragma mark -----------活物识别完成,回调到这个界面---------------
