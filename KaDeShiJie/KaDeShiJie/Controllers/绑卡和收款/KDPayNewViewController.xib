@@ -13,8 +13,8 @@
             <connections>
                 <outlet property="cardNoLabel" destination="68b-1x-eA4" id="Z0G-sz-EXM"/>
                 <outlet property="change1TagLbl" destination="sXS-H2-LzW" id="GUu-Sq-b9i"/>
-                <outlet property="change2Lbl" destination="o8M-T6-cu9" id="NqJ-2q-7Rc"/>
                 <outlet property="change2TagLbl" destination="gd4-yf-CcN" id="kfD-2d-Mbv"/>
+                <outlet property="codeBtn" destination="S4L-Yh-qOw" id="twl-eL-d0n"/>
                 <outlet property="codeView" destination="fmq-hn-I7q" id="wt8-Vr-ZtH"/>
                 <outlet property="nameLabel" destination="Jq1-Uo-ee2" id="mGU-si-YlT"/>
                 <outlet property="payBtn" destination="us4-gG-QcQ" id="afi-45-3w6"/>
@@ -74,8 +74,8 @@
                                             <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq1-Uo-ee2">
-                                            <rect key="frame" x="110.5" y="14" width="43" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq1-Uo-ee2">
+                                            <rect key="frame" x="110.5" y="14" width="6.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -108,8 +108,8 @@
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68b-1x-eA4">
-                                            <rect key="frame" x="110.5" y="14" width="43" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68b-1x-eA4">
+                                            <rect key="frame" x="110.5" y="14" width="6.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -142,8 +142,8 @@
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wce-i1-ULD">
-                                            <rect key="frame" x="110.5" y="14" width="43" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wce-i1-ULD">
+                                            <rect key="frame" x="110.5" y="14" width="6.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -175,8 +175,8 @@
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H90-T9-Zy8">
-                                            <rect key="frame" x="110.5" y="14" width="43" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H90-T9-Zy8">
+                                            <rect key="frame" x="110.5" y="14" width="6.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-2U-6BB">
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-2U-6BB">
                                             <rect key="frame" x="110.5" y="14" width="283.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -242,15 +242,9 @@
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持卡人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8M-T6-cu9">
-                                            <rect key="frame" x="110.5" y="14" width="283.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码已发送，请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fmq-hn-I7q" customClass="QMUITextField">
-                                            <rect key="frame" x="104.5" y="13.5" width="186" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码已发送，请输入验证码" textAlignment="natural" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="fmq-hn-I7q" customClass="QMUITextField">
+                                            <rect key="frame" x="104.5" y="14" width="219.5" height="17.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="maximumTextLength">
@@ -258,16 +252,28 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4L-Yh-qOw">
+                                            <rect key="frame" x="324" y="9" width="60" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="1us-fi-fk9"/>
+                                                <constraint firstAttribute="height" constant="27" id="ely-EF-YCK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="0.1450980392" green="0.4549019608" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="S4L-Yh-qOw" firstAttribute="centerY" secondItem="fmq-hn-I7q" secondAttribute="centerY" id="5QC-0Y-1dB"/>
                                         <constraint firstAttribute="trailing" secondItem="Cf1-oq-ohh" secondAttribute="trailing" constant="10" id="6se-s7-LbK"/>
+                                        <constraint firstItem="S4L-Yh-qOw" firstAttribute="leading" secondItem="fmq-hn-I7q" secondAttribute="trailing" id="7ZQ-yH-fan"/>
                                         <constraint firstItem="gd4-yf-CcN" firstAttribute="centerY" secondItem="3HI-db-xgi" secondAttribute="centerY" id="8DQ-dh-aSA"/>
                                         <constraint firstAttribute="bottom" secondItem="Cf1-oq-ohh" secondAttribute="bottom" id="A3m-bo-TRx"/>
                                         <constraint firstItem="fmq-hn-I7q" firstAttribute="centerY" secondItem="3HI-db-xgi" secondAttribute="centerY" id="ARm-7O-bHv"/>
-                                        <constraint firstItem="o8M-T6-cu9" firstAttribute="centerY" secondItem="3HI-db-xgi" secondAttribute="centerY" id="KhT-Ca-yw2"/>
+                                        <constraint firstAttribute="trailing" secondItem="S4L-Yh-qOw" secondAttribute="trailing" constant="10" id="Brd-DK-Yqo"/>
                                         <constraint firstItem="Cf1-oq-ohh" firstAttribute="leading" secondItem="3HI-db-xgi" secondAttribute="leading" constant="10" id="iVz-23-Fnh"/>
-                                        <constraint firstAttribute="trailing" secondItem="o8M-T6-cu9" secondAttribute="trailing" id="w5y-tk-qwE"/>
                                         <constraint firstItem="gd4-yf-CcN" firstAttribute="leading" secondItem="3HI-db-xgi" secondAttribute="leading" constant="20.5" id="zhX-aD-mvJ"/>
                                     </constraints>
                                 </view>
@@ -276,7 +282,6 @@
                                 <constraint firstItem="gd4-yf-CcN" firstAttribute="width" secondItem="sXS-H2-LzW" secondAttribute="width" id="3h1-Gb-v1x"/>
                                 <constraint firstItem="xMf-Mj-lSz" firstAttribute="width" secondItem="Gq9-hW-7JA" secondAttribute="width" id="C7g-sc-Ggk"/>
                                 <constraint firstItem="H90-T9-Zy8" firstAttribute="leading" secondItem="Wce-i1-ULD" secondAttribute="leading" id="IE7-kp-C7i"/>
-                                <constraint firstItem="o8M-T6-cu9" firstAttribute="leading" secondItem="KeT-2U-6BB" secondAttribute="leading" id="RXo-cO-MTO"/>
                                 <constraint firstItem="sXS-H2-LzW" firstAttribute="width" secondItem="fau-FQ-a1D" secondAttribute="width" id="XZB-BT-lnH"/>
                                 <constraint firstItem="fmq-hn-I7q" firstAttribute="leading" secondItem="KeT-2U-6BB" secondAttribute="leading" constant="-6" id="cQS-ka-Hvh"/>
                                 <constraint firstItem="fau-FQ-a1D" firstAttribute="width" secondItem="QMY-W3-SLO" secondAttribute="width" id="dad-Ro-nZT"/>

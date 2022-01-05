@@ -1,0 +1,6 @@
+framework module JFTBindFace {
+  umbrella header "JFTBindFace.h"
+
+  export *
+  module * { export * }
+}

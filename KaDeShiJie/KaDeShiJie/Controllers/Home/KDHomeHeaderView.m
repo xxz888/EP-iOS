@@ -30,7 +30,7 @@
 #import "UIView+Extension.h"
 #import "KDWenZinTiShi.h"
 #import "KDXinYongKaViewController.h"
-
+#import "KDPayNewViewControllerQuickPass.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -130,12 +130,11 @@
     __weak typeof(self) weakSelf = self;
     if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
             switch (sender.tag) {
-                case 100:{
-                    [MCToast showMessage:@"暂未开放"];
-                }
+                //空卡
+                case 100:{ [MCToast showMessage:@"暂未开放"];}
                     break;
+                //信用卡还款
                 case 101:{
-                    
                         if ([SharedUserInfo.certification integerValue] == 1) {
                             KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
                             vc.navTitle = @"信用卡还款";
@@ -155,63 +154,74 @@
                                 }
                             }];
                         }
-                    
-                    
-                    
-
                 }
                     break;
+                //刷卡
                 case 102:{
                         if ([SharedUserInfo.certification integerValue] == 1) {
-                            [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
+                            [self pushShuaka];
                         }else{
                             [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
                                 if ([SharedUserInfo.certification integerValue] == 1) {
-                                    [MCLATESTCONTROLLER.navigationController pushViewController:[KDGatheringViewController new] animated:YES];
+                                    [weakSelf pushShuaka];
                                 }else{
                                     [weakSelf showRenzhengView];
                                 }
                             }];
                         }
-                }
+                    }
                     break;
                 default:
                     break;
         }
     }else{
         switch (sender.tag) {
-            case 200: // 账单管理
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
+            // 账单管理
+            case 200:[MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
                 break;
-            case 201: // 信用管理
-            {
-                
-                
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDXinYongKaViewController new] animated:YES];
-
+            // 信用管理
+            case 201:[MCLATESTCONTROLLER.navigationController pushViewController:[KDXinYongKaViewController new] animated:YES];
+                break;
+            // 实名认证
+            case 202:
+                if ([SharedUserInfo.certification integerValue] == 1) {
+                    [MCToast showMessage:@"您已实名认证"];
+                }else{
+                    [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+                }
+                break;
+            //我的钱包
+            case 203:[MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+                break;
+            //小额闪付
+            case 300:{
+                if ([SharedUserInfo.certification integerValue] == 1) {
+                    [self pushShanfu];
+                }else{
+                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                        if ([SharedUserInfo.certification integerValue] == 1) {
+                            [weakSelf pushShanfu];
+                        }else{
+                            [weakSelf showRenzhengView];
+                        }
+                    }];
+                }
             }
                 break;
-            case 202: // 实名认证
-                [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
-                return;
-                    if ([SharedUserInfo.certification integerValue] == 1) {
-                        [MCToast showMessage:@"您已实名认证"];
-                    }else{
-                        [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
-                    }
-               
-                break;
-            case 203:{
-                [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
-
+            //刷脸付
+            case 301:{
+                if ([SharedUserInfo.certification integerValue] == 1) {
+                    [self pushShualianfu];
+                }else{
+                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+                        if ([SharedUserInfo.certification integerValue] == 1) {
+                            [weakSelf pushShualianfu];
+                        }else{
+                            [weakSelf showRenzhengView];
+                        }
+                    }];
+                }
             }
-                break;
-            case 300:
-            { [MCToast showMessage:@"暂未开放"];}
-               
-                break;
-            case 301:
-            { [MCToast showMessage:@"暂未开放"];}
                 break;
             case 302:
             { [MCToast showMessage:@"暂未开放"];}
@@ -225,6 +235,21 @@
     }
 
    
+}
+-(void)pushShuaka{
+    KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+    vc.whereCome = 1;
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+}
+-(void)pushShanfu{
+    KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+    vc.whereCome = 2;
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+}
+-(void)pushShualianfu{
+    KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+    vc.whereCome = 3;
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
 }
 - (void)pushCardVCWithType:(MCBankCardType)cardType
 {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>eid_ip</key>
+	<string>https://valsap.eidlink.com</string>
+	<key>eid_port</key>
+	<string>443</string>
+	<key>eid_appKey</key>
+	<string>49BC25384363DA1A6FEEAE793B79B2B7</string>
+	<key>eid_appID</key>
+	<string>01JR200511100206</string>
+	<key>eid_biz_type</key>
+	<string>9906020</string>
+	<key>eid_authCode</key>
+	<string>MDM1MzEwbm9kZXZpY2Vjd2F1dGhvcml6ZZfn5OXl5+Tq3+bg5efm5ef65OXl4Obg5Yjm5uvl5ubrkeXm5uvl5uai6+Xm5uvl5qTm6+Xm5ufk++bn5uQ=</string>
+	<key>eid_livessNumber</key>
+	<string>1</string>
+	<key>eid_livessTime</key>
+	<string>8</string>
+</dict>
+</plist>

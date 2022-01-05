@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,strong)NSString * channelBindId;
 @property (nonatomic ,strong)NSString * orderId;
 
+@property (nonatomic ,assign)NSInteger whereCome;//1刷卡 2闪付 3刷脸
+
 @end
 
 NS_ASSUME_NONNULL_END

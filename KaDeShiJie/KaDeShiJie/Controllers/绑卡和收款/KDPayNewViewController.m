@@ -60,6 +60,18 @@
     
     self.stackViewHeight.constant = 320;
     self.smsView.hidden = NO;
+    
+    
+    if (self.whereCome == 1) {
+        [self changeSendBtnText:self.codeBtn];
+    }
+    if (self.whereCome == 2) {
+        [self changeSendBtnText:self.codeBtn];
+    }
+    if (self.whereCome == 3) {
+        
+    }
+
 }
 #pragma mark ---------------确认支付请求方法-------------------
 -(void)requestBindCardVCAction{
@@ -86,7 +98,6 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"绑定成功"];
         });
-    
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } other:^(NSDictionary * _Nonnull respDic) {
         
@@ -102,7 +113,17 @@
         @"orderId":self.orderId,
      };
     __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/receivePayment/confirm" parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+    
+    NSString * url = @"";
+    
+    if (self.whereCome == 1) {
+        url = @"/api/v1/player/receivePayment/confirm";
+    }
+    if (self.whereCome == 2) {
+        url = @"/api/v1/player/quickPay/confirm";
+    }
+    
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:url parameters:params ok:^(NSDictionary * _Nonnull respDic) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MCToast showMessage:@"操作成功"];
         });
@@ -114,8 +135,6 @@
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
 
             }else{
-                
-                        
                 KDSlotCardOrderInfoViewController *vc1 = [[KDSlotCardOrderInfoViewController alloc] init];
                 vc1.slotHistoryModel = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]][0];
                 [self.navigationController pushViewController:vc1 animated:YES];

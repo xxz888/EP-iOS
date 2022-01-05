@@ -120,6 +120,7 @@
         vc.cardchuxuModel = self.chuxuInfo;
         vc.channelId = channelModel.channelId;
         vc.amount = self.money;
+        vc.whereCome = 1;
         //发短信
         if ([respDic[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"] ) {
             vc.channelBindId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];

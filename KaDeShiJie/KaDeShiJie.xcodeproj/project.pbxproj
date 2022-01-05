@@ -295,6 +295,8 @@
 		6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */; };
 		6F7628B427634BFF00E03BFA /* KDPayNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F7628B127634BFE00E03BFA /* KDPayNewViewController.xib */; };
 		6F7628B527634BFF00E03BFA /* KDPayNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F7628B327634BFF00E03BFA /* KDPayNewViewController.m */; };
+		6F85DC4E2785291800593E50 /* KDPayNewViewControllerQuickPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F85DC4C2785291800593E50 /* KDPayNewViewControllerQuickPass.xib */; };
+		6F85DC4F2785291800593E50 /* KDPayNewViewControllerQuickPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F85DC4D2785291800593E50 /* KDPayNewViewControllerQuickPass.m */; };
 		6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */; };
 		6F94589E277D84EA008D7364 /* KDMineCouponController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F94589D277D84EA008D7364 /* KDMineCouponController.m */; };
 		6F9458A2277D858C008D7364 /* KDMineCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9458A0277D858C008D7364 /* KDMineCouponTableViewCell.m */; };
@@ -303,6 +305,9 @@
 		6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E94274E3C0800DA1C59 /* KDMyWallView.xib */; };
 		6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */; };
 		6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */; };
+		6FABF12B27857C9F0026BE32 /* JFTBindFace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FABF12927857C9F0026BE32 /* JFTBindFace.framework */; };
+		6FABF12C27857C9F0026BE32 /* CWResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FABF12A27857C9F0026BE32 /* CWResource.bundle */; };
+		6FABF12E27857D2C0026BE32 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FABF12D27857D150026BE32 /* libc++.tbd */; };
 		6FAC122926FC86FB00E3560F /* KDHomeXinYongKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */; };
 		6FBBFBA6275897540096D282 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBFBA5275897540096D282 /* UIView+Extension.m */; };
 		6FC59E0D27622803005DD4DD /* KDBingCardNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC59E0A27622803005DD4DD /* KDBingCardNewViewController.m */; };
@@ -793,6 +798,9 @@
 		6F7628B127634BFE00E03BFA /* KDPayNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDPayNewViewController.xib; sourceTree = "<group>"; };
 		6F7628B227634BFE00E03BFA /* KDPayNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPayNewViewController.h; sourceTree = "<group>"; };
 		6F7628B327634BFF00E03BFA /* KDPayNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPayNewViewController.m; sourceTree = "<group>"; };
+		6F85DC4B2785291800593E50 /* KDPayNewViewControllerQuickPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPayNewViewControllerQuickPass.h; sourceTree = "<group>"; };
+		6F85DC4C2785291800593E50 /* KDPayNewViewControllerQuickPass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDPayNewViewControllerQuickPass.xib; sourceTree = "<group>"; };
+		6F85DC4D2785291800593E50 /* KDPayNewViewControllerQuickPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPayNewViewControllerQuickPass.m; sourceTree = "<group>"; };
 		6F911F2B275A1BAE00651494 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6F94589C277D84EA008D7364 /* KDMineCouponController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMineCouponController.h; sourceTree = "<group>"; };
 		6F94589D277D84EA008D7364 /* KDMineCouponController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMineCouponController.m; sourceTree = "<group>"; };
@@ -805,6 +813,9 @@
 		6FA44E9B274E43AD00DA1C59 /* KDTiXianViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTiXianViewController.h; sourceTree = "<group>"; };
 		6FA44E9C274E43AD00DA1C59 /* KDTiXianViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTiXianViewController.m; sourceTree = "<group>"; };
 		6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTiXianViewController.xib; sourceTree = "<group>"; };
+		6FABF12927857C9F0026BE32 /* JFTBindFace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JFTBindFace.framework; sourceTree = "<group>"; };
+		6FABF12A27857C9F0026BE32 /* CWResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CWResource.bundle; sourceTree = "<group>"; };
+		6FABF12D27857D150026BE32 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		6FAC122726FC86FB00E3560F /* KDHomeXinYongKaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeXinYongKaViewController.h; sourceTree = "<group>"; };
 		6FAC122826FC86FB00E3560F /* KDHomeXinYongKaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeXinYongKaViewController.m; sourceTree = "<group>"; };
 		6FBBFBA4275897540096D282 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -848,7 +859,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FABF12E27857D2C0026BE32 /* libc++.tbd in Frameworks */,
 				CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */,
+				6FABF12B27857C9F0026BE32 /* JFTBindFace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1496,6 +1509,7 @@
 		1BC5E3BA250343AA0064CA30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6F85DC4A2785284D00593E50 /* 小额闪付 */,
 				04A58C72276B79330027B4F4 /* 会员 */,
 				6FC59E0927622766005DD4DD /* 绑卡和收款 */,
 				6FBBFBA3275897450096D282 /* Tools */,
@@ -1659,9 +1673,20 @@
 		59014916EA55B68190DAD68A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FABF12D27857D150026BE32 /* libc++.tbd */,
 				9FFABD6DDE24EBE293888388 /* libPods-KaDeShiJie.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F85DC4A2785284D00593E50 /* 小额闪付 */ = {
+			isa = PBXGroup;
+			children = (
+				6F85DC4B2785291800593E50 /* KDPayNewViewControllerQuickPass.h */,
+				6F85DC4D2785291800593E50 /* KDPayNewViewControllerQuickPass.m */,
+				6F85DC4C2785291800593E50 /* KDPayNewViewControllerQuickPass.xib */,
+			);
+			path = "小额闪付";
 			sourceTree = "<group>";
 		};
 		6F94589B277D8492008D7364 /* 我的优惠券 */ = {
@@ -1684,6 +1709,15 @@
 				6FA44E9D274E43AD00DA1C59 /* KDTiXianViewController.xib */,
 			);
 			path = "1提现";
+			sourceTree = "<group>";
+		};
+		6FABF12827857C9F0026BE32 /* livingBody */ = {
+			isa = PBXGroup;
+			children = (
+				6FABF12927857C9F0026BE32 /* JFTBindFace.framework */,
+				6FABF12A27857C9F0026BE32 /* CWResource.bundle */,
+			);
+			path = livingBody;
 			sourceTree = "<group>";
 		};
 		6FAC122626FC86E300E3560F /* 信用卡办卡 */ = {
@@ -1709,6 +1743,7 @@
 		6FBBFBA3275897450096D282 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6FABF12827857C9F0026BE32 /* livingBody */,
 				6FBBFBA4275897540096D282 /* UIView+Extension.h */,
 				6FBBFBA5275897540096D282 /* UIView+Extension.m */,
 			);
@@ -2071,6 +2106,7 @@
 				1B9723A9251C41ED00F4120C /* KDDirectRefundViewCell.xib in Resources */,
 				1BC5E3D725036EF30064CA30 /* KDLoginHeaderView.xib in Resources */,
 				1B6667F42508D49100AA55DA /* KDCreditViewViewCell.xib in Resources */,
+				6FABF12C27857C9F0026BE32 /* CWResource.bundle in Resources */,
 				1B543D19250EF96400076628 /* KDAboutMineViewController.xib in Resources */,
 				1848CE63266F475A00D6E148 /* KDJFShopDetailTableViewCell.xib in Resources */,
 				1BC5E3DF250385150064CA30 /* KDRegisterHeaderView.xib in Resources */,
@@ -2085,6 +2121,7 @@
 				1848CE50266F120F00D6E148 /* KDJFShopCollectionViewCell.xib in Resources */,
 				045372A7274FD5CD003FCA1A /* KDWallDetailTableViewCell.xib in Resources */,
 				1893CEFA2672812F00C53DBF /* KDJFShopManagerTableViewCell.xib in Resources */,
+				6F85DC4E2785291800593E50 /* KDPayNewViewControllerQuickPass.xib in Resources */,
 				1B9C9B65250784EB00EE0819 /* KDMineHeaderView.xib in Resources */,
 				EEB6B43B2514CD1F00F592F4 /* KDWelcomeAlertView.xib in Resources */,
 				1B7E468A251CD08100FA5D1E /* KDPlanPreviewView.xib in Resources */,
@@ -2200,6 +2237,7 @@
 				1B9C9B5425075DA900EE0819 /* LCServiceController.m in Sources */,
 				187D8B132565FC900097A650 /* KDTrandingRecordViewController.m in Sources */,
 				1B937052251C74A700E51EC9 /* KDPlanHeaderView.m in Sources */,
+				6F85DC4F2785291800593E50 /* KDPayNewViewControllerQuickPass.m in Sources */,
 				1B93704F251C707900E51EC9 /* KDPlanViewController.m in Sources */,
 				043189F5274BE6B100D9D959 /* KDWenZinTiShi.m in Sources */,
 				1BC5E3D525036EDE0064CA30 /* KDLoginHeaderView.m in Sources */,
@@ -2486,6 +2524,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KaDeShiJie/smliveness",
+					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools/livingBody",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KaDeShiJie/PrefixHeader.pch";
 				INFOPLIST_FILE = KaDeShiJie/Info.plist;
@@ -2626,6 +2665,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KaDeShiJie/smliveness",
+					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools/livingBody",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KaDeShiJie/PrefixHeader.pch";
 				INFOPLIST_FILE = KaDeShiJie/Info.plist;

@@ -186,9 +186,9 @@
 #pragma mark - event response
 - (void)backTouched:(UIBarButtonItem *)item {
     [self.webView stopLoading];
-    if (self.webView.canGoBack) {
-        [self.webView goBack];
-    } else {
+//    if (self.webView.canGoBack) {
+//        [self.webView goBack];
+//    } else {
         
         if (self.navigationController.viewControllers.count == 1) {
             SharedDefaults.not_auto_logonin = YES;
@@ -196,7 +196,7 @@
         } else {
             [self.navigationController popViewControllerAnimated:YES];
         }
-    }
+//    }
 }
 - (void)close {
     [self.webView stopLoading];
@@ -280,6 +280,10 @@
         return;
     }
     
+    //https://client-api.verajft.com/fusionPosp/interface/toFacePay?orderCode=20220105142003531035
+    if ([absoluteString isEqualToString:@"https://client-api.verajft.com/fusionPosp/interface/toFacePay?orderCode="]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 

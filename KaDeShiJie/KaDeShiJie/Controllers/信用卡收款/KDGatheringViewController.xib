@@ -22,6 +22,7 @@
                 <outlet property="keyboardView" destination="Kwr-YL-zdT" id="LxX-hn-hBv"/>
                 <outlet property="moneyView" destination="TPR-i3-xyW" id="SrV-yC-ba0"/>
                 <outlet property="selectAdress" destination="7JC-pn-IkQ" id="J2H-RU-tuy"/>
+                <outlet property="selectAdressTag" destination="6Gl-FE-j1B" id="IAs-yd-c70"/>
                 <outlet property="topView" destination="R6i-tK-Kb9" id="GZN-J1-JDR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -12,7 +12,12 @@
 #import "BRAddressPickerView.h"
 #import "KDBingCardNewViewController.h"
 #import "KDSlotCardAisleViewController.h"
-@interface KDGatheringViewController ()<UITextFieldDelegate>
+#import "KDPayNewViewControllerQuickPass.h"
+#import "KDPayNewViewController.h"
+#import "KDSlotCardOrderInfoViewController.h"
+#import <JFTBindFace/JFTBindFace.h>
+
+@interface KDGatheringViewController ()<UITextFieldDelegate,JFTBindFaceManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet QMUIButton *addCreditBtn;
 @property (weak, nonatomic) IBOutlet QMUIButton *addDepositBtn;
@@ -30,7 +35,10 @@
 @property(nonatomic, strong) NSString * provinceId;
     @property(nonatomic, strong) NSString * cityId;
 @property(nonatomic, strong) BRAddressPickerView *addressPicker;
+@property(nonatomic, strong) NSString *orderId;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *selectAdressTag;
 @property (weak, nonatomic) IBOutlet QMUIButton *selectAdress;
 
 @end
@@ -53,7 +61,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
-    [self setNavigationBarTitle:@"快捷收款" tintColor:nil];
 
     //显示光标，但隐藏键盘
 //    [self.moneyView becomeFirstResponder];
@@ -91,7 +98,20 @@
     [self requestDefaultChuXuCards];
 
 
-    
+    if (self.whereCome == 1) {
+        [self setNavigationBarTitle:@"快捷收款" tintColor:nil];
+        self.selectAdress.hidden = self.selectAdressTag.hidden = NO;
+    }
+    if (self.whereCome == 2) {
+        [self setNavigationBarTitle:@"小额闪付" tintColor:nil];
+        self.selectAdress.hidden = self.selectAdressTag.hidden = YES;
+
+    }
+    if (self.whereCome == 3) {
+        [self setNavigationBarTitle:@"刷脸付" tintColor:nil];
+        self.selectAdress.hidden = self.selectAdressTag.hidden = YES;
+
+    }
 }
 
 #pragma mark - 获取默认卡
@@ -277,10 +297,7 @@
 }
 // 立即收款
 - (IBAction)clickGatherBtnAction:(QMUIButton *)sender {
-//    KDBingCardNewViewController * vc1 = [[KDBingCardNewViewController alloc]init];
-//    [self.navigationController pushViewController:vc1 animated:YES];
-//    return;
-//    [[KDGuidePageManager shareManager] requestShiMing:^{
+        __weak typeof(self) weakSelf = self;
         if (self.moneyView.text.floatValue <= 0 || [[self firstCharactorWithString:self.moneyView.text] isEqualToString:@"."]) {
             [MCToast showMessage:@"请输入正确的金额" position:MCToastPositionCenter];
             return;
@@ -304,35 +321,135 @@
         }
     
     
-    if ([self.cityId isEqualToString:@"-1"]) {
-        [MCToast showMessage:@"请选择地区" position:MCToastPositionCenter];
-        return;
+    if (self.whereCome == 1) {
+        if ([self.cityId isEqualToString:@"-1"]) {
+            [MCToast showMessage:@"请选择地区" position:MCToastPositionCenter];
+            return;
+        }
+        KDSlotCardAisleViewController *vc = [[KDSlotCardAisleViewController alloc] init];
+        vc.money = self.moneyView.text;
+        vc.xinyongInfo = self.xinyongInfo;
+        vc.chuxuInfo = self.chuxuInfo;
+        vc.cityId = self.cityId;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
-    KDSlotCardAisleViewController *vc = [[KDSlotCardAisleViewController alloc] init];
-    vc.money = self.moneyView.text;
-    vc.xinyongInfo = self.xinyongInfo;
-    vc.chuxuInfo = self.chuxuInfo;
-//    vc.provinceId = self.provinceId;
-    vc.cityId = self.cityId;
-    [self.navigationController pushViewController:vc animated:YES];
-    return;
+    if (self.whereCome == 2) {
+        NSString * url = @"/api/v1/player/quickPay/pre";
+        NSDictionary *params = @{
+            @"amount":self.moneyView.text,
+            @"creditCardId":self.xinyongInfo.id,
+            @"debitCardId":self.chuxuInfo.id,
+         };
         
-        //先把储蓄卡设为默认
-        __weak __typeof(self)weakSelf = self;
-        [MCSessionManager.shareManager mc_POST:[NSString stringWithFormat:@"/user/app/bank/default/%@",TOKEN] parameters:@{@"cardno":self.chuxuInfo.cardNo} ok:^(NSDictionary * _Nonnull resp) {
-            KDSlotCardAisleViewController *vc = [[KDSlotCardAisleViewController alloc] init];
-            vc.money = self.moneyView.text;
-            vc.xinyongInfo = self.xinyongInfo;
-            vc.chuxuInfo = self.chuxuInfo;
+        [MCSessionManager.shareManager mc_Post_QingQiuTi:url parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+            KDPayNewViewController * vc = [[KDPayNewViewController alloc]init];
+            vc.cardModel = weakSelf.xinyongInfo;
+            vc.cardchuxuModel = weakSelf.chuxuInfo;
+            vc.channelId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"channelId"]];
+            vc.amount = weakSelf.moneyView.text;
+            vc.whereCome = weakSelf.whereCome;
+            //发短信
+            if ([respDic[@"channelBind"][@"bindStep"] isEqualToString:@"Sms"] ) {
+                vc.channelBindId = [NSString stringWithFormat:@"%@",respDic[@"channelBind"][@"id"]];
+            }else{
+                vc.orderId = [NSString stringWithFormat:@"%@",respDic[@"orderId"]];
+            }
             [weakSelf.navigationController pushViewController:vc animated:YES];
+        } other:^(NSDictionary * _Nonnull respDic) {
+            
+        } failure:^(NSError * _Nonnull error) {
+            
         }];
-//    }];
+    }
     
+    if (self.whereCome == 3) {
+        NSString * url = @"/api/v1/player/facePay/pre";
+        NSDictionary *params = @{
+            @"amount":self.moneyView.text,
+            @"creditCardId":self.xinyongInfo.id,
+            @"debitCardId":self.chuxuInfo.id,
+         };
+        
+        [MCSessionManager.shareManager mc_Post_QingQiuTi:url parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+            if ([respDic[@"facePayParam"][@"faceAuthable"] integerValue] == 0) {
+                MCWebViewController *web = [[MCWebViewController alloc] init];
+                web.urlString = respDic[@"facePayParam"][@"url"];
+                web.title = @"活体检测";
+                [weakSelf.navigationController pushViewController:web animated:YES];
+            }else{
+                weakSelf.orderId = respDic[@"orderId"];
+                JFTBindFaceManager *mgr = [[JFTBindFaceManager alloc] init];
+                mgr.delegate = self;
+                [mgr bindFaceAuthPresentController:self];
+                
+
+            }
+        } other:^(NSDictionary * _Nonnull respDic) {
+            
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }
+
     
 
+}
+/****************************** == delegate == ********************************/
+- (void)bindFaceMgrDidFinishWithToken:(NSString *)token{
+    NSLog(@"FaceAuth token : %@",token);
+    [self facePayConfirm:self.orderId code:token];
+}
+- (void)bindFaceMgrDidFinishWithError:(NSString *)errCode sequence_id:(NSString *)sequenceId{
+    NSLog(@"FaceAuth errCode: %@ === sequenceId: %@",errCode,sequenceId);
+}
 
 
+
+/****************************** == delegate == ********************************/
+-(void)facePayConfirm:(NSString *)orderId code:(NSString *)code{
+    
+    if (orderId.length == 0) {
+        [MCToast showMessage:@"获取orderId失败"];
+        return;
+    }
+    if (code.length == 0) {
+        [MCToast showMessage:@"获取code失败"];
+        return;
+    }
+     NSString * url = @"/api/v1/player/facePay/confirm";
+    NSDictionary *params =
+    @{
+        @"orderId":orderId,
+        @"code":code,
+     };
+    __weak typeof(self) weakSelf = self;
+
+    
+    [MCSessionManager.shareManager mc_Post_QingQiuTi:url parameters:params ok:^(NSDictionary * _Nonnull respDic) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MCToast showMessage:@"操作成功"];
+        });
+        
+        NSString * url = [NSString stringWithFormat:@"/api/v1/player/order"];
+        [self.sessionManager mc_GET:url parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+            
+            if ([respDic[@"data"] count] == 0) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+
+            }else{
+                KDSlotCardOrderInfoViewController *vc1 = [[KDSlotCardOrderInfoViewController alloc] init];
+                vc1.slotHistoryModel = [KDSlotCardHistoryModel mj_objectArrayWithKeyValuesArray:respDic[@"data"]][0];
+                [self.navigationController pushViewController:vc1 animated:YES];
+               
+            }
+        }] ;
+        
+    } other:^(NSDictionary * _Nonnull respDic) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 /** 添加信用卡 */
 - (IBAction)clickAddCreditCardBtn:(QMUIButton *)sender {

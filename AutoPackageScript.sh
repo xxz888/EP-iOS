@@ -55,7 +55,7 @@ project_dir=$script_dir
 # 时间
 DATE=`date '+%Y%m%d_%H%M%S'`
 # 指定输出导出文件夹路径
-export_path="/Users/mac/Desktop/無卡生活ipa/$scheme_name-$DATE"
+export_path="/Users/junan/Desktop/無卡生活ipa/$scheme_name-$DATE"
 # 指定输出归档文件路径
 export_archive_path="$export_path/$scheme_name.xcarchive"
 # 指定输出ipa文件夹路径
