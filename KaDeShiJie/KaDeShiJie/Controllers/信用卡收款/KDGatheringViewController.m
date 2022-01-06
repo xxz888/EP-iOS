@@ -100,15 +100,36 @@
     if (self.whereCome == 1) {
         [self setNavigationBarTitle:@"快捷收款" tintColor:nil];
         self.selectAdress.hidden = self.selectAdressTag.hidden = NO;
+        
+        
+        self.lbl1Tag.hidden = self.lbl1.hidden = YES;
+        self.lbl2Tag.hidden = self.lbl2.hidden = YES;
+        self.lbl3Tag.hidden = self.lbl3.hidden = YES;
+        self.lbl4Tag.hidden = self.lbl4.hidden = YES;
+
     }
     if (self.whereCome == 2) {
         [self setNavigationBarTitle:@"小额闪付" tintColor:nil];
         self.selectAdress.hidden = self.selectAdressTag.hidden = YES;
+        
+        self.lbl1Tag.hidden = self.lbl1.hidden = NO;
+        self.lbl2Tag.hidden = self.lbl2.hidden = NO;
+        self.lbl3Tag.hidden = self.lbl3.hidden = NO;
+        self.lbl4Tag.hidden = self.lbl4.hidden = NO;
+        
+        self.lbl3.text = [NSString stringWithFormat:@"%@%%+%@/笔元",SharedUserInfo.quickPayRate,@"2"];
 
     }
     if (self.whereCome == 3) {
         [self setNavigationBarTitle:@"刷脸付" tintColor:nil];
         self.selectAdress.hidden = self.selectAdressTag.hidden = YES;
+        
+        self.lbl1Tag.hidden = self.lbl1.hidden = NO;
+        self.lbl2Tag.hidden = self.lbl2.hidden = NO;
+        self.lbl3Tag.hidden = self.lbl3.hidden = NO;
+        self.lbl4Tag.hidden = self.lbl4.hidden = YES;
+        self.lbl3.text = [NSString stringWithFormat:@"%@%%+%@/笔元",SharedUserInfo.facePayRate,@"2"];
+
 
     }
 }
@@ -455,6 +476,7 @@
                 slotHistoryModel.fee = [respDic[@"data"][0][@"fee"] doubleValue];
                 slotHistoryModel.createdTime = respDic[@"data"][0][@"createdTime"];
                 slotHistoryModel.orderId = respDic[@"data"][0][@"orderId"];
+                slotHistoryModel.channelName = respDic[@"data"][0][@"channelName"];
 
                 vc.slotHistoryModel = slotHistoryModel;
                 vc.isBackHomeVC = YES;

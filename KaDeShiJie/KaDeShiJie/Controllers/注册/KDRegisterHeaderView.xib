@@ -284,7 +284,7 @@
     </objects>
     <resources>
         <image name="login_top_bg" width="533.5" height="322"/>
-        <image name="密码" width="23" height="23"/>
+        <image name="密码" width="44.5" height="50.5"/>
         <image name="手机" width="70" height="70"/>
         <image name="手机 拷贝" width="15" height="17"/>
         <image name="打勾" width="16" height="16"/>

@@ -68,7 +68,7 @@
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
 
             weakSelf.headerView.zongshouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"totalCommission"]doubleValue]];
-            weakSelf.headerView.dangrishouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"receivePaymentCommission"]doubleValue]];
+            weakSelf.headerView.dangrishouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"todayCommission"]doubleValue]];
             weakSelf.headerView.dangyueshouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"monthCommission"]doubleValue]];
  
         weakSelf.headerView.shuakayongjin.text = [NSString stringWithFormat:@"%.2f",[resp[@"receivePaymentCommission"]doubleValue]];

@@ -141,6 +141,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *thirdOrderId;
 @property (nonatomic, copy) NSString *totalCommission;
 @property (nonatomic, copy) NSString *bankCardNo;
+@property (nonatomic, copy) NSString *channelName;
 
 
 

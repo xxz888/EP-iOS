@@ -50,7 +50,6 @@
     [super awakeFromNib];
     
     if (StatusBarHeight == 20) {
-        self.topImg.image = [UIImage imageNamed:@"register_top_bg_nor"];
         [self.registerBtn setBackgroundImage:nil forState:UIControlStateNormal];
         [self.registerBtn setBackgroundColor:[UIColor mainColor]];
         [self.registerBtn setTitle:@"注册" forState:UIControlStateNormal];
@@ -66,7 +65,6 @@
         self.registerBtn.titleLabel.font = LYFont(20);
         self.registerBtnHigCons.constant = 50;
         self.registerBtnWidCons.constant = 324;
-        self.topImg.image = [UIImage imageNamed:@"register_top_bg"];
     }
     
 //    [self showTuiJianView:NO];

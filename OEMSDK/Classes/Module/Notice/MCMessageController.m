@@ -48,7 +48,20 @@
     }
     return _segement;
 }
+#pragma mark - MCSegementViewDelegate
+- (void)segementViewDidSeletedIndex:(NSInteger)index buttonTitle:(NSString *)title {
+    [self.dataSource removeAllObjects];
+    [self.tableview reloadData];
 
+    self.page = 0;
+    if (index == 0) {
+        self.type = @"0";
+        [self requestPerson];
+    } else {
+        self.type = @"1";
+        [self requestPlatform];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBarTitle:@"消息中心" tintColor:nil];
@@ -87,20 +100,7 @@
     }];
 }
 
-#pragma mark - MCSegementViewDelegate
-- (void)segementViewDidSeletedIndex:(NSInteger)index buttonTitle:(NSString *)title {
-    [self.dataSource removeAllObjects];
-    [self.tableview reloadData];
 
-    self.page = 0;
-    if (index == 0) {
-        self.type = @"0";
-        [self requestPerson];
-    } else {
-        self.type = @"1";
-        [self requestPlatform];
-    }
-}
 
 #pragma mark - Tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -20,7 +20,11 @@
 
 @implementation KDJFShopViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestCollectionData];
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGRect frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop-kTabBarHeight);
@@ -32,7 +36,9 @@
     [self.jfCollectionView registerNib:[UINib nibWithNibName:@"KDJFShopCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"KDJFShopCollectionViewCell"];
     [self.view addSubview:self.jfCollectionView];
     self.view.backgroundColor = self.jfCollectionView.backgroundColor = [UIColor whiteColor];
-
+    self.jfCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self requestCollectionData];
+    }];
     
     if (@available(iOS 11.0, *)) {
         self.jfCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -49,17 +55,18 @@
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     
-    [self requestCollectionData];
 }
 -(void)clickRightBtnAction{
     [self.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
 //    [MCToast showMessage:@"开发中"];
-}
+} 
 -(void)requestCollectionData{
     kWeakSelf(self);
     [self.sessionManager mc_GET:@"/api/v1/player/shop/product" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
         weakself.dataArray  = [[NSMutableArray alloc]initWithArray:respDic];
         [weakself.jfCollectionView reloadData];
+        
+        [weakself.jfCollectionView.mj_header endRefreshing];
     }];
     
     return;

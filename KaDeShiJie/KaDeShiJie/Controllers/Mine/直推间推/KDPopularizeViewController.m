@@ -171,41 +171,67 @@
     BOOL isNormal = [dic[@"level"] isEqualToString:@"Normal"];
 //    cell.cellImv.image = isNormal ? [UIImage imageNamed:@"会员"]:[UIImage imageNamed:@"会员1"];
     [cell.cellImv sd_setImageWithURL:dic[@"headImg"] placeholderImage: [UIImage imageNamed:@"tuiguangmoren"]];
+    
+    /*
+     [昨天 21:08] 孙 玉军
+     APP等级名称（统一名称显示）
+     1、普通用户
+     2、VIP用户
+     3、一星代理
+     4、二星代理
+     5、三星代理
+     6、四星代理
+     7、五星代理
+     8、六星代理
+     9、七星代理
+     10、八星代理
+     11、九星代理
+
+     [昨天 21:12] 孙 玉军
+     VIP0改成VIP用户
+     VIP1改成一星代理
+     VIP2改成二星代理
+     以此类推
+
+
+     
+     
+     **/
     if (isNormal) {
         cell.cellUserLlb.text = [dic[@"certification"] integerValue] == 0 ? @"未实名" : @"已实名";
     }else{
-        cell.cellUserLlb.text =  @"VIP会员";
+        cell.cellUserLlb.text =  @"VIP用户";
     }
     cell.cellRenSheng.hidden = [dic[@"certification"] integerValue] == 0;
     if ([dic[@"level"] isEqualToString:@"Diamond"]) {
-        cell.cellUserLlb.text = @"VIP会员";
+        cell.cellUserLlb.text = @"VIP用户";
     }
     if ([dic[@"level"] containsString:@"1"]) {
-        cell.cellUserLlb.text = @"一星";
+        cell.cellUserLlb.text = @"一星代理";
     }
     if ([dic[@"level"] containsString:@"2"]) {
-        cell.cellUserLlb.text = @"二星";
+        cell.cellUserLlb.text = @"二星代理";
     }
     if ([dic[@"level"] containsString:@"3"]) {
-        cell.cellUserLlb.text = @"三星";
+        cell.cellUserLlb.text = @"三星代理";
     }
     if ([dic[@"level"] containsString:@"4"]) {
-        cell.cellUserLlb.text = @"四星";
+        cell.cellUserLlb.text = @"四星代理";
     }
     if ([dic[@"level"] containsString:@"5"]) {
-        cell.cellUserLlb.text = @"五星";
+        cell.cellUserLlb.text = @"五星代理";
     }
     if ([dic[@"level"] containsString:@"6"]) {
-        cell.cellUserLlb.text = @"六星";
+        cell.cellUserLlb.text = @"六星代理";
     }
     if ([dic[@"level"] containsString:@"7"]) {
-        cell.cellUserLlb.text = @"七星";
+        cell.cellUserLlb.text = @"七星代理";
     }
     if ([dic[@"level"] containsString:@"8"]) {
-        cell.cellUserLlb.text = @"八星";
+        cell.cellUserLlb.text = @"八星代理";
     }
     if ([dic[@"level"] containsString:@"9"]) {
-        cell.cellUserLlb.text = @"九星";
+        cell.cellUserLlb.text = @"九星代理";
     }
     cell.cellUserLlb.backgroundColor = isNormal ? [UIColor qmui_colorWithHexString:@"#F9AD42"] : [UIColor qmui_colorWithHexString:@"#333333"];
     return cell;

@@ -86,7 +86,7 @@
 }
 - (void)setupView
 {
-    self.nameLabel.text = self.slotHistoryModel.channelType;
+    self.nameLabel.text = self.slotHistoryModel.channelName;
     self.rateLabel.text = [NSString stringWithFormat:@"%.2f%%", self.slotHistoryModel.rate];
     self.rateLabel.layer.cornerRadius = 3;
     self.rateLabel.layer.masksToBounds = YES;

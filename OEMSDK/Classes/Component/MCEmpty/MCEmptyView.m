@@ -11,7 +11,7 @@
 @implementation MCEmptyView
 
 + (instancetype)emptyView {
-    MCEmptyView *empty = [MCEmptyView emptyViewWithImage:[UIImage mc_imageNamed:@"list_empty"] titleStr:@"暂无数据，下拉刷新试试" detailStr:@""];
+    MCEmptyView *empty = [MCEmptyView emptyViewWithImage:[UIImage mc_imageNamed:@"list_empty"] titleStr:@"暂无数据" detailStr:@""];
     return empty;
 }
 + (instancetype)emptyViewText:(NSString *)text{

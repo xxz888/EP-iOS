@@ -142,12 +142,7 @@
     
     
     
-    [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/info" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
 
-      
-    } other:^(NSDictionary * _Nonnull resp) {
-        
-    }];
     
 }
 -(void)clickzhengmianImv:(id)tap{

@@ -140,6 +140,7 @@
                 slotHistoryModel.fee = [respDic[@"data"][0][@"fee"] doubleValue];
                 slotHistoryModel.createdTime = respDic[@"data"][0][@"createdTime"];
                 slotHistoryModel.orderId = respDic[@"data"][0][@"orderId"];
+                slotHistoryModel.channelName = respDic[@"data"][0][@"channelName"];
 
                 vc.slotHistoryModel = slotHistoryModel;
                 vc.isBackHomeVC = YES;

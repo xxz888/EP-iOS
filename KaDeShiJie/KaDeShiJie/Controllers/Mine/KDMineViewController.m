@@ -122,39 +122,54 @@
 
     
 }
+
+/*
+ 
+ 1、普通用户
+ 2、VIP用户
+ 3、一星代理
+ 4、二星代理
+ 5、三星代理
+ 6、四星代理
+ 7、五星代理
+ 8、六星代理
+ 9、七星代理
+ 10、八星代理
+ 11、九星代理
+ **/
 -(NSString *)getLevel:(NSString *)level{
     if ([level isEqualToString:@"Normal"]) {
         return  @"普通用户";
     }
     if ([level isEqualToString:@"Diamond"]) {
-        return  @"VIP会员";
+        return  @"VIP用户";
     }
     if ([level containsString:@"1"]) {
-        return  @"一星";
+        return  @"一星代理";
     }
     if ([level containsString:@"2"]) {
-        return  @"二星";
+        return  @"二星代理";
     }
     if ([level containsString:@"3"]) {
-        return  @"三星";
+        return  @"三星代理";
     }
     if ([level containsString:@"4"]) {
-        return  @"四星";
+        return  @"四星代理";
     }
     if ([level containsString:@"5"]) {
-        return  @"五星";
+        return  @"五星代理";
     }
     if ([level containsString:@"6"]) {
-        return  @"六星";
+        return  @"六星代理";
     }
     if ([level containsString:@"7"]) {
-        return  @"七星";
+        return  @"七星代理";
     }
     if ([level containsString:@"8"]) {
-        return  @"八星";
+        return  @"八星代理";
     }
     if ([level containsString:@"9"]) {
-        return  @"九星";
+        return  @"九星代理";
     }
     return  @"";
 }

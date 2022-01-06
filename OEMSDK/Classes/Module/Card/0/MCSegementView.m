@@ -76,7 +76,7 @@
     
     self.lineView.qmui_top = self.qmui_height-3;
     self.lineView.qmui_width = 24;
-    self.lineView.centerX = self.width/4;
+    self.lineView.centerX = self.width/([titles count]*2);
 }
 
 - (QMUIButton *)creatButtonWithTitle:(NSString *)title {

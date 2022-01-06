@@ -71,6 +71,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString * extraFee;
 
 @property(nonatomic, strong) NSString * agentPromoteId;
+//facePayRate 刷脸付费率
+//
+//huaBeiPayRate 花呗费率
+//
+//quickPayRate 闪付费率
+//
+//posPayRate pos费率
+
+@property(nonatomic, strong) NSString * facePayRate;
+@property(nonatomic, strong) NSString * huaBeiPayRate;
+@property(nonatomic, strong) NSString * quickPayRate;
+@property(nonatomic, strong) NSString * posPayRate;
 
 @end
 

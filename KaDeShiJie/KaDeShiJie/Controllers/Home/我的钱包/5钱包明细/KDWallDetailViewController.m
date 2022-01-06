@@ -33,12 +33,14 @@
     __weak typeof(self) weakSelf = self;
     self.mc_tableview.mj_header =  nil;
     self.dataArray = [[NSMutableArray alloc]init];
+    self.mc_tableview.ly_emptyView  = [MCEmptyView emptyView];
     NSString * url1 = @"/api/v1/player/wallet/history";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:resp];
         [self.mc_tableview reloadData];
         [weakSelf.mc_tableview.mj_header endRefreshing];
+        
     }];
     
 }
@@ -88,7 +90,7 @@
     }else if([dic[@"event"] isEqualToString:@"AgentConsumptionCommission"]) {
         eventTag = @"还款分润";
     }else if([dic[@"event"] isEqualToString:@"Coupon"]) {
-        eventTag = @"优惠券";
+        eventTag = @"抵扣券返现";
     }else if([dic[@"event"] isEqualToString:@"Withdraw"]) {
         eventTag = @"提现";
     }else if([dic[@"event"] isEqualToString:@"RepaymentSurplusFee"]) {
