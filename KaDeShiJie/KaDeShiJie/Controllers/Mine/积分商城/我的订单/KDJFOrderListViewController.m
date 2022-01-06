@@ -41,7 +41,7 @@
 //    Cancel, Close, Complete, Failed, Init, Paid, Paying, Sms, Unpaid, Unreceived, Unshipped
 //    Init, // 初始化
 //    Sms, // 发短信验证
-//    Unpaid, // 未支付
+//    Unpaid, // 支付中
 //    Paying, // 支付中
 //    Paid, // 已支付
 //    Unshipped, // 待发货
@@ -133,7 +133,7 @@
     cell.orderContent.text = dic[@"title"];
   /*
    Init, // 初始化
-   Unpaid, // 未支付
+   Unpaid, // 支付中
    Paid, // 已支付
    Unshipped, // 待发货
    Unreceived, // 待收货
@@ -150,7 +150,7 @@
     [dic[@"logisticsState"] isEqualToString:@"Failed"] ? @"已失败" :
     [dic[@"logisticsState"] isEqualToString:@"Init"] ? @"初始" :
     [dic[@"logisticsState"] isEqualToString:@"Paid"] ? @"已支付" :
-    [dic[@"logisticsState"] isEqualToString:@"Unpaid"] ? @"未支付" :
+    [dic[@"logisticsState"] isEqualToString:@"Unpaid"] ? @"支付中" :
     [dic[@"logisticsState"] isEqualToString:@"Unreceived"] ? @"待收货" :
     [dic[@"logisticsState"] isEqualToString:@"Unshipped"] ? @"待发货" : @"";
     cell.orderPrice.text = [NSString stringWithFormat:@"%@元",dic[@"price"]];

@@ -80,7 +80,7 @@
 
     __weak __typeof(self)weakSelf = self;
     [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/user/notice" parameters:@{@"current":@"0",@"size":@"100"} ok:^(NSDictionary * _Nonnull resp) {
-        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
+        NSArray *tempA = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp[@"data"]];
         [weakSelf.dataSource removeAllObjects];
         [weakSelf.dataSource addObjectsFromArray:tempA];
         [weakSelf.tableview reloadData];

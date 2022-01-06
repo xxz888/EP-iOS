@@ -321,36 +321,19 @@ remoteFields:(nullable NSArray<NSString *>*)fields
         NSHTTPURLResponse * responses = UserInfo[@"com.alamofire.serialization.response.error.response"];
                 NSInteger code = [responses statusCode];
         
-        
-        NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
-        NSString *errorStr = errorDict[@"message"];
-        [MCToast showMessage:errorStr];
-        NSLog(@"%@",errorStr);
-        if ([errorStr isEqualToString:@"无法获得当前登陆用户"] || code == 401) {
-            [MCApp userLogout];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"请重新登录"];
-            });
-        }
-        
-        return;
-        if (error.code == -1001) { //请求超时
-            
-            [MCToast showMessage:@"请求超时，请重试"];
-        } else {
-            if (failure) {
-                failure(error);
-            } else {
-                NSString *msg = [NSString stringWithFormat:@"%@",error.localizedDescription];
-                if ([msg containsString:@"该数据的格式不正确"]) {
-                    [MCToast showMessage:@"登录信息已过期，请重新登录"];
-                    [self popLoginIfNeeded:nil];
-                    return;
-                }
-                [MCToast showMessage:msg];
-                NSLog(@"%@",msg);
+        if (UserInfo[@"com.alamofire.serialization.response.error.data"]) {
+            NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:UserInfo[@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:nil];
+            NSString *errorStr = errorDict[@"message"];
+            [MCToast showMessage:errorStr];
+            NSLog(@"%@",errorStr);
+            if ([errorStr isEqualToString:@"无法获得当前登陆用户"] || code == 401) {
+                [MCApp userLogout];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [MCToast showMessage:@"请重新登录"];
+                });
             }
         }
+     
         
     }
 }

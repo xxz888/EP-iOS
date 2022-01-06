@@ -108,7 +108,7 @@
         self.statusLabel.text = @"订单状态：待结算";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
     } else if ([self.slotHistoryModel.state isEqualToString:@"Unpaid"]) {
-        self.statusLabel.text = @"订单状态：未付款";
+        self.statusLabel.text = @"订单状态：支付中";
         self.statusLabel.textColor = [UIColor qmui_colorWithHexString:@"#ffc107"];
     }
     

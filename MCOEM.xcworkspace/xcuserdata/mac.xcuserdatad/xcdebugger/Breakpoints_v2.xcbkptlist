@@ -5,34 +5,78 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "A0F067E5-ACC1-4082-A885-00961C85B851"
+            uuid = "0CB14839-3801-4C2B-BD56-3B041D97F923"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/QMUIKit/QMUIKit/QMUIComponents/QMUIButton/QMUINavigationButton.m"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C820FE7-EF86-4D31-B6E6-67A4B5E14CB4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OEMSDK/Classes/Module/User/shiming/MCManualRealNameController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "-alignmentRectInsets"
+            startingLineNumber = "783"
+            endingLineNumber = "783"
+            landmarkName = "-requestDataForCheckInputInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B5FD0C2-FD8F-47AC-A372-C8EB3ECB1D7A"
+            uuid = "D036C582-ACC2-47B5-ABBA-CCD2AFEDCA5A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OEMSDK/Classes/Tools/MCNetwork/NetBase/MCSessionManager/MCSessionManager.m"
+            filePath = "OEMSDK/Classes/Module/User/shiming/MCManualRealNameController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-mc_Post_QingQiuTi:parameters:ok:other:failure:"
+            startingLineNumber = "787"
+            endingLineNumber = "787"
+            landmarkName = "-requestDataForCheckInputInfo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D74257DC-6A95-4D50-BF6B-F00EB21793A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OEMSDK/Classes/Module/User/shiming/MCManualRealNameController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "852"
+            endingLineNumber = "852"
+            landmarkName = "-requestDataForUploadImages:fileName:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A79C23C5-D726-4DEA-9FC5-A40C8C1E5641"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OEMSDK/Classes/Module/User/shiming/MCManualRealNameController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "754"
+            endingLineNumber = "754"
+            landmarkName = "-requestDataForCheckInputInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

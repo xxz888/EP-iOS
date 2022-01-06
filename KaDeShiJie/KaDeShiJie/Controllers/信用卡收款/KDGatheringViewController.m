@@ -117,7 +117,7 @@
         self.lbl3Tag.hidden = self.lbl3.hidden = NO;
         self.lbl4Tag.hidden = self.lbl4.hidden = NO;
         
-        self.lbl3.text = [NSString stringWithFormat:@"%@%%+%@/笔元",SharedUserInfo.quickPayRate,@"2"];
+        self.lbl3.text = [NSString stringWithFormat:@"%@%%+%@元/笔",SharedUserInfo.quickPayRate,SharedUserInfo.extraFee];
 
     }
     if (self.whereCome == 3) {
@@ -128,7 +128,7 @@
         self.lbl2Tag.hidden = self.lbl2.hidden = NO;
         self.lbl3Tag.hidden = self.lbl3.hidden = NO;
         self.lbl4Tag.hidden = self.lbl4.hidden = YES;
-        self.lbl3.text = [NSString stringWithFormat:@"%@%%+%@/笔元",SharedUserInfo.facePayRate,@"2"];
+        self.lbl3.text = [NSString stringWithFormat:@"%@%%+%@元/笔",SharedUserInfo.facePayRate,SharedUserInfo.extraFee];
 
 
     }

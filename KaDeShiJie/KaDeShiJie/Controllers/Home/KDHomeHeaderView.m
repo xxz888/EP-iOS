@@ -185,6 +185,7 @@
                 break;
             // 实名认证
             case 202:
+            
                 if ([SharedUserInfo.certification integerValue] == 1) {
                     [MCToast showMessage:@"您已实名认证"];
                 }else{
