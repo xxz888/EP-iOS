@@ -289,6 +289,9 @@
                 dispatch_source_cancel(timer);
                 [codeBtn setTitle:@"重新发送" forState:(UIControlStateNormal)];
                 [codeBtn setUserInteractionEnabled:YES];
+                if (codeBtn.tag = 1888) {
+                    codeBtn.hidden = YES;
+                }
             }
         });
     });

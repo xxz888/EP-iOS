@@ -36,7 +36,6 @@
 		04AE083326FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE083126FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib */; };
 		04B70018275C5A5500A755B8 /* KDMineKehuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B70016275C5A5500A755B8 /* KDMineKehuViewController.m */; };
 		04B70019275C5A5500A755B8 /* KDMineKehuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B70017275C5A5500A755B8 /* KDMineKehuViewController.xib */; };
-		04C449882785FA800032FFA2 /* JFTBindFace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C449862785FA800032FFA2 /* JFTBindFace.framework */; };
 		04C449892785FA800032FFA2 /* CWResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04C449872785FA800032FFA2 /* CWResource.bundle */; };
 		04CDE20E274E7D580038A649 /* KDTixianjiluTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDE20C274E7D580038A649 /* KDTixianjiluTableViewCell.m */; };
 		04CDE20F274E7D580038A649 /* KDTixianjiluTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDE20D274E7D580038A649 /* KDTixianjiluTableViewCell.xib */; };
@@ -376,7 +375,6 @@
 		04B70015275C5A5500A755B8 /* KDMineKehuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMineKehuViewController.h; sourceTree = "<group>"; };
 		04B70016275C5A5500A755B8 /* KDMineKehuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMineKehuViewController.m; sourceTree = "<group>"; };
 		04B70017275C5A5500A755B8 /* KDMineKehuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMineKehuViewController.xib; sourceTree = "<group>"; };
-		04C449862785FA800032FFA2 /* JFTBindFace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JFTBindFace.framework; sourceTree = "<group>"; };
 		04C449872785FA800032FFA2 /* CWResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CWResource.bundle; sourceTree = "<group>"; };
 		04CDE20B274E7D580038A649 /* KDTixianjiluTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTixianjiluTableViewCell.h; sourceTree = "<group>"; };
 		04CDE20C274E7D580038A649 /* KDTixianjiluTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTixianjiluTableViewCell.m; sourceTree = "<group>"; };
@@ -860,7 +858,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FABF12E27857D2C0026BE32 /* libc++.tbd in Frameworks */,
-				04C449882785FA800032FFA2 /* JFTBindFace.framework in Frameworks */,
 				CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,7 +956,6 @@
 		04C449852785FA800032FFA2 /* livingBody */ = {
 			isa = PBXGroup;
 			children = (
-				04C449862785FA800032FFA2 /* JFTBindFace.framework */,
 				04C449872785FA800032FFA2 /* CWResource.bundle */,
 			);
 			path = livingBody;

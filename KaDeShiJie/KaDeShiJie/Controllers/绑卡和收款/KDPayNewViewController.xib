@@ -242,9 +242,9 @@
                                             <color key="textColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码已发送，请输入验证码" textAlignment="natural" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="fmq-hn-I7q" customClass="QMUITextField">
-                                            <rect key="frame" x="104.5" y="14" width="219.5" height="17.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码已发送，请输入验证码" textAlignment="natural" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="fmq-hn-I7q" customClass="QMUITextField">
+                                            <rect key="frame" x="104.5" y="14.5" width="219.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="maximumTextLength">

@@ -379,16 +379,17 @@
                 [weakSelf.navigationController pushViewController:web animated:YES];
             }else{
                 weakSelf.orderId = respDic[@"orderId"];
-                
+                JFTBindFaceManager *mgr = [[JFTBindFaceManager alloc] init];
+                mgr.delegate = self;
+                [mgr bindFaceAuthPresentController:self];
                 //加入到主线程当中
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    JFTBindFaceManager *mgr = [[JFTBindFaceManager alloc] init];
-                    mgr.delegate = self;
-                    //通知主线程刷新
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [mgr bindFaceAuthPresentController:self];
-                    });
-                });
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//              
+//
+//                    //通知主线程刷新
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                    });
+//                });
         
                   
                 

@@ -70,7 +70,7 @@ static MCSessionManager *_singleManager = nil;
     
     NSLog(@"%@",TOKEN);
  
-    if ([shortURLString isEqualToString:@"/api/v1/player/facePay/pre"]) {
+    if ([shortURLString isEqualToString:@"/api/v1/player/facePay/confirm"]) {
         
     }else{
         [MCLoading show];
@@ -84,7 +84,7 @@ static MCSessionManager *_singleManager = nil;
         
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSLog(@"\n------------【返回结果】--------------%@\n",responseObject);
-        if ([shortURLString isEqualToString:@"/api/v1/player/facePay/pre"]) {
+        if ([shortURLString isEqualToString:@"/api/v1/player/facePay/confirm"]) {
             
         }else{
             [MCLoading hidden];
@@ -109,7 +109,7 @@ static MCSessionManager *_singleManager = nil;
                 [MCToast showMessage:@"请重新登陆"];
                 [MCApp userLogout];
             }else{
-//                [MCToast showMessage:responseObject[@"messege"]];
+                [MCToast showMessage:responseObject[@"messege"]];
             }
         } else {
             if (code == 401){

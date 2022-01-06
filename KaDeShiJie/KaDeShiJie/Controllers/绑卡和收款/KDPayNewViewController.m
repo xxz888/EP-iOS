@@ -61,7 +61,7 @@
     self.stackViewHeight.constant = 320;
     self.smsView.hidden = NO;
     
-    
+    self.codeBtn.tag = 1888;
     if (self.whereCome == 1) {
         [self changeSendBtnText:self.codeBtn];
     }
