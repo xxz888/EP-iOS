@@ -171,5 +171,9 @@ fi
 # 输出打包总用时
 echo "\033[36;1m使用AutoPackageScript打包总用时: ${SECONDS}s \033[0m"
 
+fir publish $export_ipa_path/$ipa_name.ipa
 
+rm -rf /Users/junan/Desktop/無卡生活ipa
+
+echo "删除文件夹成功"
 exit 0

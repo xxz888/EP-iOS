@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) STModal *modal;
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *brandNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *versionLab;
@@ -21,6 +22,7 @@
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, assign) BOOL isForce;
 
+@property (weak, nonatomic) IBOutlet UITextView *contentTV;
 
 
 @end
@@ -41,8 +43,9 @@
     self.isForce = force;
     if (content) {
         self.contentLab.text = content;
+        self.contentTV.text = content;
     }
-    self.brandNameLab.text = MCModelStore.shared.brandConfiguration.brand_name;
+//    self.brandNameLab.text = @"";
     if (version) {
         self.versionLab.text = [NSString stringWithFormat:@"v %@",version];
     }
@@ -55,8 +58,8 @@
     self.layer.cornerRadius = 5;
     [self.updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.updateButton.layer.borderColor = [UIColor whiteColor].CGColor;
-//    self.updateButton.layer.cornerRadius = 4;
-//    self.updateButton.layer.borderWidth = 1;
+    self.updateButton.layer.cornerRadius = 16;
+    self.updateButton.layer.borderWidth = 1;
     
     
 //    self.backgroundColor = [[UIColor mainColor] colorWithAlphaComponent:0.2];
@@ -66,6 +69,9 @@
 
 - (IBAction)onUpdateTouched:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.url]];
+    [self.modal hide:YES];
+}
+- (IBAction)cancelAlert:(id)sender {
     [self.modal hide:YES];
 }
 

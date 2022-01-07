@@ -41,30 +41,29 @@ static const CGFloat margin = 10;
 /** 人物照拍摄按钮 */
 @property (nonatomic, weak) UIButton *personPhotoButton;
 
-/** imageOne */
-@property (nonatomic, strong) UIImage *imageOne;
-/** imageTwo */
-@property (nonatomic, strong) UIImage *imageTwo;
-/** imageThree */
-@property (nonatomic, strong) UIImage *imageThree;
+/** idCardZhengImg */
+@property (nonatomic, strong) UIImage *idCardZhengImg;
+/** idCardFanImg */
+@property (nonatomic, strong) UIImage *idCardFanImg;
+/** faceImg */
+@property (nonatomic, strong) UIImage *faceImg;
 
 /** index(0-正面拍摄按钮 1-反面拍摄按钮 2-人物拍摄按钮) */
 @property (nonatomic, assign) NSInteger index;
 
 @property(nonatomic,assign)NSInteger isWho;
 
-/** imageOne */
-@property (nonatomic, strong) NSString *imageOneURL;
-/** imageTwo */
-@property (nonatomic, strong) NSString *imageTwoURL;
-/** imageThree */
-@property (nonatomic, strong) NSString *imageThreeURL;
+/** idCardZhengImg */
+@property (nonatomic, strong) NSString *idCardZhengImgURL;
+/** idCardFanImg */
+@property (nonatomic, strong) NSString *idCardFanImgURL;
+/** faceImg */
+@property (nonatomic, strong) NSString *faceImgURL;
 
 @property (nonatomic, weak) UITextField * phoneTf;
 @property (nonatomic, strong) NSString * bankURL;
 
 
-@property (nonatomic, assign) NSInteger ocrIndex;
 
 @property (nonatomic, assign) BOOL isScan;
 
@@ -80,7 +79,6 @@ static const CGFloat margin = 10;
 #pragma mark --- LIFE
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self shiming];
     // 主界面
     [self setupMainView];
 }
@@ -91,9 +89,9 @@ static const CGFloat margin = 10;
     // 0. 初始值
     
     [self setNavigationBarTitle:@"实名认证" tintColor:nil];
-    self.imageOne = nil;
-    self.imageTwo = nil;
-    self.imageThree = nil;
+    self.idCardZhengImg = nil;
+    self.idCardFanImg = nil;
+    self.faceImg = nil;
     self.bankZhengImg = nil;self.bankFanImg = nil;
     self.bankURL = nil;
     // 容器
@@ -170,8 +168,8 @@ static const CGFloat margin = 10;
     UIButton * scanBankCardButton1 =[UIButton buttonWithType:UIButtonTypeCustom];
     [scanBankCardButton1 setImage:[UIImage mc_imageNamed:@"lx_card_scan"] forState:0];
     scanBankCardButton1.frame = CGRectMake(0, 0,40,40);
-    scanBankCardButton1.tag = 1002;
-    [scanBankCardButton1 addTarget:self action:@selector(clickScan:) forControlEvents:UIControlEventTouchUpInside];
+    scanBankCardButton1.tag = 1001;
+    [scanBankCardButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [codeRightView1 addSubview:scanBankCardButton1];
     [cardNoView addSubview:codeRightView1];
     
@@ -195,7 +193,6 @@ static const CGFloat margin = 10;
     UITextField *bankCardTf = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
     bankCardTf.userInteractionEnabled = NO;
     bankCardTf.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
-    bankCardTf.tag = 1002;
     bankCardTf.textAlignment = NSTextAlignmentLeft;
     bankCardTf.font = [UIFont systemFontOfSize:14];
     bankCardTf.tintColor = [UIColor lightGrayColor];
@@ -211,8 +208,8 @@ static const CGFloat margin = 10;
     UIButton * scanBankCardButton =[UIButton buttonWithType:UIButtonTypeCustom];
     [scanBankCardButton setImage:[UIImage mc_imageNamed:@"lx_card_scan"] forState:0];
     scanBankCardButton.frame = CGRectMake(0, 0,40,40);
-    scanBankCardButton.tag = 1001;
-    [scanBankCardButton addTarget:self action:@selector(clickScan:) forControlEvents:UIControlEventTouchUpInside];
+    scanBankCardButton.tag = 1002;
+    [scanBankCardButton addTarget:self action:@selector(showImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [codeRightView addSubview:scanBankCardButton];
     [bankcardNoView addSubview:codeRightView];
     
@@ -286,7 +283,7 @@ static const CGFloat margin = 10;
     CGFloat buttonH = buttonW *0.53;
     UIButton *frontPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     frontPhotoButton.frame = CGRectMake(buttonMargin, downArrowImageView.bottom + 5, showImageW, showImageH);
-    frontPhotoButton.tag = 0;
+    frontPhotoButton.tag = 1003;
     [frontPhotoButton setBackgroundImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:0];
 //    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
     [frontPhotoButton addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -295,7 +292,7 @@ static const CGFloat margin = 10;
     self.frontPhotoButton = frontPhotoButton;
     UIButton *backPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     backPhotoButton.frame = CGRectMake(frontPhotoButton.right + buttonMargin, frontPhotoButton.top, showImageW, showImageH);
-    backPhotoButton.tag = 1;
+    backPhotoButton.tag = 1004;
     [backPhotoButton setBackgroundImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:0];
 //    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
     [backPhotoButton addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -334,7 +331,7 @@ static const CGFloat margin = 10;
     CGFloat buttonH1 = buttonW1 *0.53;
     UIButton *frontPhotoButton1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     frontPhotoButton1.frame = CGRectMake(buttonMargin, downArrowImageView1.bottom + 5, showImageW1, showImageH1);
-    frontPhotoButton1.tag = 10;
+    frontPhotoButton1.tag = 1005;
     [frontPhotoButton1 setBackgroundImage:[UIImage mc_imageNamed:@"zheng2"] forState:0];
 //    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
     [frontPhotoButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -343,40 +340,12 @@ static const CGFloat margin = 10;
     self.frontPhotoButton1 = frontPhotoButton1;
     UIButton *backPhotoButton1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     backPhotoButton1.frame = CGRectMake(frontPhotoButton1.right + buttonMargin1, frontPhotoButton1.top, showImageW1, showImageH1);
-    backPhotoButton1.tag = 11;
+    backPhotoButton1.tag = 1006;
     [backPhotoButton1 setBackgroundImage:[UIImage mc_imageNamed:@"fan2"] forState:0];
 //    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
     [backPhotoButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [scrollView addSubview:backPhotoButton1];
     self.backPhotoButton1 = backPhotoButton1;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 //    UIButton *personPhotoButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -413,175 +382,54 @@ static const CGFloat margin = 10;
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH,CGRectGetMaxY(submitButton.frame)+NavigationContentTop + margin);
 }
 
-- (UILabel *)labelWithFrame:(CGRect)frame text:(NSString *)text textColor:(UIColor *)textColor textAlignment:(NSTextAlignment)alignment font:(UIFont *)font {
-    UILabel *lab = [[UILabel alloc] initWithFrame:frame];
-    lab.text = text;
-    lab.textColor = textColor;
-    lab.textAlignment = alignment;
-    lab.font = font;
-    return lab;
-}
-
-- (CGFloat)stringHeightWithString:(NSString *)string width:(CGFloat)width font:(UIFont *)font {
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil];
-    return rect.size.height;
-}
-
-//textField代理
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (![textField isExclusiveTouch]) {
-        [textField resignFirstResponder];
-    }
-    return YES;
-}
 
 
 
--(void)showImageButtonClick:(UIButton *)btn{
-    self.index = btn.tag;
-    UIViewController *current = MCLATESTCONTROLLER;
+
+
+
+
+
+
+
+//------ 上传图片, ------//
+- (void)requestDataForUploadImages:(UIImage *)selectImg fileName:(NSString *)name{
+    NSString *phone = SharedUserInfo.phone;
+    NSDictionary *uploadDic = @{};
+    NSArray *imagesArr = @[selectImg];
     __weak __typeof(self)weakSelf = self;
-    if (btn.tag == 0) {
-        self.zhengmianfanmian = ZhengMian;
+    //APK, App, Banner, IdCard, ORC, System
+    NSString * url = @"";
+    if (self.index == 1003 || self.index == 1004) {
+        url = @"/api/v1/player/upload/IdCard";
+    }else{
+        url = @"/api/v1/player/upload/App";
     }
-    if (btn.tag == 1) {
-        self.zhengmianfanmian = FanMian;
-    }
-    
-    if (btn.tag == 10) {
-        self.zhengmianfanmian = BankZhengMian;
-    }
-    if (btn.tag == 11) {
-        self.zhengmianfanmian = BankFanMian;
-    }
-    
-    
-
-    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-        if (authStatus == AVAuthorizationStatusDenied) {
-            [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
-            return;
+    [MCSessionManager.shareManager mc_UPLOAD:url parameters:uploadDic images:imagesArr remoteFields:nil imageNames:@[name] imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+        NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
+        // 设置图片
+        if (self.index == 1003) {
+            self.idCardZhengImgURL = dic[@"fileUrl"];
+        }
+        if (self.index == 1004) {
+            self.idCardFanImgURL = dic[@"fileUrl"];
         }
         
-        //调用身份证大小的相机
-        DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
- 
-        vc.modalPresentationStyle = UIModalPresentationFullScreen;
-        vc.imageblock = ^(UIImage *image) {
-           
-            if ([self.zhengmianfanmian isEqualToString:ZhengMian]) {
-                self.imageOne = image;
-                [self.frontPhotoButton setImage:image forState:(UIControlStateNormal)];
-                [self requestDataForUploadImages:self.imageOne fileName:@"one"];
-            }
-            if ([self.zhengmianfanmian isEqualToString:FanMian]) {
-                //向服务器上传身份证反面
-                self.imageTwo = image;
-                [self.backPhotoButton setImage:image forState:(UIControlStateNormal)];
-                [self requestDataForUploadImages:self.imageTwo fileName:@"two"];
-            }
-            
-            if ([self.zhengmianfanmian isEqualToString:BankZhengMian]) {
-                //向服务器上传身份证反面
-                self.bankZhengImg = image;
-                [self.frontPhotoButton1 setImage:image forState:(UIControlStateNormal)];
-                [self requestDataForUploadImages:self.bankZhengImg fileName:@"1"];
-            }
-            
-            if ([self.zhengmianfanmian isEqualToString:BankFanMian]) {
-                //向服务器上传身份证反面
-                self.bankFanImg = image;
-                [self.backPhotoButton1 setImage:image forState:(UIControlStateNormal)];
-                [self requestDataForUploadImages:self.bankFanImg fileName:@"2"];
-            }
-            
-        };
-        [self presentViewController:vc animated:YES completion:nil];
-    }];
-    UIAlertAction *picture = [UIAlertAction actionWithTitle:@"选择照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        if (self.index == 1005) {
+            self.bankZhengURL = dic[@"fileUrl"];
         }
-        pickerImage.delegate = self;
-        pickerImage.allowsEditing = NO;
-        [current presentViewController:pickerImage animated:YES completion:nil];
-    }];
-    [alertVc addAction:cancle];
-    [alertVc addAction:camera];
-    [alertVc addAction:picture];
-    [current presentViewController:alertVc animated:YES completion:nil];
-}
-#pragma mark Delegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
-    if ([type isEqualToString:@"public.image"]) {
-        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        
-        if (self.isScan) {
-            [self uploadBankImage:image];
+        if (self.index == 1006) {
+            self.bankFanURL = dic[@"fileUrl"];
         }
         
-        if ([self.zhengmianfanmian isEqualToString:ZhengMian]) {
-            self.imageOne = info[UIImagePickerControllerOriginalImage];
-            [self.frontPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-            [self requestDataForUploadImages:self.imageOne fileName:@"one"];
+        if (self.index == 1007) {
+            self.faceImgURL = dic[@"fileUrl"];
+            [self requestDataForCheckInputInfo];
         }
-        
-        if ([self.zhengmianfanmian isEqualToString:FanMian]) {
-            //向服务器上传身份证反面
-            self.imageTwo = info[UIImagePickerControllerOriginalImage];
-            [self.backPhotoButton setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-            [self requestDataForUploadImages:self.imageTwo fileName:@"two"];
-        }
-        
-        
-        if ([self.zhengmianfanmian isEqualToString:BankZhengMian]) {
-            self.bankZhengImg = info[UIImagePickerControllerOriginalImage];
-            [self.frontPhotoButton1 setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-            [self requestDataForUploadImages:self.bankZhengImg fileName:@"one"];
-        }
-        
-        if ([self.zhengmianfanmian isEqualToString:BankFanMian]) {
-            //向服务器上传身份证反面
-            self.bankFanImg = info[UIImagePickerControllerOriginalImage];
-            [self.backPhotoButton1 setImage:info[UIImagePickerControllerOriginalImage] forState:(UIControlStateNormal)];
-            [self requestDataForUploadImages:self.bankFanImg fileName:@"two"];
-        }
-    }
-    
-
-}
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    } other:nil failure:nil];
 }
 
-//#pragma mark --- TARGET METHOD
-///// 1. 示例图片按钮点击事件
-//- (void)showImageButtonClick:(UIButton *)sender {
-//
-//    UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0)];
-//    tempImageView.image = sender.imageView.image;
-//    [LYImageMagnification scanBigImageWithImageView:tempImageView alpha:.6];
-//}
-/// 2. 拍摄按钮点击事件
-//- (void)photoButtonClick:(UIButton *)sender {
-//
-//    self.index = sender.tag;
-//    if (self.index == 2) {
-//        [self shiming];
-//    }else{
-//        // 拍照
-//        [self getImageFromIpc];
-//    }
-//
-//}
+
 -(void)shiming{
     // UI设置，默认不用设置
     NSDictionary *uiConfig = @{
@@ -610,18 +458,16 @@ static const CGFloat margin = 10;
         // 将NSData转为UIImage
         UIImage *decodedImage = [UIImage imageWithData: decodeData];
         //身份证上传
-        self.imageThree = decodedImage;
-        [self requestDataForUploadImages:decodedImage fileName:@"three"];
+        weakSelf.faceImg = decodedImage;
+        weakSelf.index = 1007;
+        [weakSelf requestDataForUploadImages:decodedImage fileName:@"face"];
       
     }else{
         [MCToast showMessage:result[@"msg"]];
     }
 }
 /// 3. 提交按钮点击事件
-- (void)submitButtonClick
-{
-
-    self.index = 2;
+- (void)submitButtonClick{
     // 判断
     if (self.nameTF.text.length == 0 ) {
         [self showAlertWithMessage:@"请填写姓名"];
@@ -639,25 +485,211 @@ static const CGFloat margin = 10;
         [self showAlertWithMessage:@"请填写银行预留手机号"];
         return;
     }
-    if (self.imageOne == nil || self.imageTwo == nil) {
+    if (self.idCardZhengImg == nil || self.idCardFanImg == nil) {
         [self showAlertWithMessage:@"请上传身份证正反面图片！"];
         return;
     }
-    if (self.zhengmianfanmian == nil || self.zhengmianfanmian == nil) {
+    if (self.bankZhengImg == nil || self.bankFanImg == nil) {
         [self showAlertWithMessage:@"请上传银行卡正反面！"];
         return;
     }
-    
     [self shiming];
 
 }
-#pragma mark --- DELEGATE
--(void)clickScan:(UIButton *)btn{
+
+
+
+#pragma mark --- SET DATA
+- (void)requestDataForCheckInputInfo {
+    NSString *idCardNo = [self.idCardTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *debitCardNo = [self.bankCardTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (self.nameTF.text.length == 0) {
+        [MCToast showMessage:@"请填写姓名"];
+        return;
+    }
+    if (idCardNo.length == 0) {
+        [MCToast showMessage:@"请填写身份证号"];
+        return;
+    }
+    if (self.phoneTf.text.length == 0) {
+        [MCToast showMessage:@"请填写银行预留手机号"];
+        return;
+    }
+    if (!self.idCardZhengImgURL) {
+        [MCToast showMessage:@"请上传身份证正面照"];
+        return;
+    }
+    if (!self.idCardFanImgURL) {
+        [MCToast showMessage:@"请上传身份证反面照"];
+        return;
+    }
+   
+    if (!self.bankZhengURL) {
+        [MCToast showMessage:@"请上传银行卡正面"];
+        return;
+    }
+    if (!self.bankFanURL) {
+        [MCToast showMessage:@"请上传银行卡反面"];
+        return;
+    }
+
+    if (!self.faceImgURL) {
+        [MCToast showMessage:@"请进行活体检测"];
+        return;
+    }
+    /* token  realname:真实姓名  idcard:身份证号  */
+    NSDictionary *param = @{@"name":self.nameTF.text,
+                            @"idCardNo":idCardNo,
+                            @"faceUrl":self.faceImgURL,
+                            @"idCardBackUrl":self.idCardFanImgURL,
+                            @"idCardFrontUrl":self.idCardZhengImgURL,
+                            @"bankPhone":self.phoneTf.text,
+                            @"debitCardUrl":self.bankZhengURL,
+                            @"debitCardBankUrl":self.bankFanURL
+    };
+    __weak __typeof(self)weakSelf = self;
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/certification" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+        NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
+        if ([dic[@"certification"] integerValue] == 1) {
+            [MCToast showMessage:@"实名认证成功"];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [MCToast showMessage:dic[@"message"]];
+        }
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {}];
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
     
-    self.ocrIndex = btn.tag;
-    self.isScan = YES;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//#pragma mark - 上传银行卡和身份证识别卡号
+- (void)uploadBankImage:(UIImage *)image {
+    //APK, App, Banner, IdCard, ORC, System
+    __weak __typeof(self)weakSelf = self;
+    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
+    if (resp[@"fileUrl"]) {
+        NSString * orcType = (self.index == 1001 || self.index == 1003 || self.index == 1004) ? @"IdCard" : @"BankCard";
+        NSDictionary *param = @{
+                                @"link":resp[@"fileUrl"],
+                                @"orcType": orcType,
+                                };
+        kWeakSelf(self);
+        [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/orc" parameters:param ok:^(NSDictionary * _Nonnull resp) {
+            NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
+            
+            //身份证扫描
+            if(self.index == 1001){
+                weakSelf.idCardTF.text = no;
+            }
+            
+            
+            //银行卡正面扫描
+            if (self.index == 1002) {
+                NSMutableString *string = [NSMutableString string];
+                for (int i = 0; i < no.length; i++) {
+                    [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
+                    if (i % 4 == 3) {
+                        [string appendString:@" "];
+                    }
+                }
+                weakSelf.bankCardTF.text = [NSString stringWithFormat:@"%@",string];
+            }
+            
+            
+        } other:^(NSDictionary * _Nonnull resp) {
+
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }
+
+} other:^(NSDictionary * _Nonnull resp) {
+    [MCLoading hidden];
+    [MCToast showMessage:resp[@"messege"]];
+
+} failure:^(NSError * _Nonnull error) {
+    [MCLoading hidden];
+    [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@", (long)error.code, error.localizedFailureReason]];
+}];
+}
+-(void)commonAction:(UIImage *)image{
+    //身份证扫描
+    if (self.index == 1001) {
+        [self uploadBankImage:image];
+    }
+    //银行卡扫描
+    if (self.index == 1002) {
+        [self uploadBankImage:image];
+    }
+    //身份证正面
+    if (self.index == 1003) {
+        self.idCardZhengImg = image;
+        [self.frontPhotoButton setImage:image forState:(UIControlStateNormal)];
+        [self requestDataForUploadImages:self.idCardZhengImg fileName:@"one"];
+    }
+    //身份证反面
+    if (self.index == 1004) {
+        self.idCardFanImg = image;
+        [self.backPhotoButton setImage:image forState:(UIControlStateNormal)];
+        [self requestDataForUploadImages:self.idCardFanImg fileName:@"two"];
+    }
+    //银行卡正面
+    if (self.index == 1005) {
+        self.bankZhengImg = image;
+        [self.frontPhotoButton1 setImage:image forState:(UIControlStateNormal)];
+        [self requestDataForUploadImages:self.bankZhengImg fileName:@"three"];
+    }
+    //银行卡反面
+    if (self.index == 1006) {
+        self.bankFanImg = image;
+        [self.backPhotoButton1 setImage:image forState:(UIControlStateNormal)];
+        [self requestDataForUploadImages:self.bankFanImg fileName:@"four"];
+    }
+    //正面照
+    if (self.index == 1007) {
+        [self requestDataForUploadImages:image fileName:@"face"];
+    }
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+-(void)showImageButtonClick:(UIButton *)btn{
+    self.index = btn.tag;
     UIViewController *current = MCLATESTCONTROLLER;
     __weak __typeof(self)weakSelf = self;
+
     UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -666,14 +698,13 @@ static const CGFloat margin = 10;
             [MCToast showMessage:@"请在设置-隐私-相机界面，打开相机权限"];
             return;
         }
-        
         //调用身份证大小的相机
         DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         vc.imageblock = ^(UIImage *image) {
-            [self uploadBankImage:image];
+            [weakSelf commonAction:image];
         };
-        [MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
+        [self presentViewController:vc animated:YES completion:nil];
     }];
     UIAlertAction *picture = [UIAlertAction actionWithTitle:@"选择照片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
@@ -689,181 +720,41 @@ static const CGFloat margin = 10;
     [alertVc addAction:camera];
     [alertVc addAction:picture];
     [current presentViewController:alertVc animated:YES completion:nil];
-    
-    
-    
-
-
 }
-//#pragma mark - 上传银行卡图片
-- (void)uploadBankImage:(UIImage *)image {
-__weak __typeof(self)weakSelf = self;
-[MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
-    
-    if (resp[@"fileUrl"]) {
- 
-        NSDictionary *param = @{
-                                @"link":resp[@"fileUrl"],
-                                @"orcType": (self.ocrIndex == 1001 || self.index == 10 || self.index == 11) ? @"BankCard" :@"IdCard",
-                                };
-        kWeakSelf(self);
-        [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/orc" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-            NSString * no = [NSString stringWithFormat:@"%@",resp[@"number"]];
-         
-            if (self.ocrIndex == 1001) {
-              
-                NSMutableString *string = [NSMutableString string];
-                for (int i = 0; i < no.length; i++) {
-                    [string appendString:[no substringWithRange:NSMakeRange(i, 1)]];
-                    if (i % 4 == 3) {
-                        [string appendString:@" "];
-                    }
-                }
-                weakSelf.bankCardTF.text = [NSString stringWithFormat:@"%@",string];
-            }else{
-                weakSelf.idCardTF.text = no;
-            }
-        } other:^(NSDictionary * _Nonnull resp) {
-
-        } failure:^(NSError * _Nonnull error) {
-            
-        }];
+#pragma mark Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    if ([type isEqualToString:@"public.image"]) {
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        [self commonAction:image];
     }
-
-
-} other:^(NSDictionary * _Nonnull resp) {
-    [MCLoading hidden];
-    [MCToast showMessage:resp[@"messege"]];
-
-} failure:^(NSError * _Nonnull error) {
-    [MCLoading hidden];
-    [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@", (long)error.code, error.localizedFailureReason]];
-}];
-
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+- (UILabel *)labelWithFrame:(CGRect)frame text:(NSString *)text textColor:(UIColor *)textColor textAlignment:(NSTextAlignment)alignment font:(UIFont *)font {
+    UILabel *lab = [[UILabel alloc] initWithFrame:frame];
+    lab.text = text;
+    lab.textColor = textColor;
+    lab.textAlignment = alignment;
+    lab.font = font;
+    return lab;
 }
 
-
-#pragma mark --- SET DATA
-//------ 传入姓名身份证号数据请求(用来判定是否可以上传图片) ------//
-- (void)requestDataForCheckInputInfo {
-    NSString *idCardNo = [self.idCardTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *debitCardNo = [self.bankCardTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-
-    
-    
-    if (self.nameTF.text.length == 0) {
-        [MCToast showMessage:@"请填写姓名"];
-        return;
-    }
-    if (idCardNo.length == 0) {
-        [MCToast showMessage:@"请填写身份证号"];
-        return;
-    }
-//    if (debitCardNo.length == 0) {
-//        [MCToast showMessage:@"请填写储蓄卡号"];
-//        return;
-//    }
-//    if (self.bankURL.length == 0) {
-//        [MCToast showMessage:@"请扫描上传银行卡"];
-//        return;
-//    }
-    if (self.phoneTf.text.length == 0) {
-        [MCToast showMessage:@"请填写银行预留手机号"];
-        return;
-    }
-    if (!self.imageOneURL) {
-        [MCToast showMessage:@"请上传身份证正面照"];
-        return;
-    }
-    if (!self.imageTwoURL) {
-        [MCToast showMessage:@"请上传身份证反面照"];
-        return;
-    }
-   
-    if (!self.bankZhengURL) {
-        [MCToast showMessage:@"请上传银行卡正面"];
-        return;
-    }
-    if (!self.bankFanURL) {
-        [MCToast showMessage:@"请上传银行卡反面"];
-        return;
-    }
-
-    if (!self.imageThreeURL) {
-        [MCToast showMessage:@"请进行活体检测"];
-        return;
-    }
-    /* token  realname:真实姓名  idcard:身份证号  */
-    NSDictionary *param = @{@"name":self.nameTF.text,
-                            @"idCardNo":idCardNo,
-                            @"faceUrl":self.imageThreeURL,
-                            @"idCardBackUrl":self.imageTwoURL,
-                            @"idCardFrontUrl":self.imageOneURL,
-                            @"bankPhone":self.phoneTf.text,
-                            @"debitCardUrl":self.bankZhengURL,
-                            @"debitCardBankUrl":self.bankFanURL
-
-
-    };
-    __weak __typeof(self)weakSelf = self;
-    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/certification" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
-        if ([dic[@"certification"] integerValue] == 1) {
-            [MCToast showMessage:@"实名认证成功"];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }else{
-            [MCToast showMessage:dic[@"message"]];
-        }
-        
-        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-           
-        }];
-        
-    } other:^(NSDictionary * _Nonnull resp) {
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
-    
-}
-//------ 上传图片 ------//
-- (void)requestDataForUploadImages:(UIImage *)selectImg fileName:(NSString *)name{
-    NSString *phone = SharedUserInfo.phone;
-    NSDictionary *uploadDic = @{};
-    NSArray *imagesArr = @[selectImg];
-    __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/IdCard" parameters:uploadDic images:imagesArr remoteFields:nil imageNames:@[name] imageScale:0.0001 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
-        NSDictionary * dic = [NSDictionary dictionaryWithDictionary:resp];
-        // 设置图片
-        if (self.index == 0) {
-            self.imageOneURL = dic[@"fileUrl"];
-        }
-        if (self.index == 1) {
-            self.imageTwoURL = dic[@"fileUrl"];
-        }
-        
-        if (self.index == 10) {
-            self.bankZhengURL = dic[@"fileUrl"];
-        }
-        if (self.index == 11) {
-            self.bankFanURL = dic[@"fileUrl"];
-        }
-        
-        if (self.index == 2) {
-            self.imageThreeURL = dic[@"fileUrl"];
-            [self requestDataForCheckInputInfo];
-        }
-//        [MCToast showMessage:@"提交成功，请耐心等待审核通过"];
-//        [weakSelf.navigationController popViewControllerAnimated:YES];
-//        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_user_realname];
-    } other:nil failure:nil];
+- (CGFloat)stringHeightWithString:(NSString *)string width:(CGFloat)width font:(UIFont *)font {
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:font} context:nil];
+    return rect.size.height;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//textField代理
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.view endEditing:YES];
+    if (![textField isExclusiveTouch]) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
-
 
 
 @end

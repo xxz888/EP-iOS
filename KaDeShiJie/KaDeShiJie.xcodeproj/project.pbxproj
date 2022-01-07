@@ -311,6 +311,8 @@
 		6FBBFBA6275897540096D282 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBFBA5275897540096D282 /* UIView+Extension.m */; };
 		6FC59E0D27622803005DD4DD /* KDBingCardNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC59E0A27622803005DD4DD /* KDBingCardNewViewController.m */; };
 		6FC59E0E27622803005DD4DD /* KDBingCardNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC59E0C27622803005DD4DD /* KDBingCardNewViewController.xib */; };
+		6FCFF4172787D08C00E34091 /* KDWukaJifenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF4152787D08C00E34091 /* KDWukaJifenViewController.m */; };
+		6FCFF4182787D08C00E34091 /* KDWukaJifenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF4162787D08C00E34091 /* KDWukaJifenViewController.xib */; };
 		6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */; };
 		CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFABD6DDE24EBE293888388 /* libPods-KaDeShiJie.a */; };
 		EE1BA9AD251C277E00941631 /* KDWebContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1BA9AC251C277E00941631 /* KDWebContainer.m */; };
@@ -821,6 +823,9 @@
 		6FC59E0A27622803005DD4DD /* KDBingCardNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDBingCardNewViewController.m; sourceTree = "<group>"; };
 		6FC59E0B27622803005DD4DD /* KDBingCardNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDBingCardNewViewController.h; sourceTree = "<group>"; };
 		6FC59E0C27622803005DD4DD /* KDBingCardNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDBingCardNewViewController.xib; sourceTree = "<group>"; };
+		6FCFF4142787D08C00E34091 /* KDWukaJifenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWukaJifenViewController.h; sourceTree = "<group>"; };
+		6FCFF4152787D08C00E34091 /* KDWukaJifenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWukaJifenViewController.m; sourceTree = "<group>"; };
+		6FCFF4162787D08C00E34091 /* KDWukaJifenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDWukaJifenViewController.xib; sourceTree = "<group>"; };
 		6FFE7E09274E3A9400F801A1 /* jintMyWallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jintMyWallViewController.h; sourceTree = "<group>"; };
 		6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jintMyWallViewController.m; sourceTree = "<group>"; };
 		9128FD3AF01474CF6106FD30 /* Pods-KaDeShiJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaDeShiJie.debug.xcconfig"; path = "Target Support Files/Pods-KaDeShiJie/Pods-KaDeShiJie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1514,6 +1519,7 @@
 		1BC5E3BA250343AA0064CA30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFF4132787D07900E34091 /* 无卡积分 */,
 				6F85DC4A2785284D00593E50 /* 小额闪付 */,
 				04A58C72276B79330027B4F4 /* 会员 */,
 				6FC59E0927622766005DD4DD /* 绑卡和收款 */,
@@ -1757,6 +1763,16 @@
 				6F7628B127634BFE00E03BFA /* KDPayNewViewController.xib */,
 			);
 			path = "绑卡和收款";
+			sourceTree = "<group>";
+		};
+		6FCFF4132787D07900E34091 /* 无卡积分 */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF4142787D08C00E34091 /* KDWukaJifenViewController.h */,
+				6FCFF4152787D08C00E34091 /* KDWukaJifenViewController.m */,
+				6FCFF4162787D08C00E34091 /* KDWukaJifenViewController.xib */,
+			);
+			path = "无卡积分";
 			sourceTree = "<group>";
 		};
 		6FFE7E08274E3A5400F801A1 /* 我的钱包 */ = {
@@ -2060,6 +2076,7 @@
 				1BD2F217250A29090061580C /* KDDirectPushChoseStatusView.xib in Resources */,
 				1B9C9B1325075D2300EE0819 /* KDNewsViewCell.xib in Resources */,
 				1B1C0EA4250887190009CDC6 /* KDProvisionsTopView.xib in Resources */,
+				6FCFF4182787D08C00E34091 /* KDWukaJifenViewController.xib in Resources */,
 				1B937068251C8BDF00E51EC9 /* KDRefundTimeView.xib in Resources */,
 				1B9C9B5825075DA900EE0819 /* LCKFTableHeader.xib in Resources */,
 				04DA3751277F52CB002FC105 /* KDXinYongKaHeaderCollectionReusableView.xib in Resources */,
@@ -2306,6 +2323,7 @@
 				04DA374F277F52CB002FC105 /* KDXinYongKaHeaderCollectionReusableView.m in Sources */,
 				1B1C0E9E25087BB80009CDC6 /* KDChosePayTypeViewCell.m in Sources */,
 				EE8D733F2509CFD4007AF076 /* KDShareSingleVC.m in Sources */,
+				6FCFF4172787D08C00E34091 /* KDWukaJifenViewController.m in Sources */,
 				6F5C0283271EAE220059A557 /* KDGuanFangSheQun.m in Sources */,
 				1893CEF026727A9300C53DBF /* KDJFAdressManagerViewController.m in Sources */,
 				1B9C9B1425075D2300EE0819 /* KDNewsViewCell.m in Sources */,
@@ -2530,7 +2548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2672,7 +2690,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

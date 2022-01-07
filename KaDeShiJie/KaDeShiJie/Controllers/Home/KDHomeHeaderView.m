@@ -31,6 +31,8 @@
 #import "KDWenZinTiShi.h"
 #import "KDXinYongKaViewController.h"
 #import "KDPayNewViewControllerQuickPass.h"
+#import "KDWukaJifenViewController.h"
+
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -67,7 +69,7 @@
 //        btn.spacingBetweenImageAndTitle = 15;
     }
     
-    NSArray *titleArray = @[@"交易记录", @"申请办卡", @"实名认证", @"我的钱包"];
+    NSArray *titleArray = @[@"交易记录", @"申请办卡", @"实名认证", @"無卡积分"];
     for (int i = 0; i < 4; i++) {
         QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
         btn.imagePosition = QMUIButtonImagePositionTop;
@@ -193,7 +195,12 @@
                 }
                 break;
             //我的钱包
-            case 203:[MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+            case 203:{
+                
+                [MCLATESTCONTROLLER.navigationController pushViewController:[KDWukaJifenViewController new] animated:YES];
+
+                //[MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
+            }
                 break;
             //小额闪付
             case 300:{

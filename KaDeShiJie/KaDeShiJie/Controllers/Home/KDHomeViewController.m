@@ -161,7 +161,7 @@
 
     
     [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-
+       
     }];
 }
 
@@ -202,7 +202,20 @@
             }
 
         }
-    
+//        MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
+//        NSString * str = @"染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的";
+//        [updateView showWithVersion:@"1.0.1" content:str downloadUrl:resp[@"config"][@"iosDownLink"] isForce:YES];
+        
+        
+        //升级
+        NSString *remoteVersion = resp[@"version"][@"versionName"];
+        NSString *localVersion = SharedAppInfo.build;
+        NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
+        if (result == NSOrderedDescending) {
+            MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
+            NSString * str = resp[@"version"][@"versionCode"];
+            [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"config"][@"iosDownLink"] isForce:YES];
+        }
     }];
 }
 -(void)messageAlert1:(NSString *)title content:(NSString *)content{

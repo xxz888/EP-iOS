@@ -57,7 +57,7 @@
                                 [dic[@"availableAmount"] doubleValue]*0.06,
                                 @"2",
                                 [dic[@"availableAmount"] doubleValue]*0.94 -2];
-        if ([dic[@"canWithdraw"] integerValue] != 1) {
+        if ([dic[@"canWithdraw"] integerValue] == 1) {
             self.canWithdraw = true;
 
         }else{

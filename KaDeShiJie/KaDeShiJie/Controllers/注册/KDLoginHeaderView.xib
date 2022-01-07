@@ -241,7 +241,7 @@
                             <rect key="frame" x="34" y="0.0" width="281" height="38"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcr-CH-VP1" customClass="QMUITextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="92" height="37"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="181" height="37"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -284,6 +284,7 @@
                         <constraint firstAttribute="bottom" secondItem="HET-Nn-f5f" secondAttribute="bottom" id="6Ij-RU-yJ7"/>
                         <constraint firstItem="8ID-Kc-rhe" firstAttribute="top" secondItem="0Qg-Gz-QHV" secondAttribute="top" id="7sn-AK-c4k"/>
                         <constraint firstAttribute="trailing" secondItem="Ta3-Qb-tKB" secondAttribute="trailing" id="ChM-iI-iec"/>
+                        <constraint firstItem="Ta3-Qb-tKB" firstAttribute="leading" secondItem="bcr-CH-VP1" secondAttribute="trailing" constant="10" id="Vd9-v0-IMx"/>
                         <constraint firstItem="HET-Nn-f5f" firstAttribute="top" secondItem="0Qg-Gz-QHV" secondAttribute="top" id="Yjg-ao-0eh"/>
                         <constraint firstItem="Ta3-Qb-tKB" firstAttribute="top" secondItem="0Qg-Gz-QHV" secondAttribute="top" id="cEn-ne-AKH"/>
                         <constraint firstItem="8ID-Kc-rhe" firstAttribute="leading" secondItem="0Qg-Gz-QHV" secondAttribute="leading" id="isU-s5-G5F"/>

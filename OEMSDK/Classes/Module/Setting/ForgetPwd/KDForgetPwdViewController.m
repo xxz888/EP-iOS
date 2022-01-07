@@ -44,6 +44,10 @@
     shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 
 
+    if ([self.iscome isEqualToString:@"3"]) {
+        self.pwd1Tf.placeholder = self.pwd2Tf.placeholder = @"请输入6位数字密码";
+    }
+    
     shareBtn.frame = CGRectMake(SCREEN_WIDTH - 70, StatusBarHeightConstant + 12, 70, 22);
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     
@@ -134,13 +138,46 @@
     }
     return _footView;
 }
--(void)next:(id)sender{
-    if (self.pwd1Tf.text.length < 6) {
-        [MCToast showMessage:@"新密码至少六位字符"];
-        return;
+- (BOOL)isNum:(NSString *)checkedNumString {
+    checkedNumString = [checkedNumString stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    if(checkedNumString.length > 0) {
+       
+        return NO;
     }
-    if (self.pwd2Tf.text.length < 6) {
-        [MCToast showMessage:@"新密码至少六位字符"];
+    return YES;
+}
+-(void)next:(id)sender{
+    
+    if ([self.iscome isEqualToString:@"3"]) {
+        if (self.pwd1Tf.text.length != 6) {
+            [MCToast showMessage:self.pwd1Tf.placeholder];
+            return;
+        }
+        if (self.pwd2Tf.text.length < 6) {
+            [MCToast showMessage:self.pwd2Tf.placeholder];
+            return;
+        }
+        if (![self isNum:self.pwd1Tf.text]) {
+            [MCToast showMessage:self.pwd1Tf.placeholder];
+            return;
+        }
+        
+    }else{
+        if (self.pwd1Tf.text.length < 6) {
+            [MCToast showMessage:@"新密码至少六位字符"];
+            return;
+        }
+        if (self.pwd2Tf.text.length < 6) {
+            [MCToast showMessage:@"新密码至少六位字符"];
+            return;
+        }
+    }
+        if (self.codeTf.text.length == 0) {
+            [MCToast showMessage:@"请输入验证码"];
+            return;
+        }
+    if (![self.pwd1Tf.text isEqualToString:self.pwd2Tf.text]) {
+        [MCToast showMessage:@"两次输入密码不一致"];
         return;
     }
     if ([self.pwd1Tf.text isEqualToString:self.pwd2Tf.text] ) {
