@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KDPaySelectView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoR-mD-mtk">
+                    <rect key="frame" x="16" y="378" width="382" height="150"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OAb-Aw-g3W">
+                            <rect key="frame" x="5" y="5" width="372" height="140"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k24-JK-WiK">
+                                    <rect key="frame" x="0.0" y="0.0" width="372" height="46.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTn-RV-x7x">
+                                            <rect key="frame" x="137" y="13.5" width="98" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyI-Wo-WzY">
+                                            <rect key="frame" x="0.0" y="45.5" width="372" height="1"/>
+                                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="QOa-KW-BZC"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZK-u5-Pz5">
+                                            <rect key="frame" x="302" y="0.0" width="60" height="45.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="RXO-Tm-H6m"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="kd_remedy_cancel"/>
+                                            <connections>
+                                                <action selector="closeActon:" destination="iN0-l3-epB" eventType="touchUpInside" id="wgV-0q-EeS"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="NZK-u5-Pz5" secondAttribute="trailing" constant="10" id="1X3-5J-UCn"/>
+                                        <constraint firstItem="IyI-Wo-WzY" firstAttribute="leading" secondItem="k24-JK-WiK" secondAttribute="leading" id="7eP-Je-zPl"/>
+                                        <constraint firstItem="OTn-RV-x7x" firstAttribute="centerX" secondItem="k24-JK-WiK" secondAttribute="centerX" id="ADb-BG-wvg"/>
+                                        <constraint firstItem="OTn-RV-x7x" firstAttribute="centerY" secondItem="k24-JK-WiK" secondAttribute="centerY" id="Bcg-dn-qMe"/>
+                                        <constraint firstAttribute="bottom" secondItem="IyI-Wo-WzY" secondAttribute="bottom" id="IdT-9m-mz1"/>
+                                        <constraint firstAttribute="trailing" secondItem="IyI-Wo-WzY" secondAttribute="trailing" id="QGa-sv-7Jq"/>
+                                        <constraint firstItem="NZK-u5-Pz5" firstAttribute="top" secondItem="k24-JK-WiK" secondAttribute="top" id="VRF-GU-G3d"/>
+                                        <constraint firstItem="IyI-Wo-WzY" firstAttribute="top" secondItem="NZK-u5-Pz5" secondAttribute="bottom" id="gN6-VF-LoT"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaX-kN-p5p">
+                                    <rect key="frame" x="0.0" y="46.5" width="372" height="47"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yo7-Ak-hez">
+                                            <rect key="frame" x="0.0" y="46" width="372" height="1"/>
+                                            <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="2nd-DO-HO2"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="Co0-wK-tR8"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="信用卡支付" translatesAutoresizingMaskIntoConstraints="NO" id="2mn-6K-sdn">
+                                            <rect key="frame" x="20" y="14" width="28" height="19"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="2mn-6K-sdn" secondAttribute="height" multiplier="24:16" id="Jgd-i9-I2Z"/>
+                                                <constraint firstAttribute="width" constant="28" id="npp-6f-9lO"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择信用卡在线支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TV1-xc-RHC">
+                                            <rect key="frame" x="58" y="14.5" width="138" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="TV1-xc-RHC" firstAttribute="leading" secondItem="2mn-6K-sdn" secondAttribute="trailing" constant="10" id="5xl-2E-qWa"/>
+                                        <constraint firstItem="2mn-6K-sdn" firstAttribute="centerY" secondItem="QaX-kN-p5p" secondAttribute="centerY" id="BLR-WC-YOq"/>
+                                        <constraint firstAttribute="bottom" secondItem="yo7-Ak-hez" secondAttribute="bottom" id="CXn-k1-Ac9"/>
+                                        <constraint firstAttribute="trailing" secondItem="yo7-Ak-hez" secondAttribute="trailing" id="EJC-Ys-5ir"/>
+                                        <constraint firstItem="2mn-6K-sdn" firstAttribute="leading" secondItem="QaX-kN-p5p" secondAttribute="leading" constant="20" id="YhX-R8-dol"/>
+                                        <constraint firstItem="TV1-xc-RHC" firstAttribute="centerY" secondItem="QaX-kN-p5p" secondAttribute="centerY" id="fko-jN-PZf"/>
+                                        <constraint firstItem="yo7-Ak-hez" firstAttribute="leading" secondItem="QaX-kN-p5p" secondAttribute="leading" id="xmS-Fg-goE"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xY-qM-Slt">
+                                    <rect key="frame" x="0.0" y="93.5" width="372" height="46.5"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="银联" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-dB-tWu">
+                                            <rect key="frame" x="20" y="14" width="28" height="18.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="eLI-dB-tWu" secondAttribute="height" multiplier="24:16" id="ZQS-Db-dUn"/>
+                                                <constraint firstAttribute="width" constant="28" id="cNk-5c-Ip4"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择银行卡转账支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-i2-4nY">
+                                            <rect key="frame" x="58" y="14" width="138" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="eLI-dB-tWu" firstAttribute="centerY" secondItem="1xY-qM-Slt" secondAttribute="centerY" id="0dC-Kp-AgE"/>
+                                        <constraint firstItem="Wuy-i2-4nY" firstAttribute="leading" secondItem="eLI-dB-tWu" secondAttribute="trailing" constant="10" id="JaE-Dy-FgI"/>
+                                        <constraint firstItem="Wuy-i2-4nY" firstAttribute="centerY" secondItem="1xY-qM-Slt" secondAttribute="centerY" id="UrK-eP-2is"/>
+                                        <constraint firstItem="eLI-dB-tWu" firstAttribute="leading" secondItem="1xY-qM-Slt" secondAttribute="leading" constant="20" id="uUE-eH-x1o"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="OAb-Aw-g3W" firstAttribute="leading" secondItem="AoR-mD-mtk" secondAttribute="leading" constant="5" id="8vR-jJ-Et5"/>
+                        <constraint firstAttribute="trailing" secondItem="OAb-Aw-g3W" secondAttribute="trailing" constant="5" id="BfW-1d-uDZ"/>
+                        <constraint firstAttribute="height" constant="150" id="HQF-Ki-1nm"/>
+                        <constraint firstAttribute="bottom" secondItem="OAb-Aw-g3W" secondAttribute="bottom" constant="5" id="v39-fS-bu8"/>
+                        <constraint firstItem="OAb-Aw-g3W" firstAttribute="top" secondItem="AoR-mD-mtk" secondAttribute="top" constant="5" id="wT3-eL-lVM"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="AoR-mD-mtk" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="BGf-7A-TqX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AoR-mD-mtk" secondAttribute="trailing" constant="16" id="QK0-u2-Ene"/>
+                <constraint firstItem="AoR-mD-mtk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="xzi-4a-kIj"/>
+            </constraints>
+            <connections>
+                <outlet property="xinyongView" destination="QaX-kN-p5p" id="frA-Mj-X9O"/>
+                <outlet property="zhuanzhangView" destination="1xY-qM-Slt" id="qH2-mW-eet"/>
+            </connections>
+            <point key="canvasLocation" x="-277" y="88"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="kd_remedy_cancel" width="15" height="15"/>
+        <image name="信用卡支付" width="24" height="16"/>
+        <image name="银联" width="24" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

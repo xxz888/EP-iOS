@@ -77,7 +77,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     }];
     [self.items addObject:@{@"imgName":@"椭圆 1",
                             @"title":@"版本更新",
-                            @"subTitle":[NSString stringWithFormat:@"v%@",SharedAppInfo.version],
+                            @"subTitle":[NSString stringWithFormat:@"v%@",SharedAppInfo.build],
                             @"action":@"checkVersion"
     }];
 
@@ -172,6 +172,8 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
         }
     }
     
+
+    
 }
 
 #pragma mark - Actions
@@ -197,7 +199,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     
 }
 - (void)checkVersion {
-    [MCVerifyStore verifyVersionShowToast:YES];
+    [self playerInit];
 }
 - (void)manageCount {
     KDForgetPwdViewController * vc = [[KDForgetPwdViewController alloc]init];
@@ -211,5 +213,24 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     KDForgetPwdViewController * vc = [[KDForgetPwdViewController alloc]init];
     vc.iscome = @"2";
     [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)playerInit {
+    kWeakSelf(self)
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        
+        
+        //升级
+        NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
+        NSString *localVersion = SharedAppInfo.build;
+        NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
+        if (result == NSOrderedDescending) {
+            MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
+            NSString * str = @"1、修改已知bug。\n2、优化用户体验";
+            [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
+        }else{
+            [MCToast showMessage:@"已经是最新版本"];
+        }
+    }];
 }
 @end

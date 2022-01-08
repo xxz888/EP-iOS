@@ -49,7 +49,7 @@
 {
     _model = model;
     
-    self.nameLabel.text = model.title;//[NSString stringWithFormat:@"%@%@",model.name,model.channelParams];
+    self.nameLabel.text = model.channelName;//[NSString stringWithFormat:@"%@%@",model.name,model.channelParams];
     
     self.lab1.text = [NSString stringWithFormat:@"单笔限额：%d-%d", model.singeMinAmount.intValue, model.singeMaxAmount.intValue];
     

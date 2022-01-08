@@ -208,13 +208,13 @@
         
         
         //升级
-        NSString *remoteVersion = resp[@"version"][@"versionName"];
+        NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
         NSString *localVersion = SharedAppInfo.build;
         NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
         if (result == NSOrderedDescending) {
             MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
-            NSString * str = resp[@"version"][@"versionCode"];
-            [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"config"][@"iosDownLink"] isForce:YES];
+            NSString * str = @"1、修改已知bug。\n2、优化用户体验";
+            [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
         }
     }];
 }

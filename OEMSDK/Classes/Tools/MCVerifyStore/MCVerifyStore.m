@@ -49,7 +49,7 @@
     
     [MCModelStore.shared reloadBrandInfo:^(MCBrandInfo * _Nonnull brandInfo) {
         NSString *remoteVersion = brandInfo.iosVersion;
-        NSString *localVersion = SharedAppInfo.version;
+        NSString *localVersion = SharedAppInfo.build;
         NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
         if (result == NSOrderedDescending) {
             MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];

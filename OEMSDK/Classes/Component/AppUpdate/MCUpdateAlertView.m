@@ -45,12 +45,14 @@
         self.contentLab.text = content;
         self.contentTV.text = content;
     }
-//    self.brandNameLab.text = @"";
+    self.brandNameLab.text = [NSString stringWithFormat:@"发现新版本%@",version];
     if (version) {
         self.versionLab.text = [NSString stringWithFormat:@"v %@",version];
     }
     self.modal.hideWhenTouchOutside = !force;
     [self.modal showContentView:self animated:YES];
+    
+    self.cancelBtn.hidden = self.isForce;
 }
 
 - (void)awakeFromNib {

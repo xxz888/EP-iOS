@@ -11,6 +11,9 @@
 #import "KDJFAdressManagerViewController.h"
 #import "KDJFAdressListViewController.h"
 #import "KDPayNewViewControllerShop.h"
+#import "KDPaySelectView.h"
+#import "KDPayZhuanZhangView.h"
+
 @interface KDConfirmViewController ()
 @property (nonatomic ,strong)NSDictionary * adressDic;
 @property (nonatomic ,strong)MCBankCardModel * cardModel;
@@ -99,7 +102,26 @@
         [MCToast showMessage:@"请添加收获地址"];
         return;
     }
-    [self requestCards];
+    //先弹出支付方式的弹框
+    [self alertPay];
+    
+    
+//    [self requestCards];
+}
+-(void)alertPay{
+    KDPaySelectView *view = [[[NSBundle mainBundle] loadNibNamed:@"KDPaySelectView" owner:nil options:nil] lastObject];
+    [view showSelectView];
+    
+    view.block = ^(NSInteger index) {
+        if (index == 1) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self requestCards];
+            });
+        }
+        if (index == 2) {
+            [self alertZhuanZhang];
+        }
+    };
 }
 //请求银行卡
 - (void)requestCards {
@@ -112,7 +134,7 @@
         for (MCBankCardModel * cardModel in temArr) {
             BRResultModel * model = [[BRResultModel alloc]init];
             model.key = cardModel.id;
-            model.value = [NSString stringWithFormat:@"%@ %@",cardModel.bankName,cardModel.bankCardNo];
+            model.value = [NSString stringWithFormat:@"%@ (%@)",cardModel.bankName,[cardModel.bankCardNo substringFromIndex:cardModel.bankCardNo.length - 4]];
             [modelArray addObject:model];
         }
         BRStringPickerView *pickView = [[BRStringPickerView alloc] initWithPickerMode:BRStringPickerComponentSingle];
@@ -133,6 +155,23 @@
         };
         pickView.cancelBlock = ^{[UIView animateWithDuration:0.5 animations:^{}]; };
     }];
+}
+-(void)alertZhuanZhang{
+    __weak typeof(self) weakSelf = self;
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/shop/order/debitCard" parameters:@{@"shopReceiptAddressId":[NSString stringWithFormat:@"%@",self.adressDic[@"id"]],@"sku":[NSString stringWithFormat:@"%@",self.goodDic[@"sku"]]} ok:^(NSDictionary * _Nonnull resp) {
+        
+        KDPayZhuanZhangView *view = [[[NSBundle mainBundle] loadNibNamed:@"KDPayZhuanZhangView" owner:nil options:nil] lastObject];
+        [view showzhuanzhangView:resp];
+    
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
+  
+    
+ 
 }
 //下单
 -(void)shopOrder{

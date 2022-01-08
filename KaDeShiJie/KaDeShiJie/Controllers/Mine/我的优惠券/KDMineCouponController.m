@@ -59,7 +59,7 @@
     cell.titleLbl.text = [NSString stringWithFormat:@"%@元现金抵扣券",dic[@"maximumUsageAmount"]];
     cell.priceLbl.text =  [NSString stringWithFormat:@"%@",dic[@"maximumUsageAmount"]];
     cell.shouxufeiLbl.text = [NSString stringWithFormat:@"单次抵扣手续费的%.0f%%",[dic[@"discountRate"] doubleValue]];
-    cell.shengyueLbl.text =  [NSString stringWithFormat:@"剩余可抵金额：%@",dic[@"usageAmount"]];
+    cell.shengyueLbl.text =  [NSString stringWithFormat:@"剩余可抵金额：%.2f",[dic[@"usageAmount"] doubleValue]];
     cell.beizhuLbl.text =   [NSString stringWithFormat:@"备注：%@",dic[@"describe"]];
     return cell;
 }

@@ -35,17 +35,17 @@
     [self.navigationController.tabBarController.tabBar setHidden:NO];
     
     
-
+    [self reloadData];
  
-    NSString * level = [self getLevel:SharedUserInfo.level];
-
-    self.header.phoneLabel.text = SharedUserInfo.phone;
-    self.header.nameLabel.text = [NSString stringWithFormat:@"昵称:%@",SharedUserInfo.nickname];
-    self.header.levelViwe.text = [NSString stringWithFormat:@"%@",level];
-//    self.header.nameLabel.text = [NSString stringWithFormat:@"昵称：%@ %@",SharedUserInfo.nickname,level];
-    self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.configDic[@"config"][@"servicePhone"]];
-    [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:SharedUserInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
-    self.header.idLabel.text =[NSString stringWithFormat:@"邀请码:%@", SharedUserInfo.promoteId];
+//    NSString * level = [self getLevel:SharedUserInfo.level];
+    
+//    self.header.phoneLabel.text = SharedUserInfo.phone;
+//    self.header.nameLabel.text = [NSString stringWithFormat:@"昵称:%@",SharedUserInfo.nickname];
+//    self.header.levelViwe.text = [NSString stringWithFormat:@"%@",level];
+////    self.header.nameLabel.text = [NSString stringWithFormat:@"昵称：%@ %@",SharedUserInfo.nickname,level];
+//    self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.configDic[@"config"][@"servicePhone"]];
+//    [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:SharedUserInfo.headImg] placeholderImage:[UIImage imageNamed:@"321"]];
+//    self.header.idLabel.text =[NSString stringWithFormat:@"邀请码:%@", SharedUserInfo.promoteId];
 
 }
 - (void)viewWillDisappear:(BOOL)animated

@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *singeMinAmount;
 @property (nonatomic, copy) NSString *singeMaxAmount;
+@property (nonatomic, copy) NSString *channelName;
 
 
 
