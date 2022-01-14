@@ -98,6 +98,9 @@
                 weakSelf.qrCode1Count += 1;
             }
         }
+        
+        
+        
         NSMutableArray * respArr = [[NSMutableArray alloc]initWithArray:respDic];
         NSMutableArray * arr = [[NSMutableArray alloc]init];
         for (NSInteger i = 0; i < [respArr count]; i++) {
@@ -114,7 +117,19 @@
         }
         
         
-        [weakSelf jisuanData1:arr];
+        if ([arr count] == 0) {
+            [weakSelf.dataSource addObjectsFromArray:[MCArticleModel mj_objectArrayWithKeyValuesArray:respArr]];
+            [weakSelf.mc_tableview reloadData];
+            if ([weakSelf.mc_tableview.mj_header isRefreshing]) {
+                [weakSelf.mc_tableview.mj_header endRefreshing];
+            }
+            if ([weakSelf.mc_tableview.mj_footer isRefreshing]) {
+                [weakSelf.mc_tableview.mj_footer endRefreshing];
+            }
+        }else{
+            [weakSelf jisuanData1:arr];
+        }
+        
      
     } other:^(NSDictionary * _Nonnull respDic) { }];
 

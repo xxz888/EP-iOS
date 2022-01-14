@@ -287,14 +287,66 @@
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="需大于100元，2元/笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHI-or-OaG">
-                    <rect key="frame" x="86" y="484" width="127" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHI-or-OaG">
+                    <rect key="frame" x="86" y="484" width="308" height="16"/>
+                    <attributedString key="attributedText">
+                        <fragment content="需大于">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="100">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="元，">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="2">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="元">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="/">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="笔">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="                                                     ">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到账时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-DL-Tho">
-                    <rect key="frame" x="16" y="510" width="70" height="16"/>
+                    <rect key="frame" x="16" y="525" width="70" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="7G5-uB-7O0"/>
                     </constraints>
@@ -303,13 +355,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小于等于500元，秒到账；大于500元，下一个工作日12:00前到账" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIb-37-Moq">
-                    <rect key="frame" x="86" y="510" width="308" height="29"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <rect key="frame" x="86" y="525" width="308" height="31.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="税费：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYw-nv-wqh">
-                    <rect key="frame" x="16" y="549" width="70" height="16"/>
+                    <rect key="frame" x="16" y="566.5" width="70" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="9aZ-6d-fcG"/>
                     </constraints>
@@ -318,24 +370,57 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提现金额的6%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNq-1H-pa6">
-                    <rect key="frame" x="86" y="549" width="86.5" height="16"/>
+                    <rect key="frame" x="86" y="566.5" width="86.5" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6f-Td-r6A">
+                    <rect key="frame" x="86" y="502" width="308" height="16"/>
+                    <attributedString key="attributedText">
+                        <fragment content="仅限于">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="VIP">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="及以上等级用户提现">
+                            <attributes>
+                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <font key="NSOriginalFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="DIb-37-Moq" firstAttribute="top" secondItem="JHI-or-OaG" secondAttribute="bottom" constant="10" id="82V-FX-b6M"/>
+                <constraint firstItem="e6f-Td-r6A" firstAttribute="leading" secondItem="JHI-or-OaG" secondAttribute="leading" id="1aY-c0-HfS"/>
+                <constraint firstItem="JHI-or-OaG" firstAttribute="top" secondItem="trY-b7-44h" secondAttribute="top" id="6IC-zT-D0v"/>
                 <constraint firstItem="9H5-7p-p9m" firstAttribute="top" secondItem="cm8-vZ-oeb" secondAttribute="bottom" constant="20" id="96n-2Y-n2j"/>
                 <constraint firstItem="qdA-za-fYh" firstAttribute="top" secondItem="4cK-Pd-Ccf" secondAttribute="bottom" constant="10" id="979-1t-Jbe"/>
                 <constraint firstItem="4cK-Pd-Ccf" firstAttribute="top" secondItem="6wG-VM-g49" secondAttribute="bottom" constant="24" id="Ap5-hE-e6M"/>
                 <constraint firstItem="cm8-vZ-oeb" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="DFZ-fm-Hnz"/>
                 <constraint firstItem="qdA-za-fYh" firstAttribute="leading" secondItem="4cK-Pd-Ccf" secondAttribute="leading" id="FQJ-UG-49Y"/>
                 <constraint firstItem="1sC-8y-JHz" firstAttribute="centerY" secondItem="qdA-za-fYh" secondAttribute="centerY" id="I4t-az-i0k"/>
-                <constraint firstItem="RHp-DL-Tho" firstAttribute="top" secondItem="trY-b7-44h" secondAttribute="bottom" constant="10" id="KBp-ST-Aas"/>
+                <constraint firstItem="RHp-DL-Tho" firstAttribute="top" secondItem="trY-b7-44h" secondAttribute="bottom" constant="25" id="KBp-ST-Aas"/>
+                <constraint firstAttribute="trailing" secondItem="JHI-or-OaG" secondAttribute="trailing" constant="20" id="Lg5-oj-cNo"/>
                 <constraint firstItem="DIb-37-Moq" firstAttribute="leading" secondItem="RHp-DL-Tho" secondAttribute="trailing" id="LlY-gf-EWg"/>
+                <constraint firstItem="e6f-Td-r6A" firstAttribute="top" secondItem="JHI-or-OaG" secondAttribute="bottom" constant="2" id="R9c-TV-7AT"/>
                 <constraint firstItem="JHI-or-OaG" firstAttribute="leading" secondItem="trY-b7-44h" secondAttribute="trailing" id="RjC-yh-rs8"/>
                 <constraint firstItem="GYw-nv-wqh" firstAttribute="top" secondItem="DIb-37-Moq" secondAttribute="bottom" constant="10" id="UZy-6b-NO6"/>
                 <constraint firstItem="fNq-1H-pa6" firstAttribute="centerY" secondItem="GYw-nv-wqh" secondAttribute="centerY" id="Vpt-uf-DtL"/>
@@ -348,12 +433,13 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cm8-vZ-oeb" secondAttribute="trailing" id="guw-ac-w90"/>
                 <constraint firstItem="GYw-nv-wqh" firstAttribute="leading" secondItem="RHp-DL-Tho" secondAttribute="leading" id="iYV-VQ-Wqt"/>
                 <constraint firstItem="6wG-VM-g49" firstAttribute="top" secondItem="9H5-7p-p9m" secondAttribute="bottom" constant="42" id="j4g-Lx-B9s"/>
+                <constraint firstItem="DIb-37-Moq" firstAttribute="top" secondItem="RHp-DL-Tho" secondAttribute="top" id="k2H-Fc-1ZB"/>
                 <constraint firstItem="4cK-Pd-Ccf" firstAttribute="leading" secondItem="6wG-VM-g49" secondAttribute="leading" id="knu-yd-oQU"/>
                 <constraint firstItem="cm8-vZ-oeb" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="np9-sS-d9h"/>
                 <constraint firstItem="1sC-8y-JHz" firstAttribute="leading" secondItem="qdA-za-fYh" secondAttribute="trailing" id="pIT-n2-pA7"/>
-                <constraint firstItem="JHI-or-OaG" firstAttribute="centerY" secondItem="trY-b7-44h" secondAttribute="centerY" id="qox-Eg-bLb"/>
                 <constraint firstItem="RHp-DL-Tho" firstAttribute="leading" secondItem="trY-b7-44h" secondAttribute="leading" id="sbF-X5-3bs"/>
                 <constraint firstItem="fNq-1H-pa6" firstAttribute="leading" secondItem="GYw-nv-wqh" secondAttribute="trailing" id="sbj-4o-Z9e"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="e6f-Td-r6A" secondAttribute="trailing" constant="20" id="tuM-9S-c0N"/>
                 <constraint firstItem="trY-b7-44h" firstAttribute="leading" secondItem="qdA-za-fYh" secondAttribute="leading" id="zg3-D3-CP7"/>
             </constraints>
             <point key="canvasLocation" x="-678" y="120"/>

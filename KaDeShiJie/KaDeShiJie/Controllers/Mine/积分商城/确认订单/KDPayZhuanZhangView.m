@@ -92,7 +92,7 @@
 
 
 
-y
+
 -(void)showzhuanzhangView:(NSDictionary *)dic{
     self.kahao =dic[@"debitCard"][@"account"];
     self.zhanghuLbl.text = dic[@"debitCard"][@"name"];

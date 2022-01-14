@@ -38,7 +38,13 @@
     
     [self requestData];
     
-    
+    if ([SharedUserInfo.level isEqualToString:@"Normal"]) {
+        self.tixianBtn.alpha = 0.2;
+        self.tixianBtn.userInteractionEnabled = NO;
+    }else{
+        self.tixianBtn.alpha = 1;
+        self.tixianBtn.userInteractionEnabled = YES;
+    }
     
 }
 -(void)clicktixianjiluAction{
@@ -110,8 +116,10 @@
         [MCToast showMessage:@"当前状态不可提现"];
         return;
     }
-    
-    
+    if ([SharedUserInfo.level isEqualToString:@"Normal"]) {
+        [MCToast showMessage:@"VIP及以上等级可提现"];
+        return;
+    }
     if ([SharedUserInfo.hasPayPassword integerValue]  == 0) {
         QMUIAlertController *alert = [QMUIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先设置支付密码" preferredStyle:QMUIAlertControllerStyleAlert];
         [alert addAction:[QMUIAlertAction actionWithTitle:@"取消" style:QMUIAlertActionStyleCancel handler:nil]];
