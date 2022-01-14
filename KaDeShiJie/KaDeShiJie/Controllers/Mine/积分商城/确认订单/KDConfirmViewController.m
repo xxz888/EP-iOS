@@ -161,6 +161,7 @@
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/shop/order/debitCard" parameters:@{@"shopReceiptAddressId":[NSString stringWithFormat:@"%@",self.adressDic[@"id"]],@"sku":[NSString stringWithFormat:@"%@",self.goodDic[@"sku"]]} ok:^(NSDictionary * _Nonnull resp) {
         
         KDPayZhuanZhangView *view = [[[NSBundle mainBundle] loadNibNamed:@"KDPayZhuanZhangView" owner:nil options:nil] lastObject];
+        view.frame = CGRectMake(0, 0, KScreenWidth, 300);
         [view showzhuanzhangView:resp];
     
     } other:^(NSDictionary * _Nonnull resp) {
