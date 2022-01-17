@@ -225,10 +225,35 @@
 //    }];
 //}
 - (void)clickRightBtnAction{
-    MCWebViewController *web = [[MCWebViewController alloc] init];
-  web.urlString = SharedDefaults.configDic[@"config"][@"receivePaymentInstructionLink"];
-  web.title = @"快速收款使用说明";
-  [self.navigationController pushViewController:web animated:YES];
+
+    
+    
+    if (self.whereCome == 1) {
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+        web.urlString = SharedDefaults.configDic[@"config"][@"receivePaymentInstructionLink"];
+        web.title = @"快速收款使用说明";
+        [self.navigationController pushViewController:web animated:YES];
+
+    }
+    if (self.whereCome == 2) {
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"quickPayInstructionLink"];
+      web.title = @"闪付使用说明";
+      [self.navigationController pushViewController:web animated:YES];
+
+
+    }
+    if (self.whereCome == 3) {
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"facePayInstructionLink"];
+      web.title = @"刷脸付使用说明";
+      [self.navigationController pushViewController:web animated:YES];
+
+    }
+
+    
+    
+    
 }
 - (IBAction)hideKeyboard:(id)sender {
     [UIView animateWithDuration:0.5 animations:^{

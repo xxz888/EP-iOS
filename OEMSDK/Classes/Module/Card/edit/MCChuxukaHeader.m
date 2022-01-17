@@ -309,6 +309,10 @@
         [MCToast showMessage:self.textField3.placeholder];
         return;
     }
+    if (self.textField2.text.length ==0 ) {
+        [MCToast showMessage:self.textField2.placeholder];
+        return;
+    }
     if (self.zhengmianUrl.length == 0) {
         [MCToast showMessage:@"请上传银行卡正面照片"];
         return;
@@ -356,6 +360,7 @@
                             @"cardType":@"DebitCard",
                             @"name":self.textField1.text,
                             @"phone":self.textField3.text,
+                            @"bankCardNo":cardNo
                             };
     kWeakSelf(self);
     [MCSessionManager.shareManager mc_Post_QingQiuTi:@"/api/v1/player/bank" parameters:param ok:^(NSDictionary * _Nonnull resp) {
