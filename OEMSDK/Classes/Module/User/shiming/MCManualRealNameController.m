@@ -191,7 +191,6 @@ static const CGFloat margin = 10;
     cardcardNoLineView.backgroundColor = [UIColor qmui_colorWithHexString:@"#F1F1F1"];
     [bankcardNoView addSubview:cardcardNoLineView];
     UITextField *bankCardTf = [[UITextField alloc] initWithFrame:CGRectMake(cardNoLineView.right + 5, 0, cardNoView.width - cardNoLineView.height - 5 - margin, cardNoView.height)];
-    bankCardTf.userInteractionEnabled = NO;
     bankCardTf.textColor = [UIColor qmui_colorWithHexString:@"#333333"];
     bankCardTf.textAlignment = NSTextAlignmentLeft;
     bankCardTf.font = [UIFont systemFontOfSize:14];
@@ -307,7 +306,7 @@ static const CGFloat margin = 10;
     NSString *headerMessage1 = @"———— 银行卡正反面 ————";
     UILabel *headerMessageLabel1 = [self labelWithFrame:CGRectMake(margin, backPhotoButton.bottom, scrollView.width - margin * 2, 60) text:headerMessage1 textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:13]];
     headerMessageLabel1.numberOfLines = 0;
-    [scrollView addSubview:headerMessageLabel1];
+//    [scrollView addSubview:headerMessageLabel1];
     
     // 示例图片
     CGFloat showImageMargin1 = 10;
@@ -319,12 +318,12 @@ static const CGFloat margin = 10;
         tempButton.frame = CGRectMake(showImageMargin1 + (showImageW1 + showImageMargin1) * i, headerMessageLabel1.bottom, showImageW1, showImageH1);
         [tempButton setBackgroundImage:[UIImage mc_imageNamed:showImageArr1[i]] forState:(UIControlStateNormal)];
    
-        [scrollView addSubview:tempButton];
+//        [scrollView addSubview:tempButton];
     }
     // 箭头
     UIImageView *downArrowImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((scrollView.width - 20) / 2, headerMessageLabel1.bottom + showImageH1 + 5, 20, 25)];
     downArrowImageView1.image = [UIImage mc_imageNamed:@"common_shiming_down"];
-    [scrollView addSubview:downArrowImageView1];
+//    [scrollView addSubview:downArrowImageView1];
     // 拍摄按钮
     CGFloat buttonMargin1 = 10;
     CGFloat buttonW1 = (SCREEN_WIDTH - buttonMargin1 * 4) / 2;
@@ -336,7 +335,7 @@ static const CGFloat margin = 10;
 //    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
     [frontPhotoButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    [scrollView addSubview:frontPhotoButton1];
+//    [scrollView addSubview:frontPhotoButton1];
     self.frontPhotoButton1 = frontPhotoButton1;
     UIButton *backPhotoButton1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     backPhotoButton1.frame = CGRectMake(frontPhotoButton1.right + buttonMargin1, frontPhotoButton1.top, showImageW1, showImageH1);
@@ -344,7 +343,7 @@ static const CGFloat margin = 10;
     [backPhotoButton1 setBackgroundImage:[UIImage mc_imageNamed:@"fan2"] forState:0];
 //    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
     [backPhotoButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [scrollView addSubview:backPhotoButton1];
+//    [scrollView addSubview:backPhotoButton1];
     self.backPhotoButton1 = backPhotoButton1;
     
     
@@ -360,7 +359,8 @@ static const CGFloat margin = 10;
     // 3. 底部说明文字
     NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n\n•必须上传身份证的正反面\n\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
     CGFloat bottomMessageH = [self stringHeightWithString:bottomMessage width:scrollView.width - margin * 2 font:[UIFont systemFontOfSize:12]];
-    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton1.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
+//    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton1.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
+    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
     bottomMessageLabel.numberOfLines = 0;
     [scrollView addSubview:bottomMessageLabel];
     
@@ -485,14 +485,14 @@ static const CGFloat margin = 10;
         [self showAlertWithMessage:@"请填写银行预留手机号"];
         return;
     }
-    if (self.idCardZhengImg == nil || self.idCardFanImg == nil) {
-        [self showAlertWithMessage:@"请上传身份证正反面图片！"];
-        return;
-    }
-    if (self.bankZhengImg == nil || self.bankFanImg == nil) {
-        [self showAlertWithMessage:@"请上传银行卡正反面！"];
-        return;
-    }
+//    if (self.idCardZhengImg == nil || self.idCardFanImg == nil) {
+//        [self showAlertWithMessage:@"请上传身份证正反面图片！"];
+//        return;
+//    }
+//    if (self.bankZhengImg == nil || self.bankFanImg == nil) {
+//        [self showAlertWithMessage:@"请上传银行卡正反面！"];
+//        return;
+//    }
     [self shiming];
 
 }
@@ -524,28 +524,39 @@ static const CGFloat margin = 10;
         return;
     }
    
-    if (!self.bankZhengURL) {
-        [MCToast showMessage:@"请上传银行卡正面"];
-        return;
-    }
-    if (!self.bankFanURL) {
-        [MCToast showMessage:@"请上传银行卡反面"];
-        return;
-    }
+//    if (!self.bankZhengURL) {
+//        [MCToast showMessage:@"请上传银行卡正面"];
+//        return;
+//    }
+//    if (!self.bankFanURL) {
+//        [MCToast showMessage:@"请上传银行卡反面"];
+//        return;
+//    }
 
     if (!self.faceImgURL) {
         [MCToast showMessage:@"请进行活体检测"];
         return;
     }
-    /* token  realname:真实姓名  idcard:身份证号  */
+    /*   "bankPhone": "string",
+     "debitCardBankUrl": "string",
+     "debitCardNo": "string",
+     "debitCardUrl": "string",
+     "faceUrl": "string",
+     "idCardBackUrl": "string",
+     "idCardFrontUrl": "string",
+     "idCardNo": "string",
+     "name": "string"
+     */
     NSDictionary *param = @{@"name":self.nameTF.text,
                             @"idCardNo":idCardNo,
                             @"faceUrl":self.faceImgURL,
                             @"idCardBackUrl":self.idCardFanImgURL,
                             @"idCardFrontUrl":self.idCardZhengImgURL,
                             @"bankPhone":self.phoneTf.text,
-                            @"debitCardUrl":self.bankZhengURL,
-                            @"debitCardBankUrl":self.bankFanURL
+//                            @"debitCardUrl":self.bankZhengURL,
+//                            @"debitCardBankUrl":self.bankFanURL,
+                            @"debitCardNo":debitCardNo,
+
     };
     __weak __typeof(self)weakSelf = self;
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/user/certification" parameters:param ok:^(NSDictionary * _Nonnull resp) {

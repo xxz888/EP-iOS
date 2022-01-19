@@ -202,6 +202,7 @@
 
     NSDictionary *param = @{
                             @"bankCardUrl":self.bankCardUrl,
+                            @"bankCardNo": cardNo,
                             @"billingDate":[self.textField6.text substringToIndex:self.textField6.text.length-1],
                             @"cardType":@"CreditCard",
                             @"cvc":self.textField4.text,
