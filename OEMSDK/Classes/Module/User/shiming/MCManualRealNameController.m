@@ -94,6 +94,8 @@ static const CGFloat margin = 10;
     self.faceImg = nil;
     self.bankZhengImg = nil;self.bankFanImg = nil;
     self.bankURL = nil;
+    self.bankZhengURL = @"";
+    self.bankFanURL = @"";
     // 容器
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT-NavigationContentTop)];
     scrollView.directionalLockEnabled = YES;// 单一方向滚动
@@ -306,7 +308,7 @@ static const CGFloat margin = 10;
     NSString *headerMessage1 = @"———— 银行卡正反面 ————";
     UILabel *headerMessageLabel1 = [self labelWithFrame:CGRectMake(margin, backPhotoButton.bottom, scrollView.width - margin * 2, 60) text:headerMessage1 textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentCenter) font:[UIFont systemFontOfSize:13]];
     headerMessageLabel1.numberOfLines = 0;
-//    [scrollView addSubview:headerMessageLabel1];
+    [scrollView addSubview:headerMessageLabel1];
     
     // 示例图片
     CGFloat showImageMargin1 = 10;
@@ -318,12 +320,12 @@ static const CGFloat margin = 10;
         tempButton.frame = CGRectMake(showImageMargin1 + (showImageW1 + showImageMargin1) * i, headerMessageLabel1.bottom, showImageW1, showImageH1);
         [tempButton setBackgroundImage:[UIImage mc_imageNamed:showImageArr1[i]] forState:(UIControlStateNormal)];
    
-//        [scrollView addSubview:tempButton];
+        [scrollView addSubview:tempButton];
     }
     // 箭头
     UIImageView *downArrowImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((scrollView.width - 20) / 2, headerMessageLabel1.bottom + showImageH1 + 5, 20, 25)];
     downArrowImageView1.image = [UIImage mc_imageNamed:@"common_shiming_down"];
-//    [scrollView addSubview:downArrowImageView1];
+    [scrollView addSubview:downArrowImageView1];
     // 拍摄按钮
     CGFloat buttonMargin1 = 10;
     CGFloat buttonW1 = (SCREEN_WIDTH - buttonMargin1 * 4) / 2;
@@ -332,10 +334,10 @@ static const CGFloat margin = 10;
     frontPhotoButton1.frame = CGRectMake(buttonMargin, downArrowImageView1.bottom + 5, showImageW1, showImageH1);
     frontPhotoButton1.tag = 1005;
     [frontPhotoButton1 setBackgroundImage:[UIImage mc_imageNamed:@"zheng2"] forState:0];
-//    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
+    [frontPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_01"] forState:(UIControlStateNormal)];
     [frontPhotoButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     
-//    [scrollView addSubview:frontPhotoButton1];
+    [scrollView addSubview:frontPhotoButton1];
     self.frontPhotoButton1 = frontPhotoButton1;
     UIButton *backPhotoButton1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     backPhotoButton1.frame = CGRectMake(frontPhotoButton1.right + buttonMargin1, frontPhotoButton1.top, showImageW1, showImageH1);
@@ -343,7 +345,7 @@ static const CGFloat margin = 10;
     [backPhotoButton1 setBackgroundImage:[UIImage mc_imageNamed:@"fan2"] forState:0];
 //    [backPhotoButton setImage:[UIImage mc_imageNamed:@"common_realname_add_02"] forState:(UIControlStateNormal)];
     [backPhotoButton1 addTarget:self action:@selector(showImageButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//    [scrollView addSubview:backPhotoButton1];
+    [scrollView addSubview:backPhotoButton1];
     self.backPhotoButton1 = backPhotoButton1;
     
     
@@ -359,8 +361,8 @@ static const CGFloat margin = 10;
     // 3. 底部说明文字
     NSString *bottomMessage = @"•请保证您的年龄符合18-80周岁\n\n•必须上传身份证的正反面\n\n•未达到示例标准、照片不清晰、经过编辑处理等非正常拍摄都不予通过";
     CGFloat bottomMessageH = [self stringHeightWithString:bottomMessage width:scrollView.width - margin * 2 font:[UIFont systemFontOfSize:12]];
-//    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton1.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
-    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
+    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton1.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
+//    UILabel *bottomMessageLabel = [self labelWithFrame:CGRectMake(margin, backPhotoButton.bottom + margin+20, scrollView.width - margin * 2, bottomMessageH+20) text:bottomMessage textColor:[UIColor qmui_colorWithHexString:@"#333333"] textAlignment:(NSTextAlignmentLeft) font:[UIFont systemFontOfSize:13]];
     bottomMessageLabel.numberOfLines = 0;
     [scrollView addSubview:bottomMessageLabel];
     
@@ -553,8 +555,8 @@ static const CGFloat margin = 10;
                             @"idCardBackUrl":self.idCardFanImgURL,
                             @"idCardFrontUrl":self.idCardZhengImgURL,
                             @"bankPhone":self.phoneTf.text,
-//                            @"debitCardUrl":self.bankZhengURL,
-//                            @"debitCardBankUrl":self.bankFanURL,
+                            @"debitCardUrl":self.bankZhengURL,
+                            @"debitCardBankUrl":self.bankFanURL,
                             @"debitCardNo":debitCardNo,
 
     };

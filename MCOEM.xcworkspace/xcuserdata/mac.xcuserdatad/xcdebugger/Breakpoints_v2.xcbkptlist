@@ -27,9 +27,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "783"
-            endingLineNumber = "783"
-            landmarkName = "-requestDataForCheckInputInfo"
-            landmarkType = "7">
+            endingLineNumber = "783">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -43,9 +41,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "787"
-            endingLineNumber = "787"
-            landmarkName = "-requestDataForCheckInputInfo"
-            landmarkType = "7">
+            endingLineNumber = "787">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -59,25 +55,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "852"
-            endingLineNumber = "852"
-            landmarkName = "-requestDataForUploadImages:fileName:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A79C23C5-D726-4DEA-9FC5-A40C8C1E5641"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OEMSDK/Classes/Module/User/shiming/MCManualRealNameController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
-            landmarkName = "-requestDataForCheckInputInfo"
-            landmarkType = "7">
+            endingLineNumber = "852">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
