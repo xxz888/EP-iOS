@@ -246,7 +246,10 @@
     
     SharedDefaults.extraFee = result[@"info"][@"extraFee"];
     SharedDefaults.hasPayPassword = result[@"info"][@"hasPayPassword"];
+    SharedDefaults.agentPhone = result[@"info"][@"agentPhone"];
 
+    
+    
     SharedDefaults.phone = result[@"phone"];
     SharedDefaults.nickname = result[@"info"][@"nickname"];
     SharedDefaults.certification = [NSString stringWithFormat:@"%@",result[@"info"][@"certification"]];

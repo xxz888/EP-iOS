@@ -26,6 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *guanfangkefudianhua;
 @property (weak, nonatomic) IBOutlet UIImageView *server1Imv;
 @property (weak, nonatomic) IBOutlet UIImageView *server2Imv;
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UIView *view3;
+@property (weak, nonatomic) IBOutlet UILabel *telPhone;
+@property (weak, nonatomic) IBOutlet UILabel *tuijianren;
 
 @end
 

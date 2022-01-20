@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString * huaBeiPayRate;
 @property(nonatomic, strong) NSString * quickPayRate;
 @property(nonatomic, strong) NSString * posPayRate;
+@property(nonatomic, copy)  NSString * agentPhone;
 
 @end
 
