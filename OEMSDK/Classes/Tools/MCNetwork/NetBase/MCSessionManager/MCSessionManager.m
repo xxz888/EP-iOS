@@ -64,7 +64,7 @@ static MCSessionManager *_singleManager = nil;
     [request setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     [request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
     [request setValue:@"ios" forHTTPHeaderField:@"platform"];
-    [request setValue:SharedAppInfo.build forHTTPHeaderField:@"version"];
+    [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     
@@ -176,7 +176,7 @@ static MCSessionManager *_singleManager = nil;
     [request setValue:TOKEN forHTTPHeaderField:@"Authorization"];
     [request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
     [request setValue:@"ios" forHTTPHeaderField:@"platform"];
-    [request setValue:SharedAppInfo.build forHTTPHeaderField:@"version"];
+    [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     NSData *data = [[self convertToJsonData:parameters] dataUsingEncoding:NSUTF8StringEncoding];
@@ -235,7 +235,7 @@ remoteFields:(nullable NSArray<NSString *>*)fields
         [self.requestSerializer setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
     }
     [self.requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
-    [self.requestSerializer setValue:SharedAppInfo.build forHTTPHeaderField:@"version"];
+    [self.requestSerializer setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
     BOOL isSharedSession = (self == [MCSessionManager shareManager]);
     if (isSharedSession) {
         [MCLoading show];

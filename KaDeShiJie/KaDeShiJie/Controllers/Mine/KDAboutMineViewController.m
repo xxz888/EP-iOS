@@ -25,7 +25,7 @@
     [self setNavigationBarTitle:@"关于我们" tintColor:nil];
     self.topImage.layer.cornerRadius = 10;
     
-    self.versionLbl.text = [NSString stringWithFormat:@"v%@",SharedAppInfo.build];
+    self.versionLbl.text = [NSString stringWithFormat:@"v%@",SharedAppInfo.version];
     [self getData];
 }
 

@@ -209,7 +209,7 @@
         
         //升级
         NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
-        NSString *localVersion = SharedAppInfo.build;
+        NSString *localVersion = SharedAppInfo.version;
         NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
         if (result == NSOrderedDescending) {
             MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];

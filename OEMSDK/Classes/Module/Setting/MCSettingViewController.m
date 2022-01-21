@@ -77,7 +77,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
     }];
     [self.items addObject:@{@"imgName":@"椭圆 1",
                             @"title":@"版本更新",
-                            @"subTitle":[NSString stringWithFormat:@"v%@",SharedAppInfo.build],
+                            @"subTitle":[NSString stringWithFormat:@"v%@",SharedAppInfo.version],
                             @"action":@"checkVersion"
     }];
 
@@ -222,7 +222,7 @@ NSString *const MCSettingItemAboutUs = @"MCSettingItemAboutUs";
         
         //升级
         NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
-        NSString *localVersion = SharedAppInfo.build;
+        NSString *localVersion = SharedAppInfo.version;
         NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
         if (result == NSOrderedDescending) {
             MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];

@@ -119,7 +119,7 @@
         [request setValue:TOKEN forHTTPHeaderField:@"authToken"];
         [request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
         [request setValue:@"ios" forHTTPHeaderField:@"platform"];
-        [request setValue:SharedAppInfo.build forHTTPHeaderField:@"version"];
+        [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
         [self.webView loadRequest:request ];
         return;
     }
@@ -135,7 +135,7 @@
             [self.request setValue:TOKEN forHTTPHeaderField:@"authToken"];
             [self.request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
             [self.request setValue:@"ios" forHTTPHeaderField:@"platform"];
-            [self.request setValue:SharedAppInfo.build forHTTPHeaderField:@"version"];
+            [self.request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
         }
         [self.webView loadRequest:self.request];
     } else {
