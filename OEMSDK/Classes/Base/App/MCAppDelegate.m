@@ -23,7 +23,8 @@
 #import "WMDragView.h"
 #import "MCNewsModel.h"
 #import "KDCommonAlert.h"
-
+#import "liveness/Liveness.h"
+#import <Bugly/Bugly.h>
 @interface MCAppDelegate ()<JPUSHRegisterDelegate>
 
 /// 返回h5悬浮按钮
@@ -82,7 +83,8 @@
     [self setupApp];
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     [self.window makeKeyAndVisible];
-    
+    [Bugly startWithAppId:@"be063ceb90"];
+
     [MCApp setup:application options:launchOptions appDelegate:self];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnd) name:UIApplicationDidEnterBackgroundNotification object:nil];

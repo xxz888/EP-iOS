@@ -29,6 +29,8 @@
 #import "KDWebContainer.h"
 #import "KDCommonAlert.h"
 #import "KDJFShopViewController.h"
+
+
 @interface AppDelegate ()
 
 @property(nonatomic, strong) KDWelcomeAlertView *alertContent;

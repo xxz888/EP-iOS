@@ -208,7 +208,7 @@
                             @"cvc":self.textField4.text,
                             @"phone":self.textField3.text,
                             @"repaymentDate":[self.textField7.text substringToIndex:self.textField7.text.length-1],
-                            @"validPeriod":self.textField5.text,
+                            @"validPeriod":[self.textField5.text replaceAll:@"/" target:@""],
 
                             };
     kWeakSelf(self);
@@ -250,7 +250,7 @@
                             @"cvc":self.textField4.text,
                             @"phone":self.textField3.text,
                             @"repaymentDate":[self.textField7.text substringToIndex:self.textField7.text.length-1],
-                            @"validPeriod":self.textField5.text,
+                            @"validPeriod":[self.textField5.text replaceAll:@"/" target:@""],
                             @"id":self.model.id
 
                             };

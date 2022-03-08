@@ -3067,6 +3067,7 @@
 		6FA66AA40F63F9F9991EA0FC8E809B88 /* SDMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDMemoryCache.m; path = SDWebImage/Core/SDMemoryCache.m; sourceTree = "<group>"; };
 		6FABA18FD59B7B41D59A86283C3DB982 /* SDAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SDAnimatedImageView+WebCache.h"; path = "SDWebImage/Core/SDAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
 		6FC348C55DE2235CB4E8797474D8039E /* MCSettingCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCSettingCell.m; sourceTree = "<group>"; };
+		6FDB826827D73BAA005EFCF5 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugly.framework; path = Vendor/Bugly.framework; sourceTree = "<group>"; };
 		6FE1B282033E9B85463AED4686F7F910 /* MCOrderDetailController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCOrderDetailController.h; sourceTree = "<group>"; };
 		6FE9AE30F8E914D7BD44670CA3F17097 /* NSButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSButton+WebCache.m"; path = "SDWebImage/Core/NSButton+WebCache.m"; sourceTree = "<group>"; };
 		70143CFF308205C9548D25746844EAF0 /* NSImage+Compatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSImage+Compatibility.h"; path = "SDWebImage/Core/NSImage+Compatibility.h"; sourceTree = "<group>"; };
@@ -5318,6 +5319,7 @@
 		383C4DFCA29F4A8A84E4A740A08E3692 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FDB826827D73BAA005EFCF5 /* Bugly.framework */,
 				56B458CB6748F6E1264DCBFAFA43CA9B /* liveness.framework */,
 				356FC36264D2778820A9A5BE2813E2CE /* opencv2.framework */,
 				35F9BF4240F539A0716FD1D14F353854 /* pdns-sdk-ios.framework */,
