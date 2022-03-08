@@ -207,7 +207,22 @@
 //        NSString * str = @"染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的染发的身份获得随机发货速度放寒假开始的";
 //        [updateView showWithVersion:@"1.0.1" content:str downloadUrl:resp[@"config"][@"iosDownLink"] isForce:YES];
         
-        
+//        NSString *localVersion = @"";
+//        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]) {
+//            localVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+//        }else{
+//
+//            if ([SharedAppInfo.build isEqualToString:@"1.0.0"] ||
+//                [SharedAppInfo.version isEqualToString:@"1.0.0"] ||
+//                [SharedAppInfo.version containsString:@"1.0"]) {
+//                    MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
+//                    NSString * str = @"1、修改已知bug。\n2、优化用户体验";
+//                    [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
+//            }else{
+//                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"currentVersion"];
+//            }
+//            return;
+//        }
         //升级
         NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
         NSString *localVersion = SharedAppInfo.version;
