@@ -83,7 +83,6 @@
     [self setupApp];
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     [self.window makeKeyAndVisible];
-    [Bugly startWithAppId:@"be063ceb90"];
 
     [MCApp setup:application options:launchOptions appDelegate:self];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
@@ -96,6 +95,7 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     
+    [Bugly startWithAppId:@"be063ceb90"];
 
     // @"恭喜您已实名完成,接下来将指引您完成信用卡认证,认证完成可获得奖励";
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
