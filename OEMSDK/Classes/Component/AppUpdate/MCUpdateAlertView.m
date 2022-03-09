@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *contentTV;
 
+@property (nonatomic, strong) NSString *remoteVersion;
 
 @end
 
@@ -53,6 +54,8 @@
     [self.modal showContentView:self animated:YES];
     
     self.cancelBtn.hidden = self.isForce;
+    
+    self.remoteVersion = version;
 }
 
 - (void)awakeFromNib {
@@ -70,6 +73,8 @@
 }
 
 - (IBAction)onUpdateTouched:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setValue:self.remoteVersion forKey:@"currentVersion"];
+
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.url]];
     [self.modal hide:YES];
 }
