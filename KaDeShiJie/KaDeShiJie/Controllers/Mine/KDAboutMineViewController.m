@@ -28,11 +28,7 @@
     
     
     self.versionLbl.text = [NSString stringWithFormat:@"v%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]];
-    
-    MCUserInfo * userInfo = SharedUserInfo;
-    if ([userInfo.phone isEqualToString:@"13383773800"]) {
-        self.versionLbl.text = [NSString stringWithFormat:@"%@-%@",userInfo.phone,[[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]];
-    }
+
     [self getData];
 }
 

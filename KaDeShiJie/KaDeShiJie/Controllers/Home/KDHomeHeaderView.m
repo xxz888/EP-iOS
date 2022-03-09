@@ -45,6 +45,8 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (nonatomic, strong) KDHomeHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UIStackView *cententBottomView;
+@property (weak, nonatomic) IBOutlet UIStackView *cententBottomView1;
+@property (weak, nonatomic) IBOutlet UILabel *serverView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) SDCycleScrollView *cyView;
@@ -69,7 +71,7 @@
 //        btn.spacingBetweenImageAndTitle = 15;
     }
     
-    NSArray *titleArray = @[@"交易记录", @"申请办卡", @"实名认证", @"無卡积分"];
+    NSArray *titleArray = @[@"智能管理", @"快捷收款", @"空卡还款", @"极速办卡"];
     for (int i = 0; i < 4; i++) {
         QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
         btn.imagePosition = QMUIButtonImagePositionTop;
@@ -77,7 +79,7 @@
         [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom_%d", i]] forState:UIControlStateNormal];
     }
     
-    NSArray *titleArray1 = @[@"小额闪付", @"刷脸付", @"花呗", @"手机POS"];
+    NSArray *titleArray1 = @[@"小额闪付", @"刷脸付", @"手机POS", @"支付宝收款"];
     for (int i = 0; i < 4; i++) {
         QMUIButton *btn = [self.cententBottomView viewWithTag: 300 + i];
         btn.imagePosition = QMUIButtonImagePositionTop;
@@ -85,18 +87,23 @@
         [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom1_%d", i]] forState:UIControlStateNormal];
     }
     
+    NSArray *titleArray2 = @[@"我的团队", @"無卡积分"];
+    for (int i = 0; i < 2; i++) {
+        QMUIButton *btn = [self.cententBottomView1 viewWithTag: 400 + i];
+        btn.imagePosition = QMUIButtonImagePositionTop;
+        [btn setTitle:titleArray2[i] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom2_%d", i]] forState:UIControlStateNormal];
+    }
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.serverView.bounds byRoundingCorners: UIRectCornerTopLeft | UIRectCornerBottomLeft  cornerRadii:CGSizeMake(5,5)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.serverView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.serverView.layer.mask = maskLayer;
     
-//    UIView *view = [[UIView alloc] init];
-//    view.frame = CGRectMake(16,195.7,328,150);
-//    view.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
-//    self.cententBottomView.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.03].CGColor;
-//    self.cententBottomView.layer.shadowOffset = CGSizeMake(0,3);
-//    self.cententBottomView.layer.shadowOpacity = 1;
-//    self.cententBottomView.layer.shadowRadius = 5;
-//    self.cententBottomView.layer.cornerRadius = 6.7;
+    
     
     self.contentView.layer.cornerRadius = 7;
-    self.msgContentView.layer.cornerRadius = 10;
+//    self.msgContentView.layer.cornerRadius = 10;
     self.lineView.layer.cornerRadius = 2.3;
     __weak typeof(self) weakSelf = self;
     self.bannerView.resetHeightBlock = ^(CGFloat h) {

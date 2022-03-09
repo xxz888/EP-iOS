@@ -31,7 +31,7 @@
 - (KDHomeHeaderView *)headerView
 {
     if (!_headerView) {
-        _headerView = [[KDHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TabBarHeight)];
+        _headerView = [[KDHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT  * 2)];
     }
     return _headerView;
 }
