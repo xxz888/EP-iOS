@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDHomeHeaderView : UIView
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, copy) void (^callBack)(CGFloat viewHig);
 - (IBAction)btnAction:(QMUIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *bangkaView;

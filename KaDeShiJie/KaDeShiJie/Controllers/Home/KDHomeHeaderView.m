@@ -32,8 +32,9 @@
 #import "KDXinYongKaViewController.h"
 #import "KDPayNewViewControllerQuickPass.h"
 #import "KDWukaJifenViewController.h"
+#import "KDHomeHeaderCardCollectionViewCell.h"
 
-@interface KDHomeHeaderView ()<SDCycleScrollViewDelegate>
+@interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
 @property (weak, nonatomic) IBOutlet UIView *msgView;
@@ -54,6 +55,14 @@
 
 @implementation KDHomeHeaderView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"KDHomeHeaderView" owner:nil options:nil] firstObject];
+    }
+    return self;
+}
 - (NSMutableArray *)dataArray
 {
     if (_dataArray == nil) {
@@ -66,9 +75,23 @@
 {
     [super awakeFromNib];
     
+    [self registerView];
+    [self setUI];
+    [self setSDCycleScrollView];
+    [self getMessage];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+//    [self.collectionView reloadData];
+        
+}
+-(void)registerView{
+    [self.collectionView registerNib:[UINib nibWithNibName:@"KDHomeHeaderCardCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"KDHomeHeaderCardCollectionViewCell"];
+}
+
+-(void)setUI{
     for (QMUIButton *btn in self.topView.subviews) {
         btn.imagePosition = QMUIButtonImagePositionTop;
-//        btn.spacingBetweenImageAndTitle = 15;
     }
     
     NSArray *titleArray = @[@"智能管理", @"快捷收款", @"空卡还款", @"极速办卡"];
@@ -103,7 +126,6 @@
     
     
     self.contentView.layer.cornerRadius = 7;
-//    self.msgContentView.layer.cornerRadius = 10;
     self.lineView.layer.cornerRadius = 2.3;
     __weak typeof(self) weakSelf = self;
     self.bannerView.resetHeightBlock = ^(CGFloat h) {
@@ -112,7 +134,8 @@
             self.callBack(661 - 128 + h);
         }
     };
-    
+}
+-(void)setSDCycleScrollView{
     SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.msgView.bounds];
     cyView.delegate = self;
     cyView.backgroundColor = [UIColor clearColor];
@@ -120,152 +143,154 @@
     cyView.clipsToBounds = YES;
     [cyView disableScrollGesture];
     cyView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
-//    cyView.imageURLStringsGroup = self.dataArray;
     cyView.scrollDirection = UICollectionViewScrollDirectionVertical;
     [self.msgView addSubview:cyView];
     self.cyView = cyView;
-    [self getMessage];
-    
+ 
 }
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:@"KDHomeHeaderView" owner:nil options:nil] firstObject];
-    }
-    return self;
+- (void)getMessage {
+    kWeakSelf(self)
+    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        weakself.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
+        if ([weakself.dataArray count] > 0) {
+            weakself.cyView.localizationImageNamesGroup = weakself.dataArray;
+        }
+    }];
 }
 - (IBAction)btnAction:(QMUIButton *)sender {
-    __weak typeof(self) weakSelf = self;
-    if (sender.tag == 100 || sender.tag == 101 || sender.tag == 102) {
-            switch (sender.tag) {
-                //空卡
-                case 100:{ [MCToast showMessage:@"暂未开放"];}
-                    break;
-                //信用卡还款
-                case 101:{
-                        if ([SharedUserInfo.certification integerValue] == 1) {
-                            KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
-                            vc.navTitle = @"信用卡还款";
-                            //订单类型（2为还款记录、3为空卡记录）
-                            vc.orderType = @"2";
-                            [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-                        }else{
-                            [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                                if ([SharedUserInfo.certification integerValue] == 1) {
-                                    KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
-                                    vc.navTitle = @"信用卡还款";
-                                    //订单类型（2为还款记录、3为空卡记录）
-                                    vc.orderType = @"2";
-                                    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];}
-                                else{
-                                    [weakSelf showRenzhengView];
-                                }
-                            }];
-                        }
-                }
-                    break;
-                //刷卡
-                case 102:{
-                        if ([SharedUserInfo.certification integerValue] == 1) {
-                            [self pushShuaka];
-                        }else{
-                            [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                                if ([SharedUserInfo.certification integerValue] == 1) {
-                                    [weakSelf pushShuaka];
-                                }else{
-                                    [weakSelf showRenzhengView];
-                                }
-                            }];
-                        }
-                    }
-                    break;
-                default:
-                    break;
-        }
-    }else{
         switch (sender.tag) {
-            // 账单管理
-            case 200:[MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
+            // 智能管理
+            case 200:{[self zhinenghuankuan];}
                 break;
-            // 信用管理
-            case 201:[MCLATESTCONTROLLER.navigationController pushViewController:[KDXinYongKaViewController new] animated:YES];
+            // 快捷收款
+            case 201:{[self kuaijieshoukuan];}
                 break;
-            // 实名认证
-            case 202:
-            
-                if ([SharedUserInfo.certification integerValue] == 1) {
-                    [MCToast showMessage:@"您已实名认证"];
-                }else{
-                    [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
-                }
+            // 空卡还款
+            case 202:{[MCToast showMessage:@"暂未开放"];}
                 break;
-            //我的钱包
-            case 203:{
-                
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDWukaJifenViewController new] animated:YES];
-
-                //[MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
-            }
+            //极速办卡
+            case 203:{[MCLATESTCONTROLLER.navigationController pushViewController:[KDXinYongKaViewController new] animated:YES];}
                 break;
             //小额闪付
-            case 300:{
-                if ([SharedUserInfo.certification integerValue] == 1) {
-                    [self pushShanfu];
-                }else{
-                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                        if ([SharedUserInfo.certification integerValue] == 1) {
-                            [weakSelf pushShanfu];
-                        }else{
-                            [weakSelf showRenzhengView];
-                        }
-                    }];
-                }
-            }
+            case 300:{[self pushShanfu];}
                 break;
             //刷脸付
-            case 301:{
-                if ([SharedUserInfo.certification integerValue] == 1) {
-                    [self pushShualianfu];
-                }else{
-                    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-                        if ([SharedUserInfo.certification integerValue] == 1) {
-                            [weakSelf pushShualianfu];
-                        }else{
-                            [weakSelf showRenzhengView];
-                        }
-                    }];
-                }
-            }
+            case 301:{[self pushShualianfu];}
                 break;
+            //手机POS"
             case 302:
             { [MCToast showMessage:@"暂未开放"];}
                 break;
+            //"支付宝收款
             case 303:
             { [MCToast showMessage:@"暂未开放"];}
+                break;
+            //我的团队
+            case 400:{[MCToast showMessage:@"暂未开放"];}
+                break;
+            //无卡积分
+            case 401:{[MCLATESTCONTROLLER.navigationController pushViewController:[KDWukaJifenViewController new] animated:YES];}
                 break;
             default:
                 break;
         }
-    }
+}
+//
 
-   
+//[MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
+//                if ([SharedUserInfo.certification integerValue] == 1) {
+//                    [MCToast showMessage:@"您已实名认证"];
+//                }else{
+//                    [MCLATESTCONTROLLER.navigationController pushViewController:[MCManualRealNameController new] animated:YES];
+//                }
+
+#pragma ------------快捷收款------------
+-(void)kuaijieshoukuan{
+    __weak typeof(self) weakSelf = self;
+    if ([SharedUserInfo.certification integerValue] == 1) {
+        KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+        vc.whereCome = 1;
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    }else{
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+            if ([SharedUserInfo.certification integerValue] == 1) {
+                KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+                vc.whereCome = 1;
+                [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+            }else{
+                [weakSelf showRenzhengView];
+            }
+        }];
+    }
 }
--(void)pushShuaka{
-    KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
-    vc.whereCome = 1;
-    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+
+#pragma ------------智能还款------------
+-(void)zhinenghuankuan{
+    __weak typeof(self) weakSelf = self;
+    if ([SharedUserInfo.certification integerValue] == 1) {
+        KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
+        vc.navTitle = @"信用卡还款";
+        //订单类型（2为还款记录、3为空卡记录）
+        vc.orderType = @"2";
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    }else{
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+            if ([SharedUserInfo.certification integerValue] == 1) {
+                KDDirectRefundViewController * vc = [[KDDirectRefundViewController alloc]init];
+                vc.navTitle = @"信用卡还款";
+                //订单类型（2为还款记录、3为空卡记录）
+                vc.orderType = @"2";
+                [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];}
+            else{
+                [weakSelf showRenzhengView];
+            }
+        }];
+    }
 }
+#pragma ------------小额闪付------------
 -(void)pushShanfu{
-    KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
-    vc.whereCome = 2;
-    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    __weak typeof(self) weakSelf = self;
+    if ([SharedUserInfo.certification integerValue] == 1) {
+        KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+        vc.whereCome = 2;
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    }else{
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+            if ([SharedUserInfo.certification integerValue] == 1) {
+                KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+                vc.whereCome = 2;
+                [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+                
+            }else{
+                [weakSelf showRenzhengView];
+            }
+        }];
+    }
+    
+    
+    
+
 }
+#pragma ------------刷脸付------------
+
 -(void)pushShualianfu{
-    KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
-    vc.whereCome = 3;
-    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    __weak typeof(self) weakSelf = self;
+    if ([SharedUserInfo.certification integerValue] == 1) {
+        KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+        vc.whereCome = 3;
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+    }else{
+        [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+            if ([SharedUserInfo.certification integerValue] == 1) {
+                KDGatheringViewController * vc = [[KDGatheringViewController alloc]init];
+                vc.whereCome = 3;
+                [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+                
+            }else{
+                [weakSelf showRenzhengView];
+            }
+        }];
+    }
 }
 - (void)pushCardVCWithType:(MCBankCardType)cardType
 {
@@ -298,7 +323,7 @@
     
     
 }
-#pragma mark - SDCycleScrollViewDelegate
+#pragma mark - SDCycleScrollView 代理方法
 - (UINib *)customCollectionViewCellNibForCycleScrollView:(SDCycleScrollView *)view
 {
     UINib *nib = [UINib nibWithNibName:@"KDMsgViewCell" bundle:[NSBundle mainBundle]];
@@ -320,31 +345,59 @@
 {
     [MCPagingStore pagingURL:rt_notice_list];
 }
-- (void)getMessage {
-    kWeakSelf(self)
-    [MCLATESTCONTROLLER.sessionManager mc_GET:@"/api/v1/player/notice" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-        weakself.dataArray = [MCMessageModel mj_objectArrayWithKeyValuesArray:resp];
-        if ([weakself.dataArray count] > 0) {
-            weakself.cyView.localizationImageNamesGroup = weakself.dataArray;
-        }
-    }];
-}
-    
 
-- (void)pushTopDelegateVC
-{
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/transactionclear/app/standard/extension/user/query" parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
-        NSDictionary *dict = resp[@"result"];
-        if (dict.allKeys != 0) {
-            NSInteger grade = [dict[@"promotionLevelId"] intValue];
-            if (grade < 3) {
-                [MCToast showMessage:@"您当前不是顶级代理，无法进入"];
-            } else {
-                [MCLATESTCONTROLLER.navigationController pushViewController:[KDTopDelegateViewController new] animated:YES];
-            }
-        } else {
-            [MCToast showMessage:@"您当前不是顶级代理，无法进入"];
-        }
-    }];
+#pragma mark - collectionView 代理方法
+
+//返回CollectionView中cell的总数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 10;
 }
+
+//设置cell的size,宽为屏幕宽的一半，两个cell间隔10个像素，高为200像素
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGSize cellSize = CGSizeMake(([UIScreen mainScreen].bounds.size.width-50)/3, 130);
+    return cellSize;
+}
+
+//添加数据
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    KDHomeHeaderCardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KDHomeHeaderCardCollectionViewCell" forIndexPath:indexPath];
+
+    
+//    //垂直分割线
+//    CGSize contentSize = self.collectionView.contentSize;
+//    UIView *verticalLine = [[UIView alloc]initWithFrame:CGRectMake(contentSize.width * 0.5 - 0.5, 0, 1, contentSize.height - 8)];
+//    verticalLine.backgroundColor = [UIColor lightGrayColor];
+//    verticalLine.alpha = 0.35;
+//    [self.collectionView addSubview:verticalLine];
+//
+//    //水平分割线
+//    UIView *horizontalLine = [[UIView alloc]initWithFrame:CGRectMake(0, (cell.frame.size.height + 10) * (indexPath.row + 1) , contentSize.width, 1)];
+//    horizontalLine.backgroundColor = [UIColor lightGrayColor];
+//    horizontalLine.alpha = 0.35;
+//    [self.collectionView addSubview:horizontalLine];
+    
+    return cell;
+}
+
+
+- (IBAction)serviceOnlin:(id)sender {
+    
+    [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

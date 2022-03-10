@@ -25,7 +25,7 @@
             
             NSString *ss = bankDic[@"bank_name"];
     //        BANK_HXBANK
-            if ([ss containsString:name] || [name containsString:ss]) {
+            if ([ss containsString:name] || [name containsString:ss] || [MCBankStore likePercentByCompareOriginText:ss targetText:name] > 10) {
                 localName = [NSString stringWithFormat:@"BANK_%@", bankDic[@"bank_acronym"]];
                 logo = [UIImage mc_imageNamed:localName];
                 backGround = [MCBankStore getBankThemeColorWithLogo:logo];
@@ -48,7 +48,62 @@
     
 
 }
-
+static inline int min(int a, int b) {
+    return a < b ? a : b;
+}
+ 
++(float)likePercentByCompareOriginText:(NSString *)originText targetText:(NSString *)targetText{
+    
+    //length
+    int n = (int)originText.length;
+    int m = (int)targetText.length;
+    if (n == 0 || m == 0) {
+        return 0.0;
+    }
+    
+    //Construct a matrix, need C99 support
+    int N = n+1;
+    int **matrix;
+    matrix = (int **)malloc(sizeof(int *)*N);
+    
+    int M = m+1;
+    for (int i = 0; i < N; i++) {
+        matrix[i] = (int *)malloc(sizeof(int)*M);
+    }
+    
+    for (int i = 0; i<N; i++) {
+        for (int j=0; j<M; j++) {
+            matrix[i][j]=0;
+        }
+    }
+    
+    for(int i=1; i<=n; i++) {
+        matrix[i][0]=i;
+    }
+    for(int i=1; i<=m; i++) {
+        matrix[0][i]=i;
+    }
+    for(int i=1;i<=n;i++)
+    {
+        unichar si = [originText characterAtIndex:i-1];
+        for(int j=1;j<=m;j++)
+        {
+            unichar dj = [targetText characterAtIndex:j-1];
+            int cost;
+            if(si==dj){
+                cost=0;
+            }
+            else{
+                cost=1;
+            }
+            const int above = matrix[i-1][j]+1;
+            const int left = matrix[i][j-1]+1;
+            const int diag = matrix[i-1][j-1]+cost;
+            matrix[i][j] = min(above, min(left,diag));
+        }
+    }
+    return 100.0 - 100.0*matrix[n][m]/MAX(m,n);
+}
 + (NSArray *)getLocalJson:(NSString *)jsonName {
     
     NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle OEMSDKBundle] pathForResource:jsonName ofType:@"json"]];

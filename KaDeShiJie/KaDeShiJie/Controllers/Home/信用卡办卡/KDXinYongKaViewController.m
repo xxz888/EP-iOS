@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CGRect frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop-kTabBarHeight);
+    CGRect frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     self.jfCollectionView = [[UICollectionView alloc]initWithFrame:frame collectionViewLayout:layout];
     self.jfCollectionView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
@@ -89,7 +89,9 @@
     [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
     cell.collTitle.text = self.dataArray[indexPath.row][@"title"];
     cell.cellContent.text = self.dataArray[indexPath.row][@"describe"];
-
+    
+    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.dataArray[indexPath.row][@"title"]];
+    cell.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
     return cell;
 }
 //定义每个UICollectionView 的大小

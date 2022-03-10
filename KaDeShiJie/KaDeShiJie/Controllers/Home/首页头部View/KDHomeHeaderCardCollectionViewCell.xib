@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="KDHomeHeaderCardCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="137" height="134"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="137" height="134"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97C-rS-Rki">
+                        <rect key="frame" x="0.0" y="0.0" width="137" height="134"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-32-OCc">
+                                <rect key="frame" x="2" y="7" width="133" height="82.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Qah-32-OCc" secondAttribute="height" multiplier="111:69" id="BNe-LN-1CK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开放中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj4-Mi-C2m">
+                                <rect key="frame" x="38" y="94.5" width="61.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代理商系统" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwT-S9-Zpk">
+                                <rect key="frame" x="38" y="117.5" width="61.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vwT-S9-Zpk" firstAttribute="centerX" secondItem="97C-rS-Rki" secondAttribute="centerX" id="Fpg-n9-a9O"/>
+                            <constraint firstItem="Pj4-Mi-C2m" firstAttribute="top" secondItem="Qah-32-OCc" secondAttribute="bottom" constant="5" id="ITb-8y-EA5"/>
+                            <constraint firstItem="vwT-S9-Zpk" firstAttribute="top" secondItem="Pj4-Mi-C2m" secondAttribute="bottom" constant="5" id="g9d-W0-Npr"/>
+                            <constraint firstAttribute="trailing" secondItem="Qah-32-OCc" secondAttribute="trailing" constant="2" id="gAR-ZM-vXk"/>
+                            <constraint firstItem="Qah-32-OCc" firstAttribute="leading" secondItem="97C-rS-Rki" secondAttribute="leading" constant="2" id="gDf-Mg-nRa"/>
+                            <constraint firstItem="Qah-32-OCc" firstAttribute="centerX" secondItem="97C-rS-Rki" secondAttribute="centerX" id="jba-az-hgx"/>
+                            <constraint firstItem="Pj4-Mi-C2m" firstAttribute="centerX" secondItem="97C-rS-Rki" secondAttribute="centerX" id="mvz-R6-Jgh"/>
+                            <constraint firstItem="Qah-32-OCc" firstAttribute="top" secondItem="97C-rS-Rki" secondAttribute="top" constant="7" id="x1r-Tv-BFm"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <constraints>
+                <constraint firstItem="97C-rS-Rki" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6FS-ZU-WcV"/>
+                <constraint firstAttribute="trailing" secondItem="97C-rS-Rki" secondAttribute="trailing" id="XRe-u0-YVI"/>
+                <constraint firstAttribute="bottom" secondItem="97C-rS-Rki" secondAttribute="bottom" id="d9S-BB-k86"/>
+                <constraint firstItem="97C-rS-Rki" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="k1L-HM-R1f"/>
+            </constraints>
+            <size key="customSize" width="137" height="134"/>
+            <point key="canvasLocation" x="-225.36231884057972" y="36.830357142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="花呗" width="163.5" height="75"/>
+    </resources>
+</document>

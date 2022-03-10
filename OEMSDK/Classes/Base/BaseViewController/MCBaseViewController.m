@@ -165,6 +165,7 @@
     self.mc_nav_hidden = YES;
     [self updateNavigationBarAppearance];
 }
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     
     if (self.mc_nav_img) {  //背景是图片，白色
