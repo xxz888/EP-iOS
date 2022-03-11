@@ -16,6 +16,7 @@
 #import "KDWenZinTiShi.h"
 #import "MCMessageModel.h"
 #import "KDHomeCardKnowledgeTableViewCell.h"
+#import "KDHtmlWebViewController.h"
 
 @interface KDHomeViewController ()<UITableViewDelegate,UITableViewDataSource,QMUITableViewDataSource, QMUITableViewDelegate>
 {
@@ -29,6 +30,9 @@
 
 @property(nonatomic, assign) BOOL updateViewIsShow;
 @property (nonatomic,  assign) BOOL  statusBarFlag;
+
+@property (nonatomic ,strong) NSMutableArray * cardEncyArray;
+
 
 @end
 
@@ -84,6 +88,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[self bgView] removeFromSuperview];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -135,8 +140,8 @@
     //[self.view addSubview:titleLabel];
     
     
-    
-
+    self.cardEncyArray = [[NSMutableArray alloc]init];
+    [self getCreditArticleList];
     [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
        
     }];
@@ -179,30 +184,47 @@
             }
 
         }
-        MCAppDelegate *appdelegate = (MCAppDelegate *)[UIApplication sharedApplication].delegate;
-        appdelegate.versionCode = resp[@"iosVersion"][@"versionCode"];
-        NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
-        NSString *localVersion = @"";
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]) {
-            localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+        
+        if ([SharedDefaults.host isEqualToString:@"https://wukatest.flyaworld.com:443"]) {
+            
         }else{
-            [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"currentVersion"];
-            localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+            MCAppDelegate *appdelegate = (MCAppDelegate *)[UIApplication sharedApplication].delegate;
+            appdelegate.versionCode = resp[@"iosVersion"][@"versionCode"];
+            NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
+            NSString *localVersion = @"";
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]) {
+                localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+            }else{
+                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"currentVersion"];
+                localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+            }
+            NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
+            if (result == NSOrderedDescending) {
+                MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
+                NSString * str = @"1、修改已知bug。\n2、优化用户体验";
+                [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
+            }
+            MCUserInfo * userInfo = SharedUserInfo;
+            if ([userInfo.phone isEqualToString:@"13383773800"]) {
+                UILabel * tagLbl = [weakself.view viewWithTag:104];
+                tagLbl.text = [NSString stringWithFormat:@"首页-%@-%@",SharedAppInfo.version,localVersion];
+            }
         }
-        NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
-        if (result == NSOrderedDescending) {
-            MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
-            NSString * str = @"1、修改已知bug。\n2、优化用户体验";
-            [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
-        }
-        MCUserInfo * userInfo = SharedUserInfo;
-        if ([userInfo.phone isEqualToString:@"13383773800"]) {
-            UILabel * tagLbl = [weakself.view viewWithTag:104];
-            tagLbl.text = [NSString stringWithFormat:@"首页-%@-%@",SharedAppInfo.version,localVersion];
-        }
+   
         
     }];
 }
+- (void)getCreditArticleList {
+    kWeakSelf(self)
+    NSString * url1 = [NSString stringWithFormat:@"/api/v1/player/creditArticle/list?articleType=%@",@"CardEncy"];
+    [self.cardEncyArray removeAllObjects];
+    [MCLATESTCONTROLLER.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+        [weakself.cardEncyArray addObjectsFromArray:resp];
+        [weakself.mc_tableview reloadData];
+        
+    }];
+}
+
 -(void)messageAlert1:(NSString *)title content:(NSString *)content{
     QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
     KDWenZinTiShi * renzhengView = [KDWenZinTiShi renZhengView];
@@ -222,19 +244,29 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 110;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.cardEncyArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KDHomeCardKnowledgeTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"KDHomeCardKnowledgeTableViewCell" forIndexPath:indexPath];
+    NSDictionary * dic = self.cardEncyArray[indexPath.row];
+    [cell.cellImv sd_setImageWithURL:dic[@"thumb"] placeholderImage:[UIImage imageNamed:@"logo"]];
+    cell.cellTitle.text = dic[@"title"];
+    cell.cellContent.text = dic[@"summary"];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+    NSDictionary * dic = self.cardEncyArray[indexPath.row];
+    KDHtmlWebViewController * vc = [[KDHtmlWebViewController alloc]init];
+    vc.content = dic[@"content"];
+    vc.title = dic[@"title"];
+
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (UIView *)bgView{

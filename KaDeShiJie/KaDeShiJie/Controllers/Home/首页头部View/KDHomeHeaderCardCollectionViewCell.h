@@ -11,7 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDHomeHeaderCardCollectionViewCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *collImv;
+@property (weak, nonatomic) IBOutlet UILabel *collTitle;
+@property (weak, nonatomic) IBOutlet UILabel *collPrice;
+@property (weak, nonatomic) IBOutlet UILabel *cellContent;
 @end
 
 NS_ASSUME_NONNULL_END

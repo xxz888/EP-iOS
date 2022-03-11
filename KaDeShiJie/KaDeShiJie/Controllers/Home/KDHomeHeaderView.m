@@ -33,6 +33,7 @@
 #import "KDPayNewViewControllerQuickPass.h"
 #import "KDWukaJifenViewController.h"
 #import "KDHomeHeaderCardCollectionViewCell.h"
+#import "KDXinYongKaViewController.h"
 
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
@@ -51,6 +52,9 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) SDCycleScrollView *cyView;
+
+@property (nonatomic, strong) NSMutableArray * collectDataArray;
+
 @end
 
 @implementation KDHomeHeaderView
@@ -70,7 +74,13 @@
     }
     return _dataArray;
 }
-
+- (NSMutableArray *)collectDataArray
+{
+    if (_collectDataArray == nil) {
+        _collectDataArray = [NSMutableArray array];
+    }
+    return _collectDataArray;
+}
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -80,12 +90,15 @@
     [self setSDCycleScrollView];
     [self getMessage];
     
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-//    [self.collectionView reloadData];
+    
+    
+    [self requestCreditCard];
+ 
         
 }
 -(void)registerView{
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"KDHomeHeaderCardCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"KDHomeHeaderCardCollectionViewCell"];
 }
 
@@ -350,7 +363,7 @@
 
 //返回CollectionView中cell的总数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return [self.collectDataArray count];
 }
 
 //设置cell的size,宽为屏幕宽的一半，两个cell间隔10个像素，高为200像素
@@ -363,6 +376,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     KDHomeHeaderCardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KDHomeHeaderCardCollectionViewCell" forIndexPath:indexPath];
 
+    [cell.collImv sd_setImageWithURL:self.collectDataArray[indexPath.row][@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
+    cell.collTitle.text = self.collectDataArray[indexPath.row][@"title"];
+    cell.cellContent.text = self.collectDataArray[indexPath.row][@"describe"];
+    
+    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.collectDataArray[indexPath.row][@"title"]];
+    cell.collImv.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
+    
     
 //    //垂直分割线
 //    CGSize contentSize = self.collectionView.contentSize;
@@ -380,6 +400,11 @@
     return cell;
 }
 
+//更多信用卡
+- (IBAction)moreCardAction:(id)sender {
+    [MCLATESTCONTROLLER.navigationController pushViewController:[[KDXinYongKaViewController alloc] init] animated:YES];
+
+}
 
 - (IBAction)serviceOnlin:(id)sender {
     
@@ -392,7 +417,25 @@
 
 
 
+-(void)requestCreditCard{
+    kWeakSelf(self);
+    [weakself.collectDataArray removeAllObjects];
+    [MCSessionManager.shareManager mc_GET:@"/api/v1/player/creditCard" parameters:@{} ok:^(NSDictionary * _Nonnull respDic) {
+        NSArray * array   = [[NSMutableArray alloc]initWithArray:respDic];
+        
+        NSMutableSet *randomSet = [[NSMutableSet alloc] init];
 
+        while ([randomSet count] < 3) {
+            int r = arc4random() % [array count];
+            [randomSet addObject:[array objectAtIndex:r]];
+        }
+            
+        NSArray *randomArray = [randomSet allObjects];
+        [weakself.collectDataArray addObjectsFromArray:randomArray];
+        
+        [weakself.collectionView reloadData];
+    }];
+}
 
 
 

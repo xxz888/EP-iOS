@@ -119,11 +119,11 @@
         [request setValue:TOKEN forHTTPHeaderField:@"authToken"];
         [request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];
         [request setValue:@"ios" forHTTPHeaderField:@"platform"];
-        [request setValue:SharedAppInfo.version forHTTPHeaderField:@"version"];
+        [request setValue:SharedAppInfo.version forHTTPHeaderField:
+         @"version"];
         [self.webView loadRequest:request ];
         return;
     }
-    
     
     if(self.urlString && self.urlString.length > 0){
         
@@ -131,6 +131,7 @@
         NSString *tempString = [MCSessionManager.shareManager removeExtraSlashOfUrl:self.urlString];
         NSString *encodeString = [MCVerifyStore verifyURL:tempString];
         self.request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:encodeString] cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:15];
+
         if (self.isMingcheDomain) {
             [self.request setValue:TOKEN forHTTPHeaderField:@"authToken"];
             [self.request setValue:SharedDefaults.deviceid forHTTPHeaderField:@"deviceId"];

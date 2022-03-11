@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^callBack)(CGFloat viewHig);
 - (IBAction)btnAction:(QMUIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *bangkaView;
+@property (weak, nonatomic) IBOutlet UIButton *moreCard;
 
 @end
 

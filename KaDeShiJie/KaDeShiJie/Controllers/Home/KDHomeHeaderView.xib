@@ -456,7 +456,7 @@
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-r9-oqj" customClass="MCBannerView">
                             <rect key="frame" x="0.0" y="337" width="347" height="90"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="90" id="Bii-PL-j9g"/>
                             </constraints>
@@ -551,6 +551,9 @@
                                             <state key="normal" title="更多">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="moreCardAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="w2a-ak-3Iw"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -714,6 +717,7 @@
                 <outlet property="centerView" destination="NJr-rh-seA" id="8N9-fQ-5b3"/>
                 <outlet property="collectionView" destination="oVl-CV-b7H" id="KEk-Ab-vkI"/>
                 <outlet property="contentView" destination="Wem-cK-bkb" id="Zsr-Qn-Wbp"/>
+                <outlet property="moreCard" destination="GK7-N1-wM3" id="uQt-B8-2ry"/>
                 <outlet property="msgContentView" destination="qdL-hW-TO5" id="9AP-v7-Oxi"/>
                 <outlet property="msgView" destination="npI-aP-zBa" id="GQZ-rV-zHf"/>
                 <outlet property="serverView" destination="5j6-W0-S2n" id="6S3-HO-dmR"/>

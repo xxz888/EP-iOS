@@ -300,6 +300,7 @@
 		6F42B4FE27D73A09008C213F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B4FD27D73A09008C213F /* SystemConfiguration.framework */; };
 		6F42B50027D73A0F008C213F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B4FF27D73A0F008C213F /* Security.framework */; };
 		6F42B50227D73A19008C213F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B50127D73A19008C213F /* libz.tbd */; };
+		6F4DB6BB27DB199D00B3D33E /* KDHtmlWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4DB6BA27DB199D00B3D33E /* KDHtmlWebViewController.m */; };
 		6F5C0283271EAE220059A557 /* KDGuanFangSheQun.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */; };
 		6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */; };
 		6F6951AC27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6951AA27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.m */; };
@@ -816,6 +817,8 @@
 		6F42B4FD27D73A09008C213F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6F42B4FF27D73A0F008C213F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6F42B50127D73A19008C213F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		6F4DB6B927DB199D00B3D33E /* KDHtmlWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHtmlWebViewController.h; sourceTree = "<group>"; };
+		6F4DB6BA27DB199D00B3D33E /* KDHtmlWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHtmlWebViewController.m; sourceTree = "<group>"; };
 		6F5C0281271EAE220059A557 /* KDGuanFangSheQun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGuanFangSheQun.h; sourceTree = "<group>"; };
 		6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGuanFangSheQun.m; sourceTree = "<group>"; };
 		6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDGuanFangSheQun.xib; sourceTree = "<group>"; };
@@ -1557,6 +1560,7 @@
 		1BC5E3BA250343AA0064CA30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6F4DB6B727D9F0D400B3D33E /* 新版tabbar */,
 				6FCFF4132787D07900E34091 /* 无卡积分 */,
 				6F85DC4A2785284D00593E50 /* 小额闪付 */,
 				04A58C72276B79330027B4F4 /* 会员 */,
@@ -1581,6 +1585,11 @@
 		1BC5E3BB250343B20064CA30 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1BC5E3BF250344130064CA30 /* KDHomeViewController.h */,
+				1BC5E3C0250344130064CA30 /* KDHomeViewController.m */,
+				1BC5E3E0250392D10064CA30 /* KDHomeHeaderView.h */,
+				1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */,
+				1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */,
 				6F6951A827D98F3A004E4880 /* 首页头部View */,
 				6FFE7E08274E3A5400F801A1 /* 我的钱包 */,
 				043189FA274D2FCA00D9D959 /* 账单管理 */,
@@ -1588,23 +1597,6 @@
 				EE1BA9AA251C275E00941631 /* KDWebContainer */,
 				1B1C0E8B25086DED0009CDC6 /* 备付金 */,
 				1B9C9B4B25075DA900EE0819 /* 客服中心 */,
-				1BC5E3BF250344130064CA30 /* KDHomeViewController.h */,
-				1BC5E3C0250344130064CA30 /* KDHomeViewController.m */,
-				1BC5E3E0250392D10064CA30 /* KDHomeHeaderView.h */,
-				1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */,
-				1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */,
-				1B9C9B1525075D2F00EE0819 /* KDMsgViewCell.h */,
-				1B9C9B1625075D2F00EE0819 /* KDMsgViewCell.m */,
-				1B9C9B1725075D2F00EE0819 /* KDMsgViewCell.xib */,
-				EEB6B4372514CD1400F592F4 /* KDWelcomeAlertView.h */,
-				EEB6B4382514CD1400F592F4 /* KDWelcomeAlertView.m */,
-				EEB6B43A2514CD1F00F592F4 /* KDWelcomeAlertView.xib */,
-				043189EE274BDD9500D9D959 /* KDRenZhengView.h */,
-				043189EF274BDD9500D9D959 /* KDRenZhengView.m */,
-				043189F1274BDDA900D9D959 /* KDRenZhengView.xib */,
-				043189F3274BE6B100D9D959 /* KDWenZinTiShi.h */,
-				043189F4274BE6B100D9D959 /* KDWenZinTiShi.m */,
-				043189F6274BE6BA00D9D959 /* KDWenZinTiShi.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1733,15 +1725,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6F4DB6B727D9F0D400B3D33E /* 新版tabbar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "新版tabbar";
+			sourceTree = "<group>";
+		};
+		6F4DB6B827DB196B00B3D33E /* htmlWebView */ = {
+			isa = PBXGroup;
+			children = (
+				6F4DB6B927DB199D00B3D33E /* KDHtmlWebViewController.h */,
+				6F4DB6BA27DB199D00B3D33E /* KDHtmlWebViewController.m */,
+			);
+			path = htmlWebView;
+			sourceTree = "<group>";
+		};
 		6F6951A827D98F3A004E4880 /* 首页头部View */ = {
 			isa = PBXGroup;
 			children = (
+				6F4DB6B827DB196B00B3D33E /* htmlWebView */,
 				6F6951A927D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.h */,
 				6F6951AA27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.m */,
 				6F6951AB27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib */,
 				6F6951AE27D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.h */,
 				6F6951AF27D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.m */,
 				6F6951B027D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.xib */,
+				1B9C9B1525075D2F00EE0819 /* KDMsgViewCell.h */,
+				1B9C9B1625075D2F00EE0819 /* KDMsgViewCell.m */,
+				1B9C9B1725075D2F00EE0819 /* KDMsgViewCell.xib */,
+				EEB6B4372514CD1400F592F4 /* KDWelcomeAlertView.h */,
+				EEB6B4382514CD1400F592F4 /* KDWelcomeAlertView.m */,
+				EEB6B43A2514CD1F00F592F4 /* KDWelcomeAlertView.xib */,
+				043189EE274BDD9500D9D959 /* KDRenZhengView.h */,
+				043189EF274BDD9500D9D959 /* KDRenZhengView.m */,
+				043189F1274BDDA900D9D959 /* KDRenZhengView.xib */,
+				043189F3274BE6B100D9D959 /* KDWenZinTiShi.h */,
+				043189F4274BE6B100D9D959 /* KDWenZinTiShi.m */,
+				043189F6274BE6BA00D9D959 /* KDWenZinTiShi.xib */,
 			);
 			path = "首页头部View";
 			sourceTree = "<group>";
@@ -2287,6 +2308,7 @@
 				043189FE274D30CA00D9D959 /* KDHomeBillManageViewController.m in Sources */,
 				6FC59E0D27622803005DD4DD /* KDBingCardNewViewController.m in Sources */,
 				1B6E43B72515E7A600BB743C /* KDRemedyModel.m in Sources */,
+				6F4DB6BB27DB199D00B3D33E /* KDHtmlWebViewController.m in Sources */,
 				1B1C0E98250879460009CDC6 /* KDChosePayTypeView.m in Sources */,
 				1B9723A8251C41ED00F4120C /* KDDirectRefundViewCell.m in Sources */,
 				1B9723A3251C3A8A00F4120C /* KDDirectRefundViewController.m in Sources */,

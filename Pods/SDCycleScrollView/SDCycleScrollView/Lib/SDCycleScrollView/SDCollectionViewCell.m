@@ -71,6 +71,8 @@
 {
     UIImageView *imageView = [[UIImageView alloc] init];
     _imageView = imageView;
+    imageView.layer.cornerRadius = 7;
+    imageView.layer.masksToBounds = YES;
     [self.contentView addSubview:imageView];
 }
 

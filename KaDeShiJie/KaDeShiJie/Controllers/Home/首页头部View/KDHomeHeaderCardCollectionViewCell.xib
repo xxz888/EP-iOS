@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97C-rS-Rki">
                         <rect key="frame" x="0.0" y="0.0" width="137" height="134"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-32-OCc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花呗" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-32-OCc">
                                 <rect key="frame" x="2" y="7" width="133" height="82.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qah-32-OCc" secondAttribute="height" multiplier="111:69" id="BNe-LN-1CK"/>
@@ -32,29 +32,33 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开放中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj4-Mi-C2m">
-                                <rect key="frame" x="38" y="94.5" width="61.5" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开放中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj4-Mi-C2m">
+                                <rect key="frame" x="0.0" y="94.5" width="137" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代理商系统" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwT-S9-Zpk">
-                                <rect key="frame" x="38" y="117.5" width="61.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代理商系统" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwT-S9-Zpk">
+                                <rect key="frame" x="0.0" y="116.5" width="137" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vwT-S9-Zpk" secondAttribute="trailing" id="DC4-8h-vcB"/>
                             <constraint firstItem="vwT-S9-Zpk" firstAttribute="centerX" secondItem="97C-rS-Rki" secondAttribute="centerX" id="Fpg-n9-a9O"/>
                             <constraint firstItem="Pj4-Mi-C2m" firstAttribute="top" secondItem="Qah-32-OCc" secondAttribute="bottom" constant="5" id="ITb-8y-EA5"/>
+                            <constraint firstItem="vwT-S9-Zpk" firstAttribute="leading" secondItem="97C-rS-Rki" secondAttribute="leading" id="NAj-vi-8fV"/>
                             <constraint firstItem="vwT-S9-Zpk" firstAttribute="top" secondItem="Pj4-Mi-C2m" secondAttribute="bottom" constant="5" id="g9d-W0-Npr"/>
                             <constraint firstAttribute="trailing" secondItem="Qah-32-OCc" secondAttribute="trailing" constant="2" id="gAR-ZM-vXk"/>
                             <constraint firstItem="Qah-32-OCc" firstAttribute="leading" secondItem="97C-rS-Rki" secondAttribute="leading" constant="2" id="gDf-Mg-nRa"/>
                             <constraint firstItem="Qah-32-OCc" firstAttribute="centerX" secondItem="97C-rS-Rki" secondAttribute="centerX" id="jba-az-hgx"/>
                             <constraint firstItem="Pj4-Mi-C2m" firstAttribute="centerX" secondItem="97C-rS-Rki" secondAttribute="centerX" id="mvz-R6-Jgh"/>
+                            <constraint firstAttribute="trailing" secondItem="Pj4-Mi-C2m" secondAttribute="trailing" id="nQP-Rc-z6F"/>
                             <constraint firstItem="Qah-32-OCc" firstAttribute="top" secondItem="97C-rS-Rki" secondAttribute="top" constant="7" id="x1r-Tv-BFm"/>
+                            <constraint firstItem="Pj4-Mi-C2m" firstAttribute="leading" secondItem="97C-rS-Rki" secondAttribute="leading" id="zMc-d8-jlV"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -73,6 +77,11 @@
                 <constraint firstItem="97C-rS-Rki" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="k1L-HM-R1f"/>
             </constraints>
             <size key="customSize" width="137" height="134"/>
+            <connections>
+                <outlet property="cellContent" destination="vwT-S9-Zpk" id="Ia4-WA-iDm"/>
+                <outlet property="collImv" destination="Qah-32-OCc" id="7dI-En-ejB"/>
+                <outlet property="collTitle" destination="Pj4-Mi-C2m" id="SaD-Cc-mRo"/>
+            </connections>
             <point key="canvasLocation" x="-225.36231884057972" y="36.830357142857139"/>
         </collectionViewCell>
     </objects>
