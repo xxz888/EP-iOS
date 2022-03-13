@@ -56,6 +56,8 @@
 
 
     [self getMessage];
+    [self reloadUserInfo];
+
     if (MCModelStore.shared.isFirstLogin) {
         [self popFirstLogin];
         MCModelStore.shared.isFirstLogin= NO;
@@ -88,7 +90,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[self bgView] removeFromSuperview];
+    [self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:0];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,6 +103,11 @@
 
 
     
+    [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
+        SharedDefaults.configDic = okResponse[@"config"];
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    }];
     __weak typeof(self) weakSelf = self;
     self.mc_tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.mc_tableview.mj_header endRefreshing];
@@ -142,14 +149,19 @@
     
     self.cardEncyArray = [[NSMutableArray alloc]init];
     [self getCreditArticleList];
-    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-       
-    }];
+ 
 }
 
 - (void)clickKFAction
 {
     [self.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+}
+-(void)reloadUserInfo{
+    kWeakSelf(self)
+    [[MCModelStore shared] reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
+        [weakself.headerView.persionBtn sd_setImageWithURL:[NSURL URLWithString:userInfo.headImg] forState:0 placeholderImage:[UIImage imageNamed:@"pImv"]];
+
+    }];
 }
 - (void)getMessage {
     kWeakSelf(self)
@@ -273,7 +285,7 @@
     if (_bgView == nil) {
         _bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height+20)];
         
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,8, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height+20)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,10, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height+20)];
         titleLabel.text = @"首页";
         titleLabel.tag = 104;
         titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];

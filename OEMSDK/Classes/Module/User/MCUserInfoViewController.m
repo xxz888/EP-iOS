@@ -159,11 +159,12 @@
     
     if (indexPath.section == 0) {
         imv.hidden = NO;
-        
-        [imv sd_setImageWithURL:subTit placeholderImage:[UIImage mc_imageNamed:@"321"]];
+        cell.textLabel.text = @"";
+        [imv sd_setImageWithURL:subTit placeholderImage:[UIImage mc_imageNamed:@"pImv"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
         imv.hidden = YES;
+
         cell.detailTextLabel.text = subTit;
         if (indexPath.section == 1) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

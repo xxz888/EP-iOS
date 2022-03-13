@@ -25,7 +25,7 @@
             
             NSString *ss = bankDic[@"bank_name"];
     //        BANK_HXBANK
-            if ([ss containsString:name] || [name containsString:ss] || [MCBankStore likePercentByCompareOriginText:ss targetText:name] > 10) {
+            if ([ss containsString:name] || [name containsString:ss] ) {
                 localName = [NSString stringWithFormat:@"BANK_%@", bankDic[@"bank_acronym"]];
                 logo = [UIImage mc_imageNamed:localName];
                 backGround = [MCBankStore getBankThemeColorWithLogo:logo];

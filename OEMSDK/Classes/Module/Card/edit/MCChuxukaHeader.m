@@ -56,6 +56,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *fanmianImv;
 
 
+@property (nonatomic ,assign)NSInteger selectTag;
+
 @property(nonatomic,assign)BOOL isFanmian;
 @end
 
@@ -146,7 +148,8 @@
     
 }
 -(void)clickzhengmianImv:(id)tap{
-    
+    self.isFanmian = NO;
+
     UIViewController *current = MCLATESTCONTROLLER;
     __weak __typeof(self)weakSelf = self;
     UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -158,13 +161,11 @@
             return;
         }
         
-        self.isFanmian = NO;
 
         //调用身份证大小的相机
         DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         vc.imageblock = ^(UIImage *image) {
-            weakSelf.zhengmianImv.image = image;
             [self uploadBankImage:image];
         };
         [MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
@@ -192,7 +193,8 @@
 
 }
 -(void)clickfanmianImv:(id)tap{
-    
+    self.isFanmian = YES;
+
     
     
     UIViewController *current = MCLATESTCONTROLLER;
@@ -206,14 +208,12 @@
             return;
         }
         
-        self.isFanmian = YES;
 
         
         //调用身份证大小的相机
         DDPhotoViewController *vc = [[DDPhotoViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         vc.imageblock = ^(UIImage *image) {
-            weakSelf.fanmianImv.image = image;
             [self uploadBankImage:image];
         };
         [MCLATESTCONTROLLER presentViewController:vc animated:YES completion:nil];
@@ -248,15 +248,10 @@
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
     if ([type isEqualToString:@"public.image"]) {
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        [self uploadBankImage:image];
+
         
-        
-        if (self.isFanmian) {
-            weakSelf.fanmianImv.image = image;
-            [self uploadBankImage:image];
-        }else{
-            weakSelf.zhengmianImv.image = image;
-            [self uploadBankImage:image];
-        }
+       
      
         
         
@@ -608,9 +603,12 @@
     __weak __typeof(self)weakSelf = self;
     [MCSessionManager.shareManager mc_UPLOAD:@"/api/v1/player/upload/ORC" parameters:@{} images:@[image] remoteFields:@[@"bankFile"] imageNames:@[@"bankFile"] imageScale:0.1 imageType:nil ok:^(NSDictionary * _Nonnull resp) {
         if (resp[@"fileUrl"]) {
+        
             if (weakSelf.isFanmian) {
+                weakSelf.fanmianImv.image = image;
                 weakSelf.fanmianUrl = resp[@"fileUrl"];
             }else{
+                weakSelf.zhengmianImv.image = image;
                 weakSelf.zhengmianUrl = resp[@"fileUrl"];
                 kWeakSelf(self);
                 NSDictionary *param = @{

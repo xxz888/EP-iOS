@@ -34,7 +34,7 @@
 #import "KDWukaJifenViewController.h"
 #import "KDHomeHeaderCardCollectionViewCell.h"
 #import "KDXinYongKaViewController.h"
-
+#import "KDMineKehuViewController.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -51,7 +51,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *serverView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) SDCycleScrollView *cyView;
 
 @property (nonatomic, strong) NSMutableArray * collectDataArray;
 
@@ -84,7 +83,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+
     [self registerView];
     [self setUI];
     [self setSDCycleScrollView];
@@ -93,9 +92,9 @@
     
     
     [self requestCreditCard];
- 
         
 }
+
 -(void)registerView{
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -136,7 +135,27 @@
     maskLayer.path = maskPath.CGPath;
     self.serverView.layer.mask = maskLayer;
     
+    [self.banner2Imv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDXinYongKaViewController alloc] init] animated:YES];
+
+    }];
     
+    [self.four1View rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+    }];
+    [self.four2View rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+    }];
+    [self.four3View rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+    }];
+    [self.four4View rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCToast showMessage:@"暂未开放"];
+    }];
+    
+    [self.msgContentView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_notice_list];
+    }];
     
     self.contentView.layer.cornerRadius = 7;
     self.lineView.layer.cornerRadius = 2.3;
@@ -147,6 +166,8 @@
             self.callBack(661 - 128 + h);
         }
     };
+    
+  
 }
 -(void)setSDCycleScrollView{
     SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.msgView.bounds];
@@ -199,7 +220,7 @@
             { [MCToast showMessage:@"暂未开放"];}
                 break;
             //我的团队
-            case 400:{[MCToast showMessage:@"暂未开放"];}
+            case 400:{        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineKehuViewController alloc] init] animated:YES];}
                 break;
             //无卡积分
             case 401:{[MCLATESTCONTROLLER.navigationController pushViewController:[KDWukaJifenViewController new] animated:YES];}
@@ -379,10 +400,10 @@
     [cell.collImv sd_setImageWithURL:self.collectDataArray[indexPath.row][@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
     cell.collTitle.text = self.collectDataArray[indexPath.row][@"title"];
     cell.cellContent.text = self.collectDataArray[indexPath.row][@"describe"];
-    
+//
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.collectDataArray[indexPath.row][@"title"]];
-    cell.collImv.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
-    
+    //cell.collImv.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
+//
     
 //    //垂直分割线
 //    CGSize contentSize = self.collectionView.contentSize;
@@ -399,7 +420,13 @@
     
     return cell;
 }
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MCWebViewController *web = [[MCWebViewController alloc] init];
+    web.urlString = self.collectDataArray[indexPath.row][@"link"];
+    web.title =self.collectDataArray[indexPath.row][@"title"];
+    [MCLATESTCONTROLLER.navigationController pushViewController:web animated:YES];
+}
 //更多信用卡
 - (IBAction)moreCardAction:(id)sender {
     [MCLATESTCONTROLLER.navigationController pushViewController:[[KDXinYongKaViewController alloc] init] animated:YES];
@@ -439,6 +466,22 @@
 
 
 
+- (IBAction)persionAction:(id)sender {
+    if (MCModelStore.shared.shareLink) {
+        [MCPagingStore pagingURL:rt_share_single];
+
+    }else{
+        [MCSessionManager.shareManager mc_GET:@"/api/v1/player/user/propaganda/link" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+            if (resp[@"link"]) {
+                MCModelStore.shared.shareLink = resp[@"link"];
+                [MCPagingStore pagingURL:rt_share_single];
+
+            }
+          
+        }];
+    }
+
+}
 
 
 

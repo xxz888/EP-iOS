@@ -16,7 +16,7 @@
 #import "KDPayNewViewController.h"
 #import "KDSlotCardOrderInfoViewController.h"
 #import <JFTBindFace/JFTBindFace.h>
-//
+#import "KDTrandingRecordViewController.h"
 @interface KDGatheringViewController ()<UITextFieldDelegate,JFTBindFaceManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet QMUIButton *addCreditBtn;
@@ -87,7 +87,7 @@
 //    [self setNavigationBarTitle:@"快速收款" backgroundImage:[UIImage qmui_imageWithColor:[UIColor qmui_colorWithHexString:@"#FF9F58"]]];
 
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
+    [shareBtn setTitle:@"交易记录" forState:UIControlStateNormal];
     [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
@@ -225,35 +225,39 @@
 //    }];
 //}
 - (void)clickRightBtnAction{
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
 
     
     
-    if (self.whereCome == 1) {
-        MCWebViewController *web = [[MCWebViewController alloc] init];
-        web.urlString = SharedDefaults.configDic[@"config"][@"receivePaymentInstructionLink"];
-        web.title = @"快速收款使用说明";
-        [self.navigationController pushViewController:web animated:YES];
 
-    }
-    if (self.whereCome == 2) {
-        MCWebViewController *web = [[MCWebViewController alloc] init];
-      web.urlString = SharedDefaults.configDic[@"config"][@"quickPayInstructionLink"];
-      web.title = @"闪付使用说明";
-      [self.navigationController pushViewController:web animated:YES];
-
-
-    }
-    if (self.whereCome == 3) {
-        MCWebViewController *web = [[MCWebViewController alloc] init];
-      web.urlString = SharedDefaults.configDic[@"config"][@"facePayInstructionLink"];
-      web.title = @"刷脸付使用说明";
-      [self.navigationController pushViewController:web animated:YES];
-
-    }
 
     
     
     
+}
+- (IBAction)shiyongshuomingAction:(id)sender {
+        if (self.whereCome == 1) {
+            MCWebViewController *web = [[MCWebViewController alloc] init];
+            web.urlString = SharedDefaults.configDic[@"config"][@"receivePaymentInstructionLink"];
+            web.title = @"快速收款使用说明";
+            [self.navigationController pushViewController:web animated:YES];
+    
+        }
+        if (self.whereCome == 2) {
+            MCWebViewController *web = [[MCWebViewController alloc] init];
+          web.urlString = SharedDefaults.configDic[@"config"][@"quickPayInstructionLink"];
+          web.title = @"闪付使用说明";
+          [self.navigationController pushViewController:web animated:YES];
+    
+    
+        }
+        if (self.whereCome == 3) {
+            MCWebViewController *web = [[MCWebViewController alloc] init];
+          web.urlString = SharedDefaults.configDic[@"config"][@"facePayInstructionLink"];
+          web.title = @"刷脸付使用说明";
+          [self.navigationController pushViewController:web animated:YES];
+    
+        }
 }
 - (IBAction)hideKeyboard:(id)sender {
     [UIView animateWithDuration:0.5 animations:^{

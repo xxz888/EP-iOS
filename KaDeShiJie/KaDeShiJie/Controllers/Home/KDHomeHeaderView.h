@@ -17,6 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)btnAction:(QMUIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *bangkaView;
 @property (weak, nonatomic) IBOutlet UIButton *moreCard;
+@property (weak, nonatomic) IBOutlet UIButton *persionBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *banner2Imv;
+@property (weak, nonatomic) IBOutlet UIView *four1View;
+@property (weak, nonatomic) IBOutlet UIView *four2View;
+@property (weak, nonatomic) IBOutlet UIView *four3View;
+@property (weak, nonatomic) IBOutlet UIView *four4View;
+@property (nonatomic, strong) SDCycleScrollView *cyView;
 
 @end
 

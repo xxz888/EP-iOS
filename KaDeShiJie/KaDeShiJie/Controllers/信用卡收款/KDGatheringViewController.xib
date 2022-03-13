@@ -1025,6 +1025,14 @@
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Bh-6z-Z2F">
+                    <rect key="frame" x="166.5" y="552" width="81.5" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="使用说明"/>
+                    <connections>
+                        <action selector="shiyongshuomingAction:" destination="-1" eventType="touchUpInside" id="UXT-jf-XCf"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1035,6 +1043,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Kwr-YL-zdT" secondAttribute="trailing" id="EWn-F6-VdF"/>
                 <constraint firstItem="liw-FM-xcO" firstAttribute="centerY" secondItem="NRm-Bb-h4p" secondAttribute="centerY" id="Eom-vE-mCd"/>
                 <constraint firstAttribute="bottom" secondItem="Kwr-YL-zdT" secondAttribute="bottom" id="FD9-km-Nsi"/>
+                <constraint firstItem="0Bh-6z-Z2F" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="FTr-mz-EyJ"/>
                 <constraint firstItem="NRm-Bb-h4p" firstAttribute="top" secondItem="pG3-01-BQN" secondAttribute="bottom" constant="10" id="GHc-1a-zCa"/>
                 <constraint firstItem="dWE-xX-m91" firstAttribute="top" secondItem="NRm-Bb-h4p" secondAttribute="bottom" constant="10" id="Hdd-zQ-MZ9"/>
                 <constraint firstItem="nzv-uq-1vz" firstAttribute="height" secondItem="Kwr-YL-zdT" secondAttribute="height" multiplier="0.75" id="JTN-wg-XTa"/>
@@ -1062,8 +1071,9 @@
                 <constraint firstItem="jp1-AO-m6H" firstAttribute="leading" secondItem="pG3-01-BQN" secondAttribute="trailing" id="qHb-ql-Kem"/>
                 <constraint firstItem="pG3-01-BQN" firstAttribute="leading" secondItem="Gbt-hv-w7J" secondAttribute="leading" id="tGf-tb-aU4"/>
                 <constraint firstItem="NRm-Bb-h4p" firstAttribute="leading" secondItem="pG3-01-BQN" secondAttribute="leading" id="vxn-gc-M9T"/>
+                <constraint firstItem="0Bh-6z-Z2F" firstAttribute="top" secondItem="liw-FM-xcO" secondAttribute="bottom" constant="100" id="xBM-TQ-nPf"/>
             </constraints>
-            <point key="canvasLocation" x="-136" y="169"/>
+            <point key="canvasLocation" x="-303" y="106"/>
         </view>
     </objects>
     <resources>

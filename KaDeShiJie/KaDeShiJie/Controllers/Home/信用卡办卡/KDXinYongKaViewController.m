@@ -111,7 +111,7 @@
 {
     MCWebViewController *web = [[MCWebViewController alloc] init];
     web.urlString = self.dataArray[indexPath.row][@"link"];
-    web.title = @"";
+    web.title =self.dataArray[indexPath.row][@"title"];
     [self.navigationController pushViewController:web animated:YES];
 }
 //返回这个UICollectionView是否可以被选择

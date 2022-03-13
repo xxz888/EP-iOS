@@ -93,7 +93,7 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(mc_tableviewRefresh)];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareBtn setTitle:@"使用说明" forState:UIControlStateNormal];
+    [shareBtn setTitle:@"交易记录" forState:UIControlStateNormal];
     [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(clickRightBtnAction) forControlEvents:UIControlEventTouchUpInside];
     shareBtn.titleLabel.font = LYFont(13);
@@ -102,10 +102,9 @@
 
 }
 - (void)clickRightBtnAction{
-    MCWebViewController *web = [[MCWebViewController alloc] init];
-  web.urlString = SharedDefaults.configDic[@"config"][@"repaymentInstructionLink"];
-  web.title = @"还款使用说明";
-  [self.navigationController pushViewController:web animated:YES];
+    [MCLATESTCONTROLLER.navigationController pushViewController:[KDTrandingRecordViewController new] animated:YES];
+
+
 }
 - (void)setupNavigationItems {
     [super setupNavigationItems];
@@ -115,6 +114,12 @@
 //
 //    self.navigationItem.rightBarButtonItem = rightItem;
 //    self.menuView.sourceBarItem = rightItem;
+}
+- (IBAction)shiyongshuomingAction:(id)sender {
+        MCWebViewController *web = [[MCWebViewController alloc] init];
+      web.urlString = SharedDefaults.configDic[@"config"][@"repaymentInstructionLink"];
+      web.title = @"还款使用说明";
+      [self.navigationController pushViewController:web animated:YES];
 }
 -(void)mc_tableviewRefresh{
     [self getDirectCardData];

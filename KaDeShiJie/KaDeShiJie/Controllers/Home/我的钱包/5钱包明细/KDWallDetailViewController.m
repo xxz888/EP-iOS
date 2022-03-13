@@ -96,7 +96,7 @@
     }else if([dic[@"event"] isEqualToString:@"RepaymentSurplusFee"]) {
         eventTag = @"还款返现";
     }else if([dic[@"event"] isEqualToString:@"SameLevelCommission"]) {
-        eventTag = @"九星平级分润";
+        eventTag = @"平级分润";
     }
     
     

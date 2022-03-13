@@ -5,11 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "我的选中@2x.png",
+      "filename" : "icon_mine_select @2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icon_mine_select @3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
