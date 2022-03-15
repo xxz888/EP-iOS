@@ -24,6 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *four3View;
 @property (weak, nonatomic) IBOutlet UIView *four4View;
 @property (nonatomic, strong) SDCycleScrollView *cyView;
+@property (weak, nonatomic) IBOutlet UIStackView *hidden1View;
+@property (weak, nonatomic) IBOutlet UIImageView *hidden2View;
+@property (weak, nonatomic) IBOutlet MCBannerView *hidden3View;
+@property (weak, nonatomic) IBOutlet UIView *hidden4View;
+@property (weak, nonatomic) IBOutlet UIView *hidden5View;
+@property (weak, nonatomic) IBOutlet UIImageView *hidden6View;
+@property (weak, nonatomic) IBOutlet UIView *hidden7View;
 
 @end
 

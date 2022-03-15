@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KDHomeHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="1120"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="928"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-2N-ECy">
@@ -63,7 +63,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wem-cK-bkb">
-                    <rect key="frame" x="14" y="260" width="347" height="826"/>
+                    <rect key="frame" x="14" y="260" width="347" height="634"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NJr-rh-seA">
                             <rect key="frame" x="0.0" y="0.0" width="347" height="80"/>
@@ -742,13 +742,20 @@
                 <outlet property="four2View" destination="GUj-bI-bV3" id="cJ2-xl-4dp"/>
                 <outlet property="four3View" destination="T2B-c1-ZRu" id="adi-HB-Zh2"/>
                 <outlet property="four4View" destination="axB-Oh-4DZ" id="R4b-Ta-xa7"/>
+                <outlet property="hidden1View" destination="53S-AB-OsS" id="fAA-mV-wwN"/>
+                <outlet property="hidden2View" destination="31Z-k5-SJS" id="rZr-LJ-L7O"/>
+                <outlet property="hidden3View" destination="yqH-r9-oqj" id="tuT-0N-LMc"/>
+                <outlet property="hidden4View" destination="AXh-eU-Tok" id="KER-sB-hk6"/>
+                <outlet property="hidden5View" destination="MyN-fM-ssj" id="qQT-bm-UYX"/>
+                <outlet property="hidden6View" destination="yTc-9i-iZd" id="Rgr-PO-aSw"/>
+                <outlet property="hidden7View" destination="5Co-nI-j5u" id="9lQ-dg-3VK"/>
                 <outlet property="moreCard" destination="GK7-N1-wM3" id="uQt-B8-2ry"/>
                 <outlet property="msgContentView" destination="qdL-hW-TO5" id="9AP-v7-Oxi"/>
                 <outlet property="msgView" destination="npI-aP-zBa" id="GQZ-rV-zHf"/>
                 <outlet property="persionBtn" destination="4hJ-YC-4iu" id="PZo-Gw-44F"/>
                 <outlet property="serverView" destination="5j6-W0-S2n" id="6S3-HO-dmR"/>
             </connections>
-            <point key="canvasLocation" x="-1380" y="803"/>
+            <point key="canvasLocation" x="-1380.4347826086957" y="738.61607142857144"/>
         </view>
     </objects>
     <resources>

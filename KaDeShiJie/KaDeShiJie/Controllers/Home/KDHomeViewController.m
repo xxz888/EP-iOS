@@ -56,6 +56,7 @@
 
 
     [self getMessage];
+    [self getCreditArticleList];
     [self reloadUserInfo];
 
     if (MCModelStore.shared.isFirstLogin) {
@@ -114,13 +115,16 @@
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
         [weakSelf getMessage];
+        [weakSelf getCreditArticleList];
+        [weakSelf reloadUserInfo];
+
     }];
     
     self.mc_tableview.mj_footer = nil;
 
 
     self.mc_tableview.tableHeaderView = self.headerView;
-    self.mc_tableview.tableHeaderView.ly_height = 1155;
+    self.mc_tableview.tableHeaderView.ly_height = BCFI.is_acc ? 1155: KScreenHeight;
     self.mc_tableview.backgroundColor = [UIColor clearColor];
     [self.mc_tableview registerNib:[UINib nibWithNibName:@"KDHomeCardKnowledgeTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDHomeCardKnowledgeTableViewCell"];
     self.mc_tableview.delegate = self;
@@ -148,7 +152,6 @@
     
     
     self.cardEncyArray = [[NSMutableArray alloc]init];
-    [self getCreditArticleList];
  
 }
 
@@ -227,14 +230,17 @@
     }];
 }
 - (void)getCreditArticleList {
-    kWeakSelf(self)
-    NSString * url1 = [NSString stringWithFormat:@"/api/v1/player/creditArticle/list?articleType=%@",@"CardEncy"];
-    [self.cardEncyArray removeAllObjects];
-    [MCLATESTCONTROLLER.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-        [weakself.cardEncyArray addObjectsFromArray:resp];
-        [weakself.mc_tableview reloadData];
-        
-    }];
+    if (BCFI.is_acc) {
+        kWeakSelf(self)
+        NSString * url1 = [NSString stringWithFormat:@"/api/v1/player/creditArticle/list?articleType=%@",@"CardEncy"];
+        [self.cardEncyArray removeAllObjects];
+        [MCLATESTCONTROLLER.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
+            [weakself.cardEncyArray addObjectsFromArray:resp];
+            [weakself.mc_tableview reloadData];
+            
+        }];
+    }
+
 }
 
 -(void)messageAlert1:(NSString *)title content:(NSString *)content{

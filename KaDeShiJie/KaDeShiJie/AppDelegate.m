@@ -58,8 +58,8 @@
 - (void)setupApp {
     MCLog(@"配置app基本信息");
 //    SharedDefaults.host = @"https://api.flyaworld.com";
-//    SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
-    SharedDefaults.host = @"https://api.paywooka.com";
+      SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
+//    SharedDefaults.host = @"https://api.paywooka.com";
 
     SharedDefaults.deviceid = [UIDevice identifierByKeychain];
     /* Require，必填 */
@@ -67,6 +67,7 @@
     BCFI.key_jpush = @"ca5246c0e40eaf60a38794cd";
     BCFI.key_meiqia = @"1c392b4bf42c4c4988792714636ad6f5";
     BCFI.key_dns = @"112161";
+    BCFI.is_acc = NO;
     BCFI.color_main = [UIColor qmui_colorWithHexString:@"#FC9B33"];//7198ff
     BCFI.image_logo = [UIImage imageNamed:@"logo"];
     BCFI.image_login_logo = [UIImage imageNamed:@"login_logo"];

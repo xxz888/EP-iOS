@@ -106,29 +106,61 @@
         btn.imagePosition = QMUIButtonImagePositionTop;
     }
     
-    NSArray *titleArray = @[@"智能管理", @"快捷收款", @"空卡还款", @"极速办卡"];
-    for (int i = 0; i < 4; i++) {
-        QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
-        btn.imagePosition = QMUIButtonImagePositionTop;
-        [btn setTitle:titleArray[i] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom_%d", i]] forState:UIControlStateNormal];
-    }
     
-    NSArray *titleArray1 = @[@"小额闪付", @"刷脸付", @"手机POS", @"支付宝收款"];
-    for (int i = 0; i < 4; i++) {
-        QMUIButton *btn = [self.cententBottomView viewWithTag: 300 + i];
-        btn.imagePosition = QMUIButtonImagePositionTop;
-        [btn setTitle:titleArray1[i] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom1_%d", i]] forState:UIControlStateNormal];
+    if (BCFI.is_acc) {
+        NSArray *titleArray = @[@"智能管理", @"快捷收款", @"空卡还款", @"极速办卡"];
+        for (int i = 0; i < 4; i++) {
+            QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
+            btn.imagePosition = QMUIButtonImagePositionTop;
+            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom_%d", i]] forState:UIControlStateNormal];
+        }
+        
+        NSArray *titleArray1 = @[@"小额闪付", @"刷脸付", @"手机POS", @"支付宝收款"];
+        for (int i = 0; i < 4; i++) {
+            QMUIButton *btn = [self.cententBottomView viewWithTag: 300 + i];
+            btn.imagePosition = QMUIButtonImagePositionTop;
+            [btn setTitle:titleArray1[i] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom1_%d", i]] forState:UIControlStateNormal];
+        }
+        
+        NSArray *titleArray2 = @[@"我的团队", @"無卡积分"];
+        for (int i = 0; i < 2; i++) {
+            QMUIButton *btn = [self.cententBottomView1 viewWithTag: 400 + i];
+            btn.imagePosition = QMUIButtonImagePositionTop;
+            [btn setTitle:titleArray2[i] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom2_%d", i]] forState:UIControlStateNormal];
+        }
+        
+    }else{
+        NSArray *titleArray = @[@"水费", @"电费", @"燃气费", @"有线电视"];
+        for (int i = 0; i < 4; i++) {
+            QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
+            btn.imagePosition = QMUIButtonImagePositionTop;
+            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottomA_%d", i]] forState:UIControlStateNormal];
+        }
+        
+        NSArray *titleArray1 = @[@"交通罚款", @"ETC缴费", @"游戏点卡", @"极速办卡"];
+        for (int i = 0; i < 4; i++) {
+            QMUIButton *btn = [self.cententBottomView viewWithTag: 300 + i];
+            btn.imagePosition = QMUIButtonImagePositionTop;
+            [btn setTitle:titleArray1[i] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottomB_%d", i]] forState:UIControlStateNormal];
+        }
+        
+        NSArray *titleArray2 = @[@"卡包", @"账单管理"];
+        for (int i = 0; i < 2; i++) {
+            QMUIButton *btn = [self.cententBottomView1 viewWithTag: 400 + i];
+            btn.imagePosition = QMUIButtonImagePositionTop;
+            [btn setTitle:titleArray2[i] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottomC_%d", i]] forState:UIControlStateNormal];
+        }
+        
     }
+
     
-    NSArray *titleArray2 = @[@"我的团队", @"無卡积分"];
-    for (int i = 0; i < 2; i++) {
-        QMUIButton *btn = [self.cententBottomView1 viewWithTag: 400 + i];
-        btn.imagePosition = QMUIButtonImagePositionTop;
-        [btn setTitle:titleArray2[i] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"kd_home_bottom2_%d", i]] forState:UIControlStateNormal];
-    }
+    
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.serverView.bounds byRoundingCorners: UIRectCornerTopLeft | UIRectCornerBottomLeft  cornerRadii:CGSizeMake(5,5)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.serverView.bounds;
@@ -167,7 +199,7 @@
         }
     };
     
-  
+//     self.hidden2View.hidden = self.hidden3View.hidden = self.hidden4View.hidden = self.hidden5View.hidden = self.hidden6View.hidden = self.hidden7View.hidden = !BCFI.is_acc;
 }
 -(void)setSDCycleScrollView{
     SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.msgView.bounds];
@@ -220,7 +252,7 @@
             { [MCToast showMessage:@"暂未开放"];}
                 break;
             //我的团队
-            case 400:{        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineKehuViewController alloc] init] animated:YES];}
+            case 400:{[MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineKehuViewController alloc] init] animated:YES];}
                 break;
             //无卡积分
             case 401:{[MCLATESTCONTROLLER.navigationController pushViewController:[KDWukaJifenViewController new] animated:YES];}

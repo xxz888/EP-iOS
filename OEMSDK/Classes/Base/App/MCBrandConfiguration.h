@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *brand_name;
 //公司名称，默认是 brand_name
 @property (nonatomic, copy) NSString *brand_company;
+@property (nonatomic, assign ) BOOL is_acc;
 
 #pragma mark - 开关
 //是否有银行卡OCR,默认NO
