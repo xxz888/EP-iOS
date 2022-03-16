@@ -3062,6 +3062,8 @@
 		6E621409DCEF4D6355CFC739ACB8466B /* Tool.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Tool.xcassets; path = Assets/Tool.xcassets; sourceTree = "<group>"; };
 		6EB3C100EFF0C99A3469068FE835A48A /* MCMessageController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCMessageController.h; sourceTree = "<group>"; };
 		6EB7482C08FDEDD9C8D294F785B3D58A /* KDPhoneAlertContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KDPhoneAlertContent.m; sourceTree = "<group>"; };
+		6F5CEA2F27E178BA00451575 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AlipaySDK.bundle; path = Vendor/AlipaySDK.bundle; sourceTree = "<group>"; };
+		6F5CEA3027E178BA00451575 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = Vendor/AlipaySDK.framework; sourceTree = "<group>"; };
 		6F63FE434086F99C37B5757CEDA760F2 /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
 		6F87563415E803321EF1B70C4A5CB2E8 /* WMDragView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WMDragView.h; sourceTree = "<group>"; };
 		6FA66AA40F63F9F9991EA0FC8E809B88 /* SDMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDMemoryCache.m; path = SDWebImage/Core/SDMemoryCache.m; sourceTree = "<group>"; };
@@ -5319,6 +5321,8 @@
 		383C4DFCA29F4A8A84E4A740A08E3692 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F5CEA2F27E178BA00451575 /* AlipaySDK.bundle */,
+				6F5CEA3027E178BA00451575 /* AlipaySDK.framework */,
 				6FDB826827D73BAA005EFCF5 /* Bugly.framework */,
 				56B458CB6748F6E1264DCBFAFA43CA9B /* liveness.framework */,
 				356FC36264D2778820A9A5BE2813E2CE /* opencv2.framework */,

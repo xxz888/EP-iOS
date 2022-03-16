@@ -15,4 +15,5 @@ target 'KaDeShiJie' do
   project 'KaDeShiJie/KaDeShiJie'
   pod 'OEMSDK', :path => './OEMSDK'
   pod 'ZZCircleProgress'
+  pod  'AlipaySDK-iOS'
 end

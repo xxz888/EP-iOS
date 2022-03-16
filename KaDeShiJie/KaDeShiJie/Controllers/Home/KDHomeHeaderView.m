@@ -108,7 +108,7 @@
     
     
     if (BCFI.is_acc) {
-        NSArray *titleArray = @[@"智能管理", @"快捷收款", @"空卡还款", @"极速办卡"];
+        NSArray *titleArray = @[@"智能还款", @"快捷收款", @"空卡还款", @"极速办卡"];
         for (int i = 0; i < 4; i++) {
             QMUIButton *btn = [self.centerView viewWithTag: 200 + i];
             btn.imagePosition = QMUIButtonImagePositionTop;

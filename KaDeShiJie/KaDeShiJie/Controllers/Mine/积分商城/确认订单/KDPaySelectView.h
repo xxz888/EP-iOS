@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDPaySelectView : UIView
 @property (weak, nonatomic) IBOutlet UIView *xinyongView;
 @property (weak, nonatomic) IBOutlet UIView *zhuanzhangView;
+@property (weak, nonatomic) IBOutlet UIView *zhifubaoView;
 -(void)showSelectView;
 
 @property(nonatomic,copy)ClickPayBlock block;

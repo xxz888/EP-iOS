@@ -13,6 +13,7 @@
 #import "KDPayNewViewControllerShop.h"
 #import "KDPaySelectView.h"
 #import "KDPayZhuanZhangView.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface KDConfirmViewController ()
 @property (nonatomic ,strong)NSDictionary * adressDic;
@@ -121,6 +122,10 @@
         if (index == 2) {
             [self alertZhuanZhang];
         }
+        
+        if (index == 3) {
+            [self alertAliPay];
+        }
     };
 }
 //请求银行卡
@@ -173,6 +178,31 @@
   
     
  
+}
+
+-(void)alertAliPay{
+    
+    [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/shop/order/aliPay" parameters:
+     @{ @"shopReceiptAddressId":[NSString stringWithFormat:@"%@",self.adressDic[@"id"]],
+        @"sku":[NSString stringWithFormat:@"%@",self.goodDic[@"sku"]] }
+       ok:^(NSDictionary * _Nonnull resp) {
+        
+        NSString * aliPayRes = [NSString stringWithFormat:@"%@",resp[@"aliPayRes"]];
+        
+        if (aliPayRes != nil) {
+            NSString *appScheme = @"wukashidaiAliPay";
+            
+            [[AlipaySDK defaultService] payOrder:aliPayRes fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                NSLog(@"reslut = %@",resultDic);
+            }];
+        }
+            
+    
+    } other:^(NSDictionary * _Nonnull resp) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 //下单
 -(void)shopOrder{

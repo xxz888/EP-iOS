@@ -25,6 +25,8 @@
 #import "KDCommonAlert.h"
 #import "liveness/Liveness.h"
 #import <Bugly/Bugly.h>
+#import <AlipaySDK/AlipaySDK.h>
+
 @interface MCAppDelegate ()<JPUSHRegisterDelegate>
 
 /// 返回h5悬浮按钮
@@ -128,14 +130,7 @@
   NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    //极光
-    [JANALYTICSService handleUrl:url];
-    [JSHAREService handleOpenUrl:url];
-    
-    
-    return YES;
-}
+
 #pragma mark - Notification
 /// 长时间未操作
 - (void)applicationDidTimeout:(NSDictionary *)info {
@@ -191,6 +186,32 @@
       [JPUSHService handleRemoteNotification:userInfo];
     }
     completionHandler();  // 系统要求执行这个方法
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+    }
+    return YES;
+}
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    //极光
+    [JANALYTICSService handleUrl:url];
+    [JSHAREService handleOpenUrl:url];
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+    }
+    return YES;
 }
 
 

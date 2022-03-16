@@ -303,6 +303,7 @@
 		6F4DB6BB27DB199D00B3D33E /* KDHtmlWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4DB6BA27DB199D00B3D33E /* KDHtmlWebViewController.m */; };
 		6F5C0283271EAE220059A557 /* KDGuanFangSheQun.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */; };
 		6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */; };
+		6F5CEA3227E1813C00451575 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F5CEA3127E1813C00451575 /* AlipaySDK.framework */; };
 		6F6951AC27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6951AA27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.m */; };
 		6F6951AD27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6951AB27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib */; };
 		6F6951B127D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6951AF27D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.m */; };
@@ -822,6 +823,7 @@
 		6F5C0281271EAE220059A557 /* KDGuanFangSheQun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGuanFangSheQun.h; sourceTree = "<group>"; };
 		6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGuanFangSheQun.m; sourceTree = "<group>"; };
 		6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDGuanFangSheQun.xib; sourceTree = "<group>"; };
+		6F5CEA3127E1813C00451575 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = ../OEMSDK/Vendor/AlipaySDK.framework; sourceTree = "<group>"; };
 		6F6951A927D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeHeaderCardCollectionViewCell.h; sourceTree = "<group>"; };
 		6F6951AA27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeHeaderCardCollectionViewCell.m; sourceTree = "<group>"; };
 		6F6951AB27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeHeaderCardCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -893,6 +895,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5CEA3227E1813C00451575 /* AlipaySDK.framework in Frameworks */,
 				6F403A1827D73D47001ED9BA /* Bugly.framework in Frameworks */,
 				6FABF12E27857D2C0026BE32 /* libc++.tbd in Frameworks */,
 				6F42B50227D73A19008C213F /* libz.tbd in Frameworks */,
@@ -1715,6 +1718,7 @@
 		59014916EA55B68190DAD68A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F5CEA3127E1813C00451575 /* AlipaySDK.framework */,
 				6F403A1727D73D47001ED9BA /* Bugly.framework */,
 				6F42B50127D73A19008C213F /* libz.tbd */,
 				6F42B4FF27D73A0F008C213F /* Security.framework */,
@@ -2066,7 +2070,7 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = SS001;
 				TargetAttributes = {
 					1BC5E3932503404C0064CA30 = {
@@ -2522,6 +2526,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2580,6 +2585,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2627,10 +2633,11 @@
 					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools/livingBody",
 					"$(PROJECT_DIR)/KaDeShiJie/Controllers/livingBody",
 					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools",
+					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools/iOS_SDK",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KaDeShiJie/PrefixHeader.pch";
 				INFOPLIST_FILE = KaDeShiJie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2770,10 +2777,11 @@
 					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools/livingBody",
 					"$(PROJECT_DIR)/KaDeShiJie/Controllers/livingBody",
 					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools",
+					"$(PROJECT_DIR)/KaDeShiJie/Controllers/Tools/iOS_SDK",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KaDeShiJie/PrefixHeader.pch";
 				INFOPLIST_FILE = KaDeShiJie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -68,7 +68,7 @@
 //    });
     
     [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
-        SharedDefaults.configDic = okResponse[@"config"];
+        SharedDefaults.configDic = okResponse;
     } other:^(NSDictionary * _Nonnull resp) {
         
     }];

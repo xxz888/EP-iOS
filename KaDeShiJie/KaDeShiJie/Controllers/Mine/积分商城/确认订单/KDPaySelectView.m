@@ -40,6 +40,9 @@
     
     UITapGestureRecognizer* tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickzhuanzhangView:)];
     [self.zhuanzhangView addGestureRecognizer:tap1];
+    
+    UITapGestureRecognizer* tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickzhifubaoView:)];
+    [self.zhifubaoView addGestureRecognizer:tap2];
 }
 -(void)clickXinyongView:(id)tap{
     [self.modal hide:YES];
@@ -55,5 +58,11 @@
         self.block(2);
     }
 }
+-(void)clickzhifubaoView:(id)tap{
+    [self.modal hide:YES];
 
+    if (self.block) {
+        self.block(3);
+    }
+}
 @end
