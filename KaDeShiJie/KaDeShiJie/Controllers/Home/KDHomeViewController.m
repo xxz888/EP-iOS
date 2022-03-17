@@ -53,12 +53,12 @@
     [super viewWillAppear:animated];
     
     [self updateNavigationBarAppearance];
-
+    BOOL acc = [SharedDefaults.phone isEqualToString:@"13383773800"];;
 
     [self getMessage];
     [self getCreditArticleList];
     [self reloadUserInfo];
-
+    [self.mc_tableview reloadData];
     if (MCModelStore.shared.isFirstLogin) {
         [self popFirstLogin];
         MCModelStore.shared.isFirstLogin= NO;
@@ -102,7 +102,7 @@
     }
     [self setNavigationBarHidden];
 
-
+    
     
     [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/init" parameters:nil ok:^(NSDictionary * _Nonnull okResponse) {
         SharedDefaults.configDic = okResponse;
@@ -121,10 +121,11 @@
     }];
     
     self.mc_tableview.mj_footer = nil;
-
+    
+    BOOL is_acc = [SharedDefaults.phone isEqualToString:@"13383773800"];
 
     self.mc_tableview.tableHeaderView = self.headerView;
-    self.mc_tableview.tableHeaderView.ly_height = BCFI.is_acc ? 1155: 800;
+    self.mc_tableview.tableHeaderView.ly_height = is_acc ? 800: 1155;
     self.mc_tableview.backgroundColor = [UIColor clearColor];
     [self.mc_tableview registerNib:[UINib nibWithNibName:@"KDHomeCardKnowledgeTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDHomeCardKnowledgeTableViewCell"];
     self.mc_tableview.delegate = self;
@@ -230,7 +231,11 @@
     }];
 }
 - (void)getCreditArticleList {
-    if (BCFI.is_acc) {
+    BOOL is_acc = [SharedDefaults.phone isEqualToString:@"13383773800"];;
+
+    if (is_acc) {
+      
+    }else{
         kWeakSelf(self)
         NSString * url1 = [NSString stringWithFormat:@"/api/v1/player/creditArticle/list?articleType=%@",@"CardEncy"];
         [self.cardEncyArray removeAllObjects];

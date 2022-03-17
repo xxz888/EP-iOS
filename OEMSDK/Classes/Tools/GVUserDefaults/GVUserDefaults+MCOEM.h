@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy)  NSString *deviceid;
 
+@property(nonatomic, assign) BOOL is_acc;
+
 @property(nonatomic, assign) BOOL not_first_launch;
 @property(nonatomic, assign) BOOL not_voice_notify;//语音播报
 @property(nonatomic, assign) BOOL not_auto_logonin; //自动登录
