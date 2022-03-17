@@ -59,7 +59,7 @@
 - (void)requestData {
     NSDictionary *param = @{@"lower_level":@"1",    //0-所有，1-直推
                             @"grade":self.model.grade,
-                            @"page":@(self.page),
+                            @"page":@(self.page*20),
                             @"size":@"20"};
     __weak __typeof(self)weakSelf = self;
     [self.sessionManager mc_POST:[NSString stringWithFormat:@"/user/app/info/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {

@@ -152,7 +152,7 @@
     [params setValue:self.queryType forKey:@"queryType"];
     [params setValue:time forKey:@"queryDate"];
     [params setValue:self.level forKey:@"level"];
-    [params setValue:NSIntegerToNSString(self.page) forKey:@"page"];
+    [params setValue:NSIntegerToNSString(self.page*20) forKey:@"page"];
     [params setValue:@"20" forKey:@"size"];
     kWeakSelf(self);
     [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/detail" parameters:params ok:^(NSDictionary * _Nonnull resp) {

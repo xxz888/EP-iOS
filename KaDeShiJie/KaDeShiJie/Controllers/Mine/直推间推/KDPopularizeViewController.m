@@ -73,7 +73,7 @@
         [dic setValue:@"Diamond" forKey:@"level"];
     }
     
-    [dic setValue:@(self.page) forKey:@"current"];
+    [dic setValue:@(self.page*20) forKey:@"current"];
     [dic setValue:@"20" forKey:@"size"];
     [self.sessionManager mc_GET:url1 parameters:dic ok:^(NSDictionary * _Nonnull resp) {
         

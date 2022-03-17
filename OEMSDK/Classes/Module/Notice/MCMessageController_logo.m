@@ -75,7 +75,7 @@
 
 #pragma mark - Actions
 - (void)requestPerson {
-    NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
+    NSDictionary *param = @{@"page":@(self.page*20),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
     [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         if (weakSelf.page == 0) {
@@ -91,7 +91,7 @@
     }];
 }
 - (void)requestPlatform {
-    NSDictionary *param = @{@"page":@(self.page),@"size":@"20"};
+    NSDictionary *param = @{@"page":@(self.page*20),@"size":@"20"};
     __weak __typeof(self)weakSelf = self;
     [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/user/app/jpush/history/brand/%@",TOKEN] parameters:param ok:^(NSDictionary * _Nonnull resp) {
         if (weakSelf.page == 0) {

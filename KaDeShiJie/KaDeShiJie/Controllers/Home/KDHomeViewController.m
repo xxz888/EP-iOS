@@ -124,7 +124,7 @@
 
 
     self.mc_tableview.tableHeaderView = self.headerView;
-    self.mc_tableview.tableHeaderView.ly_height = BCFI.is_acc ? 1155: KScreenHeight;
+    self.mc_tableview.tableHeaderView.ly_height = BCFI.is_acc ? 1155: 800;
     self.mc_tableview.backgroundColor = [UIColor clearColor];
     [self.mc_tableview registerNib:[UINib nibWithNibName:@"KDHomeCardKnowledgeTableViewCell" bundle:nil] forCellReuseIdentifier:@"KDHomeCardKnowledgeTableViewCell"];
     self.mc_tableview.delegate = self;

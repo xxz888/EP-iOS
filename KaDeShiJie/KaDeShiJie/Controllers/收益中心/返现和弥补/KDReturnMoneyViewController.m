@@ -104,7 +104,7 @@
     [params setValue:@"5" forKey:@"queryType"];
     [params setValue:self.time forKey:@"queryDate"];
     [params setValue:@"1" forKey:@"level"];
-    [params setValue:@(self.page) forKey:@"page"];
+    [params setValue:@(self.page*20) forKey:@"page"];
     [params setValue:@(20) forKey:@"size"];
 
     [self.sessionManager mc_POST:@"/transactionclear/app/query/profit/detail" parameters:params ok:^(NSDictionary * _Nonnull resp) {

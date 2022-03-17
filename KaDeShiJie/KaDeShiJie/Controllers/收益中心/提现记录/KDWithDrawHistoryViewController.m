@@ -79,7 +79,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:self.queryType forKey:@"queryType"];
     [params setValue:@(100) forKey:@"size"];
-    [params setValue:@(self.page) forKey:@"page"];
+    [params setValue:@(self.page*20) forKey:@"page"];
     if (self.page == 0) {
         [self.mc_tableview.mj_footer resetNoMoreData];
     }

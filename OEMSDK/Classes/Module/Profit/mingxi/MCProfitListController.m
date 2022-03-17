@@ -163,7 +163,7 @@
 - (void)requstFenrun {
     NSDictionary *param = @{@"userid":SharedUserInfo.userid,
                             @"size":@"20",
-                            @"page":@(self.page),
+                            @"page":@(self.page*20),
                             @"start_time":self.startTime ?: @"",
                             @"end_time":self.endTime ?: @""
     };
@@ -189,7 +189,7 @@
 - (void)requestFanyong {
     NSDictionary *param = @{@"getphone":SharedUserInfo.phone,
                             @"size":@"20",
-                            @"page":@(self.page),
+                            @"page":@(self.page*20),
                             @"strTime":self.startTime ?: @"",
                             @"endTime":self.endTime ?: @""
     };

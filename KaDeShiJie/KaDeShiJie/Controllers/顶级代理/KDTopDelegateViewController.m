@@ -127,7 +127,7 @@
     if (self.search) {
         [params setValue:self.search forKey:@"text"];
     }
-    [params setValue:@(self.page) forKey:@"page"];
+    [params setValue:@(self.page*20) forKey:@"page"];
     [params setValue:@(100) forKey:@"rows"];
     kWeakSelf(self);
     

@@ -35,6 +35,8 @@
 #import "KDHomeHeaderCardCollectionViewCell.h"
 #import "KDXinYongKaViewController.h"
 #import "KDMineKehuViewController.h"
+#import "KDPayFeesViewController.h"
+
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -199,7 +201,7 @@
         }
     };
     
-//     self.hidden2View.hidden = self.hidden3View.hidden = self.hidden4View.hidden = self.hidden5View.hidden = self.hidden6View.hidden = self.hidden7View.hidden = !BCFI.is_acc;
+     self.hidden3View.hidden = self.hidden4View.hidden = self.hidden5View.hidden = self.hidden6View.hidden = self.hidden7View.hidden = !BCFI.is_acc;
 }
 -(void)setSDCycleScrollView{
     SDCycleScrollView *cyView = [[SDCycleScrollView alloc] initWithFrame:self.msgView.bounds];
@@ -224,6 +226,23 @@
     }];
 }
 - (IBAction)btnAction:(QMUIButton *)sender {
+    if (!BCFI.is_acc) {
+        if (sender.tag == 300 || sender.tag == 301) {
+            [MCToast showMessage:@"暂时请至12123APP缴费"];
+            return;
+        }
+        if (sender.tag == 400) {
+            [MCLATESTCONTROLLER.navigationController pushViewController:[KDXinYongKaViewController new] animated:YES];
+            return;
+        }
+        if (sender.tag == 401) {
+            
+        }
+        KDPayFeesViewController * vc = [[KDPayFeesViewController alloc]init];
+        vc.tag = sender.tag;
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+        return;
+    }
         switch (sender.tag) {
             // 智能管理
             case 200:{[self zhinenghuankuan];}

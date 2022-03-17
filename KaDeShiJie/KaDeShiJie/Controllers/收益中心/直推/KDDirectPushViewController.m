@@ -113,7 +113,7 @@
 - (void)getData:(BOOL)cleanData {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:self.level forKey:@"level"];
-    [params setValue:@(self.page) forKey:@"page"];
+    [params setValue:@(self.page*20) forKey:@"page"];
     [params setValue:@(20) forKey:@"size"];
     [params setValue:self.status forKey:@"status"];
     if (self.condition.length != 0) {
