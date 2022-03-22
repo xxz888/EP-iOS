@@ -7,7 +7,6 @@
 //
 
 #import "MCUserInfoViewController.h"
-#import "MCBindALIViewController.h"
 @interface MCUserInfoViewController () <QMUITableViewDataSource, QMUITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic, strong) NSArray *dataArray;

@@ -148,7 +148,6 @@
 #import "MCSettingViewController.h"
 #import "MCOrderListController.h"
 #import "MCServiceController.h"
-#import "MCBalanceController.h"
 #import "MCProfitController.h"
 #import "MCTeamController.h"
 #import "MCVideoController.h"
@@ -177,8 +176,6 @@
 #import "MCHomeServiceViewController.h"
 
 
-#import "KDPayJianQuanViewController.h"
-#import "KDTTFJiaoYiViewController.h"
 #import "MCLiuYanBanViewController.h"
 #import "KDGuidePageManager.h"
 

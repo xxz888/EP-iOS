@@ -168,10 +168,7 @@
         return [MCProfitListController new];
     }];
     
-    #pragma mark - 余额
-    [MGJRouter registerURLPattern:rt_balance_overview toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCBalanceController new];
-    }];
+ 
     
     #pragma mark - 费率
     [MGJRouter registerURLPattern:rt_rate_myrate toObjectHandler:^id(NSDictionary *routerParameters) {
@@ -219,20 +216,7 @@
     [MGJRouter registerURLPattern:rt_user_homeService toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCHomeServiceViewController new];
     }];
-    #pragma mark - 统统鉴权
-    [MGJRouter registerURLPattern:rt_card_jianquan toObjectHandler:^id(NSDictionary *routerParameters) {
-        NSDictionary *info = routerParameters[MGJRouterParameterUserInfo];
-        MCBankCardModel * cardModel = info[@"param"];
-        MCCustomModel * extendModel = info[@"extend"];
-        return [[KDPayJianQuanViewController alloc] initWithClassification:cardModel extend:extendModel];
-    }];
-    #pragma mark - 统统交易
-    [MGJRouter registerURLPattern:rt_card_jiaoyi toObjectHandler:^id(NSDictionary *routerParameters) {
-        NSDictionary *info = routerParameters[MGJRouterParameterUserInfo];
-        MCBankCardModel * cardModel = info[@"param"];
-        MCCustomModel * extendModel = info[@"extend"];
-        return [[KDTTFJiaoYiViewController alloc] initWithClassification:cardModel extend:extendModel];
-    }];
+
     #pragma mark - 留言板
     [MGJRouter registerURLPattern:rt_card_liuyanban toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCLiuYanBanViewController new];

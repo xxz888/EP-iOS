@@ -10,15 +10,12 @@
 #import "MCChooseCardModel.h"
 #import "MCPayPWDInputView.h"
 #import "MCBankStore.h"
-#import "MCWithDrawTypeDialogView.h"
-#import "MCBindALIViewController.h"
 #import "KDFillButton.h"
-#import "MCWithdrawHistoryVC.h"
 #import "KDCommonAlert.h"
 #import "MCTiXianAlertView.h"
 
 
-@interface MCWithdrawController ()<MCPayPWDInputViewDelegate, MCWithDrawTypeDialogViewDelegate>
+@interface MCWithdrawController ()<MCPayPWDInputViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *bankLogoImgView;
 @property (weak, nonatomic) IBOutlet UILabel *bankNameLab;
@@ -104,7 +101,6 @@
     
 }
 - (void)lishi {
-    [self.navigationController pushViewController:[MCWithdrawHistoryVC new] animated:YES];
 }
 - (void)textChanged:(UITextField *)textField {
     self.sureButton.enabled = textField.text.length > 0;
