@@ -11,7 +11,6 @@
 #import "MCUserInfo.h"
 #import "MCBrandConfiguration.h"
 #import "GVUserDefaults+MCOEM.h"
-#import "MCTeamModel.h"
 #import "MCBrandInfo.h"
 #import "MCSumRebateModel.h"
 #import "MCAccountModel.h"
@@ -37,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 异步获取获取收益
 /// @param handle handle
 - (void)getSumRebate:(void (^_Nullable) (MCSumRebateModel *sumRebateModel))handle;
-- (void)getMyTeamInformation:(void(^)(MCTeamModel *model))block;
 /// 异步获取获取用户账户信息（积分、余额、收益）
 /// @param handle handle
 - (void)getUserAccount:(void (^_Nullable) (MCAccountModel *accountModel))handle;

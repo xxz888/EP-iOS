@@ -132,12 +132,10 @@
 #import "MCShareSingleViewController.h"
 #import "MCMessageController.h"
 #import "MCCardManagerController.h"
-#import "MCIncomeRateViewController.h"
 #import "MCUserInfoViewController.h"
 #import "MCRealNameViewController.h"
 #import "MCSignViewController.h"
 #import "MCSettingViewController.h"
-#import "MCTeamController.h"
 #import "MCNewsListController.h"
 #import "MCArticlesController.h"
 #import "MCCountSafeController.h"
@@ -145,8 +143,6 @@
 #import "MCWebViewController.h"
 #import "MCEditBankCardController.h"
 #import "KDPayGatherViewController.h"
-#import "MCVipViewController.h"
-#import "MCRateRankViewController.h"
 
 
 

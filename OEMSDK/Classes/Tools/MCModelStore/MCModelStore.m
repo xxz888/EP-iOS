@@ -84,12 +84,8 @@ static MCModelStore *_singleStore = nil;
 //        MCLog(@"获取收益成功");
     }];
 }
-- (void)getMyTeamInformation:(void (^)(MCTeamModel * teamModel))block {
-    [[MCSessionManager shareManager] mc_POST:api_teamInfo parameters:@{@"userId":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull okResponse) {
-        MCTeamModel *model = [MCTeamModel mj_objectWithKeyValues:okResponse[@"result"]];
-        block(model);
-    }];
-}
+
+
 /// 异步获取获取用户账户信息（积分、余额、收益）
 /// @param handle handle
 - (void)getUserAccount:(void (^_Nullable) (MCAccountModel *accountModel))handle{

@@ -95,26 +95,7 @@
     }
     return  @"";
 }
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [self requestAliPhone];
-//}
-- (void)requestAliPhone {
-    NSString *userId = SharedUserInfo.userid;
-    NSDictionary *defaultCardDic = @{@"userId":userId, @"type":@"3", @"nature":@"0", @"isDefault":@"1"};
-    __weak __typeof(self)weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:defaultCardDic ok:^(NSDictionary * _Nonnull resp) {
-        NSArray *result = resp[@"result"];
-        NSDictionary *dict = result.firstObject;
-        NSString *cardNo = [NSString stringWithFormat:@"%@", dict[@"cardNo"]];
-        
-        NSString *first = [cardNo substringWithRange:NSMakeRange(0, 3)];
-        NSString *last = [cardNo substringFromIndex:cardNo.length-4];
-        
-        weakSelf.aliPhone = [NSString stringWithFormat:@"%@ **** %@", first, last];
-        [weakSelf.mc_tableview reloadData];
-    }];
-}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataArray.count;

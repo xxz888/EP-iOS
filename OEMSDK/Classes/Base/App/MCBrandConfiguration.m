@@ -76,13 +76,7 @@
     }];
     
     
-    #pragma mark - 团队
-    [MGJRouter registerURLPattern:rt_team_overview toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCTeamController new];
-    }];
-    [MGJRouter registerURLPattern:rt_team_ranking toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCRateRankViewController new];
-    }];
+
     
     #pragma mark - 用户
     [MGJRouter registerURLPattern:rt_user_info toObjectHandler:^id(NSDictionary *routerParameters) {
