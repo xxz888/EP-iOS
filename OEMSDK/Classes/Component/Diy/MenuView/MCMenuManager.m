@@ -8,7 +8,6 @@
 
 #import "MCMenuManager.h"
 #import "WBQRCodeVC.h"
-#import "CommonEncourageVC.h"
 #import "KDCommonAlert.h"
 @interface MCMenuManager ()<WBQRCodeVCDelegate>
 
@@ -76,28 +75,7 @@
         }
     }else{
      
-        if ([sortt isEqualToString:@"幸运转盘"]) {
-            [MCLATESTCONTROLLER.navigationController pushViewController:[CommonEncourageVC new] animated:YES];
-            return;
-        }
-        if ([sortt isEqualToString:@"扫一扫"]) {
-            WBQRCodeVC *scanner = [WBQRCodeVC new];
-            scanner.delegate = self;
-            [MCLATESTCONTROLLER.navigationController pushViewController:scanner animated:YES];
-            return;
-        }
-        if ([sortt containsString:@"NP收款"]) {
-            [MCPagingStore pagingURL:rt_collection_npcashier];
-            return;
-        }
-        if ([sortt containsString:@"NP消费"]) {
-            [MCPagingStore pagingURL:rt_collection_npcashier];
-            return;
-        }
-        if ([sortt containsString:@"商学院"]) {
-            [MCPagingStore pagingURL:rt_news_list withUerinfo:@{@"classification":@"商学院"}];
-            return;
-         }
+    
              
         //0原生
         if ([sortt containsString:@"收款"]) {

@@ -67,15 +67,7 @@
         NSString *classification = info[@"classification"];
         return [[MCNewsListController alloc] initWithClassification:classification?:@"信用秘籍"];
     }];
-    [MGJRouter registerURLPattern:rt_news_community toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCShequController new];
-    }];
-    [MGJRouter registerURLPattern:rt_news_operation toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCCaozuoController new];
-    }];
-    [MGJRouter registerURLPattern:rt_news_videos toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCVideoController new];
-    }];
+ 
     
     #pragma mark - 分享
     [MGJRouter registerURLPattern:rt_share_single toObjectHandler:^id(NSDictionary *routerParameters) {
