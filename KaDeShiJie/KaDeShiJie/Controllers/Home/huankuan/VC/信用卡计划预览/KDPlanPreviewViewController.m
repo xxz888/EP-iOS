@@ -9,7 +9,6 @@
 #import "KDPlanPreviewViewController.h"
 #import "KDDirectRefundViewController.h"
 #import "KDCommonAlert.h"
-#import "KDChannelView.h"
 #import "KDDirectRefundModel.h"
 #import "KDBingCardNewViewController.h"
 #import "KDTrandingRecordViewController.h"
@@ -22,7 +21,6 @@
 @property (nonatomic, strong) QMUIModalPresentationViewController * presentAlert;
 @property (nonatomic, strong) NSString * message;//
 
-@property (nonatomic, strong)KDChannelView * commonAlert;
 
 @end
 
@@ -439,7 +437,7 @@
                 weakself.channelTag = resp[@"result"][@"channelTag"];
                 //如果下单进来，就直接弹出
                 if (weakself.whereCome == 1) {
-                    [weakself channelAction:nil];
+                 
                 }else{
                     UIBarButtonItem *rightItem = [UIBarButtonItem qmui_itemWithTitle:@"多通道设置" target:self action:@selector(channelAction:)];
                     [rightItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
@@ -504,60 +502,8 @@
         }
     }];
 }
-#pragma mark -----------------------多通道设置，确认按钮方法---------------------
--(void)confirmSms{
-    if (self.commonAlert.codeTf.text.length == 0) {
-        [MCToast showMessage: @"请填写验证码"];
-        return;
-    }
-    if (self.confirmSmsUrl.length == 0) {
-        [MCToast showMessage: @"请先获取验证码"];
-        return;
-    }
-    kWeakSelf(self);
-    NSMutableDictionary * dic = [self getSameParamers];
-    [dic setValue:self.commonAlert.codeTf.text forKey:@"smsCode"];
-    NSString * confirmUrl = [self.confirmSmsUrl replaceAll:@"/v1.0" target:@""];
-    [self.sessionManager mc_POST:confirmUrl parameters:dic ok:^(NSDictionary * _Nonnull resp) {
-        if (weakself.whereCome == 1) {
-            //如果绑定完所有卡，就跳转列表界面
-            [weakself jumpXinYongKaList:nil];
-        }else{
-            [weakself.presentAlert hideWithAnimated:YES completion:nil];
-            [weakself getAllXinYongKaList];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MCToast showMessage:@"多通道设置成功"];
-            });
-        }
-    }];
-}
-#pragma mark -----------------------多通道设置方法---------------------
-- (void)channelAction:(id)btn{
-    kWeakSelf(self);
-    if (!self.commonAlert) {
-        self.commonAlert = [KDChannelView newFromNib];
-    }
-    if (!self.presentAlert) {
-        self.presentAlert = [[QMUIModalPresentationViewController alloc]init];
-    }
-    self.presentAlert.contentView = self.commonAlert;
-    self.presentAlert.dimmingView.userInteractionEnabled = NO;
-    [self.presentAlert showWithAnimated:YES completion:nil];
-    self.commonAlert.closeBtn.hidden = NO;
-    self.commonAlert.closeActionBlock = ^{
-        if (weakself.whereCome == 1) {
-            [weakself jumpXinYongKaList:nil];
-        }else{
-            [weakself.presentAlert hideWithAnimated:YES completion:nil];
-        }
-    };
-    self.commonAlert.sendBtnActionBlock = ^{
-        [weakself sendSms];
-    };
-    self.commonAlert.bindBtnActionBlock = ^{
-        [weakself confirmSms];
-    };
-}
+
+
 -(void)jumpXinYongKaList:(MCNetResponse *)resp{
     if (self.presentAlert ) {
         [self.presentAlert hideWithAnimated:YES completion:nil];

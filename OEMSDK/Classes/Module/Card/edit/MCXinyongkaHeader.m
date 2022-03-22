@@ -10,8 +10,6 @@
 #import "BankCardTextField.h"
 #import <BRPickerView/BRPickerView.h>
 #import "MCTXManager.h"
-#import "KDCVNAlertContent.h"
-#import "KDPhoneAlertContent.h"
 #import "DDPhotoViewController.h"
 @interface MCXinyongkaHeader ()<UITextFieldDelegate>
 
@@ -454,25 +452,11 @@
     }];
 }
 - (IBAction)alertPhone:(UIButton *)sender {
-    QMUIModalPresentationViewController *diaV = [[QMUIModalPresentationViewController alloc] init];
-    KDPhoneAlertContent *content = [KDPhoneAlertContent newFromNib];
-    __block QMUIModalPresentationViewController *blockDiav = diaV;
-    content.touchBlock = ^{
-        [blockDiav hideWithAnimated:YES completion:nil];
-    };
-    diaV.contentView = content;
-    [diaV showWithAnimated:YES completion:nil];
+   
 }
 
 - (IBAction)alertCVN:(UIButton *)sender {
-    QMUIModalPresentationViewController *diaV = [[QMUIModalPresentationViewController alloc] init];
-    KDCVNAlertContent *content = [KDCVNAlertContent newFromNib];
-    __block QMUIModalPresentationViewController *blockDiav = diaV;
-    content.touchBlock = ^{
-        [blockDiav hideWithAnimated:YES completion:nil];
-    };
-    diaV.contentView = content;
-    [diaV showWithAnimated:YES completion:nil];
+ 
 }
 
 

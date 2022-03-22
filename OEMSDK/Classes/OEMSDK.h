@@ -60,13 +60,10 @@
 #import "MCBannerView.h"
 
 #pragma mark - 组件化
-#import "MCCustomMenuView.h"  // 主副功能区
-#import "MCRunLightView.h"    //跑马灯
+
 #import "MCTitleCustomView.h" //标题和竖条颜色
-#import "MCSafeCustomView.h"  //保险
 #import "MCNewsView.h"        //资讯
 #import "MCGradientView.h"
-#import "MCDataProfessor.h"
 #import "MCMenuItemView.h"
 #import "MCMenuManager.h"
 #import "MCUserHeaderView.h"

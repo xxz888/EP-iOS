@@ -10,7 +10,6 @@
 #import "BankCardTextField.h"
 #import <BRPickerView/BRPickerView.h>
 #import "MCTXManager.h"
-#import "KDPhoneAlertContent.h"
 #import "DDPhotoViewController.h"
 #import "KDCommonAlert.h"
 
@@ -653,14 +652,7 @@
 }
 
 - (IBAction)alertPhone:(id)sender {
-    QMUIModalPresentationViewController *diaV = [[QMUIModalPresentationViewController alloc] init];
-    KDPhoneAlertContent *content = [KDPhoneAlertContent newFromNib];
-    __block QMUIModalPresentationViewController *blockDiav = diaV;
-    content.touchBlock = ^{
-        [blockDiav hideWithAnimated:YES completion:nil];
-    };
-    diaV.contentView = content;
-    [diaV showWithAnimated:YES completion:nil];
+   
 }
 -(NSString *)convertToJsonData:(NSDictionary *)dict
 
