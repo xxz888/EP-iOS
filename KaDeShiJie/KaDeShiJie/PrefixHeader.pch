@@ -29,7 +29,6 @@
 #import <MCWithdrawController.h>
 #import <MCCardManagerController.h>
 #import <MCApp.h>
-#import <MCChooseCardModel.h>
 #import <MCNewsModel.h>
 #import <MCBankStore.h>
 #import <MJExtension.h>

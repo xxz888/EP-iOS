@@ -128,7 +128,6 @@
 #import "MCLoginWithoutBgVC.h"
 
 #import "DelegateShangViewController.h"
-#import "MCCashierController.h"
 #import "MCUpdateViewController.h"
 
 #import "MCUpdateViewController2.h"
@@ -156,7 +155,6 @@
 #import "MCArticlesController.h"
 #import "MCShequController.h"
 #import "MCCountSafeController.h"
-#import "MCNPCashierController.h"
 #import "MCUpdateSaveController_X.h"
 #import "MCCardManagerController1.h"
 #import "MCWebViewController.h"

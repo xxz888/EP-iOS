@@ -7,7 +7,6 @@
 //
 
 #import "MCWithdrawController.h"
-#import "MCChooseCardModel.h"
 #import "MCPayPWDInputView.h"
 #import "MCBankStore.h"
 #import "KDFillButton.h"
@@ -110,35 +109,9 @@
     
     [self requstAccount];
     [self requestWithdrawLimit];
-    [self requstDefaultCard];
 }
 
-- (void)requstDefaultCard {
-    NSDictionary *p2 = @{@"userId":SharedUserInfo.userid,
-                         @"type":@"2",
-                         @"nature":@"2",
-                         @"isDefault":@"1"};
-    __weak __typeof(self)weakSelf = self;
-    [MCLATESTCONTROLLER.sessionManager mc_POST:@"/user/app/bank/query/byuseridandtype/andnature" parameters:p2 ok:^(NSDictionary * _Nonnull resp) {
-        [weakSelf.scroll.mj_header endRefreshing];
-        NSArray *temp = [MCChooseCardModel mj_objectArrayWithKeyValuesArray:resp[@"result"]];
-        for (MCChooseCardModel *model in temp) {
-            MCBankCardInfo *ii = [MCBankStore getBankCellInfoWithName:model.bankName];
-            weakSelf.bankLogoImgView.image = ii.logo;
-            weakSelf.bankNameLab.text = model.bankName;
-            weakSelf.bankNoLab.text = [NSString stringWithFormat:@"储蓄卡 尾号%@",(model.cardNo?[model.cardNo substringFromIndex:model.cardNo.length-4]:@"")];
-            weakSelf.withDrawType = @"card";
-            break;
-        }
-    } other:^(NSDictionary * _Nonnull resp) {
-        [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:resp[@"messege"]];
-        
-    } failure:^(NSError * _Nonnull error) {
-        [weakSelf.scroll.mj_header endRefreshing];
-        [MCToast showMessage:[NSString stringWithFormat:@"%ld\n%@",error.code,error.domain]];
-    }];
-}
+
 
 /// 请求绑定的支付宝
 //- (void)requestAliPhone {

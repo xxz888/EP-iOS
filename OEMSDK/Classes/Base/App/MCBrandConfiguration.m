@@ -147,14 +147,7 @@
         return [MCUpdateSaveController_X new];
     }];
     
-    #pragma mark - 收款
-    [MGJRouter registerURLPattern:rt_collection_cashier toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCCashierController new];
-    }];
-    [MGJRouter registerURLPattern:rt_collection_npcashier toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCNPCashierController new];
-    }];
-    
+
     #pragma mark - 账单
     [MGJRouter registerURLPattern:rt_order_list toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCOrderListController new];
