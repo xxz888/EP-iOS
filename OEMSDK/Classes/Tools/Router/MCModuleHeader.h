@@ -133,7 +133,6 @@
 #import "MCSettingViewController.h"
 #import "MCNewsListController.h"
 #import "MCArticlesController.h"
-#import "MCCountSafeController.h"
 #import "MCWebViewController.h"
 #import "MCEditBankCardController.h"
 #import "KDPayGatherViewController.h"

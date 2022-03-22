@@ -140,7 +140,6 @@
 		1BBA505F2511B61F001DA457 /* KDShareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA505D2511B61F001DA457 /* KDShareViewCell.m */; };
 		1BBA50602511B61F001DA457 /* KDShareViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBA505E2511B61F001DA457 /* KDShareViewCell.xib */; };
 		1BBA50632511F2A4001DA457 /* KDWXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA50622511F2A4001DA457 /* KDWXModel.m */; };
-		1BC4AE9425105AD7003B092E /* KDUseExplainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4AE9325105AD7003B092E /* KDUseExplainViewController.m */; };
 		1BC55ABB250B836E001BE2DF /* KDSlotCardAisleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC55ABA250B836E001BE2DF /* KDSlotCardAisleViewController.m */; };
 		1BC55ABE250B83E0001BE2DF /* KDSlotCardAisleHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC55ABD250B83E0001BE2DF /* KDSlotCardAisleHeaderView.m */; };
 		1BC55AC0250B8468001BE2DF /* KDSlotCardAisleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC55ABF250B8468001BE2DF /* KDSlotCardAisleHeaderView.xib */; };
@@ -162,8 +161,6 @@
 		1BC5E3DF250385150064CA30 /* KDRegisterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC5E3DE250385150064CA30 /* KDRegisterHeaderView.xib */; };
 		1BC5E3E2250392D10064CA30 /* KDHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */; };
 		1BC5E3E4250392DF0064CA30 /* KDHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */; };
-		1BD3DC3C250B597500A5D148 /* KDMyReferrerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC3A250B597500A5D148 /* KDMyReferrerViewController.m */; };
-		1BD3DC3D250B597500A5D148 /* KDMyReferrerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC3B250B597500A5D148 /* KDMyReferrerViewController.xib */; };
 		1BD3DC42250B60A600A5D148 /* KDGatheringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC40250B60A600A5D148 /* KDGatheringViewController.m */; };
 		1BD3DC43250B60A600A5D148 /* KDGatheringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC41250B60A600A5D148 /* KDGatheringViewController.xib */; };
 		6F002D3B27E977AD00FA4A01 /* MCHomeServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F002D3927E977AC00FA4A01 /* MCHomeServiceViewController.m */; };
@@ -432,8 +429,6 @@
 		1BBA505E2511B61F001DA457 /* KDShareViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDShareViewCell.xib; sourceTree = "<group>"; };
 		1BBA50612511F2A4001DA457 /* KDWXModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWXModel.h; sourceTree = "<group>"; };
 		1BBA50622511F2A4001DA457 /* KDWXModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWXModel.m; sourceTree = "<group>"; };
-		1BC4AE9225105AD7003B092E /* KDUseExplainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDUseExplainViewController.h; sourceTree = "<group>"; };
-		1BC4AE9325105AD7003B092E /* KDUseExplainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDUseExplainViewController.m; sourceTree = "<group>"; };
 		1BC55AB9250B836E001BE2DF /* KDSlotCardAisleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDSlotCardAisleViewController.h; sourceTree = "<group>"; };
 		1BC55ABA250B836E001BE2DF /* KDSlotCardAisleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDSlotCardAisleViewController.m; sourceTree = "<group>"; };
 		1BC55ABC250B83E0001BE2DF /* KDSlotCardAisleHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDSlotCardAisleHeaderView.h; sourceTree = "<group>"; };
@@ -472,9 +467,6 @@
 		1BC5E3E0250392D10064CA30 /* KDHomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeHeaderView.h; sourceTree = "<group>"; };
 		1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeHeaderView.m; sourceTree = "<group>"; };
 		1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeHeaderView.xib; sourceTree = "<group>"; };
-		1BD3DC39250B597500A5D148 /* KDMyReferrerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMyReferrerViewController.h; sourceTree = "<group>"; };
-		1BD3DC3A250B597500A5D148 /* KDMyReferrerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMyReferrerViewController.m; sourceTree = "<group>"; };
-		1BD3DC3B250B597500A5D148 /* KDMyReferrerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMyReferrerViewController.xib; sourceTree = "<group>"; };
 		1BD3DC3F250B60A600A5D148 /* KDGatheringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGatheringViewController.h; sourceTree = "<group>"; };
 		1BD3DC40250B60A600A5D148 /* KDGatheringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGatheringViewController.m; sourceTree = "<group>"; };
 		1BD3DC41250B60A600A5D148 /* KDGatheringViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDGatheringViewController.xib; sourceTree = "<group>"; };
@@ -997,7 +989,7 @@
 		1BC5E3BA250343AA0064CA30 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6F4DB6B727D9F0D400B3D33E /* 新版tabbar */,
+				6F4DB6B727D9F0D400B3D33E /* zzzShop */,
 				6FBBFBA3275897450096D282 /* Tools */,
 				1BC5E3CD250345480064CA30 /* 注册 */,
 				1BC5E3BB250343B20064CA30 /* Home */,
@@ -1052,8 +1044,6 @@
 				1BBA505E2511B61F001DA457 /* KDShareViewCell.xib */,
 				1BC5E3C5250344410064CA30 /* KDShareViewController.h */,
 				1BC5E3C6250344410064CA30 /* KDShareViewController.m */,
-				1BC4AE9225105AD7003B092E /* KDUseExplainViewController.h */,
-				1BC4AE9325105AD7003B092E /* KDUseExplainViewController.m */,
 				6F5C0281271EAE220059A557 /* KDGuanFangSheQun.h */,
 				6F5C0282271EAE220059A557 /* KDGuanFangSheQun.m */,
 				6F5C0284271EB1230059A557 /* KDGuanFangSheQun.xib */,
@@ -1074,9 +1064,6 @@
 				1B9C9B61250784D800EE0819 /* KDMineHeaderView.h */,
 				1B9C9B62250784D800EE0819 /* KDMineHeaderView.m */,
 				1B9C9B64250784EB00EE0819 /* KDMineHeaderView.xib */,
-				1BD3DC39250B597500A5D148 /* KDMyReferrerViewController.h */,
-				1BD3DC3A250B597500A5D148 /* KDMyReferrerViewController.m */,
-				1BD3DC3B250B597500A5D148 /* KDMyReferrerViewController.xib */,
 				1B543D15250EF96400076628 /* KDAboutMineViewController.h */,
 				1B543D16250EF96400076628 /* KDAboutMineViewController.m */,
 				1B543D17250EF96400076628 /* KDAboutMineViewController.xib */,
@@ -1174,11 +1161,11 @@
 			path = other;
 			sourceTree = "<group>";
 		};
-		6F4DB6B727D9F0D400B3D33E /* 新版tabbar */ = {
+		6F4DB6B727D9F0D400B3D33E /* zzzShop */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "新版tabbar";
+			path = zzzShop;
 			sourceTree = "<group>";
 		};
 		6F4DB6B827DB196B00B3D33E /* htmlWebView */ = {
@@ -1427,7 +1414,6 @@
 				0453729C274FD3CE003FCA1A /* KDJiangliView.xib in Resources */,
 				187D8B122565FC900097A650 /* KDPlanPreviewViewController.xib in Resources */,
 				04318A0A274E7C3700D9D959 /* KDTixianjiluViewController.xib in Resources */,
-				1BD3DC3D250B597500A5D148 /* KDMyReferrerViewController.xib in Resources */,
 				1B7E4685251CCCD800FA5D1E /* KDPlanAlertView.xib in Resources */,
 				1B9C9B602507752E00EE0819 /* KDShareHeaderView.xib in Resources */,
 				1893CEF126727A9300C53DBF /* KDJFAdressManagerViewController.xib in Resources */,
@@ -1577,11 +1563,9 @@
 				1B9723A3251C3A8A00F4120C /* KDDirectRefundViewController.m in Sources */,
 				04AE083226FEF029006E3700 /* KDHomeXinYongKaTableViewCell.m in Sources */,
 				04CDE20E274E7D580038A649 /* KDTixianjiluTableViewCell.m in Sources */,
-				1BC4AE9425105AD7003B092E /* KDUseExplainViewController.m in Sources */,
 				18E7C4DF2678AA6100AE3A72 /* KDJFAdressListViewController.m in Sources */,
 				1BC55AC4250B8A56001BE2DF /* KDSlotCardAisleViewCell.m in Sources */,
 				1BC5E3C4250344270064CA30 /* KDNewsViewController.m in Sources */,
-				1BD3DC3C250B597500A5D148 /* KDMyReferrerViewController.m in Sources */,
 				EEF1AD31251CE69C001DD2AB /* MSSCalendarHeaderModel.m in Sources */,
 				18E7C4E32678AC4500AE3A72 /* KDJFAdressListTableViewCell.m in Sources */,
 				1BC5E3B9250341180064CA30 /* main.m in Sources */,

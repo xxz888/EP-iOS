@@ -143,10 +143,7 @@
             [MCPagingStore pagingURL:rt_share_article];
             return;
         }
-        if ([sortt containsString:@"密码管理"]) {
-            [MCPagingStore pagingURL:rt_setting_accountsafe];
-            return;
-        }
+   
         if ([sortt containsString:@"联系客服"]) {
             [MCPagingStore pagingURL:rt_setting_service];
             return;

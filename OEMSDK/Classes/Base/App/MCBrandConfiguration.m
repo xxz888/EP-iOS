@@ -105,10 +105,6 @@
         return vc;
     }];
 
-    [MGJRouter registerURLPattern:rt_setting_accountsafe toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCCountSafeController new];
-    }];
-    
 
 
     

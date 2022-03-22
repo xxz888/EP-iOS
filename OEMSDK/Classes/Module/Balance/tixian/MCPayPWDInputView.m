@@ -7,7 +7,6 @@
 //
 
 #import "MCPayPWDInputView.h"
-#import "MCResetPWDController.h"
 #import "STModal.h"
 
 @interface MCPayPWDInputView ()
@@ -47,9 +46,7 @@
 - (IBAction)onLostTouched:(id)sender {
     
     
-    [self.modal hideWithAnimated:NO completion:^(BOOL finished) {
-        [MCLATESTCONTROLLER.navigationController pushViewController:[[MCResetPWDController alloc] initWithType:MCResetPWDTypeTrade] animated:YES];
-    }];
+   
 }
 
 - (IBAction)onCloseTouched:(id)sender {

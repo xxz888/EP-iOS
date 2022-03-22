@@ -14,7 +14,6 @@
 #import "MCApp.h"
 #import <WebKit/WebKit.h>
 #import "KDFillButton.h"
-#import "MCResetPWDController.h"
 #import "KDForgetPwdViewController.h"
 
 NSString *const MCSettingItemVersionCheck = @"MCSettingItemVersionCheck";

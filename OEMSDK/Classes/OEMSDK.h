@@ -61,7 +61,6 @@
 #pragma mark - 组件化
 
 #import "MCTitleCustomView.h" //标题和竖条颜色
-#import "MCNewsView.h"        //资讯
 #import "MCGradientView.h"
 #import "MCMenuItemView.h"
 #import "MCMenuManager.h"

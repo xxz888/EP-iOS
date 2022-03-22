@@ -10,7 +10,6 @@
 #import "KDShareHeaderView.h"
 #import "KDShareViewCell.h"
 #import "KDWXViewController.h"
-#import "KDUseExplainViewController.h"
 
 @interface KDShareViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 @property (nonatomic, strong) NSArray *dataArray;

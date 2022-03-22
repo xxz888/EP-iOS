@@ -8,7 +8,6 @@
 
 #import "KDMineHeaderView.h"
 #import <OEMSDK/OEMSDK.h>
-#import "KDMyReferrerViewController.h"
 #import "KDAboutMineViewController.h"
 #import "KDWXViewController.h"
 #import "KDTrandingRecordViewController.h"
@@ -137,7 +136,6 @@
 //            [MCLATESTCONTROLLER.navigationController pushViewController:KDWebContainer.shared.jiaoyijiluVC animated:YES];
             break;
         case 103:
-            [MCLATESTCONTROLLER.navigationController pushViewController:[KDMyReferrerViewController new] animated:YES];
             break;
         case 104:
             NSLog(@"我的奖券");

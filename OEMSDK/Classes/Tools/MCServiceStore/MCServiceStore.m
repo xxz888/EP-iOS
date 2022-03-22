@@ -10,7 +10,6 @@
 //#import <MeiQiaSDK/MQChatViewController.h>
 #import "MQChatViewController.h"
 #import "MQChatViewManager.h"
-#import "MCServiceAlert.h"
 #import "KDCommonAlert.h"
 
 @implementation MCServiceStore
@@ -90,7 +89,6 @@
     [self popServiceSheetTypes:@[@(0),@(1),@(2),@(3)]];
 }
 + (void)popServiceSheetTypes:(NSArray *)type {
-    [MCServiceAlert showWithTypes:type];
 }
 
 + (void)call:(NSString *)phone {
