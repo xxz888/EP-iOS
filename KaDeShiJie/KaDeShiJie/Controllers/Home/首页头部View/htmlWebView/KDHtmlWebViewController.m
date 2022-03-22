@@ -8,7 +8,6 @@
 
 #import "KDHtmlWebViewController.h"
 #import <WebKit/WebKit.h>
-#import "MCShareManyNavigateController.h"
 #import "MCApp.h"
 
 

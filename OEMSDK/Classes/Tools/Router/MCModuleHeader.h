@@ -130,7 +130,6 @@
 
 
 #import "MCShareSingleViewController.h"
-#import "MCShareManyViewController.h"
 #import "MCMessageController.h"
 #import "MCCardManagerController.h"
 #import "MCIncomeRateViewController.h"

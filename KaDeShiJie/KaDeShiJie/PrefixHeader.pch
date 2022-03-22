@@ -21,7 +21,6 @@
 #import <MCTeamModel.h>
 #import <MCDateStore.h>
 #import <MCTXManager.h>
-#import <MCShareManyNavigateController.h>
 #import <LoginAndRegistHTTPTools.h>
 #import <BRPickerView.h>
 #import <MCWithdrawController.h>

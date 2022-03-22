@@ -8,7 +8,6 @@
 #import "MCShareOverViewController.h"
 #import "MCShareOverViewCell.h"
 #import "MCShareSingleImgViewController.h"
-#import "MCShareManyNavigateController.h"
 
 @interface MCShareOverViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 @property(nonatomic, copy) NSArray<UIImage*> *images;
@@ -47,7 +46,6 @@
         [MCPagingStore pagingURL:rt_share_single];
     } else if (indexPath.row == 1) {
 //        [MCPagingStore pagingURL:rt_share_many];
-        [self.navigationController pushViewController:[MCShareManyNavigateController new] animated:YES];
     } else if (indexPath.row == 2) {
         [MCPagingStore pagingURL:rt_share_article];
     } else if (indexPath.row == 3) {

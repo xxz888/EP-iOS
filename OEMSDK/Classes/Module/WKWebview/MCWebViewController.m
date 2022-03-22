@@ -8,7 +8,6 @@
 
 #import "MCWebViewController.h"
 #import <WebKit/WebKit.h>
-#import "MCShareManyNavigateController.h"
 #import "MCApp.h"
 
 
@@ -304,10 +303,7 @@
         //会员升级
         [MCPagingStore pagingURL:rt_update_list];
     }
-    if([name isEqualToString:@"tuijian"]){
-        //分享有礼
-        [self.navigationController pushViewController:[MCShareManyNavigateController new] animated:YES];
-    }
+
     if([name isEqualToString:@"wenku"]){
         //转发图文
         [MCPagingStore pagingURL:rt_share_article];
