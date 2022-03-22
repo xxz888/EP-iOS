@@ -124,9 +124,7 @@
         MCSettingViewController *vc = [[MCSettingViewController alloc] initWithSettingItems:@[MCSettingItemVersionCheck,MCSettingItemClearCache,MCSettingItemCountSafe,MCSettingItemAboutUs]];
         return vc;
     }];
-    [MGJRouter registerURLPattern:rt_setting_service toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCServiceController new];
-    }];
+
     [MGJRouter registerURLPattern:rt_setting_accountsafe toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCCountSafeController new];
     }];
@@ -171,11 +169,7 @@
         return [MCHomeServiceViewController new];
     }];
 
-    #pragma mark - 留言板
-    [MGJRouter registerURLPattern:rt_card_liuyanban toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCLiuYanBanViewController new];
-    }];
-    
+
     
 }
 

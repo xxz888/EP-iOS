@@ -15,7 +15,6 @@
 #import "KDMineViewController.h"
 #import "KDLoginViewController.h"
 #import "KDMemberViewController.h"
-#import "LCServiceController.h"
 #import "KDSlotCardOrderInfoViewController.h"
 #import "KDWithDrawHistoryViewController.h"
 #import "KDShareSingleVC.h"

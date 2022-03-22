@@ -207,11 +207,6 @@
 		1B9C9B1825075D2F00EE0819 /* KDMsgViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C9B1625075D2F00EE0819 /* KDMsgViewCell.m */; };
 		1B9C9B1925075D2F00EE0819 /* KDMsgViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C9B1725075D2F00EE0819 /* KDMsgViewCell.xib */; };
 		1B9C9B4A25075D6700EE0819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C9B4925075D6700EE0819 /* Assets.xcassets */; };
-		1B9C9B5425075DA900EE0819 /* LCServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C9B4D25075DA900EE0819 /* LCServiceController.m */; };
-		1B9C9B5525075DA900EE0819 /* LCKFTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C9B4E25075DA900EE0819 /* LCKFTableHeader.m */; };
-		1B9C9B5625075DA900EE0819 /* LCServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C9B5125075DA900EE0819 /* LCServiceCell.m */; };
-		1B9C9B5725075DA900EE0819 /* LCServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C9B5225075DA900EE0819 /* LCServiceCell.xib */; };
-		1B9C9B5825075DA900EE0819 /* LCKFTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C9B5325075DA900EE0819 /* LCKFTableHeader.xib */; };
 		1B9C9B5B250763A700EE0819 /* KDShareHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C9B5A250763A700EE0819 /* KDShareHeaderView.m */; };
 		1B9C9B602507752E00EE0819 /* KDShareHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C9B5C250763D000EE0819 /* KDShareHeaderView.xib */; };
 		1B9C9B63250784D800EE0819 /* KDMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C9B62250784D800EE0819 /* KDMineHeaderView.m */; };
@@ -667,14 +662,6 @@
 		1B9C9B1625075D2F00EE0819 /* KDMsgViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMsgViewCell.m; sourceTree = "<group>"; };
 		1B9C9B1725075D2F00EE0819 /* KDMsgViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDMsgViewCell.xib; sourceTree = "<group>"; };
 		1B9C9B4925075D6700EE0819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1B9C9B4C25075DA900EE0819 /* LCServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCServiceCell.h; sourceTree = "<group>"; };
-		1B9C9B4D25075DA900EE0819 /* LCServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCServiceController.m; sourceTree = "<group>"; };
-		1B9C9B4E25075DA900EE0819 /* LCKFTableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCKFTableHeader.m; sourceTree = "<group>"; };
-		1B9C9B4F25075DA900EE0819 /* LCKFTableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCKFTableHeader.h; sourceTree = "<group>"; };
-		1B9C9B5025075DA900EE0819 /* LCServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCServiceController.h; sourceTree = "<group>"; };
-		1B9C9B5125075DA900EE0819 /* LCServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCServiceCell.m; sourceTree = "<group>"; };
-		1B9C9B5225075DA900EE0819 /* LCServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCServiceCell.xib; sourceTree = "<group>"; };
-		1B9C9B5325075DA900EE0819 /* LCKFTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCKFTableHeader.xib; sourceTree = "<group>"; };
 		1B9C9B59250763A700EE0819 /* KDShareHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDShareHeaderView.h; sourceTree = "<group>"; };
 		1B9C9B5A250763A700EE0819 /* KDShareHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDShareHeaderView.m; sourceTree = "<group>"; };
 		1B9C9B5C250763D000EE0819 /* KDShareHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDShareHeaderView.xib; sourceTree = "<group>"; };
@@ -1499,21 +1486,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1B9C9B4B25075DA900EE0819 /* 客服中心 */ = {
-			isa = PBXGroup;
-			children = (
-				1B9C9B4F25075DA900EE0819 /* LCKFTableHeader.h */,
-				1B9C9B4E25075DA900EE0819 /* LCKFTableHeader.m */,
-				1B9C9B5325075DA900EE0819 /* LCKFTableHeader.xib */,
-				1B9C9B4C25075DA900EE0819 /* LCServiceCell.h */,
-				1B9C9B5125075DA900EE0819 /* LCServiceCell.m */,
-				1B9C9B5225075DA900EE0819 /* LCServiceCell.xib */,
-				1B9C9B5025075DA900EE0819 /* LCServiceController.h */,
-				1B9C9B4D25075DA900EE0819 /* LCServiceController.m */,
-			);
-			path = "客服中心";
-			sourceTree = "<group>";
-		};
 		1BC5E38B2503404C0064CA30 = {
 			isa = PBXGroup;
 			children = (
@@ -1589,7 +1561,6 @@
 				6FAC122626FC86E300E3560F /* 信用卡办卡 */,
 				EE1BA9AA251C275E00941631 /* KDWebContainer */,
 				1B1C0E8B25086DED0009CDC6 /* 备付金 */,
-				1B9C9B4B25075DA900EE0819 /* 客服中心 */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2146,7 +2117,6 @@
 				1848CE5E266F434E00D6E148 /* KDJFShopDetailHeaderView.xib in Resources */,
 				1BD2F20D250A10020061580C /* KDDirectPushViewCell.xib in Resources */,
 				6FC59E0E27622803005DD4DD /* KDBingCardNewViewController.xib in Resources */,
-				1B9C9B5725075DA900EE0819 /* LCServiceCell.xib in Resources */,
 				1B86CFAD2509FC3500AD09F7 /* KDExtendPerformanceViewController.xib in Resources */,
 				1B1C0E9F25087BB80009CDC6 /* KDChosePayTypeViewCell.xib in Resources */,
 				1867249A2673138C0066122D /* KDJFChangeTableViewCell.xib in Resources */,
@@ -2160,7 +2130,6 @@
 				1B1C0EA4250887190009CDC6 /* KDProvisionsTopView.xib in Resources */,
 				6FCFF4182787D08C00E34091 /* KDWukaJifenViewController.xib in Resources */,
 				1B937068251C8BDF00E51EC9 /* KDRefundTimeView.xib in Resources */,
-				1B9C9B5825075DA900EE0819 /* LCKFTableHeader.xib in Resources */,
 				04DA3751277F52CB002FC105 /* KDXinYongKaHeaderCollectionReusableView.xib in Resources */,
 				1B9723A4251C3A8A00F4120C /* KDDirectRefundViewController.xib in Resources */,
 				EE8D73442509D023007AF076 /* KDShareSingleHeader.xib in Resources */,
@@ -2335,7 +2304,6 @@
 				180B17A22575EBD8006D3D13 /* KDKongKaViewController.m in Sources */,
 				04A58C76276B7A370027B4F4 /* KDMemberViewController.m in Sources */,
 				EEB6B4392514CD1400F592F4 /* KDWelcomeAlertView.m in Sources */,
-				1B9C9B5425075DA900EE0819 /* LCServiceController.m in Sources */,
 				187D8B132565FC900097A650 /* KDTrandingRecordViewController.m in Sources */,
 				1B937052251C74A700E51EC9 /* KDPlanHeaderView.m in Sources */,
 				6F85DC4F2785291800593E50 /* KDPayNewViewControllerQuickPass.m in Sources */,
@@ -2357,7 +2325,6 @@
 				180B17AE2575EE36006D3D13 /* KDKongKaPlanViewController.m in Sources */,
 				187D8B112565FC900097A650 /* KDPlanPreviewViewController.m in Sources */,
 				6F9458A2277D858C008D7364 /* KDMineCouponTableViewCell.m in Sources */,
-				1B9C9B5525075DA900EE0819 /* LCKFTableHeader.m in Sources */,
 				1BC5E3E2250392D10064CA30 /* KDHomeHeaderView.m in Sources */,
 				1B7E4693251CE9D500FA5D1E /* KDDirectCardContentModel.m in Sources */,
 				1BCF5E222514D7270095328E /* KDHistoryModel.m in Sources */,
@@ -2435,7 +2402,6 @@
 				18C4FE9B256B6A9A00C27A7D /* KDPlanCenterKongKaCell.m in Sources */,
 				1B86CF9E2509C47100AD09F7 /* KDEarnCenterViewController.m in Sources */,
 				187D8B232565FC900097A650 /* KDPlanPreviewViewCell.m in Sources */,
-				1B9C9B5625075DA900EE0819 /* LCServiceCell.m in Sources */,
 				1893CEF5267280DC00C53DBF /* KDJFShopManagerViewController.m in Sources */,
 				1BC5E3C1250344130064CA30 /* KDHomeViewController.m in Sources */,
 				1B86CFA12509C63E00AD09F7 /* KDEarnCenterHeaderView.m in Sources */,

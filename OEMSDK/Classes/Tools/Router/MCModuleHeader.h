@@ -138,7 +138,6 @@
 #import "MCRealNameViewController.h"
 #import "MCSignViewController.h"
 #import "MCSettingViewController.h"
-#import "MCServiceController.h"
 #import "MCTeamController.h"
 #import "MCNewsListController.h"
 #import "MCArticlesController.h"
@@ -157,7 +156,6 @@
 #import "MCHomeServiceViewController.h"
 
 
-#import "MCLiuYanBanViewController.h"
 #import "KDGuidePageManager.h"
 
 #endif /* MCModuleHeader_h */

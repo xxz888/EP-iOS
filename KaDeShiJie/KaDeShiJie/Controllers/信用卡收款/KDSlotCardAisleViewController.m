@@ -15,7 +15,7 @@
 #import "KDBingCardNewViewController.h"
 #import "KDPayNewViewController.h"
 #import "KDSlotCardOrderInfoViewController.h"
-@interface KDSlotCardAisleViewController ()<QMUITableViewDelegate, QMUITableViewDataSource, WBQRCodeVCDelegate>
+@interface KDSlotCardAisleViewController ()<QMUITableViewDelegate, QMUITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property(nonatomic, copy) NSString *orderCode;
 @end

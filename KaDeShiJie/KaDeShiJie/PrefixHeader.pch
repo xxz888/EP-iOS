@@ -19,8 +19,6 @@
 
 #import <OEMSDK.h>
 #import <MCTeamModel.h>
-#import <MCFeilvModel.h>
-#import <QSHHistoryListController.h>
 #import <MCDateStore.h>
 #import <MCTXManager.h>
 #import <MCShareManyNavigateController.h>
@@ -34,7 +32,6 @@
 #import <MJExtension.h>
 #import <MCBankCardModel.h>
 #import <MCChannelModel.h>
-#import <WBQRCodeVC.h>
 #import <MCPayPWDInputView.h>
 #import "UILabel+MCFontSize.h"
 #import "UIFont+MCFontSize.h"
