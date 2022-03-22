@@ -10,8 +10,6 @@
 #import "KDPlanHeaderView.h"
 #import "KDPlanTopViewCell.h"
 #import "KDPlanCenterViewCell.h"
-#import "KDPlanBottomViewCell.h"
-#import "KDEmptyCardRefundViewCell.h"
 #import "KDEditDirectCardViewController.h"
 @interface KDPlanViewController ()<QMUITableViewDataSource, QMUITableViewDelegate, KDPlanCenterViewCellDelegate, KDPlanTopViewCellDelegate>
 @property (nonatomic, assign) CGFloat centerCellHig;
