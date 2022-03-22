@@ -11,7 +11,6 @@
 #import "MCBankStore.h"
 #import "KDFillButton.h"
 #import "KDCommonAlert.h"
-#import "MCTiXianAlertView.h"
 
 
 @interface MCWithdrawController ()<MCPayPWDInputViewDelegate>
@@ -262,22 +261,7 @@
                             @"channe_tag":@"YILIAN"};
     kWeakSelf(self);
     [MCSessionManager.shareManager mc_POST:@"/facade/app/withdraw/" parameters:param ok:^(NSDictionary * _Nonnull resp) {
-        
-        QMUIModalPresentationViewController * alert = [[QMUIModalPresentationViewController alloc]init];
-        MCTiXianAlertView * commonAlert = [MCTiXianAlertView newFromNib];
-        commonAlert.presentView = alert;
-        
-        
-        alert.layoutBlock = ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
-            commonAlert.frame = CGRectMake(SCREEN_WIDTH*84/375, kTopHeight+277-45, SCREEN_WIDTH*207/375, SCREEN_WIDTH*207/375);
-        };
-        commonAlert.priceLbl.text = [weakself.textField.text append:@"元"];
-        alert.contentView = commonAlert;
-        
-        
-        
-        [alert showWithAnimated:YES completion:nil];
-        
+    
         
 //        QMUIAlertController * alert = [QMUIAlertController alertControllerWithTitle:@"提示" message:@"提现成功" preferredStyle:QMUIAlertControllerStyleAlert];
 //        [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleCancel handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {

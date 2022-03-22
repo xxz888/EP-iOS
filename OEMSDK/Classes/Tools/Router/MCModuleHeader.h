@@ -123,9 +123,6 @@
 
 
 /*headers*/
-#import "MCLoginViewController.h"
-#import "XLLoginViewController.h"
-#import "MCLoginWithoutBgVC.h"
 
 
 
@@ -133,7 +130,6 @@
 #import "MCMessageController.h"
 #import "MCCardManagerController.h"
 #import "MCUserInfoViewController.h"
-#import "MCRealNameViewController.h"
 #import "MCSignViewController.h"
 #import "MCSettingViewController.h"
 #import "MCNewsListController.h"

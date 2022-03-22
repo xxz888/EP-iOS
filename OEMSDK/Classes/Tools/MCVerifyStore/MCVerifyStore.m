@@ -13,35 +13,8 @@
 
 + (void)verifyRealName:(void (^)(MCUserInfo * _Nonnull))handler {
     [MCModelStore.shared reloadUserInfo:^(MCUserInfo * _Nonnull userInfo) {
-        
-        if (userInfo.isRealName) {
-            if (handler) {
-                handler(userInfo);
-            } else {
-                [MCToast showMessage:@"您已实名"];
-            }
-        } else if ([userInfo.realnameStatus isEqualToString:@"0"]) {
-            [MCToast showMessage:@"实名认证中"];
-        } else {
-            if (handler) {
-                
-                
-                kWeakSelf(self);
-                KDCommonAlert * commonAlert = [KDCommonAlert newFromNib];
-                [commonAlert initKDCommonAlertContent:@"您还未实名审核，请先实名审核！"  isShowClose:NO];
-                commonAlert.rightActionBlock = ^{
-                    [MCLATESTCONTROLLER.navigationController pushViewController:[MCRealNameViewController new] animated:YES];
-                };
-                
-//                [MCAlertStore showWithTittle:@"温馨提示" message:@"您还未实名审核，请先实名审核！" buttonTitles:@[@"取消", @"确定"] sureBlock:^{
-//                    [MCLATESTCONTROLLER.navigationController pushViewController:[MCRealNameViewController new] animated:YES];
-//                } cancelBlock:^{
-//
-//                }];
-            } else {
-                [MCLATESTCONTROLLER.navigationController pushViewController:[MCRealNameViewController new] animated:YES];
-            }
-        }
+     
+
     }];
 }
 

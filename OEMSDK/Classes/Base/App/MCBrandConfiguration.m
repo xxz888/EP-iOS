@@ -82,13 +82,7 @@
     [MGJRouter registerURLPattern:rt_user_info toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCUserInfoViewController new];
     }];
-    [MGJRouter registerURLPattern:rt_user_realname toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCRealNameViewController new];
-    }];
-    [MGJRouter registerURLPattern:rt_user_signupin toObjectHandler:^id(NSDictionary *routerParameters) {
-        MCNavigationController *navVC = [[MCNavigationController alloc] initWithRootViewController:[XLLoginViewController new]];
-        return navVC;
-    }];
+
     [MGJRouter registerURLPattern:rt_user_sign toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCSignViewController new];
     }];

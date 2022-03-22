@@ -282,15 +282,7 @@
 
 
 + (void)popShareImage {
-    MCPopShareController *vc = [[MCPopShareController alloc] initWithNibName:@"MCPopShareController" bundle:[NSBundle OEMSDKBundle]];
-    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    UIViewController *current = MCLATESTCONTROLLER;
-    current.definesPresentationContext = YES;
-    if (current.parentViewController) {
-        [current.parentViewController presentViewController:vc animated:NO completion:nil];
-    } else {
-        [current presentViewController:vc animated:NO completion:nil];
-    }
+ 
     
 }
 
