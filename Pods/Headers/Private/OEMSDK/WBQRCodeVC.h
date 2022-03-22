@@ -1,1 +1,0 @@
-../../../../OEMSDK/Classes/Module/QRCode/WBQRCodeVC.h

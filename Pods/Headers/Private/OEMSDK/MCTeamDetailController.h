@@ -1,1 +1,0 @@
-../../../../OEMSDK/Classes/Module/Team/mingxi/MCTeamDetailController.h

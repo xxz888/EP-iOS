@@ -1,1 +1,0 @@
-../../../../OEMSDK/Classes/Module/Notice/MCMessageController_logo.h

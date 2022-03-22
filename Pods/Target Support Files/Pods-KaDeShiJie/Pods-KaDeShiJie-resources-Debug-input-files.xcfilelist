@@ -10,5 +10,7 @@ ${PODS_CONFIGURATION_BUILD_DIR}/OEMSDK/OEMSDK.bundle
 ${PODS_ROOT}/PGDatePicker/PGDatePicker/PGDatePicker.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/QMUIKit/QMUIResources.bundle
 ${PODS_ROOT}/SGQRCode/SGQRCode/SGQRCode.bundle
+${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
+${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle
 ${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle
 ${PODS_ROOT}/ZZCircleProgress/ZZCircleProgressDemo/ZZCircleProgress/ZZCircleProgress.bundle

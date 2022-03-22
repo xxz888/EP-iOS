@@ -26,6 +26,12 @@
 #import "KDCommonAlert.h"
 #import "KDJFShopViewController.h"
 
+#import "DCHandPickViewController.h"
+#import "DCBeautyShopViewController.h"
+#import "DCMyCenterViewController.h"
+
+
+
 
 @interface AppDelegate ()
 
@@ -86,32 +92,51 @@
         return vc;
     }];
     
- 
-    
     
     
     NSArray *items = @[
         @{@"title":@"首页",
           @"iconName":@"tab_icon_home",
           @"selectedIconName":@"tab_icon_home_selected",
-          @"controller":[KDHomeViewController new]
+          @"controller":[DCHandPickViewController new]
         },
         @{@"title":@"推广",
           @"iconName":@"tab_icon_news",
           @"selectedIconName":@"tab_icon_news_selected",
-          @"controller":[KDShareViewController new]
-        },
-        @{@"title":@"商城",
-          @"iconName":@"tab_icon_share",
-          @"selectedIconName":@"tab_icon_share_selected",
-          @"controller":[KDJFShopViewController new]
+          @"controller":[DCBeautyShopViewController new]
         },
         @{@"title":@"我的",
           @"iconName":@"tab_icon_mine",
           @"selectedIconName":@"tab_icon_mine_selected",
-          @"controller":[KDMineViewController new]
+          @"controller":[DCMyCenterViewController new]
         }
     ];
+ 
+    
+    
+    
+//    NSArray *items = @[
+//        @{@"title":@"首页",
+//          @"iconName":@"tab_icon_home",
+//          @"selectedIconName":@"tab_icon_home_selected",
+//          @"controller":[KDHomeViewController new]
+//        },
+//        @{@"title":@"推广",
+//          @"iconName":@"tab_icon_news",
+//          @"selectedIconName":@"tab_icon_news_selected",
+//          @"controller":[KDShareViewController new]
+//        },
+//        @{@"title":@"商城",
+//          @"iconName":@"tab_icon_share",
+//          @"selectedIconName":@"tab_icon_share_selected",
+//          @"controller":[KDJFShopViewController new]
+//        },
+//        @{@"title":@"我的",
+//          @"iconName":@"tab_icon_mine",
+//          @"selectedIconName":@"tab_icon_mine_selected",
+//          @"controller":[KDMineViewController new]
+//        }
+//    ];
 
     BCFI.tab_items = [MCTabBarModel mj_objectArrayWithKeyValuesArray:items];
  

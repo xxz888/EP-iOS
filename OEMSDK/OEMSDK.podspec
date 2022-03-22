@@ -87,4 +87,5 @@ Pod::Spec.new do |spec|
   spec.dependency "SGQRCode", '3.0.1'
   spec.dependency "WMPageController", '2.4.0'
 
+
 end

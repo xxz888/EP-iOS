@@ -39,4 +39,15 @@
 #import <ZZCircleProgress.h>
 #import <KDLoginTool.h>
 #import "KDWebContainer.h"
+#import "DCConsts.h" // 常量
+#import "Macros.h" // 宏
+
+#import "DCSpeedy.h" //便捷方法
+#import "DCUserInfo.h" //本地数据个人中心数据
+#import "UIView+DCExtension.h" // UIView分类
+#import "DCObjManager.h"  //存取
+#import "DCNotificationCenterName.h" //通知
+#import <Masonry.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #endif /* PrefixHeader_pch */

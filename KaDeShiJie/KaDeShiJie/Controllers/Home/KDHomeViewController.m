@@ -182,6 +182,8 @@
            
         NSString * currentId =  [NSString stringWithFormat:@"%@%@",@"msgShow",msgId];
         NSString * saveId = [[NSUserDefaults standardUserDefaults] objectForKey:currentId];
+        
+        
         if (saveId && [saveId isEqualToString:@"1"]) {
             
         }else{

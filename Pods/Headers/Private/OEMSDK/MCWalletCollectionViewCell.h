@@ -1,1 +1,0 @@
-../../../../OEMSDK/Classes/Module/Card/1/MCWalletCollectionViewCell.h
