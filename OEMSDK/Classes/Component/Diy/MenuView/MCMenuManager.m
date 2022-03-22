@@ -7,9 +7,8 @@
 //
 
 #import "MCMenuManager.h"
-#import "WBQRCodeVC.h"
 #import "KDCommonAlert.h"
-@interface MCMenuManager ()<WBQRCodeVCDelegate>
+@interface MCMenuManager ()
 
 @end
 

@@ -131,35 +131,7 @@
         return [MCCountSafeController new];
     }];
     
-    #pragma mark - 升级
-    [MGJRouter registerURLPattern:rt_update_list toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCUpdateViewController new];
-    }];
-    [MGJRouter registerURLPattern:rt_update_updatesave toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCUpdateSaveController_X new];
-    }];
-    
 
-    #pragma mark - 账单
-    [MGJRouter registerURLPattern:rt_order_list toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCOrderListController new];
-    }];
-    
-    #pragma mark - 收益
-    [MGJRouter registerURLPattern:rt_profit_overview toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCProfitController new];
-    }];
-    [MGJRouter registerURLPattern:rt_profit_list toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCProfitListController new];
-    }];
-    
- 
-    
-    #pragma mark - 费率
-    [MGJRouter registerURLPattern:rt_rate_myrate toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCMyRateController new];
-    }];
-    
 
     
     #pragma mark - webVc

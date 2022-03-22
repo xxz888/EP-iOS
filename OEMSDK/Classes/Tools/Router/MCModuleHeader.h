@@ -127,10 +127,6 @@
 #import "XLLoginViewController.h"
 #import "MCLoginWithoutBgVC.h"
 
-#import "MCUpdateViewController.h"
-
-#import "MCUpdateViewController2.h"
-#import "MCUpdateViewController3.h"
 
 
 #import "MCShareSingleViewController.h"
@@ -140,28 +136,21 @@
 #import "MCIncomeRateViewController.h"
 #import "MCUserInfoViewController.h"
 #import "MCRealNameViewController.h"
-#import "MCMyRateController.h"
 #import "MCSignViewController.h"
 #import "MCSettingViewController.h"
-#import "MCOrderListController.h"
 #import "MCServiceController.h"
-#import "MCProfitController.h"
 #import "MCTeamController.h"
 #import "MCNewsListController.h"
 #import "MCArticlesController.h"
 #import "MCCountSafeController.h"
-#import "MCUpdateSaveController_X.h"
 #import "MCCardManagerController1.h"
 #import "MCWebViewController.h"
 #import "MCEditBankCardController.h"
 #import "KDPayGatherViewController.h"
 #import "MCShareSingleImgViewController.h"
-#import "MCBillSearchViewController.h"
 #import "MCVipViewController.h"
 #import "MCRateRankViewController.h"
 
-#import "MCMessageController_logo.h"
-#import "MCProfitListController.h"
 
 
 #import "KDForgetPwdViewController.h"
