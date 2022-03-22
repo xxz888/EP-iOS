@@ -16,7 +16,6 @@
 #import "KDWebContainer.h"
 #import "KDHomeXinYongKaViewController.h"
 #import "KDRenZhengView.h"
-#import "KDHomeBillManageViewController.h"
 #import "jintMyWallViewController.h"
 #import "KDTrandingRecordViewController.h"
 #import "MCManualRealNameController.h"
