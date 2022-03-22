@@ -243,9 +243,7 @@
     NSDictionary *result = (NSDictionary *)resp;
     TOKEN = result[@"token"];
     MCModelStore.shared.preUserPhone = result[@"phone"];
-//    NSString * is_acc = [result[@"phone"] isEqualToString:@"13383773800"] ? @"1" : @"0";
-//    [[NSUserDefaults standardUserDefaults] setValue:is_acc forKey:@"is_acc"];
-//    NSString *  acc = [[NSUserDefaults standardUserDefaults] objectForKey:@"is_acc"];
+
 
     SharedDefaults.extraFee = result[@"info"][@"extraFee"];
     SharedDefaults.hasPayPassword = result[@"info"][@"hasPayPassword"];
