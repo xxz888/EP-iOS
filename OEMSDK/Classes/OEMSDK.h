@@ -55,7 +55,6 @@
 #import "MCAlertStore.h"
 #import "MCUpdateAlertView.h"
 #import "MCLoading.h"
-#import "MCChoosePayment.h"
 #import "MCEmptyView.h"
 #import "MCBannerView.h"
 

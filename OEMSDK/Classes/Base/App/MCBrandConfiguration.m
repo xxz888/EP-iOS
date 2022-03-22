@@ -83,10 +83,7 @@
         return [MCUserInfoViewController new];
     }];
 
-    [MGJRouter registerURLPattern:rt_user_sign toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCSignViewController new];
-    }];
-    
+   
     #pragma mark - 银行卡管理
     [MGJRouter registerURLPattern:rt_card_list toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCCardManagerController new];

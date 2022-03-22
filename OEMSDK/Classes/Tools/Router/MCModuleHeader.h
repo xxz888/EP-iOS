@@ -130,7 +130,6 @@
 #import "MCMessageController.h"
 #import "MCCardManagerController.h"
 #import "MCUserInfoViewController.h"
-#import "MCSignViewController.h"
 #import "MCSettingViewController.h"
 #import "MCNewsListController.h"
 #import "MCArticlesController.h"

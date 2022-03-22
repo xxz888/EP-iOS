@@ -236,7 +236,6 @@
 		1C75BBAE0BA580A2666225EC4343C1E2 /* WMDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F140C6000E3A2B2CDA9F9069049DF3D /* WMDragView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1CA76BE20FFB1A86A2185A2CD39355DB /* QMUIMarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 02C7DDAE835B257A2B6AC40A7080454A /* QMUIMarqueeLabel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1CE1805F198487EE1415E9F7C5CD9377 /* QMUIImagePreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A056A593C627E715DD7E1A8248541FD /* QMUIImagePreviewViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1D1E41328FE9488741A1B30380342347 /* SingleBankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74FA3AD73640E809B8C2560CF1108D3E /* SingleBankCell.xib */; };
 		1D60CA811FED983A1633D78DDA7D9E88 /* QMUIStaticTableViewCellDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 8527C3049BA6E833303C45C128CE0499 /* QMUIStaticTableViewCellDataSource.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1D7641F346AC5D1C01FA4540F8D79381 /* UserAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = EE5FBBCEB82783C839F4F03865A2A330 /* UserAgreement.html */; };
 		1D78439C335C52123018D63ECFADDBDF /* NSBundle+PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 44980CBF76C8D472B788C04A88ECEA22 /* NSBundle+PGDatePicker.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -272,7 +271,6 @@
 		23780CE8FBAF95905C7F949D3815C1E0 /* MQTypeTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B42352DB4E51A1E4D656B6895EA291A5 /* MQTypeTag.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		23B34D95B335645049DF2801B540FB17 /* QMUIRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 02E1D26D701BC63C673EDF7008FFB41D /* QMUIRuntime.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		23BE53F2C2CC41FDD7E424A8F9556B2F /* QMUIAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 827D55228D118BD80B5F109F5F02D0BC /* QMUIAlertController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		23D95E6DA2B43F7AD330B6832B76BB59 /* MCSignHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70815269F3098D3B48D0A24FDEC5D5B2 /* MCSignHeader.xib */; };
 		23DC94D9EC076A765AD3E391FB24CCF0 /* MEIQIA_FBFontSymbol.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B73A714AC2DB6465475172A72E2435A /* MEIQIA_FBFontSymbol.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		24175CDCDFB2CDE8B67058B470735217 /* MQWebViewBubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE245C3F3104BE600F30114131A6BE96 /* MQWebViewBubbleCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		24799E65256B633B82F940B7D83AEDFE /* KDForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33C09E7E8140D0F1FAEF1312C163977 /* KDForgetPwdViewController.xib */; };
@@ -299,7 +297,6 @@
 		295E4FEB5E3DF9E629AD07F0DC52A144 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 153ECBB4FD2E8BDE7FC96F62057AEF07 /* NSString+MJExtension.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		297777018C453A2604E55F79661AD551 /* SDWebImageError.h in Headers */ = {isa = PBXBuildFile; fileRef = 95E9286B7C5AF50409FF5F54B99A41A4 /* SDWebImageError.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2993211A3F282F2FAB6FE42DCECED08C /* Meiqia-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B14417AE66C35D393386E664807D0543 /* Meiqia-dummy.m */; };
-		29C569CA8C9D004A592DF463EE071E7D /* MCServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEDCE6B9D06884E70BCA678748971D91 /* MCServiceCell.xib */; };
 		2A390402E3F014749B213CE437CCC960 /* MEIQIA_InputView.h in Headers */ = {isa = PBXBuildFile; fileRef = BE1A8D3EAF2211F47D6B61910F2D07EC /* MEIQIA_InputView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2A6B3BE63AB381910580CCBE170894CE /* MQVisialMessageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 060CE99A5047EDFB680436E3BD6ACC9E /* MQVisialMessageFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2A906F0CEADABB86599A3BDC5AB6C3FA /* MCLocationTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B31CE92210AC0358AD03159BA1FF82 /* MCLocationTools.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -313,7 +310,6 @@
 		2D3E4418E1D734552D3E6878D93A9365 /* MQStringSizeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5D90247408A5C731229B39C34FCFB /* MQStringSizeUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2D68CFADD814DD38C583853200CD6DE7 /* MCArticlesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F6A66055824B6FF5974B61AFA9999C /* MCArticlesCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2D71BB2816628DB40B1FA8D45721E359 /* QMUIScrollAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EAC2F680B633381BD91A0A7D545629 /* QMUIScrollAnimator.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2DA553C946E8C04304724F0D0DAC71AA /* MCShareOverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580A0F57BB262DB89C735FE0431F10BC /* MCShareOverViewCell.xib */; };
 		2DE616F43C8817E94EB5BADA794975B1 /* MQChatTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A17BF26E8AC021D44F23549864662FE /* MQChatTableView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2E4EE90F35FA336FABA199E1445BAFA6 /* QMUIPopupMenuBaseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = F6B020390AC2B6A26C659980D1FE268D /* QMUIPopupMenuBaseItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2E5F3B41BD51ACE4EE3B422BB67E51DF /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A11FD5349037F9B21A00D76DCDFF0F /* MASViewAttribute.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -596,7 +592,6 @@
 		60A7C0AE2C12A67EF9658F81B03ED97E /* MQBotRichTextMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B28E57D9C5FDE1F622F289E35157693 /* MQBotRichTextMessage.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		60C3E7FBFCE24398A5E7F1AF9BFE94F8 /* KDCommonAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62DDA6DF48EFBBD3EBA07B3E3A9BDD23 /* KDCommonAlert.xib */; };
 		60D3C09225995388A42B5BA154FCF240 /* MQMessageFactoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 378D9232425CE58A0DA81E3E6EE31716 /* MQMessageFactoryHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		60FE4C9885138BE6AFE3193A3DBA0130 /* MCPaymentModel.h in Headers */ = {isa = PBXBuildFile; fileRef = CB324CB5972291FBE791A82C32E993E6 /* MCPaymentModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6132C990E8CFA4F993543CBAA36488E5 /* MQChatBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D476FAEB91D5914B974D195122F484 /* MQChatBaseCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		616C37AA929ECF35C4127245FCDA9ADF /* MJRefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CCB25ACBC5BFF7F031537DBDC67E35 /* MJRefreshBackStateFooter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		617B7E695FE5C596C68B00028ADE1AEB /* UIImage+Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = EC947E0A268DD48AB2C17E9089B13096 /* UIImage+Transform.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -610,7 +605,6 @@
 		628807C0FC4FB7330D4C38376B699834 /* MCNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDFBCF0C4C88764FF3F379077A5B5 /* MCNewsCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		62CC4D9F3029EEB259B5569D95CE1863 /* MCAccountModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 76005F2991C2FC57AB7D587A98243FC2 /* MCAccountModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		62F02B59103D794FE3C2F982E3059FC5 /* QMUIWeakObjectContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = CCBADA77A9577F73EE39EACAEB39568B /* QMUIWeakObjectContainer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		636F2E94F610C6B6A2A89F43B3CC9C22 /* QSHHistoryListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595B8B893DA22D27B3FD99550391AF20 /* QSHHistoryListHeader.xib */; };
 		6389B59ADC061BEEB1E405277674A580 /* QMUITips.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFA16C521DF85F75C2DFE834509ADF0 /* QMUITips.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		639E8F454CA5BFFC2685B402F9E2CA9B /* SGQRCodeScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE9BCD43154E994A216A061600C9944 /* SGQRCodeScanView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		63D46F3477FC148502F31711ADC0B79A /* QMUIEmotionView.h in Headers */ = {isa = PBXBuildFile; fileRef = DE8CF3E8134307CE3626A24771905701 /* QMUIEmotionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -685,7 +679,6 @@
 		70E5D4A67BE62A1FF86B2C1FFA889AB3 /* MCRunLightView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8D0B0704AE3B8DFA1AA05079DF4B0F /* MCRunLightView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7102FCF2DF0E623386310D11C9DC37EC /* QMUISearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B30D5F5082F301170AB36DE2D8E2AF61 /* QMUISearchBar.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		713461A4149A1723B9EF941323A8A9EB /* NSBundle+wgSubBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B05C76ACE9CF3A9363F1747B2F2032 /* NSBundle+wgSubBundle.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		715000792E5A6B6B138E4C35B19D9C1C /* PayOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 301A128B9638066BFDA51670AB8C233C /* PayOrderViewController.xib */; };
 		71529BAB7B0D5581893E8D4266728D1F /* MQRichTextViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D7746748B2B187269BA71F7F975ABA /* MQRichTextViewModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7156474BBDF7F94FD83D9132954668BA /* NSMutableDictionary+MCNoNull.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2A7230963AADAB11CEB4F40C9F5A79 /* NSMutableDictionary+MCNoNull.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		716017E347BA130AF47F386DD7F67362 /* KDForgetPwdViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BC4E6EABFB005DD9E15FE68B9E39B8F /* KDForgetPwdViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -834,7 +827,6 @@
 		8CF247D231169CA57B7B75D3933A7146 /* MCUserHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F073E8830914704C68ED83B2E936EB1 /* MCUserHeaderView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8D06B15AAADED94152B5F91E976890E1 /* QMUIThemeManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B05497CBEA93B040FC2384403EFBFDA4 /* QMUIThemeManagerCenter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8DB395C50AEC382991DC6350C9BF9164 /* MQTransitioningAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F1FC111F50108E563A4AC7302BB28 /* MQTransitioningAnimation.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		8DE131FB1D88B753A76046200E4B3806 /* MCSignHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DE36AD655E9DE39F97137CEC52A2DFF4 /* MCSignHeader.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8DE5B2A4F4C540043126F5178B9474DC /* QMUICommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CD777C983BE089583E56132D3D1A01 /* QMUICommonViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8DEE74B45B4E444D36678724612DFD02 /* Application_TimeOut.m in Sources */ = {isa = PBXBuildFile; fileRef = E34883CBA725322F7721B33E95B3B73F /* Application_TimeOut.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8E0307CB51B7F69202EDAC757671C88E /* STModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 629DC96AB8BCBFBDF37DE7A43C588BA0 /* STModal.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -887,7 +879,6 @@
 		94A3020F2E0DFCE02AFCE5D4B1EC7CD8 /* MQTextCellModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A431029A47E28C82C2DA4B9ECE0BBDD2 /* MQTextCellModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		94C4AAA8B2B7E787FB98CAED1423660F /* MJRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E29CD7162D2BCBF8C9B27D1F6BC4E2 /* MJRefreshStateHeader.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		94E9FEBE45E484A94493F0A32F18B9D8 /* PGDatePickManagerHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 58D1FAF0955281A32B6D044F062A971A /* PGDatePickManagerHeaderView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		94F05DF5250E5BD9E4F6EF1C3CA42C8D /* MCPaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46678D8330CCEBA6F5CBED3567AC6519 /* MCPaymentModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9532EF70FA107B58B14291064AA5510D /* MQWithDrawMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B19CB3DD415F977B450B09B62119F6 /* MQWithDrawMessage.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9574CF33792EAC8E1A4C91420B01C19D /* MCMessageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EB3C100EFF0C99A3469068FE835A48A /* MCMessageController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		957CD9B494BE69E25B6557F5AAE5825F /* UIColor+MQHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 47781B930567EFFC07E558FA0C3E7FE8 /* UIColor+MQHex.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -946,7 +937,6 @@
 		A18A48ACF89526A3789746B1AF68316C /* QMUITips.m in Sources */ = {isa = PBXBuildFile; fileRef = A770FE1AC5537611D121DD7C36327B5F /* QMUITips.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A1EDCC6615FECCB09298142CF2B68D73 /* QMUITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA92B3B7C322E5B152A7A5AEC7CC377E /* QMUITableViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A1F79DFB3C14F8A65C13B016E41349CB /* MQTypeTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E37B6751654E4BDB41368995EE5E86B /* MQTypeTag.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A207B1EF065B33F20D3907D5D4AE24A7 /* ZAOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF78546D908CD567E95BB3D920B9092 /* ZAOrderViewCell.xib */; };
 		A223913B13C070E0D28122E92B5ACBB7 /* MCMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 590DA7D601128840BE8ED2228D082070 /* MCMessageCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A267B253A2E9E2741E86DE57F87F3407 /* UIVisualEffect+QMUITheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E8E0CFAE91AF14B144C314DE7A605325 /* UIVisualEffect+QMUITheme.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A2825F9234DED7B68D17FE5E4653FD59 /* MCMessageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 52701AF7CA758FA8038A14DA8BC9944C /* MCMessageModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -973,7 +963,6 @@
 		A58D961B3131B67678B39D582FF72B46 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 54A87CB9EA1A1B54CA4261D915085B10 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A5DB239FE1D8203E0AEFDF9AB5FE9D7B /* QMUIScrollAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = CB6A3F5F5BAD6914401487E0F39830BD /* QMUIScrollAnimator.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A5DFC8EE96E69C0AA3A89DA84B495454 /* QMUIGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = 58E3BC557A6D56EBC3705089CA85E3F8 /* QMUIGridView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A5E2AA66540887C6E73CF7AD27B4DD91 /* MCChoosePayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD11C1343D782572E63773BDBF18055 /* MCChoosePayment.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A619B68ECE5740B591ADEF68B60437C2 /* QMUISegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E7EEDCD515444769AE7BAEA54E4A0 /* QMUISegmentedControl.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A663F66455339F25E37EDCA8BCEBAE6D /* MQChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 117086767E6CCF4B5C969FAEB5E2F904 /* MQChatViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A693E7C90C6AC5D000CAED3CF677AF36 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A86FE6985B6A682ABC6AFD420A5C0B4F /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1050,7 +1039,6 @@
 		B6B09A10EADA345A9473D8300E70449A /* SDImageCachesManagerOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D8E4A30DAF418F8FC0FBF27B90C8FB00 /* SDImageCachesManagerOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B6B68C0B8AAA87756692C1E6E0B0559D /* MCBankCardCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9902CB149B00FBAC664A1342052FE1F0 /* MCBankCardCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B6CABF60E3533CB21DBA19A3684307C9 /* QMUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0128A7BC9AE88E71D12867F3820047 /* QMUINavigationController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B6D0A9AC6D3851BA7D7F6CDED33AC1C8 /* ZABuyGoodsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD66AAB562DE6647D03E1CAB98EC9018 /* ZABuyGoodsView.xib */; };
 		B732DADFE9B8D0E72A31D052D11D4D27 /* NSButton+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E5BB15F4D22643297A9CF06FBB3717 /* NSButton+WebCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B739E531D38666423A65C4BFE77CF238 /* MQMessageDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A56B46FD1F3F3D18F1A8E90B08D18BA6 /* MQMessageDateCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B76AAEDC12A762673B352561A3EBCEC8 /* SDImageHEICCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A1DD90290A38DBEB9BDF92FAA812FAC /* SDImageHEICCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1123,7 +1111,6 @@
 		C2EC28BA5948BA68362D228C0B0F6F8B /* IQKeyboardManagerConstantsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 40E2051229EBC150B41C149F18CEF017 /* IQKeyboardManagerConstantsInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C2EC531F0B77B32151BBDC91F5DFC873 /* MQButtonGroupBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2441A74448F6E745E6ACFDA5D2692A4F /* MQButtonGroupBar.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C2FD3B8E87F50F08D57EAFBEF52D6FF8 /* UIImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A6094C9B5521D8ACCCC8BF3D54CE5 /* UIImage+Transform.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C346097DC55C69F3EB96486236540B42 /* QRCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 914FDD7D6E366FDE6449154B29F416BA /* QRCodeView.xib */; };
 		C367C00CB3CCBF8F76B6F4DB63426389 /* SDWebImageCacheSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 07CF59D130074193017DBF4A499B37E8 /* SDWebImageCacheSerializer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C368C83114214AD0306EA82CBFB9F041 /* SDWebImageDownloaderResponseModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD5AFD58F06C4DC83F20BA3C6185BAE /* SDWebImageDownloaderResponseModifier.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C3A401E6B6061D3DE63C46924D9E9765 /* MQImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 647024224274D436D6306D203327F153 /* MQImageMessage.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1144,7 +1131,6 @@
 		C6B3AE3428A72800D4B111262D020B4B /* WMProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EE37F7E203B215378E8201F9AA4059B /* WMProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C7083D218DF898B75FD49544EBE534C0 /* MCBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEB5F9EE3140A3E8E9D855F207FA6AD /* MCBannerView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C7381A6935680D860687F95828235641 /* QMUIStaticTableViewCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6981928CB864959B04248BC6232B0D /* QMUIStaticTableViewCellData.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C7396C869E5DA18B2A2E518C08A1C07B /* MCChoosePaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4532A60BFCF82E66D84E1E5C9EEF6F47 /* MCChoosePaymentCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C74D2E856ADC8139CD00DBD184061B23 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAF4CF4AFB070D655BEA35ED4E60076 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C7503603826F4850B305B8DE87CED1F2 /* TAAbstractDotView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9B711C1E32A5D7C3982BFA3F6C8313D /* TAAbstractDotView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C766F7A8E480B683F7402B647F3490D4 /* QMWSMenuList.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EB028F309EF733538426E848339EE /* QMWSMenuList.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1171,7 +1157,6 @@
 		CAE0B213EAB5064DDD97F9D43823598E /* UITextField+QMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EEB0120F9F91054058D5426F4A3C13 /* UITextField+QMUI.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CAF8580D6ED4980C7ADF9DE194F85650 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = ABCC3F08A05133EE11ADEFCC151ED5DB /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CB0C12CA5194809FFF419D03388C24AB /* MCBrandConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C35942AF9191601F1112C4E15A4D6DC /* MCBrandConfiguration.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		CB14FE730F5E1E30CEF5C4224915858F /* MCSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F3307CCFD789718B06C4CE331EFBDB /* MCSignViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CB1E98E3EACC5F7BD255A8B115CA4E18 /* UIImage+Metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = F5729F3750F5254CE2A70D7CC0D43C73 /* UIImage+Metadata.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CB296FC47C7F9A83D2A15722AB74BC03 /* QMUIImagePickerCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F93F931DDB70E0991AF824366D89B09 /* QMUIImagePickerCollectionViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CB43C06392C690F86E60F5ADD4C7E460 /* QMUIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B8CE8BC87CA76D0AA20B7971076E3 /* QMUIGridView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1200,7 +1185,6 @@
 		CDAC814706E2E3F1E473F82E4086D861 /* SDAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 385E85F76960ED4F1A24CD3B674CF1B9 /* SDAnimatedImageView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CDB99FA3EFE9867203D564F8D279D62D /* SGQRCodeScanView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2570DD1C53AB6D9984E59A076C599AF9 /* SGQRCodeScanView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CDF96675E6F09CF4DBB0827800DD6AC3 /* MEIQIA_FBSquareFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 716CCF1CA443625F5DA53E8C6968E2F8 /* MEIQIA_FBSquareFontView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		CE06F11D445D009CDD5BA13C30BF03DB /* MCSignHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E39CBCDD6466C7A8FAF0CE45D1218A12 /* MCSignHeader.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CE0E78C156D29B33F51124651D104C3B /* QMUIAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E5D74DC55D13A2BE164D81D3031E63 /* QMUIAsset.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CE42D7623FCE849B0D154829AC7228D1 /* QMUIPopupContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D2F7700D98043FF8C6681AC91892B3 /* QMUIPopupContainerView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CE5419B79B6C962CA5E8059622C46465 /* CALayer+QMUIViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF44C9C273F140C820BD3CD126C7351 /* CALayer+QMUIViewAnimation.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1221,7 +1205,6 @@
 		D12BA6D63A31366E07500B10992E9B4B /* MQSplitLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3FE0AA9E409A3F93803BF82C1D48638 /* MQSplitLineCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D169646A445DC7B50B58BBA77DCA750F /* LoginAndRegistHTTPTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 461692E087C09110BA0EBF806D50D54A /* LoginAndRegistHTTPTools.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D1780B4D6DF3AB2C0D4C9C67D3851FCB /* MQBotMenuRichMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 92ED78A5A1AD952E9F646BC6EACFC90E /* MQBotMenuRichMessageCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D1A117B4B82AF4946611F96F94F95EB3 /* QSHHistoryListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C496EAA9361ABDFDCAC3F9EAD2E14884 /* QSHHistoryListCell.xib */; };
 		D1E19589211C8FDEA161499A932AF7DE /* QMUITableViewHeaderFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = E8527DAB3828E9194B6E3DD57EAEC501 /* QMUITableViewHeaderFooterView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D229534F6FF1621CBFF27325EFD3F3AF /* MCManualRealNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD14DE440D70C724C6AA67D29C6E7C3A /* MCManualRealNameController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D261D8EB27AF245A20C13D7D4654A4BB /* SDWebImageError.m in Sources */ = {isa = PBXBuildFile; fileRef = 80757E6358A1560453B88A8D0BB34C91 /* SDWebImageError.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1232,7 +1215,6 @@
 		D2B54D21820C9B2E357B65474607204E /* ZXPUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF11CBDB8CF032F20AC388321E3CE9F /* ZXPUnicode.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D2CB27D34145311A33406E19A14FCE79 /* UITableView+QMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A37A90B590BF668BBA2570B98938EA2 /* UITableView+QMUI.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D321A3827D4F912A32F420F89FC45F6B /* MCBrandInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE5FA400D36A6B5EF956CE79C68CAEB /* MCBrandInfo.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D33E2A347DE484608EA79E976D3A8F3D /* MCChoosePaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117A29F8156DDD275316A5D766B28AC6 /* MCChoosePaymentCell.xib */; };
 		D33F037A8E3AFE0839FF685F875FC2F3 /* MQMessageFormViewStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = C7315AC3B0E295AF45460355D210E55F /* MQMessageFormViewStyle.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D36CBA1AD662A6BDA7F4A56FE5017776 /* MQCustomizedUIText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B4A98CB39331B5320F5E46F8E9673 /* MQCustomizedUIText.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D42439DE1BAA17AC1E4AF83B38427C24 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 816A59F04A3707B45DE3F1F812C0DE99 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1240,7 +1222,6 @@
 		D45495E5D95C2463AD4575C1233A9442 /* NSString+HXString.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5964266DE8AD8957D2286949D2C0B2 /* NSString+HXString.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D45C02416106CC433B2EEBB989D2AD62 /* MCStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C15451B2C31B114C70EBC6B0CD032B6 /* MCStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D471373F1154D7076D2E9A5D36D05633 /* IQPreviousNextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3191EA2525DCB9DCBC702A0DA01BCF2 /* IQPreviousNextView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D48D7FA2FC5A54CC6E2518D2F9EB86CC /* ZAPayTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80A0BC404BADBBF63819CCCFE93A756A /* ZAPayTypeViewCell.xib */; };
 		D4A8461F5E01557CFD375C234220FFA5 /* Setting.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08BA9D2BBA620A28E3B60D28638E77C /* Setting.xcassets */; };
 		D4AC7402EB8F369A65B938D91B68922B /* UIViewController+MC_FixPresentInMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E6132C6903D9DD78ED80BFE77A148C /* UIViewController+MC_FixPresentInMainThread.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D4DC8158FCF89B9587A6DEE13869A8E9 /* GVUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A48ABCF085534F96AEBD4E63750FD04 /* GVUserDefaults.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1317,7 +1298,6 @@
 		E1E65B00EEFD42A2B8CA3323524A751B /* UIViewController+MQOrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = AA746723226F8E6CAE4FE7C217C5A721 /* UIViewController+MQOrientationFix.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E1E80AF1C3B1A4598415009DDD2F58D6 /* MCWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FBC96D5B5D604BBEE5DCE67297468990 /* MCWebViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E1ECAEEA3A1A7692C5566F5D1E3F5BBA /* QMUILogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E174BA4BFE65D8ED0EB6E9FBFB24A9DF /* QMUILogItem.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E2070C772E3A87CDF1056399AE1FBF32 /* MCSignViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F1B6F929C8C06CB5FFECB38636DF29 /* MCSignViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E293FDE3D45BC84C59D060C4F3C792D3 /* NSError+MQConvenient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C8A057C799032C37D8C74893F30539E /* NSError+MQConvenient.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E29BAA2AF7E20F8A5DAC54D83B4DFEFA /* MCSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC348C55DE2235CB4E8797474D8039E /* MCSettingCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E2E2F1F7412132FE9CE1DB2F616BDF07 /* UIBezierPath+QMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = C54BD50EE64301D619ADF2ED257D3438 /* UIBezierPath+QMUI.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1396,7 +1376,6 @@
 		F0BEFC0B8AFC149B088E63D99B1FC922 /* MQVoiceMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 78F42EA9926239176B83E310979701AB /* MQVoiceMessage.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F0C97DB08945BB5F3E0390F613956E96 /* NSButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE9AE30F8E914D7BD44670CA3F17097 /* NSButton+WebCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F0CCA4821D5DF384AD491752026B188C /* QMUIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F666E81B11496B76FF985BB25BB663C /* QMUIEmptyView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F10C1B0A6FFF9FF7594BF05EA5DD171B /* MCChoosePayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 358BBEF20CFC358FD666C4F5EE761B62 /* MCChoosePayment.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F13282DD9634F0E877417864DDF1B6F3 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 427334610298D1A5DF36793B36266846 /* MessageModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F143029F400FC136B0D763045F396A05 /* MEIQIA_MLAudioMeterObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 440C9D100A9F3927C31849B08FE7CE1C /* MEIQIA_MLAudioMeterObserver.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F17C3F7DE25A7A13EE79B291023A6661 /* QMUIWindowSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF1F53D7368A7DF3E4D0BB98DD7238 /* QMUIWindowSizeMonitor.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1415,7 +1394,6 @@
 		F39ABF626D14804192E99C7F8D062089 /* UIButton+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A8481AAF1C9FFCEEBD7C034A1D0B9CC /* UIButton+WebCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F3B37F4AEDF472538E917E84D9219F17 /* MQBotAnswerCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB9257F230768FD00D759B0E4FAF8B /* MQBotAnswerCellModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F3C58935AC6DD34299BA88C273F7EE38 /* MQToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D5548CAF69A9BBCFFA6A802896CAEC9F /* MQToast.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F3DD0BDB6283E9BDE54252D39D7F137B /* MCChoosePaymentCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A65E86DBFCE242C5B9FC5159E2D6E479 /* MCChoosePaymentCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F4038D4BA146DF75EBD09F964B3964EA /* MQEvaluationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD63B8331B8751CE019EC532C25591D8 /* MQEvaluationCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F424F8811F1C89F0A1B8B1223510BF19 /* MCModuleHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 07481E319465A8A0068922E56B04BC5C /* MCModuleHeader.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F42683C3B31A92AB8D77D97D52F9B400 /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F764313DB48625B652BE3B8EA49C2469 /* PGDatePickerView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1986,7 +1964,6 @@
 		10D7B703DD557697951CC6BB3541F5C9 /* MCUpdateAlertView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MCUpdateAlertView.xib; path = Assets/MCUpdateAlertView.xib; sourceTree = "<group>"; };
 		10F505ED2443BA348B1749D8A9EAD986 /* CALayer+QMUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+QMUI.m"; path = "QMUIKit/UIKitExtensions/CALayer+QMUI.m"; sourceTree = "<group>"; };
 		117086767E6CCF4B5C969FAEB5E2F904 /* MQChatViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQChatViewController.h; path = "Meiqia-SDK-files/MQChatViewController/Controllers/MQChatViewController.h"; sourceTree = "<group>"; };
-		117A29F8156DDD275316A5D766B28AC6 /* MCChoosePaymentCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MCChoosePaymentCell.xib; path = Assets/MCChoosePaymentCell.xib; sourceTree = "<group>"; };
 		119D4599290BA887C699A63B4F91896A /* MQBotWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQBotWebViewController.m; path = "Meiqia-SDK-files/MQChatViewController/Views/MQWebView/MQBotWebViewController.m"; sourceTree = "<group>"; };
 		11BD9C1CAAF3633E7FB5FBC58824FFE9 /* MQWithDrawMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQWithDrawMessage.h; path = "Meiqia-SDK-files/MQChatViewController/MessageModels/MQWithDrawMessage.h"; sourceTree = "<group>"; };
 		12135C1F9F4EEC56E052CA03BC5C8534 /* MCSumRebateModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCSumRebateModel.h; sourceTree = "<group>"; };
@@ -2056,7 +2033,6 @@
 		1D9D2908FF934B0194DC84C056C85097 /* UIView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MJExtension.h"; path = "MJRefresh/UIView+MJExtension.h"; sourceTree = "<group>"; };
 		1DC041199A663356ABE619D5BF31C883 /* QMUIDialogViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUIDialogViewController.m; path = QMUIKit/QMUIComponents/QMUIDialogViewController.m; sourceTree = "<group>"; };
 		1DC27C9888FA5671DA3A53511B581672 /* QMUIStaticTableViewCellData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIStaticTableViewCellData.h; path = QMUIKit/QMUIComponents/StaticTableView/QMUIStaticTableViewCellData.h; sourceTree = "<group>"; };
-		1DD11C1343D782572E63773BDBF18055 /* MCChoosePayment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCChoosePayment.m; sourceTree = "<group>"; };
 		1DD1D825052E619D986F3496048A3FBA /* ZZCircleProgress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZCircleProgress.release.xcconfig; sourceTree = "<group>"; };
 		1E019B8B57B42D14F54A7C605E7C1D9A /* SGQRCodeObtain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SGQRCodeObtain.m; path = SGQRCode/SGQRCodeObtain.m; sourceTree = "<group>"; };
 		1E11DB451B8636825D6AE6552314E6CB /* NSNumber+QMUI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNumber+QMUI.h"; path = "QMUIKit/UIKitExtensions/NSNumber+QMUI.h"; sourceTree = "<group>"; };
@@ -2169,7 +2145,6 @@
 		300457A3A84FEAD9E31EDF5D606CD54C /* MQChatViewConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQChatViewConfig.m; path = "Meiqia-SDK-files/MQChatViewController/Config/MQChatViewConfig.m"; sourceTree = "<group>"; };
 		300F280E4D59C9EBF3F734D4A04B02D3 /* UIImage+QMUI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+QMUI.h"; path = "QMUIKit/UIKitExtensions/UIImage+QMUI.h"; sourceTree = "<group>"; };
 		30123EF5E1E8A5934A1A49CDE81E1463 /* MGJRouter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGJRouter-prefix.pch"; sourceTree = "<group>"; };
-		301A128B9638066BFDA51670AB8C233C /* PayOrderViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = PayOrderViewController.xib; path = Assets/PayOrderViewController.xib; sourceTree = "<group>"; };
 		307F3AEC2271BA105643BDDE2E902B02 /* MQCardMessageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQCardMessageCell.m; path = "Meiqia-SDK-files/MQChatViewController/TableCells/CellView/MQCardMessageCell.m"; sourceTree = "<group>"; };
 		30ABA23777FEA56ADB013BB15F4BDC3C /* SDAsyncBlockOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAsyncBlockOperation.h; path = SDWebImage/Private/SDAsyncBlockOperation.h; sourceTree = "<group>"; };
 		30E0497D16220F63C798CB596EA1DD62 /* MQMessageFormTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQMessageFormTextView.m; path = "Meiqia-SDK-files/MQMessageForm/Views/MQMessageFormInputView/MQMessageFormTextView.m"; sourceTree = "<group>"; };
@@ -2196,7 +2171,6 @@
 		350122A6F1C4E9F551F27DE88651777B /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
 		3558999D5887B68547EEABCECCBE70C8 /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
 		356FC36264D2778820A9A5BE2813E2CE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Vendor/opencv2.framework; sourceTree = "<group>"; };
-		358BBEF20CFC358FD666C4F5EE761B62 /* MCChoosePayment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCChoosePayment.h; sourceTree = "<group>"; };
 		3595C3652686F64887A784AC2EE2A6B1 /* MQChatRegexUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQChatRegexUtil.m; path = "Meiqia-SDK-files/MQChatViewController/Utils/MQChatRegexUtil.m"; sourceTree = "<group>"; };
 		35CB507481BA975DE92F5CFFC6613D13 /* KDShareBottomView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KDShareBottomView.h; sourceTree = "<group>"; };
 		35D5389D70D87024AC8E38DB0DFF0C1A /* MQBotMenuCellModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQBotMenuCellModel.m; path = "Meiqia-SDK-files/MQChatViewController/TableCells/CellModel/MQBotMenuCellModel.m"; sourceTree = "<group>"; };
@@ -2292,7 +2266,6 @@
 		44F4D3037FFE34530B508D1A28658AFC /* MCResponseMannager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCResponseMannager.m; sourceTree = "<group>"; };
 		45096920C6420BB3C20C0F7EB5A52242 /* NSPointerArray+QMUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSPointerArray+QMUI.m"; path = "QMUIKit/UIKitExtensions/NSPointerArray+QMUI.m"; sourceTree = "<group>"; };
 		450D8AC2FFF7910957E6CC15B2DFF204 /* MQInputContentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQInputContentView.m; path = "Meiqia-SDK-files/MQChatViewController/Views/MQInputBar/MQInputContentView/MQInputContentView.m"; sourceTree = "<group>"; };
-		4532A60BFCF82E66D84E1E5C9EEF6F47 /* MCChoosePaymentCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCChoosePaymentCell.m; sourceTree = "<group>"; };
 		45656956F25AD43F850256AA4DA162F4 /* MJRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJRefresh-dummy.m"; sourceTree = "<group>"; };
 		459EC691A7AE4C9EEAC22F1AA3245FEB /* UILabel+Extension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
 		45C545AB83C99FA8B18DA2CEB40ACB5E /* QMUILogNameManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUILogNameManager.m; path = QMUIKit/QMUIComponents/QMUILog/QMUILogNameManager.m; sourceTree = "<group>"; };
@@ -2301,7 +2274,6 @@
 		460BB9318722E2D06DAAF1C5D82BEBEC /* STModal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = STModal.h; sourceTree = "<group>"; };
 		461692E087C09110BA0EBF806D50D54A /* LoginAndRegistHTTPTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegistHTTPTools.m; sourceTree = "<group>"; };
 		462A4D2CE1935DD475CCAF4B5EDE5768 /* NSString+HXString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+HXString.m"; sourceTree = "<group>"; };
-		46678D8330CCEBA6F5CBED3567AC6519 /* MCPaymentModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCPaymentModel.m; sourceTree = "<group>"; };
 		466F5516506AEE3C3AA79AFF369A6B6A /* MEIQIA_EmojiCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MEIQIA_EmojiCell.m; path = "Meiqia-SDK-files/MQChatViewController/Vendors/EmojiView/MEIQIA_EmojiCell.m"; sourceTree = "<group>"; };
 		46700E3F0A3CFA9DD960C4C67C1D1212 /* QMUIPopupMenuView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIPopupMenuView.h; path = QMUIKit/QMUIComponents/QMUIPopupMenuView/QMUIPopupMenuView.h; sourceTree = "<group>"; };
 		46B6665A352C247780CAFDBDE5F98C68 /* MQEmbededWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQEmbededWebView.h; path = "Meiqia-SDK-files/MQChatViewController/Views/MQWebView/MQEmbededWebView.h"; sourceTree = "<group>"; };
@@ -2418,7 +2390,6 @@
 		5781D796B597B8B50721A2C971754265 /* iCarousel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		57943C541C5C3BAC7417850B077BF673 /* QMUIEmotionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUIEmotionView.m; path = QMUIKit/QMUIComponents/QMUIEmotionView.m; sourceTree = "<group>"; };
 		57E14F71E15AFA7A97C9C2A3B8EDB475 /* OEMSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OEMSDK-dummy.m"; sourceTree = "<group>"; };
-		580A0F57BB262DB89C735FE0431F10BC /* MCShareOverViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MCShareOverViewCell.xib; path = Assets/MCShareOverViewCell.xib; sourceTree = "<group>"; };
 		5829DD4645896806115E084726F2B598 /* UIViewController+MQHieriachy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MQHieriachy.m"; path = "Meiqia-SDK-files/MQChatViewController/Categories/UIViewController+MQHieriachy.m"; sourceTree = "<group>"; };
 		58327D201D3E74DBAAEC3C6D6B256965 /* BRDatePickerView+BR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "BRDatePickerView+BR.h"; path = "BRPickerView/DatePickerView/BRDatePickerView+BR.h"; sourceTree = "<group>"; };
 		5840FD000027120B8E6DDFB59442079E /* BRPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BRPickerView.h; path = BRPickerView/BRPickerView.h; sourceTree = "<group>"; };
@@ -2433,7 +2404,6 @@
 		5959C8390C524AF7C92192632B4FB959 /* MCBankCardCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCBankCardCell.m; sourceTree = "<group>"; };
 		5959E1F303869EB51CF269ABBA10ED80 /* UIColor+QMUI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+QMUI.h"; path = "QMUIKit/UIKitExtensions/UIColor+QMUI.h"; sourceTree = "<group>"; };
 		595A176D11BD29EE31B51947373053EE /* QMUINavigationTitleView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUINavigationTitleView.h; path = QMUIKit/QMUIComponents/QMUINavigationTitleView.h; sourceTree = "<group>"; };
-		595B8B893DA22D27B3FD99550391AF20 /* QSHHistoryListHeader.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = QSHHistoryListHeader.xib; path = Assets/QSHHistoryListHeader.xib; sourceTree = "<group>"; };
 		5969F0DAE982954D5E627D5445BB5A01 /* UIView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCache.h"; path = "SDWebImage/Core/UIView+WebCache.h"; sourceTree = "<group>"; };
 		59AB9D1648970679278233EF146ACAD1 /* NSArray+QMUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+QMUI.m"; path = "QMUIKit/UIKitExtensions/NSArray+QMUI.m"; sourceTree = "<group>"; };
 		59C3778B4A5B644A617D853DC4DCA70D /* MQMessageFormViewStyleBlue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQMessageFormViewStyleBlue.m; path = "Meiqia-SDK-files/MQMessageForm/Config/Styles/PreDefined/MQMessageFormViewStyleBlue.m"; sourceTree = "<group>"; };
@@ -2582,7 +2552,6 @@
 		70143CFF308205C9548D25746844EAF0 /* NSImage+Compatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSImage+Compatibility.h"; path = "SDWebImage/Core/NSImage+Compatibility.h"; sourceTree = "<group>"; };
 		70487DE9564796E5BED4272BD5E99841 /* UINavigationController+NavigationBarTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+NavigationBarTransition.h"; path = "QMUIKit/QMUIComponents/NavigationBarTransition/UINavigationController+NavigationBarTransition.h"; sourceTree = "<group>"; };
 		707D7ACF9EDE82CED42EC531722FAE37 /* LoginAndRegistHTTPTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LoginAndRegistHTTPTools.h; sourceTree = "<group>"; };
-		70815269F3098D3B48D0A24FDEC5D5B2 /* MCSignHeader.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MCSignHeader.xib; path = Assets/MCSignHeader.xib; sourceTree = "<group>"; };
 		70925DABFA8245859C7A36E1BF5A9576 /* MQChatFileUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQChatFileUtil.h; path = "Meiqia-SDK-files/MQChatViewController/Utils/MQChatFileUtil.h"; sourceTree = "<group>"; };
 		70DC7C446C0147EFD37BC324132BFD18 /* MQMessageFormViewStyleGreen.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQMessageFormViewStyleGreen.m; path = "Meiqia-SDK-files/MQMessageForm/Config/Styles/PreDefined/MQMessageFormViewStyleGreen.m"; sourceTree = "<group>"; };
 		7128650373687B6AA6C84B08D2B0827B /* MCMessageModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCMessageModel.m; sourceTree = "<group>"; };
@@ -2612,7 +2581,6 @@
 		74AFB291F2A0CBB6931835628ADBFAC1 /* LYEmptyViewHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LYEmptyViewHeader.h; path = LYEmptyView/LYEmptyViewHeader.h; sourceTree = "<group>"; };
 		74CBF4DC0195AEF59633C7F06AC37E78 /* QMUICellSizeKeyCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUICellSizeKeyCache.h; path = QMUIKit/QMUIComponents/QMUICellSizeKeyCache/QMUICellSizeKeyCache.h; sourceTree = "<group>"; };
 		74E1A4A6171EC99F003FD8EBA826D643 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/Core/SDWebImageDownloader.h; sourceTree = "<group>"; };
-		74FA3AD73640E809B8C2560CF1108D3E /* SingleBankCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SingleBankCell.xib; path = Assets/SingleBankCell.xib; sourceTree = "<group>"; };
 		74FCD504FEBDFDF0CEE0DAE17061F94B /* MQCardCellModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQCardCellModel.m; path = "Meiqia-SDK-files/MQChatViewController/TableCells/CellModel/MQCardCellModel.m"; sourceTree = "<group>"; };
 		7538C4CE1646A75BA59FC62889E74204 /* SDImageIOCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageIOCoder.m; path = SDWebImage/Core/SDImageIOCoder.m; sourceTree = "<group>"; };
 		756005BC48534C42A6456ABEF3D2E26D /* MQEventMessageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQEventMessageCell.h; path = "Meiqia-SDK-files/MQChatViewController/TableCells/CellView/MQEventMessageCell.h"; sourceTree = "<group>"; };
@@ -2688,7 +2656,6 @@
 		80018AF1339125A3BCECA3C6486D17E9 /* QMUIRuntime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUIRuntime.m; path = QMUIKit/QMUICore/QMUIRuntime.m; sourceTree = "<group>"; };
 		8049B71F681DCFE1638914AC64C9B844 /* MQMessageFormViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQMessageFormViewController.m; path = "Meiqia-SDK-files/MQMessageForm/Controllers/MQMessageFormViewController.m"; sourceTree = "<group>"; };
 		80757E6358A1560453B88A8D0BB34C91 /* SDWebImageError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageError.m; path = SDWebImage/Core/SDWebImageError.m; sourceTree = "<group>"; };
-		80A0BC404BADBBF63819CCCFE93A756A /* ZAPayTypeViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ZAPayTypeViewCell.xib; path = Assets/ZAPayTypeViewCell.xib; sourceTree = "<group>"; };
 		80C6732A01A33CD4C44659538ECEE89F /* PGDatePickerHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGDatePickerHeader.h; path = PGDatePicker/PGDatePickerHeader.h; sourceTree = "<group>"; };
 		80F321C9E65C3D4769EF1F24E7D4616E /* PGDatePicker+MonthDayHourMinute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+MonthDayHourMinute.h"; path = "PGDatePicker/PGDatePicker+MonthDayHourMinute.h"; sourceTree = "<group>"; };
 		80F85B912F4644C36793D77DD87D0F9F /* PGDatePicker+MonthDayHourMinuteSecond.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+MonthDayHourMinuteSecond.m"; path = "PGDatePicker/PGDatePicker+MonthDayHourMinuteSecond.m"; sourceTree = "<group>"; };
@@ -2773,7 +2740,6 @@
 		8D37D28B7EBEEBA7CFFAD87F117A4985 /* NSImage+Compatibility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Compatibility.m"; path = "SDWebImage/Core/NSImage+Compatibility.m"; sourceTree = "<group>"; };
 		8D5FD87098A5F699ACD0F4499A747D9A /* MQAGEmojiPageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQAGEmojiPageView.m; path = "Meiqia-SDK-files/MQChatViewController/Vendors/AGEmojiKeyboard/MQAGEmojiPageView.m"; sourceTree = "<group>"; };
 		8DBCED2A4D1BCDD654C99C56156F44EE /* SDImageCachesManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCachesManager.m; path = SDWebImage/Core/SDImageCachesManager.m; sourceTree = "<group>"; };
-		8DF78546D908CD567E95BB3D920B9092 /* ZAOrderViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ZAOrderViewCell.xib; path = Assets/ZAOrderViewCell.xib; sourceTree = "<group>"; };
 		8E37B6751654E4BDB41368995EE5E86B /* MQTypeTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQTypeTag.h; path = "Meiqia-SDK-files/MQChatViewController/Utils/MQTypeTag.h"; sourceTree = "<group>"; };
 		8E4D9713463E083ABE8E4C114ACA6004 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		8E7B9B447917AA2671C2F32E8E2052B5 /* MEIQIA_CafRecordWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MEIQIA_CafRecordWriter.m; path = "Meiqia-SDK-files/MQChatViewController/Vendors/MLAudioRecorder/MEIQIA_CafRecordWriter.m"; sourceTree = "<group>"; };
@@ -2790,11 +2756,9 @@
 		8FE9A2FE474A42A9652ECC836FE24F9A /* KDLoginTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KDLoginTool.h; sourceTree = "<group>"; };
 		8FF45FF0B7FCDC8605D988CB815D4AC2 /* QMUITextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUITextView.h; path = QMUIKit/QMUIComponents/QMUITextView.h; sourceTree = "<group>"; };
 		9091773E65BACB7C52195A4D87E3B159 /* MQCustomizedUIText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQCustomizedUIText.h; path = "Meiqia-SDK-files/MQChatViewController/Config/CustomizedText/MQCustomizedUIText.h"; sourceTree = "<group>"; };
-		90F3307CCFD789718B06C4CE331EFBDB /* MCSignViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCSignViewController.m; sourceTree = "<group>"; };
 		90FC5400C606C62C239851B544F4F2E4 /* SDCycleScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDCycleScrollView-dummy.m"; sourceTree = "<group>"; };
 		9101FEBE7C1B91A312263D1519B8B37C /* UISearchBar+QMUI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+QMUI.h"; path = "QMUIKit/UIKitExtensions/UISearchBar+QMUI.h"; sourceTree = "<group>"; };
 		911AA2E5A698A42AFE2CC8AD2FD17AE5 /* SDImageTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageTransformer.m; path = SDWebImage/Core/SDImageTransformer.m; sourceTree = "<group>"; };
-		914FDD7D6E366FDE6449154B29F416BA /* QRCodeView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = QRCodeView.xib; path = Assets/QRCodeView.xib; sourceTree = "<group>"; };
 		9158134D01529FFE3B1D49F7413CFD1C /* QMUICommonTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUICommonTableViewController.h; path = QMUIKit/QMUIMainFrame/QMUICommonTableViewController.h; sourceTree = "<group>"; };
 		91E3B7C0BB73E2F4E9E987A31978E167 /* QMUIButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIButton.h; path = QMUIKit/QMUIComponents/QMUIButton/QMUIButton.h; sourceTree = "<group>"; };
 		9228973041F9F95FAE57290F3048063C /* QMUIImagePickerHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIImagePickerHelper.h; path = QMUIKit/QMUIComponents/ImagePickerLibrary/QMUIImagePickerHelper.h; sourceTree = "<group>"; };
@@ -2935,7 +2899,6 @@
 		A61BFDABB65A024767E30059EFAD00C9 /* NSString+MQName.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+MQName.m"; path = "Meiqia-SDK-files/MQChatViewController/Categories/NSString+MQName.m"; sourceTree = "<group>"; };
 		A642382011A7ED2E526F57EEE3F0FB2E /* QMUITabBarViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUITabBarViewController.h; path = QMUIKit/QMUIMainFrame/QMUITabBarViewController.h; sourceTree = "<group>"; };
 		A65D2DD95DA422C0A8B2B342C3FF9AAF /* MJPropertyType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyType.m; path = MJExtension/MJPropertyType.m; sourceTree = "<group>"; };
-		A65E86DBFCE242C5B9FC5159E2D6E479 /* MCChoosePaymentCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCChoosePaymentCell.h; sourceTree = "<group>"; };
 		A6C5BFE89A0C8960675C8215FCF14C4C /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
 		A6CC496B648185AD14F1D5AFD44CD2C2 /* QMUIMarqueeLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUIMarqueeLabel.m; path = QMUIKit/QMUIComponents/QMUIMarqueeLabel.m; sourceTree = "<group>"; };
 		A6E8EE381BCDF541EBC02EA37AC52BA3 /* MQChatTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQChatTableView.m; path = "Meiqia-SDK-files/MQChatViewController/Controllers/MQChatTableView.m"; sourceTree = "<group>"; };
@@ -3018,7 +2981,6 @@
 		B183182928F447A1DD891D6965FA7D14 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoFooter.m; path = MJRefresh/Base/MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		B1D3D08B11CCF9F6B4AB2198498E537D /* BankCardTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BankCardTextField.h; sourceTree = "<group>"; };
 		B1DD52E0554D6536CE19EDC4C95D42B7 /* QMUIToolbarButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIToolbarButton.h; path = QMUIKit/QMUIComponents/QMUIButton/QMUIToolbarButton.h; sourceTree = "<group>"; };
-		B1F1B6F929C8C06CB5FFECB38636DF29 /* MCSignViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCSignViewController.h; sourceTree = "<group>"; };
 		B28294E6DDE9E7E8A959A36B5B30F83E /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		B2A5B5A4791A9EF6E3DAB7F80BABAD5E /* UIButton+MC_FixMultiClick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIButton+MC_FixMultiClick.h"; sourceTree = "<group>"; };
 		B2DB304F3B76C184982C779EEC7D9924 /* SDAnimatedImagePlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImagePlayer.h; path = SDWebImage/Core/SDAnimatedImagePlayer.h; sourceTree = "<group>"; };
@@ -3074,7 +3036,6 @@
 		BCC8439DA451515AE12B04F10C00383E /* WMPageController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WMPageController.release.xcconfig; sourceTree = "<group>"; };
 		BCCFE4FE17A5CA56166FEA25597DFD07 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		BD00E5E5464E26484E6B1AA8BC315812 /* MQMessageFormConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQMessageFormConfig.m; path = "Meiqia-SDK-files/MQMessageForm/Config/MQMessageFormConfig.m"; sourceTree = "<group>"; };
-		BD66AAB562DE6647D03E1CAB98EC9018 /* ZABuyGoodsView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ZABuyGoodsView.xib; path = Assets/ZABuyGoodsView.xib; sourceTree = "<group>"; };
 		BD7B226681FDA4FE0354AB9F2CABE0DB /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+SDAutoTableViewCellHeight.m"; path = "SDAutoLayoutDemo/SDAutoLayout/UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		BD9FA04BE4941B32663728A6D154C532 /* UITableViewCell+QMUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+QMUI.m"; path = "QMUIKit/UIKitExtensions/UITableViewCell+QMUI.m"; sourceTree = "<group>"; };
 		BDBDE869A0E8A79F01E98803051879E9 /* iCarousel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iCarousel.debug.xcconfig; sourceTree = "<group>"; };
@@ -3117,7 +3078,6 @@
 		C36728BD24F79FEEB6C0BAA26DB33963 /* QMUIVisualEffectView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUIVisualEffectView.m; path = QMUIKit/QMUIComponents/QMUIVisualEffectView.m; sourceTree = "<group>"; };
 		C36EE5C8447EA1F56C0216695DE18376 /* MQChatEmojize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQChatEmojize.h; path = "Meiqia-SDK-files/MQChatViewController/Utils/MQChatEmojize.h"; sourceTree = "<group>"; };
 		C3E265CD46D04CF55D2E86E3CE1EBC67 /* QMUIMoreOperationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIMoreOperationController.h; path = QMUIKit/QMUIComponents/QMUIMoreOperationController.h; sourceTree = "<group>"; };
-		C496EAA9361ABDFDCAC3F9EAD2E14884 /* QSHHistoryListCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = QSHHistoryListCell.xib; path = Assets/QSHHistoryListCell.xib; sourceTree = "<group>"; };
 		C4D3F119F2737550F3ADCFC02F4DAEBE /* SDAutoLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDAutoLayout.release.xcconfig; sourceTree = "<group>"; };
 		C4EEB0120F9F91054058D5426F4A3C13 /* UITextField+QMUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+QMUI.m"; path = "QMUIKit/UIKitExtensions/UITextField+QMUI.m"; sourceTree = "<group>"; };
 		C4F0F4F09F604DCB3AA1BD59EB83C3D0 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
@@ -3160,7 +3120,6 @@
 		CAD3ED87D8894906A1B000C90C60AFDB /* MQJsonUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQJsonUtil.m; path = "Meiqia-SDK-files/MQChatViewController/Utils/MQJsonUtil.m"; sourceTree = "<group>"; };
 		CAE2F6AD87ECB14EB4D54E8ECB5392FD /* MQBotMenuMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQBotMenuMessage.h; path = "Meiqia-SDK-files/MQChatViewController/MessageModels/MQBotMenuMessage.h"; sourceTree = "<group>"; };
 		CB16F3B0BBA2377690E83473051B321C /* QMUIZoomImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QMUIZoomImageView.m; path = QMUIKit/QMUIComponents/QMUIZoomImageView.m; sourceTree = "<group>"; };
-		CB324CB5972291FBE791A82C32E993E6 /* MCPaymentModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCPaymentModel.h; sourceTree = "<group>"; };
 		CB5D531D4172E8F4F2EC4EEF1F959872 /* MCNewsView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCNewsView.m; sourceTree = "<group>"; };
 		CB653047C6D77ABA49F706F78776DF1B /* TAPageControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TAPageControl.m; path = SDCycleScrollView/Lib/SDCycleScrollView/PageControl/TAPageControl.m; sourceTree = "<group>"; };
 		CB6A3F5F5BAD6914401487E0F39830BD /* QMUIScrollAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIScrollAnimator.h; path = QMUIKit/QMUIComponents/QMUIScrollAnimator/QMUIScrollAnimator.h; sourceTree = "<group>"; };
@@ -3265,7 +3224,6 @@
 		DD66D3BFA6707FF85DFE47E5708476C0 /* MQChatBaseCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQChatBaseCell.h; path = "Meiqia-SDK-files/MQChatViewController/TableCells/CellView/MQChatBaseCell.h"; sourceTree = "<group>"; };
 		DDDFBBADEDF39DFD67A90E484A354158 /* UIView+qmui_centerXY.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+qmui_centerXY.m"; sourceTree = "<group>"; };
 		DE2B365987617111B871273A22D1131F /* MCSMSController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCSMSController.h; sourceTree = "<group>"; };
-		DE36AD655E9DE39F97137CEC52A2DFF4 /* MCSignHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCSignHeader.h; sourceTree = "<group>"; };
 		DE3D5101543B5DF76D912B8DBB953E63 /* MQMessageFormViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQMessageFormViewManager.m; path = "Meiqia-SDK-files/MQMessageForm/Config/MQMessageFormViewManager.m"; sourceTree = "<group>"; };
 		DE575498EC7B740F52796BEE4BF1F66A /* PGDatePicker+Date.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+Date.h"; path = "PGDatePicker/PGDatePicker+Date.h"; sourceTree = "<group>"; };
 		DE8CF3E8134307CE3626A24771905701 /* QMUIEmotionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUIEmotionView.h; path = QMUIKit/QMUIComponents/QMUIEmotionView.h; sourceTree = "<group>"; };
@@ -3295,7 +3253,6 @@
 		E369D9511CA4AC27FEBA0F066DC0CFDB /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
 		E377E27635C7A1203AF6D39BCF18AC4E /* MCUpdateAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCUpdateAlertView.h; sourceTree = "<group>"; };
 		E398407344BB275FB49A5F5F25DBAC12 /* PGDatePickManagerHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGDatePickManagerHeaderView.m; path = PGDatePicker/PGDatePickManagerHeaderView.m; sourceTree = "<group>"; };
-		E39CBCDD6466C7A8FAF0CE45D1218A12 /* MCSignHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCSignHeader.m; sourceTree = "<group>"; };
 		E3AF460B5D151B06D07DC28EDBC36C90 /* MCRequestMannager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCRequestMannager.m; sourceTree = "<group>"; };
 		E3BC3F81A9815E689B74DE8A17EFB315 /* UIDevice+DeviceIDByKeychainThisDeviceOnly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceIDByKeychainThisDeviceOnly.h"; sourceTree = "<group>"; };
 		E3C3D290C3891B16BF7B1EFCC530C086 /* UIColor+MQHex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+MQHex.h"; path = "Meiqia-SDK-files/MQChatViewController/Categories/UIColor+MQHex.h"; sourceTree = "<group>"; };
@@ -3437,7 +3394,6 @@
 		FE9EDF11AD19D920FE844390A0ED62FE /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/Core/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
 		FEA719CEEA644FF5FB9063DCB3C57958 /* MQMessageFormTimeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQMessageFormTimeView.h; path = "Meiqia-SDK-files/MQMessageForm/Views/MQMessageFormTimeView/MQMessageFormTimeView.h"; sourceTree = "<group>"; };
 		FEC57D81CE2EBC81BB9D00248E1D33E3 /* UIMenuController+QMUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIMenuController+QMUI.m"; path = "QMUIKit/UIKitExtensions/UIMenuController+QMUI.m"; sourceTree = "<group>"; };
-		FEDCE6B9D06884E70BCA678748971D91 /* MCServiceCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MCServiceCell.xib; path = Assets/MCServiceCell.xib; sourceTree = "<group>"; };
 		FF38AECC51D5161E139B66E3BFA64B58 /* QMUILab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QMUILab.h; path = QMUIKit/QMUICore/QMUILab.h; sourceTree = "<group>"; };
 		FF3E4BA58220183513B4E45C76CAEA88 /* MCAppDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MCAppDelegate.h; sourceTree = "<group>"; };
 		FF5F389B07E403D682B0A13FF281ADDC /* UMCCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UMCCommon.debug.xcconfig; sourceTree = "<group>"; };
@@ -4027,10 +3983,6 @@
 		281FE45819605AD81E7010547D573A2B /* sign */ = {
 			isa = PBXGroup;
 			children = (
-				DE36AD655E9DE39F97137CEC52A2DFF4 /* MCSignHeader.h */,
-				E39CBCDD6466C7A8FAF0CE45D1218A12 /* MCSignHeader.m */,
-				B1F1B6F929C8C06CB5FFECB38636DF29 /* MCSignViewController.h */,
-				90F3307CCFD789718B06C4CE331EFBDB /* MCSignViewController.m */,
 			);
 			path = sign;
 			sourceTree = "<group>";
@@ -5745,19 +5697,6 @@
 			name = QMUILog;
 			sourceTree = "<group>";
 		};
-		A238142683A2EAE86D8424EB4FCB433D /* ChoosePayment */ = {
-			isa = PBXGroup;
-			children = (
-				358BBEF20CFC358FD666C4F5EE761B62 /* MCChoosePayment.h */,
-				1DD11C1343D782572E63773BDBF18055 /* MCChoosePayment.m */,
-				A65E86DBFCE242C5B9FC5159E2D6E479 /* MCChoosePaymentCell.h */,
-				4532A60BFCF82E66D84E1E5C9EEF6F47 /* MCChoosePaymentCell.m */,
-				CB324CB5972291FBE791A82C32E993E6 /* MCPaymentModel.h */,
-				46678D8330CCEBA6F5CBED3567AC6519 /* MCPaymentModel.m */,
-			);
-			path = ChoosePayment;
-			sourceTree = "<group>";
-		};
 		A2CAEC9E1909F0F7769F5A2E2FB57983 /* MCVerifyStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -6656,30 +6595,21 @@
 				7B342D1E62A9D847B68DD3BD13CC32D3 /* MCAboutHeader.xib */,
 				A26AAE848DB647D7B906436EA2D91F4A /* MCArticlesCell.xib */,
 				5DB65B91D9C4E635BC0C0ECBE250D7E0 /* MCBankCardCell.xib */,
-				117A29F8156DDD275316A5D766B28AC6 /* MCChoosePaymentCell.xib */,
 				C093FC3F4ACD3425463CA6A9617D6E3C /* MCChuxukaHeader.xib */,
 				0B861FC449A5E11DEFFE829CB936C31F /* MCMessageCell.xib */,
 				0BF179FB535B79C8A897E98FB0F7BB7C /* MCNewsCell.xib */,
 				783A1DC9F264810C70D6992CB33F652D /* MCPayPWDInputView.xib */,
 				DFF9763A0C2340CAEBE613D4DEF8D3B5 /* MCPosterHeader.xib */,
 				A1F88A7897D8E657BE897CDB8526AAAE /* MCRegistViewController.xib */,
-				FEDCE6B9D06884E70BCA678748971D91 /* MCServiceCell.xib */,
-				580A0F57BB262DB89C735FE0431F10BC /* MCShareOverViewCell.xib */,
-				70815269F3098D3B48D0A24FDEC5D5B2 /* MCSignHeader.xib */,
 				10D7B703DD557697951CC6BB3541F5C9 /* MCUpdateAlertView.xib */,
 				D3A97A7021EBE3B177FC7580257E3175 /* MCWithdrawController.xib */,
 				600C40BE10A85F19EC21A54D59A2B5A2 /* MCWithdrawHistoryCell.xib */,
 				8AB56D7A34017EA2CD51065B0815032E /* MCXinyongkaHeader.xib */,
 				374520B87D09A92171BC582723E5649D /* News.xcassets */,
 				D6F6ED74957E029EA9E4C5CBCB337927 /* Order.xcassets */,
-				301A128B9638066BFDA51670AB8C233C /* PayOrderViewController.xib */,
-				914FDD7D6E366FDE6449154B29F416BA /* QRCodeView.xib */,
-				C496EAA9361ABDFDCAC3F9EAD2E14884 /* QSHHistoryListCell.xib */,
-				595B8B893DA22D27B3FD99550391AF20 /* QSHHistoryListHeader.xib */,
 				F6A3ED2F407679279CFB88793647D563 /* Root.plist */,
 				987F3C00F04F3A72DE125C6E1323C7A1 /* Service.xcassets */,
 				D08BA9D2BBA620A28E3B60D28638E77C /* Setting.xcassets */,
-				74FA3AD73640E809B8C2560CF1108D3E /* SingleBankCell.xib */,
 				1D8EF8395D82EC24D2EF053356322593 /* Team.xcassets */,
 				6E621409DCEF4D6355CFC739ACB8466B /* Tool.xcassets */,
 				FD80870FED3E659493F25889DF2FBF5B /* ULSFaceTrackerAssets.bundle */,
@@ -6688,9 +6618,6 @@
 				4FB16F6734093503AD41484A249408BE /* User.xcassets */,
 				EE5FBBCEB82783C839F4F03865A2A330 /* UserAgreement.html */,
 				2E1FF2A60D41A3FB5AA9F7BBB2952C71 /* UserAuthorize.html */,
-				BD66AAB562DE6647D03E1CAB98EC9018 /* ZABuyGoodsView.xib */,
-				8DF78546D908CD567E95BB3D920B9092 /* ZAOrderViewCell.xib */,
-				80A0BC404BADBBF63819CCCFE93A756A /* ZAPayTypeViewCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -7132,7 +7059,6 @@
 				981666AE5EF2A1CC6127F99DBB60DD89 /* BQLCalendar */,
 				C0AEBB9CF0F537A2ED356ACCFDBE5597 /* Camera */,
 				78C87033A2D456E1CDE2A0CE759E07A4 /* Card */,
-				A238142683A2EAE86D8424EB4FCB433D /* ChoosePayment */,
 				AAEF21228A56C9AB89434128C760288F /* Coustom */,
 				9FB39B22184D4DB7DB27B49437F25B66 /* Diy */,
 				F9DADCEFAE058BEFE87D92C6BE30D53E /* FillButton */,
@@ -7359,8 +7285,6 @@
 				E837C7D58450B3F605D53B9A732E2B61 /* MCCardManagerController.h in Headers */,
 				0856A1D10F8F4A7201244C51F74A7837 /* MCCategories.h in Headers */,
 				655E54FAC3B6AC2E6F9F59CE55616AD8 /* MCChangePwdViewController.h in Headers */,
-				F10C1B0A6FFF9FF7594BF05EA5DD171B /* MCChoosePayment.h in Headers */,
-				F3DD0BDB6283E9BDE54252D39D7F137B /* MCChoosePaymentCell.h in Headers */,
 				E680EB47FE821E95B5793E83D814C2D8 /* MCChuxukaHeader.h in Headers */,
 				4E45B491D3FD0C9A6B00F02FFEC50681 /* MCCountSafeController.h in Headers */,
 				8E5D4FD1D0E106090E50BF42373E4E08 /* MCCustomModel.h in Headers */,
@@ -7389,7 +7313,6 @@
 				4B9DD0BDB4D8BDF193451A9E74F668F3 /* MCNewsListController.h in Headers */,
 				3D916931C15EB2AB6DFB9F0B71D09E46 /* MCNewsView.h in Headers */,
 				35ABA4743D0555C97FC58E1229224BD2 /* MCPagingStore.h in Headers */,
-				60FE4C9885138BE6AFE3193A3DBA0130 /* MCPaymentModel.h in Headers */,
 				474092EA6CD21EB3EEED53352367E49F /* MCPayPWDInputView.h in Headers */,
 				F80B5DD014459CA4EC76D69BFE80EB5C /* MCPayStore.h in Headers */,
 				CA3278CC03B7CC5B0574F37D4177695C /* MCProductModel.h in Headers */,
@@ -7412,8 +7335,6 @@
 				6F002D3627E973B900FA4A01 /* MCNewsModel.h in Headers */,
 				42C6AE2DAA1913E2CE8BE40D4E61BB28 /* MCShareSingleViewController.h in Headers */,
 				317C675E7E5F80B73364D53F49C1526A /* MCShareStore.h in Headers */,
-				8DE131FB1D88B753A76046200E4B3806 /* MCSignHeader.h in Headers */,
-				E2070C772E3A87CDF1056399AE1FBF32 /* MCSignViewController.h in Headers */,
 				6F002D2627E9655A00FA4A01 /* MCWithdrawController.h in Headers */,
 				009D689453C676A42696134F88FCA58F /* MCSMSController.h in Headers */,
 				D45C02416106CC433B2EEBB989D2AD62 /* MCStore.h in Headers */,
@@ -8617,39 +8538,27 @@
 				ECB361F03D9769B65DE1087117370EA6 /* MCAboutHeader.xib in Resources */,
 				E5DFB596FB8907DBF6A50AD2EC0F5964 /* MCArticlesCell.xib in Resources */,
 				FD98C3B36FE4DC1E30833B310AFF764F /* MCBankCardCell.xib in Resources */,
-				D33E2A347DE484608EA79E976D3A8F3D /* MCChoosePaymentCell.xib in Resources */,
 				74535F018C1A4E3B49B30F3F4CAB6417 /* MCChuxukaHeader.xib in Resources */,
 				CB4BA65F21F7645DDC5FF800856C7E5D /* MCMessageCell.xib in Resources */,
 				B9DD2B33FDAC39CB67D0B3735EAED901 /* MCNewsCell.xib in Resources */,
 				15789DE1817FE0B62E2E68E580171EE2 /* MCPayPWDInputView.xib in Resources */,
 				36652418810C1B93D0484FB514373BD7 /* MCPosterHeader.xib in Resources */,
 				CB491C0D6E3CF563D96FAD8256EFEB7F /* MCRegistViewController.xib in Resources */,
-				29C569CA8C9D004A592DF463EE071E7D /* MCServiceCell.xib in Resources */,
-				2DA553C946E8C04304724F0D0DAC71AA /* MCShareOverViewCell.xib in Resources */,
-				23D95E6DA2B43F7AD330B6832B76BB59 /* MCSignHeader.xib in Resources */,
 				34C6B0354F4BD796420FA04122967C4B /* MCUpdateAlertView.xib in Resources */,
 				CA5FEE03291E8CAF0156804D7383DE88 /* MCWithdrawController.xib in Resources */,
 				7607A206ABD28C8097548D918E56C7B7 /* MCWithdrawHistoryCell.xib in Resources */,
 				1989156337CCB96F60A9DC88871E579A /* MCXinyongkaHeader.xib in Resources */,
 				351BD86E349A0429946241D3697BD15E /* News.xcassets in Resources */,
 				F52DA485334EE7EDEAFCA785262E38AC /* Order.xcassets in Resources */,
-				715000792E5A6B6B138E4C35B19D9C1C /* PayOrderViewController.xib in Resources */,
-				C346097DC55C69F3EB96486236540B42 /* QRCodeView.xib in Resources */,
-				D1A117B4B82AF4946611F96F94F95EB3 /* QSHHistoryListCell.xib in Resources */,
-				636F2E94F610C6B6A2A89F43B3CC9C22 /* QSHHistoryListHeader.xib in Resources */,
 				BC0B24430D8C196A4DF08322174787EA /* Root.plist in Resources */,
 				4838C9785CE20D57E9074617E4724970 /* Service.xcassets in Resources */,
 				D4A8461F5E01557CFD375C234220FFA5 /* Setting.xcassets in Resources */,
-				1D1E41328FE9488741A1B30380342347 /* SingleBankCell.xib in Resources */,
 				5B6D6EFF29BCC52E71AE7ACD5448BD5E /* Team.xcassets in Resources */,
 				F7505CEB8B1538EE2416897032915E09 /* Tool.xcassets in Resources */,
 				726C9799905854A34D74FBC40BB319EB /* Update.xcassets in Resources */,
 				D6389AD94539B1DA18B6DE83305F4A75 /* User.xcassets in Resources */,
 				1D7641F346AC5D1C01FA4540F8D79381 /* UserAgreement.html in Resources */,
 				EBC896C4E350BC38D843BE3ABB845073 /* UserAuthorize.html in Resources */,
-				B6D0A9AC6D3851BA7D7F6CDED33AC1C8 /* ZABuyGoodsView.xib in Resources */,
-				A207B1EF065B33F20D3907D5D4AE24A7 /* ZAOrderViewCell.xib in Resources */,
-				D48D7FA2FC5A54CC6E2518D2F9EB86CC /* ZAPayTypeViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9093,8 +9002,6 @@
 				D321A3827D4F912A32F420F89FC45F6B /* MCBrandInfo.m in Sources */,
 				EF41117987988C59EA4558CF13FBF099 /* MCCardManagerController.m in Sources */,
 				E67428D2E9FD92AF7DB59ECDF53D9647 /* MCChangePwdViewController.m in Sources */,
-				A5E2AA66540887C6E73CF7AD27B4DD91 /* MCChoosePayment.m in Sources */,
-				C7396C869E5DA18B2A2E518C08A1C07B /* MCChoosePaymentCell.m in Sources */,
 				AD325B77ADF933C5B76418E96B9D0954 /* MCChuxukaHeader.m in Sources */,
 				EB08C581500307FFCD014FE6EF705B57 /* MCCountSafeController.m in Sources */,
 				B1AE40FB60CF6CA923FBD0B914BB6F30 /* MCCustomModel.m in Sources */,
@@ -9121,7 +9028,6 @@
 				DF5079732061A6DE9273ABF71FA42CC5 /* MCNewsListController.m in Sources */,
 				9685EA814AAF004DAEB3640E9B11FFA9 /* MCNewsView.m in Sources */,
 				C19E0F49AE2023CA87AF090237208D80 /* MCPagingStore.m in Sources */,
-				94F05DF5250E5BD9E4F6EF1C3CA42C8D /* MCPaymentModel.m in Sources */,
 				320ED2C15A913AEEB93C34F3D5350F67 /* MCPayPWDInputView.m in Sources */,
 				CCC105F9D62856D0A27A508CD4E19C2B /* MCPayStore.m in Sources */,
 				1262AEC66B17DA0D242E894A82BAABE9 /* MCProductModel.m in Sources */,
@@ -9143,8 +9049,6 @@
 				4DE6E6250A417A555275A6F4885382FC /* MCSettingViewController.m in Sources */,
 				B379D473F72C8756711A2767A982BDD4 /* MCShareSingleViewController.m in Sources */,
 				3254B2AE5B49903D3BFD30180A8F4490 /* MCShareStore.m in Sources */,
-				CE06F11D445D009CDD5BA13C30BF03DB /* MCSignHeader.m in Sources */,
-				CB14FE730F5E1E30CEF5C4224915858F /* MCSignViewController.m in Sources */,
 				5BF587014AD73484DF48914419109686 /* MCSMSController.m in Sources */,
 				A4974D51EEE212C32FDC240701D6B416 /* MCStore.m in Sources */,
 				EF81A212BA1765FAA8388FD1F7615E71 /* MCSumRebateModel.m in Sources */,
