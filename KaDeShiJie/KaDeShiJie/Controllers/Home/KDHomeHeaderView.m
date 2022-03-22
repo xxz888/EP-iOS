@@ -9,17 +9,12 @@
 #import "KDHomeHeaderView.h"
 #import "KDMsgViewCell.h"
 #import "KDProvisionsViewController.h"
-#import "KDTopDelegateViewController.h"
-#import "KDCreditManagerViewController.h"
-#import "KDEarnCenterViewController.h"
 #import "KDGatheringViewController.h"
 #import <MCMessageModel.h>
 #import "KDDirectRefundViewController.h"
 #import "QMUIModalPresentationViewController.h"
 #import <OEMSDK/MCWebViewController.h>
 #import "KDWebContainer.h"
-#import "KDCreditModel.h"
-#import "KDKongKaViewController.h"
 #import "KDHomeXinYongKaViewController.h"
 #import "KDRenZhengView.h"
 #import "KDHomeBillManageViewController.h"

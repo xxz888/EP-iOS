@@ -14,7 +14,6 @@
 #import "KDMineViewController.h"
 #import "KDLoginViewController.h"
 #import "KDSlotCardOrderInfoViewController.h"
-#import "KDWithDrawHistoryViewController.h"
 #import "KDShareSingleVC.h"
 #import "KDSlotCardHistoryModel.h"
 #import "KDShareViewController.h"
@@ -87,12 +86,7 @@
         return vc;
     }];
     
-    [BCFI registerURLPattern:rt_card_jiaoyijilu toObjectHandler:^id(NSDictionary *routerParameters) {
-        KDWithDrawHistoryViewController *vc = [[KDWithDrawHistoryViewController alloc] init];
-        vc.titleString = @"提现记录";
-        vc.queryType = @"8";
-        return vc;
-    }];
+ 
     
     
     

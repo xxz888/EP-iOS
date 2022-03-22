@@ -48,15 +48,6 @@
 		04F224CE276E2F1000EA2DB7 /* KDPopularizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F224CC276E2F1000EA2DB7 /* KDPopularizeViewController.xib */; };
 		04F224D2276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F224D0276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m */; };
 		04F224D3276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F224D1276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib */; };
-		180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */; };
-		180B17962575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B17942575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib */; };
-		180B17A22575EBD8006D3D13 /* KDKongKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17A02575EBD8006D3D13 /* KDKongKaViewController.m */; };
-		180B17A32575EBD9006D3D13 /* KDKongKaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B17A12575EBD8006D3D13 /* KDKongKaViewController.xib */; };
-		180B17A92575EBFF006D3D13 /* KDKongKaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17A72575EBFF006D3D13 /* KDKongKaTableViewCell.m */; };
-		180B17AA2575EBFF006D3D13 /* KDKongKaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B17A82575EBFF006D3D13 /* KDKongKaTableViewCell.xib */; };
-		180B17AE2575EE36006D3D13 /* KDKongKaPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B17AD2575EE36006D3D13 /* KDKongKaPlanViewController.m */; };
-		180B990D2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B990B2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m */; };
-		180B990E2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B990C2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib */; };
 		1823438826466001003BABEE /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823438726466001003BABEE /* CALayer+Additions.m */; };
 		1848CE4F266F120F00D6E148 /* KDJFShopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848CE4D266F120F00D6E148 /* KDJFShopCollectionViewCell.m */; };
 		1848CE50266F120F00D6E148 /* KDJFShopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848CE4E266F120F00D6E148 /* KDJFShopCollectionViewCell.xib */; };
@@ -106,12 +97,9 @@
 		1893CEF5267280DC00C53DBF /* KDJFShopManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893CEF4267280DC00C53DBF /* KDJFShopManagerViewController.m */; };
 		1893CEF92672812F00C53DBF /* KDJFShopManagerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893CEF72672812F00C53DBF /* KDJFShopManagerTableViewCell.m */; };
 		1893CEFA2672812F00C53DBF /* KDJFShopManagerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1893CEF82672812F00C53DBF /* KDJFShopManagerTableViewCell.xib */; };
-		18C4FE9B256B6A9A00C27A7D /* KDPlanCenterKongKaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4FE99256B6A9A00C27A7D /* KDPlanCenterKongKaCell.m */; };
-		18C4FE9C256B6A9A00C27A7D /* KDPlanCenterKongKaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4FE9A256B6A9A00C27A7D /* KDPlanCenterKongKaCell.xib */; };
 		18E7C4DF2678AA6100AE3A72 /* KDJFAdressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7C4DE2678AA6100AE3A72 /* KDJFAdressListViewController.m */; };
 		18E7C4E32678AC4500AE3A72 /* KDJFAdressListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7C4E12678AC4500AE3A72 /* KDJFAdressListTableViewCell.m */; };
 		18E7C4E42678AC4500AE3A72 /* KDJFAdressListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E7C4E22678AC4500AE3A72 /* KDJFAdressListTableViewCell.xib */; };
-		1B02411525209CFA00992ED4 /* KDTopDelegateNewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B02411425209CFA00992ED4 /* KDTopDelegateNewModel.m */; };
 		1B1C0E8F25086E220009CDC6 /* KDProvisionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0E8D25086E220009CDC6 /* KDProvisionsViewController.m */; };
 		1B1C0E9025086E220009CDC6 /* KDProvisionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0E8E25086E220009CDC6 /* KDProvisionsViewController.xib */; };
 		1B1C0E942508753B0009CDC6 /* KDShiftToProvisionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0E922508753B0009CDC6 /* KDShiftToProvisionsViewController.m */; };
@@ -124,37 +112,13 @@
 		1B1C0EA4250887190009CDC6 /* KDProvisionsTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0EA3250887190009CDC6 /* KDProvisionsTopView.xib */; };
 		1B1C0EA82508A9260009CDC6 /* KDOutProvisionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EA62508A9260009CDC6 /* KDOutProvisionsViewController.m */; };
 		1B1C0EA92508A9260009CDC6 /* KDOutProvisionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0EA72508A9260009CDC6 /* KDOutProvisionsViewController.xib */; };
-		1B1C0EAD2508B12A0009CDC6 /* KDTopDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EAC2508B12A0009CDC6 /* KDTopDelegateViewController.m */; };
-		1B1C0EB02508B3250009CDC6 /* KDSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EAF2508B3250009CDC6 /* KDSearchView.m */; };
-		1B1C0EB42508BEB80009CDC6 /* KDDelegateViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EB22508BEB80009CDC6 /* KDDelegateViewCell.m */; };
-		1B1C0EB52508BEB80009CDC6 /* KDDelegateViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0EB32508BEB80009CDC6 /* KDDelegateViewCell.xib */; };
-		1B1C0EB92508C4AD0009CDC6 /* KDCreditManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EB82508C4AD0009CDC6 /* KDCreditManagerViewController.m */; };
-		1B1C0EBC2508C4C90009CDC6 /* KDCreditManagerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EBB2508C4C90009CDC6 /* KDCreditManagerHeaderView.m */; };
-		1B1C0EBE2508C4D70009CDC6 /* KDCreditManagerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0EBD2508C4D70009CDC6 /* KDCreditManagerHeaderView.xib */; };
-		1B1C0EC12508CEED0009CDC6 /* KDCreditExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0EC02508CEED0009CDC6 /* KDCreditExtensionViewController.m */; };
 		1B543D18250EF96400076628 /* KDAboutMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D16250EF96400076628 /* KDAboutMineViewController.m */; };
 		1B543D19250EF96400076628 /* KDAboutMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B543D17250EF96400076628 /* KDAboutMineViewController.xib */; };
-		1B543D1C250F15E800076628 /* KDCreditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D1B250F15E800076628 /* KDCreditModel.m */; };
-		1B543D1F250F1D4500076628 /* KDLostQuotaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D1E250F1D4500076628 /* KDLostQuotaViewController.m */; };
-		1B543D23250F1DF600076628 /* KDLostQuotaViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D21250F1DF600076628 /* KDLostQuotaViewCell.m */; };
-		1B543D24250F1DF600076628 /* KDLostQuotaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B543D22250F1DF600076628 /* KDLostQuotaViewCell.xib */; };
-		1B543D27250F3FC200076628 /* KDCreditExtensionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D26250F3FC200076628 /* KDCreditExtensionModel.m */; };
 		1B543D2A250F498C00076628 /* KDWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D29250F498C00076628 /* KDWXViewController.m */; };
 		1B543D2E250F4A5600076628 /* KDWXViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D2C250F4A5600076628 /* KDWXViewCell.m */; };
 		1B543D2F250F4A5600076628 /* KDWXViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B543D2D250F4A5600076628 /* KDWXViewCell.xib */; };
 		1B543D32250F831C00076628 /* KDAisleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B543D31250F831C00076628 /* KDAisleDetailModel.m */; };
-		1B6667E82508D0DD00AA55DA /* KDCreditExtensionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6667E72508D0DD00AA55DA /* KDCreditExtensionHeaderView.m */; };
-		1B6667EA2508D0EA00AA55DA /* KDCreditExtensionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6667E92508D0EA00AA55DA /* KDCreditExtensionHeaderView.xib */; };
-		1B6667EE2508D47B00AA55DA /* KDNoCreditViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6667EC2508D47B00AA55DA /* KDNoCreditViewCell.m */; };
-		1B6667EF2508D47B00AA55DA /* KDNoCreditViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6667ED2508D47B00AA55DA /* KDNoCreditViewCell.xib */; };
-		1B6667F32508D49100AA55DA /* KDCreditViewViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6667F12508D49100AA55DA /* KDCreditViewViewCell.m */; };
-		1B6667F42508D49100AA55DA /* KDCreditViewViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6667F22508D49100AA55DA /* KDCreditViewViewCell.xib */; };
-		1B6667F72508EEE500AA55DA /* KDCreditAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6667F62508EEE500AA55DA /* KDCreditAlertView.m */; };
-		1B6667F92508EEF500AA55DA /* KDCreditAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6667F82508EEF500AA55DA /* KDCreditAlertView.xib */; };
 		1B6E43B72515E7A600BB743C /* KDRemedyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E43B62515E7A600BB743C /* KDRemedyModel.m */; };
-		1B6E43BA2515FBBA00BB743C /* KDTopDelegateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E43B92515FBBA00BB743C /* KDTopDelegateModel.m */; };
-		1B730CE5251AE7B70065FB1A /* KDTopDelegateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B730CE4251AE7B70065FB1A /* KDTopDelegateHeaderView.m */; };
-		1B730CE7251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B730CE6251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib */; };
 		1B7E4683251CCCC800FA5D1E /* KDPlanAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7E4682251CCCC800FA5D1E /* KDPlanAlertView.m */; };
 		1B7E4685251CCCD800FA5D1E /* KDPlanAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7E4684251CCCD800FA5D1E /* KDPlanAlertView.xib */; };
 		1B7E4688251CD07300FA5D1E /* KDPlanPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7E4687251CD07300FA5D1E /* KDPlanPreviewView.m */; };
@@ -169,12 +133,6 @@
 		1B808D5B251375750095926E /* KDExtensionEarnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B808D5A251375750095926E /* KDExtensionEarnModel.m */; };
 		1B808D5E251379EA0095926E /* KDExtendPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B808D5D251379EA0095926E /* KDExtendPerformanceModel.m */; };
 		1B808D6125137A060095926E /* KDPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B808D6025137A060095926E /* KDPerformanceModel.m */; };
-		1B86CF952509B74F00AD09F7 /* KDConfirmCreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B86CF942509B74F00AD09F7 /* KDConfirmCreditViewController.m */; };
-		1B86CF982509B82800AD09F7 /* KDConfirmCreditHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B86CF972509B82800AD09F7 /* KDConfirmCreditHeaderView.m */; };
-		1B86CF9A2509B83600AD09F7 /* KDConfirmCreditHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B86CF992509B83600AD09F7 /* KDConfirmCreditHeaderView.xib */; };
-		1B86CF9E2509C47100AD09F7 /* KDEarnCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B86CF9D2509C47100AD09F7 /* KDEarnCenterViewController.m */; };
-		1B86CFA12509C63E00AD09F7 /* KDEarnCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B86CFA02509C63E00AD09F7 /* KDEarnCenterHeaderView.m */; };
-		1B86CFA32509C65100AD09F7 /* KDEarnCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B86CFA22509C65100AD09F7 /* KDEarnCenterHeaderView.xib */; };
 		1B86CFA72509D60000AD09F7 /* KDExtendEarnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B86CFA52509D60000AD09F7 /* KDExtendEarnViewController.m */; };
 		1B86CFA82509D60000AD09F7 /* KDExtendEarnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B86CFA62509D60000AD09F7 /* KDExtendEarnViewController.xib */; };
 		1B86CFAC2509FC3500AD09F7 /* KDExtendPerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B86CFAA2509FC3500AD09F7 /* KDExtendPerformanceViewController.m */; };
@@ -240,9 +198,6 @@
 		1BCF5E1C2514B4770095328E /* KDPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCF5E1B2514B4770095328E /* KDPushModel.m */; };
 		1BCF5E1F2514CD410095328E /* KDProfitDirectPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCF5E1E2514CD410095328E /* KDProfitDirectPushModel.m */; };
 		1BCF5E222514D7270095328E /* KDHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCF5E212514D7270095328E /* KDHistoryModel.m */; };
-		1BCF5E252514DE200095328E /* KDCancelCreditHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCF5E242514DE200095328E /* KDCancelCreditHeaderView.m */; };
-		1BCF5E272514DE320095328E /* KDCancelCreditHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCF5E262514DE320095328E /* KDCancelCreditHeaderView.xib */; };
-		1BCF5E2A2514E0E00095328E /* KDCancelCreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCF5E292514E0E00095328E /* KDCancelCreditViewController.m */; };
 		1BD2F203250A0C3C0061580C /* KDDirectPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F202250A0C3C0061580C /* KDDirectPushViewController.m */; };
 		1BD2F206250A0D9C0061580C /* KDDirectPushNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F205250A0D9C0061580C /* KDDirectPushNoDataView.m */; };
 		1BD2F208250A0DAA0061580C /* KDDirectPushNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2F207250A0DAA0061580C /* KDDirectPushNoDataView.xib */; };
@@ -252,9 +207,6 @@
 		1BD2F212250A24420061580C /* KDDirectPushHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2F211250A24420061580C /* KDDirectPushHeaderView.xib */; };
 		1BD2F215250A28F80061580C /* KDDirectPushChoseStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F214250A28F80061580C /* KDDirectPushChoseStatusView.m */; };
 		1BD2F217250A29090061580C /* KDDirectPushChoseStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2F216250A29090061580C /* KDDirectPushChoseStatusView.xib */; };
-		1BD2F21A250A30D00061580C /* KDProfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F219250A30D00061580C /* KDProfitViewController.m */; };
-		1BD2F21D250A337A0061580C /* KDProfitHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F21C250A337A0061580C /* KDProfitHeaderView.m */; };
-		1BD2F21F250A33970061580C /* KDProfitHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2F21E250A33970061580C /* KDProfitHeaderView.xib */; };
 		1BD2F223250A3B590061580C /* KDProfitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F221250A3B590061580C /* KDProfitViewCell.m */; };
 		1BD2F224250A3B590061580C /* KDProfitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2F222250A3B590061580C /* KDProfitViewCell.xib */; };
 		1BD2F227250A3E820061580C /* KDProfitCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2F226250A3E820061580C /* KDProfitCellHeaderView.m */; };
@@ -266,19 +218,6 @@
 		1BD3DC11250B11FD00A5D148 /* KDProfitDirectPushEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC10250B11FD00A5D148 /* KDProfitDirectPushEmptyView.xib */; };
 		1BD3DC15250B148A00A5D148 /* KDProfitDirectPushViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC13250B148A00A5D148 /* KDProfitDirectPushViewCell.m */; };
 		1BD3DC16250B148A00A5D148 /* KDProfitDirectPushViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC14250B148A00A5D148 /* KDProfitDirectPushViewCell.xib */; };
-		1BD3DC19250B172600A5D148 /* KDAchieveAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC18250B172600A5D148 /* KDAchieveAwardViewController.m */; };
-		1BD3DC1C250B178C00A5D148 /* KDAchieveAwardHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC1B250B178C00A5D148 /* KDAchieveAwardHeaderView.m */; };
-		1BD3DC1E250B179B00A5D148 /* KDAchieveAwardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC1D250B179B00A5D148 /* KDAchieveAwardHeaderView.xib */; };
-		1BD3DC21250B1C1100A5D148 /* KDReturnMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC20250B1C1100A5D148 /* KDReturnMoneyViewController.m */; };
-		1BD3DC24250B1C9100A5D148 /* KDReturnMoneyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC23250B1C9100A5D148 /* KDReturnMoneyHeaderView.m */; };
-		1BD3DC26250B1C9D00A5D148 /* KDReturnMoneyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC25250B1C9D00A5D148 /* KDReturnMoneyHeaderView.xib */; };
-		1BD3DC29250B265500A5D148 /* KDRemedyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC28250B265500A5D148 /* KDRemedyView.m */; };
-		1BD3DC2B250B266B00A5D148 /* KDRemedyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC2A250B266B00A5D148 /* KDRemedyView.xib */; };
-		1BD3DC2E250B4C7400A5D148 /* KDWithDrawHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC2D250B4C7400A5D148 /* KDWithDrawHistoryViewController.m */; };
-		1BD3DC31250B4CB000A5D148 /* KDWithDrawHistoryheaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC30250B4CB000A5D148 /* KDWithDrawHistoryheaderView.m */; };
-		1BD3DC35250B4D2000A5D148 /* KDWithDrawHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC33250B4D2000A5D148 /* KDWithDrawHistoryViewCell.m */; };
-		1BD3DC36250B4D2000A5D148 /* KDWithDrawHistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC34250B4D2000A5D148 /* KDWithDrawHistoryViewCell.xib */; };
-		1BD3DC38250B4D8D00A5D148 /* KDWithDrawHistoryheaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC37250B4D8D00A5D148 /* KDWithDrawHistoryheaderView.xib */; };
 		1BD3DC3C250B597500A5D148 /* KDMyReferrerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC3A250B597500A5D148 /* KDMyReferrerViewController.m */; };
 		1BD3DC3D250B597500A5D148 /* KDMyReferrerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3DC3B250B597500A5D148 /* KDMyReferrerViewController.xib */; };
 		1BD3DC42250B60A600A5D148 /* KDGatheringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3DC40250B60A600A5D148 /* KDGatheringViewController.m */; };
@@ -399,20 +338,6 @@
 		04F224CF276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPPopularizeTableViewCell.h; sourceTree = "<group>"; };
 		04F224D0276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPPopularizeTableViewCell.m; sourceTree = "<group>"; };
 		04F224D1276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPPopularizeTableViewCell.xib; sourceTree = "<group>"; };
-		180B17922575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPlanKongKaPreviewViewController.h; sourceTree = "<group>"; };
-		180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPlanKongKaPreviewViewController.m; sourceTree = "<group>"; };
-		180B17942575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPlanKongKaPreviewViewController.xib; sourceTree = "<group>"; };
-		180B179F2575EBD8006D3D13 /* KDKongKaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDKongKaViewController.h; sourceTree = "<group>"; };
-		180B17A02575EBD8006D3D13 /* KDKongKaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDKongKaViewController.m; sourceTree = "<group>"; };
-		180B17A12575EBD8006D3D13 /* KDKongKaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDKongKaViewController.xib; sourceTree = "<group>"; };
-		180B17A62575EBFF006D3D13 /* KDKongKaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDKongKaTableViewCell.h; sourceTree = "<group>"; };
-		180B17A72575EBFF006D3D13 /* KDKongKaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDKongKaTableViewCell.m; sourceTree = "<group>"; };
-		180B17A82575EBFF006D3D13 /* KDKongKaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDKongKaTableViewCell.xib; sourceTree = "<group>"; };
-		180B17AC2575EE36006D3D13 /* KDKongKaPlanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDKongKaPlanViewController.h; sourceTree = "<group>"; };
-		180B17AD2575EE36006D3D13 /* KDKongKaPlanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDKongKaPlanViewController.m; sourceTree = "<group>"; };
-		180B990A2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPlanKongKaPreviewCell.h; sourceTree = "<group>"; };
-		180B990B2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPlanKongKaPreviewCell.m; sourceTree = "<group>"; };
-		180B990C2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPlanKongKaPreviewCell.xib; sourceTree = "<group>"; };
 		1823438626466001003BABEE /* CALayer+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Additions.h"; sourceTree = "<group>"; };
 		1823438726466001003BABEE /* CALayer+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Additions.m"; sourceTree = "<group>"; };
 		1848CE4C266F120F00D6E148 /* KDJFShopCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDJFShopCollectionViewCell.h; sourceTree = "<group>"; };
@@ -493,16 +418,11 @@
 		1893CEF62672812F00C53DBF /* KDJFShopManagerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDJFShopManagerTableViewCell.h; sourceTree = "<group>"; };
 		1893CEF72672812F00C53DBF /* KDJFShopManagerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDJFShopManagerTableViewCell.m; sourceTree = "<group>"; };
 		1893CEF82672812F00C53DBF /* KDJFShopManagerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDJFShopManagerTableViewCell.xib; sourceTree = "<group>"; };
-		18C4FE98256B6A9A00C27A7D /* KDPlanCenterKongKaCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPlanCenterKongKaCell.h; sourceTree = "<group>"; };
-		18C4FE99256B6A9A00C27A7D /* KDPlanCenterKongKaCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPlanCenterKongKaCell.m; sourceTree = "<group>"; };
-		18C4FE9A256B6A9A00C27A7D /* KDPlanCenterKongKaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPlanCenterKongKaCell.xib; sourceTree = "<group>"; };
 		18E7C4DD2678AA6100AE3A72 /* KDJFAdressListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDJFAdressListViewController.h; sourceTree = "<group>"; };
 		18E7C4DE2678AA6100AE3A72 /* KDJFAdressListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDJFAdressListViewController.m; sourceTree = "<group>"; };
 		18E7C4E02678AC4500AE3A72 /* KDJFAdressListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDJFAdressListTableViewCell.h; sourceTree = "<group>"; };
 		18E7C4E12678AC4500AE3A72 /* KDJFAdressListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDJFAdressListTableViewCell.m; sourceTree = "<group>"; };
 		18E7C4E22678AC4500AE3A72 /* KDJFAdressListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDJFAdressListTableViewCell.xib; sourceTree = "<group>"; };
-		1B02411325209CFA00992ED4 /* KDTopDelegateNewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTopDelegateNewModel.h; sourceTree = "<group>"; };
-		1B02411425209CFA00992ED4 /* KDTopDelegateNewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTopDelegateNewModel.m; sourceTree = "<group>"; };
 		1B1C0E8C25086E220009CDC6 /* KDProvisionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDProvisionsViewController.h; sourceTree = "<group>"; };
 		1B1C0E8D25086E220009CDC6 /* KDProvisionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDProvisionsViewController.m; sourceTree = "<group>"; };
 		1B1C0E8E25086E220009CDC6 /* KDProvisionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDProvisionsViewController.xib; sourceTree = "<group>"; };
@@ -521,32 +441,9 @@
 		1B1C0EA52508A9260009CDC6 /* KDOutProvisionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOutProvisionsViewController.h; sourceTree = "<group>"; };
 		1B1C0EA62508A9260009CDC6 /* KDOutProvisionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOutProvisionsViewController.m; sourceTree = "<group>"; };
 		1B1C0EA72508A9260009CDC6 /* KDOutProvisionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDOutProvisionsViewController.xib; sourceTree = "<group>"; };
-		1B1C0EAB2508B12A0009CDC6 /* KDTopDelegateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTopDelegateViewController.h; sourceTree = "<group>"; };
-		1B1C0EAC2508B12A0009CDC6 /* KDTopDelegateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTopDelegateViewController.m; sourceTree = "<group>"; };
-		1B1C0EAE2508B3250009CDC6 /* KDSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDSearchView.h; sourceTree = "<group>"; };
-		1B1C0EAF2508B3250009CDC6 /* KDSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDSearchView.m; sourceTree = "<group>"; };
-		1B1C0EB12508BEB80009CDC6 /* KDDelegateViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDDelegateViewCell.h; sourceTree = "<group>"; };
-		1B1C0EB22508BEB80009CDC6 /* KDDelegateViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDDelegateViewCell.m; sourceTree = "<group>"; };
-		1B1C0EB32508BEB80009CDC6 /* KDDelegateViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDDelegateViewCell.xib; sourceTree = "<group>"; };
-		1B1C0EB72508C4AD0009CDC6 /* KDCreditManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditManagerViewController.h; sourceTree = "<group>"; };
-		1B1C0EB82508C4AD0009CDC6 /* KDCreditManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditManagerViewController.m; sourceTree = "<group>"; };
-		1B1C0EBA2508C4C90009CDC6 /* KDCreditManagerHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditManagerHeaderView.h; sourceTree = "<group>"; };
-		1B1C0EBB2508C4C90009CDC6 /* KDCreditManagerHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditManagerHeaderView.m; sourceTree = "<group>"; };
-		1B1C0EBD2508C4D70009CDC6 /* KDCreditManagerHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDCreditManagerHeaderView.xib; sourceTree = "<group>"; };
-		1B1C0EBF2508CEED0009CDC6 /* KDCreditExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditExtensionViewController.h; sourceTree = "<group>"; };
-		1B1C0EC02508CEED0009CDC6 /* KDCreditExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditExtensionViewController.m; sourceTree = "<group>"; };
 		1B543D15250EF96400076628 /* KDAboutMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAboutMineViewController.h; sourceTree = "<group>"; };
 		1B543D16250EF96400076628 /* KDAboutMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAboutMineViewController.m; sourceTree = "<group>"; };
 		1B543D17250EF96400076628 /* KDAboutMineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDAboutMineViewController.xib; sourceTree = "<group>"; };
-		1B543D1A250F15E800076628 /* KDCreditModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditModel.h; sourceTree = "<group>"; };
-		1B543D1B250F15E800076628 /* KDCreditModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditModel.m; sourceTree = "<group>"; };
-		1B543D1D250F1D4500076628 /* KDLostQuotaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDLostQuotaViewController.h; sourceTree = "<group>"; };
-		1B543D1E250F1D4500076628 /* KDLostQuotaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDLostQuotaViewController.m; sourceTree = "<group>"; };
-		1B543D20250F1DF600076628 /* KDLostQuotaViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDLostQuotaViewCell.h; sourceTree = "<group>"; };
-		1B543D21250F1DF600076628 /* KDLostQuotaViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDLostQuotaViewCell.m; sourceTree = "<group>"; };
-		1B543D22250F1DF600076628 /* KDLostQuotaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDLostQuotaViewCell.xib; sourceTree = "<group>"; };
-		1B543D25250F3FC200076628 /* KDCreditExtensionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditExtensionModel.h; sourceTree = "<group>"; };
-		1B543D26250F3FC200076628 /* KDCreditExtensionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditExtensionModel.m; sourceTree = "<group>"; };
 		1B543D28250F498C00076628 /* KDWXViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWXViewController.h; sourceTree = "<group>"; };
 		1B543D29250F498C00076628 /* KDWXViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWXViewController.m; sourceTree = "<group>"; };
 		1B543D2B250F4A5600076628 /* KDWXViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWXViewCell.h; sourceTree = "<group>"; };
@@ -554,25 +451,8 @@
 		1B543D2D250F4A5600076628 /* KDWXViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDWXViewCell.xib; sourceTree = "<group>"; };
 		1B543D30250F831C00076628 /* KDAisleDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAisleDetailModel.h; sourceTree = "<group>"; };
 		1B543D31250F831C00076628 /* KDAisleDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAisleDetailModel.m; sourceTree = "<group>"; };
-		1B6667E62508D0DD00AA55DA /* KDCreditExtensionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditExtensionHeaderView.h; sourceTree = "<group>"; };
-		1B6667E72508D0DD00AA55DA /* KDCreditExtensionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditExtensionHeaderView.m; sourceTree = "<group>"; };
-		1B6667E92508D0EA00AA55DA /* KDCreditExtensionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDCreditExtensionHeaderView.xib; sourceTree = "<group>"; };
-		1B6667EB2508D47B00AA55DA /* KDNoCreditViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDNoCreditViewCell.h; sourceTree = "<group>"; };
-		1B6667EC2508D47B00AA55DA /* KDNoCreditViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDNoCreditViewCell.m; sourceTree = "<group>"; };
-		1B6667ED2508D47B00AA55DA /* KDNoCreditViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDNoCreditViewCell.xib; sourceTree = "<group>"; };
-		1B6667F02508D49100AA55DA /* KDCreditViewViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditViewViewCell.h; sourceTree = "<group>"; };
-		1B6667F12508D49100AA55DA /* KDCreditViewViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditViewViewCell.m; sourceTree = "<group>"; };
-		1B6667F22508D49100AA55DA /* KDCreditViewViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDCreditViewViewCell.xib; sourceTree = "<group>"; };
-		1B6667F52508EEE500AA55DA /* KDCreditAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCreditAlertView.h; sourceTree = "<group>"; };
-		1B6667F62508EEE500AA55DA /* KDCreditAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCreditAlertView.m; sourceTree = "<group>"; };
-		1B6667F82508EEF500AA55DA /* KDCreditAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDCreditAlertView.xib; sourceTree = "<group>"; };
 		1B6E43B52515E7A600BB743C /* KDRemedyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDRemedyModel.h; sourceTree = "<group>"; };
 		1B6E43B62515E7A600BB743C /* KDRemedyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDRemedyModel.m; sourceTree = "<group>"; };
-		1B6E43B82515FBBA00BB743C /* KDTopDelegateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTopDelegateModel.h; sourceTree = "<group>"; };
-		1B6E43B92515FBBA00BB743C /* KDTopDelegateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTopDelegateModel.m; sourceTree = "<group>"; };
-		1B730CE3251AE7B70065FB1A /* KDTopDelegateHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTopDelegateHeaderView.h; sourceTree = "<group>"; };
-		1B730CE4251AE7B70065FB1A /* KDTopDelegateHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTopDelegateHeaderView.m; sourceTree = "<group>"; };
-		1B730CE6251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTopDelegateHeaderView.xib; sourceTree = "<group>"; };
 		1B7E4681251CCCC800FA5D1E /* KDPlanAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPlanAlertView.h; sourceTree = "<group>"; };
 		1B7E4682251CCCC800FA5D1E /* KDPlanAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPlanAlertView.m; sourceTree = "<group>"; };
 		1B7E4684251CCCD800FA5D1E /* KDPlanAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPlanAlertView.xib; sourceTree = "<group>"; };
@@ -599,16 +479,6 @@
 		1B808D5D251379EA0095926E /* KDExtendPerformanceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExtendPerformanceModel.m; sourceTree = "<group>"; };
 		1B808D5F25137A060095926E /* KDPerformanceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPerformanceModel.h; sourceTree = "<group>"; };
 		1B808D6025137A060095926E /* KDPerformanceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPerformanceModel.m; sourceTree = "<group>"; };
-		1B86CF932509B74F00AD09F7 /* KDConfirmCreditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDConfirmCreditViewController.h; sourceTree = "<group>"; };
-		1B86CF942509B74F00AD09F7 /* KDConfirmCreditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDConfirmCreditViewController.m; sourceTree = "<group>"; };
-		1B86CF962509B82800AD09F7 /* KDConfirmCreditHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDConfirmCreditHeaderView.h; sourceTree = "<group>"; };
-		1B86CF972509B82800AD09F7 /* KDConfirmCreditHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDConfirmCreditHeaderView.m; sourceTree = "<group>"; };
-		1B86CF992509B83600AD09F7 /* KDConfirmCreditHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDConfirmCreditHeaderView.xib; sourceTree = "<group>"; };
-		1B86CF9C2509C47100AD09F7 /* KDEarnCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDEarnCenterViewController.h; sourceTree = "<group>"; };
-		1B86CF9D2509C47100AD09F7 /* KDEarnCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDEarnCenterViewController.m; sourceTree = "<group>"; };
-		1B86CF9F2509C63E00AD09F7 /* KDEarnCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDEarnCenterHeaderView.h; sourceTree = "<group>"; };
-		1B86CFA02509C63E00AD09F7 /* KDEarnCenterHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDEarnCenterHeaderView.m; sourceTree = "<group>"; };
-		1B86CFA22509C65100AD09F7 /* KDEarnCenterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDEarnCenterHeaderView.xib; sourceTree = "<group>"; };
 		1B86CFA42509D60000AD09F7 /* KDExtendEarnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExtendEarnViewController.h; sourceTree = "<group>"; };
 		1B86CFA52509D60000AD09F7 /* KDExtendEarnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExtendEarnViewController.m; sourceTree = "<group>"; };
 		1B86CFA62509D60000AD09F7 /* KDExtendEarnViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDExtendEarnViewController.xib; sourceTree = "<group>"; };
@@ -716,11 +586,6 @@
 		1BCF5E1E2514CD410095328E /* KDProfitDirectPushModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDProfitDirectPushModel.m; sourceTree = "<group>"; };
 		1BCF5E202514D7270095328E /* KDHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHistoryModel.h; sourceTree = "<group>"; };
 		1BCF5E212514D7270095328E /* KDHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHistoryModel.m; sourceTree = "<group>"; };
-		1BCF5E232514DE200095328E /* KDCancelCreditHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCancelCreditHeaderView.h; sourceTree = "<group>"; };
-		1BCF5E242514DE200095328E /* KDCancelCreditHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCancelCreditHeaderView.m; sourceTree = "<group>"; };
-		1BCF5E262514DE320095328E /* KDCancelCreditHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDCancelCreditHeaderView.xib; sourceTree = "<group>"; };
-		1BCF5E282514E0E00095328E /* KDCancelCreditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCancelCreditViewController.h; sourceTree = "<group>"; };
-		1BCF5E292514E0E00095328E /* KDCancelCreditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCancelCreditViewController.m; sourceTree = "<group>"; };
 		1BD2F201250A0C3C0061580C /* KDDirectPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDDirectPushViewController.h; sourceTree = "<group>"; };
 		1BD2F202250A0C3C0061580C /* KDDirectPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDDirectPushViewController.m; sourceTree = "<group>"; };
 		1BD2F204250A0D9C0061580C /* KDDirectPushNoDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDDirectPushNoDataView.h; sourceTree = "<group>"; };
@@ -735,11 +600,6 @@
 		1BD2F213250A28F80061580C /* KDDirectPushChoseStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDDirectPushChoseStatusView.h; sourceTree = "<group>"; };
 		1BD2F214250A28F80061580C /* KDDirectPushChoseStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDDirectPushChoseStatusView.m; sourceTree = "<group>"; };
 		1BD2F216250A29090061580C /* KDDirectPushChoseStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDDirectPushChoseStatusView.xib; sourceTree = "<group>"; };
-		1BD2F218250A30D00061580C /* KDProfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDProfitViewController.h; sourceTree = "<group>"; };
-		1BD2F219250A30D00061580C /* KDProfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDProfitViewController.m; sourceTree = "<group>"; };
-		1BD2F21B250A337A0061580C /* KDProfitHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDProfitHeaderView.h; sourceTree = "<group>"; };
-		1BD2F21C250A337A0061580C /* KDProfitHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDProfitHeaderView.m; sourceTree = "<group>"; };
-		1BD2F21E250A33970061580C /* KDProfitHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDProfitHeaderView.xib; sourceTree = "<group>"; };
 		1BD2F220250A3B590061580C /* KDProfitViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDProfitViewCell.h; sourceTree = "<group>"; };
 		1BD2F221250A3B590061580C /* KDProfitViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDProfitViewCell.m; sourceTree = "<group>"; };
 		1BD2F222250A3B590061580C /* KDProfitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDProfitViewCell.xib; sourceTree = "<group>"; };
@@ -757,27 +617,6 @@
 		1BD3DC12250B148A00A5D148 /* KDProfitDirectPushViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDProfitDirectPushViewCell.h; sourceTree = "<group>"; };
 		1BD3DC13250B148A00A5D148 /* KDProfitDirectPushViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDProfitDirectPushViewCell.m; sourceTree = "<group>"; };
 		1BD3DC14250B148A00A5D148 /* KDProfitDirectPushViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDProfitDirectPushViewCell.xib; sourceTree = "<group>"; };
-		1BD3DC17250B172600A5D148 /* KDAchieveAwardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAchieveAwardViewController.h; sourceTree = "<group>"; };
-		1BD3DC18250B172600A5D148 /* KDAchieveAwardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAchieveAwardViewController.m; sourceTree = "<group>"; };
-		1BD3DC1A250B178C00A5D148 /* KDAchieveAwardHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAchieveAwardHeaderView.h; sourceTree = "<group>"; };
-		1BD3DC1B250B178C00A5D148 /* KDAchieveAwardHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAchieveAwardHeaderView.m; sourceTree = "<group>"; };
-		1BD3DC1D250B179B00A5D148 /* KDAchieveAwardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDAchieveAwardHeaderView.xib; sourceTree = "<group>"; };
-		1BD3DC1F250B1C1000A5D148 /* KDReturnMoneyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDReturnMoneyViewController.h; sourceTree = "<group>"; };
-		1BD3DC20250B1C1100A5D148 /* KDReturnMoneyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDReturnMoneyViewController.m; sourceTree = "<group>"; };
-		1BD3DC22250B1C9100A5D148 /* KDReturnMoneyHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDReturnMoneyHeaderView.h; sourceTree = "<group>"; };
-		1BD3DC23250B1C9100A5D148 /* KDReturnMoneyHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDReturnMoneyHeaderView.m; sourceTree = "<group>"; };
-		1BD3DC25250B1C9D00A5D148 /* KDReturnMoneyHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDReturnMoneyHeaderView.xib; sourceTree = "<group>"; };
-		1BD3DC27250B265500A5D148 /* KDRemedyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDRemedyView.h; sourceTree = "<group>"; };
-		1BD3DC28250B265500A5D148 /* KDRemedyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDRemedyView.m; sourceTree = "<group>"; };
-		1BD3DC2A250B266B00A5D148 /* KDRemedyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDRemedyView.xib; sourceTree = "<group>"; };
-		1BD3DC2C250B4C7400A5D148 /* KDWithDrawHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWithDrawHistoryViewController.h; sourceTree = "<group>"; };
-		1BD3DC2D250B4C7400A5D148 /* KDWithDrawHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWithDrawHistoryViewController.m; sourceTree = "<group>"; };
-		1BD3DC2F250B4CB000A5D148 /* KDWithDrawHistoryheaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWithDrawHistoryheaderView.h; sourceTree = "<group>"; };
-		1BD3DC30250B4CB000A5D148 /* KDWithDrawHistoryheaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWithDrawHistoryheaderView.m; sourceTree = "<group>"; };
-		1BD3DC32250B4D2000A5D148 /* KDWithDrawHistoryViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWithDrawHistoryViewCell.h; sourceTree = "<group>"; };
-		1BD3DC33250B4D2000A5D148 /* KDWithDrawHistoryViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWithDrawHistoryViewCell.m; sourceTree = "<group>"; };
-		1BD3DC34250B4D2000A5D148 /* KDWithDrawHistoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDWithDrawHistoryViewCell.xib; sourceTree = "<group>"; };
-		1BD3DC37250B4D8D00A5D148 /* KDWithDrawHistoryheaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDWithDrawHistoryheaderView.xib; sourceTree = "<group>"; };
 		1BD3DC39250B597500A5D148 /* KDMyReferrerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMyReferrerViewController.h; sourceTree = "<group>"; };
 		1BD3DC3A250B597500A5D148 /* KDMyReferrerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMyReferrerViewController.m; sourceTree = "<group>"; };
 		1BD3DC3B250B597500A5D148 /* KDMyReferrerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDMyReferrerViewController.xib; sourceTree = "<group>"; };
@@ -975,62 +814,6 @@
 				04F224D1276E34AA00EA2DB7 /* KDPPopularizeTableViewCell.xib */,
 			);
 			path = "直推间推";
-			sourceTree = "<group>";
-		};
-		180B17982575E9ED006D3D13 /* 空卡还款 */ = {
-			isa = PBXGroup;
-			children = (
-				180B179A2575EAE6006D3D13 /* VC */,
-			);
-			path = "空卡还款";
-			sourceTree = "<group>";
-		};
-		180B179A2575EAE6006D3D13 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				180B179D2575EB21006D3D13 /* 空卡列表界面 */,
-				180B179C2575EB21006D3D13 /* 空卡制定计划 */,
-				180B179E2575EB21006D3D13 /* 空卡计划预览 */,
-			);
-			path = VC;
-			sourceTree = "<group>";
-		};
-		180B179C2575EB21006D3D13 /* 空卡制定计划 */ = {
-			isa = PBXGroup;
-			children = (
-				180B17AC2575EE36006D3D13 /* KDKongKaPlanViewController.h */,
-				180B17AD2575EE36006D3D13 /* KDKongKaPlanViewController.m */,
-				18C4FE98256B6A9A00C27A7D /* KDPlanCenterKongKaCell.h */,
-				18C4FE99256B6A9A00C27A7D /* KDPlanCenterKongKaCell.m */,
-				18C4FE9A256B6A9A00C27A7D /* KDPlanCenterKongKaCell.xib */,
-			);
-			path = "空卡制定计划";
-			sourceTree = "<group>";
-		};
-		180B179D2575EB21006D3D13 /* 空卡列表界面 */ = {
-			isa = PBXGroup;
-			children = (
-				180B179F2575EBD8006D3D13 /* KDKongKaViewController.h */,
-				180B17A02575EBD8006D3D13 /* KDKongKaViewController.m */,
-				180B17A12575EBD8006D3D13 /* KDKongKaViewController.xib */,
-				180B17A62575EBFF006D3D13 /* KDKongKaTableViewCell.h */,
-				180B17A72575EBFF006D3D13 /* KDKongKaTableViewCell.m */,
-				180B17A82575EBFF006D3D13 /* KDKongKaTableViewCell.xib */,
-			);
-			path = "空卡列表界面";
-			sourceTree = "<group>";
-		};
-		180B179E2575EB21006D3D13 /* 空卡计划预览 */ = {
-			isa = PBXGroup;
-			children = (
-				180B17922575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.h */,
-				180B17932575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m */,
-				180B17942575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib */,
-				180B990A2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.h */,
-				180B990B2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m */,
-				180B990C2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib */,
-			);
-			path = "空卡计划预览";
 			sourceTree = "<group>";
 		};
 		1848CE56266F3DEA00D6E148 /* 商城详情 */ = {
@@ -1299,80 +1082,12 @@
 			path = "备付金";
 			sourceTree = "<group>";
 		};
-		1B1C0EAA2508B10C0009CDC6 /* 顶级代理 */ = {
-			isa = PBXGroup;
-			children = (
-				1B1C0EAB2508B12A0009CDC6 /* KDTopDelegateViewController.h */,
-				1B1C0EAC2508B12A0009CDC6 /* KDTopDelegateViewController.m */,
-				1B730CE3251AE7B70065FB1A /* KDTopDelegateHeaderView.h */,
-				1B730CE4251AE7B70065FB1A /* KDTopDelegateHeaderView.m */,
-				1B730CE6251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib */,
-				1B1C0EAE2508B3250009CDC6 /* KDSearchView.h */,
-				1B1C0EAF2508B3250009CDC6 /* KDSearchView.m */,
-				1B1C0EB12508BEB80009CDC6 /* KDDelegateViewCell.h */,
-				1B1C0EB22508BEB80009CDC6 /* KDDelegateViewCell.m */,
-				1B1C0EB32508BEB80009CDC6 /* KDDelegateViewCell.xib */,
-				1B6E43B82515FBBA00BB743C /* KDTopDelegateModel.h */,
-				1B6E43B92515FBBA00BB743C /* KDTopDelegateModel.m */,
-				1B02411325209CFA00992ED4 /* KDTopDelegateNewModel.h */,
-				1B02411425209CFA00992ED4 /* KDTopDelegateNewModel.m */,
-			);
-			path = "顶级代理";
-			sourceTree = "<group>";
-		};
-		1B1C0EB62508C4370009CDC6 /* 信用管理 */ = {
-			isa = PBXGroup;
-			children = (
-				1B1C0EB72508C4AD0009CDC6 /* KDCreditManagerViewController.h */,
-				1B1C0EB82508C4AD0009CDC6 /* KDCreditManagerViewController.m */,
-				1B1C0EBA2508C4C90009CDC6 /* KDCreditManagerHeaderView.h */,
-				1B1C0EBB2508C4C90009CDC6 /* KDCreditManagerHeaderView.m */,
-				1B1C0EBD2508C4D70009CDC6 /* KDCreditManagerHeaderView.xib */,
-				1B543D1A250F15E800076628 /* KDCreditModel.h */,
-				1B543D1B250F15E800076628 /* KDCreditModel.m */,
-				1B543D1D250F1D4500076628 /* KDLostQuotaViewController.h */,
-				1B543D1E250F1D4500076628 /* KDLostQuotaViewController.m */,
-				1B543D20250F1DF600076628 /* KDLostQuotaViewCell.h */,
-				1B543D21250F1DF600076628 /* KDLostQuotaViewCell.m */,
-				1B543D22250F1DF600076628 /* KDLostQuotaViewCell.xib */,
-				1B1C0EBF2508CEED0009CDC6 /* KDCreditExtensionViewController.h */,
-				1B1C0EC02508CEED0009CDC6 /* KDCreditExtensionViewController.m */,
-				1B6667E62508D0DD00AA55DA /* KDCreditExtensionHeaderView.h */,
-				1B6667E72508D0DD00AA55DA /* KDCreditExtensionHeaderView.m */,
-				1B6667E92508D0EA00AA55DA /* KDCreditExtensionHeaderView.xib */,
-				1B543D25250F3FC200076628 /* KDCreditExtensionModel.h */,
-				1B543D26250F3FC200076628 /* KDCreditExtensionModel.m */,
-				1B6667EB2508D47B00AA55DA /* KDNoCreditViewCell.h */,
-				1B6667EC2508D47B00AA55DA /* KDNoCreditViewCell.m */,
-				1B6667ED2508D47B00AA55DA /* KDNoCreditViewCell.xib */,
-				1B6667F02508D49100AA55DA /* KDCreditViewViewCell.h */,
-				1B6667F12508D49100AA55DA /* KDCreditViewViewCell.m */,
-				1B6667F22508D49100AA55DA /* KDCreditViewViewCell.xib */,
-				1B6667F52508EEE500AA55DA /* KDCreditAlertView.h */,
-				1B6667F62508EEE500AA55DA /* KDCreditAlertView.m */,
-				1B6667F82508EEF500AA55DA /* KDCreditAlertView.xib */,
-				1B86CF932509B74F00AD09F7 /* KDConfirmCreditViewController.h */,
-				1B86CF942509B74F00AD09F7 /* KDConfirmCreditViewController.m */,
-				1B86CF962509B82800AD09F7 /* KDConfirmCreditHeaderView.h */,
-				1B86CF972509B82800AD09F7 /* KDConfirmCreditHeaderView.m */,
-				1B86CF992509B83600AD09F7 /* KDConfirmCreditHeaderView.xib */,
-				1BCF5E282514E0E00095328E /* KDCancelCreditViewController.h */,
-				1BCF5E292514E0E00095328E /* KDCancelCreditViewController.m */,
-				1BCF5E232514DE200095328E /* KDCancelCreditHeaderView.h */,
-				1BCF5E242514DE200095328E /* KDCancelCreditHeaderView.m */,
-				1BCF5E262514DE320095328E /* KDCancelCreditHeaderView.xib */,
-			);
-			path = "信用管理";
-			sourceTree = "<group>";
-		};
 		1B86CF9B2509C44F00AD09F7 /* 收益中心 */ = {
 			isa = PBXGroup;
 			children = (
-				EE7AE4D525368C0A00F418BF /* 主页面 */,
 				EE7AE4E425368EF600F418BF /* models */,
 				EE7AE4D725368C3700F418BF /* 推广收益 */,
 				EE7AE4DC25368D3300F418BF /* 直推 */,
-				EE7AE4DA25368C8300F418BF /* 分润 */,
 				1BD3DC02250B03E700A5D148 /* KDProfitDirectPushViewController.h */,
 				1BD3DC03250B03E700A5D148 /* KDProfitDirectPushViewController.m */,
 				1BD2F220250A3B590061580C /* KDProfitViewCell.h */,
@@ -1390,9 +1105,6 @@
 				1BD3DC12250B148A00A5D148 /* KDProfitDirectPushViewCell.h */,
 				1BD3DC13250B148A00A5D148 /* KDProfitDirectPushViewCell.m */,
 				1BD3DC14250B148A00A5D148 /* KDProfitDirectPushViewCell.xib */,
-				EE7AE4DE25368E2300F418BF /* 达标奖励 */,
-				EE7AE4E025368E5900F418BF /* 返现和弥补 */,
-				EE7AE4E225368EA200F418BF /* 提现记录 */,
 			);
 			path = "收益中心";
 			sourceTree = "<group>";
@@ -1499,12 +1211,7 @@
 			children = (
 				6F4DB6B727D9F0D400B3D33E /* 新版tabbar */,
 				6FBBFBA3275897450096D282 /* Tools */,
-				180B17982575E9ED006D3D13 /* 空卡还款 */,
-				1B97239C251C3A2800F4120C /* 信用卡还款 */,
-				187D8AEC2565FC900097A650 /* 交易记录 */,
 				1B86CF9B2509C44F00AD09F7 /* 收益中心 */,
-				1B1C0EB62508C4370009CDC6 /* 信用管理 */,
-				1B1C0EAA2508B10C0009CDC6 /* 顶级代理 */,
 				1BC5E3CD250345480064CA30 /* 注册 */,
 				1BC5E3BB250343B20064CA30 /* Home */,
 				1BC5E3BC250343B80064CA30 /* News */,
@@ -1517,17 +1224,18 @@
 		1BC5E3BB250343B20064CA30 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1BC5E3BF250344130064CA30 /* KDHomeViewController.h */,
+				1BC5E3C0250344130064CA30 /* KDHomeViewController.m */,
+				1BC5E3E0250392D10064CA30 /* KDHomeHeaderView.h */,
+				1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */,
+				1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */,
+				1B97239C251C3A2800F4120C /* 信用卡还款 */,
 				6F002D3827E977A400FA4A01 /* 客服界面 */,
 				1BD3DC3E250B606B00A5D148 /* 信用卡收款 */,
 				6FC59E0927622766005DD4DD /* 绑卡和收款 */,
 				6F85DC4A2785284D00593E50 /* 小额闪付 */,
 				6FCFF4132787D07900E34091 /* 无卡积分 */,
 				6F93A17527E2CCC700A53E5B /* 缴费界面 */,
-				1BC5E3BF250344130064CA30 /* KDHomeViewController.h */,
-				1BC5E3C0250344130064CA30 /* KDHomeViewController.m */,
-				1BC5E3E0250392D10064CA30 /* KDHomeHeaderView.h */,
-				1BC5E3E1250392D10064CA30 /* KDHomeHeaderView.m */,
-				1BC5E3E3250392DF0064CA30 /* KDHomeHeaderView.xib */,
 				6F6951A827D98F3A004E4880 /* 首页头部View */,
 				6FFE7E08274E3A5400F801A1 /* 我的钱包 */,
 				043189FA274D2FCA00D9D959 /* 账单管理 */,
@@ -1578,6 +1286,7 @@
 		1BC5E3BE250343D60064CA30 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				187D8AEC2565FC900097A650 /* 交易记录 */,
 				6F94589B277D8492008D7364 /* 我的优惠券 */,
 				04F224C9276E2EC800EA2DB7 /* 直推间推 */,
 				04B70014275C59EE00A755B8 /* 我的客户 */,
@@ -1846,18 +1555,6 @@
 			path = KDWebContainer;
 			sourceTree = "<group>";
 		};
-		EE7AE4D525368C0A00F418BF /* 主页面 */ = {
-			isa = PBXGroup;
-			children = (
-				1B86CF9C2509C47100AD09F7 /* KDEarnCenterViewController.h */,
-				1B86CF9D2509C47100AD09F7 /* KDEarnCenterViewController.m */,
-				1B86CF9F2509C63E00AD09F7 /* KDEarnCenterHeaderView.h */,
-				1B86CFA02509C63E00AD09F7 /* KDEarnCenterHeaderView.m */,
-				1B86CFA22509C65100AD09F7 /* KDEarnCenterHeaderView.xib */,
-			);
-			path = "主页面";
-			sourceTree = "<group>";
-		};
 		EE7AE4D725368C3700F418BF /* 推广收益 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1869,18 +1566,6 @@
 				1B86CFA62509D60000AD09F7 /* KDExtendEarnViewController.xib */,
 			);
 			path = "推广收益";
-			sourceTree = "<group>";
-		};
-		EE7AE4DA25368C8300F418BF /* 分润 */ = {
-			isa = PBXGroup;
-			children = (
-				1BD2F218250A30D00061580C /* KDProfitViewController.h */,
-				1BD2F219250A30D00061580C /* KDProfitViewController.m */,
-				1BD2F21B250A337A0061580C /* KDProfitHeaderView.h */,
-				1BD2F21C250A337A0061580C /* KDProfitHeaderView.m */,
-				1BD2F21E250A33970061580C /* KDProfitHeaderView.xib */,
-			);
-			path = "分润";
 			sourceTree = "<group>";
 		};
 		EE7AE4DC25368D3300F418BF /* 直推 */ = {
@@ -1902,48 +1587,6 @@
 				1BD2F216250A29090061580C /* KDDirectPushChoseStatusView.xib */,
 			);
 			path = "直推";
-			sourceTree = "<group>";
-		};
-		EE7AE4DE25368E2300F418BF /* 达标奖励 */ = {
-			isa = PBXGroup;
-			children = (
-				1BD3DC17250B172600A5D148 /* KDAchieveAwardViewController.h */,
-				1BD3DC18250B172600A5D148 /* KDAchieveAwardViewController.m */,
-				1BD3DC1A250B178C00A5D148 /* KDAchieveAwardHeaderView.h */,
-				1BD3DC1B250B178C00A5D148 /* KDAchieveAwardHeaderView.m */,
-				1BD3DC1D250B179B00A5D148 /* KDAchieveAwardHeaderView.xib */,
-			);
-			path = "达标奖励";
-			sourceTree = "<group>";
-		};
-		EE7AE4E025368E5900F418BF /* 返现和弥补 */ = {
-			isa = PBXGroup;
-			children = (
-				1BD3DC27250B265500A5D148 /* KDRemedyView.h */,
-				1BD3DC28250B265500A5D148 /* KDRemedyView.m */,
-				1BD3DC2A250B266B00A5D148 /* KDRemedyView.xib */,
-				1BD3DC1F250B1C1000A5D148 /* KDReturnMoneyViewController.h */,
-				1BD3DC20250B1C1100A5D148 /* KDReturnMoneyViewController.m */,
-				1BD3DC22250B1C9100A5D148 /* KDReturnMoneyHeaderView.h */,
-				1BD3DC23250B1C9100A5D148 /* KDReturnMoneyHeaderView.m */,
-				1BD3DC25250B1C9D00A5D148 /* KDReturnMoneyHeaderView.xib */,
-			);
-			path = "返现和弥补";
-			sourceTree = "<group>";
-		};
-		EE7AE4E225368EA200F418BF /* 提现记录 */ = {
-			isa = PBXGroup;
-			children = (
-				1BD3DC2C250B4C7400A5D148 /* KDWithDrawHistoryViewController.h */,
-				1BD3DC2D250B4C7400A5D148 /* KDWithDrawHistoryViewController.m */,
-				1BD3DC2F250B4CB000A5D148 /* KDWithDrawHistoryheaderView.h */,
-				1BD3DC30250B4CB000A5D148 /* KDWithDrawHistoryheaderView.m */,
-				1BD3DC37250B4D8D00A5D148 /* KDWithDrawHistoryheaderView.xib */,
-				1BD3DC32250B4D2000A5D148 /* KDWithDrawHistoryViewCell.h */,
-				1BD3DC33250B4D2000A5D148 /* KDWithDrawHistoryViewCell.m */,
-				1BD3DC34250B4D2000A5D148 /* KDWithDrawHistoryViewCell.xib */,
-			);
-			path = "提现记录";
 			sourceTree = "<group>";
 		};
 		EE7AE4E425368EF600F418BF /* models */ = {
@@ -2056,7 +1699,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BD3DC38250B4D8D00A5D148 /* KDWithDrawHistoryheaderView.xib in Resources */,
 				6F9458A3277D858C008D7364 /* KDMineCouponTableViewCell.xib in Resources */,
 				1BBA50602511B61F001DA457 /* KDShareViewCell.xib in Resources */,
 				1B937059251C757200E51EC9 /* KDPlanTopViewCell.xib in Resources */,
@@ -2069,9 +1711,7 @@
 				1BD3DC3D250B597500A5D148 /* KDMyReferrerViewController.xib in Resources */,
 				1B7E4685251CCCD800FA5D1E /* KDPlanAlertView.xib in Resources */,
 				1B9C9B602507752E00EE0819 /* KDShareHeaderView.xib in Resources */,
-				180B17AA2575EBFF006D3D13 /* KDKongKaTableViewCell.xib in Resources */,
 				1B937063251C76A500E51EC9 /* KDPlanBottomViewCell.xib in Resources */,
-				1B1C0EB52508BEB80009CDC6 /* KDDelegateViewCell.xib in Resources */,
 				1893CEF126727A9300C53DBF /* KDJFAdressManagerViewController.xib in Resources */,
 				04DA3752277F52CB002FC105 /* KDXinYongKaCollectionViewCell.xib in Resources */,
 				187D8B1B2565FC900097A650 /* KDTrandingRecordHeaderView.xib in Resources */,
@@ -2079,17 +1719,12 @@
 				1BD2F208250A0DAA0061580C /* KDDirectPushNoDataView.xib in Resources */,
 				6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */,
 				1B1C0E952508753B0009CDC6 /* KDShiftToProvisionsViewController.xib in Resources */,
-				1B6667F92508EEF500AA55DA /* KDCreditAlertView.xib in Resources */,
-				1BCF5E272514DE320095328E /* KDCancelCreditHeaderView.xib in Resources */,
 				1848CE69266F68F900D6E148 /* KDConfirmViewController.xib in Resources */,
 				1BC55AC5250B8A56001BE2DF /* KDSlotCardAisleViewCell.xib in Resources */,
 				1BAB907B250C65DF00FE9404 /* KDAisleDetailViewCell.xib in Resources */,
 				1B93705E251C763900E51EC9 /* KDPlanCenterViewCell.xib in Resources */,
 				04AD49A627893D8300056258 /* KDPaySelectView.xib in Resources */,
 				1BD3DC11250B11FD00A5D148 /* KDProfitDirectPushEmptyView.xib in Resources */,
-				1B730CE7251AE7CB0065FB1A /* KDTopDelegateHeaderView.xib in Resources */,
-				180B17A32575EBD9006D3D13 /* KDKongKaViewController.xib in Resources */,
-				1BD3DC1E250B179B00A5D148 /* KDAchieveAwardHeaderView.xib in Resources */,
 				6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */,
 				6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */,
 				1B1C0EA92508A9260009CDC6 /* KDOutProvisionsViewController.xib in Resources */,
@@ -2102,9 +1737,6 @@
 				1B1C0E9F25087BB80009CDC6 /* KDChosePayTypeViewCell.xib in Resources */,
 				1867249A2673138C0066122D /* KDJFChangeTableViewCell.xib in Resources */,
 				187D8B1C2565FC900097A650 /* KDConsumptionDetailView.xib in Resources */,
-				1B543D24250F1DF600076628 /* KDLostQuotaViewCell.xib in Resources */,
-				1B86CFA32509C65100AD09F7 /* KDEarnCenterHeaderView.xib in Resources */,
-				1BD3DC2B250B266B00A5D148 /* KDRemedyView.xib in Resources */,
 				1BD2F229250A3EC20061580C /* KDProfitCellHeaderView.xib in Resources */,
 				1BD2F217250A29090061580C /* KDDirectPushChoseStatusView.xib in Resources */,
 				1B9C9B1325075D2300EE0819 /* KDNewsViewCell.xib in Resources */,
@@ -2115,19 +1747,14 @@
 				1B9723A4251C3A8A00F4120C /* KDDirectRefundViewController.xib in Resources */,
 				EE8D73442509D023007AF076 /* KDShareSingleHeader.xib in Resources */,
 				1B1C0E9A250879860009CDC6 /* KDChosePayTypeView.xib in Resources */,
-				1BD3DC26250B1C9D00A5D148 /* KDReturnMoneyHeaderView.xib in Resources */,
-				1BD3DC36250B4D2000A5D148 /* KDWithDrawHistoryViewCell.xib in Resources */,
 				1BC55AC0250B8468001BE2DF /* KDSlotCardAisleHeaderView.xib in Resources */,
-				1B1C0EBE2508C4D70009CDC6 /* KDCreditManagerHeaderView.xib in Resources */,
 				6F6951B227D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.xib in Resources */,
 				187D8B1F2565FC900097A650 /* KDPlanPreviewViewCell.xib in Resources */,
 				1B937054251C74C700E51EC9 /* KDPlanHeaderView.xib in Resources */,
 				0428B43B2784A1ED004B2D54 /* KDPayNewViewControllerShop.xib in Resources */,
 				1BC5E3A22503404C0064CA30 /* Main.storyboard in Resources */,
 				1BD3DC43250B60A600A5D148 /* KDGatheringViewController.xib in Resources */,
-				1BD2F21F250A33970061580C /* KDProfitHeaderView.xib in Resources */,
 				1BD3DC09250B046D00A5D148 /* KDProfitDirectPushHeaderView.xib in Resources */,
-				1B6667EA2508D0EA00AA55DA /* KDCreditExtensionHeaderView.xib in Resources */,
 				EE8D73462509D725007AF076 /* wza.xcassets in Resources */,
 				1BD2F224250A3B590061580C /* KDProfitViewCell.xib in Resources */,
 				1B937087251CC89600E51EC9 /* KDEmptyCardRefundViewCell.xib in Resources */,
@@ -2136,7 +1763,6 @@
 				187D8B1D2565FC900097A650 /* KDTrandingRecordViewCell.xib in Resources */,
 				1B9C9B1925075D2F00EE0819 /* KDMsgViewCell.xib in Resources */,
 				043189F2274BDDA900D9D959 /* KDRenZhengView.xib in Resources */,
-				1B86CF9A2509B83600AD09F7 /* KDConfirmCreditHeaderView.xib in Resources */,
 				043189F7274BE6BA00D9D959 /* KDWenZinTiShi.xib in Resources */,
 				1848CE55266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.xib in Resources */,
 				04AD49AB278941E700056258 /* KDPayZhuanZhangView.xib in Resources */,
@@ -2144,16 +1770,12 @@
 				187F62C926726C61003F48CD /* KDJFOrderDetailHeaderView.xib in Resources */,
 				6F6951AD27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib in Resources */,
 				6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */,
-				1B6667EF2508D47B00AA55DA /* KDNoCreditViewCell.xib in Resources */,
 				1BAE2A7E251E168C00E7E0DF /* KDEditDirectCardViewController.xib in Resources */,
-				180B17962575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.xib in Resources */,
-				180B990E2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib in Resources */,
 				04F224CE276E2F1000EA2DB7 /* KDPopularizeViewController.xib in Resources */,
 				6F7628B427634BFF00E03BFA /* KDPayNewViewController.xib in Resources */,
 				1B86CFA82509D60000AD09F7 /* KDExtendEarnViewController.xib in Resources */,
 				1B9723A9251C41ED00F4120C /* KDDirectRefundViewCell.xib in Resources */,
 				1BC5E3D725036EF30064CA30 /* KDLoginHeaderView.xib in Resources */,
-				1B6667F42508D49100AA55DA /* KDCreditViewViewCell.xib in Resources */,
 				04C449892785FA800032FFA2 /* CWResource.bundle in Resources */,
 				1B543D19250EF96400076628 /* KDAboutMineViewController.xib in Resources */,
 				1848CE63266F475A00D6E148 /* KDJFShopDetailTableViewCell.xib in Resources */,
@@ -2172,7 +1794,6 @@
 				1B9C9B65250784EB00EE0819 /* KDMineHeaderView.xib in Resources */,
 				EEB6B43B2514CD1F00F592F4 /* KDWelcomeAlertView.xib in Resources */,
 				1B7E468A251CD08100FA5D1E /* KDPlanPreviewView.xib in Resources */,
-				18C4FE9C256B6A9A00C27A7D /* KDPlanCenterKongKaCell.xib in Resources */,
 				1B9C9B4A25075D6700EE0819 /* Assets.xcassets in Resources */,
 				04B70019275C5A5500A755B8 /* KDMineKehuViewController.xib in Resources */,
 				1BC5E3E4250392DF0064CA30 /* KDHomeHeaderView.xib in Resources */,
@@ -2237,7 +1858,6 @@
 				04318A09274E7C3700D9D959 /* KDTixianjiluViewController.m in Sources */,
 				187F62C426726BF4003F48CD /* KDJFOrderDetailViewController.m in Sources */,
 				1848CE4F266F120F00D6E148 /* KDJFShopCollectionViewCell.m in Sources */,
-				1B1C0EAD2508B12A0009CDC6 /* KDTopDelegateViewController.m in Sources */,
 				1BCF5E1C2514B4770095328E /* KDPushModel.m in Sources */,
 				6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */,
 				04AD49A427893D7A00056258 /* KDPaySelectView.m in Sources */,
@@ -2250,7 +1870,6 @@
 				1B1C0E942508753B0009CDC6 /* KDShiftToProvisionsViewController.m in Sources */,
 				6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */,
 				187CE1E5266CEC6100CDB9DB /* KDJFShopViewController.m in Sources */,
-				1BD3DC31250B4CB000A5D148 /* KDWithDrawHistoryheaderView.m in Sources */,
 				1BC4AE9725106452003B092E /* KDChosePayTypeModel.m in Sources */,
 				1B543D18250EF96400076628 /* KDAboutMineViewController.m in Sources */,
 				04AD49A9278941DB00056258 /* KDPayZhuanZhangView.m in Sources */,
@@ -2274,13 +1893,7 @@
 				EEF1AD31251CE69C001DD2AB /* MSSCalendarHeaderModel.m in Sources */,
 				18E7C4E32678AC4500AE3A72 /* KDJFAdressListTableViewCell.m in Sources */,
 				1BC5E3B9250341180064CA30 /* main.m in Sources */,
-				1B6E43BA2515FBBA00BB743C /* KDTopDelegateModel.m in Sources */,
-				1B1C0EB92508C4AD0009CDC6 /* KDCreditManagerViewController.m in Sources */,
-				1B02411525209CFA00992ED4 /* KDTopDelegateNewModel.m in Sources */,
-				1B543D1C250F15E800076628 /* KDCreditModel.m in Sources */,
 				1848CE59266F3E6700D6E148 /* KDJFShopDetailViewController.m in Sources */,
-				1BD3DC35250B4D2000A5D148 /* KDWithDrawHistoryViewCell.m in Sources */,
-				180B17A22575EBD8006D3D13 /* KDKongKaViewController.m in Sources */,
 				EEB6B4392514CD1400F592F4 /* KDWelcomeAlertView.m in Sources */,
 				187D8B132565FC900097A650 /* KDTrandingRecordViewController.m in Sources */,
 				1B937052251C74A700E51EC9 /* KDPlanHeaderView.m in Sources */,
@@ -2293,14 +1906,11 @@
 				6FBBFBA6275897540096D282 /* UIView+Extension.m in Sources */,
 				6FA44E93274E3BFF00DA1C59 /* KDMyWallView.m in Sources */,
 				187D8B192565FC900097A650 /* KDSlotCardHistoryModel.m in Sources */,
-				1BCF5E252514DE200095328E /* KDCancelCreditHeaderView.m in Sources */,
 				1BAE2A7D251E168C00E7E0DF /* KDEditDirectCardViewController.m in Sources */,
 				1B1C0EA2250886F00009CDC6 /* KDProvisionsTopView.m in Sources */,
 				1BC5E3CC250344540064CA30 /* KDMineViewController.m in Sources */,
 				6F6951B127D99F43004E4880 /* KDHomeCardKnowledgeTableViewCell.m in Sources */,
-				1B730CE5251AE7B70065FB1A /* KDTopDelegateHeaderView.m in Sources */,
 				187D8B152565FC900097A650 /* KDSlotCardOrderInfoViewController.m in Sources */,
-				180B17AE2575EE36006D3D13 /* KDKongKaPlanViewController.m in Sources */,
 				187D8B112565FC900097A650 /* KDPlanPreviewViewController.m in Sources */,
 				6F9458A2277D858C008D7364 /* KDMineCouponTableViewCell.m in Sources */,
 				1BC5E3E2250392D10064CA30 /* KDHomeHeaderView.m in Sources */,
@@ -2312,9 +1922,7 @@
 				1B937062251C76A500E51EC9 /* KDPlanBottomViewCell.m in Sources */,
 				04DA3750277F52CB002FC105 /* KDXinYongKaCollectionViewCell.m in Sources */,
 				EE8D73422509D019007AF076 /* KDShareSingleHeader.m in Sources */,
-				1B86CF952509B74F00AD09F7 /* KDConfirmCreditViewController.m in Sources */,
 				04318A03274D334400D9D959 /* KDHomeBillManagerTableViewCell.m in Sources */,
-				1B543D1F250F1D4500076628 /* KDLostQuotaViewController.m in Sources */,
 				1BBA505F2511B61F001DA457 /* KDShareViewCell.m in Sources */,
 				6FAC122926FC86FB00E3560F /* KDHomeXinYongKaViewController.m in Sources */,
 				187F62BC26726718003F48CD /* KDJFOrderListViewController.m in Sources */,
@@ -2322,40 +1930,28 @@
 				187D8B182565FC900097A650 /* KDTotalOrderModel.m in Sources */,
 				1B86CFAC2509FC3500AD09F7 /* KDExtendPerformanceViewController.m in Sources */,
 				04752298274FC4CD00268D58 /* KDZhiFuShouYiViewController.m in Sources */,
-				1B1C0EB42508BEB80009CDC6 /* KDDelegateViewCell.m in Sources */,
 				04B70018275C5A5500A755B8 /* KDMineKehuViewController.m in Sources */,
-				180B17952575D6D4006D3D13 /* KDPlanKongKaPreviewViewController.m in Sources */,
 				EEF1AD2E251CE69C001DD2AB /* KDCalendarCell.m in Sources */,
 				1B7E4688251CD07300FA5D1E /* KDPlanPreviewView.m in Sources */,
 				043189F0274BDD9500D9D959 /* KDRenZhengView.m in Sources */,
-				1BD3DC1C250B178C00A5D148 /* KDAchieveAwardHeaderView.m in Sources */,
-				1BD2F21A250A30D00061580C /* KDProfitViewController.m in Sources */,
 				1848CE68266F68F900D6E148 /* KDConfirmViewController.m in Sources */,
 				187D8B242565FC900097A650 /* KDConsumptionDetailView.m in Sources */,
 				1BC5E3C8250344410064CA30 /* KDShareViewController.m in Sources */,
 				1BD2F203250A0C3C0061580C /* KDDirectPushViewController.m in Sources */,
 				1BD3DC04250B03E700A5D148 /* KDProfitDirectPushViewController.m in Sources */,
-				1B543D23250F1DF600076628 /* KDLostQuotaViewCell.m in Sources */,
-				1B1C0EB02508B3250009CDC6 /* KDSearchView.m in Sources */,
-				1BD3DC29250B265500A5D148 /* KDRemedyView.m in Sources */,
 				1823438826466001003BABEE /* CALayer+Additions.m in Sources */,
 				187D8B162565FC900097A650 /* KDRepaymentDetailModel.m in Sources */,
 				1BD3DC07250B041A00A5D148 /* KDProfitDirectPushHeaderView.m in Sources */,
 				1BC55ABE250B83E0001BE2DF /* KDSlotCardAisleHeaderView.m in Sources */,
 				6F93A17927E2CCF500A53E5B /* KDPayFeesViewController.m in Sources */,
-				1B6667F32508D49100AA55DA /* KDCreditViewViewCell.m in Sources */,
 				1B808D512512F1E30095926E /* KDEarnCenterModel.m in Sources */,
-				1B1C0EC12508CEED0009CDC6 /* KDCreditExtensionViewController.m in Sources */,
-				1BD3DC21250B1C1100A5D148 /* KDReturnMoneyViewController.m in Sources */,
 				6F7628B527634BFF00E03BFA /* KDPayNewViewController.m in Sources */,
 				1BAB9074250C63D800FE9404 /* KDAisleDetailHeaderView.m in Sources */,
 				1B808D5B251375750095926E /* KDExtensionEarnModel.m in Sources */,
 				1848CE5C266F433F00D6E148 /* KDJFShopDetailHeaderView.m in Sources */,
 				EE1BA9AD251C277E00941631 /* KDWebContainer.m in Sources */,
 				1BC55ABB250B836E001BE2DF /* KDSlotCardAisleViewController.m in Sources */,
-				1BCF5E2A2514E0E00095328E /* KDCancelCreditViewController.m in Sources */,
 				1B7E4690251CE94D00FA5D1E /* KDRepaymentBillModel.m in Sources */,
-				1B6667EE2508D47B00AA55DA /* KDNoCreditViewCell.m in Sources */,
 				04DA374F277F52CB002FC105 /* KDXinYongKaHeaderCollectionReusableView.m in Sources */,
 				1B1C0E9E25087BB80009CDC6 /* KDChosePayTypeViewCell.m in Sources */,
 				EE8D733F2509CFD4007AF076 /* KDShareSingleVC.m in Sources */,
@@ -2370,30 +1966,22 @@
 				1BD2F223250A3B590061580C /* KDProfitViewCell.m in Sources */,
 				1B9C9B5B250763A700EE0819 /* KDShareHeaderView.m in Sources */,
 				6F94589E277D84EA008D7364 /* KDMineCouponController.m in Sources */,
-				1BD3DC2E250B4C7400A5D148 /* KDWithDrawHistoryViewController.m in Sources */,
 				1B86CFA72509D60000AD09F7 /* KDExtendEarnViewController.m in Sources */,
-				1BD3DC19250B172600A5D148 /* KDAchieveAwardViewController.m in Sources */,
 				0475229C274FC4F700268D58 /* KDZhiFuShouYiHeaderView.m in Sources */,
 				047522A2274FC78D00268D58 /* KDJiangLiShouYiViewController.m in Sources */,
 				1893CEF92672812F00C53DBF /* KDJFShopManagerTableViewCell.m in Sources */,
-				180B990D2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m in Sources */,
-				18C4FE9B256B6A9A00C27A7D /* KDPlanCenterKongKaCell.m in Sources */,
-				1B86CF9E2509C47100AD09F7 /* KDEarnCenterViewController.m in Sources */,
 				187D8B232565FC900097A650 /* KDPlanPreviewViewCell.m in Sources */,
 				1893CEF5267280DC00C53DBF /* KDJFShopManagerViewController.m in Sources */,
 				1BC5E3C1250344130064CA30 /* KDHomeViewController.m in Sources */,
-				1B86CFA12509C63E00AD09F7 /* KDEarnCenterHeaderView.m in Sources */,
 				1B543D2A250F498C00076628 /* KDWXViewController.m in Sources */,
 				1BC5E3DD250385080064CA30 /* KDRegisterHeaderView.m in Sources */,
 				1B543D2E250F4A5600076628 /* KDWXViewCell.m in Sources */,
 				1B937086251CC89600E51EC9 /* KDEmptyCardRefundViewCell.m in Sources */,
 				1BC5E3D1250363990064CA30 /* KDLoginViewController.m in Sources */,
-				1B6667E82508D0DD00AA55DA /* KDCreditExtensionHeaderView.m in Sources */,
 				187D8B172565FC900097A650 /* KDRepaymentModel.m in Sources */,
 				1B808D6125137A060095926E /* KDPerformanceModel.m in Sources */,
 				1B1C0EA82508A9260009CDC6 /* KDOutProvisionsViewController.m in Sources */,
 				1B543D32250F831C00076628 /* KDAisleDetailModel.m in Sources */,
-				1B86CF982509B82800AD09F7 /* KDConfirmCreditHeaderView.m in Sources */,
 				0428B43A2784A1ED004B2D54 /* KDPayNewViewControllerShop.m in Sources */,
 				1B9C9B1825075D2F00EE0819 /* KDMsgViewCell.m in Sources */,
 				186724992673138C0066122D /* KDJFChangeTableViewCell.m in Sources */,
@@ -2406,25 +1994,19 @@
 				1B7E468D251CE1E700FA5D1E /* KDDirectRefundModel.m in Sources */,
 				1B7E4696251CEA5D00FA5D1E /* KDCreditCardAccountModel.m in Sources */,
 				187D8B222565FC900097A650 /* KDSlotCardHistoryViewCell.m in Sources */,
-				1BD3DC24250B1C9100A5D148 /* KDReturnMoneyHeaderView.m in Sources */,
 				1B7E4683251CCCC800FA5D1E /* KDPlanAlertView.m in Sources */,
-				1B6667F72508EEE500AA55DA /* KDCreditAlertView.m in Sources */,
 				1B93705D251C763900E51EC9 /* KDPlanCenterViewCell.m in Sources */,
 				1BC55AC8250B8EDA001BE2DF /* KDAisleDetailViewController.m in Sources */,
-				180B17A92575EBFF006D3D13 /* KDKongKaTableViewCell.m in Sources */,
 				1BD2F206250A0D9C0061580C /* KDDirectPushNoDataView.m in Sources */,
 				EEF1AD30251CE69C001DD2AB /* KDCalendarView.m in Sources */,
 				6F002D3B27E977AD00FA4A01 /* MCHomeServiceViewController.m in Sources */,
-				1BD2F21D250A337A0061580C /* KDProfitHeaderView.m in Sources */,
 				1BD2F20C250A10020061580C /* KDDirectPushViewCell.m in Sources */,
 				1B9C9B63250784D800EE0819 /* KDMineHeaderView.m in Sources */,
 				1B808D57251307020095926E /* KDProfitEarnModdel.m in Sources */,
 				1BD3DC15250B148A00A5D148 /* KDProfitDirectPushViewCell.m in Sources */,
 				1BD3DC0F250B11B500A5D148 /* KDProfitDirectPushEmptyView.m in Sources */,
-				1B1C0EBC2508C4C90009CDC6 /* KDCreditManagerHeaderView.m in Sources */,
 				04F224CD276E2F1000EA2DB7 /* KDPopularizeViewController.m in Sources */,
 				04DA374E277F52CB002FC105 /* KDXinYongKaViewController.m in Sources */,
-				1B543D27250F3FC200076628 /* KDCreditExtensionModel.m in Sources */,
 				1B808D5E251379EA0095926E /* KDExtendPerformanceModel.m in Sources */,
 				1B937058251C757200E51EC9 /* KDPlanTopViewCell.m in Sources */,
 			);
