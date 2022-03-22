@@ -153,10 +153,6 @@
         return [KDForgetPwdViewController new];
     }];
     
-    #pragma mark - 联系客服
-    [MGJRouter registerURLPattern:rt_user_homeService toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCHomeServiceViewController new];
-    }];
 
 
     

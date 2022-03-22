@@ -20,6 +20,8 @@
 #import "KDJFShopViewController.h"
 #import "UIView+Extension.h"
 #import "jintMyWallViewController.h"
+#import "MCHomeServiceViewController.h"
+
 @interface KDMineHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
@@ -90,11 +92,7 @@
         [MCLATESTCONTROLLER.navigationController pushViewController:[KDAboutMineViewController new] animated:YES];
 
     }];
-    //联系我们
-    [self.lianxiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
 
-    }];
     //我的客户
     [self.wodekefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineKehuViewController alloc] init] animated:YES];

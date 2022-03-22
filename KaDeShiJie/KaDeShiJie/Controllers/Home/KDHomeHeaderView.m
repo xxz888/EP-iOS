@@ -36,6 +36,7 @@
 #import "KDXinYongKaViewController.h"
 #import "KDMineKehuViewController.h"
 #import "KDPayFeesViewController.h"
+#import "MCHomeServiceViewController.h"
 
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
