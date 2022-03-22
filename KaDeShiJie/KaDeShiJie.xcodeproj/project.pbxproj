@@ -64,8 +64,6 @@
 		180B990D2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B990B2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.m */; };
 		180B990E2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180B990C2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib */; };
 		1823438826466001003BABEE /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823438726466001003BABEE /* CALayer+Additions.m */; };
-		1823438D26466172003BABEE /* KDTiXianDengPaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823438B26466172003BABEE /* KDTiXianDengPaoViewController.m */; };
-		1823438E26466172003BABEE /* KDTiXianDengPaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1823438C26466172003BABEE /* KDTiXianDengPaoViewController.xib */; };
 		1848CE4F266F120F00D6E148 /* KDJFShopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848CE4D266F120F00D6E148 /* KDJFShopCollectionViewCell.m */; };
 		1848CE50266F120F00D6E148 /* KDJFShopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848CE4E266F120F00D6E148 /* KDJFShopCollectionViewCell.xib */; };
 		1848CE54266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1848CE52266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.m */; };
@@ -436,9 +434,6 @@
 		180B990C2578BE8A00C9D507 /* KDPlanKongKaPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDPlanKongKaPreviewCell.xib; sourceTree = "<group>"; };
 		1823438626466001003BABEE /* CALayer+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Additions.h"; sourceTree = "<group>"; };
 		1823438726466001003BABEE /* CALayer+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Additions.m"; sourceTree = "<group>"; };
-		1823438A26466172003BABEE /* KDTiXianDengPaoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTiXianDengPaoViewController.h; sourceTree = "<group>"; };
-		1823438B26466172003BABEE /* KDTiXianDengPaoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTiXianDengPaoViewController.m; sourceTree = "<group>"; };
-		1823438C26466172003BABEE /* KDTiXianDengPaoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDTiXianDengPaoViewController.xib; sourceTree = "<group>"; };
 		1848CE4C266F120F00D6E148 /* KDJFShopCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDJFShopCollectionViewCell.h; sourceTree = "<group>"; };
 		1848CE4D266F120F00D6E148 /* KDJFShopCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDJFShopCollectionViewCell.m; sourceTree = "<group>"; };
 		1848CE4E266F120F00D6E148 /* KDJFShopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDJFShopCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1078,16 +1073,6 @@
 			path = "空卡计划预览";
 			sourceTree = "<group>";
 		};
-		1823438926466158003BABEE /* 提现灯泡 */ = {
-			isa = PBXGroup;
-			children = (
-				1823438A26466172003BABEE /* KDTiXianDengPaoViewController.h */,
-				1823438B26466172003BABEE /* KDTiXianDengPaoViewController.m */,
-				1823438C26466172003BABEE /* KDTiXianDengPaoViewController.xib */,
-			);
-			path = "提现灯泡";
-			sourceTree = "<group>";
-		};
 		1848CE56266F3DEA00D6E148 /* 商城详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,7 +1408,6 @@
 		1B86CF9B2509C44F00AD09F7 /* 收益中心 */ = {
 			isa = PBXGroup;
 			children = (
-				1823438926466158003BABEE /* 提现灯泡 */,
 				EE7AE4D525368C0A00F418BF /* 主页面 */,
 				EE7AE4E425368EF600F418BF /* models */,
 				EE7AE4D725368C3700F418BF /* 推广收益 */,
@@ -2155,7 +2139,6 @@
 				6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */,
 				04A58C7C276B7BD60027B4F4 /* KDMember1ViewController.xib in Resources */,
 				6FA44E9F274E43AD00DA1C59 /* KDTiXianViewController.xib in Resources */,
-				1823438E26466172003BABEE /* KDTiXianDengPaoViewController.xib in Resources */,
 				04F224C8276B8B8700EA2DB7 /* KDMember2ViewController.xib in Resources */,
 				1B1C0EA92508A9260009CDC6 /* KDOutProvisionsViewController.xib in Resources */,
 				187F62C1267268AB003F48CD /* KDJFOrderTableViewCellTableViewCell.xib in Resources */,
@@ -2441,7 +2424,6 @@
 				1848CE54266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.m in Sources */,
 				1BD2F223250A3B590061580C /* KDProfitViewCell.m in Sources */,
 				1B9C9B5B250763A700EE0819 /* KDShareHeaderView.m in Sources */,
-				1823438D26466172003BABEE /* KDTiXianDengPaoViewController.m in Sources */,
 				6F94589E277D84EA008D7364 /* KDMineCouponController.m in Sources */,
 				1BD3DC2E250B4C7400A5D148 /* KDWithDrawHistoryViewController.m in Sources */,
 				1B86CFA72509D60000AD09F7 /* KDExtendEarnViewController.m in Sources */,

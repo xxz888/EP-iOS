@@ -209,14 +209,7 @@
 
     
     
-    #pragma mark - 身份认证1
-    [MGJRouter registerURLPattern:rt_card_vc1 toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCAccreditation1ViewController new];
-    }];
-    #pragma mark - 身份认证2
-    [MGJRouter registerURLPattern:rt_card_vc2 toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [MCAccreditation2ViewController new];
-    }];
+ 
     #pragma mark - 重置忘记密码
     [MGJRouter registerURLPattern:rt_user_restPwd toObjectHandler:^id(NSDictionary *routerParameters) {
         return [KDForgetPwdViewController new];

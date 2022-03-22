@@ -172,8 +172,7 @@
 #import "MCMessageController_logo.h"
 #import "MCProfitListController.h"
 
-#import "MCAccreditation1ViewController.h"
-#import "MCAccreditation2ViewController.h"
+
 #import "KDForgetPwdViewController.h"
 #import "MCHomeServiceViewController.h"
 
