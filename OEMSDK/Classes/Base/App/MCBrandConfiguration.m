@@ -69,10 +69,7 @@
     }];
  
     
-    #pragma mark - 分享
-    [MGJRouter registerURLPattern:rt_share_single toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [[MCShareSingleImgViewController alloc] initWithImageType:MCShareSingleImageRed];
-    }];
+    
  
     [MGJRouter registerURLPattern:rt_share_article toObjectHandler:^id(NSDictionary *routerParameters) {
         return [MCArticlesController new];

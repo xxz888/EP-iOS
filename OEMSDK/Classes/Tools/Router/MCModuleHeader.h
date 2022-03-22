@@ -145,7 +145,6 @@
 #import "MCWebViewController.h"
 #import "MCEditBankCardController.h"
 #import "KDPayGatherViewController.h"
-#import "MCShareSingleImgViewController.h"
 #import "MCVipViewController.h"
 #import "MCRateRankViewController.h"
 

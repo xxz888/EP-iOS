@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import <OEMSDK/MCModuleListController.h>
-#import <OEMSDK/MCShareOverViewController.h>
 #import "KDHomeViewController.h"
 #import "KDNewsViewController.h"
 #import "KDShareViewController.h"
