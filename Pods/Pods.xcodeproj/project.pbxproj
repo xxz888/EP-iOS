@@ -392,7 +392,6 @@
 		2ECB16A691C7BE75FBDE1BB3408D9B11 /* KDTTFSmsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47654C252EAE50D6DB1B538223947A48 /* KDTTFSmsViewController.xib */; };
 		2ED862EC42B6B57F4A30F7EE3C96DA44 /* MQBotMessageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = CE44A35180A29E29BF36A3C596FE8C03 /* MQBotMessageFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2EF926237E29F0F67892515915E6D82B /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC49D42AEEB4373C1255B9EC80EFB24 /* IQUITextFieldView+Additions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2F15A53C6C7920F2BD4CE492D9E25D8A /* 编组@2x (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 24C08943F67AD8BFEF495081B4B7B450 /* 编组@2x (1).png */; };
 		2F430936E5383951C50DF0B74BA835A5 /* MCBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = F84DED46F4B46B940E3B5AF555036958 /* MCBlockStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2F7534D79AFE976958336B0F45E38C1C /* MQPhotoCardMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F8F0E29ABDEDB05F3CC14D85F00D47 /* MQPhotoCardMessage.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2F9E86A931E7083E5DE89DA7AA10B3F3 /* IQKeyboardReturnKeyHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D5EDD14FFA4E17E110614997F269A17 /* IQKeyboardReturnKeyHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -2502,7 +2501,6 @@
 		243FFECE5DCD1311D3360EBA7267A2C1 /* MCFeilvCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MCFeilvCell.m; sourceTree = "<group>"; };
 		2441A74448F6E745E6ACFDA5D2692A4F /* MQButtonGroupBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQButtonGroupBar.h; path = "Meiqia-SDK-files/MQChatViewController/Views/MQInputBar/MQButtonGroupBar.h"; sourceTree = "<group>"; };
 		24A1066D868244FFEAE4A135028CE557 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+SDAutoLayout.h"; path = "SDAutoLayoutDemo/SDAutoLayout/UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
-		24C08943F67AD8BFEF495081B4B7B450 /* 编组@2x (1).png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "编组@2x (1).png"; path = "Assets/编组@2x (1).png"; sourceTree = "<group>"; };
 		24CB09950994FFAC54658925CE495FBE /* XLRegistViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XLRegistViewController.h; sourceTree = "<group>"; };
 		25366084937FF4A708F4CEF77C43EC32 /* ULSGPUAssets.bin */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.macbinary; name = ULSGPUAssets.bin; path = TXAuth/ULSGPUAssets.bin; sourceTree = "<group>"; };
 		2545B2CF9CE584E0A9724AE16E83DF67 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIViewController+Additions.m"; path = "IQKeyboardManager/Categories/IQUIViewController+Additions.m"; sourceTree = "<group>"; };
@@ -8068,7 +8066,6 @@
 				BD66AAB562DE6647D03E1CAB98EC9018 /* ZABuyGoodsView.xib */,
 				8DF78546D908CD567E95BB3D920B9092 /* ZAOrderViewCell.xib */,
 				80A0BC404BADBBF63819CCCFE93A756A /* ZAPayTypeViewCell.xib */,
-				24C08943F67AD8BFEF495081B4B7B450 /* 编组@2x (1).png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -10284,7 +10281,6 @@
 				B6D0A9AC6D3851BA7D7F6CDED33AC1C8 /* ZABuyGoodsView.xib in Resources */,
 				A207B1EF065B33F20D3907D5D4AE24A7 /* ZAOrderViewCell.xib in Resources */,
 				D48D7FA2FC5A54CC6E2518D2F9EB86CC /* ZAPayTypeViewCell.xib in Resources */,
-				2F15A53C6C7920F2BD4CE492D9E25D8A /* 编组@2x (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
