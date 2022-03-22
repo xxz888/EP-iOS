@@ -168,10 +168,7 @@
         return [MCMyRateController new];
     }];
     
-    #pragma mark - 定制化功能
-    [MGJRouter registerURLPattern:rt_custom_dailishang toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [DelegateShangViewController new];
-    }];
+
     
     #pragma mark - webVc
     [MGJRouter registerURLPattern:rt_web_controller toObjectHandler:^id(NSDictionary *routerParameters) {

@@ -127,7 +127,6 @@
 #import "XLLoginViewController.h"
 #import "MCLoginWithoutBgVC.h"
 
-#import "DelegateShangViewController.h"
 #import "MCUpdateViewController.h"
 
 #import "MCUpdateViewController2.h"
@@ -140,7 +139,6 @@
 #import "MCCardManagerController.h"
 #import "MCIncomeRateViewController.h"
 #import "MCUserInfoViewController.h"
-#import "DelegateShangViewController.h"
 #import "MCRealNameViewController.h"
 #import "MCMyRateController.h"
 #import "MCSignViewController.h"

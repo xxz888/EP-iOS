@@ -7,8 +7,6 @@
 //
 
 #import "MCMenuManager.h"
-#import "CreateQRCodeViewController.h"
-#import "PayOrderViewController.h"
 #import "WBQRCodeVC.h"
 #import "CommonEncourageVC.h"
 #import "KDCommonAlert.h"
@@ -77,15 +75,7 @@
             [self pushWebWithUrl:sorttValue title:title];
         }
     }else{
-        if ([sortt isEqualToString:@"代理商入口"]) {
-            [MCLATESTCONTROLLER.navigationController pushViewController:[DelegateShangViewController new] animated:YES];
-            return;
-        }
-        if ([sortt isEqualToString:@"商户收款"]) {
-            CreateQRCodeViewController *vc = [[CreateQRCodeViewController alloc] initWithNibName:@"CreateQRCodeViewController" bundle:[NSBundle OEMSDKBundle]];
-            [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
-            return;
-        }
+     
         if ([sortt isEqualToString:@"幸运转盘"]) {
             [MCLATESTCONTROLLER.navigationController pushViewController:[CommonEncourageVC new] animated:YES];
             return;
@@ -222,9 +212,6 @@
 }
 - (void)scancodeViewControllerComplete:(NSString *)str
 {
-    
-    PayOrderViewController *payVC = [PayOrderViewController new];
-    payVC.codeStr = str;
-    [MCLATESTCONTROLLER.navigationController pushViewController:payVC animated:YES];
+
 }
 @end
