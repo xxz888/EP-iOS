@@ -118,6 +118,7 @@ static NSString *const DCRecommendCellID = @"DCRecommendCell";
     
     emptyCartView.frame = CGRectMake(0, DCTopNavH, ScreenW, ScreenH - DCTopNavH - DCBottomTabH - (collectionViewH + recommendReusableViewH));
     emptyCartView.buyingClickBlock = ^{
+        [self.tabBarController setSelectedIndex:0];
         [self.navigationController popToRootViewControllerAnimated:YES];
     };
 }

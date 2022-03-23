@@ -223,7 +223,7 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
 //        return 300;
         return 90;
     }else if (indexPath.section == 1){
-        return 215;
+        return 600;
     }else if (indexPath.section == 2){
         return 0;
     }else if (indexPath.section == 3){

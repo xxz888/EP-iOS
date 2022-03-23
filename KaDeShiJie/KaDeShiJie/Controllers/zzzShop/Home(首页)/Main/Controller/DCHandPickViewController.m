@@ -46,6 +46,8 @@
 // Others
 #import "CDDTopTip.h"
 #import "NetworkUnit.h"
+
+#import "RequestTool.h"
 @interface DCHandPickViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 /* collectionView */
@@ -162,6 +164,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
 {
     WEAKSELF
     [DCSpeedy dc_callFeedback]; //触动
+    [self setUpGoodsData];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ //手动延迟
         [weakSelf.collectionView.mj_header endRefreshing];
     });
@@ -170,8 +173,30 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
 #pragma mark - 加载数据
 - (void)setUpGoodsData
 {
+    
+//    {"page":"1","cid":"4","page_size":"14"}
+    WEAKSELF
+    [RequestTool requestWithType:2 URL:@"http://api.zhifu168.com/api/shop/api/getGood/all" parameter:@{@"cid":@(arc4random() % 15),@"page":@"1",@"page_size":@"20"} successComplete:^(id responseObject) {
+        
+        weakSelf.youLikeItem = [[NSMutableArray alloc]init];
+        
+        for (NSDictionary * dic in responseObject[@"content"]) {
+            DCRecommendItem * item = [[DCRecommendItem alloc]init];
+            item.image_url = dic[@"pict_url"];
+            item.main_title = dic[@"title"];
+            item.price = dic[@"quanhou_jiage"];
+            [weakSelf.youLikeItem addObject:item];
+        
+        }
+        [self.collectionView reloadData];
+        
+        
+        
+    } failureComplete:^(NSError *error) {
+        
+    }];
     _gridItem = [DCGridItem mj_objectArrayWithFilename:@"GoodsGrid.plist"];
-    _youLikeItem = [DCRecommendItem mj_objectArrayWithFilename:@"HomeHighGoods.plist"];
+//    _youLikeItem = [DCRecommendItem mj_objectArrayWithFilename:@"HomeHighGoods.plist"];
 }
 
 #pragma mark - 滚回顶部
@@ -230,10 +255,10 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
         return _gridItem.count;
     }
     if (section == 1 || section == 2 || section == 3) { //广告福利  倒计时  掌上专享
-        return 1;
+        return 0;
     }
     if (section == 4) { //推荐
-        return GoodsHandheldImagesArray.count;
+        return 0;
     }
     if (section == 5) { //猜你喜欢
         return _youLikeItem.count;
@@ -300,7 +325,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
             reusableview = headerView;
         }else if (indexPath.section == 5){
             DCYouLikeHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DCYouLikeHeadViewID forIndexPath:indexPath];
-            [headerView.likeImageView sd_setImageWithURL:[NSURL URLWithString:@"http://gfs5.gomein.net.cn/T16LLvByZj1RCvBVdK.png"]];
+            [headerView.likeImageView sd_setImageWithURL:[NSURL URLWithString:@"http://gfs7.gomein.net.cn/T1WudvBm_T1RCvBVdK.png"]];
             reusableview = headerView;
         }
 
@@ -365,7 +390,10 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     if (section == 0) {
         return CGSizeMake(ScreenW, 230); //图片滚动的宽高
     }
-    if (section == 2 || section == 4 || section == 5) {//猜你喜欢的宽高
+//    if (section == 2 || section == 4 || section == 5) {//猜你喜欢的宽高
+//        return CGSizeMake(ScreenW, 40);  //推荐适合的宽高
+//    }
+    if (section == 5) {//猜你喜欢的宽高
         return CGSizeMake(ScreenW, 40);  //推荐适合的宽高
     }
     return CGSizeZero;
@@ -374,11 +402,11 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
 #pragma mark - foot宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return CGSizeMake(ScreenW, 180);  //Top头条的宽高
+        return CGSizeMake(ScreenW, 130);  //Top头条的宽高
     }
-    if (section == 3) {
-        return CGSizeMake(ScreenW, 80); // 滚动广告
-    }
+//    if (section == 3) {
+//        return CGSizeMake(ScreenW, 80); // 滚动广告
+//    }
     if (section == 5) {
         return CGSizeMake(ScreenW, 40); // 结束
     }

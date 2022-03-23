@@ -137,7 +137,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     [button addTarget:self action:@selector(messButtonBarItemClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, backButton];
+//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, backButton];
     
     _topSearchView = [[UIView alloc] init];
     _topSearchView.backgroundColor = RGBA(240, 240, 240, 1);
@@ -165,7 +165,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     _voiceButton.frame = CGRectMake(_topSearchView.dc_width - 40, 0, 35, _topSearchView.dc_height);
     [_voiceButton addTarget:self action:@selector(voiceButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_voiceButton setImage:[UIImage imageNamed:@"icon_voice_search"] forState:0];
-    [_topSearchView addSubview:_voiceButton];
+//    [_topSearchView addSubview:_voiceButton];
     
 }
 
@@ -265,6 +265,8 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     NSLog(@"点击了个第%zd分组第%zd几个Item",indexPath.section,indexPath.row);
     DCGoodsSetViewController *goodSetVc = [[DCGoodsSetViewController alloc] init];
     goodSetVc.goodPlisName = @"ClasiftyGoods.plist";
+    goodSetVc.hidesBottomBarWhenPushed = YES;
+
     [self.navigationController pushViewController:goodSetVc animated:YES];
 }
 

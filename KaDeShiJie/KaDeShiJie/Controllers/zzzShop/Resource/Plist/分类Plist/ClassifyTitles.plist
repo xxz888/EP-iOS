@@ -4,15 +4,9 @@
 <array>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods01.plist</string>
-		<key>title</key>
-		<string>热门分类</string>
-	</dict>
-	<dict>
-		<key>fileName</key>
 		<string>ClassiftyGoods02.plist</string>
 		<key>title</key>
-		<string>手机数码</string>
+		<string>男装</string>
 	</dict>
 	<dict>
 		<key>fileName</key>

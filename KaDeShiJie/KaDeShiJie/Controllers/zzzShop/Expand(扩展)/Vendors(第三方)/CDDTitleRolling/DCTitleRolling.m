@@ -166,7 +166,7 @@
 {
     if (self.leftImage == nil)return;
 
-    self.leftImageView.frame = CGRectMake(0, RollingViewHeight * 0.1, RollingViewHeight * 1.5, RollingViewHeight * 0.8);
+    self.leftImageView.frame = CGRectMake(0, RollingViewHeight * 0.1, 30, 30);
     self.leftImageView.image = [UIImage imageNamed:self.leftImage];
     
 }

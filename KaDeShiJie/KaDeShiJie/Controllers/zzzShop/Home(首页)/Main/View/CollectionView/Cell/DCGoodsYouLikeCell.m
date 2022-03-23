@@ -50,6 +50,8 @@
 {
     self.backgroundColor = [UIColor whiteColor];
     _goodsImageView = [[UIImageView alloc] init];
+    _goodsImageView.layer.cornerRadius = 8;
+    _goodsImageView.layer.masksToBounds = YES;
     _goodsImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:_goodsImageView];
     
@@ -70,6 +72,7 @@
     [_sameButton setTitle:@"看相似" forState:UIControlStateNormal];
     [_sameButton addTarget:self action:@selector(lookSameGoods) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_sameButton];
+    _sameButton.hidden = YES;
     [DCSpeedy dc_chageControlCircularWith:_sameButton AndSetCornerRadius:0 SetBorderWidth:1.0 SetBorderColor:[UIColor darkGrayColor] canMasksToBounds:YES];
 }
 

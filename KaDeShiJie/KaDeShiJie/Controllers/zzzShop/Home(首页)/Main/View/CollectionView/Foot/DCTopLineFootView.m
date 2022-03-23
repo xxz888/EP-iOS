@@ -59,7 +59,7 @@
     _numericalScrollView = [[DCTitleRolling alloc] initWithFrame:CGRectMake(0, self.dc_height - 50, self.dc_width, 50) WithTitleData:^(CDDRollingGroupStyle *rollingGroupStyle, NSString *__autoreleasing *leftImage, NSArray *__autoreleasing *rolTitles, NSArray *__autoreleasing *rolTags, NSArray *__autoreleasing *rightImages, NSString *__autoreleasing *rightbuttonTitle, NSInteger *interval, float *rollingTime, NSInteger *titleFont, UIColor *__autoreleasing *titleColor, BOOL *isShowTagBorder) {
         
         *rollingTime = 0.25;
-        *rolTags = @[@"冬季健康日",@"新手上路",@"年终内购会",@"GitHub星星走一波"];
+        *rolTags = @[@"冬季健康日",@"新手上路",@"月末内购会",@"新春家居节"];
         *rolTitles = @[@"先领券在购物，一元抢？",@"2000元热门手机推荐",@"好奇么？点进去哈",@"这套家具比房子还贵"];
         *leftImage = @"shouye_img_toutiao";
         *interval = 6.0;
@@ -74,7 +74,7 @@
     
     [_numericalScrollView dc_beginRolling];
     _numericalScrollView.backgroundColor = [UIColor whiteColor];
-    [self addSubview:_numericalScrollView];
+    //[self addSubview:_numericalScrollView];
     
     _bottomLineView = [[UIView alloc] init];
     _bottomLineView.backgroundColor = DCBGColor;
@@ -90,7 +90,7 @@
         make.left.mas_equalTo(self);
         make.top.mas_equalTo(self);
         make.width.mas_equalTo(self);
-        [make.bottom.mas_equalTo(self)setOffset:-50];
+        [make.bottom.mas_equalTo(self)setOffset:0];
     }];
 }
 
