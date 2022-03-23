@@ -118,7 +118,7 @@ static NSString *const DCRecommendCellID = @"DCRecommendCell";
     
     emptyCartView.frame = CGRectMake(0, DCTopNavH, ScreenW, ScreenH - DCTopNavH - DCBottomTabH - (collectionViewH + recommendReusableViewH));
     emptyCartView.buyingClickBlock = ^{
-        NSLog(@"点击了立即抢购");
+        [self.navigationController popToRootViewControllerAnimated:YES];
     };
 }
 

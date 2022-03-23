@@ -185,7 +185,6 @@
 		6F327AFA27E9A016009207E0 /* DCStoresRecommendHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F32788827E9A015009207E0 /* DCStoresRecommendHeaderView.xib */; };
 		6F327AFB27E9A016009207E0 /* DCStoresRecommendHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32788A27E9A015009207E0 /* DCStoresRecommendHeaderView.m */; };
 		6F327AFC27E9A016009207E0 /* DCAppVersionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32788D27E9A015009207E0 /* DCAppVersionTool.m */; };
-		6F327AFD27E9A016009207E0 /* DCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32789327E9A015009207E0 /* DCTabBarController.m */; };
 		6F327AFE27E9A016009207E0 /* DCBaseSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32789427E9A015009207E0 /* DCBaseSetViewController.m */; };
 		6F327AFF27E9A016009207E0 /* DCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32789527E9A015009207E0 /* DCNavigationController.m */; };
 		6F327B0027E9A016009207E0 /* DCTabBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32789827E9A015009207E0 /* DCTabBadgeView.m */; };
@@ -293,13 +292,6 @@
 		6F327B6627E9A017009207E0 /* DCCustionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32799927E9A016009207E0 /* DCCustionHeadView.m */; };
 		6F327B6727E9A017009207E0 /* DCClassCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32799D27E9A016009207E0 /* DCClassCategoryCell.m */; };
 		6F327B6827E9A017009207E0 /* DCFootprintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32799E27E9A016009207E0 /* DCFootprintCell.m */; };
-		6F327B6927E9A017009207E0 /* DCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279A527E9A016009207E0 /* DCLoginViewController.m */; };
-		6F327B6A27E9A017009207E0 /* DCRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279A627E9A016009207E0 /* DCRegisteredViewController.m */; };
-		6F327B6B27E9A017009207E0 /* DCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3279A727E9A016009207E0 /* DCLoginViewController.xib */; };
-		6F327B6C27E9A017009207E0 /* DCAccountPsdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279AA27E9A016009207E0 /* DCAccountPsdView.m */; };
-		6F327B6D27E9A017009207E0 /* DCVerificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3279AB27E9A016009207E0 /* DCVerificationView.xib */; };
-		6F327B6E27E9A017009207E0 /* DCVerificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279AC27E9A016009207E0 /* DCVerificationView.m */; };
-		6F327B6F27E9A017009207E0 /* DCAccountPsdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3279AE27E9A016009207E0 /* DCAccountPsdView.xib */; };
 		6F327B7027E9A017009207E0 /* DCNotificationCenterName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279B327E9A016009207E0 /* DCNotificationCenterName.m */; };
 		6F327B7127E9A017009207E0 /* DCConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279B427E9A016009207E0 /* DCConsts.m */; };
 		6F327B7227E9A017009207E0 /* DCLIRLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3279B627E9A016009207E0 /* DCLIRLButton.m */; };
@@ -445,6 +437,13 @@
 		6F327C1A27E9A43B009207E0 /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C0F27E9A43B009207E0 /* AddressView.m */; };
 		6F327C1B27E9A43B009207E0 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C1127E9A43B009207E0 /* AddressTableViewCell.m */; };
 		6F327C1C27E9A43B009207E0 /* CitiesDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C1427E9A43B009207E0 /* CitiesDataTool.m */; };
+		6F327C3027EB0377009207E0 /* DCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C2627EB0376009207E0 /* DCLoginViewController.m */; };
+		6F327C3127EB0377009207E0 /* DCRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C2727EB0376009207E0 /* DCRegisteredViewController.m */; };
+		6F327C3227EB0377009207E0 /* DCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F327C2827EB0376009207E0 /* DCLoginViewController.xib */; };
+		6F327C3327EB0377009207E0 /* DCAccountPsdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C2B27EB0376009207E0 /* DCAccountPsdView.m */; };
+		6F327C3427EB0377009207E0 /* DCVerificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F327C2C27EB0376009207E0 /* DCVerificationView.xib */; };
+		6F327C3527EB0377009207E0 /* DCVerificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C2D27EB0376009207E0 /* DCVerificationView.m */; };
+		6F327C3627EB0377009207E0 /* DCAccountPsdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F327C2F27EB0376009207E0 /* DCAccountPsdView.xib */; };
 		6F403A1827D73D47001ED9BA /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F403A1727D73D47001ED9BA /* Bugly.framework */; };
 		6F42B4FE27D73A09008C213F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B4FD27D73A09008C213F /* SystemConfiguration.framework */; };
 		6F42B50027D73A0F008C213F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B4FF27D73A0F008C213F /* Security.framework */; };
@@ -785,10 +784,8 @@
 		6F32788A27E9A015009207E0 /* DCStoresRecommendHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCStoresRecommendHeaderView.m; sourceTree = "<group>"; };
 		6F32788D27E9A015009207E0 /* DCAppVersionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAppVersionTool.m; sourceTree = "<group>"; };
 		6F32788E27E9A015009207E0 /* DCAppVersionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAppVersionTool.h; sourceTree = "<group>"; };
-		6F32789027E9A015009207E0 /* DCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTabBarController.h; sourceTree = "<group>"; };
 		6F32789127E9A015009207E0 /* DCBaseSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBaseSetViewController.h; sourceTree = "<group>"; };
 		6F32789227E9A015009207E0 /* DCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCNavigationController.h; sourceTree = "<group>"; };
-		6F32789327E9A015009207E0 /* DCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTabBarController.m; sourceTree = "<group>"; };
 		6F32789427E9A015009207E0 /* DCBaseSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCBaseSetViewController.m; sourceTree = "<group>"; };
 		6F32789527E9A015009207E0 /* DCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCNavigationController.m; sourceTree = "<group>"; };
 		6F32789727E9A015009207E0 /* DCTabBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTabBadgeView.h; sourceTree = "<group>"; };
@@ -989,17 +986,6 @@
 		6F32799E27E9A016009207E0 /* DCFootprintCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFootprintCell.m; sourceTree = "<group>"; };
 		6F32799F27E9A016009207E0 /* DCClassCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCClassCategoryCell.h; sourceTree = "<group>"; };
 		6F3279A027E9A016009207E0 /* DCFootprintCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFootprintCell.h; sourceTree = "<group>"; };
-		6F3279A327E9A016009207E0 /* DCRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRegisteredViewController.h; sourceTree = "<group>"; };
-		6F3279A427E9A016009207E0 /* DCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLoginViewController.h; sourceTree = "<group>"; };
-		6F3279A527E9A016009207E0 /* DCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLoginViewController.m; sourceTree = "<group>"; };
-		6F3279A627E9A016009207E0 /* DCRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRegisteredViewController.m; sourceTree = "<group>"; };
-		6F3279A727E9A016009207E0 /* DCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCLoginViewController.xib; sourceTree = "<group>"; };
-		6F3279A927E9A016009207E0 /* DCVerificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCVerificationView.h; sourceTree = "<group>"; };
-		6F3279AA27E9A016009207E0 /* DCAccountPsdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAccountPsdView.m; sourceTree = "<group>"; };
-		6F3279AB27E9A016009207E0 /* DCVerificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCVerificationView.xib; sourceTree = "<group>"; };
-		6F3279AC27E9A016009207E0 /* DCVerificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCVerificationView.m; sourceTree = "<group>"; };
-		6F3279AD27E9A016009207E0 /* DCAccountPsdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAccountPsdView.h; sourceTree = "<group>"; };
-		6F3279AE27E9A016009207E0 /* DCAccountPsdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCAccountPsdView.xib; sourceTree = "<group>"; };
 		6F3279B127E9A016009207E0 /* DCNotificationCenterName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCNotificationCenterName.h; sourceTree = "<group>"; };
 		6F3279B227E9A016009207E0 /* DCConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCConsts.h; sourceTree = "<group>"; };
 		6F3279B327E9A016009207E0 /* DCNotificationCenterName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCNotificationCenterName.m; sourceTree = "<group>"; };
@@ -1254,6 +1240,17 @@
 		6F327C1127E9A43B009207E0 /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
 		6F327C1327E9A43B009207E0 /* CitiesDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesDataTool.h; sourceTree = "<group>"; };
 		6F327C1427E9A43B009207E0 /* CitiesDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesDataTool.m; sourceTree = "<group>"; };
+		6F327C2427EB0376009207E0 /* DCRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRegisteredViewController.h; sourceTree = "<group>"; };
+		6F327C2527EB0376009207E0 /* DCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLoginViewController.h; sourceTree = "<group>"; };
+		6F327C2627EB0376009207E0 /* DCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLoginViewController.m; sourceTree = "<group>"; };
+		6F327C2727EB0376009207E0 /* DCRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRegisteredViewController.m; sourceTree = "<group>"; };
+		6F327C2827EB0376009207E0 /* DCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCLoginViewController.xib; sourceTree = "<group>"; };
+		6F327C2A27EB0376009207E0 /* DCVerificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCVerificationView.h; sourceTree = "<group>"; };
+		6F327C2B27EB0376009207E0 /* DCAccountPsdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAccountPsdView.m; sourceTree = "<group>"; };
+		6F327C2C27EB0376009207E0 /* DCVerificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCVerificationView.xib; sourceTree = "<group>"; };
+		6F327C2D27EB0376009207E0 /* DCVerificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCVerificationView.m; sourceTree = "<group>"; };
+		6F327C2E27EB0376009207E0 /* DCAccountPsdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAccountPsdView.h; sourceTree = "<group>"; };
+		6F327C2F27EB0376009207E0 /* DCAccountPsdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCAccountPsdView.xib; sourceTree = "<group>"; };
 		6F403A1727D73D47001ED9BA /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugly.framework; path = ../OEMSDK/Vendor/Bugly.framework; sourceTree = "<group>"; };
 		6F42B4FD27D73A09008C213F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6F42B4FF27D73A0F008C213F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -2049,10 +2046,8 @@
 		6F32788F27E9A015009207E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6F32789027E9A015009207E0 /* DCTabBarController.h */,
 				6F32789127E9A015009207E0 /* DCBaseSetViewController.h */,
 				6F32789227E9A015009207E0 /* DCNavigationController.h */,
-				6F32789327E9A015009207E0 /* DCTabBarController.m */,
 				6F32789427E9A015009207E0 /* DCBaseSetViewController.m */,
 				6F32789527E9A015009207E0 /* DCNavigationController.m */,
 			);
@@ -2456,13 +2451,13 @@
 			path = CustionView;
 			sourceTree = "<group>";
 		};
-		6F32792A27E9A015009207E0 /* New Group */ = {
+		6F32792A27E9A015009207E0 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
 				6F32792B27E9A015009207E0 /* Setting */,
 				6F32792F27E9A015009207E0 /* Main */,
 			);
-			path = "New Group";
+			path = "我的";
 			sourceTree = "<group>";
 		};
 		6F32792B27E9A015009207E0 /* Setting */ = {
@@ -2801,40 +2796,6 @@
 				6F3279A027E9A016009207E0 /* DCFootprintCell.h */,
 			);
 			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		6F3279A127E9A016009207E0 /* LoginMe(登录) */ = {
-			isa = PBXGroup;
-			children = (
-				6F3279A227E9A016009207E0 /* Controller */,
-				6F3279A827E9A016009207E0 /* View */,
-			);
-			path = "LoginMe(登录)";
-			sourceTree = "<group>";
-		};
-		6F3279A227E9A016009207E0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6F3279A327E9A016009207E0 /* DCRegisteredViewController.h */,
-				6F3279A427E9A016009207E0 /* DCLoginViewController.h */,
-				6F3279A527E9A016009207E0 /* DCLoginViewController.m */,
-				6F3279A627E9A016009207E0 /* DCRegisteredViewController.m */,
-				6F3279A727E9A016009207E0 /* DCLoginViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6F3279A827E9A016009207E0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6F3279A927E9A016009207E0 /* DCVerificationView.h */,
-				6F3279AA27E9A016009207E0 /* DCAccountPsdView.m */,
-				6F3279AB27E9A016009207E0 /* DCVerificationView.xib */,
-				6F3279AC27E9A016009207E0 /* DCVerificationView.m */,
-				6F3279AD27E9A016009207E0 /* DCAccountPsdView.h */,
-				6F3279AE27E9A016009207E0 /* DCAccountPsdView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		6F3279AF27E9A016009207E0 /* Expand(扩展) */ = {
@@ -3434,8 +3395,8 @@
 		6F327ABE27E9A016009207E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6F327ABF27E9A016009207E0 /* DCHandPickViewController.m */,
 				6F327AC027E9A016009207E0 /* DCHandPickViewController.h */,
+				6F327ABF27E9A016009207E0 /* DCHandPickViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3591,17 +3552,51 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		6F327C2227EB0376009207E0 /* LoginMe(登录) */ = {
+			isa = PBXGroup;
+			children = (
+				6F327C2327EB0376009207E0 /* Controller */,
+				6F327C2927EB0376009207E0 /* View */,
+			);
+			path = "LoginMe(登录)";
+			sourceTree = "<group>";
+		};
+		6F327C2327EB0376009207E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F327C2427EB0376009207E0 /* DCRegisteredViewController.h */,
+				6F327C2527EB0376009207E0 /* DCLoginViewController.h */,
+				6F327C2627EB0376009207E0 /* DCLoginViewController.m */,
+				6F327C2727EB0376009207E0 /* DCRegisteredViewController.m */,
+				6F327C2827EB0376009207E0 /* DCLoginViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6F327C2927EB0376009207E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F327C2A27EB0376009207E0 /* DCVerificationView.h */,
+				6F327C2B27EB0376009207E0 /* DCAccountPsdView.m */,
+				6F327C2C27EB0376009207E0 /* DCVerificationView.xib */,
+				6F327C2D27EB0376009207E0 /* DCVerificationView.m */,
+				6F327C2E27EB0376009207E0 /* DCAccountPsdView.h */,
+				6F327C2F27EB0376009207E0 /* DCAccountPsdView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6F4DB6B727D9F0D400B3D33E /* zzzShop */ = {
 			isa = PBXGroup;
 			children = (
+				6F327C2227EB0376009207E0 /* LoginMe(登录) */,
 				6F32786827E9A015009207E0 /* BeautyShop(美店) */,
 				6F32797427E9A016009207E0 /* Classify(分类) */,
 				6F32789C27E9A015009207E0 /* Details(商品详情) */,
 				6F3279AF27E9A016009207E0 /* Expand(扩展) */,
 				6F327AB527E9A016009207E0 /* Home(首页) */,
-				6F3279A127E9A016009207E0 /* LoginMe(登录) */,
 				6F32788B27E9A015009207E0 /* Main */,
-				6F32792A27E9A015009207E0 /* New Group */,
+				6F32792A27E9A015009207E0 /* 我的 */,
 				6F32796D27E9A015009207E0 /* NewFeature(新特性) */,
 				6F327A7A27E9A016009207E0 /* Resource */,
 				6F327AA727E9A016009207E0 /* ShoppingCar(购物车) */,
@@ -3892,8 +3887,8 @@
 				187D8B1C2565FC900097A650 /* KDConsumptionDetailView.xib in Resources */,
 				1B9C9B1325075D2300EE0819 /* KDNewsViewCell.xib in Resources */,
 				6FCFF4182787D08C00E34091 /* KDWukaJifenViewController.xib in Resources */,
-				6F327B6B27E9A017009207E0 /* DCLoginViewController.xib in Resources */,
 				6F327BD127E9A017009207E0 /* BeautyShop.plist in Resources */,
+				6F327C3227EB0377009207E0 /* DCLoginViewController.xib in Resources */,
 				6F327B9827E9A017009207E0 /* addressData.plist in Resources */,
 				6F327BDB27E9A017009207E0 /* GoodsGrid.plist in Resources */,
 				6F327BA927E9A017009207E0 /* flsah_normal@2x.png in Resources */,
@@ -3943,7 +3938,6 @@
 				6F6951AD27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib in Resources */,
 				6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */,
 				6F327BC827E9A017009207E0 /* ClassifyTitles.plist in Resources */,
-				6F327B6F27E9A017009207E0 /* DCAccountPsdView.xib in Resources */,
 				6F327BD527E9A017009207E0 /* MyCenterFlow.plist in Resources */,
 				6F002D4127E97B9600FA4A01 /* KDDirectPushChoseStatusView.xib in Resources */,
 				1BAE2A7E251E168C00E7E0DF /* KDEditDirectCardViewController.xib in Resources */,
@@ -3958,6 +3952,7 @@
 				1848CE63266F475A00D6E148 /* KDJFShopDetailTableViewCell.xib in Resources */,
 				1BC5E3DF250385150064CA30 /* KDRegisterHeaderView.xib in Resources */,
 				04AE083326FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib in Resources */,
+				6F327C3427EB0377009207E0 /* DCVerificationView.xib in Resources */,
 				6F327BD227E9A017009207E0 /* BeautyRecommendShop.plist in Resources */,
 				1BAB9076250C641E00FE9404 /* KDAisleDetailHeaderView.xib in Resources */,
 				187D8B142565FC900097A650 /* KDSlotCardOrderInfoViewController.xib in Resources */,
@@ -3970,11 +3965,11 @@
 				6F327BDC27E9A017009207E0 /* HomeHighGoods.plist in Resources */,
 				6F327BD027E9A017009207E0 /* FiltrateItem.plist in Resources */,
 				045372A7274FD5CD003FCA1A /* KDWallDetailTableViewCell.xib in Resources */,
+				6F327C3627EB0377009207E0 /* DCAccountPsdView.xib in Resources */,
 				6F327BAF27E9A017009207E0 /* sqr_line@2x.png in Resources */,
 				6F327AF227E9A016009207E0 /* DCStoresRecommendCell.xib in Resources */,
 				1893CEFA2672812F00C53DBF /* KDJFShopManagerTableViewCell.xib in Resources */,
 				6F85DC4E2785291800593E50 /* KDPayNewViewControllerQuickPass.xib in Resources */,
-				6F327B6D27E9A017009207E0 /* DCVerificationView.xib in Resources */,
 				1B9C9B65250784EB00EE0819 /* KDMineHeaderView.xib in Resources */,
 				6F327BAA27E9A017009207E0 /* navigationbarScanBg.png in Resources */,
 				6F327B9127E9A017009207E0 /* line.png in Resources */,
@@ -4045,6 +4040,7 @@
 				6F327BF327E9A017009207E0 /* DCTopLineFootView.m in Sources */,
 				045372A6274FD5CD003FCA1A /* KDWallDetailTableViewCell.m in Sources */,
 				6F327BEE27E9A017009207E0 /* DCHandPickViewController.m in Sources */,
+				6F327C3327EB0377009207E0 /* DCAccountPsdView.m in Sources */,
 				04318A09274E7C3700D9D959 /* KDTixianjiluViewController.m in Sources */,
 				6F327B9027E9A017009207E0 /* XWMagicMoveAnimator.m in Sources */,
 				6F327BAD27E9A017009207E0 /* DCFlashButton.m in Sources */,
@@ -4073,7 +4069,6 @@
 				6FA44E9E274E43AD00DA1C59 /* KDTiXianViewController.m in Sources */,
 				6F327BA627E9A017009207E0 /* JKDBModel.m in Sources */,
 				187CE1E5266CEC6100CDB9DB /* KDJFShopViewController.m in Sources */,
-				6F327B6A27E9A017009207E0 /* DCRegisteredViewController.m in Sources */,
 				6F327BC127E9A017009207E0 /* UIView+DCExtension.m in Sources */,
 				1B543D18250EF96400076628 /* KDAboutMineViewController.m in Sources */,
 				6F327B5027E9A017009207E0 /* DCStateItemCell.m in Sources */,
@@ -4091,6 +4086,7 @@
 				6F4DB6BB27DB199D00B3D33E /* KDHtmlWebViewController.m in Sources */,
 				6F327B1327E9A017009207E0 /* DCCommentsItem.m in Sources */,
 				6F327BC527E9A017009207E0 /* NSURL+DCHook.m in Sources */,
+				6F327C3527EB0377009207E0 /* DCVerificationView.m in Sources */,
 				1B9723A8251C41ED00F4120C /* KDDirectRefundViewCell.m in Sources */,
 				6F327B7E27E9A017009207E0 /* XWFilterAnimator+XWPageCurl.m in Sources */,
 				6F327B1227E9A017009207E0 /* DCGoodCommentViewController.m in Sources */,
@@ -4110,7 +4106,6 @@
 				6F327B2E27E9A017009207E0 /* DCCommentContentCell.m in Sources */,
 				EEF1AD31251CE69C001DD2AB /* MSSCalendarHeaderModel.m in Sources */,
 				6F327B1127E9A016009207E0 /* DCComPicViewController.m in Sources */,
-				6F327AFD27E9A016009207E0 /* DCTabBarController.m in Sources */,
 				6F327B3027E9A017009207E0 /* DCPartCommentHeadView.m in Sources */,
 				18E7C4E32678AC4500AE3A72 /* KDJFAdressListTableViewCell.m in Sources */,
 				1BC5E3B9250341180064CA30 /* main.m in Sources */,
@@ -4122,6 +4117,7 @@
 				6F327B1F27E9A017009207E0 /* DCFeatureList.m in Sources */,
 				6F327BB727E9A017009207E0 /* CDDTopTip.m in Sources */,
 				6F327AEC27E9A016009207E0 /* DCBeautyShopViewController.m in Sources */,
+				6F327C3027EB0377009207E0 /* DCLoginViewController.m in Sources */,
 				187D8B132565FC900097A650 /* KDTrandingRecordViewController.m in Sources */,
 				1B937052251C74A700E51EC9 /* KDPlanHeaderView.m in Sources */,
 				6F327B1727E9A017009207E0 /* DCItemImageCell.m in Sources */,
@@ -4146,6 +4142,7 @@
 				187D8B192565FC900097A650 /* KDSlotCardHistoryModel.m in Sources */,
 				6F327B5527E9A017009207E0 /* DCUserMgCell.m in Sources */,
 				1BAE2A7D251E168C00E7E0DF /* KDEditDirectCardViewController.m in Sources */,
+				6F327C3127EB0377009207E0 /* DCRegisteredViewController.m in Sources */,
 				6F327B8E27E9A017009207E0 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
 				6F327B9627E9A017009207E0 /* XWCircleSpreadAnimator.m in Sources */,
 				6F327BF627E9A017009207E0 /* DCYouLikeHeadView.m in Sources */,
@@ -4171,7 +4168,6 @@
 				6F327B5827E9A017009207E0 /* DCNewFeatureCell.m in Sources */,
 				6F327B0E27E9A016009207E0 /* DCFooterReusableView.m in Sources */,
 				6F327B3227E9A017009207E0 /* DCDetailLikeItemCell.m in Sources */,
-				6F327B6C27E9A017009207E0 /* DCAccountPsdView.m in Sources */,
 				6F327B7027E9A017009207E0 /* DCNotificationCenterName.m in Sources */,
 				6F327BBF27E9A017009207E0 /* NSObject+DCNull.m in Sources */,
 				6F327B2527E9A017009207E0 /* DCDetailShowTypeCell.m in Sources */,
@@ -4269,7 +4265,6 @@
 				187F62C0267268AB003F48CD /* KDJFOrderTableViewCellTableViewCell.m in Sources */,
 				6F327B2A27E9A017009207E0 /* DCDetailGoodReferralCell.m in Sources */,
 				6F327B7327E9A017009207E0 /* DCZuoWenRightButton.m in Sources */,
-				6F327B6927E9A017009207E0 /* DCLoginViewController.m in Sources */,
 				6F327B0327E9A016009207E0 /* DCGoodBaseViewController.m in Sources */,
 				6F327BBD27E9A017009207E0 /* DCPlaceholderTextView.m in Sources */,
 				6F327B5A27E9A017009207E0 /* DCFootprintGoodsViewController.m in Sources */,
@@ -4348,7 +4343,6 @@
 				187D8B222565FC900097A650 /* KDSlotCardHistoryViewCell.m in Sources */,
 				6F327BA327E9A017009207E0 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				6F327B7B27E9A017009207E0 /* SDWaitingView.m in Sources */,
-				6F327B6E27E9A017009207E0 /* DCVerificationView.m in Sources */,
 				1B7E4683251CCCC800FA5D1E /* KDPlanAlertView.m in Sources */,
 				6F327B8527E9A017009207E0 /* XWFilterAnimator+XWSwipe.m in Sources */,
 				6F327B1A27E9A017009207E0 /* DCComHeadView.m in Sources */,

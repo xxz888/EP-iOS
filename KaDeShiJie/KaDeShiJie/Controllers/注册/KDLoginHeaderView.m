@@ -39,17 +39,14 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *topImg;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnHigCons;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnWidCons;
+
 @property (weak, nonatomic) IBOutlet UIView *phoneBottomView;
 @property (weak, nonatomic) IBOutlet UIView *pwdBottomView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pwdBottomViewRight;
 @property (weak, nonatomic) IBOutlet UIImageView *pwdHeadImv;
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneIconTopCons;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *codeIconTopCons;
+
 @end
 
 @implementation KDLoginHeaderView
@@ -72,21 +69,15 @@
         [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.loginBtn.titleLabel.font = LYFont(20);
-        self.loginBtnHigCons.constant = 50;
-        self.phoneIconTopCons.constant = 0;
-        self.codeIconTopCons.constant = 29;
-        self.loginBtnWidCons.constant = 274;
+      
     } else {
         
         [self.loginBtn setBackgroundColor:[UIColor mainColor]];
         [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.loginBtn.titleLabel.font = LYFont(20);
-        self.loginBtnHigCons.constant = 50;
 //        [self.loginBtn setBackgroundImage:[UIImage imageNamed:@"kd_login_btn"] forState:UIControlStateNormal];
-        self.loginBtnWidCons.constant = 324;
-        self.phoneIconTopCons.constant = 28.5;
-        self.codeIconTopCons.constant = 34;
+    
         self.topImg.image = [UIImage imageNamed:@"login_top_bg"];
     }
     
@@ -102,7 +93,6 @@
     self.segmentLine2.backgroundColor = [UIColor clearColor];
     self.segmentLine1.backgroundColor = SegmentBtn_COLOR;
     
-    self.pwdBottomViewRight.constant = 0;
     self.codeBtn.hidden = YES;
 //    ViewBorderRadius(self.phoneBottomView, 1, 0.5, SegmentBtn_COLOR);
 //    ViewBorderRadius(self.pwdBottomView, 1, 0.5, SegmentBtn_COLOR);
@@ -126,7 +116,6 @@
 
         self.segmentLine1.backgroundColor = SegmentBtn_COLOR;
         self.segmentLine2.backgroundColor = [UIColor clearColor];
-        self.pwdBottomViewRight.constant = 0;
         self.codeBtn.hidden = YES;
         self.phoneView.placeholder = @"请输入账号";
         self.codeView.placeholder = @"请输入密码";
@@ -143,7 +132,6 @@
     
         self.segmentLine2.backgroundColor = SegmentBtn_COLOR;
         self.segmentLine1.backgroundColor = [UIColor clearColor];
-        self.pwdBottomViewRight.constant = 110;
         self.codeBtn.hidden = NO;
         self.phoneView.placeholder = @"请输入手机号";
         self.codeView.placeholder = @"请输入验证码";

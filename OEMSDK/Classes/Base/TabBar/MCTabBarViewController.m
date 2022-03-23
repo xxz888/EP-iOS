@@ -12,8 +12,9 @@
 #import "MCModuleListController.h"
 #import "MCTabBarModel.h"
 #import "MCBrandConfiguration.h"
+#import "MCApp.h"
 
-@interface MCTabBarViewController ()
+@interface MCTabBarViewController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -24,7 +25,8 @@
     // Do any additional setup after loading the view.
     [self setupChilds];
     self.selectedIndex = MCModelStore.shared.brandConfiguration.tab_selected_index;
-    
+    self.delegate=self;
+
     UIScreenEdgePanGestureRecognizer *pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(tabBarPan:)];
     pan.edges = UIRectEdgeLeft;
     [self.tabBar addGestureRecognizer:pan];
@@ -52,6 +54,26 @@
         [self setValue:[[MCTabBar alloc] init] forKey:@"tabBar"];
         [self addShadowForCenter];
     }
+    
+
+    if (TOKEN) {
+        if ([SharedDefaults.phone isEqualToString:@"13383773800"]) {
+            [self setItemShop];
+        }else{
+            [self setItem1];
+
+        }
+    }else{
+        [self setItemShop];
+    }
+
+    
+    
+  
+    
+}
+-(void)setItem1{
+    
     NSInteger childItems = BCFI.tab_items.count;
     
     NSMutableArray *navControllers = [NSMutableArray new];
@@ -104,9 +126,62 @@
     
     
     self.viewControllers = navControllers;
-    
 }
+-(void)setItemShop{
+    
+    NSInteger childItems = BCFI.tab_itemsShop.count;
+    
+    NSMutableArray *navControllers = [NSMutableArray new];
+    
+    for (int i=0; i<childItems; i++) {
+        MCTabBarModel *model = BCFI.tab_itemsShop[i];
+        
+        NSString *itemTitle = model.title;
+        
+        MCBaseViewController *vc = model.controller;
+        vc.hidesBottomBarWhenPushed = NO;
+        MCNavigationController *nav = [[MCNavigationController alloc] initWithRootViewController:vc];
+        
 
+        UIImage *img = [UIImage imageNamed:model.iconName];
+        UIImage *selImg = [UIImage imageNamed:model.selectedIconName];
+        UITabBarItem *item = [self creatTabBarItemWithTiele:itemTitle image:img seletedImage:selImg tag:i];
+        nav.tabBarItem = item;
+        
+        [navControllers addObject:nav];
+    }
+
+    //title颜色和图片颜色保持一致
+    /*
+    UIImage *img = [UIImage imageNamed: BCFI.tab_items[0].iconName];
+    UIImage *selImg = [UIImage imageNamed: BCFI.tab_items[0].selectedIconName];
+    UIColor *titleColor = [MCImageStore getThemeColorOfImage:img];
+    UIColor *selTitleColor = [MCImageStore getThemeColorOfImage:selImg];
+    UITabBarItem *item = [UITabBarItem appearance];
+    */
+    
+    //title颜色和图片颜色保持一致
+    UIColor *titleColor = [UIColor qmui_colorWithHexString:@"#999999"];
+    
+    UIColor *selTitleColor = BCFI.color_main;
+    UITabBarItem *item = [UITabBarItem appearance];
+    
+    // 适配iOS13导致的bug
+    if (@available(iOS 13.0, *)) {
+        // iOS 13以上
+        self.tabBar.tintColor = selTitleColor;
+        self.tabBar.unselectedItemTintColor = titleColor;
+        
+    } else {
+        // iOS 13以下
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:titleColor} forState:UIControlStateNormal];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:selTitleColor} forState:UIControlStateSelected];
+    }
+    
+    
+    
+    self.viewControllers = navControllers;
+}
 #pragma mark - 中心按钮添加阴影
 - (void)addShadowForCenter{
     //阴影设置
@@ -172,9 +247,42 @@
 }
  
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    
     NSUInteger index = [tabBar.items indexOfObject:item];
+
     if (index != self.selectedIndex) {
         _preSelectedIndex = self.selectedIndex;
     }
+}
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+
+    if(viewController == [tabBarController.viewControllers objectAtIndex:2] || viewController == [tabBarController.viewControllers objectAtIndex:3]){
+
+        if (!TOKEN) {
+            //选择
+            __weak typeof(self) weakSelf = self;
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请先登录" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [MCApp userLogout];
+            }];
+            [alert addAction:action1];
+            
+            UIAlertAction * action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+               
+
+            }];
+            
+
+
+            [alert addAction:action];
+            [self presentViewController:alert animated:NO completion:nil];
+            
+            
+            
+            return NO;
+        }
+    }
+    return YES;
 }
 @end

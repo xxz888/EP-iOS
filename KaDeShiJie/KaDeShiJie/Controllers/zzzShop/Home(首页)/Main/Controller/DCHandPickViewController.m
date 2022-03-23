@@ -193,16 +193,19 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     _topToolView.leftItemClickBlock = ^{
         NSLog(@"点击了首页扫一扫");
         DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
+        dcGMvC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:dcGMvC animated:YES];
     };
     _topToolView.rightItemClickBlock = ^{
         NSLog(@"点击了首页分类");
         DCCommodityViewController *dcComVc = [DCCommodityViewController new];
+        dcComVc.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:dcComVc animated:YES];
     };
     _topToolView.rightRItemClickBlock = ^{
         NSLog(@"点击了首页购物车");
         DCMyTrolleyViewController *shopCarVc = [DCMyTrolleyViewController new];
+        shopCarVc.hidesBottomBarWhenPushed = YES;
         shopCarVc.isTabBar = YES;
         shopCarVc.title = @"购物车";
         [weakSelf.navigationController pushViewController:shopCarVc animated:YES];
@@ -397,6 +400,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
      
         DCGoodsSetViewController *goodSetVc = [[DCGoodsSetViewController alloc] init];
         goodSetVc.goodPlisName = @"ClasiftyGoods.plist";
+        goodSetVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:goodSetVc animated:YES];
      
      
@@ -410,7 +414,8 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
         dcVc.goodSubtitle = _youLikeItem[indexPath.row].goods_title;
         dcVc.shufflingArray = _youLikeItem[indexPath.row].images;
         dcVc.goodImageView = _youLikeItem[indexPath.row].image_url;
-        
+        dcVc.hidesBottomBarWhenPushed = YES;
+
         [self.navigationController pushViewController:dcVc animated:YES];
     }
 }

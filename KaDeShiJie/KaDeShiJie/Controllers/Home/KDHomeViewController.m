@@ -91,7 +91,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:0];
+    //[self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:0];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -309,21 +309,21 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    alpha = scrollView.contentOffset.y/100;
-    UILabel * lbl = [self.bgView viewWithTag:104];
-
-    if (alpha > 1) {
-        alpha = 1;
-        _statusBarFlag = YES;
-        lbl.hidden = NO;
-        [self setNeedsStatusBarAppearanceUpdate];
-    }else{
-        _statusBarFlag = NO;
-        lbl.hidden = YES;
-        [self setNeedsStatusBarAppearanceUpdate];
-    }
-    lbl.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:alpha];
-    [self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:alpha];
+//    alpha = scrollView.contentOffset.y/100;
+//    UILabel * lbl = [self.bgView viewWithTag:104];
+//
+//    if (alpha > 1) {
+//        alpha = 1;
+//        _statusBarFlag = YES;
+//        lbl.hidden = NO;
+//        [self setNeedsStatusBarAppearanceUpdate];
+//    }else{
+//        _statusBarFlag = NO;
+//        lbl.hidden = YES;
+//        [self setNeedsStatusBarAppearanceUpdate];
+//    }
+//    lbl.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:alpha];
+//    [self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:alpha];
 }
 
 

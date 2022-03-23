@@ -38,7 +38,7 @@
     }];
     
     self.shopTitleLabel.text = shopItem.shopTitle;
-    self.ghjLabel.text = [NSString stringWithFormat:@"%@国美币",shopItem.shopCommission];
+    self.ghjLabel.text = [NSString stringWithFormat:@"%@生活币",shopItem.shopCommission];
     self.shopMoneyLabel.text = [NSString stringWithFormat:@"¥ %@",shopItem.shopAmount];
     
 }

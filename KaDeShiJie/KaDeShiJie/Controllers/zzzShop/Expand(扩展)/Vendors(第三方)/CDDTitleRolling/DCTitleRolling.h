@@ -10,7 +10,7 @@
 
 // 每条几组数据
 typedef enum : NSUInteger {
-    CDDRollingOneGroup , // 默认一种（类似京东、国美）
+    CDDRollingOneGroup , // 默认一种（类似京东、生活）
     CDDRollingTwoGroup, // 两种（类似淘宝）
 } CDDRollingGroupStyle;
 

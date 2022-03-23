@@ -26,6 +26,8 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+
+
     KDLoginHeaderView *headView = [[KDLoginHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     self.mc_tableview.tableHeaderView = headView;
     self.mc_tableview.mj_header = nil;

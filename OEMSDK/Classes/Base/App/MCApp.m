@@ -28,14 +28,14 @@
     [self registPlatforms:application options:launchOptions appDelegate:appDelegate];
 //    [MCModelStore.shared getInfos];
     
-    if (MCModelStore.shared.userDefaults.not_first_launch || !MCModelStore.shared.brandConfiguration.is_guide_page) {
-        
-        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_user_signupin];
-        
-    } else {
-        [UIApplication sharedApplication].keyWindow.rootViewController = [[MCGuidViewController alloc] init];
-    }
-    
+//    if (MCModelStore.shared.userDefaults.not_first_launch || !MCModelStore.shared.brandConfiguration.is_guide_page) {
+//
+//        [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
+//
+//    } else {
+//        [UIApplication sharedApplication].keyWindow.rootViewController = [[MCGuidViewController alloc] init];
+//    }
+    [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_tabbar_list];
 }
 
 
@@ -235,7 +235,7 @@
     
 //    [UIApplication sharedApplication].keyWindow.rootViewController = [MGJRouter objectForURL:rt_user_signupin];
     
-    
+//    [MCLATESTCONTROLLER.navigationController pushViewController:[MGJRouter objectForURL:rt_user_signupin] animated:YES];
     MCAppDelegate *appdelegate = (MCAppDelegate *)[UIApplication sharedApplication].delegate;
     appdelegate.window.rootViewController = [MGJRouter objectForURL:rt_user_signupin];
 }

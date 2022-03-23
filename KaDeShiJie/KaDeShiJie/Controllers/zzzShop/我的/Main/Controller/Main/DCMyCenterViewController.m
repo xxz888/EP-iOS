@@ -90,7 +90,7 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
 {
     if (!_headView) {
         _headView = [DCMyCenterHeaderView dc_viewFromXib];
-        _headView.frame =  CGRectMake(0, 0, ScreenW, 200);
+        _headView.frame =  CGRectMake(0, 0, ScreenW, 160);
     }
     return _headView;
 }
@@ -140,10 +140,12 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
     WEAKSELF
     _topToolView.leftItemClickBlock = ^{ //点击了扫描
         DCGMScanViewController *dcGMvC = [DCGMScanViewController new];
+        dcGMvC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:dcGMvC animated:YES];
     };
     _topToolView.rightItemClickBlock = ^{ //点击设置
         DCSettingViewController *dcSetVc = [DCSettingViewController new];
+        dcSetVc.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:dcSetVc animated:YES];
     };
     
@@ -171,6 +173,7 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
     WEAKSELF
     self.headView.headClickBlock = ^{
         DCManagementViewController *dcMaVc = [DCManagementViewController new];
+        dcMaVc.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:dcMaVc animated:YES];
     };
 }
@@ -218,13 +221,13 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
 {
     if (indexPath.section == 0) {//待付款Item组
 //        return 300;
-        return 180;
+        return 90;
     }else if (indexPath.section == 1){
         return 215;
     }else if (indexPath.section == 2){
-        return 280;
+        return 0;
     }else if (indexPath.section == 3){
-        return 200;
+        return 0;
     }
     return 0;
 }

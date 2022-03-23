@@ -29,7 +29,8 @@
 #import "DCHandPickViewController.h"
 #import "DCBeautyShopViewController.h"
 #import "DCMyCenterViewController.h"
-
+#import "DCCommodityViewController.h"
+#import "DCMyTrolleyViewController.h"
 
 
 
@@ -91,19 +92,21 @@
         KDSlotCardOrderInfoViewController * vc = [[KDSlotCardOrderInfoViewController alloc] initWithClassification:info[@"param"]];
         return vc;
     }];
-    
-    
-    
-    NSArray *items = @[
+    NSArray *tab_itemsShop = @[
         @{@"title":@"首页",
           @"iconName":@"tab_icon_home",
           @"selectedIconName":@"tab_icon_home_selected",
           @"controller":[DCHandPickViewController new]
         },
-        @{@"title":@"推广",
+        @{@"title":@"分类",
           @"iconName":@"tab_icon_news",
           @"selectedIconName":@"tab_icon_news_selected",
-          @"controller":[DCBeautyShopViewController new]
+          @"controller":[DCCommodityViewController new]
+        },
+        @{@"title":@"购物车",
+          @"iconName":@"tab_icon_share",
+          @"selectedIconName":@"tab_icon_share_selected",
+          @"controller":[DCMyTrolleyViewController new]
         },
         @{@"title":@"我的",
           @"iconName":@"tab_icon_mine",
@@ -111,34 +114,39 @@
           @"controller":[DCMyCenterViewController new]
         }
     ];
+    
+    
+    NSArray * items = @[
+        @{@"title":@"首页",
+          @"iconName":@"tab_icon_home",
+          @"selectedIconName":@"tab_icon_home_selected",
+          @"controller":[KDHomeViewController new]
+        },
+        @{@"title":@"推广",
+          @"iconName":@"tab_icon_news",
+          @"selectedIconName":@"tab_icon_news_selected",
+          @"controller":[KDShareViewController new]
+        },
+        @{@"title":@"商城",
+          @"iconName":@"tab_icon_share",
+          @"selectedIconName":@"tab_icon_share_selected",
+          @"controller":[KDJFShopViewController new]
+        },
+        @{@"title":@"我的",
+          @"iconName":@"tab_icon_mine",
+          @"selectedIconName":@"tab_icon_mine_selected",
+          @"controller":[KDMineViewController new]
+        }
+    ];
+    BCFI.tab_itemsShop = [MCTabBarModel mj_objectArrayWithKeyValuesArray:tab_itemsShop];
+    BCFI.tab_items = [MCTabBarModel mj_objectArrayWithKeyValuesArray:items];
+
+ 
  
     
     
     
-//    NSArray *items = @[
-//        @{@"title":@"首页",
-//          @"iconName":@"tab_icon_home",
-//          @"selectedIconName":@"tab_icon_home_selected",
-//          @"controller":[KDHomeViewController new]
-//        },
-//        @{@"title":@"推广",
-//          @"iconName":@"tab_icon_news",
-//          @"selectedIconName":@"tab_icon_news_selected",
-//          @"controller":[KDShareViewController new]
-//        },
-//        @{@"title":@"商城",
-//          @"iconName":@"tab_icon_share",
-//          @"selectedIconName":@"tab_icon_share_selected",
-//          @"controller":[KDJFShopViewController new]
-//        },
-//        @{@"title":@"我的",
-//          @"iconName":@"tab_icon_mine",
-//          @"selectedIconName":@"tab_icon_mine_selected",
-//          @"controller":[KDMineViewController new]
-//        }
-//    ];
 
-    BCFI.tab_items = [MCTabBarModel mj_objectArrayWithKeyValuesArray:items];
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webContainerReset) name:@"mcNotificationWebContainnerReset" object:nil];
     

@@ -10,7 +10,6 @@
 
 // Controllers
 #import "DCNavigationController.h"
-#import "DCTabBarController.h"
 #import "DCRegisteredViewController.h"
 // Models
 

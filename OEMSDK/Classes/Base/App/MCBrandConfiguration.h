@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - tab样式
 //配置的一级页面，根据title是否为空去掉了未配置的
 @property(nonatomic, strong) NSMutableArray<MCTabBarModel *> *tab_items;
+@property(nonatomic, strong) NSMutableArray<MCTabBarModel *> *tab_itemsShop;
+
 //是否异形tabbar（中间凸起）, 默认NO
 @property (nonatomic, assign) BOOL tab_iscenter;
 //中间异形按钮的图片，当 tab_iscenter 为YES时设置

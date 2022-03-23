@@ -62,7 +62,7 @@
     _adLabel = [[UILabel alloc] init];
     _adLabel.textColor = [UIColor orangeColor];
     _adLabel.font = PFR14Font;
-    _adLabel.text = @"DC超市 酒水茗茶，全城畅想 →";
+    _adLabel.text = @"";
     _adLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_adLabel];
     

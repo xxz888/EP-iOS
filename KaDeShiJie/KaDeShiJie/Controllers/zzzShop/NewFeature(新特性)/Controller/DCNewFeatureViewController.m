@@ -11,7 +11,7 @@
 #import "DCNewFeatureViewController.h"
 
 // Controllers
-#import "DCTabBarController.h"
+//#import "DCTabBarController.h"
 // Models
 
 // Views
@@ -173,7 +173,7 @@ static NSString *const DCNewFeatureCellID = @"DCNewFeatureCell";
     WEAKSELF
     cell.hideButtonClickBlock = ^{
         
-        [weakSelf restoreRootViewController:[[DCTabBarController alloc] init]];
+        //[weakSelf restoreRootViewController:[[DCTabBarController alloc] init]];
     };
     
     return cell;
@@ -191,7 +191,7 @@ static NSString *const DCNewFeatureCellID = @"DCNewFeatureCell";
     if (_imageArray.count < 2) return; //一张图或者没有直接返回
     _collectionView.bounces = (scrollView.contentOffset.x > (_imageArray.count - 2) * ScreenW) ? YES : NO;
     if (scrollView.contentOffset.x >  (_imageArray.count - 1) * ScreenW) {
-        [self restoreRootViewController:[[DCTabBarController alloc] init]];
+       // [self restoreRootViewController:[[DCTabBarController alloc] init]];
     }
 }
 
@@ -220,7 +220,7 @@ static NSString *const DCNewFeatureCellID = @"DCNewFeatureCell";
 #pragma mark - 跳过点击
 - (void)skipButtonClick
 {
-    [self restoreRootViewController:[[DCTabBarController alloc] init]];
+   // [self restoreRootViewController:[[DCTabBarController alloc] init]];
 }
 
 @end
