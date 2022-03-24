@@ -60,6 +60,7 @@
         [button addTarget:self action:@selector(rightButtonItemClick) forControlEvents:UIControlEventTouchUpInside];
         button;
     });
+    _rightItemButton.hidden = YES;
     [self addSubview:_rightItemButton];
     [self addSubview:_leftItemButton];
     

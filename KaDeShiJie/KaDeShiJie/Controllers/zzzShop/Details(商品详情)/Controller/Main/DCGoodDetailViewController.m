@@ -299,15 +299,27 @@
 - (void)bottomButtonClick:(UIButton *)button
 {
     if (button.tag == 0) {
+        if (!TOKEN) {
+            [self unLogin];
+            return;
+        }
         NSLog(@"收藏");
         button.selected = !button.selected;
     }else if(button.tag == 1){
+        if (!TOKEN) {
+            [self unLogin];
+            return;
+        }
         NSLog(@"购物车");
         DCMyTrolleyViewController *shopCarVc = [[DCMyTrolleyViewController alloc] init];
         shopCarVc.isTabBar = YES;
         shopCarVc.title = @"购物车";
         [self.navigationController pushViewController:shopCarVc animated:YES];
     }else  if (button.tag == 2 || button.tag == 3) { //父控制器的加入购物车和立即购买
+        if (!TOKEN) {
+            [self unLogin];
+            return;
+        }
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"car"]) {
             [MCToast showMessage:@"购物车已有商品，请先购买后再可加入购物车"];
         }else{
@@ -326,7 +338,30 @@
 }
 
 
+-(void)unLogin{
+        //选择
+        __weak typeof(self) weakSelf = self;
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请先登录" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [MCApp userLogout];
+        }];
+        [alert addAction:action1];
+        
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+           
 
+        }];
+        
+
+
+        [alert addAction:action];
+        [self presentViewController:alert animated:NO completion:nil];
+        
+        
+        
+        return;
+}
 #pragma mark - 转场动画弹出控制器
 - (void)setUpAlterViewControllerWith:(UIViewController *)vc WithDistance:(CGFloat)distance WithDirection:(XWDrawerAnimatorDirection)vcDirection WithParallaxEnable:(BOOL)parallaxEnable WithFlipEnable:(BOOL)flipEnable
 {

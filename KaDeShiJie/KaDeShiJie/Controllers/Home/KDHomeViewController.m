@@ -53,7 +53,6 @@
     [super viewWillAppear:animated];
     
     [self updateNavigationBarAppearance];
-    BOOL acc = [SharedDefaults.phone isEqualToString:@"13383773800"];;
 
     [self getMessage];
     [self getCreditArticleList];
@@ -91,7 +90,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    //[self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:0];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -288,43 +286,6 @@
     
 }
 
-- (UIView *)bgView{
-    if (_bgView == nil) {
-        _bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height+20)];
-        
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,10, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height+20)];
-        titleLabel.text = @"首页";
-        titleLabel.tag = 104;
-        titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.numberOfLines = 0;
-        titleLabel.adjustsFontSizeToFitWidth  = YES;
-        titleLabel.font = [UIFont systemFontOfSize:17];
-        titleLabel.hidden = YES;
-        [_bgView addSubview:titleLabel];
-        
-        [self.navigationController.view insertSubview:_bgView belowSubview:self.navigationController.navigationBar];
-    }
-    return _bgView;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    alpha = scrollView.contentOffset.y/100;
-//    UILabel * lbl = [self.bgView viewWithTag:104];
-//
-//    if (alpha > 1) {
-//        alpha = 1;
-//        _statusBarFlag = YES;
-//        lbl.hidden = NO;
-//        [self setNeedsStatusBarAppearanceUpdate];
-//    }else{
-//        _statusBarFlag = NO;
-//        lbl.hidden = YES;
-//        [self setNeedsStatusBarAppearanceUpdate];
-//    }
-//    lbl.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:alpha];
-//    [self bgView].backgroundColor = [UIColor colorWithRed:252/255.0 green:155/255.0 blue:51/255.0 alpha:alpha];
-}
 
 
 @end

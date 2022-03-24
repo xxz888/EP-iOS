@@ -38,7 +38,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string></string>
+		<string>版本升级</string>
 		<key>iconImage</key>
 		<string>MG_mendianjifen</string>
 	</dict>
@@ -48,7 +48,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string></string>
+		<string>实名认证</string>
 		<key>iconImage</key>
 		<string>MG_liwugou</string>
 	</dict>

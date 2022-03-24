@@ -32,6 +32,8 @@
 // Others
 #import "KDMineCouponController.h"
 #import "KDHomeServeViewController.h"
+#import "liveness/Liveness.h"
+
 @interface DCMyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /* headView */
@@ -214,11 +216,12 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
             }else if (index == 2) {
                 [self.navigationController pushViewController:[[KDJFAdressListViewController alloc] init] animated:YES];
 
-                
+            //版本更新
             }else if (index == 3) {
-                
+                [MCToast showMessage:@"您已经是最新版本"];
+            //实名认证
             }else if (index == 4) {
-                
+                [self shiming];
             //意见反馈
             }else if (index == 5) {
                 
@@ -247,7 +250,31 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
     
     return cusCell;
 }
+-(void)shiming{
+    // UI设置，默认不用设置
+    NSDictionary *uiConfig = @{
+       @"bottomAreaBgColor":@"F08300"    //屏幕下方颜色 026a86
+       ,@"navTitleColor": @"FFFFFF"      // 导航栏标题颜色 FFFFFF
+       ,@"navBgColor": @"F08300"         // 导航栏背景颜色 0186aa
+       ,@"navTitle": @"人脸识别"          // 导航栏标题 活体检测
+       ,@"navTitleSize":@"18"            // 导航栏标题大小 20
+    };
+    NSDictionary *param = @{@"actions":@"1279", @"actionsNum":@"1",
+                            @"uiConfig":uiConfig};
 
+   [[Liveness shareInstance] startProcess:self withParam:param withDelegate:self];
+}
+#pragma mark -----------活物识别完成,回调到这个界面---------------
+- (void)onLiveDetectCompletion:(NSDictionary *)result{
+    //code=0 代表监测成功
+    __weak __typeof(self)weakSelf = self;
+    if ([result[@"code"] integerValue] == 0) {
+        [MCToast showMessage:@"实名认证成功"];
+
+    }else{
+        [MCToast showMessage:result[@"msg"]];
+    }
+}
 #pragma mark - <UITableViewDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

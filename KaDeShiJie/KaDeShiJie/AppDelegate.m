@@ -59,6 +59,7 @@
 }
  
 - (void)setupApp {
+  
     MCLog(@"配置app基本信息");
 //    SharedDefaults.host = @"https://api.flyaworld.com";
 //      SharedDefaults.host = @"https://wukatest.flyaworld.com:443";
@@ -150,7 +151,7 @@
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webContainerReset) name:@"mcNotificationWebContainnerReset" object:nil];
     
-    
+
 
 }
 
