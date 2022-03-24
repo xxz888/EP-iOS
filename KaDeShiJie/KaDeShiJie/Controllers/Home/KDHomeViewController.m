@@ -8,7 +8,7 @@
 
 #import "KDHomeViewController.h"
 #import "KDHomeHeaderView.h"
-#import "MCHomeServiceViewController.h"
+#import "KDHomeServeViewController.h"
 #import "MQServiceToViewInterface.h"
 #import <MeiQiaSDK/MQDefinition.h>
 #import "KDGuidePageManager.h"
@@ -156,7 +156,7 @@
 
 - (void)clickKFAction
 {
-    [self.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+    [self.navigationController pushViewController:[[KDHomeServeViewController alloc] init] animated:YES];
 }
 -(void)reloadUserInfo{
     kWeakSelf(self)

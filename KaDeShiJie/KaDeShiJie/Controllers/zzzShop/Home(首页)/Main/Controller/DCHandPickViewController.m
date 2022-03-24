@@ -46,8 +46,9 @@
 // Others
 #import "CDDTopTip.h"
 #import "NetworkUnit.h"
-
+#import "DCClassMianItem.h"
 #import "RequestTool.h"
+#import "DCGoodDetailViewController.h"
 @interface DCHandPickViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 /* collectionView */
@@ -185,6 +186,11 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
             item.image_url = dic[@"pict_url"];
             item.main_title = dic[@"title"];
             item.price = dic[@"quanhou_jiage"];
+            item.volume = dic[@"volume"];
+            item.tao_id = dic[@"tao_id"];
+            item.goods_title = dic[@"tao_id"];
+            item.images = [dic[@"small_images"] split:@"|"];
+            
             [weakSelf.youLikeItem addObject:item];
         
         }
@@ -334,6 +340,11 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
         if (indexPath.section == 0) {
             DCTopLineFootView *footview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:DCTopLineFootViewID forIndexPath:indexPath];
             reusableview = footview;
+            footview.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+            [footview addGestureRecognizer:tap];
+            
+            
         }else if (indexPath.section == 3){
             DCScrollAdFootView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:DCScrollAdFootViewID forIndexPath:indexPath];
             reusableview = footerView;
@@ -346,6 +357,19 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     return reusableview;
 }
 
+-(void)tapHandler:(id)tap{
+    DCGoodDetailViewController *dcVc = [[DCGoodDetailViewController alloc] init];
+       dcVc.goodTitle = @"三星s22礼盒全新samsung galaxy";
+       dcVc.goodPrice = @"5799";
+       dcVc.goodSubtitle = @"【新品现货 顺丰速发 旗舰新品定制礼盒】三星S22礼盒全新官方正品智能5G数码手机 Samsung Galaxy全网通";
+       
+       NSArray * arr = @[@"https://img.alicdn.com/i1/370627083/O1CN018JHMhU22C44ibqDws_!!370627083.jpg"];
+       dcVc.shufflingArray = arr;
+       dcVc.goodImageView = @"https://img.alicdn.com/bao/uploaded/i2/370627083/O1CN01jyj4zV22C44rTLwmA_!!0-item_pic.jpg";
+       dcVc.hidesBottomBarWhenPushed = YES;
+       [self.navigationController pushViewController:dcVc animated:YES];
+
+}
 //这里我为了直观的看出每组的CGSize设置用if 后续我会用简洁的三元表示
 #pragma mark - item宽高
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -424,28 +448,62 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {//10
-     
+    NSArray<DCClassMianItem *> * mainItem = @[];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods00.plist"];
+            
+        }else  if (indexPath.row == 1) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods01.plist"];
+            
+        }else  if (indexPath.row == 2) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods02.plist"];
+
+        }else  if (indexPath.row == 3) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods09.plist"];
+
+        }else  if (indexPath.row == 4) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods05.plist"];
+
+        }else  if (indexPath.row == 5) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods08.plist"];
+
+        }else  if (indexPath.row == 6) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods10.plist"];
+
+        }else  if (indexPath.row == 7) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods03.plist"];
+
+        }else  if (indexPath.row == 8) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods07.plist"];
+
+        }else  if (indexPath.row == 9) {
+            mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods11.plist"];
+
+        }
+        NSInteger  index= [@(arc4random() % 4) integerValue];
+        DCCalssSubItem * item = mainItem[indexPath.section].goods[index];
         DCGoodsSetViewController *goodSetVc = [[DCGoodsSetViewController alloc] init];
-        goodSetVc.goodPlisName = @"ClasiftyGoods.plist";
+        goodSetVc.calssSubItem = item;
         goodSetVc.hidesBottomBarWhenPushed = YES;
+
         [self.navigationController pushViewController:goodSetVc animated:YES];
-     
-     
-        NSLog(@"点击了10个属性第%zd",indexPath.row);
-    }else if (indexPath.section == 5){
-        NSLog(@"点击了推荐的第%zd个商品",indexPath.row);
-        
+    }
+
+    
+    if (indexPath.section == 5) {
         DCGoodDetailViewController *dcVc = [[DCGoodDetailViewController alloc] init];
-        dcVc.goodTitle = _youLikeItem[indexPath.row].main_title;
-        dcVc.goodPrice = _youLikeItem[indexPath.row].price;
-        dcVc.goodSubtitle = _youLikeItem[indexPath.row].goods_title;
-        dcVc.shufflingArray = _youLikeItem[indexPath.row].images;
-        dcVc.goodImageView = _youLikeItem[indexPath.row].image_url;
+        dcVc.goodTitle = self.youLikeItem[indexPath.row].main_title;
+        dcVc.goodPrice = self.youLikeItem[indexPath.row].price;
+        dcVc.goodSubtitle = self.youLikeItem[indexPath.row].goods_title;
+        dcVc.shufflingArray = self.youLikeItem[indexPath.row].images;
+        dcVc.goodImageView = self.youLikeItem[indexPath.row].image_url;
         dcVc.hidesBottomBarWhenPushed = YES;
 
         [self.navigationController pushViewController:dcVc animated:YES];
     }
+    
+
 }
 
 #pragma mark - <UIScrollViewDelegate>

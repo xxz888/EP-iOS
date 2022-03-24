@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>数码家电</string>
+		<key>goods</key>
+		<array>
+			<dict>
+				<key>image_url</key>
+				<string>http://img12.gomein.net.cn/image/prodimg/gicon/cat15985867.png</string>
+				<key>goods_title</key>
+				<string>电饭煲</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img12.gomein.net.cn/image/prodimg/gicon/cat15985672.png</string>
+				<key>goods_title</key>
+				<string>手机</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/gicon/cat15985840.png</string>
+				<key>goods_title</key>
+				<string>数码相机</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img13.gomein.net.cn/image/prodimg/promotion_image/promoImg/201603/20160316/cat20805687.png</string>
+				<key>goods_title</key>
+				<string>台灯</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img11.gomein.net.cn/image/prodimg/gicon/cat15985875.png</string>
+				<key>goods_title</key>
+				<string>榨汁机</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

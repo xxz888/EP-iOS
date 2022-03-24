@@ -66,7 +66,7 @@
     
     [self setUpInit];
     
-    [self setUpNav];
+   // [self setUpNav];
     
     [self setUpTopButtonView];
     
@@ -74,7 +74,7 @@
     
     [self setUpBottomButton];
     
-    [self acceptanceNote];
+//    [self acceptanceNote];
 }
 
 #pragma mark - initialize
@@ -106,7 +106,7 @@
 #pragma mark - 头部View
 - (void)setUpTopButtonView
 {
-    NSArray *titles = @[@"商品",@"详情",@"评价"];
+    NSArray *titles = @[@"详情"];
     CGFloat margin = 5;
     _bgView = [[UIView alloc] init];
     _bgView.dc_centerX = ScreenW * 0.5;
@@ -189,10 +189,10 @@
     [self addChildViewController:goodBaseVc];
     
     DCGoodParticularsViewController *goodParticularsVc = [[DCGoodParticularsViewController alloc] init];
-    [self addChildViewController:goodParticularsVc];
+//    [self addChildViewController:goodParticularsVc];
     
     DCGoodCommentViewController *goodCommentVc = [[DCGoodCommentViewController alloc] init];
-    [self addChildViewController:goodCommentVc];
+//    [self addChildViewController:goodCommentVc];
 }
 
 #pragma mark - 底部按钮(收藏 购物车 加入购物车 立即购买)
@@ -249,17 +249,17 @@
 #pragma mark - <UIScrollViewDelegate>
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    [self addChildViewController];
+    //[self addChildViewController];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSInteger index = scrollView.contentOffset.x / scrollView.dc_width;
-    UIButton *button = _bgView.subviews[index];
-    
-    [self topBottonClick:button];
-    
-    [self addChildViewController];
+//    NSInteger index = scrollView.contentOffset.x / scrollView.dc_width;
+//    UIButton *button = _bgView.subviews[index];
+//
+//    [self topBottonClick:button];
+//
+//    [self addChildViewController];
 }
 
 #pragma mark - 导航栏设置
@@ -308,11 +308,20 @@
         shopCarVc.title = @"购物车";
         [self.navigationController pushViewController:shopCarVc animated:YES];
     }else  if (button.tag == 2 || button.tag == 3) { //父控制器的加入购物车和立即购买
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"car"]) {
+            [MCToast showMessage:@"购物车已有商品，请先购买后再可加入购物车"];
+        }else{
+            NSDictionary * dic = @{@"goodTitle":self.goodTitle,@"goodPrice":self.goodPrice,@"goodSubtitle":self.goodSubtitle,@"goodImageView":self.goodImageView};
+            [[NSUserDefaults standardUserDefaults] setValue:dic forKey:@"car"];
+            [MCToast showMessage:@"加入购物车成功"];
+        }
+    
+   
         //异步发通知
-        dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%zd",button.tag],@"buttonTag", nil];
-            [[NSNotificationCenter defaultCenter]postNotificationName:SELECTCARTORBUY object:nil userInfo:dict];
-        });
+//        dispatch_sync(dispatch_get_global_queue(0, 0), ^{
+//            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%zd",button.tag],@"buttonTag", nil];
+//            [[NSNotificationCenter defaultCenter]postNotificationName:SELECTCARTORBUY object:nil userInfo:dict];
+//        });
     }
 }
 

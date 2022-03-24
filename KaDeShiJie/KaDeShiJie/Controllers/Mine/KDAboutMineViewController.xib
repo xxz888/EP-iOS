@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KDAboutMineViewController">
             <connections>
+                <outlet property="content1Lbl" destination="K5r-fq-9h5" id="X1W-Ub-hr7"/>
                 <outlet property="contentLabel" destination="hh4-dv-c3Z" id="wS8-fb-JAr"/>
                 <outlet property="imageHigCons" destination="dpu-Hx-8Pq" id="VxH-mK-WsF"/>
                 <outlet property="telLabel" destination="Oti-ub-jxJ" id="FF0-ba-lR1"/>
@@ -89,7 +90,7 @@
                 <constraint firstItem="hh4-dv-c3Z" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="30" id="tV3-3V-frl"/>
                 <constraint firstItem="Oti-ub-jxJ" firstAttribute="top" secondItem="hh4-dv-c3Z" secondAttribute="bottom" constant="120" id="vt4-sf-wdd"/>
             </constraints>
-            <point key="canvasLocation" x="71.014492753623188" y="116.51785714285714"/>
+            <point key="canvasLocation" x="46" y="869"/>
         </view>
     </objects>
     <resources>

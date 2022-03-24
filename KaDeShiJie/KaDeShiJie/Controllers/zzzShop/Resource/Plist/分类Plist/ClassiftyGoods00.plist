@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>男装</string>
+		<key>goods</key>
+		<array>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<key>goods_title</key>
+				<string>衬衣</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<key>goods_title</key>
+				<string>短袖</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<key>goods_title</key>
+				<string>毛衣</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<key>goods_title</key>
+				<string>棉服</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<key>goods_title</key>
+				<string>牛仔裤</string>
+			</dict>
+			<dict>
+				<key>image_url</key>
+				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<key>goods_title</key>
+				<string>卫衣</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

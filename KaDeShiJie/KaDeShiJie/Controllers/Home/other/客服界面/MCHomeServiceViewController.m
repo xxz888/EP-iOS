@@ -21,14 +21,13 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MQ_RECEIVED_NEW_MESSAGES_NOTIFICATION object:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
 //    [self setData];
     
-    self.telPhone.text = [NSString stringWithFormat:@"全国服务热线：%@",SharedDefaults.configDic[@"config"][@"servicePhone"]];
+    self.telPhone.text = [NSString stringWithFormat:@"全国服务热线：%@",SharedDefaults.configDic[@"servicePhone"]];
     MCUserInfo * info = SharedUserInfo;
     self.tuijianren.text = [NSString stringWithFormat:@"推荐人：%@",info.agentPhone];
     UITapGestureRecognizer *click1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView1:)];
@@ -48,7 +47,7 @@
     [MCServiceStore pushMeiqiaVC];
 }
 -(void)clickView3:(id)tap{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.configDic[@"config"][@"servicePhone"]]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.configDic[@"servicePhone"]]]];
 }
 
 
@@ -131,7 +130,7 @@
     }
 }
 - (IBAction)guanfangkefuAction:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.configDic[@"config"][@"servicePhone"]]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",SharedDefaults.configDic[@"servicePhone"]]]];
 }
 
 - (IBAction)kefuAction:(id)sender {
@@ -185,51 +184,5 @@
 }];
 }
 
--(void)requestQueryFangLiuYan{
-    __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/user/app/jpush/MessagePush/Query" parameters:@{@"userid":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
-        if ([resp[@"code"] isEqualToString:@"000000"]) {
-            //这里判断未读数组，把未读变成已读
-            for (NSDictionary * typeDic in resp[@"result"]) {
-                if ([typeDic[@"type"] integerValue] == 0) {
-                    [weakSelf.kefuImv.layer addAnimation:[weakSelf opacityForever_Animation:0.4] forKey:nil];
-                    break;
-                }
-            }
-        }
-    }];
-}
--(void)requestGuanFangLiuYan{
-    __weak typeof(self) weakSelf = self;
-    [MCSessionManager.shareManager mc_POST:@"/user/app/jpush/MessagePush/Query" parameters:@{@"userid":SharedUserInfo.userid} ok:^(NSDictionary * _Nonnull resp) {
-        if ([resp[@"code"] isEqualToString:@"000000"]) {
-            
-            NSMutableArray * type2Array = [[NSMutableArray alloc]init];
-            for (NSDictionary * typeDic in resp[@"result"]) {
-                if ([typeDic[@"type"] integerValue] == 0) {
-                    [type2Array addObject:typeDic];
-                }
-            }
-            if ([type2Array count] > 0) {
-                
-                weakSelf.liuyanbanMessageLbl.hidden = NO;
-                weakSelf.liuyanbanMessageLbl.text = [NSString stringWithFormat:@"%ld",[type2Array count]];
-                if (type2Array.count > 99) {
-                    weakSelf.liuyanbanMessageLbl.text = @"99+";
-                }
-                [weakSelf.liuyanbanMessageLbl.layer addAnimation:[weakSelf opacityForever_Animation:0.4] forKey:nil];
 
-            }else{
-                [weakSelf.kefuImv.layer removeAllAnimations];
-                weakSelf.liuyanbanMessageLbl.hidden = YES;
-            }
-        }else{
-            [MCToast showMessage:resp[@"messege"]];
-        }
-
-    } other:^(NSDictionary * _Nonnull resp) {
-        [MCLoading hidden];
-        [MCToast showMessage:resp[@"messege"]];
-    }];
-}
 @end

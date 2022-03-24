@@ -8,6 +8,7 @@
 //
 
 #import "DCMyCenterViewController.h"
+#import "KDJFAdressListViewController.h"
 
 // Controllers
 #import "DCManagementViewController.h" //账户管理
@@ -27,9 +28,10 @@
 // Vendors
 #import <MJExtension.h>
 // Categories
-
+#import "KDAboutMineViewController.h"
 // Others
-
+#import "KDMineCouponController.h"
+#import "KDHomeServeViewController.h"
 @interface DCMyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /* headView */
@@ -161,6 +163,8 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.tableFooterView = [UIView new]; //去除多余分割线
+    
+    
 }
 
 #pragma mark - 初始化头部
@@ -192,12 +196,45 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    WEAKSELF
     UITableViewCell *cusCell = [UITableViewCell new];
     if (indexPath.section == 0) {
         DCCenterItemCell *cell = [tableView dequeueReusableCellWithIdentifier:DCCenterItemCellID forIndexPath:indexPath];
         cusCell = cell;
     }else if(indexPath.section == 1){
         DCCenterServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:DCCenterServiceCellID forIndexPath:indexPath];
+        cell.clickItemBlock = ^(NSInteger index) {
+            //客服中心
+            if (index== 0) {
+                [self.navigationController pushViewController:[[KDHomeServeViewController alloc] init] animated:YES];
+            //我的优惠券
+            }else if (index == 1) {
+                [self.navigationController pushViewController:[[KDMineCouponController alloc] init] animated:YES];
+            //收货地址
+            }else if (index == 2) {
+                [self.navigationController pushViewController:[[KDJFAdressListViewController alloc] init] animated:YES];
+
+                
+            }else if (index == 3) {
+                
+            }else if (index == 4) {
+                
+            //意见反馈
+            }else if (index == 5) {
+                
+            //关于APP
+            }else if (index == 6) {
+                KDAboutMineViewController * vc = [[KDAboutMineViewController alloc]init];
+                vc.isDis = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            //我的设置
+            }else if (index == 7) {
+                [self loginOffClick];
+
+            }else{
+                
+            }
+        };
         cell.serviceItemArray = [NSMutableArray arrayWithArray:_serviceItem];
         cusCell = cell;
     }else if (indexPath.section == 2){
@@ -214,7 +251,7 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
 #pragma mark - <UITableViewDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+  
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -252,7 +289,21 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
         self.headerBgImageView.frame = CGRectMake(-(imageWidth * f - imageWidth) * 0.5, imageOffsetY, imageWidth * f, totalOffset);
     }
 }
-
+#pragma mark - 退出登录
+- (void)loginOffClick
+{
+    
+    [DCSpeedy dc_SetUpAlterWithView:self Message:@"是否确定退出登录" Sure:^{
+        [MCToast showMessage:@"退出登录成功"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ //先跳出登录界面，在返回RootVC
+            [MCApp userLogout];
+        });
+    } Cancel:nil];
+    
+    
+    
+     
+}
 
 
 @end

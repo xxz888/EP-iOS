@@ -374,10 +374,10 @@
 		6F327BC727E9A017009207E0 /* shareTerrace.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A7D27E9A016009207E0 /* shareTerrace.plist */; };
 		6F327BC827E9A017009207E0 /* ClassifyTitles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A7E27E9A016009207E0 /* ClassifyTitles.plist */; };
 		6F327BC927E9A017009207E0 /* DetailRecommend.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A7F27E9A016009207E0 /* DetailRecommend.plist */; };
-		6F327BCA27E9A017009207E0 /* ClassiftyGoods03.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8027E9A016009207E0 /* ClassiftyGoods03.plist */; };
+		6F327BCA27E9A017009207E0 /* ClassiftyGoods02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8027E9A016009207E0 /* ClassiftyGoods02.plist */; };
 		6F327BCB27E9A017009207E0 /* ClasiftyGoods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8127E9A016009207E0 /* ClasiftyGoods.plist */; };
 		6F327BCC27E9A017009207E0 /* ClassiftyGoods01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8227E9A016009207E0 /* ClassiftyGoods01.plist */; };
-		6F327BCD27E9A017009207E0 /* ClassiftyGoods02.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8327E9A016009207E0 /* ClassiftyGoods02.plist */; };
+		6F327BCD27E9A017009207E0 /* ClassiftyGoods00.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8327E9A016009207E0 /* ClassiftyGoods00.plist */; };
 		6F327BCE27E9A017009207E0 /* FootprintGoods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8427E9A016009207E0 /* FootprintGoods.plist */; };
 		6F327BCF27E9A017009207E0 /* ShopItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8527E9A016009207E0 /* ShopItem.plist */; };
 		6F327BD027E9A017009207E0 /* FiltrateItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F327A8627E9A016009207E0 /* FiltrateItem.plist */; };
@@ -444,6 +444,8 @@
 		6F327C3427EB0377009207E0 /* DCVerificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F327C2C27EB0376009207E0 /* DCVerificationView.xib */; };
 		6F327C3527EB0377009207E0 /* DCVerificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C2D27EB0376009207E0 /* DCVerificationView.m */; };
 		6F327C3627EB0377009207E0 /* DCAccountPsdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F327C2F27EB0376009207E0 /* DCAccountPsdView.xib */; };
+		6F327C3927EC1FFB009207E0 /* DCCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F327C3827EC1FFA009207E0 /* DCCarView.m */; };
+		6F327C3B27EC2002009207E0 /* DCCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F327C3A27EC2002009207E0 /* DCCarView.xib */; };
 		6F403A1827D73D47001ED9BA /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F403A1727D73D47001ED9BA /* Bugly.framework */; };
 		6F42B4FE27D73A09008C213F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B4FD27D73A09008C213F /* SystemConfiguration.framework */; };
 		6F42B50027D73A0F008C213F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F42B4FF27D73A0F008C213F /* Security.framework */; };
@@ -475,6 +477,17 @@
 		6FC59E0E27622803005DD4DD /* KDBingCardNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC59E0C27622803005DD4DD /* KDBingCardNewViewController.xib */; };
 		6FCFF4172787D08C00E34091 /* KDWukaJifenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF4152787D08C00E34091 /* KDWukaJifenViewController.m */; };
 		6FCFF4182787D08C00E34091 /* KDWukaJifenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF4162787D08C00E34091 /* KDWukaJifenViewController.xib */; };
+		6FF5D4D327EC77290041B434 /* KDHomeServeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF5D4D127EC77290041B434 /* KDHomeServeViewController.m */; };
+		6FF5D4D427EC77290041B434 /* KDHomeServeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FF5D4D227EC77290041B434 /* KDHomeServeViewController.xib */; };
+		6FF6423E27EC4F7D001C290A /* ClassiftyGoods07.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423427EC4F7D001C290A /* ClassiftyGoods07.plist */; };
+		6FF6423F27EC4F7D001C290A /* ClassiftyGoods09.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423527EC4F7D001C290A /* ClassiftyGoods09.plist */; };
+		6FF6424027EC4F7D001C290A /* ClassiftyGoods08.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423627EC4F7D001C290A /* ClassiftyGoods08.plist */; };
+		6FF6424127EC4F7D001C290A /* ClassiftyGoods06.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423727EC4F7D001C290A /* ClassiftyGoods06.plist */; };
+		6FF6424227EC4F7D001C290A /* ClassiftyGoods03.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423827EC4F7D001C290A /* ClassiftyGoods03.plist */; };
+		6FF6424327EC4F7D001C290A /* ClassiftyGoods04.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423927EC4F7D001C290A /* ClassiftyGoods04.plist */; };
+		6FF6424427EC4F7D001C290A /* ClassiftyGoods10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423A27EC4F7D001C290A /* ClassiftyGoods10.plist */; };
+		6FF6424527EC4F7D001C290A /* ClassiftyGoods05.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423B27EC4F7D001C290A /* ClassiftyGoods05.plist */; };
+		6FF6424627EC4F7D001C290A /* ClassiftyGoods11.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423C27EC4F7D001C290A /* ClassiftyGoods11.plist */; };
 		6FFE7E0B274E3A9400F801A1 /* jintMyWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */; };
 		CFA05BD11EA60505A35F429A /* libPods-KaDeShiJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFABD6DDE24EBE293888388 /* libPods-KaDeShiJie.a */; };
 		EE1BA9AD251C277E00941631 /* KDWebContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1BA9AC251C277E00941631 /* KDWebContainer.m */; };
@@ -1141,10 +1154,10 @@
 		6F327A7D27E9A016009207E0 /* shareTerrace.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shareTerrace.plist; sourceTree = "<group>"; };
 		6F327A7E27E9A016009207E0 /* ClassifyTitles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassifyTitles.plist; sourceTree = "<group>"; };
 		6F327A7F27E9A016009207E0 /* DetailRecommend.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailRecommend.plist; sourceTree = "<group>"; };
-		6F327A8027E9A016009207E0 /* ClassiftyGoods03.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods03.plist; sourceTree = "<group>"; };
+		6F327A8027E9A016009207E0 /* ClassiftyGoods02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods02.plist; sourceTree = "<group>"; };
 		6F327A8127E9A016009207E0 /* ClasiftyGoods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClasiftyGoods.plist; sourceTree = "<group>"; };
 		6F327A8227E9A016009207E0 /* ClassiftyGoods01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods01.plist; sourceTree = "<group>"; };
-		6F327A8327E9A016009207E0 /* ClassiftyGoods02.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods02.plist; sourceTree = "<group>"; };
+		6F327A8327E9A016009207E0 /* ClassiftyGoods00.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods00.plist; sourceTree = "<group>"; };
 		6F327A8427E9A016009207E0 /* FootprintGoods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FootprintGoods.plist; sourceTree = "<group>"; };
 		6F327A8527E9A016009207E0 /* ShopItem.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ShopItem.plist; sourceTree = "<group>"; };
 		6F327A8627E9A016009207E0 /* FiltrateItem.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FiltrateItem.plist; sourceTree = "<group>"; };
@@ -1251,6 +1264,9 @@
 		6F327C2D27EB0376009207E0 /* DCVerificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCVerificationView.m; sourceTree = "<group>"; };
 		6F327C2E27EB0376009207E0 /* DCAccountPsdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAccountPsdView.h; sourceTree = "<group>"; };
 		6F327C2F27EB0376009207E0 /* DCAccountPsdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCAccountPsdView.xib; sourceTree = "<group>"; };
+		6F327C3727EC1FFA009207E0 /* DCCarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCCarView.h; sourceTree = "<group>"; };
+		6F327C3827EC1FFA009207E0 /* DCCarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCCarView.m; sourceTree = "<group>"; };
+		6F327C3A27EC2002009207E0 /* DCCarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DCCarView.xib; sourceTree = "<group>"; };
 		6F403A1727D73D47001ED9BA /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugly.framework; path = ../OEMSDK/Vendor/Bugly.framework; sourceTree = "<group>"; };
 		6F42B4FD27D73A09008C213F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6F42B4FF27D73A0F008C213F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1296,6 +1312,18 @@
 		6FCFF4142787D08C00E34091 /* KDWukaJifenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWukaJifenViewController.h; sourceTree = "<group>"; };
 		6FCFF4152787D08C00E34091 /* KDWukaJifenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWukaJifenViewController.m; sourceTree = "<group>"; };
 		6FCFF4162787D08C00E34091 /* KDWukaJifenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDWukaJifenViewController.xib; sourceTree = "<group>"; };
+		6FF5D4D027EC77290041B434 /* KDHomeServeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeServeViewController.h; sourceTree = "<group>"; };
+		6FF5D4D127EC77290041B434 /* KDHomeServeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeServeViewController.m; sourceTree = "<group>"; };
+		6FF5D4D227EC77290041B434 /* KDHomeServeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeServeViewController.xib; sourceTree = "<group>"; };
+		6FF6423427EC4F7D001C290A /* ClassiftyGoods07.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods07.plist; sourceTree = "<group>"; };
+		6FF6423527EC4F7D001C290A /* ClassiftyGoods09.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods09.plist; sourceTree = "<group>"; };
+		6FF6423627EC4F7D001C290A /* ClassiftyGoods08.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods08.plist; sourceTree = "<group>"; };
+		6FF6423727EC4F7D001C290A /* ClassiftyGoods06.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods06.plist; sourceTree = "<group>"; };
+		6FF6423827EC4F7D001C290A /* ClassiftyGoods03.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods03.plist; sourceTree = "<group>"; };
+		6FF6423927EC4F7D001C290A /* ClassiftyGoods04.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods04.plist; sourceTree = "<group>"; };
+		6FF6423A27EC4F7D001C290A /* ClassiftyGoods10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods10.plist; sourceTree = "<group>"; };
+		6FF6423B27EC4F7D001C290A /* ClassiftyGoods05.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods05.plist; sourceTree = "<group>"; };
+		6FF6423C27EC4F7D001C290A /* ClassiftyGoods11.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods11.plist; sourceTree = "<group>"; };
 		6FFE7E09274E3A9400F801A1 /* jintMyWallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jintMyWallViewController.h; sourceTree = "<group>"; };
 		6FFE7E0A274E3A9400F801A1 /* jintMyWallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jintMyWallViewController.m; sourceTree = "<group>"; };
 		9128FD3AF01474CF6106FD30 /* Pods-KaDeShiJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaDeShiJie.debug.xcconfig"; path = "Target Support Files/Pods-KaDeShiJie/Pods-KaDeShiJie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1915,6 +1943,9 @@
 				6F002D3A27E977AC00FA4A01 /* MCHomeServiceViewController.h */,
 				6F002D3927E977AC00FA4A01 /* MCHomeServiceViewController.m */,
 				6F002D3C27E977C700FA4A01 /* MCHomeServiceViewController.xib */,
+				6FF5D4D027EC77290041B434 /* KDHomeServeViewController.h */,
+				6FF5D4D127EC77290041B434 /* KDHomeServeViewController.m */,
+				6FF5D4D227EC77290041B434 /* KDHomeServeViewController.xib */,
 			);
 			path = "客服界面";
 			sourceTree = "<group>";
@@ -2245,8 +2276,8 @@
 		6F3278DB27E9A015009207E0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6F3278DC27E9A015009207E0 /* DCGoodDetailViewController.m */,
 				6F3278DD27E9A015009207E0 /* DCGoodDetailViewController.h */,
+				6F3278DC27E9A015009207E0 /* DCGoodDetailViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -3223,13 +3254,22 @@
 		6F327A7C27E9A016009207E0 /* 分类Plist */ = {
 			isa = PBXGroup;
 			children = (
+				6F327A8327E9A016009207E0 /* ClassiftyGoods00.plist */,
+				6F327A8227E9A016009207E0 /* ClassiftyGoods01.plist */,
+				6F327A8027E9A016009207E0 /* ClassiftyGoods02.plist */,
+				6FF6423827EC4F7D001C290A /* ClassiftyGoods03.plist */,
+				6FF6423927EC4F7D001C290A /* ClassiftyGoods04.plist */,
+				6FF6423B27EC4F7D001C290A /* ClassiftyGoods05.plist */,
+				6FF6423727EC4F7D001C290A /* ClassiftyGoods06.plist */,
+				6FF6423427EC4F7D001C290A /* ClassiftyGoods07.plist */,
+				6FF6423627EC4F7D001C290A /* ClassiftyGoods08.plist */,
+				6FF6423527EC4F7D001C290A /* ClassiftyGoods09.plist */,
+				6FF6423A27EC4F7D001C290A /* ClassiftyGoods10.plist */,
+				6FF6423C27EC4F7D001C290A /* ClassiftyGoods11.plist */,
 				6F327A7D27E9A016009207E0 /* shareTerrace.plist */,
 				6F327A7E27E9A016009207E0 /* ClassifyTitles.plist */,
 				6F327A7F27E9A016009207E0 /* DetailRecommend.plist */,
-				6F327A8027E9A016009207E0 /* ClassiftyGoods03.plist */,
 				6F327A8127E9A016009207E0 /* ClasiftyGoods.plist */,
-				6F327A8227E9A016009207E0 /* ClassiftyGoods01.plist */,
-				6F327A8327E9A016009207E0 /* ClassiftyGoods02.plist */,
 				6F327A8427E9A016009207E0 /* FootprintGoods.plist */,
 				6F327A8527E9A016009207E0 /* ShopItem.plist */,
 				6F327A8627E9A016009207E0 /* FiltrateItem.plist */,
@@ -3342,6 +3382,9 @@
 				6F327AB227E9A016009207E0 /* DCEmptyCartView.m */,
 				6F327AB327E9A016009207E0 /* DCRecommendReusableView.m */,
 				6F327AB427E9A016009207E0 /* DCRecommendCell.h */,
+				6F327C3727EC1FFA009207E0 /* DCCarView.h */,
+				6F327C3827EC1FFA009207E0 /* DCCarView.m */,
+				6F327C3A27EC2002009207E0 /* DCCarView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3845,6 +3888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F9458A3277D858C008D7364 /* KDMineCouponTableViewCell.xib in Resources */,
+				6FF6424127EC4F7D001C290A /* ClassiftyGoods06.plist in Resources */,
 				1BBA50602511B61F001DA457 /* KDShareViewCell.xib in Resources */,
 				1B937059251C757200E51EC9 /* KDPlanTopViewCell.xib in Resources */,
 				0453729C274FD3CE003FCA1A /* KDJiangliView.xib in Resources */,
@@ -3861,18 +3905,21 @@
 				6F327BC727E9A017009207E0 /* shareTerrace.plist in Resources */,
 				6F327BC927E9A017009207E0 /* DetailRecommend.plist in Resources */,
 				04DA3752277F52CB002FC105 /* KDXinYongKaCollectionViewCell.xib in Resources */,
+				6FF6424027EC4F7D001C290A /* ClassiftyGoods08.plist in Resources */,
 				187D8B1B2565FC900097A650 /* KDTrandingRecordHeaderView.xib in Resources */,
 				1848CE6F266F9BC900D6E148 /* KDJFPayViewController.xib in Resources */,
 				6F5C0285271EB1230059A557 /* KDGuanFangSheQun.xib in Resources */,
 				1848CE69266F68F900D6E148 /* KDConfirmViewController.xib in Resources */,
 				6F327C1927E9A43B009207E0 /* AddressTableViewCell.xib in Resources */,
+				6FF6424527EC4F7D001C290A /* ClassiftyGoods05.plist in Resources */,
 				1BC55AC5250B8A56001BE2DF /* KDSlotCardAisleViewCell.xib in Resources */,
-				6F327BCA27E9A017009207E0 /* ClassiftyGoods03.plist in Resources */,
+				6F327BCA27E9A017009207E0 /* ClassiftyGoods02.plist in Resources */,
 				1BAB907B250C65DF00FE9404 /* KDAisleDetailViewCell.xib in Resources */,
 				6F327B4827E9A017009207E0 /* DCUserMgHeadView.xib in Resources */,
 				1B93705E251C763900E51EC9 /* KDPlanCenterViewCell.xib in Resources */,
 				6F327BE327E9A017009207E0 /* loading.gif in Resources */,
 				6F327BCE27E9A017009207E0 /* FootprintGoods.plist in Resources */,
+				6FF6423E27EC4F7D001C290A /* ClassiftyGoods07.plist in Resources */,
 				04AD49A627893D8300056258 /* KDPaySelectView.xib in Resources */,
 				6F327BE427E9A017009207E0 /* loading2.gif in Resources */,
 				6F911F2C275A1BB000651494 /* Launch Screen.storyboard in Resources */,
@@ -3899,8 +3946,10 @@
 				6F327B1627E9A017009207E0 /* DCCommentsCntCell.xib in Resources */,
 				6F327B4427E9A017009207E0 /* DCNewAdressView.xib in Resources */,
 				1B9723A4251C3A8A00F4120C /* KDDirectRefundViewController.xib in Resources */,
+				6FF6424227EC4F7D001C290A /* ClassiftyGoods03.plist in Resources */,
 				6F327AFA27E9A016009207E0 /* DCStoresRecommendHeaderView.xib in Resources */,
 				6F327BD327E9A017009207E0 /* YouLikeGoods.plist in Resources */,
+				6FF6424627EC4F7D001C290A /* ClassiftyGoods11.plist in Resources */,
 				EE8D73442509D023007AF076 /* KDShareSingleHeader.xib in Resources */,
 				1BC55AC0250B8468001BE2DF /* KDSlotCardAisleHeaderView.xib in Resources */,
 				6F327BD827E9A017009207E0 /* DeliveryAdress.plist in Resources */,
@@ -3909,6 +3958,7 @@
 				187D8B1F2565FC900097A650 /* KDPlanPreviewViewCell.xib in Resources */,
 				1B937054251C74C700E51EC9 /* KDPlanHeaderView.xib in Resources */,
 				0428B43B2784A1ED004B2D54 /* KDPayNewViewControllerShop.xib in Resources */,
+				6FF6423F27EC4F7D001C290A /* ClassiftyGoods09.plist in Resources */,
 				1BC5E3A22503404C0064CA30 /* Main.storyboard in Resources */,
 				6F327B5327E9A017009207E0 /* DCUserAdressCell.xib in Resources */,
 				6F327BD627E9A017009207E0 /* CommentData.plist in Resources */,
@@ -3924,6 +3974,7 @@
 				6F327BD927E9A017009207E0 /* MessageNote.plist in Resources */,
 				1848CE55266F156400D6E148 /* KDJFShopHeaderCollectionReusableView.xib in Resources */,
 				04AD49AB278941E700056258 /* KDPayZhuanZhangView.xib in Resources */,
+				6FF6424327EC4F7D001C290A /* ClassiftyGoods04.plist in Resources */,
 				6F327BDE27E9A017009207E0 /* RecommendShop.plist in Resources */,
 				6F327B4F27E9A017009207E0 /* DCStateItemCell.xib in Resources */,
 				6F327BCB27E9A017009207E0 /* ClasiftyGoods.plist in Resources */,
@@ -3933,7 +3984,7 @@
 				6F327B5627E9A017009207E0 /* DCUserMgCell.xib in Resources */,
 				6F327BAC27E9A017009207E0 /* flash_select@2x.png in Resources */,
 				187F62C926726C61003F48CD /* KDJFOrderDetailHeaderView.xib in Resources */,
-				6F327BCD27E9A017009207E0 /* ClassiftyGoods02.plist in Resources */,
+				6F327BCD27E9A017009207E0 /* ClassiftyGoods00.plist in Resources */,
 				6F002D4627E97C0B00FA4A01 /* KDDirectPushNoDataView.xib in Resources */,
 				6F6951AD27D98F68004E4880 /* KDHomeHeaderCardCollectionViewCell.xib in Resources */,
 				6FA44E95274E3C0800DA1C59 /* KDMyWallView.xib in Resources */,
@@ -3950,6 +4001,7 @@
 				04C449892785FA800032FFA2 /* CWResource.bundle in Resources */,
 				1B543D19250EF96400076628 /* KDAboutMineViewController.xib in Resources */,
 				1848CE63266F475A00D6E148 /* KDJFShopDetailTableViewCell.xib in Resources */,
+				6F327C3B27EC2002009207E0 /* DCCarView.xib in Resources */,
 				1BC5E3DF250385150064CA30 /* KDRegisterHeaderView.xib in Resources */,
 				04AE083326FEF029006E3700 /* KDHomeXinYongKaTableViewCell.xib in Resources */,
 				6F327C3427EB0377009207E0 /* DCVerificationView.xib in Resources */,
@@ -3957,6 +4009,7 @@
 				1BAB9076250C641E00FE9404 /* KDAisleDetailHeaderView.xib in Resources */,
 				187D8B142565FC900097A650 /* KDSlotCardOrderInfoViewController.xib in Resources */,
 				18E7C4E42678AC4500AE3A72 /* KDJFAdressListTableViewCell.xib in Resources */,
+				6FF5D4D427EC77290041B434 /* KDHomeServeViewController.xib in Resources */,
 				0475229E274FC50200268D58 /* KDZhiFuShouYiHeaderView.xib in Resources */,
 				1848CE50266F120F00D6E148 /* KDJFShopCollectionViewCell.xib in Resources */,
 				6F327B4B27E9A017009207E0 /* DCCenterBeaShopCell.xib in Resources */,
@@ -3977,6 +4030,7 @@
 				1B7E468A251CD08100FA5D1E /* KDPlanPreviewView.xib in Resources */,
 				1B9C9B4A25075D6700EE0819 /* Assets.xcassets in Resources */,
 				04B70019275C5A5500A755B8 /* KDMineKehuViewController.xib in Resources */,
+				6FF6424427EC4F7D001C290A /* ClassiftyGoods10.plist in Resources */,
 				1BC5E3E4250392DF0064CA30 /* KDHomeHeaderView.xib in Resources */,
 				187D8B1E2565FC900097A650 /* KDSlotCardHistoryViewCell.xib in Resources */,
 				6F327B4527E9A017009207E0 /* DCMyCenterHeaderView.xib in Resources */,
@@ -4201,6 +4255,7 @@
 				04752298274FC4CD00268D58 /* KDZhiFuShouYiViewController.m in Sources */,
 				6F327B2D27E9A017009207E0 /* DCCommentFooterCell.m in Sources */,
 				6F327B0127E9A016009207E0 /* DCUserInfo.m in Sources */,
+				6FF5D4D327EC77290041B434 /* KDHomeServeViewController.m in Sources */,
 				04B70018275C5A5500A755B8 /* KDMineKehuViewController.m in Sources */,
 				6F327BA527E9A017009207E0 /* UIView+DCRolling.m in Sources */,
 				EEF1AD2E251CE69C001DD2AB /* KDCalendarCell.m in Sources */,
@@ -4331,6 +4386,7 @@
 				EEF1AD2F251CE69C001DD2AB /* MSSCircleLabel.m in Sources */,
 				EEF1AD2D251CE69C001DD2AB /* MSSCalendarManager.m in Sources */,
 				1BC5E3DA250384F40064CA30 /* KDRegisterViewController.m in Sources */,
+				6F327C3927EC1FFB009207E0 /* DCCarView.m in Sources */,
 				6F327B5127E9A017009207E0 /* DCStateItemFooterView.m in Sources */,
 				1848CE62266F475A00D6E148 /* KDJFShopDetailTableViewCell.m in Sources */,
 				6F327AF927E9A016009207E0 /* DCBeautyTopToolView.m in Sources */,

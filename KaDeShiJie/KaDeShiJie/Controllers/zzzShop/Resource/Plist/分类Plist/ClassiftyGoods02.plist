@@ -4,44 +4,38 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>男装</string>
+		<string>母婴</string>
 		<key>goods</key>
 		<array>
 			<dict>
 				<key>image_url</key>
-				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<string>http://img12.gomein.net.cn/image/prodimg/gicon/cat15985867.png</string>
 				<key>goods_title</key>
-				<string>衬衣</string>
+				<string>儿童饭盒</string>
 			</dict>
 			<dict>
 				<key>image_url</key>
-				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<string>http://img12.gomein.net.cn/image/prodimg/gicon/cat15985672.png</string>
 				<key>goods_title</key>
-				<string>短袖</string>
+				<string>儿童玩具</string>
 			</dict>
 			<dict>
 				<key>image_url</key>
-				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<string>http://img14.gomein.net.cn/image/prodimg/gicon/cat15985840.png</string>
 				<key>goods_title</key>
-				<string>毛衣</string>
+				<string>儿童鞋</string>
 			</dict>
 			<dict>
 				<key>image_url</key>
-				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<string>http://img13.gomein.net.cn/image/prodimg/promotion_image/promoImg/201603/20160316/cat20805687.png</string>
 				<key>goods_title</key>
-				<string>棉服</string>
+				<string>儿童衣服</string>
 			</dict>
 			<dict>
 				<key>image_url</key>
-				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
+				<string>http://img11.gomein.net.cn/image/prodimg/gicon/cat15985875.png</string>
 				<key>goods_title</key>
-				<string>牛仔裤</string>
-			</dict>
-			<dict>
-				<key>image_url</key>
-				<string>http://img14.gomein.net.cn/image/prodimg/promimg/topics/201607/201607211606480715.png</string>
-				<key>goods_title</key>
-				<string>卫衣</string>
+				<string>尿不湿</string>
 			</dict>
 		</array>
 	</dict>

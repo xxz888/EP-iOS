@@ -19,7 +19,7 @@
 // Categories
 #import <UIImageView+WebCache.h>
 // Others
-
+#import "DCGoodDetailViewController.h"
 @interface DCTopLineFootView ()<UIScrollViewDelegate,CDDRollingDelegate>
 
 /* 滚动 */
@@ -54,7 +54,12 @@
     [_topAdImageView sd_setImageWithURL:[NSURL URLWithString:HomeBottomViewGIFImage]];
     _topAdImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:_topAdImageView];
-
+    _topAdImageView.userInteractionEnabled = YES;
+    
+   
+    
+    
+    
     //初始化
     _numericalScrollView = [[DCTitleRolling alloc] initWithFrame:CGRectMake(0, self.dc_height - 50, self.dc_width, 50) WithTitleData:^(CDDRollingGroupStyle *rollingGroupStyle, NSString *__autoreleasing *leftImage, NSArray *__autoreleasing *rolTitles, NSArray *__autoreleasing *rolTags, NSArray *__autoreleasing *rightImages, NSString *__autoreleasing *rightbuttonTitle, NSInteger *interval, float *rollingTime, NSInteger *titleFont, UIColor *__autoreleasing *titleColor, BOOL *isShowTagBorder) {
         

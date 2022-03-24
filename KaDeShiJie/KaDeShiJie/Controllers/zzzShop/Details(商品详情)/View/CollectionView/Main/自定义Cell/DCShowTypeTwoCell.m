@@ -41,7 +41,7 @@
 - (void)setUpData
 {
     self.leftTitleLable.text = @"送至";
-    self.hintLabel.text = @"由DC商贸配送监管";
+    self.hintLabel.text = @"快递直送至小区";
 }
 
 - (void)layoutSubviews

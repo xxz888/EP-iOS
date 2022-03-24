@@ -6,7 +6,7 @@
 		<key>iconImage</key>
 		<string>http://gfs8.gomein.net.cn/T1OMAvBQhT1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>手机充值</string>
+		<string>男装</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>
@@ -16,7 +16,7 @@
 		<key>iconImage</key>
 		<string>http://gfs9.gomein.net.cn/T15dxvBsdT1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>手机数码</string>
+		<string>女装</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>
@@ -26,7 +26,7 @@
 		<key>iconImage</key>
 		<string>http://gfs6.gomein.net.cn/T1SGdvBjEj1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>国美电器</string>
+		<string>母婴</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>
@@ -36,7 +36,7 @@
 		<key>iconImage</key>
 		<string>http://gfs6.gomein.net.cn/T10GdvBjAj1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>生活管家</string>
+		<string>日用</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>
@@ -46,7 +46,7 @@
 		<key>iconImage</key>
 		<string>http://gfs5.gomein.net.cn/T1IGdvBjDj1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>金融理财</string>
+		<string>美食</string>
 		<key>gridTag</key>
 		<string>分期免息 </string>
 		<key>gridColor</key>
@@ -56,7 +56,7 @@
 		<key>iconImage</key>
 		<string>http://gfs7.gomein.net.cn/T1yGdvBvZj1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>国美超市</string>
+		<string>配饰</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>
@@ -66,7 +66,7 @@
 		<key>iconImage</key>
 		<string>http://gfs7.gomein.net.cn/T1cvKvBbhT1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>家居家装</string>
+		<string>家电</string>
 		<key>gridTag</key>
 		<string>9.9 元起 </string>
 		<key>gridColor</key>
@@ -76,9 +76,9 @@
 		<key>iconImage</key>
 		<string>http://gfs9.gomein.net.cn/T1VGDvB4Vj1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>领美逗</string>
+		<string>化妆品</string>
 		<key>gridTag</key>
-		<string>+5 美逗 </string>
+		<string></string>
 		<key>gridColor</key>
 		<string>#FD911B</string>
 	</dict>
@@ -86,7 +86,7 @@
 		<key>iconImage</key>
 		<string>http://gfs5.gomein.net.cn/T1EvKvBv_v1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>领券中心</string>
+		<string>箱包</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>
@@ -96,7 +96,7 @@
 		<key>iconImage</key>
 		<string>http://gfs9.gomein.net.cn/T1hIKvBjEv1RCvBVdK.png</string>
 		<key>gridTitle</key>
-		<string>更多服务</string>
+		<string>文娱车品</string>
 		<key>gridTag</key>
 		<string></string>
 		<key>gridColor</key>

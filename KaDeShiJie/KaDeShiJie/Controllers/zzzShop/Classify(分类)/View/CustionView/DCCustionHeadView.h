@@ -12,5 +12,6 @@
 
 /** 筛选点击回调 */
 @property (nonatomic, copy) dispatch_block_t filtrateClickBlock;
+@property (nonatomic, copy) void (^clickBlock)(NSInteger);
 
 @end

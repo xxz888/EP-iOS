@@ -73,6 +73,7 @@
     [_shareButton setTitleColor:[UIColor blackColor] forState:0];
     _shareButton.titleLabel.font = PFR10Font;
     [self addSubview:_shareButton];
+    _shareButton.hidden = YES;
     [_shareButton addTarget:self action:@selector(shareButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
     [DCSpeedy dc_setUpAcrossPartingLineWith:self WithColor:[[UIColor lightGrayColor]colorWithAlphaComponent:0.15]];

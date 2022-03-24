@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDAboutMineViewController : MCBaseViewController
-
+@property (weak, nonatomic) IBOutlet UILabel *content1Lbl;
+@property (nonatomic ,assign)BOOL isDis;
 @end
 
 NS_ASSUME_NONNULL_END

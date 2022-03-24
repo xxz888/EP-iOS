@@ -15,7 +15,10 @@
 // Views
 #import "DCGoodsGridCell.h"
 // Vendors
-
+// Categories
+#import "KDAboutMineViewController.h"
+// Others
+#import "KDMineCouponController.h"
 // Categories
 
 // Others
@@ -94,5 +97,10 @@ static NSString *const DCGoodsGridCellID = @"DCGoodsGridCell";
     return CGSizeMake(ScreenW / 4, 85);
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.clickItemBlock) {
+        self.clickItemBlock(indexPath.row);
+    }
 
+}
 @end

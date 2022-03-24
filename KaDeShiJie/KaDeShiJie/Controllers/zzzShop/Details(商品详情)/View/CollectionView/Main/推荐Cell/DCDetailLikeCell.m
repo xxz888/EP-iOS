@@ -17,7 +17,7 @@
 // Vendors
 #import <MJExtension.h>
 // Categories
-
+#import "RequestTool.h"
 // Others
 
 @interface DCDetailLikeCell ()<UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout>
@@ -77,9 +77,42 @@ static NSString *const DCDetailLikeItemCellID = @"DCDetailLikeItemCell";
     self.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundColor = self.backgroundColor;
     
-    _detailRecItem = [DCRecommendItem mj_objectArrayWithFilename:@"DetailRecommend.plist"];
+    [self setUpGoodsData];
+    
+    //_detailRecItem = [DCRecommendItem mj_objectArrayWithFilename:@"DetailRecommend.plist"];
 }
-
+#pragma mark - 加载数据
+- (void)setUpGoodsData
+{
+    
+//    {"page":"1","cid":"4","page_size":"14"}
+    WEAKSELF
+    [RequestTool requestWithType:2 URL:@"http://api.zhifu168.com/api/shop/api/getGood/all" parameter:@{@"cid":@(arc4random() % 15),@"page":@"1",@"page_size":@"20"} successComplete:^(id responseObject) {
+        
+        weakSelf.detailRecItem = [[NSMutableArray alloc]init];
+        
+        for (NSDictionary * dic in responseObject[@"content"]) {
+            DCRecommendItem * item = [[DCRecommendItem alloc]init];
+            item.image_url = dic[@"pict_url"];
+            item.main_title = dic[@"title"];
+            item.price = dic[@"quanhou_jiage"];
+            item.volume = dic[@"volume"];
+            item.tao_id = dic[@"tao_id"];
+            item.goods_title = dic[@"tao_id"];
+            item.images = [dic[@"small_images"] split:@"|"];
+            [weakSelf.detailRecItem addObject:item];
+        
+        }
+        [self.collectionView reloadData];
+        
+        
+        
+    } failureComplete:^(NSError *error) {
+        
+    }];
+//    _gridItem = [DCGridItem mj_objectArrayWithFilename:@"GoodsGrid.plist"];
+//    _youLikeItem = [DCRecommendItem mj_objectArrayWithFilename:@"HomeHighGoods.plist"];
+}
 #pragma mark - 设置分页点
 - (void)seUpPageControl
 {

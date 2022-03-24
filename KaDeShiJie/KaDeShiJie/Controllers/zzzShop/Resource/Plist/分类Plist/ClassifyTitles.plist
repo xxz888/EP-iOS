@@ -4,69 +4,75 @@
 <array>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods02.plist</string>
+		<string>ClassiftyGoods00.plist</string>
 		<key>title</key>
 		<string>男装</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods03.plist</string>
-		<key>title</key>
-		<string>电脑办公</string>
-	</dict>
-	<dict>
-		<key>fileName</key>
 		<string>ClassiftyGoods01.plist</string>
 		<key>title</key>
-		<string>电视影视</string>
+		<string>女装</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
 		<string>ClassiftyGoods02.plist</string>
 		<key>title</key>
-		<string>空调冰系</string>
+		<string>母婴</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
 		<string>ClassiftyGoods03.plist</string>
 		<key>title</key>
-		<string>厨卫电视</string>
+		<string>美妆</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods01.plist</string>
+		<string>ClassiftyGoods04.plist</string>
 		<key>title</key>
-		<string>生活电器</string>
+		<string>鞋品</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods02.plist</string>
+		<string>ClassiftyGoods05.plist</string>
 		<key>title</key>
-		<string>食品饮酒</string>
+		<string>美食</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods03.plist</string>
+		<string>ClassiftyGoods06.plist</string>
 		<key>title</key>
-		<string>美妆个护</string>
+		<string>内衣</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods01.plist</string>
+		<string>ClassiftyGoods07.plist</string>
 		<key>title</key>
-		<string>母婴玩具</string>
+		<string>箱包</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods02.plist</string>
+		<string>ClassiftyGoods08.plist</string>
 		<key>title</key>
-		<string>服饰鞋帽</string>
+		<string>配饰</string>
 	</dict>
 	<dict>
 		<key>fileName</key>
-		<string>ClassiftyGoods01.plist</string>
+		<string>ClassiftyGoods09.plist</string>
 		<key>title</key>
-		<string>运动户外</string>
+		<string>居家日用</string>
+	</dict>
+	<dict>
+		<key>fileName</key>
+		<string>ClassiftyGoods10.plist</string>
+		<key>title</key>
+		<string>数码家电</string>
+	</dict>
+	<dict>
+		<key>fileName</key>
+		<string>ClassiftyGoods11.plist</string>
+		<key>title</key>
+		<string>文娱车品</string>
 	</dict>
 </array>
 </plist>

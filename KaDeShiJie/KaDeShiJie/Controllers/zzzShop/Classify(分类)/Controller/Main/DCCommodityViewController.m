@@ -118,7 +118,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
 - (void)setUpData
 {
     _titleItem = [DCClassGoodsItem mj_objectArrayWithFilename:@"ClassifyTitles.plist"];
-    _mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods01.plist"];
+    _mainItem = [DCClassMianItem mj_objectArrayWithFilename:@"ClassiftyGoods00.plist"];
     //默认选择第一行（注意一定要在加载完数据之后）
     [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
@@ -147,10 +147,10 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     self.navigationItem.titleView = _topSearchView;
     
     _searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_searchButton setTitle:@"搜索商品/店铺" forState:0];
+    [_searchButton setTitle:@"商品/店铺" forState:0];
     [_searchButton setTitleColor:[UIColor lightGrayColor] forState:0];
     _searchButton.titleLabel.font = PFR13Font;
-    [_searchButton setImage:[UIImage imageNamed:@"group_home_search_gray"] forState:0];
+//    [_searchButton setImage:[UIImage imageNamed:@"group_home_search_gray"] forState:0];
     [_searchButton adjustsImageWhenHighlighted];
     _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _searchButton.titleEdgeInsets = UIEdgeInsetsMake(0, 2 * DCMargin, 0, 0);
@@ -162,6 +162,7 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
     
     _voiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _voiceButton.adjustsImageWhenHighlighted = NO;
+    _voiceButton.hidden = YES;
     _voiceButton.frame = CGRectMake(_topSearchView.dc_width - 40, 0, 35, _topSearchView.dc_height);
     [_voiceButton addTarget:self action:@selector(voiceButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_voiceButton setImage:[UIImage imageNamed:@"icon_voice_search"] forState:0];
@@ -263,8 +264,9 @@ static NSString *const DCBrandSortCellID = @"DCBrandSortCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击了个第%zd分组第%zd几个Item",indexPath.section,indexPath.row);
+    DCCalssSubItem * item = _mainItem[indexPath.section].goods[indexPath.row];
     DCGoodsSetViewController *goodSetVc = [[DCGoodsSetViewController alloc] init];
-    goodSetVc.goodPlisName = @"ClasiftyGoods.plist";
+    goodSetVc.calssSubItem = item;
     goodSetVc.hidesBottomBarWhenPushed = YES;
 
     [self.navigationController pushViewController:goodSetVc animated:YES];

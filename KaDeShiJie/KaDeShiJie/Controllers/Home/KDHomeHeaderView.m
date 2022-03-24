@@ -28,7 +28,7 @@
 #import "KDHomeHeaderCardCollectionViewCell.h"
 #import "KDXinYongKaViewController.h"
 #import "KDMineKehuViewController.h"
-#import "MCHomeServiceViewController.h"
+#import "KDHomeServeViewController.h"
 
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
@@ -431,7 +431,7 @@
 
 - (IBAction)serviceOnlin:(id)sender {
     
-    [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+    [MCLATESTCONTROLLER.navigationController pushViewController:[[KDHomeServeViewController alloc] init] animated:YES];
 }
 
 

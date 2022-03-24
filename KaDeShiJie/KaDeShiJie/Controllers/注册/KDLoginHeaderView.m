@@ -14,7 +14,7 @@
 #import "KDCommonAlert.h"
 #import "NSString+QMUI.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "MCHomeServiceViewController.h"
+#import "KDHomeServeViewController.h"
 #define SegmentUnLine_COLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
 #define SegmentBtn_COLOR    [UIColor colorWithRed:255/255.0 green:159/255.0 blue:88/255.0 alpha:1]
 #define SegmentSelet_FontSize 19
@@ -54,7 +54,7 @@
     self.agreeBtn.selected = !self.agreeBtn.selected;
 }
 - (IBAction)kefuAction:(id)sender {
-    [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+    [MCLATESTCONTROLLER.navigationController pushViewController:[[KDHomeServeViewController alloc] init] animated:YES];
 
 }
 

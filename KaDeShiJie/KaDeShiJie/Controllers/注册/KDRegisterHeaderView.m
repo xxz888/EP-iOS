@@ -240,7 +240,7 @@
 
 - (IBAction)zhucexieyi:(id)sender {
     MCWebViewController *web = [[MCWebViewController alloc] init];
-  web.urlString = SharedDefaults.configDic[@"registerProtocolLink"];
+  web.urlString = SharedDefaults.configDic[@"config"][@"registerProtocolLink"];
   web.title = @"注册服务协议";
   [MCLATESTCONTROLLER.navigationController pushViewController:web animated:YES];
 }

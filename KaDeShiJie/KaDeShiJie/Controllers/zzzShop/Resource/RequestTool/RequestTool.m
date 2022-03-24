@@ -75,7 +75,7 @@ static AFHTTPSessionManager *_manager;
         }else if (type == 2){ // POST 请求
             
             [_manager POST:URL parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
-                
+                NSLog(@"\n\nAPI-%@\n\nRESULT-%@",URL,responseObject[@"content"]);
                 !success ? : success(responseObject);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error){
                 

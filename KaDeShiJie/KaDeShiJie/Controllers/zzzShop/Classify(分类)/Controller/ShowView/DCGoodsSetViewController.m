@@ -25,6 +25,7 @@
 #import <MJExtension.h>
 #import "XWDrawerAnimator.h"
 #import "UIViewController+XWTransition.h"
+#import "RequestTool.h"
 // Categories
 
 // Others
@@ -123,7 +124,41 @@ static NSString *const DCListGridCellID = @"DCListGridCell";
 #pragma mark - 加载数据
 - (void)setUpData
 {
-    _setItem = [DCRecommendItem mj_objectArrayWithFilename:_goodPlisName];
+    
+    WEAKSELF
+    [RequestTool requestWithType:2 URL:@"http://api.zhifu168.com/api/shop/api/getGood/search" parameter:@{@"q":self.calssSubItem.goods_title,@"page":@"1",@"page_size":@"20"} successComplete:^(id responseObject) {
+        
+        weakSelf.setItem = [[NSMutableArray alloc]init];
+
+        for (NSDictionary * dic in responseObject[@"content"]) {
+            DCRecommendItem * item = [[DCRecommendItem alloc]init];
+            item.image_url = dic[@"pict_url"];
+            item.main_title = dic[@"title"];
+            item.price = dic[@"quanhou_jiage"];
+            item.volume = dic[@"volume"];
+            item.tao_id = dic[@"tao_id"];
+            item.goods_title = dic[@"tao_id"];
+            item.images = [dic[@"small_images"] split:@"|"];
+
+            
+//            dcVc.goodTitle = _setItem[indexPath.row].main_title;
+//            dcVc.goodPrice = _setItem[indexPath.row].price;
+//            dcVc.goodSubtitle = _setItem[indexPath.row].goods_title;
+//            dcVc.shufflingArray = _setItem[indexPath.row].images;
+//            dcVc.goodImageView = _setItem[indexPath.row].image_url;
+            [weakSelf.setItem addObject:item];
+        }
+        [weakSelf.collectionView reloadData];
+        
+        
+        
+    } failureComplete:^(NSError *error) {
+        
+    }];
+    
+    
+    
+   // _setItem = [DCRecommendItem mj_objectArrayWithFilename:_goodPlisName];
 }
 #pragma mark - 导航栏
 - (void)setUpNav
@@ -149,10 +184,10 @@ static NSString *const DCListGridCellID = @"DCListGridCell";
     self.navigationItem.titleView = _topSearchView;
     
     _searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_searchButton setTitle:@"搜索商品/店铺" forState:0];
+    [_searchButton setTitle:@"商品/店铺" forState:0];
     [_searchButton setTitleColor:[UIColor lightGrayColor] forState:0];
     _searchButton.titleLabel.font = PFR13Font;
-    [_searchButton setImage:[UIImage imageNamed:@"group_home_search_gray"] forState:0];
+//    [_searchButton setImage:[UIImage imageNamed:@"group_home_search_gray"] forState:0];
     [_searchButton adjustsImageWhenHighlighted];
     _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _searchButton.titleEdgeInsets = UIEdgeInsetsMake(0, 2 * DCMargin, 0, 0);
@@ -173,7 +208,7 @@ static NSString *const DCListGridCellID = @"DCListGridCell";
     _backTopButton.frame = CGRectMake(ScreenW - 50, ScreenH - 60, 40, 40);
     
     _footprintButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:_footprintButton];
+//    [self.view addSubview:_footprintButton];
     [_footprintButton addTarget:self action:@selector(footprintButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_footprintButton setImage:[UIImage imageNamed:@"ptgd_icon_zuji"] forState:UIControlStateNormal];
     _footprintButton.frame = CGRectMake(ScreenW - 50, ScreenH - 60, 40, 40);
@@ -224,6 +259,84 @@ static NSString *const DCListGridCellID = @"DCListGridCell";
         WEAKSELF
         headerView.filtrateClickBlock = ^{//点击了筛选
             [weakSelf filtrateButtonClick];
+        };
+        headerView.clickBlock = ^(NSInteger tag) {
+            //价格
+            if (tag == 100) {
+                
+                
+                //model 按年龄属性 排序
+                NSArray *ageSortResultArray = [weakSelf.setItem sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    
+                    DCRecommendItem *per1 = obj1;
+                    
+                    DCRecommendItem *per2 = obj2;
+                    
+                    if (per1.tao_id > per2.tao_id) {
+                        return NSOrderedDescending;//降序
+                    }else if (per1.tao_id < per2.tao_id)
+                    {
+                        return NSOrderedAscending;//升序
+                    }else
+                    {
+                        return NSOrderedSame;//相等
+                    }
+                    
+                }];
+                [weakSelf.setItem removeAllObjects];
+                [weakSelf.setItem addObjectsFromArray:ageSortResultArray];
+                [weakSelf.collectionView reloadData];
+            }
+            //价格
+            if (tag == 101) {
+                
+                
+                //model 按年龄属性 排序
+                NSArray *ageSortResultArray = [weakSelf.setItem sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    
+                    DCRecommendItem *per1 = obj1;
+                    
+                    DCRecommendItem *per2 = obj2;
+                    
+                    if (per1.price > per2.price) {
+                        return NSOrderedDescending;//降序
+                    }else if (per1.price < per2.price)
+                    {
+                        return NSOrderedAscending;//升序
+                    }else
+                    {
+                        return NSOrderedSame;//相等
+                    }
+                    
+                }];
+                [weakSelf.setItem removeAllObjects];
+                [weakSelf.setItem addObjectsFromArray:ageSortResultArray];
+                [weakSelf.collectionView reloadData];
+            }
+            //销量
+            if (tag == 102) {
+                //model 按年龄属性 排序
+                NSArray *ageSortResultArray = [weakSelf.setItem sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    
+                    DCRecommendItem *per1 = obj1;
+                    
+                    DCRecommendItem *per2 = obj2;
+                    
+                    if (per1.volume > per2.volume) {
+                        return NSOrderedDescending;//降序
+                    }else if (per1.volume < per2.volume)
+                    {
+                        return NSOrderedAscending;//升序
+                    }else
+                    {
+                        return NSOrderedSame;//相等
+                    }
+                    
+                }];
+                [weakSelf.setItem removeAllObjects];
+                [weakSelf.setItem addObjectsFromArray:ageSortResultArray];
+                [weakSelf.collectionView reloadData];
+            }
         };
         reusableview = headerView;
     }

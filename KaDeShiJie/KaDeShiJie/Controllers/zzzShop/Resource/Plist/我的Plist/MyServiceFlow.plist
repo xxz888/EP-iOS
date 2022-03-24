@@ -6,9 +6,9 @@
 		<key>gridColor</key>
 		<string>#F36E69</string>
 		<key>gridTag</key>
-		<string>签到有理</string>
+		<string></string>
 		<key>gridTitle</key>
-		<string>会员俱乐部</string>
+		<string>客服中心</string>
 		<key>iconImage</key>
 		<string>MG_huiyuan</string>
 	</dict>
@@ -18,7 +18,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string>领券中心</string>
+		<string>我的优惠券</string>
 		<key>iconImage</key>
 		<string>MG_lingquanzhongxin</string>
 	</dict>
@@ -28,7 +28,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string>美豆商城</string>
+		<string>收货地址</string>
 		<key>iconImage</key>
 		<string>MG_meidoushangcheng</string>
 	</dict>
@@ -38,7 +38,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string>门店积分</string>
+		<string></string>
 		<key>iconImage</key>
 		<string>MG_mendianjifen</string>
 	</dict>
@@ -48,7 +48,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string>我的礼物</string>
+		<string></string>
 		<key>iconImage</key>
 		<string>MG_liwugou</string>
 	</dict>
@@ -56,9 +56,9 @@
 		<key>gridColor</key>
 		<string>#86CC57</string>
 		<key>gridTag</key>
-		<string>赚佣金</string>
+		<string></string>
 		<key>gridTitle</key>
-		<string>我的预约</string>
+		<string>意见反馈</string>
 		<key>iconImage</key>
 		<string>MG_yuyue</string>
 	</dict>
@@ -68,7 +68,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string>我的拼团</string>
+		<string>关于APP</string>
 		<key>iconImage</key>
 		<string>MG_pingou</string>
 	</dict>
@@ -78,7 +78,7 @@
 		<key>gridTag</key>
 		<string></string>
 		<key>gridTitle</key>
-		<string>我的评价</string>
+		<string>退出登录</string>
 		<key>iconImage</key>
 		<string>MG_PingJia</string>
 	</dict>

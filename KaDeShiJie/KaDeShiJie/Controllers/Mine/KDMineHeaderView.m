@@ -19,7 +19,7 @@
 #import "KDJFShopViewController.h"
 #import "UIView+Extension.h"
 #import "jintMyWallViewController.h"
-#import "MCHomeServiceViewController.h"
+#import "KDHomeServeViewController.h"
 
 @interface KDMineHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
@@ -141,7 +141,7 @@
             NSLog(@"我的奖券");
             break;
         case 105:
-            [MCLATESTCONTROLLER.navigationController pushViewController:[[MCHomeServiceViewController alloc] init] animated:YES];
+            [MCLATESTCONTROLLER.navigationController pushViewController:[[KDHomeServeViewController alloc] init] animated:YES];
 //            [MCPagingStore pagingURL:rt_setting_service];
             break;
         case 106:

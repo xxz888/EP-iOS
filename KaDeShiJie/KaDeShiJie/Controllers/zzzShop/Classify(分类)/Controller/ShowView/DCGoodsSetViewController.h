@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DCCalssSubItem.h"
 @interface DCGoodsSetViewController : UIViewController
 
 /* plist数据 */
 @property (strong , nonatomic)NSString *goodPlisName;
 
-
+@property (nonatomic ,strong)DCCalssSubItem * calssSubItem;
 @end

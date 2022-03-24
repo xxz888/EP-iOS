@@ -26,7 +26,11 @@
     self.topImage.layer.cornerRadius = 10;
       
     
-    
+    if (self.isDis) {
+        self.contentLabel.hidden = YES;
+        self.content1Lbl.hidden = YES;
+
+    }
     self.versionLbl.text = [NSString stringWithFormat:@"v%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]];
 
     [self getData];
@@ -36,7 +40,7 @@
     
     
     //添加手势
-    self.telLabel.text = [NSString stringWithFormat:@"客服电话:%@",SharedDefaults.configDic[@"config"][@"servicePhone"]];
+    self.telLabel.text = [NSString stringWithFormat:@"客服电话:%@",SharedDefaults.configDic[@"servicePhone"]];
     self.telLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCall:)];
     [self.telLabel addGestureRecognizer:tap];
@@ -44,7 +48,7 @@
 //    self.telLabel.text = [NSString stringWithFormat:@"电话：%@",SharedBrandInfo.brandPhone];
 }
 -(void)clickCall:(id)tap{
-    [MCServiceStore call:SharedDefaults.configDic[@"config"][@"servicePhone"]];
+    [MCServiceStore call:SharedDefaults.configDic[@"servicePhone"]];
 
 }
 @end

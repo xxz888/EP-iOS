@@ -75,6 +75,7 @@
 }
 -(void)clickNoAdressAction:(id)tap{
     KDJFAdressListViewController * vc = [[KDJFAdressListViewController alloc]init];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)clickHaveAdressAction:(id)tap{

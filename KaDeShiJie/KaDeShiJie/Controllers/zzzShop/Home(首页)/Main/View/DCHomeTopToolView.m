@@ -93,10 +93,10 @@
     [self addSubview:_topSearchView];
     
     _searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_searchButton setTitle:@"彩电内购会" forState:0];
+    [_searchButton setTitle:@"商品内购会" forState:0];
     [_searchButton setTitleColor:[UIColor lightGrayColor] forState:0];
     _searchButton.titleLabel.font = PFR13Font;
-    [_searchButton setImage:[UIImage imageNamed:@"group_home_search_gray"] forState:0];
+//    [_searchButton setImage:[UIImage imageNamed:@"group_home_search_gray"] forState:0];
     [_searchButton adjustsImageWhenHighlighted];
     _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _searchButton.titleEdgeInsets = UIEdgeInsetsMake(0, 2 * DCMargin, 0, 0);
@@ -106,6 +106,7 @@
     
     _voiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _voiceButton.adjustsImageWhenHighlighted = NO;
+    _voiceButton.hidden = YES;
     [_voiceButton addTarget:self action:@selector(voiceButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_voiceButton setImage:[UIImage imageNamed:@"icon_voice_search"] forState:0];
     [_topSearchView addSubview:_voiceButton];

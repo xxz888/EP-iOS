@@ -17,7 +17,7 @@
 // Vendors
 #import <SDCycleScrollView.h>
 // Categories
-
+#import "DCGoodDetailViewController.h"
 // Others
 
 @interface DCSlideshowHeadView ()<SDCycleScrollViewDelegate>
@@ -62,6 +62,11 @@
 #pragma mark - 点击图片Bannar跳转
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"点击了%zd轮播图",index);
+    
+   
+    
+    
+    
 }
 
 #pragma mark - 布局

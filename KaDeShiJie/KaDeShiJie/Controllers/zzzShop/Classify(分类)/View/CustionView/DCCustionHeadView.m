@@ -47,8 +47,8 @@
 - (void)setUpUI
 {
     self.backgroundColor = [UIColor whiteColor];
-    NSArray *titles = @[@"推荐",@"价格",@"销量",@"筛选"];
-    NSArray *noImage = @[@"icon_Arrow2",@"",@"",@"icon_shaixuan"];
+    NSArray *titles = @[@"推荐",@"价格",@"销量"];
+    NSArray *noImage = @[@"",@"",@"",@""];
     CGFloat btnW = self.dc_width / titles.count;
     CGFloat btnH = self.dc_height;
     CGFloat btnY = 0;
@@ -91,6 +91,10 @@
         
         _selectBtn = button;
         _selectBottomRedView = bottomRedView;
+        
+        if (self.clickBlock) {
+            self.clickBlock(button.tag);
+        }
     }
 }
 

@@ -22,9 +22,12 @@
 @property (nonatomic, copy) NSString *stock;
 /** 属性 */
 @property (nonatomic, copy) NSString *nature;
+@property (nonatomic, copy) NSString *volume;
+@property (nonatomic, copy) NSString *tao_id;
+
 
 /* 头部轮播 */
-@property (copy , nonatomic , readonly)NSArray *images;
+@property (copy , nonatomic)NSArray *images;
 
 
 

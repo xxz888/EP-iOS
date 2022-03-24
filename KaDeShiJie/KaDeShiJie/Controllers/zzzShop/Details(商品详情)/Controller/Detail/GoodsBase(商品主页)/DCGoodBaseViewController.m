@@ -7,7 +7,7 @@
 //
 
 #import "DCGoodBaseViewController.h"
-
+#import "KDJFAdressListViewController.h"
 // Controllers
 #import "DCFootprintGoodsViewController.h"
 #import "DCShareToViewController.h"
@@ -54,6 +54,7 @@
 @property (strong , nonatomic)UIButton *backTopButton;
 /* 通知 */
 @property (weak ,nonatomic) id dcObj;
+@property (strong , nonatomic)NSDictionary * addressDic;
 
 @end
 
@@ -188,7 +189,7 @@ static NSArray *lastSeleArray_;
     //父类加入购物车，立即购买通知
     _dcObj = [[NSNotificationCenter defaultCenter]addObserverForName:SELECTCARTORBUY object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
-        if (lastSeleArray_.count != 0) {
+//        if (lastSeleArray_.count != 0) {
             if ([note.userInfo[@"buttonTag"] isEqualToString:@"2"]) { //加入购物车（父类）
                 
                 [weakSelf setUpWithAddSuccess];
@@ -199,12 +200,12 @@ static NSArray *lastSeleArray_;
                 [weakSelf.navigationController pushViewController:dcFillVc animated:YES];
             }
             
-        }else {
-            
-            DCFeatureSelectionViewController *dcNewFeaVc = [DCFeatureSelectionViewController new];
-            dcNewFeaVc.goodImageView = weakSelf.goodImageView;
-            [weakSelf setUpAlterViewControllerWith:dcNewFeaVc WithDistance:ScreenH * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
-        }
+//        }else {
+//
+//            DCFeatureSelectionViewController *dcNewFeaVc = [DCFeatureSelectionViewController new];
+//            dcNewFeaVc.goodImageView = weakSelf.goodImageView;
+//            [weakSelf setUpAlterViewControllerWith:dcNewFeaVc WithDistance:ScreenH * 0.8 WithDirection:XWDrawerAnimatorDirectionBottom WithParallaxEnable:YES WithFlipEnable:YES];
+//        }
     }];
 
     //选择Item通知
@@ -270,7 +271,7 @@ static NSArray *lastSeleArray_;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return (section == 0 ||section == 2 || section == 3) ? 2 : 1;
+    return (section == 0 ||section == 2 || section == 3) ? 2 :(section == 4 || section == 1) ? 0 : 1;
 }
 
 #pragma mark - <UICollectionViewDelegate>
@@ -308,7 +309,7 @@ static NSArray *lastSeleArray_;
         }else{
             if (indexPath.row == 0) {
                 DCShowTypeTwoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeTwoCellID forIndexPath:indexPath];
-                cell.contentLabel.text = (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) ? @"预送地址" : userInfo.defaultAddress;//地址
+                cell.contentLabel.text = (!TOKEN || !self.addressDic) ? @"预送地址" : self.addressDic[@"completeAddress"];//地址
                 gridcell = cell;
             }else{
                 DCShowTypeThreeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DCShowTypeThreeCellID forIndexPath:indexPath];
@@ -399,6 +400,8 @@ static NSArray *lastSeleArray_;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) {
         [self scrollToDetailsPage]; //滚动到详情页面
+    }else if (indexPath.section == 0 && indexPath.row == 1) {
+         [MCToast showMessage:@"暂无优惠券"] ; //滚动到详情页面
     }else if (indexPath.section == 2 && indexPath.row == 0) {
         [self chageUserAdress]; //跟换地址
     }else if (indexPath.section == 1){ //属性选择
@@ -445,33 +448,45 @@ static NSArray *lastSeleArray_;
 #pragma mark - 更换地址
 - (void)chageUserAdress
 {
-    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
-        DCLoginViewController *dcLoginVc = [DCLoginViewController new];
-        [self presentViewController:dcLoginVc animated:YES completion:nil];
-        return;
-    }
-    _adPickerView = [AddressPickerView shareInstance];
-    [_adPickerView showAddressPickView];
-    [self.view addSubview:_adPickerView];
-    
     WEAKSELF
-    _adPickerView.block = ^(NSString *province,NSString *city,NSString *district) {
-        DCUserInfo *userInfo = UserInfoData;
-        NSString *newAdress = [NSString stringWithFormat:@"%@ %@ %@",province,city,district];
-        if ([userInfo.defaultAddress isEqualToString:newAdress]) {
-            return;
-        }
-        userInfo.defaultAddress = newAdress;
-        [userInfo save];
-        [weakSelf.collectionView reloadData];
-    };
+    if (TOKEN) {
+        KDJFAdressListViewController * vc = [[KDJFAdressListViewController alloc]init];
+        vc.block = ^(NSDictionary * dic) {
+            weakSelf.addressDic = dic;
+            [weakSelf.collectionView reloadData];
+        };
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        [MCApp userLogout];
+    }
+    
+//    if (![[DCObjManager dc_readUserDataForKey:@"isLogin"] isEqualToString:@"1"]) {
+//        DCLoginViewController *dcLoginVc = [DCLoginViewController new];
+//        [self presentViewController:dcLoginVc animated:YES completion:nil];
+//        return;
+//    }
+//    _adPickerView = [AddressPickerView shareInstance];
+//    [_adPickerView showAddressPickView];
+//    [self.view addSubview:_adPickerView];
+//
+//    WEAKSELF
+//    _adPickerView.block = ^(NSString *province,NSString *city,NSString *district) {
+//        DCUserInfo *userInfo = UserInfoData;
+//        NSString *newAdress = [NSString stringWithFormat:@"%@ %@ %@",province,city,district];
+//        if ([userInfo.defaultAddress isEqualToString:newAdress]) {
+//            return;
+//        }
+//        userInfo.defaultAddress = newAdress;
+//        [userInfo save];
+//        [weakSelf.collectionView reloadData];
+//    };
 }
 
 #pragma mark - 滚动到详情页面
 - (void)scrollToDetailsPage
 {
     dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-        [[NSNotificationCenter defaultCenter]postNotificationName:SCROLLTODETAILSPAGE object:nil];
+        //[[NSNotificationCenter defaultCenter]postNotificationName:SCROLLTODETAILSPAGE object:nil];
     });
 }
 

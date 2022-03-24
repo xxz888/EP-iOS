@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCBaseSetViewController : UIViewController
+@interface DCBaseSetViewController : MCBaseViewController
 
 @end
