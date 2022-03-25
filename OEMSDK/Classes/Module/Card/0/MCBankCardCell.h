@@ -36,6 +36,7 @@ typedef void (^MCBankCardCellBlock)(MCBankCardCellActionType type, MCBankCardMod
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImage;
 @property (weak, nonatomic) IBOutlet UIButton *modifyBtn;
+@property (weak, nonatomic) IBOutlet UILabel *riziLbl;
 
 
 

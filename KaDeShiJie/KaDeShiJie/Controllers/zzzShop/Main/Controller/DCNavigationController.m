@@ -31,14 +31,14 @@
 #pragma mark - load初始化一次
 + (void)load
 {
-    [self setUpBase];
+    //[self setUpBase];
 }
 
 #pragma mark - LifeCyle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [GQGesVCTransition validateGesBackWithType:GQGesVCTransitionTypePanWithPercentRight withRequestFailToLoopScrollView:YES]; //手势返回
+   // [GQGesVCTransition validateGesBackWithType:GQGesVCTransitionTypePanWithPercentRight withRequestFailToLoopScrollView:YES]; //手势返回
 }
 
 #pragma mark - 初始化

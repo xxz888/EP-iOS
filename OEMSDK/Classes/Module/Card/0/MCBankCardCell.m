@@ -72,6 +72,14 @@
     MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:model.bankName];
     self.logo.image = info.logo;
     self.bgImage.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
+    
+    if (model.billingDate && model.repaymentDate) {
+        self.riziLbl.text = [NSString stringWithFormat:@"账单日:%@日 还款日:%@日",model.billingDate,model.repaymentDate];
+        self.riziLbl.hidden = NO;
+    }else{
+        self.riziLbl.hidden = YES;
+
+    }
 //    if(model.idDef){
 //        [self.defBtn setTitle:@"默认卡" forState:UIControlStateNormal];
 //        self.defBtn.userInteractionEnabled = NO;

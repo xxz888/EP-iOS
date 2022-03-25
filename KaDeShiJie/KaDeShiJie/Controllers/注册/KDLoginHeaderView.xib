@@ -438,6 +438,7 @@
                 <outlet property="segmentLine1" destination="Niw-8b-iXl" id="xPE-UG-2DS"/>
                 <outlet property="segmentLine2" destination="Oqi-WE-HtT" id="nEr-qx-ead"/>
                 <outlet property="topImg" destination="eX6-H3-uj2" id="87k-Eg-gTE"/>
+                <outlet property="zhuceBtn" destination="Mqv-UU-4D7" id="Yea-OL-gXE"/>
             </connections>
             <point key="canvasLocation" x="-4842" y="225"/>
         </view>

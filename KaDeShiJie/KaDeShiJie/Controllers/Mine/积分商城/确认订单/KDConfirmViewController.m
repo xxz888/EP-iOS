@@ -14,10 +14,12 @@
 #import "KDPaySelectView.h"
 #import "KDPayZhuanZhangView.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "KDJFOrderListViewController.h"
 
 @interface KDConfirmViewController ()
 @property (nonatomic ,strong)NSDictionary * adressDic;
 @property (nonatomic ,strong)MCBankCardModel * cardModel;
+@property (nonatomic ,strong)NSString * orderId;
 
 
 
@@ -53,7 +55,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     kWeakSelf(self);
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundAction:) name:@"applicationWillEnterForegroundAction" object:nil];
+    
     [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/api/v1/player/shop/address"] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
         if ([resp count] != 0) {
             weakself.noAddressView.hidden = YES;
@@ -71,6 +74,19 @@
 
         }
 
+    }];
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
+}
+-(void)applicationWillEnterForegroundAction:(id)tap{
+    
+    kWeakSelf(self);
+
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/api/v1/player/shop/orderId/%@",self.orderId] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        [weakself.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
     }];
 }
 -(void)clickNoAdressAction:(id)tap{
@@ -209,7 +225,7 @@
 -(void)shopOrder{
     __weak typeof(self) weakSelf = self;
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/shop/order" parameters:@{@"shopReceiptAddressId":[NSString stringWithFormat:@"%@",self.adressDic[@"id"]],@"sku":[NSString stringWithFormat:@"%@",self.goodDic[@"sku"]]} ok:^(NSDictionary * _Nonnull resp) {
-        
+        weakSelf.orderId = resp[@"orderId"];
         [weakSelf shopPay:resp[@"orderId"]];
     
     } other:^(NSDictionary * _Nonnull resp) {

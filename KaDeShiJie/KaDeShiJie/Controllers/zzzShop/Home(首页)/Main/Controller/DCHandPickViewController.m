@@ -234,6 +234,7 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
         [weakSelf.navigationController pushViewController:dcComVc animated:YES];
     };
     _topToolView.rightRItemClickBlock = ^{
+        [weakSelf unlogin];
         NSLog(@"点击了首页购物车");
         DCMyTrolleyViewController *shopCarVc = [DCMyTrolleyViewController new];
         shopCarVc.hidesBottomBarWhenPushed = YES;
@@ -250,7 +251,32 @@ static NSString *const DCScrollAdFootViewID = @"DCScrollAdFootView";
     [self.view addSubview:_topToolView];
     
 }
+-(void)unlogin{
+    if (!TOKEN) {
+        //选择
+        __weak typeof(self) weakSelf = self;
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请先登录" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [MCApp userLogout];
+        }];
+        [alert addAction:action1];
+        
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+           
 
+        }];
+        
+
+
+        [alert addAction:action];
+        [self presentViewController:alert animated:NO completion:nil];
+        
+        
+        
+        return;
+    }
+}
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 6;

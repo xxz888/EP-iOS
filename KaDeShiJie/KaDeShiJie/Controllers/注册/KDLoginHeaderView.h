@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDLoginHeaderView : UIView
 
 
+@property (weak, nonatomic) IBOutlet UIButton *zhuceBtn;
 
 @end
 

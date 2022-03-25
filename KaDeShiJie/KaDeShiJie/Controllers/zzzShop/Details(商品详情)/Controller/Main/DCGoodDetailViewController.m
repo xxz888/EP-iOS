@@ -315,11 +315,13 @@
         shopCarVc.isTabBar = YES;
         shopCarVc.title = @"购物车";
         [self.navigationController pushViewController:shopCarVc animated:YES];
-    }else  if (button.tag == 2 || button.tag == 3) { //父控制器的加入购物车和立即购买
+    }else  if (button.tag == 2) { //父控制器的加入购物车和立即购买
         if (!TOKEN) {
             [self unLogin];
             return;
         }
+        
+        
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"car"]) {
             [MCToast showMessage:@"购物车已有商品，请先购买后再可加入购物车"];
         }else{
@@ -334,9 +336,29 @@
 //            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%zd",button.tag],@"buttonTag", nil];
 //            [[NSNotificationCenter defaultCenter]postNotificationName:SELECTCARTORBUY object:nil userInfo:dict];
 //        });
+    }else  if (button.tag == 2) { //父控制器的加入购物车和立即购买
+        if (!TOKEN) {
+            [self unLogin];
+            return;
+        }
+        
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"car"]) {
+            [MCToast showMessage:@"请去购物车界面付款"];
+        }else{
+            NSDictionary * dic = @{@"goodTitle":self.goodTitle,@"goodPrice":self.goodPrice,@"goodSubtitle":self.goodSubtitle,@"goodImageView":self.goodImageView};
+            [[NSUserDefaults standardUserDefaults] setValue:dic forKey:@"car"];
+            [MCToast showMessage:@"加入购物车成功"];
+        }
+    
+   
+        //异步发通知
+//        dispatch_sync(dispatch_get_global_queue(0, 0), ^{
+//            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%zd",button.tag],@"buttonTag", nil];
+//            [[NSNotificationCenter defaultCenter]postNotificationName:SELECTCARTORBUY object:nil userInfo:dict];
+//        });
     }
 }
-
 
 -(void)unLogin{
         //选择

@@ -108,7 +108,8 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [MQManager openMeiqiaService];
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"applicationWillEnterForegroundAction" object:nil];
+
 //    if (!MCModelStore.shared.updateViewIsShow) {
 //        MCModelStore.shared.updateViewIsShow = YES;
 //        [MCVerifyStore verifyVersionShowToast:NO];

@@ -570,11 +570,20 @@
     
     NSMutableDictionary * mdic = [[NSMutableDictionary alloc]initWithDictionary:dic];
     
- 
+    NSInteger count2 = ([self inRefundMoneyToNewMoney] / ([self.cardBalanceView.text doubleValue] * count)) + 1;
+
     
     //默认日期
     if (self.normalRefundTypeBtn.selected) {
         [mdic setValue:planStartDate forKey:@"planStartDate"];
+        
+        NSMutableArray * mArr = [[NSMutableArray alloc]init];
+        for (NSInteger i = 1; i < count2+1; i++) {
+            NSString * planDates = [self getNDay:i];
+            [mArr addObject:planDates];
+        }
+        [mdic setValue:[mArr componentsJoinedByString:@","] forKey:@"planDates"];
+
     }else{
         NSString *executeDateString = [self.timeArray componentsJoinedByString:@","];
         [mdic setValue:executeDateString forKey:@"planDates"];
@@ -583,7 +592,6 @@
         //    前端初步校验 选择的日期总数 > 还款金额 / (卡余额 * 还款次数) + 1天
         //    即：卡余额1000，还款1万 每日还款一次 需要选择 10 + 1天
         //    如还款日期选择包含今天 则还需+1天
-        NSInteger count2 = ([self inRefundMoneyToNewMoney] / ([self.cardBalanceView.text doubleValue] * count)) + 1;
         if ([self.timeArray containsObject:planStartDate]) {
             if ([self.timeArray count] < count2+1) {
                 [MCToast showMessage:@"选择的日期少于实际计划日期,请增加还款天数或余额"];
@@ -607,6 +615,29 @@
         
     }];
 }
+ -(NSString *)getNDay:(NSInteger)n{
+ 
+      NSDate*nowDate = [NSDate date];
+ 
+      NSDate* theDate;
+ 
+      if(n!=0){
+ 
+          NSTimeInterval  oneDay = 24*60*60*1;  //1天的长度
+         theDate = [nowDate initWithTimeIntervalSinceNow: oneDay*n ];//initWithTimeIntervalSinceNow是从现在往前后推的秒数
+
+     }else{
+
+         theDate = nowDate;
+    }
+
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+     [date_formatter setDateFormat:@"yyyy-MM-dd"];
+     NSString *the_date_str = [date_formatter stringFromDate:theDate];
+
+     return the_date_str;
+ }
+
 //① 第三步制定计划
 - (void)requestZhiDingJiHua{
     if (![self getParameters]) {return;}

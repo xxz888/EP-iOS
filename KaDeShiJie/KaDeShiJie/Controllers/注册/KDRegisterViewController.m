@@ -42,5 +42,7 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)scrollViewDidScroll:(UITableView *)tableView {
 
+}
 @end

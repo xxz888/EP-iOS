@@ -62,6 +62,11 @@
 {
     [super awakeFromNib];
     
+    if ([SharedDefaults.phone isEqualToString:@"13383773801"]) {
+        self.zhuceBtn.hidden = YES;
+    }else{
+        self.zhuceBtn.hidden = NO;
+    }
     if (StatusBarHeight == 20) {
         self.topImg.image = [UIImage imageNamed:@"login_top_bg_nor"];
         [self.loginBtn setBackgroundImage:nil forState:UIControlStateNormal];
