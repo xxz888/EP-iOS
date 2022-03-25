@@ -33,7 +33,8 @@
 #import "KDMineCouponController.h"
 #import "KDHomeServeViewController.h"
 #import "liveness/Liveness.h"
-
+#import "JGUserFeedBackViewController.h"
+#import "KDJFOrderListViewController.h"
 @interface DCMyCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /* headView */
@@ -224,7 +225,7 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
                 [self shiming];
             //意见反馈
             }else if (index == 5) {
-                
+                [self.navigationController pushViewController:[JGUserFeedBackViewController new] animated:YES];
             //关于APP
             }else if (index == 6) {
                 KDAboutMineViewController * vc = [[KDAboutMineViewController alloc]init];
@@ -278,7 +279,7 @@ static NSString *const DCCenterBackCellID = @"DCCenterBackCell";
 #pragma mark - <UITableViewDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
+   
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

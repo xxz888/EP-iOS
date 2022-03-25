@@ -199,33 +199,46 @@
 
         }
         
+//        if ([SharedDefaults.host isEqualToString:@"https://wukatest.flyaworld.com:443"]) {
+//
+//        }else{
+//            MCAppDelegate *appdelegate = (MCAppDelegate *)[UIApplication sharedApplication].delegate;
+//            appdelegate.versionCode = resp[@"iosVersion"][@"versionCode"];
+//            NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
+//            NSString *localVersion = @"";
+//            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]) {
+//                localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+//            }else{
+//                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"currentVersion"];
+//                localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
+//            }
+//            NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
+//            if (result == NSOrderedDescending) {
+//                MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
+//                NSString * str = @"1、修改已知bug。\n2、优化用户体验";
+//                [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
+//            }
+//            MCUserInfo * userInfo = SharedUserInfo;
+//            if ([userInfo.phone isEqualToString:@"13383773800"]) {
+//                UILabel * tagLbl = [weakself.view viewWithTag:104];
+//                tagLbl.text = [NSString stringWithFormat:@"首页-%@-%@",SharedAppInfo.version,localVersion];
+//            }
+//        }
+   
         if ([SharedDefaults.host isEqualToString:@"https://wukatest.flyaworld.com:443"]) {
             
         }else{
-            MCAppDelegate *appdelegate = (MCAppDelegate *)[UIApplication sharedApplication].delegate;
-            appdelegate.versionCode = resp[@"iosVersion"][@"versionCode"];
+          
             NSString *remoteVersion = resp[@"iosVersion"][@"versionCode"];
-            NSString *localVersion = @"";
-            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]) {
-                localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
-            }else{
-                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"currentVersion"];
-                localVersion =   [[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"];
-            }
+            NSString *localVersion = SharedAppInfo.build;
             NSComparisonResult result = [remoteVersion compare:localVersion options:NSNumericSearch];
             if (result == NSOrderedDescending) {
                 MCUpdateAlertView *updateView = [[[NSBundle OEMSDKBundle] loadNibNamed:@"MCUpdateAlertView" owner:nil options:nil] firstObject];
                 NSString * str = @"1、修改已知bug。\n2、优化用户体验";
                 [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
             }
-            MCUserInfo * userInfo = SharedUserInfo;
-            if ([userInfo.phone isEqualToString:@"13383773800"]) {
-                UILabel * tagLbl = [weakself.view viewWithTag:104];
-                tagLbl.text = [NSString stringWithFormat:@"首页-%@-%@",SharedAppInfo.version,localVersion];
-            }
+         
         }
-   
-        
     }];
 }
 - (void)getCreditArticleList {

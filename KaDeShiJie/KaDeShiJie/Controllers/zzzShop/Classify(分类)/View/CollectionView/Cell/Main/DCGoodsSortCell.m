@@ -59,14 +59,15 @@
 - (void)layoutSubviews
 {
     [_goodsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+      
         make.centerX.mas_equalTo(self);
-        [make.top.mas_equalTo(self)setOffset:5];
-        make.size.mas_equalTo(CGSizeMake(self.dc_width * 0.85, self.dc_width * 0.85));
+        [make.top.mas_equalTo(self)setOffset:23];
+        make.size.mas_equalTo(CGSizeMake(self.dc_width * 0.5, self.dc_width * 0.5));
     }];
     
     [_goodsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        [make.top.mas_equalTo(_goodsImageView.mas_bottom)setOffset:5];
-        make.width.mas_equalTo(_goodsImageView);
+        [make.top.mas_equalTo(_goodsImageView.mas_bottom)setOffset:10];
+        make.width.mas_equalTo(self);
         make.centerX.mas_equalTo(self);
     }];
 }
@@ -75,13 +76,16 @@
 #pragma mark - Setter Getter Methods
 - (void)setSubItem:(DCCalssSubItem *)subItem
 {
+    _goodsTitleLabel.text = subItem.goods_title;
+    _goodsImageView.image = [UIImage imageNamed:subItem.goods_title];
     _subItem = subItem;
+    return;
     if ([subItem.image_url containsString:@"http"]) {
         [_goodsImageView sd_setImageWithURL:[NSURL URLWithString:subItem.image_url]];
     }else{
         _goodsImageView.image = [UIImage imageNamed:subItem.image_url];
     }
-    _goodsTitleLabel.text = subItem.goods_title;
+   
 }
 
 @end

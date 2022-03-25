@@ -479,6 +479,10 @@
 		6FCFF4182787D08C00E34091 /* KDWukaJifenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF4162787D08C00E34091 /* KDWukaJifenViewController.xib */; };
 		6FF5D4D327EC77290041B434 /* KDHomeServeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF5D4D127EC77290041B434 /* KDHomeServeViewController.m */; };
 		6FF5D4D427EC77290041B434 /* KDHomeServeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FF5D4D227EC77290041B434 /* KDHomeServeViewController.xib */; };
+		6FF5D4E027ED55EA0041B434 /* JGUserFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF5D4D727ED55E90041B434 /* JGUserFeedBackViewController.m */; };
+		6FF5D4E127ED55EA0041B434 /* JGPredicateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF5D4DC27ED55E90041B434 /* JGPredicateMethod.m */; };
+		6FF5D4E227ED55EA0041B434 /* JGPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF5D4DD27ED55E90041B434 /* JGPlaceholderTextView.m */; };
+		6FF5D4E327ED55EA0041B434 /* JGPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF5D4DE27ED55E90041B434 /* JGPhotoCollectionViewCell.m */; };
 		6FF6423E27EC4F7D001C290A /* ClassiftyGoods07.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423427EC4F7D001C290A /* ClassiftyGoods07.plist */; };
 		6FF6423F27EC4F7D001C290A /* ClassiftyGoods09.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423527EC4F7D001C290A /* ClassiftyGoods09.plist */; };
 		6FF6424027EC4F7D001C290A /* ClassiftyGoods08.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FF6423627EC4F7D001C290A /* ClassiftyGoods08.plist */; };
@@ -1315,6 +1319,14 @@
 		6FF5D4D027EC77290041B434 /* KDHomeServeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHomeServeViewController.h; sourceTree = "<group>"; };
 		6FF5D4D127EC77290041B434 /* KDHomeServeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHomeServeViewController.m; sourceTree = "<group>"; };
 		6FF5D4D227EC77290041B434 /* KDHomeServeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDHomeServeViewController.xib; sourceTree = "<group>"; };
+		6FF5D4D727ED55E90041B434 /* JGUserFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGUserFeedBackViewController.m; sourceTree = "<group>"; };
+		6FF5D4D827ED55E90041B434 /* JGUserFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGUserFeedBackViewController.h; sourceTree = "<group>"; };
+		6FF5D4DA27ED55E90041B434 /* JGPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		6FF5D4DB27ED55E90041B434 /* JGPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPlaceholderTextView.h; sourceTree = "<group>"; };
+		6FF5D4DC27ED55E90041B434 /* JGPredicateMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPredicateMethod.m; sourceTree = "<group>"; };
+		6FF5D4DD27ED55E90041B434 /* JGPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPlaceholderTextView.m; sourceTree = "<group>"; };
+		6FF5D4DE27ED55E90041B434 /* JGPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		6FF5D4DF27ED55E90041B434 /* JGPredicateMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGPredicateMethod.h; sourceTree = "<group>"; };
 		6FF6423427EC4F7D001C290A /* ClassiftyGoods07.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods07.plist; sourceTree = "<group>"; };
 		6FF6423527EC4F7D001C290A /* ClassiftyGoods09.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods09.plist; sourceTree = "<group>"; };
 		6FF6423627EC4F7D001C290A /* ClassiftyGoods08.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ClassiftyGoods08.plist; sourceTree = "<group>"; };
@@ -2485,6 +2497,7 @@
 		6F32792A27E9A015009207E0 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				6FF5D4D527ED55E90041B434 /* UserFeedBackVC */,
 				6F32792B27E9A015009207E0 /* Setting */,
 				6F32792F27E9A015009207E0 /* Main */,
 			);
@@ -3767,6 +3780,37 @@
 			path = jifen;
 			sourceTree = "<group>";
 		};
+		6FF5D4D527ED55E90041B434 /* UserFeedBackVC */ = {
+			isa = PBXGroup;
+			children = (
+				6FF5D4D627ED55E90041B434 /* Controller */,
+				6FF5D4D927ED55E90041B434 /* View */,
+			);
+			path = UserFeedBackVC;
+			sourceTree = "<group>";
+		};
+		6FF5D4D627ED55E90041B434 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FF5D4D727ED55E90041B434 /* JGUserFeedBackViewController.m */,
+				6FF5D4D827ED55E90041B434 /* JGUserFeedBackViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6FF5D4D927ED55E90041B434 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6FF5D4DA27ED55E90041B434 /* JGPhotoCollectionViewCell.h */,
+				6FF5D4DB27ED55E90041B434 /* JGPlaceholderTextView.h */,
+				6FF5D4DC27ED55E90041B434 /* JGPredicateMethod.m */,
+				6FF5D4DD27ED55E90041B434 /* JGPlaceholderTextView.m */,
+				6FF5D4DE27ED55E90041B434 /* JGPhotoCollectionViewCell.m */,
+				6FF5D4DF27ED55E90041B434 /* JGPredicateMethod.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6FFE7E08274E3A5400F801A1 /* qianbao */ = {
 			isa = PBXGroup;
 			children = (
@@ -4093,6 +4137,7 @@
 				6F327BF827E9A017009207E0 /* DCExceedApplianceCell.m in Sources */,
 				6F327BF327E9A017009207E0 /* DCTopLineFootView.m in Sources */,
 				045372A6274FD5CD003FCA1A /* KDWallDetailTableViewCell.m in Sources */,
+				6FF5D4E327ED55EA0041B434 /* JGPhotoCollectionViewCell.m in Sources */,
 				6F327BEE27E9A017009207E0 /* DCHandPickViewController.m in Sources */,
 				6F327C3327EB0377009207E0 /* DCAccountPsdView.m in Sources */,
 				04318A09274E7C3700D9D959 /* KDTixianjiluViewController.m in Sources */,
@@ -4289,6 +4334,7 @@
 				6F327BFD27E9A017009207E0 /* DCGoodsYouLikeCell.m in Sources */,
 				6F002D4527E97C0B00FA4A01 /* KDDirectPushNoDataView.m in Sources */,
 				1B7E4690251CE94D00FA5D1E /* KDRepaymentBillModel.m in Sources */,
+				6FF5D4E227ED55EA0041B434 /* JGPlaceholderTextView.m in Sources */,
 				6F327B7227E9A017009207E0 /* DCLIRLButton.m in Sources */,
 				6F327B2727E9A017009207E0 /* DCShowTypeFourCell.m in Sources */,
 				04DA374F277F52CB002FC105 /* KDXinYongKaHeaderCollectionReusableView.m in Sources */,
@@ -4374,6 +4420,7 @@
 				6F327B4127E9A017009207E0 /* DCAdressDateBase.m in Sources */,
 				6F327BF527E9A017009207E0 /* DCCountDownHeadView.m in Sources */,
 				0428B43A2784A1ED004B2D54 /* KDPayNewViewControllerShop.m in Sources */,
+				6FF5D4E027ED55EA0041B434 /* JGUserFeedBackViewController.m in Sources */,
 				6F327B0F27E9A016009207E0 /* DCHeaderReusableView.m in Sources */,
 				1B9C9B1825075D2F00EE0819 /* KDMsgViewCell.m in Sources */,
 				186724992673138C0066122D /* KDJFChangeTableViewCell.m in Sources */,
@@ -4415,6 +4462,7 @@
 				6F327B9527E9A017009207E0 /* XWTransitionAnimator.m in Sources */,
 				6F327B7527E9A017009207E0 /* DCCustionButton.m in Sources */,
 				6F327B3B27E9A017009207E0 /* DCManagementViewController.m in Sources */,
+				6FF5D4E127ED55EA0041B434 /* JGPredicateMethod.m in Sources */,
 				6F327B0727E9A016009207E0 /* DCGoodParticularsViewController.m in Sources */,
 				6F327B5427E9A017009207E0 /* DCUserAdressCell.m in Sources */,
 				1B9C9B63250784D800EE0819 /* KDMineHeaderView.m in Sources */,
@@ -4569,7 +4617,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = LK838U989G;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
@@ -4588,7 +4636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4714,7 +4762,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = LK838U989G;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4732,7 +4780,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

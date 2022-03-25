@@ -31,7 +31,7 @@
         self.content1Lbl.hidden = YES;
 
     }
-    self.versionLbl.text = [NSString stringWithFormat:@"v%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentVersion"]];
+    self.versionLbl.text = [NSString stringWithFormat:@"v%@",SharedAppInfo.build];
 
     [self getData];
 }

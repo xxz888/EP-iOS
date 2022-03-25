@@ -29,7 +29,7 @@
 - (MCSegementView *)segement {
     if (!_segement) {
         _segement = [[MCSegementView alloc] initWithFrame:CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, 45)];
-        _segement.titles = @[@"全部",@"待收货",@"待发货",@"已完成",@"已取消"];
+        _segement.titles = @[@"待收货",@"待发货",@"已完成",@"已取消"];
         _segement.delegate = self;
     }
     return _segement;
@@ -50,15 +50,13 @@
 //    Cancel, // 取消
 //    Failed,//失败,
 //    Close,
-    if (index == 0) {
-        self.orderState = @"0";
-    }else  if (index == 1) {
+      if (index == 0) {
         self.orderState = @"Unreceived";
-    }else  if (index == 2) {
+    }else  if (index == 1) {
         self.orderState = @"Unshipped";
-    }else  if (index == 3) {
+    }else  if (index == 2) {
         self.orderState = @"Complete";
-    }else  if (index == 4) {
+    }else  if (index == 3) {
         self.orderState = @"Cancel";
     }
     
@@ -82,7 +80,7 @@
     [self setNavigationBarTitle:@"我的订单" tintColor:nil];
     
     [self.mc_tableview reloadData];
-    self.orderState = @"0";
+    self.orderState = @"Unreceived";
     [self requestData];
 }
 -(void)requestData{

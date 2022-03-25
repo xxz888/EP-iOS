@@ -8,9 +8,9 @@
 		<key>bgColor</key>
 		<false/>
 		<key>stateTitle</key>
-		<string>待支付</string>
+		<string>全部</string>
 		<key>imageContent</key>
-		<string>wdgm_icon_daizhifu</string>
+		<string>quanbudindan</string>
 	</dict>
 	<dict>
 		<key>showImage</key>
@@ -28,7 +28,17 @@
 		<key>bgColor</key>
 		<false/>
 		<key>stateTitle</key>
-		<string>待评价</string>
+		<string>待发货</string>
+		<key>imageContent</key>
+		<string>wdgm_icon_daizhifu</string>
+	</dict>
+	<dict>
+		<key>showImage</key>
+		<true/>
+		<key>bgColor</key>
+		<false/>
+		<key>stateTitle</key>
+		<string>已完成</string>
 		<key>imageContent</key>
 		<string>wdgm_icon_daipingjia</string>
 	</dict>
@@ -38,19 +48,9 @@
 		<key>bgColor</key>
 		<false/>
 		<key>stateTitle</key>
-		<string>退款/售后</string>
+		<string>已取消</string>
 		<key>imageContent</key>
 		<string>wdgm_icon_tuikuan</string>
-	</dict>
-	<dict>
-		<key>showImage</key>
-		<true/>
-		<key>bgColor</key>
-		<false/>
-		<key>stateTitle</key>
-		<string>全部订单</string>
-		<key>imageContent</key>
-		<string>quanbudindan</string>
 	</dict>
 </array>
 </plist>

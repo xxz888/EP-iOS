@@ -19,7 +19,7 @@
 // Vendors
 #import <MJExtension.h>
 // Categories
-
+#import "KDJFOrderListViewController.h"
 // Others
 
 @interface DCCenterItemCell ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
@@ -52,7 +52,7 @@ static NSString *const DCStateItemFooterViewID = @"DCStateItemFooterView";
         //注册footerView
         [_collectionView registerClass:[DCStateItemFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:DCStateItemFooterViewID];
         
-        [self addSubview:_collectionView];
+        [self.contentView addSubview:_collectionView];
     }
     return _collectionView;
 }
@@ -130,5 +130,9 @@ static NSString *const DCStateItemFooterViewID = @"DCStateItemFooterView";
 {
     return CGSizeMake(ScreenW, 0);
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+   // [self.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
+    [MCLATESTCONTROLLER.navigationController pushViewController:[[KDJFOrderListViewController alloc] init] animated:YES];
 
+}
 @end

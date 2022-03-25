@@ -73,7 +73,7 @@
 }
 
 - (IBAction)onUpdateTouched:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setValue:self.remoteVersion forKey:@"currentVersion"];
+//    [[NSUserDefaults standardUserDefaults] setValue:self.remoteVersion forKey:@"currentVersion"];
 
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.url]];
     [self.modal hide:YES];
