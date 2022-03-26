@@ -10,7 +10,7 @@
 #import "KDMineHeaderView.h"
 #import "MCUserHeaderView.h"
 #import "KDTrandingRecordViewController.h"
-@interface KDMineViewController ()
+@interface KDMineViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) KDMineHeaderView *header;
 @end
 
@@ -57,7 +57,7 @@
     
     self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#F5F5F5"];
     self.mc_tableview.tableHeaderView = self.header;
-
+    self.mc_tableview.delegate = self;
     self.mc_tableview.backgroundColor = [UIColor clearColor];
     if (@available(iOS 11.0, *)) {
         self.mc_tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -78,7 +78,7 @@
     titleLabel.text = @"我的";
     titleLabel.textColor = UIColor.whiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:titleLabel];
+//    [self.view addSubview:titleLabel];
     
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -172,5 +172,8 @@
         return  @"九星代理";
     }
     return  @"";
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    self.navigationController.navigationBar.hidden = YES;
 }
 @end

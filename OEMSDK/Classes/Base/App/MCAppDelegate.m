@@ -99,8 +99,6 @@
     
     [Bugly startWithAppId:@"be063ceb90"];
 
-    // @"恭喜您已实名完成,接下来将指引您完成信用卡认证,认证完成可获得奖励";
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FIRSTSHIMING"];
     return YES;
 }
 

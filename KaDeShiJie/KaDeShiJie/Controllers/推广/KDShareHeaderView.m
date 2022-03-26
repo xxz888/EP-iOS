@@ -11,6 +11,7 @@
 #import "KDGuanFangSheQun.h"
 #import "KDNewsViewController.h"
 #import "UIView+Extension.h"
+#import "KDBaiKeListViewController.h"
 @interface KDShareHeaderView ()
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
@@ -90,6 +91,21 @@
       [self.viewController.navigationController pushViewController:web animated:YES];
     }] ;
     
+    
+    [self.fenxiangImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_news_list withUerinfo:@{@"classification":@"推广物料"}];
+    }] ;
+    
+    [self.fatuImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_share_single];
+    }] ;
+    [self.shenghuobaikeImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        KDBaiKeListViewController * vc = [[KDBaiKeListViewController alloc]init];
+        [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+        
+    }] ;
+    
+
 }
 -(void)disPhoneClicktuiguang1Imv{
     [self.alertCroller showWithAnimated:YES completion:nil];

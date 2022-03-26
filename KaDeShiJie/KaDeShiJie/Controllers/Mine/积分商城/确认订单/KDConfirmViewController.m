@@ -82,11 +82,17 @@
     
 }
 -(void)applicationWillEnterForegroundAction:(id)tap{
-    
+    self.orderId = @"2022032617085853498853";
     kWeakSelf(self);
-
-    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/api/v1/player/shop/orderId/%@",self.orderId] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
-        [weakself.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
+    if (!self.orderId) {
+        return;
+    }
+  
+    [[MCSessionManager shareManager] mc_GET:[NSString stringWithFormat:@"/api/v1/player/shop/orderId?orderId=%@",self.orderId] parameters:@{} ok:^(NSDictionary * _Nonnull resp) {
+        [MCToast showMessage:resp[@"logisticsState"]];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakself.navigationController pushViewController:[KDJFOrderListViewController new] animated:YES];
+        });
     }];
 }
 -(void)clickNoAdressAction:(id)tap{
@@ -198,12 +204,12 @@
 }
 
 -(void)alertAliPay{
-    
+    WEAKSELF
     [[MCSessionManager shareManager] mc_Post_QingQiuTi:@"/api/v1/player/shop/order/aliPay" parameters:
      @{ @"shopReceiptAddressId":[NSString stringWithFormat:@"%@",self.adressDic[@"id"]],
         @"sku":[NSString stringWithFormat:@"%@",self.goodDic[@"sku"]] }
        ok:^(NSDictionary * _Nonnull resp) {
-        
+        weakSelf.orderId = resp[@"orderId"];
         NSString * aliPayRes = [NSString stringWithFormat:@"%@",resp[@"aliPayRes"]];
         
         if (aliPayRes != nil) {

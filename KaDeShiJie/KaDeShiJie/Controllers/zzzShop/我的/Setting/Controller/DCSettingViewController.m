@@ -10,7 +10,6 @@
 
 // Controllers
 #import "DCReceivingAddressViewController.h" //收获地址
-#import "DCLoginViewController.h" //登录
 // Models
 
 // Views

@@ -21,23 +21,23 @@
 - (KDMyWallView *)headerView
 {
     if (!_headerView) {
-        _headerView = [[KDMyWallView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TabBarHeight)];
+        _headerView = [[KDMyWallView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     }
     return _headerView;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self updateNavigationBarAppearance];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBannerImage" object:nil];
+    
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setNavigationBarTitle:@"我的钱包" tintColor:[UIColor whiteColor]];
+
    
     
     
@@ -49,20 +49,9 @@
     
     self.mc_tableview.tableHeaderView = self.headerView;
     self.mc_tableview.backgroundColor = [UIColor whiteColor];
-        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];
-        [backBtn addTarget:self action:@selector(leftItemClick) forControlEvents:UIControlEventTouchUpInside];
-        backBtn.frame = CGRectMake(0, StatusBarHeightConstant, 44, 44);
-        [self.view addSubview:backBtn];
-    
-//    [self setNavigationBarTitle:@"我的钱包" tintColor:nil];
-    [self setNavigationBarHidden];
 
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, StatusBarHeightConstant, 150, 44)];
-    titleLabel.text = @"我的钱包";
-    titleLabel.textColor = UIColor.whiteColor;
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:titleLabel];
+//    [self setNavigationBarHidden];
+
 
     [self requestData];
 }
@@ -77,5 +66,9 @@
 }
 -(void)leftItemClick{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)layoutTableView
+{
+    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
 }
 @end

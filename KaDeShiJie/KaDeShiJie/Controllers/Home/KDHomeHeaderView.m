@@ -29,7 +29,7 @@
 #import "KDXinYongKaViewController.h"
 #import "KDMineKehuViewController.h"
 #import "KDHomeServeViewController.h"
-
+#import "KDBaiKeListViewController.h"
 @interface KDHomeHeaderView ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *topView;
 @property (weak, nonatomic) IBOutlet UIStackView *centerView;
@@ -482,4 +482,8 @@
 
 
 
+- (IBAction)moreAction:(id)sender {
+    KDBaiKeListViewController * vc = [[KDBaiKeListViewController alloc]init];
+    [MCLATESTCONTROLLER.navigationController pushViewController:vc animated:YES];
+}
 @end

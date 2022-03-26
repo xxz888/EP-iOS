@@ -30,7 +30,7 @@
     [self updateNavigationBarAppearance];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return 0;
 }
 
 - (void)viewDidLoad {
@@ -47,16 +47,16 @@
         [backBtn setImage:[UIImage mc_imageNamed:@"nav_left_white"] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(leftItemClick) forControlEvents:UIControlEventTouchUpInside];
         backBtn.frame = CGRectMake(0, StatusBarHeightConstant, 44, 44);
-        [self.view addSubview:backBtn];
+//        [self.view addSubview:backBtn];
     
-//    [self setNavigationBarTitle:@"我的钱包" tintColor:nil];
-    [self setNavigationBarHidden];
+    [self setNavigationBarTitle:@"奖励收益" tintColor:nil];
+//    [self setNavigationBarHidden];
 
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 150) * 0.5, StatusBarHeightConstant, 150, 44)];
     titleLabel.text = @"奖励收益";
     titleLabel.textColor = UIColor.whiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:titleLabel];
+//    [self.view addSubview:titleLabel];
     [self requestData];
 }
 -(void)leftItemClick{
@@ -124,5 +124,8 @@
      return @"";
  }
 */
-
+- (void)layoutTableView
+{
+    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop);
+}
 @end

@@ -20,7 +20,6 @@
 #import "DCRecommendReusableView.h"
 // Vendors
 #import <MJExtension.h>
-#import "UINavigationController+FDFullscreenPopGesture.h"
 // Categories
 #import "DCCarView.h"
 // Others

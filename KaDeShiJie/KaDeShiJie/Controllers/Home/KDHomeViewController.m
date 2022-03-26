@@ -219,7 +219,7 @@
 //                [updateView showWithVersion:remoteVersion content:str downloadUrl:resp[@"iosVersion"][@"downloadUrl"] isForce:[resp[@"iosVersion"][@"mandatoryUpdate"] integerValue]];
 //            }
 //            MCUserInfo * userInfo = SharedUserInfo;
-//            if ([userInfo.phone isEqualToString:@"13383773801"]) {
+//            if ([userInfo.phone isEqualToString:@"13383773800"]) {
 //                UILabel * tagLbl = [weakself.view viewWithTag:104];
 //                tagLbl.text = [NSString stringWithFormat:@"首页-%@-%@",SharedAppInfo.version,localVersion];
 //            }
@@ -298,7 +298,8 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
-
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 @end

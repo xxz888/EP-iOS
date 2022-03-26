@@ -21,7 +21,7 @@
 - (KDShareHeaderView *)header
 {
     if (!_header) {
-        _header = [[KDShareHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _header = [[KDShareHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-TabBarHeight)];
     }
     return _header;
 }
@@ -30,33 +30,7 @@
 {
     if (!_dataArray) {
         _dataArray = @[];
-        
-//        @[@{
-//                           @"icon":@"kd_share_bottom_0",
-//                           @"title":@"推广物料",
-//                           @"des":@""
-//        },  @{
-//                           @"icon":@"kd_share_bottom_1",
-//                           @"title":@"官方社群微信号",
-//                           @"des":@"提供推广培训及引导"
-//        },@{
-//                           @"icon":@"kd_share_bottom_5",
-//                           @"title":@"新代理育龙特训营",
-//                           @"des":@""
-//        },
-//        @{
-//                           @"icon":@"kd_share_bottom_2",
-//                           @"title":@"卡德中国",
-//                           @"des":@""
-//        }, @{
-//                           @"icon":@"kd_share_bottom_3",
-//                           @"title":@"机构政策",
-//                           @"des":@""
-//        }, @{
-//                           @"icon":@"kd_share_bottom_4",
-//                           @"title":@"平台介绍",
-//                           @"des":@""
-//        }];
+
     }
     return _dataArray;
 }
@@ -66,9 +40,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setNavigationBarTitle:@"推广分享" tintColor:nil];
-    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
+    [self setNavigationBarTitle:@"发现" tintColor:UIColor.mainColor];
+//    self.view.backgroundColor = [UIColor qmui_colorWithHexString:@"#f5f5f5"];
     
     self.mc_tableview.tableHeaderView = self.header;
     self.mc_tableview.mj_header = nil;
@@ -147,6 +120,9 @@
         NSDictionary *content = [resp[@"result"][@"content"] firstObject];
         self.header.content = content;
     }];
+}
+-(void)layoutTableView{
+    self.mc_tableview.frame = CGRectMake(0, NavigationContentTop, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationContentTop-TabBarHeight);
 }
 
 @end

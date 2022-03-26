@@ -18,6 +18,7 @@
 @end
 
 @implementation KDJFOrderListViewController
+
 - (NSMutableArray *)dataArray
 {
     if (!_dataArray) {

@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *hidden5View;
 @property (weak, nonatomic) IBOutlet UIImageView *hidden6View;
 @property (weak, nonatomic) IBOutlet UIView *hidden7View;
+- (IBAction)moreAction:(id)sender;
 
 @end
 

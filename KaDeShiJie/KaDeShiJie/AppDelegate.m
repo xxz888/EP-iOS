@@ -123,7 +123,7 @@
           @"selectedIconName":@"tab_icon_home_selected",
           @"controller":[KDHomeViewController new]
         },
-        @{@"title":@"推广",
+        @{@"title":@"发现",
           @"iconName":@"tab_icon_news",
           @"selectedIconName":@"tab_icon_news_selected",
           @"controller":[KDShareViewController new]

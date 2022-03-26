@@ -9,7 +9,6 @@
 #import "DCHandPickViewController.h"
 
 // Controllers
-#import "DCNavigationController.h"
 #import "DCGoodsSetViewController.h"
 #import "DCCommodityViewController.h"
 #import "DCMyTrolleyViewController.h"

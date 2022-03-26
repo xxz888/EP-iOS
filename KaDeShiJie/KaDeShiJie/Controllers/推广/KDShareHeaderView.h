@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *weixinView;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *fenxiangImv;
+@property (weak, nonatomic) IBOutlet UIImageView *fatuImv;
+@property (weak, nonatomic) IBOutlet UIImageView *shenghuobaikeImv;
 
 
 @end

@@ -20,7 +20,7 @@
 #import "UIView+Extension.h"
 #import "jintMyWallViewController.h"
 #import "KDHomeServeViewController.h"
-
+#import "KDMineCouponController.h"
 @interface KDMineHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
@@ -101,6 +101,16 @@
     [self.shezhiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCLATESTCONTROLLER.navigationController pushViewController:[MCSettingViewController new] animated:YES];
     }];
+    
+    //设置
+    [self.youhuiquanView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCLATESTCONTROLLER.navigationController pushViewController:[KDMineCouponController new] animated:YES];
+    }];
+    
+    //设置
+    [self.headImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_user_info];
+    }];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -110,6 +120,10 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"KDMineHeaderView" owner:nil options:nil] firstObject];
     }
     return self;
+}
+- (IBAction)fenxiangAction:(id)sender {
+    [MCPagingStore pagingURL:rt_share_single];
+
 }
 
 - (IBAction)mineBtnAction:(UIButton *)sender {

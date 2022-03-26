@@ -24,21 +24,21 @@ QMUISynthesizeIdStrongProperty(transitionNavigationBar, setTransitionNavigationB
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         ExtendImplementationOfVoidMethodWithSingleArgument([UINavigationBar class], @selector(setShadowImage:), UIImage *, ^(UINavigationBar *selfObject, UIImage *firstArgv) {
-            if (selfObject.transitionNavigationBar) {
-                selfObject.transitionNavigationBar.shadowImage = firstArgv;
-            }
+//            if (selfObject.transitionNavigationBar) {
+//                selfObject.transitionNavigationBar.shadowImage = firstArgv;
+//            }
         });
         
         ExtendImplementationOfVoidMethodWithSingleArgument([UINavigationBar class], @selector(setBarTintColor:), UIColor *, ^(UINavigationBar *selfObject, UIColor *firstArgv) {
-            if (selfObject.transitionNavigationBar) {
-                selfObject.transitionNavigationBar.barTintColor = firstArgv;
-            }
+//            if (selfObject.transitionNavigationBar) {
+//                selfObject.transitionNavigationBar.barTintColor = firstArgv;
+//            }
         });
         
         ExtendImplementationOfVoidMethodWithTwoArguments([UINavigationBar class], @selector(setBackgroundImage:forBarMetrics:), UIImage *, UIBarMetrics, ^(UINavigationBar *selfObject, UIImage *backgroundImage, UIBarMetrics barMetrics) {
-            if (selfObject.transitionNavigationBar) {
-                [selfObject.transitionNavigationBar setBackgroundImage:backgroundImage forBarMetrics:barMetrics];
-            }
+//            if (selfObject.transitionNavigationBar) {
+//                [selfObject.transitionNavigationBar setBackgroundImage:backgroundImage forBarMetrics:barMetrics];
+//            }
         });
     });
 }
