@@ -148,7 +148,7 @@
     __weak __typeof(self)weakSelf = self;
     [self.sessionManager mc_GET:[NSString stringWithFormat:@"/user/app/account/query/%@",TOKEN] parameters:nil ok:^(NSDictionary * _Nonnull resp) {
         [weakSelf.scroll.mj_header endRefreshing];
-        weakSelf.availableBalance = [NSString stringWithFormat:@"%.2f", [resp[@"result"][@"balance"] floatValue]];
+        weakSelf.availableBalance = [NSString stringWithFormat:@"%.3f", [resp[@"result"][@"balance"] floatValue]];
         self.textField.text = weakSelf.availableBalance;
         
  

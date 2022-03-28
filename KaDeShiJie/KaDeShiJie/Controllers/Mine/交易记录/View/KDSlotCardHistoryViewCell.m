@@ -52,13 +52,13 @@
     self.nameLabel.text = slotHistoryModel.creditCard[@"bankName"];
     self.cardNoLabel.text = [NSString stringWithFormat:@"(%@)", [no substringFromIndex:no.length - 4]];
     
-    NSString *desStr = [NSString stringWithFormat:@"费率%.2f%%", slotHistoryModel.rate ];
+    NSString *desStr = [NSString stringWithFormat:@"费率%.3f%%", slotHistoryModel.rate ];
     NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
-    NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%.2f%%", slotHistoryModel.rate ]];
+    NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%.3f%%", slotHistoryModel.rate ]];
     [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range];
     self.desLabel.attributedText = attsDes;
     
-    self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", slotHistoryModel.amount];
+    self.moneyLabel.text = [NSString stringWithFormat:@"%.3f", slotHistoryModel.amount];
     self.timeLabel.text = slotHistoryModel.createdTime;
 
     

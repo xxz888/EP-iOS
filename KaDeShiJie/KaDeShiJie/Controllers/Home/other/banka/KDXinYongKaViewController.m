@@ -89,9 +89,12 @@
     [cell.collImv sd_setImageWithURL:self.dataArray[indexPath.row][@"logo"] placeholderImage:[UIImage imageNamed:@"logo"]];
     cell.collTitle.text = self.dataArray[indexPath.row][@"title"];
     cell.cellContent.text = self.dataArray[indexPath.row][@"describe"];
+    //arrayOf<String>("#8743A9","#21AAF0","#FFAE57","#FE5050","#3167B6")
+    NSArray * arr = @[@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6",@"#8743A9",@"#21AAF0",@"#FFAE57",@"#FE5050",@"#3167B6"];
     
-    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.dataArray[indexPath.row][@"title"]];
-    cell.backgroundColor = [info.cardCellBackgroundColor qmui_colorWithAlphaAddedToWhite:0.6];
+    
+//    MCBankCardInfo *info = [MCBankStore getBankCellInfoWithName:self.dataArray[indexPath.row][@"title"]];
+    cell.backgroundColor = [UIColor qmui_colorWithHexString:arr[indexPath.row]];
     return cell;
 }
 //定义每个UICollectionView 的大小

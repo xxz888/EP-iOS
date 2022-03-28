@@ -93,7 +93,7 @@
     
     
     [self.fenxiangImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCPagingStore pagingURL:rt_news_list withUerinfo:@{@"classification":@"推广物料"}];
+        [MCPagingStore pagingURL:rt_share_article];
     }] ;
     
     [self.fatuImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {

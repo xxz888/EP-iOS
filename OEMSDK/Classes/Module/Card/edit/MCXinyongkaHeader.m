@@ -106,19 +106,6 @@
     self.bg1.layer.cornerRadius = 12;
     self.bg2.layer.cornerRadius = 12;
 
-//    self.textField2.text = @"6225767784298952";
-//    self.textField3.text = @"13383773800";
-//    self.textField4.text = @"905";
-//    self.textField5.text = @"06/21";
-//    self.textField6.text = @"16日";
-//    self.textField7.text = @"4日";
-    
-//    self.textField2.text = @"6222525629158895";
-//    self.textField3.text = @"13383773800";
-//    self.textField4.text = @"589";
-//    self.textField5.text = @"11/24";
-//    self.textField6.text = @"16日";
-//    self.textField7.text = @"4日";
 }
 -(void)setData{
     self.textField1.text = self.shimingName;

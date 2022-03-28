@@ -62,7 +62,7 @@
 {
     [super awakeFromNib];
     
-    if ([SharedDefaults.phone isEqualToString:@"13383773800"]) {
+    if ([SharedDefaults.phone isEqualToString:@"13383773801"]) {
         self.zhuceBtn.hidden = YES;
     }else{
         self.zhuceBtn.hidden = NO;

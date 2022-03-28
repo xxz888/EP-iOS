@@ -9,7 +9,7 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#define STF(string) [NSString stringWithFormat:@"%.2f", string]
+#define STF(string) [NSString stringWithFormat:@"%.3f", string]
 #define STR(string) [NSString stringWithFormat:@"%@", string]
 #define WS_ScaleRateX    [[UIScreen mainScreen] bounds].size.height/667.f
 #define WS_ScaleRate      (LY_iPhoneX ? 1.2 : (SCREEN_HEIGHT/667.f))

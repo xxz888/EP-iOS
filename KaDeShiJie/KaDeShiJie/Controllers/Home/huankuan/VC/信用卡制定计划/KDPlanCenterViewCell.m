@@ -411,7 +411,7 @@
     
     [params setValue:self.directModel.cardNo forKey:@"creditCardNumber"];//卡号
     
-    [params setValue:[NSString stringWithFormat:@"%.2f",[self inRefundMoneyToNewMoney]] forKey:@"amount"];// 还款金额
+    [params setValue:[NSString stringWithFormat:@"%.3f",[self inRefundMoneyToNewMoney]] forKey:@"amount"];// 还款金额
     [params setValue:self.cardBalanceView.text forKey:@"reservedAmount"];//预留金额
     
     [params setValue:@"" forKey:@"executeDate"];//执行任务的日期

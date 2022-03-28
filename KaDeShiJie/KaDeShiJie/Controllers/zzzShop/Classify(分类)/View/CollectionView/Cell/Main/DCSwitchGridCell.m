@@ -127,7 +127,7 @@
 {
     _youSelectItem = youSelectItem;
     [_gridImageView sd_setImageWithURL:[NSURL URLWithString:youSelectItem.image_url]];
-    _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f",[youSelectItem.price floatValue]];
+    _priceLabel.text = [NSString stringWithFormat:@"¥ %.3f",[youSelectItem.price floatValue]];
     _gridLabel.text = youSelectItem.main_title;
     //首行缩进
     [DCSpeedy dc_setUpLabel:_gridLabel Content:youSelectItem.main_title IndentationFortheFirstLineWith:_gridLabel.font.pointSize * 3.5];

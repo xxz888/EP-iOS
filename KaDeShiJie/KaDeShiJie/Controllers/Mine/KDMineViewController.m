@@ -108,8 +108,7 @@
         
         //
         NSString * level = [self getLevel:userInfo.level];
-        self.header.phoneLabel.text = userInfo.phone;
-        self.header.nameLabel.text = [NSString stringWithFormat:@"昵称:%@",userInfo.nickname];
+        self.header.nameLabel.text = [NSString stringWithFormat:@"%@",userInfo.nickname];
         self.header.levelViwe.text = [NSString stringWithFormat:@"%@",level];
         self.header.dianhua.text =   [NSString stringWithFormat:@"联系客服：%@",SharedDefaults.configDic[@"servicePhone"]];
         [self.header.headImv sd_setImageWithURL:[NSURL URLWithString:userInfo.headImg] placeholderImage:[UIImage imageNamed:@"pImv"]];

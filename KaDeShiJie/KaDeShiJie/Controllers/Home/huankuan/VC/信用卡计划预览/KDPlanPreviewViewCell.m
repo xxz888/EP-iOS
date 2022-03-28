@@ -61,7 +61,7 @@
         //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
             self.taskStatusLabel.text = [orderModel.planTaskType isEqualToString:@"Consumption"] ? @"消费" : @"还款";
         //金额的label,消费计划取realAmount,还款计划取amount
-        self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
+        self.moneyLabel.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
         self.moneyLabel.text = [orderModel.planTaskType isEqualToString:@"Repayment"] ? [@"+" append:self.moneyLabel.text] : [@"-" append:self.moneyLabel.text];
         self.timeLabel.text = orderModel.executeTime;
         //记录和还款点击进来,需要显示状态一列
@@ -104,7 +104,7 @@
             //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
             self.taskStatusLabel.text = orderModel.des;
             //金额的label,消费计划取realAmount,还款计划取amount
-            self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
+            self.moneyLabel.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
             self.moneyLabel.text = orderModel.type == 1 ? [@"-" append:self.moneyLabel.text] : [@"+" append:self.moneyLabel.text];
             //设置计划下单,需要隐藏状态栏一列
             self.statusLabel.text = @"";
@@ -124,7 +124,7 @@
             //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
             self.taskStatusLabel.text = orderModel.des;
             //金额的label,消费计划取realAmount,还款计划取amount
-            self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
+            self.moneyLabel.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
             self.moneyLabel.text = orderModel.type == 1 ? [@"-" append:self.moneyLabel.text] : [@"+" append:self.moneyLabel.text];
             self.timeLabel.text = orderModel.executeTime;
             //记录和还款点击进来,需要显示状态一列
@@ -151,7 +151,7 @@
                 //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
                 self.taskStatusLabel.text = [orderModel.des split:@"计划"][0];
                 //金额的label,消费计划取realAmount,还款计划取amount
-                self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", [orderModel.des isEqualToString:@"消费计划"] ? orderModel.realAmount : orderModel.amount];
+                self.moneyLabel.text = [NSString stringWithFormat:@"%.3f", [orderModel.des isEqualToString:@"消费计划"] ? orderModel.realAmount : orderModel.amount];
                 self.moneyLabel.text = [orderModel.des isEqualToString:@"消费计划"] ? [@"-" append:self.moneyLabel.text] : [@"+" append:self.moneyLabel.text];
                 //设置计划下单,需要隐藏状态栏一列
                 self.statusLabel.text = @"";
@@ -166,12 +166,12 @@
             //金额的label,消费计划取realAmount,还款计划取amount
             if (orderModel.type == 10) {
                 self.pointView.hidden = NO;
-                self.moneyLabel.text = [NSString stringWithFormat:@"-%.2f",orderModel.realAmount];
+                self.moneyLabel.text = [NSString stringWithFormat:@"-%.3f",orderModel.realAmount];
             }else{
                 if (orderModel.taskStatus == 1 && orderModel.orderStatus == 1) {
-                    self.moneyLabel.text = [NSString stringWithFormat:@"+%.2f",orderModel.realAmount];
+                    self.moneyLabel.text = [NSString stringWithFormat:@"+%.3f",orderModel.realAmount];
                 }else{
-                    self.moneyLabel.text = [NSString stringWithFormat:@"+%.2f",orderModel.amount];
+                    self.moneyLabel.text = [NSString stringWithFormat:@"+%.3f",orderModel.amount];
                 }
                 self.pointView.hidden = YES;
             }

@@ -63,15 +63,7 @@
     
  
     //推广二维码
-    [self.erweimaView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [[MCSessionManager shareManager] mc_GET:@"/api/v1/player/user/propaganda/link" parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-            if (resp[@"link"]) {
-                MCModelStore.shared.shareLink = resp[@"link"];
-            }
-            [MCPagingStore pagingURL:rt_share_single];
 
-        }];
-    }];
     //我的卡包
     [self.kabaoView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCPagingStore pagingURL:rt_card_list];
@@ -81,22 +73,14 @@
         [MCLATESTCONTROLLER.navigationController pushViewController:[jintMyWallViewController new] animated:YES];
 
     }];
-    //我的客服
-    [self.kefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineCouponController alloc] init] animated:YES];
-        
-    }];
+  
     //关于我们
     [self.guanyuwomenView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCLATESTCONTROLLER.navigationController pushViewController:[KDAboutMineViewController new] animated:YES];
 
     }];
 
-    //我的客户
-    [self.wodekefuView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
-        [MCLATESTCONTROLLER.navigationController pushViewController:[[KDMineKehuViewController alloc] init] animated:YES];
-        
-    }];
+   
     //设置
     [self.shezhiView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCLATESTCONTROLLER.navigationController pushViewController:[MCSettingViewController new] animated:YES];
@@ -107,8 +91,11 @@
         [MCLATESTCONTROLLER.navigationController pushViewController:[KDMineCouponController new] animated:YES];
     }];
     
-    //设置
-    [self.headImv rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+    //
+    [self.headView rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
+        [MCPagingStore pagingURL:rt_user_info];
+    }];
+    [self.nameLabel rf_addTapActionWithBlock:^(UITapGestureRecognizer *gestureRecoginzer) {
         [MCPagingStore pagingURL:rt_user_info];
     }];
 }

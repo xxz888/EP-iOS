@@ -139,7 +139,9 @@
     
     if (indexPath.section == 0) {
         imv.hidden = NO;
-        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"";
+        cell.textLabel.text = @"头像";
+
         [imv sd_setImageWithURL:subTit placeholderImage:[UIImage mc_imageNamed:@"pImv"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{

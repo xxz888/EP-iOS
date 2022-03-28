@@ -20,7 +20,7 @@
 + (void)yinlianPayWithAmount:(NSString *)amount productId:(NSString *)product_id orderDesc:(NSString *)order_desc channelTag:(NSString *)channelTag bankCard:(NSString *)bank_card couponId:(NSString *)coupon_id {
     
     NSString *phone      = SharedUserInfo.phone;
-    NSDictionary *gatheringDic = @{@"amount":[NSString stringWithFormat:@"%.2f", amount.floatValue], @"order_desc":order_desc, @"phone":phone, @"channe_tag":channelTag, @"bank_card":bank_card, @"brand_id":SharedConfig.brand_id,@"product_id":product_id};
+    NSDictionary *gatheringDic = @{@"amount":[NSString stringWithFormat:@"%.3f", amount.floatValue], @"order_desc":order_desc, @"phone":phone, @"channe_tag":channelTag, @"bank_card":bank_card, @"brand_id":SharedConfig.brand_id,@"product_id":product_id};
     
     NSMutableDictionary *md = [[NSMutableDictionary alloc] initWithDictionary:gatheringDic];
     if (coupon_id && coupon_id.length > 0) {
@@ -44,7 +44,7 @@
     [alert addAction:[QMUIAlertAction actionWithTitle:@"确定" style:QMUIAlertActionStyleDefault handler:^(__kindof QMUIAlertController * _Nonnull aAlertController, QMUIAlertAction * _Nonnull action) {
         
         NSString *phone      = SharedUserInfo.phone;
-        NSDictionary *gatheringDic = @{@"amount":[NSString stringWithFormat:@"%.2f", amount.floatValue],
+        NSDictionary *gatheringDic = @{@"amount":[NSString stringWithFormat:@"%.3f", amount.floatValue],
                                        @"order_desc":order_desc,
                                        @"phone":phone,
                                        @"channe_tag":channelTag,

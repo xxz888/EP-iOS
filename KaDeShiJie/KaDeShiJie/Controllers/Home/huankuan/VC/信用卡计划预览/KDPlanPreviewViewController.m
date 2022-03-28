@@ -320,10 +320,10 @@
     KDTotalAmountModel *amountModel = self.detailModel.totalAmount.firstObject;
     self.lab1.text = [NSString stringWithFormat:@"%ld次", amountModel.taskCount];
     self.lab2.text = [NSString stringWithFormat:@"%ld次", amountModel.repaymentedSuccessCount];
-    self.lab3.text = [NSString stringWithFormat:@"%.2f元", amountModel.taskAmount];
-    self.lab4.text = [NSString stringWithFormat:@"%.2f元", amountModel.repaymentedAmount];
-    self.lab5.text = [NSString stringWithFormat:@"%.2f元", amountModel.totalServiceCharge];
-    self.lab6.text = [NSString stringWithFormat:@"%.2f元", amountModel.usedCharge];
+    self.lab3.text = [NSString stringWithFormat:@"%.3f元", amountModel.taskAmount];
+    self.lab4.text = [NSString stringWithFormat:@"%.3f元", amountModel.repaymentedAmount];
+    self.lab5.text = [NSString stringWithFormat:@"%.3f元", amountModel.totalServiceCharge];
+    self.lab6.text = [NSString stringWithFormat:@"%.3f元", amountModel.usedCharge];
     //如果是下单进来，底部按钮就为终止计划按钮，次数颜色为红色
     if (self.whereCome == 1) {
         self.bottomBtn.hidden = NO;

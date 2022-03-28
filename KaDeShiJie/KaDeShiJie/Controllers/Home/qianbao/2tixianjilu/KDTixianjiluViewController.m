@@ -40,7 +40,7 @@
     
     NSString * url2 = @"/api/v1/player/wallet";
     [self.sessionManager mc_GET:url2 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
-        weakSelf.yitixianjineLbl.text =   [NSString stringWithFormat:@"已提现金额(元）    %.2f",[resp[@"historyWithdrawAmount"] doubleValue]];
+        weakSelf.yitixianjineLbl.text =   [NSString stringWithFormat:@"已提现金额(元）    %.3f",[resp[@"historyWithdrawAmount"] doubleValue]];
     }];
 }
 
@@ -58,8 +58,8 @@
 {
     KDTixianjiluTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"KDTixianjiluTableViewCell" forIndexPath:indexPath];
     NSDictionary * dic = self.jiluArray[indexPath.row];
-    cell.eventTag.text = dic[@"orderId"];//[self inStatusOutValue:dic[@"event"]];
-    cell.eventPrice.text = [NSString stringWithFormat:@"%.2f",[dic[@"amount"] doubleValue]];
+    cell.eventTag.text = [self inStatusOutValue:dic[@"event"]];
+    cell.eventPrice.text = [NSString stringWithFormat:@"+%.3f",[dic[@"amount"] doubleValue]];
     cell.eventTime.text = dic[@"createdTime"];
     cell.eventStatus.text = dic[@"state"];
     

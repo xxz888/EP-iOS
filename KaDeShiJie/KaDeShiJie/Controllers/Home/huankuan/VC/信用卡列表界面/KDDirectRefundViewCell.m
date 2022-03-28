@@ -148,21 +148,21 @@
     if ((refundModel.repaymentBill.content.firstObject.taskStatus == 3 ||
          refundModel.repaymentBill.content.firstObject.taskStatus == 4) && currentDay > refundModel.billDay && currentDay < refundModel.repaymentDay) {
         status = @"已完成";
-        NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.2f元", status, refundModel.successAmount];
+        NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.3f元", status, refundModel.successAmount];
         NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
         NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@", status]];
         [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#53AF23"] range:range];
         self.desLabel.attributedText = attsDes;
     } else if(refundModel.repaymentBill.content.firstObject.taskStatus == 0){
         status = @"待执行";
-        NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.2f元", status, refundModel.successAmount];
+        NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.3f元", status, refundModel.successAmount];
         NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
         NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@", status]];
         [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F08300"] range:range];
         self.desLabel.attributedText = attsDes;
     } else if ((refundModel.repaymentBill.content.firstObject.taskStatus == 1 || refundModel.repaymentBill.content.firstObject.taskStatus == 2) && refundModel.allAmount != 0) {
         status = @"还款中";
-        NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.2f元", status, refundModel.successAmount];
+        NSString *desStr = [NSString stringWithFormat:@"计划%@，已还款%.3f元", status, refundModel.successAmount];
         NSMutableAttributedString *attsDes = [[NSMutableAttributedString alloc] initWithString:desStr];
         NSRange range = [desStr rangeOfString:[NSString stringWithFormat:@"%@", status]];
         [attsDes addAttribute:NSForegroundColorAttributeName value:[UIColor qmui_colorWithHexString:@"#F63802"] range:range];

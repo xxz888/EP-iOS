@@ -104,9 +104,9 @@
     
     cell.eventTime.text = dic[@"createdTime"];
     if([dic[@"event"] isEqualToString:@"Withdraw"]) {
-        cell.eventPrice.text = [NSString stringWithFormat:@"-%.2f元",[dic[@"amount"] doubleValue]];
+        cell.eventPrice.text = [NSString stringWithFormat:@"-%.3f",[dic[@"amount"] doubleValue]];
     }else{
-        cell.eventPrice.text = [NSString stringWithFormat:@"+%.2f元",[dic[@"amount"] doubleValue]];
+        cell.eventPrice.text = [NSString stringWithFormat:@"+%.3f",[dic[@"amount"] doubleValue]];
     }
     return cell;
 }

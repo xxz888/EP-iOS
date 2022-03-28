@@ -57,7 +57,7 @@
     
 
     if (TOKEN) {
-        if ([SharedDefaults.phone isEqualToString:@"13383773800"]) {
+        if ([SharedDefaults.phone isEqualToString:@"13383773801"]) {
             [self setItemShop];
         }else{
             [self setItem1];

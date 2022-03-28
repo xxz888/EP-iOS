@@ -132,13 +132,13 @@
 #define floatToNSString(x) [NSString stringWithFormat:@"%f", (x)]
 #define nsstringToFloat(x) [[NSString stringWithFormat:@"%@",x] floatValue]
 
-#define doubleToNSString(x) [NSString stringWithFormat:@"%.2f", (x)]
+#define doubleToNSString(x) [NSString stringWithFormat:@"%.3f", (x)]
 #define CGFloatToNSString(x) [NSString stringWithFormat:@"%f", (x)]
 #define NSUIntegerToNSString(x) [NSString stringWithFormat:@"%lu", (long)(x)]
 #define NSIntegerToNSString(x) [NSString stringWithFormat:@"%ld", (long)(x)]
 #define kGetString(NSNumber)  [NSString stringWithFormat:@"%@",NSNumber]
 #define kGetNSInteger(NSInteger) [NSString stringWithFormat:@"%ld",NSInteger]
-#define kGet2fDouble(Double) [NSString stringWithFormat:@"%.2f",Double]
+#define kGet2fDouble(Double) [NSString stringWithFormat:@"%.3f",Double]
 
 //单例化一个类
 #define SINGLETON_FOR_HEADER(className) \

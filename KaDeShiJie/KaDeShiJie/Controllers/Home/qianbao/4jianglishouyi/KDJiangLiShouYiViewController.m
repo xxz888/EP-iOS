@@ -67,18 +67,18 @@
     NSString * url1 = @"/api/v1/player/wallet/commission/other";
     [self.sessionManager mc_GET:url1 parameters:nil ok:^(NSDictionary * _Nonnull resp) {
 
-            weakSelf.headerView.zongshouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"totalCommission"]doubleValue]];
-            weakSelf.headerView.dangrishouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"todayCommission"]doubleValue]];
-            weakSelf.headerView.dangyueshouyi.text = [NSString stringWithFormat:@"%.2f",[resp[@"monthCommission"]doubleValue]];
+            weakSelf.headerView.zongshouyi.text = [NSString stringWithFormat:@"%.3f",[resp[@"totalCommission"]doubleValue]];
+            weakSelf.headerView.dangrishouyi.text = [NSString stringWithFormat:@"%.3f",[resp[@"todayCommission"]doubleValue]];
+            weakSelf.headerView.dangyueshouyi.text = [NSString stringWithFormat:@"%.3f",[resp[@"monthCommission"]doubleValue]];
  
-        weakSelf.headerView.shuakayongjin.text = [NSString stringWithFormat:@"%.2f",[resp[@"receivePaymentCommission"]doubleValue]];
-        weakSelf.headerView.huankuanyongjin.text = [NSString stringWithFormat:@"%.2f",[resp[@"consumptionCommission"]doubleValue]];
-        weakSelf.headerView.fenxiangjiang.text = [NSString stringWithFormat:@"%.2f",[resp[@"share"]doubleValue]];
-        weakSelf.headerView.tuanduizhuoyue.text = [NSString stringWithFormat:@"%.2f",[resp[@"team"]doubleValue]];
-        weakSelf.headerView.ganen.text = [NSString stringWithFormat:@"%.2f",[resp[@"thanksgiving"]doubleValue]];
-        weakSelf.headerView.dailishoukuanyongjin.text = [NSString stringWithFormat:@"%.2f",[resp[@"agentReceivePaymentCommission"]doubleValue]];
-        weakSelf.headerView.dailihuankuanyongjin.text = [NSString stringWithFormat:@"%.2f",[resp[@"agentConsumptionCommission"]doubleValue]];
-        weakSelf.headerView.pipngjifenrun.text = [NSString stringWithFormat:@"%.2f",[resp[@"sameLevelCommission"]doubleValue]];
+        weakSelf.headerView.shuakayongjin.text = [NSString stringWithFormat:@"%.3f",[resp[@"receivePaymentCommission"]doubleValue]];
+        weakSelf.headerView.huankuanyongjin.text = [NSString stringWithFormat:@"%.3f",[resp[@"consumptionCommission"]doubleValue]];
+        weakSelf.headerView.fenxiangjiang.text = [NSString stringWithFormat:@"%.3f",[resp[@"share"]doubleValue]];
+        weakSelf.headerView.tuanduizhuoyue.text = [NSString stringWithFormat:@"%.3f",[resp[@"team"]doubleValue]];
+        weakSelf.headerView.ganen.text = [NSString stringWithFormat:@"%.3f",[resp[@"thanksgiving"]doubleValue]];
+        weakSelf.headerView.dailishoukuanyongjin.text = [NSString stringWithFormat:@"%.3f",[resp[@"agentReceivePaymentCommission"]doubleValue]];
+        weakSelf.headerView.dailihuankuanyongjin.text = [NSString stringWithFormat:@"%.3f",[resp[@"agentConsumptionCommission"]doubleValue]];
+        weakSelf.headerView.pipngjifenrun.text = [NSString stringWithFormat:@"%.3f",[resp[@"sameLevelCommission"]doubleValue]];
 
 
     }];

@@ -79,7 +79,7 @@
  //下单返回的数据返回的四个字,消费计划和还款计划四个字,与ui图不一致,要切割
      self.taskStatusLabel.text = [orderModel.planTaskType isEqualToString:@"Consumption"] ? @"消费" : @"还款";
  //金额的label,消费计划取realAmount,还款计划取amount
- self.moneyLabel.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
+ self.moneyLabel.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
  self.moneyLabel.text = [orderModel.planTaskType isEqualToString:@"Repayment"] ? [@"+" append:self.moneyLabel.text] : [@"-" append:self.moneyLabel.text];
  self.timeLabel.text = orderModel.executeTime;
  //记录和还款点击进来,需要显示状态一列
@@ -98,10 +98,10 @@
 
  **/
     self.orderNumLbl.text = orderModel.planTaskId;
-    self.lab1.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
-    self.lab4.text = [NSString stringWithFormat:@"%.2f%%", orderModel.rate];
+    self.lab1.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
+    self.lab4.text = [NSString stringWithFormat:@"%.3f%%", orderModel.rate];
     //扣款金额
-    self.lab2.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
+    self.lab2.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
     //计划手续费
     self.lab3.text = [NSString stringWithFormat:@"%@",orderModel.fee];
     //计划类型
@@ -119,9 +119,9 @@
     
 //    if (self.balancePlanId) {
 //        //扣款金额
-//        self.lab2.text = [NSString stringWithFormat:@"%.2f", orderModel.amount];
+//        self.lab2.text = [NSString stringWithFormat:@"%.3f", orderModel.amount];
 //        //计划手续费
-//        self.lab3.text = [NSString stringWithFormat:@"%.2f",orderModel.serviceCharge];
+//        self.lab3.text = [NSString stringWithFormat:@"%.3f",orderModel.serviceCharge];
 //        //计划类型
 //        self.lab5.text = orderModel.des;
 //        //计划执行时间
@@ -137,8 +137,8 @@
 //        [NSString stringWithFormat:@"失败原因:%@",orderModel.message] :
 //        [NSString stringWithFormat:@"计划描述:%@",orderModel.city];
 //    }else{
-//        self.lab2.text = [NSString stringWithFormat:@"%.2f", orderModel.realAmount];
-//        self.lab3.text = [NSString stringWithFormat:@"%.2f", orderModel.totalServiceCharge];
+//        self.lab2.text = [NSString stringWithFormat:@"%.3f", orderModel.realAmount];
+//        self.lab3.text = [NSString stringWithFormat:@"%.3f", orderModel.totalServiceCharge];
 //        self.lab5.text = orderModel.typeName;
 //        self.lab6.text = orderModel.taskStatusName;
 //        self.lab8.text = orderModel.executeDateTime;
